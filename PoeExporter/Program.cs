@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PoeData;
+using Serilog;
+using Serilog.Core;
 
 namespace PoeExporter;
 
@@ -17,7 +19,18 @@ internal sealed class Program
         var parsedConfig = config.Get<Config>();
         if (parsedConfig is null) throw new ArgumentNullException(nameof(parsedConfig));
 
-        var loader = new DataLoader(parsedConfig);
+        var levelSwitch = new LoggingLevelSwitch
+        {
+            MinimumLevel = Serilog.Events.LogEventLevel.Verbose
+        };
+        var logger = new LoggerConfiguration()
+            .MinimumLevel.ControlledBy(levelSwitch)
+            .WriteTo.Console()
+            .CreateLogger();
+
+
+        var loader = new DataLoader(parsedConfig, logger);
+        loader.LoadData();
     }
 }
 

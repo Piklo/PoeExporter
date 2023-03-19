@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 /PoeExporter/config.json
+/PoeData/libooz.dll
