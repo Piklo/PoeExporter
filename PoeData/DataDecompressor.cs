@@ -138,7 +138,7 @@ internal sealed class DataDecompressor
             Unknown4 = unknown4,
             Unknown5 = unknown5,
             Unknown6 = unknown6,
-            Data = decompressed.AsReadOnly(),
+            Data = decompressed.ToArray(),
         };
 
         return decompressedData;

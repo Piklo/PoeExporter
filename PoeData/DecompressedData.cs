@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace PoeData;
+﻿namespace PoeData;
 
 /// <summary>
 /// Class containing Path of Exile decompressed data.
@@ -47,5 +45,7 @@ public sealed class DecompressedData
     public required int Unknown6 { get; init; }
 
     /// <summary>Gets decompressed data.</summary>
-    public required ReadOnlyCollection<byte> Data { get; init; }
+#pragma warning disable CA1819 // Properties should not return arrays
+    public required byte[] Data { get; init; }
+#pragma warning restore CA1819 // Properties should not return arrays
 }
