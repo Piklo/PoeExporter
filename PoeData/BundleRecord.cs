@@ -11,10 +11,6 @@ public sealed class BundleRecord
     /// <summary>Gets size.</summary>
     public required int Size { get; init; }
 
-    private BundleRecord()
-    {
-    }
-
     /// <summary>
     /// Creates an instance of <see cref="BundleRecord"/> and moves an offset.
     /// </summary>
