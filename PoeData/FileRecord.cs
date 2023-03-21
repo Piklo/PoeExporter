@@ -12,10 +12,10 @@ public sealed class FileRecord
     public required BundleRecord BundleRecord { get; init; }
 
     /// <summary>Gets file offset.</summary>
-    public required int FileOffset { get; init; }
+    public required uint FileOffset { get; init; }
 
     /// <summary>Gets file size.</summary>
-    public required int FileSize { get; init; }
+    public required uint FileSize { get; init; }
 
     /// <summary>
     /// Creates an instance of <see cref="FileRecord"/> and moves the offset.
@@ -37,15 +37,15 @@ public sealed class FileRecord
         var hash = BitConverter.ToUInt64(data, offset);
         offset += sizeof(ulong);
 
-        var bundleRecordsIndex = BitConverter.ToInt32(data, offset);
-        offset += sizeof(int);
+        var bundleRecordsIndex = BitConverter.ToUInt32(data, offset);
+        offset += sizeof(uint);
         var bundleRecord = bundleRecords[bundleRecordsIndex];
 
-        var fileOffset = BitConverter.ToInt32(data, offset);
-        offset += sizeof(int);
+        var fileOffset = BitConverter.ToUInt32(data, offset);
+        offset += sizeof(uint);
 
-        var fileSize = BitConverter.ToInt32(data, offset);
-        offset += sizeof(int);
+        var fileSize = BitConverter.ToUInt32(data, offset);
+        offset += sizeof(uint);
 
         var fileRecord = new FileRecord() { Hash = hash, BundleRecord = bundleRecord, FileOffset = fileOffset, FileSize = fileSize };
 

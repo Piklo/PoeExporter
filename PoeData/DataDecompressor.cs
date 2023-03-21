@@ -51,50 +51,50 @@ internal sealed class DataDecompressor
         var offset = 0;
 
         // base data
-        var uncompressedSize = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var uncompressedSize = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var dataSize = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var dataSize = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var headSize = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var headSize = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
         // other data
-        var encoderType = (EncodeTypes)BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var encoderType = (EncodeTypes)BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var unknown = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var unknown = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var sizeDecompressed = BitConverter.ToInt64(compressedData, offset);
-        offset += sizeof(long);
+        var sizeDecompressed = BitConverter.ToUInt64(compressedData, offset);
+        offset += sizeof(ulong);
 
-        var sizeCompressed = BitConverter.ToInt64(compressedData, offset);
-        offset += sizeof(long);
+        var sizeCompressed = BitConverter.ToUInt64(compressedData, offset);
+        offset += sizeof(ulong);
 
-        var entryCount = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var entryCount = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var chunkSize = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var chunkSize = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var unknown3 = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var unknown3 = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var unknown4 = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var unknown4 = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var unknown5 = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var unknown5 = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var unknown6 = BitConverter.ToInt32(compressedData, offset);
-        offset += sizeof(int);
+        var unknown6 = BitConverter.ToUInt32(compressedData, offset);
+        offset += sizeof(uint);
 
-        var chunks = new int[entryCount];
+        var chunks = new uint[entryCount];
         for (var i = 0; i < entryCount; i++)
         {
-            var chunk = BitConverter.ToInt32(compressedData, offset);
+            var chunk = BitConverter.ToUInt32(compressedData, offset);
             offset += sizeof(int);
 
             chunks[i] = chunk;
@@ -103,7 +103,7 @@ internal sealed class DataDecompressor
         var data = new byte[entryCount][];
         for (var i = 0; i < entryCount; i++)
         {
-            var offset2 = offset + chunks[i];
+            var offset2 = offset + (int)chunks[i];
 
             data[i] = compressedData[offset..offset2];
 
@@ -111,10 +111,10 @@ internal sealed class DataDecompressor
         }
 
         var decompressed = new List<byte>();
-        var last = entryCount - 1;
+        var last = (int)entryCount - 1;
         for (var i = 0; i < entryCount; i++)
         {
-            var size = i != last ? chunkSize : (int)(sizeDecompressed % chunkSize);
+            var size = i != last ? (int)chunkSize : (int)(sizeDecompressed % chunkSize);
 
             var chunkDecompressed = new byte[size];
             Ooz.Decompress(data[i], data[i].Length, chunkDecompressed, size);

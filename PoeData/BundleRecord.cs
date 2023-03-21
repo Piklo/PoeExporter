@@ -9,7 +9,7 @@ public sealed class BundleRecord
     public required string Name { get; init; }
 
     /// <summary>Gets size.</summary>
-    public required int Size { get; init; }
+    public required uint Size { get; init; }
 
     /// <summary>
     /// Creates an instance of <see cref="BundleRecord"/> and moves an offset.
@@ -20,15 +20,15 @@ public sealed class BundleRecord
     public static (BundleRecord bundleRecord, int bytesRead) Create(byte[] data, int offset)
     {
         var startingOffset = offset;
-        var nameLength = BitConverter.ToInt32(data, offset);
-        offset += sizeof(int);
+        var nameLength = BitConverter.ToUInt32(data, offset);
+        offset += sizeof(uint);
 
         // var name = BitConverter.ToString(data, offset, nameLength);
-        var name = System.Text.Encoding.UTF8.GetString(data, offset, nameLength);
-        offset += nameLength;
+        var name = System.Text.Encoding.UTF8.GetString(data, offset, (int)nameLength);
+        offset += (int)nameLength;
 
-        var size = BitConverter.ToInt32(data, offset);
-        offset += sizeof(int);
+        var size = BitConverter.ToUInt32(data, offset);
+        offset += sizeof(uint);
 
         var bundle = new BundleRecord() { Name = name, Size = size };
 
