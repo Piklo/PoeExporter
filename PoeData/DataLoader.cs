@@ -47,12 +47,12 @@ public sealed class DataLoader
 
         var data = decompressedData.Data;
 
-        (var bundles, offset) = CreateBundleRecords(data, offset);
+        (var bundleRecords, offset) = CreateBundleRecords(data, offset);
 
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
 
-    private (BundleRecord[] bundles, int movedOffset) CreateBundleRecords(byte[] data, int offset)
+    private (BundleRecord[] bundleRecords, int movedOffset) CreateBundleRecords(byte[] data, int offset)
     {
         var startTimestamp = Stopwatch.GetTimestamp();
 
@@ -61,17 +61,17 @@ public sealed class DataLoader
 
         logger.Verbose("creating {bundleCount} bundle records", bundleCount);
 
-        var bundles = new BundleRecord[bundleCount];
+        var bundleRecords = new BundleRecord[bundleCount];
         for (var i = 0; i < bundleCount; i++)
         {
-            var (bundle, bytesRead) = BundleRecord.Create(data, offset);
+            var (bundleRecord, bytesRead) = BundleRecord.Create(data, offset);
             offset += bytesRead;
 
-            bundles[i] = bundle;
+            bundleRecords[i] = bundleRecord;
         }
 
         logger.Verbose("created bundle records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
 
-        return (bundles, offset);
+        return (bundleRecords, offset);
     }
 }

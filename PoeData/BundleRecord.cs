@@ -17,7 +17,7 @@ public sealed class BundleRecord
     /// <param name="data">data used to create the <see cref="BundleRecord"/>.</param>
     /// <param name="offset">offset with starting index.</param>
     /// <returns>instance of <see cref="BundleRecord"/> and bytes read to create it.</returns>
-    public static (BundleRecord bundle, int bytesRead) Create(byte[] data, int offset)
+    public static (BundleRecord bundleRecord, int bytesRead) Create(byte[] data, int offset)
     {
         var startingOffset = offset;
         var nameLength = BitConverter.ToInt32(data, offset);
