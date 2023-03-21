@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using System.Diagnostics;
 
 namespace PoeData;
 
@@ -38,12 +39,27 @@ public sealed class DataLoader
     /// </summary>
     public void LoadData()
     {
+        var timestampStart = Stopwatch.GetTimestamp();
+        logger.Debug("loading data");
+
         var decompressedData = compressor.LoadAndDecompress();
         var offset = 0;
 
         var data = decompressedData.Data;
+
+        (var bundles, offset) = CreateBundleRecords(data, offset);
+
+        logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
+    }
+
+    private (BundleRecord[] bundles, int movedOffset) CreateBundleRecords(byte[] data, int offset)
+    {
+        var startTimestamp = Stopwatch.GetTimestamp();
+
         var bundleCount = BitConverter.ToInt32(data, offset);
         offset += sizeof(int);
+
+        logger.Verbose("creating {bundleCount} bundle records", bundleCount);
 
         var bundles = new BundleRecord[bundleCount];
         for (var i = 0; i < bundleCount; i++)
@@ -53,5 +69,9 @@ public sealed class DataLoader
 
             bundles[i] = bundle;
         }
+
+        logger.Verbose("created bundle records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
+
+        return (bundles, offset);
     }
 }
