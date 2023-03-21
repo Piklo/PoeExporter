@@ -77,7 +77,7 @@ public sealed class DataLoader
         return (bundleRecords, offset);
     }
 
-    private (FileRecord[] fileRecords, int movedOffset) CreateFileRecords(byte[] data, int offset, BundleRecord[] bundleRecords)
+    private (Dictionary<ulong, FileRecord> fileRecords, int movedOffset) CreateFileRecords(byte[] data, int offset, BundleRecord[] bundleRecords)
     {
         var startTimestamp = Stopwatch.GetTimestamp();
 
@@ -86,13 +86,18 @@ public sealed class DataLoader
 
         logger.Verbose("creating {fileRecordsCount} file records", fileCount);
 
-        var fileRecords = new FileRecord[fileCount];
+        var fileRecords = new Dictionary<ulong, FileRecord>();
         for (var i = 0; i < fileCount; i++)
         {
             var (fileRecord, bytesRead) = FileRecord.Create(data, offset, bundleRecords);
             offset += bytesRead;
 
-            fileRecords[i] = fileRecord;
+            var success = fileRecords.TryAdd(fileRecord.Hash, fileRecord);
+            if (!success)
+            {
+                logger.Error("An item with the same key has already been added. Key: {Hash}", fileRecord.Hash);
+                throw new ArgumentException($"An item with the same key has already been added. Key: {fileRecord.Hash}");
+            }
         }
 
         logger.Verbose("created file records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
