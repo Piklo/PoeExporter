@@ -27,7 +27,7 @@ internal sealed class DataDecompressor
     /// <summary>
     /// Decompresses Bundles2\_.index.bin data.
     /// </summary>
-    /// <returns>bytes array with decompressed data.</returns>
+    /// <returns>decompressed data.</returns>
     public DecompressedData Decompress()
     {
         logger.Verbose("decompressing data");
