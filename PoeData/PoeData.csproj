@@ -5,7 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AnalysisMode>all</AnalysisMode>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,9 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="libooz.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\ooz\ooz.csproj" />
   </ItemGroup>
 
 </Project>

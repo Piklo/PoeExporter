@@ -1,13 +1,13 @@
-﻿using Serilog;
+﻿using ooz;
+using Serilog;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 
 namespace PoeData;
 
 /// <summary>
 /// Class used to decompress Bundles2\_.index.bin data.
 /// </summary>
-internal sealed partial class DataDecompressor
+internal sealed class DataDecompressor
 {
     private const string IndexPath = "Bundles2\\_.index.bin";
     private readonly ILogger logger;
@@ -143,20 +143,13 @@ internal sealed partial class DataDecompressor
             var size = i != last ? ChunkSize : (int)(SizeDecompressed % ChunkSize);
 
             var chunkDecompressed = new byte[size];
-            Ooz_Decompress(data[i], data[i].Length, chunkDecompressed, size);
+            Ooz.Decompress(data[i], data[i].Length, chunkDecompressed, size);
             decompressed.AddRange(chunkDecompressed);
         }
 
         logger.Verbose("decompressed data in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
         return decompressed.ToArray();
     }
-
-    // [DllImport("libooz.dll", CharSet = CharSet.Unicode)]
-    // [DefaultDllImportSearchPaths(DllImportSearchPath.LegacyBehavior)]
-    // [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5393:Do not use unsafe DllImportSearchPath value")]
-    // private static extern int Ooz_Decompress(byte[] src, int src_len, byte[] dst, int dst_len);
-    [LibraryImport("libooz.dll")]
-    private static partial int Ooz_Decompress(byte[] src, int src_len, byte[] dst, int dst_len);
 
     private byte[] ReadIndex()
     {
