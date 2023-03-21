@@ -38,6 +38,6 @@ public sealed class DataLoader
     /// </summary>
     public void LoadData()
     {
-        compressor.Decompress();
+        var decompressedData = compressor.Decompress();
     }
 }

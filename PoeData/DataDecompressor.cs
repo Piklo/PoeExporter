@@ -15,45 +15,6 @@ internal sealed class DataDecompressor
     /// <summary>Gets PoePath.</summary>
     public required string PoePath { get; init; }
 
-    /// <summary>Gets UncompressedSize.</summary>
-    public int UncompressedSize { get; private set; }
-
-    /// <summary>Gets DataSize.</summary>
-    public int DataSize { get; private set; }
-
-    /// <summary>Gets HeadSize.</summary>
-    public int HeadSize { get; private set; }
-
-    /// <summary>Gets EncoderType.</summary>
-    public EncodeTypes EncoderType { get; private set; }
-
-    /// <summary>Gets Unknown.</summary>
-    public int Unknown { get; private set; }
-
-    /// <summary>Gets SizeDecompressed.</summary>
-    public long SizeDecompressed { get; private set; }
-
-    /// <summary>Gets SizeCompressed.</summary>
-    public long SizeCompressed { get; private set; }
-
-    /// <summary>Gets EntryCount.</summary>
-    public int EntryCount { get; private set; }
-
-    /// <summary>Gets ChunkSize.</summary>
-    public int ChunkSize { get; private set; }
-
-    /// <summary>Gets Unknown3.</summary>
-    public int Unknown3 { get; private set; }
-
-    /// <summary>Gets Unknown4.</summary>
-    public int Unknown4 { get; private set; }
-
-    /// <summary>Gets Unknown5.</summary>
-    public int Unknown5 { get; private set; }
-
-    /// <summary>Gets Unknown6.</summary>
-    public int Unknown6 { get; private set; }
-
     /// <summary>
     /// Initializes a new instance of the <see cref="DataDecompressor"/> class.
     /// </summary>
@@ -67,7 +28,7 @@ internal sealed class DataDecompressor
     /// Decompresses Bundles2\_.index.bin data.
     /// </summary>
     /// <returns>bytes array with decompressed data.</returns>
-    public byte[] Decompress()
+    public DecompressedData Decompress()
     {
         logger.Verbose("decompressing data");
         var startTimestamp = Stopwatch.GetTimestamp();
@@ -76,48 +37,48 @@ internal sealed class DataDecompressor
         var offset = 0;
 
         // base data
-        UncompressedSize = BitConverter.ToInt32(compressed, offset);
+        var uncompressedSize = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        DataSize = BitConverter.ToInt32(compressed, offset);
+        var dataSize = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        HeadSize = BitConverter.ToInt32(compressed, offset);
+        var headSize = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
         // other data
-        EncoderType = (EncodeTypes)BitConverter.ToInt32(compressed, offset);
+        var encoderType = (EncodeTypes)BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        Unknown = BitConverter.ToInt32(compressed, offset);
+        var unknown = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        SizeDecompressed = BitConverter.ToInt64(compressed, offset);
+        var sizeDecompressed = BitConverter.ToInt64(compressed, offset);
         offset += sizeof(long);
 
-        SizeCompressed = BitConverter.ToInt64(compressed, offset);
+        var sizeCompressed = BitConverter.ToInt64(compressed, offset);
         offset += sizeof(long);
 
-        EntryCount = BitConverter.ToInt32(compressed, offset);
+        var entryCount = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        ChunkSize = BitConverter.ToInt32(compressed, offset);
+        var chunkSize = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        Unknown3 = BitConverter.ToInt32(compressed, offset);
+        var unknown3 = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        Unknown4 = BitConverter.ToInt32(compressed, offset);
+        var unknown4 = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        Unknown5 = BitConverter.ToInt32(compressed, offset);
+        var unknown5 = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        Unknown6 = BitConverter.ToInt32(compressed, offset);
+        var unknown6 = BitConverter.ToInt32(compressed, offset);
         offset += sizeof(int);
 
-        var chunks = new int[EntryCount];
-        for (var i = 0; i < EntryCount; i++)
+        var chunks = new int[entryCount];
+        for (var i = 0; i < entryCount; i++)
         {
             var chunk = BitConverter.ToInt32(compressed, offset);
             offset += sizeof(int);
@@ -125,8 +86,8 @@ internal sealed class DataDecompressor
             chunks[i] = chunk;
         }
 
-        var data = new byte[EntryCount][];
-        for (var i = 0; i < EntryCount; i++)
+        var data = new byte[entryCount][];
+        for (var i = 0; i < entryCount; i++)
         {
             var offset2 = offset + chunks[i];
 
@@ -136,11 +97,10 @@ internal sealed class DataDecompressor
         }
 
         var decompressed = new List<byte>();
-
-        var last = EntryCount - 1;
-        for (var i = 0; i < EntryCount; i++)
+        var last = entryCount - 1;
+        for (var i = 0; i < entryCount; i++)
         {
-            var size = i != last ? ChunkSize : (int)(SizeDecompressed % ChunkSize);
+            var size = i != last ? chunkSize : (int)(sizeDecompressed % chunkSize);
 
             var chunkDecompressed = new byte[size];
             Ooz.Decompress(data[i], data[i].Length, chunkDecompressed, size);
@@ -148,7 +108,26 @@ internal sealed class DataDecompressor
         }
 
         logger.Verbose("decompressed data in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
-        return decompressed.ToArray();
+
+        var decompressedData = new DecompressedData()
+        {
+            UncompressedSize = uncompressedSize,
+            DataSize = dataSize,
+            HeadSize = headSize,
+            EncoderType = encoderType,
+            Unknown = unknown,
+            SizeDecompressed = sizeDecompressed,
+            SizeCompressed = sizeCompressed,
+            EntryCount = entryCount,
+            ChunkSize = chunkSize,
+            Unknown3 = unknown3,
+            Unknown4 = unknown4,
+            Unknown5 = unknown5,
+            Unknown6 = unknown6,
+            Data = decompressed.AsReadOnly(),
+        };
+
+        return decompressedData;
     }
 
     private byte[] ReadIndex()
