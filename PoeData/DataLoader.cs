@@ -49,6 +49,8 @@ public sealed class DataLoader
 
         (var bundleRecords, offset) = CreateBundleRecords(data, offset);
 
+        (var fileRecords, offset) = CreateFileRecords(data, offset, bundleRecords);
+
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
 
@@ -73,5 +75,28 @@ public sealed class DataLoader
         logger.Verbose("created bundle records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
 
         return (bundleRecords, offset);
+    }
+
+    private (FileRecord[] fileRecords, int movedOffset) CreateFileRecords(byte[] data, int offset, BundleRecord[] bundleRecords)
+    {
+        var startTimestamp = Stopwatch.GetTimestamp();
+
+        var fileCount = BitConverter.ToInt32(data, offset);
+        offset += sizeof(int);
+
+        logger.Verbose("creating {fileRecordsCount} file records", fileCount);
+
+        var fileRecords = new FileRecord[fileCount];
+        for (var i = 0; i < fileCount; i++)
+        {
+            var (fileRecord, bytesRead) = FileRecord.Create(data, offset, bundleRecords);
+            offset += bytesRead;
+
+            fileRecords[i] = fileRecord;
+        }
+
+        logger.Verbose("created file records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
+
+        return (fileRecords, offset);
     }
 }
