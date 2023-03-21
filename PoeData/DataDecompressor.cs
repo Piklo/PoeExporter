@@ -25,62 +25,76 @@ internal sealed class DataDecompressor
     }
 
     /// <summary>
-    /// Decompresses Bundles2\_.index.bin data.
+    /// Loads and decompresses Bundles2\_.index.bin data.
     /// </summary>
     /// <returns>decompressed data.</returns>
-    public DecompressedData Decompress()
+    public DecompressedData LoadAndDecompress()
     {
+        var compressed = ReadIndex();
+        return Decompress(compressed);
+    }
+
+    /// <summary>
+    /// Decompresses data using ooz.
+    /// </summary>
+    /// <param name="compressedData">data to decompress.</param>
+    /// <returns>decompressed data.</returns>
+    public DecompressedData Decompress(byte[] compressedData)
+    {
+        if (compressedData is null)
+        {
+            throw new ArgumentNullException(nameof(compressedData));
+        }
+
         logger.Verbose("decompressing data");
         var startTimestamp = Stopwatch.GetTimestamp();
-
-        var compressed = ReadIndex();
         var offset = 0;
 
         // base data
-        var uncompressedSize = BitConverter.ToInt32(compressed, offset);
+        var uncompressedSize = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var dataSize = BitConverter.ToInt32(compressed, offset);
+        var dataSize = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var headSize = BitConverter.ToInt32(compressed, offset);
+        var headSize = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
         // other data
-        var encoderType = (EncodeTypes)BitConverter.ToInt32(compressed, offset);
+        var encoderType = (EncodeTypes)BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var unknown = BitConverter.ToInt32(compressed, offset);
+        var unknown = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var sizeDecompressed = BitConverter.ToInt64(compressed, offset);
+        var sizeDecompressed = BitConverter.ToInt64(compressedData, offset);
         offset += sizeof(long);
 
-        var sizeCompressed = BitConverter.ToInt64(compressed, offset);
+        var sizeCompressed = BitConverter.ToInt64(compressedData, offset);
         offset += sizeof(long);
 
-        var entryCount = BitConverter.ToInt32(compressed, offset);
+        var entryCount = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var chunkSize = BitConverter.ToInt32(compressed, offset);
+        var chunkSize = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var unknown3 = BitConverter.ToInt32(compressed, offset);
+        var unknown3 = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var unknown4 = BitConverter.ToInt32(compressed, offset);
+        var unknown4 = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var unknown5 = BitConverter.ToInt32(compressed, offset);
+        var unknown5 = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
-        var unknown6 = BitConverter.ToInt32(compressed, offset);
+        var unknown6 = BitConverter.ToInt32(compressedData, offset);
         offset += sizeof(int);
 
         var chunks = new int[entryCount];
         for (var i = 0; i < entryCount; i++)
         {
-            var chunk = BitConverter.ToInt32(compressed, offset);
+            var chunk = BitConverter.ToInt32(compressedData, offset);
             offset += sizeof(int);
 
             chunks[i] = chunk;
@@ -91,7 +105,7 @@ internal sealed class DataDecompressor
         {
             var offset2 = offset + chunks[i];
 
-            data[i] = compressed[offset..offset2];
+            data[i] = compressedData[offset..offset2];
 
             offset = offset2;
         }
