@@ -65,8 +65,7 @@ public sealed class DataLoader
         var bundleRecords = new BundleRecord[bundleCount];
         for (var i = 0; i < bundleCount; i++)
         {
-            var (bundleRecord, bytesRead) = BundleRecord.Create(data, offset);
-            offset += bytesRead;
+            (var bundleRecord, offset) = BundleRecord.Create(data, offset);
 
             bundleRecords[i] = bundleRecord;
         }
@@ -87,8 +86,7 @@ public sealed class DataLoader
         var fileRecords = new Dictionary<ulong, FileRecord>();
         for (var i = 0; i < fileCount; i++)
         {
-            var (fileRecord, bytesRead) = FileRecord.Create(data, offset, bundleRecords);
-            offset += bytesRead;
+            (var fileRecord, offset) = FileRecord.Create(data, offset, bundleRecords);
 
             var success = fileRecords.TryAdd(fileRecord.Hash, fileRecord);
             if (!success)

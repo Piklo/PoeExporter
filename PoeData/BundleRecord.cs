@@ -14,12 +14,11 @@ public sealed class BundleRecord
     /// <summary>
     /// Creates an instance of <see cref="BundleRecord"/> and moves an offset.
     /// </summary>
-    /// <param name="data">data used to create the <see cref="BundleRecord"/>.</param>
-    /// <param name="offset">offset with starting index.</param>
-    /// <returns>instance of <see cref="BundleRecord"/> and bytes read to create it.</returns>
-    public static (BundleRecord bundleRecord, int bytesRead) Create(byte[] data, int offset)
+    /// <param name="data">An array of bytes used to create <see cref="BundleRecord"/>.</param>
+    /// <param name="offset">Starting index.</param>
+    /// <returns>instance of <see cref="BundleRecord"/> and moved offset.</returns>
+    public static (BundleRecord bundleRecord, int offset) Create(byte[] data, int offset)
     {
-        var startingOffset = offset;
         (var nameLength, offset) = BitConverterExtended.ToUInt32(data, offset);
 
         var name = System.Text.Encoding.UTF8.GetString(data, offset, (int)nameLength);
@@ -27,8 +26,8 @@ public sealed class BundleRecord
 
         (var size, offset) = BitConverterExtended.ToUInt32(data, offset);
 
-        var bundle = new BundleRecord() { Name = name, Size = size };
+        var bundleRecord = new BundleRecord() { Name = name, Size = size };
 
-        return (bundle, offset - startingOffset);
+        return (bundleRecord, offset);
     }
 }
