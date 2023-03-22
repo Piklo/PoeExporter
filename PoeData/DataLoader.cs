@@ -52,6 +52,12 @@ public sealed class DataLoader
         (var fileRecords, offset) = CreateFileRecords(data, offset, bundleRecords);
 
         (var directoryRecords, offset) = CreateDirectoryRecords(data, offset);
+
+        var remainingData = data[offset..];
+        var decompressedRemainingData = compressor.Decompress(remainingData);
+
+        AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
+
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
 
@@ -126,5 +132,85 @@ public sealed class DataLoader
         logger.Verbose("created directory records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
 
         return (directoryRecords, offset);
+    }
+
+    private void AddPathsToDirectoryRecords(Dictionary<ulong, DirectoryRecord> directoryRecords, DecompressedData decompressedRemainingData)
+    {
+        var startTimestamp = Stopwatch.GetTimestamp();
+        foreach (var directoryRecord in directoryRecords.Values)
+        {
+            var startingIndex = (int)directoryRecord.Offset;
+            var endingIndex = (int)directoryRecord.Offset + (int)directoryRecord.Size;
+            var relevantData = decompressedRemainingData.Data[startingIndex..endingIndex];
+
+            var paths = MakePaths(relevantData);
+            var newDirectoryRecord = new DirectoryRecord()
+            {
+                Hash = directoryRecord.Hash,
+                Offset = directoryRecord.Offset,
+                Size = directoryRecord.Size,
+                Unknown = directoryRecord.Unknown,
+                Paths = paths,
+            };
+
+            directoryRecords[directoryRecord.Hash] = newDirectoryRecord;
+        }
+
+        logger.Verbose("replaced directory records with records which include paths in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
+    }
+
+    private static byte[][] MakePaths(byte[] data)
+    {
+        var temp = new List<byte[]>();
+        var paths = new List<byte[]>();
+        var isBase = false;
+        var offset = 0;
+        var rawlen = data.Length - 4; // why -4?
+
+        while (offset <= rawlen)
+        {
+            (var index, offset) = BitConverterExtended.ToInt32(data, offset);
+
+            if (index == 0)
+            {
+                isBase = !isBase;
+
+                if (isBase)
+                {
+                    temp.Clear();
+                }
+
+                continue;
+            }
+            else
+            {
+                index--;
+            }
+
+            var endOffset = Array.FindIndex(data, offset, x => x == '\x00');
+            var path = data[offset..endOffset];
+            offset = endOffset + 1;
+
+            if (temp.Count != 0)
+            {
+                var tempPath = temp[index];
+                var mergedPath = new byte[tempPath.Length + path.Length];
+                tempPath.CopyTo(mergedPath, 0);
+                path.CopyTo(mergedPath, tempPath.Length);
+
+                path = mergedPath;
+            }
+
+            if (isBase)
+            {
+                temp.Add(path);
+            }
+            else
+            {
+                paths.Add(path);
+            }
+        }
+
+        return paths.ToArray();
     }
 }
