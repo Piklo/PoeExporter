@@ -5,6 +5,15 @@
 /// </summary>
 internal static class BitConverterExtended
 {
+    /// <inheritdoc cref="BitConverter.ToInt32(byte[], int)"/>
+    public static (int value, int offset) ToInt32(byte[] value, int startIndex)
+    {
+        var converted = BitConverter.ToInt32(value, startIndex);
+        startIndex += sizeof(int);
+
+        return (converted, startIndex);
+    }
+
     /// <inheritdoc cref="BitConverter.ToUInt32(byte[], int)"/>
     public static (uint value, int offset) ToUInt32(byte[] value, int startIndex)
     {
