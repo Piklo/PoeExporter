@@ -11,6 +11,12 @@ public sealed class BundleRecord
     /// <summary>Gets size.</summary>
     public required uint Size { get; init; }
 
+    /// <summary>Gets file name.</summary>
+    public string FileName { get => Name + ".bundle.bin"; }
+
+    /// <summary>Gets ggpk path.</summary>
+    public string GgpkPath { get => "Bundles2/" + FileName; }
+
     /// <summary>
     /// Creates an instance of <see cref="BundleRecord"/> and moves an offset.
     /// </summary>
