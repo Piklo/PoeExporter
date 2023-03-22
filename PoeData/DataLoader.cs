@@ -1,5 +1,7 @@
 ﻿using Serilog;
 using System.Diagnostics;
+using System.Numerics;
+using System.Text;
 
 namespace PoeData;
 
@@ -57,6 +59,9 @@ public sealed class DataLoader
         var decompressedRemainingData = compressor.Decompress(remainingData);
 
         AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
+
+        var fileToFind = Encoding.ASCII.GetBytes("Data/AdditionalLifeScaling.dat64"); // debug
+        var file = GetFileRecord(fileRecords, fileToFind);
 
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
@@ -212,5 +217,64 @@ public sealed class DataLoader
         }
 
         return paths.ToArray();
+    }
+
+    private static ulong GetHash(byte[] path, PathTypes pathType)
+    {
+        var pathCopy = new byte[path.Length];
+        path.CopyTo(pathCopy, 0);
+
+        if (pathCopy[^1] == '/')
+        {
+            pathCopy = pathCopy[..^1];
+        }
+
+        if (pathType == PathTypes.File)
+        {
+            // to lower
+            for (var i = 0; i < pathCopy.Length; i++)
+            {
+                var item = pathCopy[i];
+
+                if (item >= 'A' && item <= 'Z')
+                {
+                    item += (byte)'a' - (byte)'A';
+                    pathCopy[i] = item;
+                }
+            }
+        }
+
+        Array.Resize(ref pathCopy, pathCopy.Length + 2);
+        pathCopy[^1] = (byte)'+';
+        pathCopy[^2] = (byte)'+';
+
+        var hash = Fnv1a_64(pathCopy);
+        return hash;
+    }
+
+    private static ulong Fnv1a_64(byte[] data)
+    {
+        const ulong FNV1_64_INIT = 0xcbf29ce484222325;
+        const ulong FNV_64_PRIME = 0x100000001b3;
+        BigInteger fnv_size = new BigInteger(18446744073709551615); // 2^64 - 1
+        fnv_size += 1;
+
+        var hval = FNV1_64_INIT;
+        foreach (var item in data)
+        {
+            hval ^= item;
+            hval = (ulong)((hval * FNV_64_PRIME) % fnv_size);
+        }
+
+        return hval;
+    }
+
+    private static FileRecord GetFileRecord(Dictionary<ulong, FileRecord> fileRecords, byte[] path)
+    {
+        var hash = GetHash(path, PathTypes.File);
+
+        var fileRecord = fileRecords[hash];
+
+        return fileRecord;
     }
 }
