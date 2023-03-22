@@ -19,7 +19,7 @@ public class DirectoryRecord
 
     /// <summary>Gets packed paths.</summary>
 #pragma warning disable CA1819 // Properties should not return arrays
-    public required byte[] Paths { get; init; }
+    public required byte[][] Paths { get; init; }
 #pragma warning restore CA1819 // Properties should not return arrays
 
     /// <summary>
@@ -35,7 +35,14 @@ public class DirectoryRecord
         (var size, offset) = BitConverterExtended.ToUInt32(data, offset);
         (var unknown, offset) = BitConverterExtended.ToUInt32(data, offset);
 
-        var directoryRecord = new DirectoryRecord() { Hash = hash, Offset = offsetValue, Size = size, Unknown = unknown, Paths = Array.Empty<byte>() };
+        var directoryRecord = new DirectoryRecord()
+        {
+            Hash = hash,
+            Offset = offsetValue,
+            Size = size,
+            Unknown = unknown,
+            Paths = Array.Empty<byte[]>(),
+        };
 
         return (directoryRecord, offset);
     }
