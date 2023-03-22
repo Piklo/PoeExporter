@@ -46,7 +46,7 @@ internal sealed class DataDecompressor
             throw new ArgumentNullException(nameof(compressedData));
         }
 
-        logger.Verbose("decompressing data");
+        logger.Verbose("decompressing {length} bytes", compressedData.Length);
         var startTimestamp = Stopwatch.GetTimestamp();
         var offset = 0;
 
