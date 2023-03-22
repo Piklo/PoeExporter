@@ -34,18 +34,14 @@ public sealed class FileRecord
 
         var startingOffset = offset;
 
-        var hash = BitConverter.ToUInt64(data, offset);
-        offset += sizeof(ulong);
+        (var hash, offset) = BitConverterExtended.ToUInt64(data, offset);
 
-        var bundleRecordsIndex = BitConverter.ToUInt32(data, offset);
-        offset += sizeof(uint);
+        (var bundleRecordsIndex, offset) = BitConverterExtended.ToUInt32(data, offset);
         var bundleRecord = bundleRecords[bundleRecordsIndex];
 
-        var fileOffset = BitConverter.ToUInt32(data, offset);
-        offset += sizeof(uint);
+        (var fileOffset, offset) = BitConverterExtended.ToUInt32(data, offset);
 
-        var fileSize = BitConverter.ToUInt32(data, offset);
-        offset += sizeof(uint);
+        (var fileSize, offset) = BitConverterExtended.ToUInt32(data, offset);
 
         var fileRecord = new FileRecord() { Hash = hash, BundleRecord = bundleRecord, FileOffset = fileOffset, FileSize = fileSize };
 

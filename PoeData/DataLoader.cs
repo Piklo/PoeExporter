@@ -58,8 +58,7 @@ public sealed class DataLoader
     {
         var startTimestamp = Stopwatch.GetTimestamp();
 
-        var bundleCount = BitConverter.ToUInt32(data, offset);
-        offset += sizeof(uint);
+        (var bundleCount, offset) = BitConverterExtended.ToUInt32(data, offset);
 
         logger.Verbose("creating {bundleCount} bundle records", bundleCount);
 
@@ -81,8 +80,7 @@ public sealed class DataLoader
     {
         var startTimestamp = Stopwatch.GetTimestamp();
 
-        var fileCount = BitConverter.ToUInt32(data, offset);
-        offset += sizeof(uint);
+        (var fileCount, offset) = BitConverterExtended.ToUInt32(data, offset);
 
         logger.Verbose("creating {fileRecordsCount} file records", fileCount);
 

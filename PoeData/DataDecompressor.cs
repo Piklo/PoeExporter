@@ -51,51 +51,38 @@ internal sealed class DataDecompressor
         var offset = 0;
 
         // base data
-        var uncompressedSize = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var uncompressedSize, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var dataSize = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var dataSize, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var headSize = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var headSize, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
         // other data
-        var encoderType = (EncodeTypes)BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var encoderTypeValue, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
+        var encoderType = (EncodeTypes)encoderTypeValue;
 
-        var unknown = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var unknown, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var sizeDecompressed = BitConverter.ToUInt64(compressedData, offset);
-        offset += sizeof(ulong);
+        (var sizeDecompressed, offset) = BitConverterExtended.ToUInt64(compressedData, offset);
 
-        var sizeCompressed = BitConverter.ToUInt64(compressedData, offset);
-        offset += sizeof(ulong);
+        (var sizeCompressed, offset) = BitConverterExtended.ToUInt64(compressedData, offset);
 
-        var entryCount = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var entryCount, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var chunkSize = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var chunkSize, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var unknown3 = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var unknown3, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var unknown4 = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var unknown4, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var unknown5 = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var unknown5, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
-        var unknown6 = BitConverter.ToUInt32(compressedData, offset);
-        offset += sizeof(uint);
+        (var unknown6, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
         var chunks = new uint[entryCount];
         for (var i = 0; i < entryCount; i++)
         {
-            var chunk = BitConverter.ToUInt32(compressedData, offset);
-            offset += sizeof(int);
+            (var chunk, offset) = BitConverterExtended.ToUInt32(compressedData, offset);
 
             chunks[i] = chunk;
         }

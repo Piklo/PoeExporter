@@ -20,15 +20,12 @@ public sealed class BundleRecord
     public static (BundleRecord bundleRecord, int bytesRead) Create(byte[] data, int offset)
     {
         var startingOffset = offset;
-        var nameLength = BitConverter.ToUInt32(data, offset);
-        offset += sizeof(uint);
+        (var nameLength, offset) = BitConverterExtended.ToUInt32(data, offset);
 
-        // var name = BitConverter.ToString(data, offset, nameLength);
         var name = System.Text.Encoding.UTF8.GetString(data, offset, (int)nameLength);
         offset += (int)nameLength;
 
-        var size = BitConverter.ToUInt32(data, offset);
-        offset += sizeof(uint);
+        (var size, offset) = BitConverterExtended.ToUInt32(data, offset);
 
         var bundle = new BundleRecord() { Name = name, Size = size };
 
