@@ -51,6 +51,7 @@ public sealed class DataLoader
 
         (var fileRecords, offset) = CreateFileRecords(data, offset, bundleRecords);
 
+        (var directoryRecords, offset) = CreateDirectoryRecords(data, offset);
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
 
@@ -99,5 +100,31 @@ public sealed class DataLoader
         logger.Verbose("created file records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
 
         return (fileRecords, offset);
+    }
+
+    private (Dictionary<ulong, DirectoryRecord> directoryRecords, int offset) CreateDirectoryRecords(byte[] data, int offset)
+    {
+        var startTimestamp = Stopwatch.GetTimestamp();
+
+        (var directoryRecordsCount, offset) = BitConverterExtended.ToUInt32(data, offset);
+
+        logger.Verbose("creating {directoryRecordsCount} directory records", directoryRecordsCount);
+
+        var directoryRecords = new Dictionary<ulong, DirectoryRecord>();
+        for (var i = 0; i < directoryRecordsCount; i++)
+        {
+            (var directoryRecord, offset) = DirectoryRecord.Create(data, offset);
+
+            var success = directoryRecords.TryAdd(directoryRecord.Hash, directoryRecord);
+            if (!success)
+            {
+                logger.Error("An item with the same key has already been added. Key: {Hash}", directoryRecord.Hash);
+                throw new ArgumentException($"An item with the same key has already been added. Key: {directoryRecord.Hash}");
+            }
+        }
+
+        logger.Verbose("created directory records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
+
+        return (directoryRecords, offset);
     }
 }
