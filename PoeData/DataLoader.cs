@@ -57,7 +57,7 @@ public sealed class DataLoader
         var remainingData = data[offset..];
         var decompressedRemainingData = compressor.Decompress(remainingData);
 
-        AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
+        var directoryRecordsWithPaths = AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
 
         var fileToFind = Encoding.ASCII.GetBytes("Data/AdditionalLifeScaling.dat64"); // debug
         var file = GetFileRecord(fileRecords, fileToFind);
@@ -112,7 +112,7 @@ public sealed class DataLoader
         return (fileRecords, offset);
     }
 
-    private (Dictionary<ulong, DirectoryRecord> directoryRecords, int offset) CreateDirectoryRecords(byte[] data, int offset)
+    private (DirectoryRecord[] directoryRecords, int offset) CreateDirectoryRecords(byte[] data, int offset)
     {
         var startTimestamp = Stopwatch.GetTimestamp();
 
@@ -120,17 +120,11 @@ public sealed class DataLoader
 
         logger.Verbose("creating {directoryRecordsCount} directory records", directoryRecordsCount);
 
-        var directoryRecords = new Dictionary<ulong, DirectoryRecord>();
+        var directoryRecords = new DirectoryRecord[directoryRecordsCount];
         for (var i = 0; i < directoryRecordsCount; i++)
         {
             (var directoryRecord, offset) = DirectoryRecord.Create(data, offset);
-
-            var success = directoryRecords.TryAdd(directoryRecord.Hash, directoryRecord);
-            if (!success)
-            {
-                logger.Error("An item with the same key has already been added. Key: {Hash}", directoryRecord.Hash);
-                throw new ArgumentException($"An item with the same key has already been added. Key: {directoryRecord.Hash}");
-            }
+            directoryRecords[i] = directoryRecord;
         }
 
         logger.Verbose("created directory records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
@@ -138,29 +132,31 @@ public sealed class DataLoader
         return (directoryRecords, offset);
     }
 
-    private void AddPathsToDirectoryRecords(Dictionary<ulong, DirectoryRecord> directoryRecords, DecompressedData decompressedRemainingData)
+    private Dictionary<ulong, DirectoryRecordWithPaths> AddPathsToDirectoryRecords(DirectoryRecord[] directoryRecords, DecompressedData decompressedRemainingData)
     {
         var startTimestamp = Stopwatch.GetTimestamp();
-        foreach (var directoryRecord in directoryRecords.Values)
+        logger.Verbose("creating paths for {count} directory records", directoryRecords.Length);
+
+        var dict = new Dictionary<ulong, DirectoryRecordWithPaths>();
+        foreach (var directoryRecord in directoryRecords)
         {
             var startingIndex = (int)directoryRecord.Offset;
             var endingIndex = (int)directoryRecord.Offset + (int)directoryRecord.Size;
             var relevantData = decompressedRemainingData.Data[startingIndex..endingIndex];
 
             var paths = MakePaths(relevantData);
-            var newDirectoryRecord = new DirectoryRecord()
+            var newDirectoryRecordWithPaths = new DirectoryRecordWithPaths()
             {
-                Hash = directoryRecord.Hash,
-                Offset = directoryRecord.Offset,
-                Size = directoryRecord.Size,
-                Unknown = directoryRecord.Unknown,
+                Record = directoryRecord,
                 Paths = paths,
             };
 
-            directoryRecords[directoryRecord.Hash] = newDirectoryRecord;
+            dict.Add(directoryRecord.Hash, newDirectoryRecordWithPaths);
         }
 
-        logger.Verbose("replaced directory records with records which include paths in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
+        logger.Verbose("created paths for directory records in {elapsed}", Stopwatch.GetElapsedTime(startTimestamp));
+
+        return dict;
     }
 
     private static byte[][] MakePaths(byte[] data)

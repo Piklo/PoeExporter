@@ -17,11 +17,6 @@ public class DirectoryRecord
     /// <summary>Gets unknown.</summary>
     public required uint Unknown { get; init; }
 
-    /// <summary>Gets packed paths.</summary>
-#pragma warning disable CA1819 // Properties should not return arrays
-    public required byte[][] Paths { get; init; }
-#pragma warning restore CA1819 // Properties should not return arrays
-
     /// <summary>
     /// Creates an instance of <see cref="DirectoryRecord"/> and moves the offset.
     /// </summary>
@@ -41,7 +36,6 @@ public class DirectoryRecord
             Offset = offsetValue,
             Size = size,
             Unknown = unknown,
-            Paths = Array.Empty<byte[]>(),
         };
 
         return (directoryRecord, offset);
