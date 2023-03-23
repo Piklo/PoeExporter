@@ -1,6 +1,5 @@
 ﻿using Serilog;
 using System.Diagnostics;
-using System.Numerics;
 using System.Text;
 
 namespace PoeData;
@@ -248,25 +247,8 @@ public sealed class DataLoader
         pathCopy[^1] = (byte)'+';
         pathCopy[^2] = (byte)'+';
 
-        var hash = Fnv1a_64(pathCopy);
+        var hash = Fnv.Fnv1a_64(pathCopy);
         return hash;
-    }
-
-    private static ulong Fnv1a_64(byte[] data)
-    {
-        const ulong FNV1_64_INIT = 0xcbf29ce484222325;
-        const ulong FNV_64_PRIME = 0x100000001b3;
-        BigInteger fnv_size = new BigInteger(18446744073709551615); // 2^64 - 1
-        fnv_size += 1;
-
-        var hval = FNV1_64_INIT;
-        foreach (var item in data)
-        {
-            hval ^= item;
-            hval = (ulong)((hval * FNV_64_PRIME) % fnv_size);
-        }
-
-        return hval;
     }
 
     private static FileRecord GetFileRecord(Dictionary<ulong, FileRecord> fileRecords, byte[] path)
