@@ -12,6 +12,7 @@ public sealed class DataLoader
     private readonly DataDecompressor decompressor;
     private readonly ILogger logger;
     private readonly IConfig config;
+    private readonly Dictionary<string, DecompressedData> decompressedFilesCache = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataLoader"/> class.
@@ -255,16 +256,29 @@ public sealed class DataLoader
 
     private byte[] GetFileBytes(FileRecord fileRecord)
     {
-        var combinedPath = Path.Combine(config.PoePath, fileRecord.BundleRecord.GgpkPath);
-
-        var bytes = decompressor.ReadFile(combinedPath);
-
-        var decompressed = decompressor.Decompress(bytes);
+        var decompressedData = GetDecompressedData(fileRecord.BundleRecord);
 
         var start = (int)fileRecord.FileOffset;
         var end = start + (int)fileRecord.FileSize;
-        var fileBytes = decompressed.Data[start..end]; // TODO instead of discarding the rest of the data we should cache it.
+        var fileBytes = decompressedData[start..end];
 
         return fileBytes;
+    }
+
+    private byte[] GetDecompressedData(BundleRecord bundleRecord)
+    {
+        if (decompressedFilesCache.TryGetValue(bundleRecord.Name, out var value))
+        {
+            return value.Data;
+        }
+        else
+        {
+            var combinedPath = Path.Combine(config.PoePath, bundleRecord.GgpkPath);
+            var bytes = decompressor.ReadFile(combinedPath);
+            var decompressed = decompressor.Decompress(bytes);
+            decompressedFilesCache.Add(bundleRecord.Name, decompressed);
+
+            return decompressed.Data;
+        }
     }
 }
