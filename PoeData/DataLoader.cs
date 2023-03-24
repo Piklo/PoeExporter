@@ -145,11 +145,7 @@ public sealed class DataLoader
             var relevantData = decompressedRemainingData.Data[startingIndex..endingIndex];
 
             var paths = MakePaths(relevantData);
-            var newDirectoryRecordWithPaths = new DirectoryRecordWithPaths()
-            {
-                Record = directoryRecord,
-                Paths = paths,
-            };
+            var newDirectoryRecordWithPaths = new DirectoryRecordWithPaths(directoryRecord, paths);
 
             dict.Add(directoryRecord.Hash, newDirectoryRecordWithPaths);
         }
