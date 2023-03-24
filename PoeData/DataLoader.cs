@@ -9,7 +9,7 @@ namespace PoeData;
 /// </summary>
 public sealed class DataLoader
 {
-    private readonly DataDecompressor compressor;
+    private readonly DataDecompressor decompressor;
     private readonly ILogger logger;
     private readonly IConfig config;
 
@@ -32,7 +32,7 @@ public sealed class DataLoader
 
         this.config = config;
         this.logger = logger;
-        compressor = new(this.logger) { PoePath = this.config.PoePath };
+        decompressor = new(this.logger) { PoePath = this.config.PoePath };
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public sealed class DataLoader
         var timestampStart = Stopwatch.GetTimestamp();
         logger.Debug("loading data");
 
-        var decompressedData = compressor.LoadAndDecompress();
+        var decompressedData = decompressor.LoadAndDecompress();
         var offset = 0;
 
         var data = decompressedData.Data;
@@ -55,7 +55,7 @@ public sealed class DataLoader
         (var directoryRecords, offset) = CreateDirectoryRecords(data, offset);
 
         var remainingData = data[offset..];
-        var decompressedRemainingData = compressor.Decompress(remainingData);
+        var decompressedRemainingData = decompressor.Decompress(remainingData);
 
         var directoryRecordsWithPaths = AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
 
