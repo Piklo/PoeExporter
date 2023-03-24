@@ -61,7 +61,7 @@ public sealed class DataLoader
 
         var fileToFind = Encoding.ASCII.GetBytes("Data/AdditionalLifeScaling.dat64"); // debug
         var fileRecord = GetFileRecord(fileRecords, fileToFind);
-        var decompressedFile = GetFile(fileRecord);
+        var decompressedFile = GetFileBytes(fileRecord);
 
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
@@ -253,7 +253,7 @@ public sealed class DataLoader
         return fileRecord;
     }
 
-    private byte[] GetFile(FileRecord fileRecord)
+    private byte[] GetFileBytes(FileRecord fileRecord)
     {
         var combinedPath = Path.Combine(config.PoePath, fileRecord.BundleRecord.GgpkPath);
         var bytes = File.ReadAllBytes(combinedPath);
