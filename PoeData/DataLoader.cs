@@ -256,7 +256,8 @@ public sealed class DataLoader
     private byte[] GetFileBytes(FileRecord fileRecord)
     {
         var combinedPath = Path.Combine(config.PoePath, fileRecord.BundleRecord.GgpkPath);
-        var bytes = File.ReadAllBytes(combinedPath);
+
+        var bytes = decompressor.ReadFile(combinedPath);
 
         var decompressed = decompressor.Decompress(bytes);
 

@@ -131,13 +131,25 @@ internal sealed class DataDecompressor
         return decompressedData;
     }
 
+    /// <summary>
+    /// Reads all bytes from the file.
+    /// </summary>
+    /// <param name="path">file path.</param>
+    /// <returns>bytes from the file.</returns>
+    public byte[] ReadFile(string path)
+    {
+        logger.Verbose("reading bytes from {path}", path);
+        var bytes = File.ReadAllBytes(path);
+        logger.Verbose("read {count} bytes", bytes.Length);
+
+        return bytes;
+    }
+
     private byte[] ReadIndex()
     {
         var combinedPath = Path.Combine(PoePath, IndexPath);
 
-        logger.Verbose("reading bytes from {path}", combinedPath);
-        var bytes = File.ReadAllBytes(combinedPath);
-        logger.Verbose("read {count} bytes", bytes.Length);
+        var bytes = ReadFile(combinedPath);
 
         return bytes;
     }
