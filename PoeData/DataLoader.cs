@@ -60,7 +60,8 @@ public sealed class DataLoader
         var directoryRecordsWithPaths = AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
 
         var fileToFind = Encoding.ASCII.GetBytes("Data/AdditionalLifeScaling.dat64"); // debug
-        var file = GetFileRecord(fileRecords, fileToFind);
+        var fileRecord = GetFileRecord(fileRecords, fileToFind);
+        var decompressedFile = GetFile(fileRecord);
 
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
@@ -250,5 +251,19 @@ public sealed class DataLoader
         var fileRecord = fileRecords[hash];
 
         return fileRecord;
+    }
+
+    private byte[] GetFile(FileRecord fileRecord)
+    {
+        var combinedPath = Path.Combine(config.PoePath, fileRecord.BundleRecord.GgpkPath);
+        var bytes = File.ReadAllBytes(combinedPath);
+
+        var decompressed = decompressor.Decompress(bytes);
+
+        var start = (int)fileRecord.FileOffset;
+        var end = start + (int)fileRecord.FileSize;
+        var fileBytes = decompressed.Data[start..end]; // TODO instead of discarding the rest of the data we should cache it.
+
+        return fileBytes;
     }
 }
