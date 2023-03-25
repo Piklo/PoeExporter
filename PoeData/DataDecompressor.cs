@@ -25,16 +25,6 @@ internal sealed class DataDecompressor
     }
 
     /// <summary>
-    /// Loads and decompresses Bundles2\_.index.bin data.
-    /// </summary>
-    /// <returns>decompressed data.</returns>
-    public DecompressedData LoadAndDecompress()
-    {
-        var compressed = ReadIndex();
-        return Decompress(compressed);
-    }
-
-    /// <summary>
     /// Decompresses data using ooz.
     /// </summary>
     /// <param name="compressedData">data to decompress.</param>
@@ -145,7 +135,11 @@ internal sealed class DataDecompressor
         return bytes;
     }
 
-    private byte[] ReadIndex()
+    /// <summary>
+    /// Reads all bytes from the index file.
+    /// </summary>
+    /// <returns>bytes from the index file.</returns>
+    public byte[] ReadIndex()
     {
         var combinedPath = Path.Combine(PoePath, IndexPath);
 

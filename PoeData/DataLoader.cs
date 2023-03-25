@@ -13,6 +13,10 @@ public sealed class DataLoader
     private readonly ILogger logger;
     private readonly IConfig config;
     private readonly Dictionary<string, DecompressedData> decompressedFilesCache = new();
+    private readonly BundleRecord[] bundleRecords;
+    private readonly Dictionary<ulong, FileRecord> fileRecords;
+    private readonly DirectoryRecord[] directoryRecords;
+    private readonly Dictionary<ulong, DirectoryRecordWithPaths> directoryRecordsWithPaths;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DataLoader"/> class.
@@ -34,31 +38,27 @@ public sealed class DataLoader
         this.config = config;
         this.logger = logger;
         decompressor = new(this.logger) { PoePath = this.config.PoePath };
-    }
 
-    /// <summary>
-    /// Loads data.
-    /// </summary>
-    public void LoadData()
-    {
+        // data loading
         var timestampStart = Stopwatch.GetTimestamp();
         logger.Debug("loading data");
 
-        var decompressedData = decompressor.LoadAndDecompress();
-        var offset = 0;
-
+        var indexBytes = decompressor.ReadIndex();
+        var decompressedData = decompressor.Decompress(indexBytes);
         var data = decompressedData.Data;
 
-        (var bundleRecords, offset) = CreateBundleRecords(data, offset);
+        var offset = 0;
 
-        (var fileRecords, offset) = CreateFileRecords(data, offset, bundleRecords);
+        (bundleRecords, offset) = CreateBundleRecords(data, offset);
 
-        (var directoryRecords, offset) = CreateDirectoryRecords(data, offset);
+        (fileRecords, offset) = CreateFileRecords(data, offset, bundleRecords);
+
+        (directoryRecords, offset) = CreateDirectoryRecords(data, offset);
 
         var remainingData = data[offset..];
         var decompressedRemainingData = decompressor.Decompress(remainingData);
 
-        var directoryRecordsWithPaths = AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
+        directoryRecordsWithPaths = AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
 
         var fileToFind = Encoding.ASCII.GetBytes("Data/AdditionalLifeScaling.dat64"); // debug
         var fileRecord = GetFileRecord(fileRecords, fileToFind);

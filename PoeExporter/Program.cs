@@ -30,7 +30,6 @@ internal sealed class Program
 
 
         var loader = new DataLoader(parsedConfig, logger);
-        loader.LoadData();
     }
 }
 
