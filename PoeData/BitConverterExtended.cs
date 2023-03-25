@@ -40,4 +40,13 @@ internal static class BitConverterExtended
 
         return (converted, startIndex);
     }
+
+    /// <inheritdoc cref="BitConverter.ToBoolean(byte[], int)(byte[], int)"/>
+    public static (bool value, int offset) ToBoolean(byte[] value, int startIndex)
+    {
+        var converted = BitConverter.ToBoolean(value, startIndex);
+        startIndex += sizeof(bool);
+
+        return (converted, startIndex);
+    }
 }
