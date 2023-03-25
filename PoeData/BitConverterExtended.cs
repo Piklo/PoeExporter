@@ -23,6 +23,15 @@ internal static class BitConverterExtended
         return (converted, startIndex);
     }
 
+    /// <inheritdoc cref="BitConverter.ToInt64(byte[], int)"/>
+    public static (long value, int offset) ToInt64(byte[] value, int startIndex)
+    {
+        var converted = BitConverter.ToInt64(value, startIndex);
+        startIndex += sizeof(long);
+
+        return (converted, startIndex);
+    }
+
     /// <inheritdoc cref="BitConverter.ToUInt64(byte[], int)"/>
     public static (ulong value, int offset) ToUInt64(byte[] value, int startIndex)
     {
