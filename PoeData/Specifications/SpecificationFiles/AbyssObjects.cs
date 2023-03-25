@@ -1,4 +1,5 @@
 ﻿using PoeData.Extensions;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace PoeData.Specifications.SpecificationFiles;
@@ -32,7 +33,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
     public int Unknown1 { get; init; }
 
     /// <summary> Gets daemon spawners.</summary>
-    public required MonsterVarieties DaemonSpawners { get; init; }
+    public required ReadOnlyCollection<MonsterVarieties> DaemonSpawners { get; init; }
 
     /// <summary> Gets unknown.</summary>
     public int Unknown2 { get; init; }
