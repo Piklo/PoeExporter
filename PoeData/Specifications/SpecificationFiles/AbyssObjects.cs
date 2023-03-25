@@ -191,7 +191,6 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
 
         str = Encoding.Unicode.GetString(data, start, offsetNew - start);
 
-
         return str;
     }
 }
