@@ -1,13 +1,12 @@
 ﻿using Serilog;
 using System.Diagnostics;
-using System.Text;
 
 namespace PoeData;
 
 /// <summary>
 /// Class used to load poe data.
 /// </summary>
-public sealed class DataLoader
+internal sealed class DataLoader
 {
     private readonly DataDecompressor decompressor;
     private readonly ILogger logger;

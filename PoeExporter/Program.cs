@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PoeData;
+using PoeData.Specifications;
 using Serilog;
 using Serilog.Core;
 
@@ -29,7 +30,10 @@ internal sealed class Program
             .CreateLogger();
 
 
-        var loader = new DataLoader(parsedConfig, logger);
+        //var loader = new DataLoader(parsedConfig, logger);
+        var specification = new Specification(parsedConfig, logger);
+        var abyssObjects = specification.GetAbyssObjects();
+        //var test = abyssObjects[0];
     }
 }
 
