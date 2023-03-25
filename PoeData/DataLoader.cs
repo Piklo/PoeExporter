@@ -60,10 +60,6 @@ public sealed class DataLoader
 
         directoryRecordsWithPaths = AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
 
-        var fileToFind = Encoding.ASCII.GetBytes("Data/AdditionalLifeScaling.dat64"); // debug
-        var fileRecord = GetFileRecord(fileRecords, fileToFind);
-        var decompressedFile = GetFileBytes(fileRecord);
-
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
 
