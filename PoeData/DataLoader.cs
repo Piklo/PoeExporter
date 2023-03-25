@@ -241,7 +241,12 @@ public sealed class DataLoader
         return hash;
     }
 
-    private static FileRecord GetFileRecord(Dictionary<ulong, FileRecord> fileRecords, byte[] path)
+    /// <summary>
+    /// Gets file record for a given path.
+    /// </summary>
+    /// <param name="path">path of a file record to get.</param>
+    /// <returns><see cref="FileRecord"/>.</returns>
+    internal FileRecord GetFileRecord(byte[] path)
     {
         var hash = GetHash(path, PathTypes.File);
 
@@ -250,7 +255,12 @@ public sealed class DataLoader
         return fileRecord;
     }
 
-    private byte[] GetFileBytes(FileRecord fileRecord)
+    /// <summary>
+    /// Gets bytes for a file record.
+    /// </summary>
+    /// <param name="fileRecord">file record to get bytes from.</param>
+    /// <returns>bytes for a file.</returns>
+    internal byte[] GetFileBytes(FileRecord fileRecord)
     {
         var decompressedData = GetDecompressedData(fileRecord.BundleRecord);
 
