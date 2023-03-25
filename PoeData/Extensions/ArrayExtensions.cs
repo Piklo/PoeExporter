@@ -13,10 +13,11 @@ public static class ArrayExtensions
     /// <typeparam name="T">Type of both arrays.</typeparam>
     /// <param name="array">array to look in.</param>
     /// <param name="subArray">array to look for.</param>
+    /// <param name="startIndex">start index.</param>
     /// <returns>Index of a sub array. -1 if not found.</returns>
     /// <exception cref="ArgumentNullException">Thrown if either of the arrays is null.</exception>
     // https://stackoverflow.com/a/26880541
-    public static int IndexOfSubArray<T>(this T[] array, T[] subArray)
+    public static int IndexOfSubArray<T>(this T[] array, T[] subArray, int startIndex = 0)
         where T : IEqualityOperators<T, T, bool>
     {
         if (array is null)
@@ -31,7 +32,7 @@ public static class ArrayExtensions
 
         var len = subArray.Length;
         var limit = array.Length - len;
-        for (var i = 0; i <= limit; i++)
+        for (var i = startIndex; i <= limit; i++)
         {
             var k = 0;
             for (; k < len; k++)
