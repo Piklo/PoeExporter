@@ -17,6 +17,17 @@ public readonly struct Unknown<T> : IEquatable<Unknown<T>>
     public T ValueUnsafe { get => value; }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="Unknown{T}"/> struct.
+    /// </summary>
+    /// <param name="value">underlying value.</param>
+    /// <param name="columnOffset">column offset where the value is supposed to be.</param>
+    public Unknown(T value, int columnOffset)
+    {
+        this.value = value;
+        this.columnOffset = columnOffset;
+    }
+
+    /// <summary>
     /// Safely gets value from the unknown.
     /// </summary>
     /// <param name="columnOffset">column offset the value is expected to be at.</param>
@@ -26,7 +37,7 @@ public readonly struct Unknown<T> : IEquatable<Unknown<T>>
     {
         if (columnOffset != this.columnOffset)
         {
-            throw new WrongOffsetException($"provided {nameof(columnOffset)} != expected {nameof(this.columnOffset)}");
+            throw new WrongOffsetException($"provided {nameof(columnOffset)} != expected {nameof(this.columnOffset)}; {columnOffset} != {this.columnOffset}");
         }
 
         return value;
