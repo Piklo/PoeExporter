@@ -13,6 +13,8 @@ internal class ParsedTable
     private readonly ILogger logger;
     private readonly StringBuilder builder;
     private readonly ColumnTypeData[] parsedColumnTypeData;
+    private readonly string[] columnNames;
+    private readonly string className;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ParsedTable"/> class.
@@ -27,7 +29,7 @@ internal class ParsedTable
         // parsing is done here
         builder = new StringBuilder();
 
-        var className = TableNameToClassName(table.Name);
+        className = TableNameToClassName(table.Name);
         var datFileName = $"{table.Name}.dat";
 
         builder.AppendLine("using PoeData.Extensions;");
@@ -44,7 +46,7 @@ internal class ParsedTable
                 {
                 """);
 
-        parsedColumnTypeData = AppendProperties();
+        (parsedColumnTypeData, columnNames) = AppendProperties();
 
         AppendLoadMethod();
 
@@ -54,15 +56,18 @@ internal class ParsedTable
         logger.Debug("AbyssObjects");
     }
 
-    private ColumnTypeData[] AppendProperties()
+    private (ColumnTypeData[] parsedColumns, string[] columnNames) AppendProperties()
     {
         var unknownCounter = 0;
+        var columnNames = new string[table.Columns.Length];
         var parsedColumns = new ColumnTypeData[table.Columns.Length];
+
         for (var i = 0; i < table.Columns.Length; i++)
         {
             var column = table.Columns[i];
             (var columnName, unknownCounter, var isUnknown) = GetColumnName(column, unknownCounter);
             var columnTypeData = GetColumnTypeData(column, isUnknown);
+            columnNames[i] = columnName;
             parsedColumns[i] = columnTypeData;
 
             if (column.Type == "bool")
@@ -81,7 +86,7 @@ internal class ParsedTable
             builder.AppendLine();
         }
 
-        return parsedColumns;
+        return (parsedColumns, columnNames);
     }
 
     private static string TableNameToClassName(string tableName)
