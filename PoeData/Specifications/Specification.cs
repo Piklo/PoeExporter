@@ -9,6 +9,10 @@ namespace PoeData.Specifications;
 /// </summary>
 public sealed class Specification
 {
+    /// <summary>Gets dat file magic number.</summary>
+    /// thats where the table ends?
+    internal static byte[] DatFileMagicNumber { get; } = new byte[] { (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb' };
+
     /// <summary>Gets data loader.</summary>
     internal DataLoader DataLoader { get; }
 

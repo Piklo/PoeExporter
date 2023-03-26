@@ -98,8 +98,7 @@ public sealed class AbyssObject : ISpecificationFile<AbyssObject>
         var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
         var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
 
-        var magicNumber = new byte[] { (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb' };
-        var dataOffset = decompressedFile.IndexOfSubArray(magicNumber); // thats where the table ends?
+        var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;
         var offset = 0;
         (var tableRows, offset) = BitConverterExtended.ToUInt32(decompressedFile, offset);
