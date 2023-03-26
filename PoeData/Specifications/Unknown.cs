@@ -1,13 +1,11 @@
-﻿using System.Numerics;
-
-namespace PoeData.Specifications;
+﻿namespace PoeData.Specifications;
 
 /// <summary>
 /// Struct containing the value for variables with unknown name.
 /// </summary>
 /// <typeparam name="T">Type of the underlying variable.</typeparam>
 public readonly struct Unknown<T> : IEquatable<Unknown<T>>
-    where T : notnull, IEqualityOperators<T, T, bool>
+    where T : notnull, IEquatable<T>
 {
     private readonly T value;
 
@@ -58,7 +56,7 @@ public readonly struct Unknown<T> : IEquatable<Unknown<T>>
     /// <inheritdoc/>
     public bool Equals(Unknown<T> other)
     {
-        return value == other.value;
+        return value.Equals(other.value);
     }
 
     public static bool operator ==(Unknown<T> left, Unknown<T> right)
