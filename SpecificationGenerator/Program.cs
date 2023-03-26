@@ -69,12 +69,13 @@ internal sealed class Program
     {
         foreach (var table in schema.Tables)
         {
-            if (table.Name != "AbyssObjects")
-            {
-                continue;
-            }
+            //if (table.Name != "AbyssObjects")
+            //{
+            //    continue;
+            //}
 
-            var parsedTable = new ParsedTable(table, logger);
+            var specificationFile = new SpecificationFileGenerator(table, logger);
+            var str = specificationFile.GetFileString();
         }
     }
 }

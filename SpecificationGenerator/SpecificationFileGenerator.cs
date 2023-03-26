@@ -9,7 +9,7 @@ namespace SpecificationGenerator;
 /// <summary>
 /// Class containing parsed table data.
 /// </summary>
-internal class ParsedTable
+internal class SpecificationFileGenerator
 {
     private readonly Table table;
     private readonly ILogger logger;
@@ -19,11 +19,11 @@ internal class ParsedTable
     private readonly string className;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ParsedTable"/> class.
+    /// Initializes a new instance of the <see cref="SpecificationFileGenerator"/> class.
     /// </summary>
     /// <param name="table">Table to parse.</param>
     /// <param name="logger">logger.</param>
-    public ParsedTable(Table table, ILogger logger)
+    public SpecificationFileGenerator(Table table, ILogger logger)
     {
         this.table = table;
         this.logger = logger;
@@ -59,7 +59,12 @@ internal class ParsedTable
         builder.AppendLine("}");
 
         var str = builder.ToString();
-        logger.Debug("AbyssObjects");
+        logger.Debug(datFileName);
+    }
+
+    public string GetFileString()
+    {
+        return builder.ToString();
     }
 
     private (ColumnTypeData[] parsedColumns, string[] columnNames) AppendProperties()
@@ -113,14 +118,15 @@ internal class ParsedTable
         var baseColumnType = string.Empty;
         var columnType = ColumnTypes.None;
 
-        if (isArray && isUnknown)
-        {
-            throw new NotImplementedException($"{nameof(isArray)} && {nameof(isUnknown)} == true"); // array of unknowns or unknown of arrays?
-        }
+        //if (isArray && isUnknown)
+        //{
+        //    throw new NotImplementedException($"{nameof(isArray)} && {nameof(isUnknown)} == true"); // array of unknowns or unknown of arrays?
+        //}
 
         if (columnTypeString == "foreignrow")
         {
-            var className = TableNameToClassName(column.References.Table);
+
+            var className = column.References is not null ? TableNameToClassName(column.References.Table) : "UnknownForeignReference";
             isForeignRow = true;
             columnType = ColumnTypes.ForeignRow;
 
@@ -153,8 +159,18 @@ internal class ParsedTable
         else if (columnTypeString == "row")
         {
             var className = TableNameToClassName(column.Name);
-            baseColumnType = $"{className}?"; // references another row in the same class
             columnType = ColumnTypes.Row;
+
+            // non arrays need to be nullable
+            // arrays will just have length 0 if necessary
+            if (isArray)
+            {
+                baseColumnType = className;
+            }
+            else
+            {
+                baseColumnType = $"{className}?";
+            }
         }
         else if (columnTypeString == "f32")
         {
@@ -183,7 +199,11 @@ internal class ParsedTable
         }
 
         var actualColumnType = string.Empty;
-        if (isArray)
+        if (isUnknown && isArray)
+        {
+            actualColumnType = $"UnknownReadOnlyCollection<{baseColumnType}>";
+        }
+        else if (isArray)
         {
             actualColumnType = $"ReadOnlyCollection<{baseColumnType}>";
         }
@@ -269,7 +289,7 @@ internal class ParsedTable
             {
                 var arrayName = columnName.ToLower();
                 var primaryKeys = $"{columnName.ToLower()}PrimaryKeys";
-                var referencedTable = TableNameToClassName(column.References.Table);
+                var referencedTable = column.References is not null ? TableNameToClassName(column.References.Table) : "UnknownForeignReference";
                 builder.AppendLine($$"""
                                 (var {{primaryKeys}}, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);
                                 var {{arrayName}} = new {{referencedTable}}[{{primaryKeys}}.Length];
@@ -285,7 +305,7 @@ internal class ParsedTable
             {
                 var columnnEntry = columnName.ToLower();
                 var primaryKey = $"{columnName.ToLower()}PrimaryKey";
-                var referencedTable = TableNameToClassName(column.References.Table);
+                var referencedTable = column.References is not null ? TableNameToClassName(column.References.Table) : "UnknownForeignReference";
                 builder.AppendLine($$"""
                                 (var {{primaryKey}}, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);
                                 {{parsedColumn.Value}} {{columnnEntry}} = null;
@@ -325,14 +345,47 @@ internal class ParsedTable
                                 (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
                     """);
             }
-            //else if (parsedColumn.ColumnType == ColumnTypes.Row)
+            //else if (parsedColumn.ColumnType == ColumnTypes.Row && parsedColumn.IsArray)
             //{
-
+            //    var arrayName = columnName.ToLower();
+            //    var primaryKeys = $"{columnName.ToLower()}PrimaryKeys";
+            //    var referencedTable = column.References is not null ? TableNameToClassName(column.References.Table) : "UnknownForeignReference";
+            //    builder.AppendLine($$"""
+            //                    (var {{primaryKeys}}, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);
+            //                    var {{arrayName}} = new {{referencedTable}}[{{primaryKeys}}.Length];
+            //                    for (var i = 0; i < {{primaryKeys}}.Length; i++)
+            //                    {
+            //                        var key = {{primaryKeys}}[i];
+            //                        var {{referencedTable.ToLower()}}Entry = specification.Get{{referencedTable}}()[(int)key];
+            //                        {{arrayName}}[i] = {{referencedTable.ToLower()}}Entry;
+            //                    }
+            //        """);
             //}
-            //else if (parsedColumn.ColumnType == ColumnTypes.Float)
-            //{
-
-            //}
+            else if (parsedColumn.ColumnType == ColumnTypes.Row && !parsedColumn.IsArray)
+            {
+                var columnnEntry = columnName.ToLower();
+                var primaryKey = $"{columnName.ToLower()}PrimaryKey";
+                builder.AppendLine($$"""
+                                (var {{primaryKey}}, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);
+                                {{parsedColumn.Value}} {{columnnEntry}} = null;
+                                if ({{primaryKey}} is not null)
+                                {
+                                    {{columnnEntry}} = objects[(int){{primaryKey}}];
+                                }
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.Float && parsedColumn.IsUnknown)
+            {
+                builder.AppendLine($"""
+                                (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadUnknownFloat(decompressedFile, offset);
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.Float && !parsedColumn.IsUnknown)
+            {
+                builder.AppendLine($"""
+                                (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
+                    """);
+            }
             //else if (parsedColumn.ColumnType == ColumnTypes.None && parsedColumn.IsArray)
             //// else if (parsedColumn.ColumnType == ColumnTypes.Array && parsedColumn.IsArray)
             //{
