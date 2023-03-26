@@ -1,4 +1,6 @@
-﻿namespace PoeData;
+﻿using System.Text;
+
+namespace PoeData;
 
 /// <summary>
 /// A class containing paths for <see cref="DirectoryRecord"/>.
@@ -36,4 +38,23 @@ public class DirectoryRecordWithPaths
 
         return path;
     }
+
+#if DEBUG
+    private string[] PathStrings
+    {
+        get
+        {
+            var strings = new string[paths.Length];
+
+            for (var i = 0; i < paths.Length; i++)
+            {
+                var byteString = paths[i];
+                var convertedString = Encoding.UTF8.GetString(byteString);
+                strings[i] = convertedString;
+            }
+
+            return strings;
+        }
+    }
+#endif
 }
