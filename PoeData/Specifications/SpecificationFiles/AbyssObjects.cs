@@ -105,7 +105,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
 
         for (var rowId = 0; rowId < tableRows; rowId++)
         {
-            //offset = 4 + (rowId * tableRecordLength); // only needed for debug
+            // offset = 4 + (rowId * tableRecordLength); // only needed for debug
             (var id, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
             (var minLevel, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var maxLevel, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -116,7 +116,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             (var daemonSpawnersPrimaryKeys, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);
             (var unknown2, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown3, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var abyssalDepthsPrimaryKey, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset); // something is fucked here for non null values
+            (var abyssalDepthsPrimaryKey, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);
             (var unknown4, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown5, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown6, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -128,44 +128,6 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             (var unknown12, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown13, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
         }
-
-        //for (var rowId = 0; rowId < tableRows; rowId++)
-        //{
-        //    var end = offset + tableRecordLength;
-        //    var dataRaw = decompressedFile[offset..end];
-
-        //    if (dataRaw.Length == 0)
-        //    {
-        //        break;
-        //    }
-
-        //    var rowOffset = 0;
-        //    (var test0, rowOffset) = BitConverterExtended.ToInt64(dataRaw, rowOffset);
-        //    var str = FindString(decompressedFile, dataOffset, rowOffset);
-        //    (var test1, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test2, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test3, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test4, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test5, rowOffset) = BitConverterExtended.ToInt64(dataRaw, rowOffset);
-        //    (var test6, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test7, rowOffset) = BitConverterExtended.ToInt64(dataRaw, rowOffset);
-        //    (var test8, rowOffset) = BitConverterExtended.ToInt64(dataRaw, rowOffset);
-        //    (var test9, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test10, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test11, rowOffset) = BitConverterExtended.ToInt64(dataRaw, rowOffset);
-        //    (var test12, rowOffset) = BitConverterExtended.ToInt64(dataRaw, rowOffset);
-        //    (var test13, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test14, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test15, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test16, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test17, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test18, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test19, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test20, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test21, rowOffset) = BitConverterExtended.ToInt32(dataRaw, rowOffset);
-        //    (var test22, rowOffset) = BitConverterExtended.ToBoolean(dataRaw, rowOffset);
-        //    offset += rowOffset;
-        //}
 
         return Array.Empty<AbyssObjects>();
     }
