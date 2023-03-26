@@ -363,13 +363,49 @@ internal class ParsedTable
             var strlocal = builder.ToString();
         }
 
+        builder.AppendLine($$"""
+
+                        var obj = new {{className}}()
+                        {
+            """);
+
+        for (var i = 0; i < table.Columns.Length; i++)
+        {
+            var column = table.Columns[i];
+            var parsedColumn = parsedColumnTypeData[i];
+            var columnName = columnNames[i];
+
+            if (parsedColumn.IsArray)
+            {
+                builder.AppendLine($"""
+                                {columnName} = {columnName.ToLower()}.AsReadOnly(),
+                """);
+            }
+            else
+            {
+                builder.AppendLine($"""
+                                {columnName} = {columnName.ToLower()},
+                """);
+            }
+        }
+
+
+        // obj building ends here
+        builder.AppendLine("""
+                        };
+            """);
+
         // loop ends here
         builder.AppendLine("""
-                    }
+
+                    objects[rowId] = obj;
+                }
         """);
 
         // Load() ends here
         builder.AppendLine("""
+
+                    return objects;
                 }
             """);
         var str = builder.ToString();
