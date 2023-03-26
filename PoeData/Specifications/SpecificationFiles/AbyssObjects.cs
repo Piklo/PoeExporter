@@ -177,27 +177,4 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
 
         return abyssObjects;
     }
-
-    private static string FindString(byte[] data, int dataOffset, int rowOffset)
-    {
-        var beginningOfTheSequence = new byte[] { (byte)'\x00', (byte)'\x00', (byte)'\x00', (byte)'\x00' };
-        var start = dataOffset + rowOffset;
-
-        var offsetNew = data.IndexOfSubArray(beginningOfTheSequence, start);
-
-        var str = string.Empty;
-        if (start == offsetNew)
-        {
-            return str;
-        }
-
-        while ((offsetNew - start) % 2 == 1)
-        {
-            offsetNew = data.IndexOfSubArray(beginningOfTheSequence, offsetNew + 1);
-        }
-
-        str = Encoding.Unicode.GetString(data, start, offsetNew - start);
-
-        return str;
-    }
 }
