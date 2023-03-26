@@ -98,18 +98,20 @@ internal class ParsedTable
         var result = string.Empty;
         var isArray = column.Array;
         var isForeignRow = false;
-        var columnType = column.Type;
+        var columnTypeString = column.Type;
         var baseColumnType = string.Empty;
+        var columnType = ColumnTypes.None;
 
         if (isArray && isUnknown)
         {
             throw new NotImplementedException($"{nameof(isArray)} && {nameof(isUnknown)} == true"); // array of unknowns or unknown of arrays?
         }
 
-        if (columnType == "foreignrow")
+        if (columnTypeString == "foreignrow")
         {
             var className = TableNameToClassName(column.References.Table);
             isForeignRow = true;
+            columnType = ColumnTypes.ForeignRow;
 
             // non arrays need to be nullable
             // arrays will just have length 0 if necessary
@@ -122,28 +124,38 @@ internal class ParsedTable
                 baseColumnType = $"{className}?";
             }
         }
-        else if (columnType == "bool")
+        else if (columnTypeString == "bool")
         {
             baseColumnType = "bool";
+            columnType = ColumnTypes.Bool;
         }
-        else if (columnType == "i32")
+        else if (columnTypeString == "i32")
         {
             baseColumnType = "int";
+            columnType = ColumnTypes.Int;
         }
-        else if (columnType == "string")
+        else if (columnTypeString == "string")
         {
             baseColumnType = "string";
+            columnType = ColumnTypes.String;
         }
-        else if (columnType == "row")
+        else if (columnTypeString == "row")
         {
             var className = TableNameToClassName(column.Name);
-            baseColumnType = $"{className}?";
+            baseColumnType = $"{className}?"; // references another row in the same class
+            columnType = ColumnTypes.Row;
         }
-        else if (columnType == "f32")
+        else if (columnTypeString == "f32")
         {
             baseColumnType = "float";
+            columnType = ColumnTypes.Float;
         }
-        else if (columnType == "enumrow")
+        else if (columnTypeString == "array")
+        {
+            baseColumnType = "null";
+            columnType = ColumnTypes.None;
+        }
+        else if (columnTypeString == "enumrow")
         {
             var className = TableNameToClassName(column.References.Table);
 
@@ -152,10 +164,11 @@ internal class ParsedTable
             baseColumnType = className;
 
             isForeignRow = true;
+            columnType = ColumnTypes.Enumrow;
         }
         else
         {
-            throw new NotImplementedException($"unknown {nameof(columnType)} == {columnType}");
+            throw new NotImplementedException($"unknown {nameof(columnTypeString)} == {columnTypeString}");
         }
 
         var actualColumnType = string.Empty;
@@ -179,6 +192,7 @@ internal class ParsedTable
             IsArray = isArray,
             IsForeignRow = isForeignRow,
             IsUnknown = isUnknown,
+            ColumnType = columnType,
         };
 
         return columnTypeData;

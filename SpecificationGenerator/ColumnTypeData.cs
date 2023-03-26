@@ -11,4 +11,6 @@ internal readonly struct ColumnTypeData
     public readonly required bool IsArray { get; init; }
 
     public readonly required bool IsForeignRow { get; init; }
+
+    public readonly required ColumnTypes ColumnType { get; init; }
 }
