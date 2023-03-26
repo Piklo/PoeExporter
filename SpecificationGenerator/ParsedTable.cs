@@ -235,12 +235,6 @@ internal class ParsedTable
 
             """);
 
-        builder.AppendLine("""
-                    // loading other required tables
-
-
-            """);
-
         builder.AppendLine($$"""
                     var fileToFind = Encoding.ASCII.GetBytes("Data/{{table.Name}}.dat64");
                     var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
