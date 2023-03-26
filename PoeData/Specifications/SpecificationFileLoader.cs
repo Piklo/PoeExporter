@@ -8,6 +8,8 @@ namespace PoeData.Specifications;
 /// </summary>
 internal static class SpecificationFileLoader
 {
+    private const int TableOffset = 4;
+
     public static (string value, int offset) LoadString(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -102,5 +104,16 @@ internal static class SpecificationFileLoader
         (var value, offset) = BitConverterExtended.ToBoolean(decompressedFile, offset);
 
         return (value, offset);
+    }
+
+    /// <summary>
+    /// Gets column offset.
+    /// </summary>
+    /// <param name="fileOffset">current file offset.</param>
+    /// <param name="tableRecordLength">length of the table record.</param>
+    /// <returns>column offset.</returns>
+    public static int GetColumnOffset(int fileOffset, int tableRecordLength)
+    {
+        return (fileOffset - TableOffset) % tableRecordLength;
     }
 }
