@@ -78,10 +78,6 @@ internal class ParsedTable
                         public required {{columnTypeData.Value}} {{columnName}} { get; init; }
                     """);
 
-            // if (i < table.Columns.Length - 1)
-            // {
-            //     builder.AppendLine();
-            // }
             builder.AppendLine();
         }
 
