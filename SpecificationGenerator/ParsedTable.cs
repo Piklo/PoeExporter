@@ -225,6 +225,7 @@ internal class ParsedTable
     private void AppendLoadMethod()
     {
         builder.AppendLine($$"""
+                /// <inheritdoc/>
                 public static {{className}}[] Load(Specification specification)
                 {
                     if (specification is null)
@@ -241,7 +242,7 @@ internal class ParsedTable
             """);
 
         builder.AppendLine($$"""
-                    var fileToFind = Encoding.ASCII.GetBytes("Data/{{table.Name}}.dat64
+                    var fileToFind = Encoding.ASCII.GetBytes("Data/{{table.Name}}.dat64");
                     var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
                     var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
 
@@ -278,25 +279,26 @@ internal class ParsedTable
                 builder.AppendLine($$"""
                                 (var {{primaryKeys}}, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);
                                 var {{arrayName}} = new {{referencedTable}}[{{primaryKeys}}.Length];
-                                // for (var i = 0; i < {{primaryKeys}}.Length; i++)
-                                // {
-                                //      var key = {{primaryKeys}}[i];
-                                //      var {{referencedTable.ToLower()}}Entry = {{primaryKeys}}[i];
-                                //      var {{arrayName}}[i] = {{referencedTable.ToLower()}}Entry;
-                                // }
+                                for (var i = 0; i < {{primaryKeys}}.Length; i++)
+                                {
+                                    var key = {{primaryKeys}}[i];
+                                    var {{referencedTable.ToLower()}}Entry = specification.Get{{referencedTable}}()[(int)key];
+                                    {{arrayName}}[i] = {{referencedTable.ToLower()}}Entry;
+                                }
                     """);
             }
             else if (parsedColumn.ColumnType == ColumnTypes.ForeignRow && !parsedColumn.IsArray)
             {
+                var columnnEntry = columnName.ToLower();
                 var primaryKey = $"{columnName.ToLower()}PrimaryKey";
                 var referencedTable = TableNameToClassName(column.References.Table);
                 builder.AppendLine($$"""
                                 (var {{primaryKey}}, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);
-                                {{parsedColumn.Value}} {{referencedTable.ToLower()}}Entry = null;
-                                // if ({{primaryKey}} is not null)
-                                // {
-                                //      {{referencedTable.ToLower()}}Entry = referencedTable[(int){{primaryKey}}];
-                                // }
+                                {{parsedColumn.Value}} {{columnnEntry}} = null;
+                                if ({{primaryKey}} is not null)
+                                {
+                                    {{columnnEntry}} = specification.Get{{referencedTable}}()[(int){{primaryKey}}];
+                                }
                     """);
             }
             else if (parsedColumn.ColumnType == ColumnTypes.Bool && parsedColumn.IsUnknown)
@@ -375,11 +377,11 @@ internal class ParsedTable
             var parsedColumn = parsedColumnTypeData[i];
             var columnName = columnNames[i];
 
-            if (parsedColumn.IsArray)
+            if (parsedColumn.ColumnType == ColumnTypes.ForeignRow && parsedColumn.IsArray)
             {
                 builder.AppendLine($"""
-                                {columnName} = {columnName.ToLower()}.AsReadOnly(),
-                """);
+                                    {columnName} = {columnName.ToLower()}.AsReadOnly(),
+                    """);
             }
             else
             {
