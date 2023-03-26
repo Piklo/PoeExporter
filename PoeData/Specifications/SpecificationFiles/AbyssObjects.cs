@@ -24,55 +24,55 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
     public int SpawnWeight { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown0 { get; init; }
+    public Unknown<int> Unknown0 { get; init; }
 
     /// <summary> Gets metadata file.</summary>
     public required string MetadataFile { get; init; } // files .ot .otc
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown1 { get; init; }
+    public Unknown<int> Unknown1 { get; init; }
 
     /// <summary> Gets daemon spawners.</summary>
     public required ReadOnlyCollection<MonsterVarieties> DaemonSpawners { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown2 { get; init; }
+    public Unknown<int> Unknown2 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown3 { get; init; }
+    public Unknown<int> Unknown3 { get; init; }
 
     /// <summary> Gets abyssal depths.</summary>
     public WorldAreas? AbyssalDepths { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown4 { get; init; }
+    public Unknown<int> Unknown4 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown5 { get; init; }
+    public Unknown<int> Unknown5 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown6 { get; init; }
+    public Unknown<int> Unknown6 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown7 { get; init; }
+    public Unknown<int> Unknown7 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown8 { get; init; }
+    public Unknown<int> Unknown8 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown9 { get; init; }
+    public Unknown<int> Unknown9 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown10 { get; init; }
+    public Unknown<int> Unknown10 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown11 { get; init; }
+    public Unknown<int> Unknown11 { get; init; }
 
     /// <summary> Gets unknown.</summary>
-    public int Unknown12 { get; init; }
+    public Unknown<int> Unknown12 { get; init; }
 
     /// <summary>Gets a value indicating whether unknown is set.</summary>
-    public bool Unknown13 { get; init; }
+    public Unknown<bool> Unknown13 { get; init; }
 
     ///// <summary>
     ///// Initializes a new instance of the <see cref="AbyssObjects"/> class.
@@ -114,9 +114,9 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             (var minLevel, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var maxLevel, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var spawnWeight, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown0, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            (var unknown0, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
             (var metadataFile, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
-            (var unknown1, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            (var unknown1, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
 
             (var daemonSpawnersPrimaryKeys, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);
             var daemonSpawners = new MonsterVarieties[daemonSpawnersPrimaryKeys.Length];
@@ -127,8 +127,8 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             //    daemonSpawners[i] = monsterVariety;
             //}
 
-            (var unknown2, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown3, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            (var unknown2, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown3, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
 
             (var abyssalDepthsPrimaryKey, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);
             WorldAreas? abyssalDepth = null;
@@ -137,16 +137,16 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             //     abyssalDepth = worldAreas[(int)abyssalDepthsPrimaryKey];
             // }
 
-            (var unknown4, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown5, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown6, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown7, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown8, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown9, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown10, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown11, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown12, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-            (var unknown13, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            (var unknown4, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown5, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown6, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown7, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown8, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown9, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown10, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown11, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown12, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+            (var unknown13, offset) = SpecificationFileLoader.LoadUnknownBoolean(decompressedFile, offset, tableRecordLength);
 
             var abyssObject = new AbyssObjects()
             {
