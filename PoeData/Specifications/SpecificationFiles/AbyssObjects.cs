@@ -42,7 +42,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
     public int Unknown3 { get; init; }
 
     /// <summary> Gets abyssal depths.</summary>
-    public required WorldAreas AbyssalDepths { get; init; }
+    public WorldAreas? AbyssalDepths { get; init; }
 
     /// <summary> Gets unknown.</summary>
     public int Unknown4 { get; init; }
