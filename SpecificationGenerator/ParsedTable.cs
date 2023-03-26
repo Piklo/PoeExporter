@@ -1,6 +1,8 @@
 ﻿using Serilog;
 using SpecificationGenerator.SchemaJson;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 
 namespace SpecificationGenerator;
 
@@ -222,6 +224,154 @@ internal class ParsedTable
 
     private void AppendLoadMethod()
     {
+        builder.AppendLine($$"""
+                public static {{className}}[] Load(Specification specification)
+                {
+                    if (specification is null)
+                    {
+                        throw new ArgumentNullException(nameof(specification));
+                    }
+
+            """);
+
+        builder.AppendLine("""
+                    // loading other required tables
+
+
+            """);
+
+        builder.AppendLine($$"""
+                    var fileToFind = Encoding.ASCII.GetBytes("Data/{{table.Name}}.dat64
+                    var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
+                    var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
+
+                    var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
+                    const int TableOffset = 4;
+                    var offset = 0;
+                    (var tableRows, offset) = BitConverterExtended.ToUInt32(decompressedFile, offset);
+                    var tableLength = dataOffset - TableOffset;
+                    var tableRecordLength = tableLength / (int)tableRows;
+
+                    var objects = new {{className}}[tableRows];
+                    for (var rowId = 0; rowId < tableRows; rowId++)
+                    {                    
+                        // offset = 4 + (rowId * tableRecordLength); // only needed for debug
+            """);
+
+        // TODO refactor this shit later.
+        for (var i = 0; i < table.Columns.Length; i++)
+        {
+            var column = table.Columns[i];
+            var parsedColumn = parsedColumnTypeData[i];
+            var columnName = columnNames[i];
+
+            builder.AppendLine($"""
+
+                                // {columnName.ToLower()}
+                    """);
+
+            if (parsedColumn.ColumnType == ColumnTypes.ForeignRow && parsedColumn.IsArray)
+            {
+                var arrayName = columnName.ToLower();
+                var primaryKeys = $"{columnName.ToLower()}PrimaryKeys";
+                var referencedTable = TableNameToClassName(column.References.Table);
+                builder.AppendLine($$"""
+                                (var {{primaryKeys}}, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);
+                                var {{arrayName}} = new {{referencedTable}}[{{primaryKeys}}.Length];
+                                // for (var i = 0; i < {{primaryKeys}}.Length; i++)
+                                // {
+                                //      var key = {{primaryKeys}}[i];
+                                //      var {{referencedTable.ToLower()}}Entry = {{primaryKeys}}[i];
+                                //      var {{arrayName}}[i] = {{referencedTable.ToLower()}}Entry;
+                                // }
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.ForeignRow && !parsedColumn.IsArray)
+            {
+                var primaryKey = $"{columnName.ToLower()}PrimaryKey";
+                var referencedTable = TableNameToClassName(column.References.Table);
+                builder.AppendLine($$"""
+                                (var {{primaryKey}}, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);
+                                {{parsedColumn.Value}} {{referencedTable.ToLower()}}Entry = null;
+                                // if ({{primaryKey}} is not null)
+                                // {
+                                //      {{referencedTable.ToLower()}}Entry = referencedTable[(int){{primaryKey}}];
+                                // }
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.Bool && parsedColumn.IsUnknown)
+            {
+                builder.AppendLine($"""
+                                (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadUnknownBoolean(decompressedFile, offset, tableRecordLength);
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.Bool && !parsedColumn.IsUnknown)
+            {
+                builder.AppendLine($"""
+                                (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.Int && parsedColumn.IsUnknown)
+            {
+                builder.AppendLine($"""
+                                (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.Int && !parsedColumn.IsUnknown)
+            {
+                builder.AppendLine($"""
+                                (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+                    """);
+            }
+            else if (parsedColumn.ColumnType == ColumnTypes.String)
+            {
+                builder.AppendLine($"""
+                                (var {columnName.ToLower()}, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+                    """);
+            }
+            //else if (parsedColumn.ColumnType == ColumnTypes.Row)
+            //{
+
+            //}
+            //else if (parsedColumn.ColumnType == ColumnTypes.Float)
+            //{
+
+            //}
+            //else if (parsedColumn.ColumnType == ColumnTypes.None && parsedColumn.IsArray)
+            //// else if (parsedColumn.ColumnType == ColumnTypes.Array && parsedColumn.IsArray)
+            //{
+
+            //}
+            //else if (parsedColumn.ColumnType == ColumnTypes.Enumrow)
+            //{
+
+            //}
+            else
+            {
+                var serialized = JsonSerializer.Serialize(parsedColumn, new JsonSerializerOptions()
+                {
+                    WriteIndented = true,
+                    // Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                });
+                var message = $"dont know how to load \n{serialized}";
+
+                // throw new NotImplementedException($"{message}");
+                logger.Error(message);
+            }
+
+            var strlocal = builder.ToString();
+        }
+
+        // loop ends here
+        builder.AppendLine("""
+                    }
+        """);
+
+        // Load() ends here
+        builder.AppendLine("""
+                }
+            """);
         var str = builder.ToString();
     }
 }
