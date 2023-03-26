@@ -16,7 +16,7 @@ public sealed class Specification
     /// <summary>Gets data loader.</summary>
     internal DataLoader DataLoader { get; }
 
-    private AbyssObject[]? abyssObjects;
+    private AbyssObjects[]? abyssObjects;
     private MonsterVarieties[]? monsterVarieties;
     private WorldAreas[]? worldAreas;
 
@@ -34,9 +34,9 @@ public sealed class Specification
     /// Gets abyss objects data.
     /// </summary>
     /// <returns>readonly collection of abyss objects.</returns>
-    public ReadOnlyCollection<AbyssObject> GetAbyssObjects()
+    public ReadOnlyCollection<AbyssObjects> GetAbyssObjects()
     {
-        abyssObjects ??= AbyssObject.Load(this);
+        abyssObjects ??= AbyssObjects.Load(this);
 
         return abyssObjects.AsReadOnly();
     }
