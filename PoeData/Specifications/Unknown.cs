@@ -11,7 +11,7 @@ public readonly struct Unknown<T> : IEquatable<Unknown<T>>
 {
     private readonly T value;
 
-    private readonly int rowOffset;
+    private readonly int columnOffset;
 
     /// <summary>Gets value unsafely.</summary>
     public T ValueUnsafe { get => value; }
@@ -19,14 +19,14 @@ public readonly struct Unknown<T> : IEquatable<Unknown<T>>
     /// <summary>
     /// Safely gets value from the unknown.
     /// </summary>
-    /// <param name="rowOffset">row offset the value is expected to be at.</param>
+    /// <param name="columnOffset">column offset the value is expected to be at.</param>
     /// <returns>value of the unknown variable.</returns>
-    /// <exception cref="WrongOffsetException">thrown when wrong row offset is provided when trying to get value.</exception>
-    public T GetValue(int rowOffset)
+    /// <exception cref="WrongOffsetException">thrown when wrong column offset is provided when trying to get value.</exception>
+    public T GetValue(int columnOffset)
     {
-        if (rowOffset != this.rowOffset)
+        if (columnOffset != this.columnOffset)
         {
-            throw new WrongOffsetException($"provided {nameof(rowOffset)} != expected {nameof(this.rowOffset)}");
+            throw new WrongOffsetException($"provided {nameof(columnOffset)} != expected {nameof(this.columnOffset)}");
         }
 
         return value;
