@@ -105,7 +105,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
 
         for (var rowId = 0; rowId < tableRows; rowId++)
         {
-            offset = 4 + (rowId * tableRecordLength); // only needed for debug
+            //offset = 4 + (rowId * tableRecordLength); // only needed for debug
             (var id, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
             (var minLevel, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var maxLevel, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

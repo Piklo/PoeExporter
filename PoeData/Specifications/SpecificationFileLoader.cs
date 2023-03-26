@@ -48,19 +48,15 @@ internal static class SpecificationFileLoader
 
     public static (int? value, int offset) LoadPrimaryKey(byte[] decompressedFile, int offset, int dataOffset)
     {
-        (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
-        (var keysLength, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+        (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+        (var _, offset) = BitConverterExtended.ToInt64(decompressedFile, offset); // throwaway value in case of 1 primary key?
 
-        if (keysCount == 0 || keysCount == -72340172838076674)
+        if (IsInvalidValue(value))
         {
             return (null, offset);
         }
 
-        var newOffset = dataOffset + (int)keysLength;
-
-        (var primaryKey, _) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
-
-        return ((int)primaryKey, offset);
+        return ((int)value, offset);
     }
 
     public static (int[] values, int offset) LoadPrimaryKeys(byte[] decompressedFile, int offset, int dataOffset)
@@ -68,7 +64,7 @@ internal static class SpecificationFileLoader
         (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
         (var keysLength, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
 
-        if (keysCount == 0)
+        if (IsInvalidKeysCount(keysCount))
         {
             return (Array.Empty<int>(), offset);
         }
@@ -84,6 +80,21 @@ internal static class SpecificationFileLoader
         }
 
         return (primaryKeys, offset);
+    }
+
+    private static bool IsInvalidKeysCount(long keysCount)
+    {
+        return keysCount == 0 || IsInvalidValue(keysCount);
+
+        // return keysCount == 0 || keysCount == -72340172838076674;
+    }
+
+    private static bool IsInvalidValue(long value)
+    {
+        // values from pypoe
+        return value == -0x1010102 || value == 0xFEFEFEFE || value == -0x101010101010102 || value == -72340172838076674 || value == 0xFFFFFFFF;
+
+        // return value == -0x1010102 || value == 0xFEFEFEFE || value == -0x101010101010102 || value == 0xFEFEFEFEFEFEFEFE || value == 0xFFFFFFFF;
     }
 
     public static (bool value, int offset) LoadBoolean(byte[] decompressedFile, int offset)
