@@ -91,6 +91,9 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             throw new ArgumentNullException(nameof(specification));
         }
 
+        //var worldAreas = specification.GetWorldAreas();
+        //var monsterVarieties = specification.GetMonsterVarieties();
+
         var fileToFind = Encoding.ASCII.GetBytes("Data/AbyssObjects.dat64");
         var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
         var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
@@ -103,6 +106,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
         var tableLength = dataOffset - TableOffset;
         var tableRecordLength = tableLength / (int)tableRows;
 
+        var abyssObjects = new AbyssObjects[tableRows];
         for (var rowId = 0; rowId < tableRows; rowId++)
         {
             // offset = 4 + (rowId * tableRecordLength); // only needed for debug
@@ -113,10 +117,26 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             (var unknown0, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var metadataFile, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
             (var unknown1, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
             (var daemonSpawnersPrimaryKeys, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);
+            var daemonSpawners = new MonsterVarieties[daemonSpawnersPrimaryKeys.Length];
+            //for (var i = 0; i < daemonSpawnersPrimaryKeys.Length; i++)
+            //{
+            //    var key = daemonSpawnersPrimaryKeys[i];
+            //    var monsterVariety = monsterVarieties[key];
+            //    daemonSpawners[i] = monsterVariety;
+            //}
+
             (var unknown2, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown3, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
             (var abyssalDepthsPrimaryKey, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);
+            WorldAreas? abyssalDepth = null;
+            // if (abyssalDepthsPrimaryKey is not null)
+            // {
+            //     abyssalDepth = worldAreas[(int)abyssalDepthsPrimaryKey];
+            // }
+
             (var unknown4, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown5, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown6, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -127,9 +147,35 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             (var unknown11, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown12, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
             (var unknown13, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
+            var abyssObject = new AbyssObjects()
+            {
+                Id = id,
+                MinLevel = minLevel,
+                MaxLevel = maxLevel,
+                SpawnWeight = spawnWeight,
+                Unknown0 = unknown0,
+                MetadataFile = metadataFile,
+                Unknown1 = unknown1,
+                DaemonSpawners = daemonSpawners.AsReadOnly(),
+                Unknown2 = unknown2,
+                Unknown3 = unknown3,
+                AbyssalDepths = abyssalDepth,
+                Unknown4 = unknown4,
+                Unknown5 = unknown5,
+                Unknown6 = unknown6,
+                Unknown7 = unknown7,
+                Unknown8 = unknown8,
+                Unknown9 = unknown9,
+                Unknown10 = unknown10,
+                Unknown11 = unknown11,
+                Unknown12 = unknown12,
+                Unknown13 = unknown13,
+            };
+            abyssObjects[rowId] = abyssObject;
         }
 
-        return Array.Empty<AbyssObjects>();
+        return abyssObjects;
     }
 
     private static string FindString(byte[] data, int dataOffset, int rowOffset)
