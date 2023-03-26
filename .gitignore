@@ -364,3 +364,4 @@ FodyWeavers.xsd
 
 /PoeExporter/config.json
 /ooz/libooz.dll
+/SpecificationGenerator/schema.min.json
