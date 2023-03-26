@@ -7,7 +7,7 @@ namespace PoeData.Specifications.SpecificationFiles;
 /// <summary>
 /// Class containing AbyssObjects.dat data.
 /// </summary>
-public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
+public sealed class AbyssObject : ISpecificationFile<AbyssObject>
 {
     // private readonly Specification specification;
 
@@ -84,7 +84,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
     // }
 
     /// <inheritdoc/>
-    public static AbyssObjects[] Load(Specification specification)
+    public static AbyssObject[] Load(Specification specification)
     {
         if (specification is null)
         {
@@ -106,7 +106,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
         var tableLength = dataOffset - TableOffset;
         var tableRecordLength = tableLength / (int)tableRows;
 
-        var abyssObjects = new AbyssObjects[tableRows];
+        var abyssObjects = new AbyssObject[tableRows];
         for (var rowId = 0; rowId < tableRows; rowId++)
         {
             // offset = 4 + (rowId * tableRecordLength); // only needed for debug
@@ -148,7 +148,7 @@ public sealed class AbyssObjects : ISpecificationFile<AbyssObjects>
             (var unknown12, offset) = SpecificationFileLoader.LoadUnknownInt(decompressedFile, offset, tableRecordLength);
             (var unknown13, offset) = SpecificationFileLoader.LoadUnknownBoolean(decompressedFile, offset, tableRecordLength);
 
-            var abyssObject = new AbyssObjects()
+            var abyssObject = new AbyssObject()
             {
                 Id = id,
                 MinLevel = minLevel,
