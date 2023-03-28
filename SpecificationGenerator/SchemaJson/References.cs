@@ -8,5 +8,5 @@ public class References
     public string Table { get; set; }
 
     [JsonPropertyName("column")]
-    public string Column { get; set; }
+    public string? Column { get; set; }
 }
