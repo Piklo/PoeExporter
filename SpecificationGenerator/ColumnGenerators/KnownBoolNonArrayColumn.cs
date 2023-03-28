@@ -5,7 +5,7 @@ namespace SpecificationGenerator.ColumnGenerators;
 /// <summary>
 /// Class which parses the column which is a known bool and is not an array.
 /// </summary>
-internal class KnownBoolNonArrayColumn : IParsedColumn
+internal sealed class KnownBoolNonArrayColumn : IParsedColumn
 {
     private readonly string classPropertyName;
     private readonly string? referencedTable;
