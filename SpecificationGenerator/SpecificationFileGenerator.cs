@@ -17,10 +17,10 @@ internal sealed class SpecificationFileGenerator
     private readonly ILogger logger;
     private readonly StringBuilder builder;
     private readonly string className;
-    private static readonly string Tab = new(' ', 4);
-    private static readonly string Tab2 = new(' ', 8);
-    private static readonly string Tab3 = new(' ', 12);
-    private static readonly string Tab4 = new(' ', 16);
+    internal static readonly string Tab = new(' ', 4);
+    internal static readonly string Tab2 = new(' ', 8);
+    internal static readonly string Tab3 = new(' ', 12);
+    internal static readonly string Tab4 = new(' ', 16);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SpecificationFileGenerator"/> class.
