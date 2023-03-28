@@ -108,6 +108,10 @@ internal sealed class SpecificationFileGenerator
         {
             return new IntNonArrayColumn(column, parsedColumns);
         }
+        else if (column.Type == "f32" && !column.Array)
+        {
+            return new FloatNonArrayColumn(column, parsedColumns);
+        }
         else
         {
             var serialized = JsonSerializer.Serialize(column, new JsonSerializerOptions()
