@@ -8,9 +8,14 @@ namespace SpecificationGenerator.ColumnGenerators;
 /// </summary>
 internal sealed class BoolNonArrayColumn : IParsedColumn
 {
-    private readonly string classPropertyName;
-    private readonly string? referencedTable;
-    private readonly string loadingPropertyName;
+    /// <inheritdoc/>
+    public string ClassPropertyName { get; }
+
+    /// <inheritdoc/>
+    public string? ReferencedTable { get; }
+
+    /// <inheritdoc/>
+    public string LoadingPropertyName { get; }
 
     /// <inheritdoc/>
     public int Offset { get; } = 1;
@@ -22,9 +27,9 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
     public BoolNonArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
-        classPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
-        loadingPropertyName = classPropertyName.ToLower();
-        referencedTable = column.References?.Table;
+        ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
+        LoadingPropertyName = ClassPropertyName.ToLower();
+        ReferencedTable = column.References?.Table;
     }
 
     /// <inheritdoc/>
@@ -32,47 +37,19 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     {
         var strings = new string[]
         {
-            $"/// <summary> Gets a value indicating whether {classPropertyName} is set.</summary>",
-            $$"""public required bool {{classPropertyName}} { get; init; }""",
+            $"/// <summary> Gets a value indicating whether {ClassPropertyName} is set.</summary>",
+            $$"""public required bool {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;
     }
-
-    /// <inheritdoc/>
-    public string[] GetReferencedTablesLoading()
-    {
-        if (referencedTable is null)
-        {
-            return Array.Empty<string>();
-        }
-
-        var str = new string[]
-        {
-            $"specification.Get{referencedTable}();",
-        };
-
-        return str;
-    }
-
     /// <inheritdoc/>
     public string[] GetLoading()
     {
         var strings = new string[]
         {
-            $"// loading {classPropertyName}",
-            $"(var {loadingPropertyName}, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);",
-        };
-
-        return strings;
-    }
-
-    /// <inheritdoc/>
-    public string[] GetObjectInitialization()
-    {
-        var strings = new string[]
-        {
-            $"{classPropertyName} = {loadingPropertyName}",
+            $"// loading {ClassPropertyName}",
+            $"(var {LoadingPropertyName}, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);",
         };
 
         return strings;
