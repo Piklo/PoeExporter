@@ -5,10 +5,10 @@ namespace SpecificationGenerator.SchemaJson;
 public class Column
 {
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [JsonPropertyName("description")]
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     [JsonPropertyName("array")]
     public bool Array { get; set; }
@@ -26,11 +26,11 @@ public class Column
     public References? References { get; set; }
 
     [JsonPropertyName("until")]
-    public object Until { get; set; }
+    public object? Until { get; set; }
 
     [JsonPropertyName("file")]
-    public string File { get; set; }
+    public string? File { get; set; }
 
     [JsonPropertyName("files")]
-    public string[] Files { get; set; }
+    public string[]? Files { get; set; }
 }
