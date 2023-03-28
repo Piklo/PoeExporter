@@ -32,11 +32,10 @@ internal class ForeignrowNonArrayColumn : IParsedColumn
 
         if (column.References is null)
         {
-            throw new NotImplementedException("foreign row reference with null referenced table");
+            throw new ForeignRowNullReferenceException();
         }
 
         ReferencedTable = column.References.Table;
-
     }
 
     /// <inheritdoc/>
