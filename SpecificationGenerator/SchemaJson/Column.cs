@@ -23,7 +23,7 @@ public class Column
     public bool Localized { get; set; }
 
     [JsonPropertyName("references")]
-    public References References { get; set; }
+    public References? References { get; set; }
 
     [JsonPropertyName("until")]
     public object Until { get; set; }
