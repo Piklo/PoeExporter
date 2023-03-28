@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 namespace SpecificationGenerator.ColumnGenerators;
 
 /// <summary>
-/// Class which parses the column which is an unknown bool and is not an array.
+/// Class which parses the column which is a bool and is not an array.
 /// </summary>
-internal sealed class UnknownBoolNonArrayColumn : IParsedColumn
+internal sealed class BoolNonArrayColumn : IParsedColumn
 {
     private readonly string classPropertyName;
     private readonly string? referencedTable;
@@ -16,13 +16,13 @@ internal sealed class UnknownBoolNonArrayColumn : IParsedColumn
     public int Offset { get; } = 1;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="UnknownBoolNonArrayColumn"/> class.
+    /// Initializes a new instance of the <see cref="BoolNonArrayColumn"/> class.
     /// </summary>
     /// <param name="column">column to parse.</param>
-    /// <param name="parsedColumns">a readonly collection of already parsed columns..</param>
-    public UnknownBoolNonArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
+    /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
+    public BoolNonArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
-        classPropertyName = ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
+        classPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         loadingPropertyName = classPropertyName.ToLower();
         referencedTable = column.References?.Table;
     }
