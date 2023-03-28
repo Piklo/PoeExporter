@@ -43,6 +43,7 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
 
         return strings;
     }
+
     /// <inheritdoc/>
     public string[] GetLoading()
     {
