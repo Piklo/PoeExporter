@@ -90,7 +90,7 @@ internal sealed class SpecificationFileGenerator
                 var parsedColumn = ParseColumn(column, readonlyResult);
                 result.Add(parsedColumn);
             }
-            catch (NotImplementedException e)
+            catch (NotImplementedColumnException e)
             {
                 logger.Error(e.Message);
             }
@@ -127,7 +127,7 @@ internal sealed class SpecificationFileGenerator
 
             var message = $"dont know how to load column: \n{serialized}";
 
-            throw new NotImplementedException(message);
+            throw new NotImplementedColumnException(message);
         }
     }
 
