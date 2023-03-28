@@ -113,6 +113,10 @@ internal sealed class SpecificationFileGenerator
         {
             return new FloatNonArrayColumn(column, parsedColumns);
         }
+        else if (column.Type == "foreignrow" && !column.Array)
+        {
+            return new ForeignrowNonArrayColumn(column, parsedColumns);
+        }
         else
         {
             var serialized = JsonSerializer.Serialize(column, new JsonSerializerOptions()
