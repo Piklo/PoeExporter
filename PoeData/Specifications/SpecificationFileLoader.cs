@@ -76,6 +76,28 @@ internal static class SpecificationFileLoader
         return ((int)value, offset);
     }
 
+    public static (int[] values, int offset) LoadRowPrimaryKeys(byte[] decompressedFile, int offset, int dataOffset)
+    {
+        (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+        (var keysLength, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+
+        if (IsInvalidKeysCount(keysCount))
+        {
+            return (Array.Empty<int>(), offset);
+        }
+
+        var primaryKeys = new int[keysCount];
+        var newOffset = dataOffset + (int)keysLength;
+        for (var i = 0; i < keysCount; i++)
+        {
+            (var primaryKey, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
+
+            primaryKeys[i] = (int)primaryKey;
+        }
+
+        return (primaryKeys, offset);
+    }
+
     public static (int? value, int offset) LoadForeignRowPrimaryKey(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
