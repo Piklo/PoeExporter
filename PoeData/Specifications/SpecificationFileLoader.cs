@@ -88,11 +88,21 @@ internal static class SpecificationFileLoader
         }
 
         var primaryKeys = new int[keysCount];
+        //for (var i = 0; i < keysCount; i++)
+        //{
+        //    var newOffset = dataOffset + (int)keysLength;
+
+        //    (var primaryKey, _) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
+
+        //    primaryKeys[i] = (int)primaryKey;
+        //}
+
+        var newOffset = dataOffset + (int)keysLength;
         for (var i = 0; i < keysCount; i++)
         {
-            var newOffset = dataOffset + (int)keysLength;
 
-            (var primaryKey, _) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
+            (var primaryKey, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
+            (var _, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset); // what is this padding?
 
             primaryKeys[i] = (int)primaryKey;
         }
