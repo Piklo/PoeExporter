@@ -213,7 +213,8 @@ internal sealed class SpecificationFileGenerator
 
                         var objects = new {{className}}[tableRows];
                         for (var rowId = 0; rowId < tableRows; rowId++)
-                        {                    
+                        {
+                            // offset = 4 + (rowId * tableRecordLength); // debug only
                             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
                 """);
 
