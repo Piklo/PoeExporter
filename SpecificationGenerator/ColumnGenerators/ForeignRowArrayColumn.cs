@@ -50,7 +50,8 @@ internal class ForeignRowArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"// loading {ClassPropertyName}",
-            $"(var {LoadingPropertyName}, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);",
+            $"(var temp{LoadingPropertyName}, offset) = SpecificationFileLoader.LoadPrimaryKeys(decompressedFile, offset, dataOffset);",
+            $"var {LoadingPropertyName} = temp{LoadingPropertyName}.AsReadOnly();",
         };
 
         return strings;
