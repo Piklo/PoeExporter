@@ -117,6 +117,10 @@ internal sealed class SpecificationFileGenerator
         {
             return new FloatNonArrayColumn(column, parsedColumns);
         }
+        else if (column.Type == "f32" && column.Array)
+        {
+            return new FloatArrayColumn(column, parsedColumns);
+        }
         else if (column.Type == "foreignrow" && !column.Array)
         {
             return new ForeignrowNonArrayColumn(column, parsedColumns);
