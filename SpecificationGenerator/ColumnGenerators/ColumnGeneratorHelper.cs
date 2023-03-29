@@ -63,7 +63,7 @@ internal static class ColumnGeneratorHelper
         {
             var column = parsedColumns[i];
 
-            var str = $"{column.ClassPropertyName} = {column.LoadingPropertyName}";
+            var str = $"{column.ClassPropertyName} = {column.LoadingPropertyName},";
 
             strings[i] = str;
         }
