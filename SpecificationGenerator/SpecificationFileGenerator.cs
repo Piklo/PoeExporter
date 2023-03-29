@@ -133,6 +133,10 @@ internal sealed class SpecificationFileGenerator
         {
             return new StringNonArrayColumn(column, parsedColumns);
         }
+        else if (column.Type == "string" && column.Array)
+        {
+            return new StringArrayColumn(column, parsedColumns);
+        }
         else if (column.Type == "array" && column.Array)
         {
             return new ArrayArrayColumn(column, parsedColumns);
