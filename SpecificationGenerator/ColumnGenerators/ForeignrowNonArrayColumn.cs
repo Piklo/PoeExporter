@@ -18,7 +18,7 @@ internal class ForeignrowNonArrayColumn : IParsedColumn
     public string LoadingPropertyName { get; }
 
     /// <inheritdoc/>
-    public int Offset { get; } = 8;
+    public int Offset { get; } = 16;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ForeignrowNonArrayColumn"/> class.
