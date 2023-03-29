@@ -125,6 +125,10 @@ internal sealed class SpecificationFileGenerator
         {
             return new ForeignrowNonArrayColumn(column, parsedColumns);
         }
+        else if (column.Type == "foreignrow" && column.Array)
+        {
+            return new ForeignRowArrayColumn(column, parsedColumns);
+        }
         else if (column.Type == "string" && !column.Array)
         {
             return new StringNonArrayColumn(column, parsedColumns);
