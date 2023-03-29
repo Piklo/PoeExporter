@@ -141,6 +141,10 @@ internal sealed class SpecificationFileGenerator
         {
             return new RowNonArrayColumn(column, parsedColumns);
         }
+        else if (column.Type == "row" && column.Array)
+        {
+            return new RowArrayColumn(column, parsedColumns);
+        }
         else
         {
             var serialized = JsonSerializer.Serialize(column, new JsonSerializerOptions()
