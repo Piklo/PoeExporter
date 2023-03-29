@@ -12,7 +12,7 @@ internal class ForeignrowNonArrayColumn : IParsedColumn
     public string ClassPropertyName { get; }
 
     /// <inheritdoc/>
-    public string ReferencedTable { get; }
+    public string? ReferencedTable { get; }
 
     /// <inheritdoc/>
     public string LoadingPropertyName { get; }
@@ -29,13 +29,7 @@ internal class ForeignrowNonArrayColumn : IParsedColumn
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = ClassPropertyName.ToLower();
-
-        if (column.References is null)
-        {
-            throw new ForeignRowNullReferenceException();
-        }
-
-        ReferencedTable = column.References.Table;
+        ReferencedTable = column.References?.Table;
     }
 
     /// <inheritdoc/>
@@ -44,7 +38,7 @@ internal class ForeignrowNonArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
-            $$"""public required {{ReferencedTable}} {{ClassPropertyName}} { get; init; }""",
+            $$"""public required int? {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;
@@ -53,16 +47,10 @@ internal class ForeignrowNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public string[] GetLoading()
     {
-        var primaryKeyName = $"{LoadingPropertyName}PrimaryKey";
         var strings = new string[]
         {
             $"// loading {ClassPropertyName}",
-            $"(var {primaryKeyName}, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);",
-            $"var {ReferencedTable}? {LoadingPropertyName} = null;",
-            $"if ({primaryKeyName} is not null)",
-            "{",
-            $"{SpecificationFileGenerator.Tab}{LoadingPropertyName} = specification.Get{ReferencedTable}()[(int){primaryKeyName}];",
-            "}",
+            $"(var {LoadingPropertyName}, offset) = SpecificationFileLoader.LoadPrimaryKey(decompressedFile, offset, dataOffset);",
         };
 
         return strings;
