@@ -6,7 +6,7 @@ namespace SpecificationGenerator.ColumnGenerators;
 /// <summary>
 /// Class which parses the column which is an enum row and is not an array.
 /// </summary>
-internal sealed class EnumRowNonArray : IParsedColumn
+internal sealed class EnumRowNonArrayColumn : IParsedColumn
 {
     /// <inheritdoc/>
     public string ClassPropertyName { get; }
@@ -21,11 +21,11 @@ internal sealed class EnumRowNonArray : IParsedColumn
     public int Offset { get; } = 4;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EnumRowNonArray"/> class.
+    /// Initializes a new instance of the <see cref="EnumRowNonArrayColumn"/> class.
     /// </summary>
     /// <param name="column">column to parse.</param>
     /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
-    public EnumRowNonArray(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
+    public EnumRowNonArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = ClassPropertyName.ToLower();

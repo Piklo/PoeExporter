@@ -151,7 +151,7 @@ internal sealed class SpecificationFileGenerator
         }
         else if (column.Type == "enumrow" && !column.Array)
         {
-            return new EnumRowNonArray(column, parsedColumns);
+            return new EnumRowNonArrayColumn(column, parsedColumns);
         }
         else
         {
