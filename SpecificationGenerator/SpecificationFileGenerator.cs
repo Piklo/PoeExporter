@@ -174,7 +174,7 @@ internal sealed class SpecificationFileGenerator
                         var objects = new {{className}}[tableRows];
                         for (var rowId = 0; rowId < tableRows; rowId++)
                         {                    
-                            expectedOffset = 4 + (rowId * tableRecordLength);
+                            var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
                 """);
 
         AppendReferencedTablesLoading(builder, parsedColumns);
@@ -240,7 +240,7 @@ internal sealed class SpecificationFileGenerator
         }
 
         builder.AppendLine("""
-                        }
+                        };
 
                         objects[rowId] = obj;
             """);
