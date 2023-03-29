@@ -163,4 +163,26 @@ internal static class SpecificationFileLoader
 
         return (primaryKeys, offset);
     }
+
+    internal static (float[] value, int offset) LoadFloatArray(byte[] decompressedFile, int offset, int dataOffset)
+    {
+        (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+        (var keysLength, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+
+        if (IsInvalidKeysCount(keysCount))
+        {
+            return (Array.Empty<float>(), offset);
+        }
+
+        var primaryKeys = new float[keysCount];
+        var newOffset = dataOffset + (int)keysLength;
+        for (var i = 0; i < keysCount; i++)
+        {
+            (var primaryKey, newOffset) = BitConverterExtended.ToSingle(decompressedFile, newOffset);
+
+            primaryKeys[i] = primaryKey;
+        }
+
+        return (primaryKeys, offset);
+    }
 }
