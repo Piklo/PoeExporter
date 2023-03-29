@@ -123,7 +123,7 @@ internal sealed class SpecificationFileGenerator
         }
         else if (column.Type == "foreignrow" && !column.Array)
         {
-            return new ForeignrowNonArrayColumn(column, parsedColumns);
+            return new ForeignRowNonArrayColumn(column, parsedColumns);
         }
         else if (column.Type == "foreignrow" && column.Array)
         {
