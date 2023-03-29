@@ -134,4 +134,26 @@ internal static class SpecificationFileLoader
     {
         return (fileOffset - TableOffset) % tableRecordLength;
     }
+
+    internal static (int[] value, int offset) LoadIntArray(byte[] decompressedFile, int offset, int dataOffset)
+    {
+        (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+        (var keysLength, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+
+        if (IsInvalidKeysCount(keysCount))
+        {
+            return (Array.Empty<int>(), offset);
+        }
+
+        var primaryKeys = new int[keysCount];
+        var newOffset = dataOffset + (int)keysLength;
+        for (var i = 0; i < keysCount; i++)
+        {
+            (var primaryKey, newOffset) = BitConverterExtended.ToInt32(decompressedFile, newOffset);
+
+            primaryKeys[i] = primaryKey;
+        }
+
+        return (primaryKeys, offset);
+    }
 }
