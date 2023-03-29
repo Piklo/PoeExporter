@@ -34,6 +34,32 @@ internal static class SpecificationFileLoader
         return (str, offset);
     }
 
+    public static (string[] value, int offset) LoadStringArray(byte[] decompressedFile, int offset, int dataOffset)
+    {
+        (var stringsCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+        (var stringsOffset, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
+
+        if (IsInvalidKeysCount(stringsCount))
+        {
+            return (Array.Empty<string>(), offset);
+        }
+
+        var strings = new string[stringsCount];
+        var newOffset = dataOffset + (int)stringsOffset;
+        for (var i = 0; i < stringsCount; i++)
+        {
+            //(var stringSomething, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
+            //var strOffset = stringSomething + dataOffset;
+
+            //strings[i] = "";
+            (var str, newOffset) = LoadString(decompressedFile, newOffset, dataOffset);
+
+            strings[i] = str;
+        }
+
+        return (strings, offset);
+    }
+
     public static (int value, int offset) LoadInt(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToInt32(decompressedFile, offset);
