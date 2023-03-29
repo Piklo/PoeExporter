@@ -41,6 +41,13 @@ internal static class SpecificationFileLoader
         return (value, offset);
     }
 
+    public static (float value, int offset) LoadFloat(byte[] decompressedFile, int offset)
+    {
+        (var value, offset) = BitConverterExtended.ToSingle(decompressedFile, offset);
+
+        return (value, offset);
+    }
+
     public static (Unknown<int> value, int offset) LoadUnknownInt(byte[] decompressedFile, int offset, int tableRecordLength)
     {
         var columnOffset = GetColumnOffset(offset, tableRecordLength);

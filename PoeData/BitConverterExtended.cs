@@ -41,6 +41,16 @@ internal static class BitConverterExtended
         return (converted, startIndex);
     }
 
+
+    /// <inheritdoc cref="BitConverter.ToSingle(byte[], int)(byte[], int)"/>
+    public static (float value, int offset) ToSingle(byte[] value, int startIndex)
+    {
+        var converted = BitConverter.ToSingle(value, startIndex);
+        startIndex += sizeof(float);
+
+        return (converted, startIndex);
+    }
+
     /// <inheritdoc cref="BitConverter.ToBoolean(byte[], int)(byte[], int)"/>
     public static (bool value, int offset) ToBoolean(byte[] value, int startIndex)
     {
