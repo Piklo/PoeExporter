@@ -2,21 +2,21 @@
 using System.Text;
 
 namespace SpecificationGenerator;
-internal class SpecificationGenerator
+internal class SpecificationFileGenerator
 {
     private static readonly string Tab = new(' ', 4);
     private static readonly string Tab2 = new(' ', 8);
     private static readonly string Tab3 = new(' ', 12);
     private static readonly string Tab4 = new(' ', 16);
     private readonly ILogger logger;
-    private readonly List<SpecificationFileGenerator> specificationFiles;
+    private readonly List<SpecificationFilesGenerator> specificationFiles;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SpecificationGenerator"/> class.
+    /// Initializes a new instance of the <see cref="SpecificationFileGenerator"/> class.
     /// </summary>
     /// <param name="logger">logger.</param>
     /// <param name="specificationFiles">specification files.</param>
-    public SpecificationGenerator(ILogger logger, List<SpecificationFileGenerator> specificationFiles)
+    public SpecificationFileGenerator(ILogger logger, List<SpecificationFilesGenerator> specificationFiles)
     {
         this.logger = logger;
         this.specificationFiles = specificationFiles;
