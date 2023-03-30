@@ -42,7 +42,7 @@ internal static class ColumnGeneratorHelper
                 continue;
             }
 
-            var str = $"specification.Get{column.ReferencedTable}();";
+            var str = $"specification.Get{column.ReferencedTable}Dat();";
 
             set.Add(str);
         }
