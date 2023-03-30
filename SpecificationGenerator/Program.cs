@@ -90,10 +90,10 @@ internal sealed class Program
         var outputDirectory = Directory.CreateDirectory("Output");
         var skipDir = outputDirectory.CreateSubdirectory("skipped");
 
-        var specificationFiles = new List<SpecificationFileGenerator>();
+        var specificationFiles = new List<SpecificationFilesGenerator>();
         foreach (var table in schema.Tables)
         {
-            var specificationFile = new SpecificationFileGenerator(table, logger);
+            var specificationFile = new SpecificationFilesGenerator(table, logger);
             specificationFiles.Add(specificationFile);
             var str = specificationFile.GetFileString();
             var fileName = $"{table.Name}.cs";
@@ -110,7 +110,7 @@ internal sealed class Program
             }
         }
 
-        var specificationGenerator = new SpecificationGenerator(logger, specificationFiles);
+        var specificationGenerator = new SpecificationFileGenerator(logger, specificationFiles);
         var specificationStr = specificationGenerator.Generate();
         var specificationName = "Specification.cs";
         File.WriteAllText(Path.Combine(outputDirectory.FullName, specificationName), specificationStr, Encoding.UTF8);
