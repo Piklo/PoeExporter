@@ -11,7 +11,7 @@ namespace SpecificationGenerator;
 /// <summary>
 /// Class containing parsed table data.
 /// </summary>
-internal sealed class SpecificationFileGenerator
+internal sealed class SpecificationFilesGenerator
 {
     private readonly Table table;
     private readonly ILogger logger;
@@ -23,11 +23,11 @@ internal sealed class SpecificationFileGenerator
     internal static readonly string Tab4 = new(' ', 16);
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="SpecificationFileGenerator"/> class.
+    /// Initializes a new instance of the <see cref="SpecificationFilesGenerator"/> class.
     /// </summary>
     /// <param name="table">Table to parse.</param>
     /// <param name="logger">logger.</param>
-    public SpecificationFileGenerator(Table table, ILogger logger)
+    public SpecificationFilesGenerator(Table table, ILogger logger)
     {
         this.table = table;
         this.logger = logger;
