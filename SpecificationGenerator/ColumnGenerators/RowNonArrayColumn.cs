@@ -28,7 +28,7 @@ internal class RowNonArrayColumn : IParsedColumn
     public RowNonArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
-        LoadingPropertyName = ClassPropertyName.ToLower();
+        LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
         ReferencedTable = null; // kinda a hack because it does reference the same table, needed to avoid infinite load of the same table, FIXME
     }
 

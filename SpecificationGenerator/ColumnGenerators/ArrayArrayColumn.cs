@@ -31,7 +31,7 @@ internal sealed class ArrayArrayColumn : IParsedColumn
     public ArrayArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
-        LoadingPropertyName = ClassPropertyName.ToLower();
+        LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
         ReferencedTable = column.References?.Table;
     }
 

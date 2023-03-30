@@ -28,7 +28,7 @@ internal sealed class EnumRowArrayColumn : IParsedColumn
     public EnumRowArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
-        LoadingPropertyName = ClassPropertyName.ToLower();
+        LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
         ReferencedTable = column.References?.Table;
     }
 
