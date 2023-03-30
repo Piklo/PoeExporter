@@ -1,6 +1,7 @@
 ﻿using Serilog;
 using Serilog.Core;
 using SpecificationGenerator.SchemaJson;
+using System.Text;
 using System.Text.Json;
 
 namespace SpecificationGenerator;
@@ -68,6 +69,12 @@ internal sealed class Program
     private static void GenerateSpecification(Schema schema)
     {
         var specificationFilesDir = GetSpecificationFilesDirectory();
+        var specificationDirectory = specificationFilesDir.Parent;
+        if (specificationDirectory == null)
+        {
+            throw new Exception(nameof(specificationDirectory));
+        }
+
         var files = specificationFilesDir.GetFiles();
         var skippable = GetSkippableFiles(files);
 
@@ -83,9 +90,11 @@ internal sealed class Program
         var outputDirectory = Directory.CreateDirectory("Output");
         var skipDir = outputDirectory.CreateSubdirectory("skipped");
 
+        var specificationFiles = new List<SpecificationFileGenerator>();
         foreach (var table in schema.Tables)
         {
             var specificationFile = new SpecificationFileGenerator(table, logger);
+            specificationFiles.Add(specificationFile);
             var str = specificationFile.GetFileString();
             var fileName = $"{table.Name}.cs";
 
@@ -96,10 +105,16 @@ internal sealed class Program
             }
             else
             {
-                File.WriteAllText(Path.Combine(outputDirectory.FullName, fileName), str);
-                File.WriteAllText(Path.Combine(specificationFilesDir.FullName, fileName), str);
+                File.WriteAllText(Path.Combine(outputDirectory.FullName, fileName), str, Encoding.UTF8);
+                File.WriteAllText(Path.Combine(specificationFilesDir.FullName, fileName), str, Encoding.UTF8);
             }
         }
+
+        var specificationGenerator = new SpecificationGenerator(logger, specificationFiles);
+        var specificationStr = specificationGenerator.Generate();
+        var specificationName = "Specification.cs";
+        File.WriteAllText(Path.Combine(outputDirectory.FullName, specificationName), specificationStr, Encoding.UTF8);
+        File.WriteAllText(Path.Combine(specificationDirectory.FullName, specificationName), specificationStr, Encoding.UTF8);
     }
 
     private static void DeleteNotSkippableFiles(FileInfo[] files, HashSet<FileInfo> skippable)
