@@ -29,7 +29,7 @@ internal sealed class EnumRowNonArrayColumn : IParsedColumn
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
-        ReferencedTable = column.References?.Table;
+        ReferencedTable = null; // kinda a hack because enums dont have their own dat files? FIXME
     }
 
     /// <inheritdoc/>
