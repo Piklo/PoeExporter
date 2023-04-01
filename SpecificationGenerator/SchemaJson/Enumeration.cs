@@ -5,11 +5,11 @@ namespace SpecificationGenerator.SchemaJson;
 public class Enumeration
 {
     [JsonPropertyName("name")]
-    public string Name { get; set; }
+    public required string Name { get; init; }
 
     [JsonPropertyName("indexing")]
-    public int Indexing { get; set; }
+    public required int Indexing { get; init; }
 
     [JsonPropertyName("enumerators")]
-    public string[] Enumerators { get; set; }
+    public required string[] Enumerators { get; init; }
 }
