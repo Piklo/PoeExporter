@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using SpecificationGenerator.ColumnGenerators;
 
-namespace SpecificationGenerator.ColumnGenerators;
+namespace SpecificationGenerator;
 
 /// <summary>
 /// Class containing helper methods related to column generation.
