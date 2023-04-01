@@ -100,7 +100,7 @@ internal sealed class Program
         {
             var specificationFile = new SpecificationFilesGenerator(table, logger);
             specificationFiles.Add(specificationFile);
-            var str = specificationFile.GetFileString();
+            var str = specificationFile.Code;
             var fileName = $"{specificationFile.ClassName}.cs";
 
             var skip = skippableFileNames.Contains(fileName);
