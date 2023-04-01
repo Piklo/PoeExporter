@@ -119,7 +119,7 @@ internal sealed class Program
         var specificationGenerator = new SpecificationFileGenerator(logger, specificationFiles);
         File.WriteAllText(
             Path.Combine(specificationDirectory.FullName, specificationGenerator.FileName),
-            specificationGenerator.SpecificationFileString,
+            specificationGenerator.Code,
             Encoding.UTF8);
     }
 

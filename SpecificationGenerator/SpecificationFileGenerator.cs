@@ -12,10 +12,10 @@ internal class SpecificationFileGenerator
     private readonly ILogger logger;
     private readonly List<SpecificationFilesGenerator> specificationFiles;
 
-    /// <summary>Gets string with Specification file code.</summary>
-    public string SpecificationFileString { get; }
+    /// <summary>Gets generated code.</summary>
+    public string Code { get; }
 
-    /// <summary>Gets string with Specification file name.</summary>
+    /// <summary>Gets file name.</summary>
     public string FileName { get; } = "Specification.cs";
 
     /// <summary>
@@ -27,7 +27,7 @@ internal class SpecificationFileGenerator
     {
         this.logger = logger;
         this.specificationFiles = specificationFiles;
-        SpecificationFileString = Generate();
+        Code = Generate();
     }
 
     private string Generate()
