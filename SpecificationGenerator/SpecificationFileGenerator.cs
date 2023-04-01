@@ -4,10 +4,6 @@ using System.Text;
 namespace SpecificationGenerator;
 internal class SpecificationFileGenerator
 {
-    private static readonly string Tab = new(' ', 4);
-    private static readonly string Tab2 = new(' ', 8);
-    private static readonly string Tab3 = new(' ', 12);
-    private static readonly string Tab4 = new(' ', 16);
     private readonly ILogger logger;
     private readonly List<SpecificationFilesGenerator> specificationFiles;
 
@@ -83,7 +79,7 @@ internal class SpecificationFileGenerator
         foreach (var file in specificationFiles)
         {
             var name = file.ClassName;
-            builder.AppendLine($"{Tab}private ReadOnlyCollection<{name}>? {name.ToLower()};");
+            builder.AppendLine($"{Tabs.Tab1}private ReadOnlyCollection<{name}>? {name.ToLower()};");
         }
     }
 

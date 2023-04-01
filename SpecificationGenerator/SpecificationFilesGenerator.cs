@@ -17,10 +17,6 @@ internal sealed class SpecificationFilesGenerator
     private readonly ILogger logger;
     private readonly StringBuilder builder;
     internal string ClassName { get; }
-    internal static readonly string Tab = new(' ', 4);
-    internal static readonly string Tab2 = new(' ', 8);
-    internal static readonly string Tab3 = new(' ', 12);
-    internal static readonly string Tab4 = new(' ', 16);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="SpecificationFilesGenerator"/> class.
@@ -179,7 +175,7 @@ internal sealed class SpecificationFilesGenerator
 
             foreach (var line in lines)
             {
-                builder.AppendLine($"{Tab}{line}");
+                builder.AppendLine($"{Tabs.Tab1}{line}");
             }
 
             builder.AppendLine();
@@ -234,7 +230,7 @@ internal sealed class SpecificationFilesGenerator
         AppendObjectInitialization(builder, parsedColumns);
 
         // loop ends here
-        builder.AppendLine($$"""{{Tab2}}}""");
+        builder.AppendLine($$"""{{Tabs.Tab2}}}""");
 
         builder.AppendLine("""
 
@@ -245,11 +241,11 @@ internal sealed class SpecificationFilesGenerator
 
     private static void AppendReferencedTablesLoading(StringBuilder builder, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
-        builder.AppendLine($"{Tab3}// loading referenced tables if any");
+        builder.AppendLine($"{Tabs.Tab3}// loading referenced tables if any");
         var strings = ColumnGeneratorHelper.GetReferencedTablesLoading(parsedColumns);
         foreach (var str in strings)
         {
-            builder.AppendLine($"{Tab3}{str}");
+            builder.AppendLine($"{Tabs.Tab3}{str}");
         }
 
         if (strings.Length != 0)
@@ -266,7 +262,7 @@ internal sealed class SpecificationFilesGenerator
 
             foreach (var str in columnLoadingStrings)
             {
-                builder.AppendLine($"{Tab3}{str}");
+                builder.AppendLine($"{Tabs.Tab3}{str}");
             }
 
             builder.AppendLine();
@@ -283,7 +279,7 @@ internal sealed class SpecificationFilesGenerator
         var strings = ColumnGeneratorHelper.GetObjectInitialization(parsedColumns);
         foreach (var str in strings)
         {
-            builder.AppendLine($"{Tab4}{str}");
+            builder.AppendLine($"{Tabs.Tab4}{str}");
         }
 
         builder.AppendLine("""
