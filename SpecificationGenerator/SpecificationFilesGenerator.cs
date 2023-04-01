@@ -66,7 +66,6 @@ internal sealed class SpecificationFilesGenerator
 
         builder.AppendLine("}");
 
-        var str = builder.ToString();
         logger.Debug(datFileName);
     }
 
