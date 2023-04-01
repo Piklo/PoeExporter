@@ -16,7 +16,7 @@ internal sealed class SpecificationFilesGenerator
     private readonly Table table;
     private readonly ILogger logger;
     private readonly StringBuilder builder;
-    internal readonly string ClassName;
+    internal string ClassName { get; }
     internal static readonly string Tab = new(' ', 4);
     internal static readonly string Tab2 = new(' ', 8);
     internal static readonly string Tab3 = new(' ', 12);
