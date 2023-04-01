@@ -5,7 +5,7 @@ namespace SpecificationGenerator.SchemaJson;
 /// <summary>
 /// Class containing data about all of schema json.
 /// </summary>
-public class Schema
+internal sealed class Schema
 {
     /// <summary>Gets version.</summary>
     [JsonPropertyName("version")]

@@ -5,7 +5,7 @@ namespace SpecificationGenerator.SchemaJson;
 /// <summary>
 /// Class containing data about referenced table in schema json columns.
 /// </summary>
-public class References
+internal sealed class References
 {
     /// <summary>Gets table name.</summary>
     [JsonPropertyName("table")]

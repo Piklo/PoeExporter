@@ -5,7 +5,7 @@ namespace SpecificationGenerator.SchemaJson;
 /// <summary>
 /// Class containing data about enumeration in schema json.
 /// </summary>
-public class Enumeration
+internal sealed class Enumeration
 {
     /// <summary>Gets name.</summary>
     [JsonPropertyName("name")]
