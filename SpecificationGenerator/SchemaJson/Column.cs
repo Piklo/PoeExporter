@@ -5,32 +5,32 @@ namespace SpecificationGenerator.SchemaJson;
 public class Column
 {
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public string? Name { get; init; }
 
     [JsonPropertyName("description")]
-    public string? Description { get; set; }
+    public string? Description { get; init; }
 
     [JsonPropertyName("array")]
-    public bool Array { get; set; }
+    public bool Array { get; init; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; }
+    public required string Type { get; init; }
 
     [JsonPropertyName("unique")]
-    public bool Unique { get; set; }
+    public bool Unique { get; init; }
 
     [JsonPropertyName("localized")]
-    public bool Localized { get; set; }
+    public bool Localized { get; init; }
 
     [JsonPropertyName("references")]
-    public References? References { get; set; }
+    public References? References { get; init; }
 
     [JsonPropertyName("until")]
-    public object? Until { get; set; }
+    public object? Until { get; init; }
 
     [JsonPropertyName("file")]
-    public string? File { get; set; }
+    public string? File { get; init; }
 
     [JsonPropertyName("files")]
-    public string[]? Files { get; set; }
+    public string[]? Files { get; init; }
 }
