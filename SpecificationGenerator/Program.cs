@@ -117,9 +117,10 @@ internal sealed class Program
         logger.Information("skipped files {count} - {skipped}", skippable.Count, skippable);
 
         var specificationGenerator = new SpecificationFileGenerator(logger, specificationFiles);
-        var specificationStr = specificationGenerator.Generate();
-        var specificationName = "Specification.cs";
-        File.WriteAllText(Path.Combine(specificationDirectory.FullName, specificationName), specificationStr, Encoding.UTF8);
+        File.WriteAllText(
+            Path.Combine(specificationDirectory.FullName, specificationGenerator.FileName),
+            specificationGenerator.SpecificationFileString,
+            Encoding.UTF8);
     }
 
     private static void DeleteNotSkippableFiles(FileInfo[] files, HashSet<FileInfo> skippable)
