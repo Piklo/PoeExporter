@@ -87,8 +87,13 @@ internal sealed class Program
             skippableFileNames.Add(name);
         }
 
-        var outputDirectory = Directory.CreateDirectory("Output");
-        var skipDir = outputDirectory.CreateSubdirectory("skipped");
+        var skipDir = new DirectoryInfo("skipped");
+        if (skipDir.Exists)
+        {
+            skipDir.Delete(true);
+        }
+
+        skipDir.Create();
 
         var specificationFiles = new List<SpecificationFilesGenerator>();
         foreach (var table in schema.Tables)
@@ -105,15 +110,15 @@ internal sealed class Program
             }
             else
             {
-                File.WriteAllText(Path.Combine(outputDirectory.FullName, fileName), str, Encoding.UTF8);
                 File.WriteAllText(Path.Combine(specificationFilesDir.FullName, fileName), str, Encoding.UTF8);
             }
         }
 
+        logger.Information("skipped files {count} - {skipped}", skippable.Count, skippable);
+
         var specificationGenerator = new SpecificationFileGenerator(logger, specificationFiles);
         var specificationStr = specificationGenerator.Generate();
         var specificationName = "Specification.cs";
-        File.WriteAllText(Path.Combine(outputDirectory.FullName, specificationName), specificationStr, Encoding.UTF8);
         File.WriteAllText(Path.Combine(specificationDirectory.FullName, specificationName), specificationStr, Encoding.UTF8);
     }
 
