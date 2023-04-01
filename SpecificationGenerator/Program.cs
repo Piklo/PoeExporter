@@ -141,7 +141,7 @@ internal sealed class Program
             var containsSkipComment = false;
             foreach (var line in lines)
             {
-                if (line.Contains("// GENERATOR_SKIP"))
+                if (line.Contains("GENERATOR_SKIP"))
                 {
                     containsSkipComment = true;
                     break;
