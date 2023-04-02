@@ -32,28 +32,12 @@ internal sealed class Generator
 
         if (schema is not null)
         {
-            GetPossibleColumnTypes(schema);
             GenerateSpecification(schema);
         }
         else
         {
             logger.Error("schema is null");
         }
-    }
-
-    private static HashSet<string> GetPossibleColumnTypes(Schema schema)
-    {
-        var set = new HashSet<string>();
-
-        foreach (var table in schema.Tables)
-        {
-            foreach (var column in table.Columns)
-            {
-                set.Add(column.Type);
-            }
-        }
-
-        return set;
     }
 
     private static async Task<string> GetSchemaStringAsync()
