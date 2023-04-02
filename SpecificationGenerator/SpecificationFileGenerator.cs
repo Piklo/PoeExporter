@@ -41,7 +41,7 @@ internal class SpecificationFileGenerator
                 // the generated class is partial, please extend it in another file
                 #nullable enable
 
-                using PoeData.Specifications.SpecificationFiles;
+                using PoeData.Specifications.Dat;
                 using Serilog;
                 using System.Collections.ObjectModel;
 
