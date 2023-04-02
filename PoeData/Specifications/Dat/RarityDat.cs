@@ -16,26 +16,26 @@ public sealed partial class RarityDat : ISpecificationFile<RarityDat>
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
 
-    /// <summary> Gets Unknown8.</summary>
-    public required int Unknown8 { get; init; }
+    /// <summary> Gets MinMods.</summary>
+    public required int MinMods { get; init; }
 
-    /// <summary> Gets Unknown12.</summary>
-    public required int Unknown12 { get; init; }
+    /// <summary> Gets MaxMods.</summary>
+    public required int MaxMods { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
-    /// <summary> Gets Unknown20.</summary>
-    public required int Unknown20 { get; init; }
+    /// <summary> Gets MaxPrefix.</summary>
+    public required int MaxPrefix { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
-    /// <summary> Gets Unknown28.</summary>
-    public required int Unknown28 { get; init; }
+    /// <summary> Gets MaxSuffix.</summary>
+    public required int MaxSuffix { get; init; }
 
-    /// <summary> Gets Unknown32.</summary>
-    public required string Unknown32 { get; init; }
+    /// <summary> Gets Color.</summary>
+    public required string Color { get; init; }
 
     /// <inheritdoc/>
     public static RarityDat[] Load(Specification specification)
@@ -66,26 +66,26 @@ public sealed partial class RarityDat : ISpecificationFile<RarityDat>
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown8
-            (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading MinMods
+            (var minmodsLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown12
-            (var unknown12Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading MaxMods
+            (var maxmodsLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown20
-            (var unknown20Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading MaxPrefix
+            (var maxprefixLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown24
             (var unknown24Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown28
-            (var unknown28Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading MaxSuffix
+            (var maxsuffixLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown32
-            (var unknown32Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+            // loading Color
+            (var colorLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             if (offset != expectedOffset)
             {
@@ -95,13 +95,13 @@ public sealed partial class RarityDat : ISpecificationFile<RarityDat>
             var obj = new RarityDat()
             {
                 Id = idLoading,
-                Unknown8 = unknown8Loading,
-                Unknown12 = unknown12Loading,
+                MinMods = minmodsLoading,
+                MaxMods = maxmodsLoading,
                 Unknown16 = unknown16Loading,
-                Unknown20 = unknown20Loading,
+                MaxPrefix = maxprefixLoading,
                 Unknown24 = unknown24Loading,
-                Unknown28 = unknown28Loading,
-                Unknown32 = unknown32Loading,
+                MaxSuffix = maxsuffixLoading,
+                Color = colorLoading,
             };
 
             objects[rowId] = obj;

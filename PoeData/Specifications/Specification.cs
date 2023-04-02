@@ -2,7 +2,7 @@
 // the generated class is partial, please extend it in another file
 #nullable enable
 
-using PoeData.Specifications.SpecificationFiles;
+using PoeData.Specifications.Dat;
 using Serilog;
 using System.Collections.ObjectModel;
 
@@ -462,6 +462,7 @@ public sealed partial class Specification
     private ReadOnlyCollection<ItemClassesDat>? itemclassesdat;
     private ReadOnlyCollection<ItemCostPerLevelDat>? itemcostperleveldat;
     private ReadOnlyCollection<ItemCostsDat>? itemcostsdat;
+    private ReadOnlyCollection<ItemFrameTypeDat>? itemframetypedat;
     private ReadOnlyCollection<ItemExperiencePerLevelDat>? itemexperienceperleveldat;
     private ReadOnlyCollection<ItemisedVisualEffectDat>? itemisedvisualeffectdat;
     private ReadOnlyCollection<ItemNoteCodeDat>? itemnotecodedat;
@@ -5582,6 +5583,17 @@ public sealed partial class Specification
         itemcostsdat ??= ItemCostsDat.Load(this).AsReadOnly();
 
         return itemcostsdat;
+    }
+
+    /// <summary>
+    /// Gets ItemFrameTypeDat data.
+    /// </summary>
+    /// <returns>readonly collection of ItemFrameTypeDat.</returns>
+    public ReadOnlyCollection<ItemFrameTypeDat> GetItemFrameTypeDat()
+    {
+        itemframetypedat ??= ItemFrameTypeDat.Load(this).AsReadOnly();
+
+        return itemframetypedat;
     }
 
     /// <summary>

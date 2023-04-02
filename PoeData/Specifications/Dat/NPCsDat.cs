@@ -58,6 +58,9 @@ public sealed partial class NPCsDat : ISpecificationFile<NPCsDat>
     /// <summary> Gets Unknown145.</summary>
     public required int? Unknown145 { get; init; }
 
+    /// <summary> Gets Gender.</summary>
+    public required string Gender { get; init; }
+
     /// <inheritdoc/>
     public static NPCsDat[] Load(Specification specification)
     {
@@ -136,6 +139,9 @@ public sealed partial class NPCsDat : ISpecificationFile<NPCsDat>
             // loading Unknown145
             (var unknown145Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
+            // loading Gender
+            (var genderLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -158,6 +164,7 @@ public sealed partial class NPCsDat : ISpecificationFile<NPCsDat>
                 DialogueStyle = dialoguestyleLoading,
                 Unknown144 = unknown144Loading,
                 Unknown145 = unknown145Loading,
+                Gender = genderLoading,
             };
 
             objects[rowId] = obj;

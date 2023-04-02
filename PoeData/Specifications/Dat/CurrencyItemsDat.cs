@@ -91,6 +91,9 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
     /// <summary> Gets DescriptionHardmode.</summary>
     public required string DescriptionHardmode { get; init; }
 
+    /// <summary> Gets a value indicating whether IsGold is set.</summary>
+    public required bool IsGold { get; init; }
+
     /// <inheritdoc/>
     public static CurrencyItemsDat[] Load(Specification specification)
     {
@@ -206,6 +209,9 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
             // loading DescriptionHardmode
             (var descriptionhardmodeLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
+            // loading IsGold
+            (var isgoldLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -239,6 +245,7 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
                 ShopTag = shoptagLoading,
                 IsHardmode = ishardmodeLoading,
                 DescriptionHardmode = descriptionhardmodeLoading,
+                IsGold = isgoldLoading,
             };
 
             objects[rowId] = obj;
