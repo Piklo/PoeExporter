@@ -95,10 +95,10 @@ internal sealed class Program
 
         skipDir.Create();
 
-        var specificationFiles = new List<SpecificationFilesGenerator>();
+        var specificationFiles = new List<DatFileGenerator>();
         foreach (var table in schema.Tables)
         {
-            var specificationFile = new SpecificationFilesGenerator(table, logger);
+            var specificationFile = new DatFileGenerator(table, logger);
             specificationFiles.Add(specificationFile);
             var str = specificationFile.Code;
             var fileName = $"{specificationFile.ClassName}.cs";
@@ -166,7 +166,7 @@ internal sealed class Program
     private static DirectoryInfo GetSpecificationFilesDirectory()
     {
         var solution = TryGetSolutionDirectoryInfo();
-        var path = Path.Combine(solution.FullName, "PoeData\\Specifications\\SpecificationFiles");
+        var path = Path.Combine(solution.FullName, "PoeData\\Specifications\\Dat");
 
         var dir = new DirectoryInfo(path);
 

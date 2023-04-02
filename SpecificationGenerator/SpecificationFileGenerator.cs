@@ -10,7 +10,7 @@ namespace SpecificationGenerator;
 internal class SpecificationFileGenerator
 {
     private readonly ILogger logger;
-    private readonly List<SpecificationFilesGenerator> specificationFiles;
+    private readonly List<DatFileGenerator> specificationFiles;
 
     /// <summary>Gets generated code.</summary>
     public string Code { get; }
@@ -23,7 +23,7 @@ internal class SpecificationFileGenerator
     /// </summary>
     /// <param name="logger">logger.</param>
     /// <param name="specificationFiles">specification files.</param>
-    public SpecificationFileGenerator(ILogger logger, List<SpecificationFilesGenerator> specificationFiles)
+    public SpecificationFileGenerator(ILogger logger, List<DatFileGenerator> specificationFiles)
     {
         this.logger = logger;
         this.specificationFiles = specificationFiles;
