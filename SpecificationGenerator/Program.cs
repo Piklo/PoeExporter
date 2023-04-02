@@ -65,7 +65,7 @@ internal sealed class Program
             if (!string.IsNullOrEmpty(existingJson))
             {
                 return existingJson;
-        }
+            }
         }
 
         using var httpClient = new HttpClient();
@@ -78,14 +78,11 @@ internal sealed class Program
 
     private static void GenerateSpecification(Schema schema)
     {
-        var specificationFilesDir = GetSpecificationFilesDirectory();
-        var specificationDirectory = specificationFilesDir.Parent;
-        if (specificationDirectory == null)
-        {
-            throw new Exception(nameof(specificationDirectory));
-        }
+        var solutionDir = Path.GetFullPath("../../../../");
+        var datFilesDir = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications\\Dat"));
+        var specificationDirectory = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications"));
 
-        var files = specificationFilesDir.GetFiles();
+        var files = datFilesDir.GetFiles();
         var skippable = GetSkippableFiles(files);
 
         DeleteNotSkippableFiles(files, skippable);
@@ -105,28 +102,28 @@ internal sealed class Program
 
         skipDir.Create();
 
-        var specificationFiles = new List<DatFileGenerator>();
+        var datFileGenerators = new List<DatFileGenerator>();
         foreach (var table in schema.Tables)
         {
-            var specificationFile = new DatFileGenerator(table, logger);
-            specificationFiles.Add(specificationFile);
-            var str = specificationFile.Code;
-            var fileName = $"{specificationFile.ClassName}.cs";
+            var datFileGenerator = new DatFileGenerator(table, logger);
+            datFileGenerators.Add(datFileGenerator);
+            var str = datFileGenerator.Code;
+            var fileName = $"{datFileGenerator.ClassName}.cs";
 
             var skip = skippableFileNames.Contains(fileName);
             if (skip)
             {
-                File.WriteAllText(Path.Combine(skipDir.FullName, fileName), str);
+                File.WriteAllText(Path.Combine(skipDir.FullName, fileName), str, Encoding.UTF8);
             }
             else
             {
-                File.WriteAllText(Path.Combine(specificationFilesDir.FullName, fileName), str, Encoding.UTF8);
+                File.WriteAllText(Path.Combine(datFilesDir.FullName, fileName), str, Encoding.UTF8);
             }
         }
 
         logger.Information("skipped files {count} - {skipped}", skippable.Count, skippable);
 
-        var specificationGenerator = new SpecificationFileGenerator(logger, specificationFiles);
+        var specificationGenerator = new SpecificationFileGenerator(logger, datFileGenerators);
         File.WriteAllText(
             Path.Combine(specificationDirectory.FullName, specificationGenerator.FileName),
             specificationGenerator.Code,
@@ -171,32 +168,5 @@ internal sealed class Program
         });
 
         return skippable;
-    }
-
-    private static DirectoryInfo GetSpecificationFilesDirectory()
-    {
-        var solution = TryGetSolutionDirectoryInfo();
-        var path = Path.Combine(solution.FullName, "PoeData\\Specifications\\Dat");
-
-        var dir = new DirectoryInfo(path);
-
-        return dir;
-    }
-
-    private static DirectoryInfo TryGetSolutionDirectoryInfo()
-    {
-        var directory = new DirectoryInfo(Directory.GetCurrentDirectory());
-
-        while (directory != null && directory.GetFiles("*.sln").Length == 0)
-        {
-            directory = directory.Parent;
-        }
-
-        if (directory == null)
-        {
-            throw new Exception("project not found");
-        }
-
-        return directory;
     }
 }
