@@ -125,22 +125,22 @@ internal sealed class Program
 
     private static void DeleteNotSkippableFiles(FileInfo[] files, HashSet<FileInfo> skippable)
     {
-        foreach (var file in files)
+        Parallel.ForEach(files, file =>
         {
             if (skippable.Contains(file))
             {
-                continue;
+                return;
             }
 
             file.Delete();
-        }
+        });
     }
 
     private static HashSet<FileInfo> GetSkippableFiles(FileInfo[] files)
     {
         var skippable = new HashSet<FileInfo>();
 
-        foreach (var file in files)
+        Parallel.ForEach(files, file =>
         {
             var lines = File.ReadAllLines(file.FullName);
 
@@ -158,7 +158,7 @@ internal sealed class Program
             {
                 skippable.Add(file);
             }
-        }
+        });
 
         return skippable;
     }
