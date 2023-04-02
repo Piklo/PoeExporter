@@ -54,16 +54,26 @@ internal sealed class Program
 
     private static async Task<string> GetSchemaStringAsync()
     {
-        var jsonString = File.ReadAllText("schema.min.json");
-        if (!string.IsNullOrEmpty(jsonString))
+        const string schemaName = "schema.min.json";
+        const string SchemaDownloadUri = "https://github.com/poe-tool-dev/dat-schema/releases/download/latest/schema.min.json";
+        var projectDir = Path.GetFullPath("../../../");
+        var jsonLocation = Path.Combine(projectDir, schemaName);
+
+        if (File.Exists(jsonLocation))
         {
-            return jsonString;
+            var existingJson = File.ReadAllText(jsonLocation);
+            if (!string.IsNullOrEmpty(existingJson))
+            {
+                return existingJson;
+        }
         }
 
         using var httpClient = new HttpClient();
-        jsonString = await httpClient.GetStringAsync("https://github.com/poe-tool-dev/dat-schema/releases/download/latest/schema.min.json");
+        var newJson = await httpClient.GetStringAsync(SchemaDownloadUri);
 
-        return jsonString;
+        File.WriteAllText(jsonLocation, newJson);
+
+        return newJson;
     }
 
     private static void GenerateSpecification(Schema schema)
