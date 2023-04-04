@@ -36,10 +36,31 @@ internal sealed class DatFileGenerator
         this.table = table;
         this.logger = logger;
 
-        ClassName = $"{table.Name}Dat";
+        ClassName = GenerateClassName(table.Name);
 
-        FileName = $"{ClassName}.cs";
+        FileName = GenerateFileName(ClassName);
+
         Code = Generate();
+    }
+
+    /// <summary>
+    /// Generates the class name for the table.
+    /// </summary>
+    /// <param name="tableName">Table name to generate the class name for.</param>
+    /// <returns>class name string.</returns>
+    internal static string GenerateClassName(string tableName)
+    {
+        return $"{tableName}Dat";
+    }
+
+    /// <summary>
+    /// Generates the file name based on the class name.
+    /// </summary>
+    /// <param name="className">class name for which the method generates the file name for.</param>
+    /// <returns>file name string.</returns>
+    private static string GenerateFileName(string className)
+    {
+        return $"{className}.cs";
     }
 
     private string Generate()
@@ -185,6 +206,11 @@ internal sealed class DatFileGenerator
 
             foreach (var line in lines)
             {
+                if (string.IsNullOrEmpty(line))
+                {
+                    continue;
+                }
+
                 builder.AppendLine($"{Tabs.Tab1}{line}");
             }
 
@@ -225,8 +251,6 @@ internal sealed class DatFileGenerator
 
                 """);
 
-        AppendReferencedTablesLoading(builder, parsedColumns);
-
         AppendColumnsLoading(builder, parsedColumns);
 
         builder.AppendLine($$"""
@@ -247,21 +271,6 @@ internal sealed class DatFileGenerator
                     return objects;
                 }
             """);
-    }
-
-    private static void AppendReferencedTablesLoading(StringBuilder builder, ReadOnlyCollection<IParsedColumn> parsedColumns)
-    {
-        builder.AppendLine($"{Tabs.Tab3}// loading referenced tables if any");
-        var strings = ColumnGeneratorHelper.GetReferencedTablesLoading(parsedColumns);
-        foreach (var str in strings)
-        {
-            builder.AppendLine($"{Tabs.Tab3}{str}");
-        }
-
-        if (strings.Length != 0)
-        {
-            builder.AppendLine();
-        }
     }
 
     private static void AppendColumnsLoading(StringBuilder builder, ReadOnlyCollection<IParsedColumn> parsedColumns)

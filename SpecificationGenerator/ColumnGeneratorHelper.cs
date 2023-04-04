@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using SpecificationGenerator.ColumnGenerators;
+﻿using SpecificationGenerator.ColumnGenerators;
+using System.Collections.ObjectModel;
 
 namespace SpecificationGenerator;
 
@@ -70,5 +70,49 @@ internal static class ColumnGeneratorHelper
         }
 
         return strings;
+    }
+
+    /// <summary>
+    /// Builds a doc string with a message for referenced columns.
+    /// </summary>
+    /// <param name="referencedTable">referenced table.</param>
+    /// <param name="referencedColumn">referenced column.</param>
+    /// <returns>doc string with reference message.</returns>
+    internal static string GetReferenceString(string? referencedTable, string? referencedColumn)
+    {
+        if (referencedTable is null && referencedColumn is null)
+        {
+            return string.Empty;
+        }
+
+        var referencedClassName = GetReferencedClassName(referencedTable);
+        var referencedColumnString = GetReferencedColumnString(referencedClassName, referencedColumn);
+
+        var str = $"""/// <remarks> references <see cref="{referencedClassName}"/> on {referencedColumnString}.</remarks>""";
+
+        return str;
+    }
+
+    private static string? GetReferencedClassName(string? referencedTable)
+    {
+        var referencedClassName = referencedTable is not null ? DatFileGenerator.GenerateClassName(referencedTable) : null;
+
+        return referencedClassName;
+    }
+
+    private static string? GetReferencedColumnString(string? referencedClassName, string? referencedColumn)
+    {
+        if (referencedColumn is not null && referencedClassName is not null)
+        {
+            return $"""<see cref="{referencedClassName}.{referencedColumn}"/>""";
+        }
+        else if (referencedClassName is not null)
+        {
+            return $"""<see cref="Specification.Get{referencedClassName}"/> index""";
+        }
+        else
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -15,6 +15,9 @@ internal sealed class StringNonArrayColumn : IParsedColumn
     public string? ReferencedTable { get; }
 
     /// <inheritdoc/>
+    public string? ReferencedColumn { get; }
+
+    /// <inheritdoc/>
     public string LoadingPropertyName { get; }
 
     /// <inheritdoc/>
@@ -30,6 +33,7 @@ internal sealed class StringNonArrayColumn : IParsedColumn
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
         ReferencedTable = column.References?.Table;
+        ReferencedColumn = column.References?.Column;
     }
 
     /// <inheritdoc/>
@@ -38,6 +42,7 @@ internal sealed class StringNonArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
+            ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
             $$"""public required string {{ClassPropertyName}} { get; init; }""",
         };
 

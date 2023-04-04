@@ -15,6 +15,9 @@ internal class RowNonArrayColumn : IParsedColumn
     public string? ReferencedTable { get; }
 
     /// <inheritdoc/>
+    public string? ReferencedColumn { get; }
+
+    /// <inheritdoc/>
     public string LoadingPropertyName { get; }
 
     /// <inheritdoc/>
@@ -29,7 +32,8 @@ internal class RowNonArrayColumn : IParsedColumn
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
-        ReferencedTable = null; // kinda a hack because it does reference the same table, needed to avoid infinite load of the same table, FIXME
+        ReferencedTable = column.References?.Table;
+        ReferencedColumn = column.References?.Column;
     }
 
     /// <inheritdoc/>
@@ -38,6 +42,7 @@ internal class RowNonArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
+            ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
             $$"""public required int? {{ClassPropertyName}} { get; init; }""",
         };
 

@@ -18,6 +18,9 @@ internal sealed class ArrayArrayColumn : IParsedColumn
     public string? ReferencedTable { get; }
 
     /// <inheritdoc/>
+    public string? ReferencedColumn { get; }
+
+    /// <inheritdoc/>
     public string LoadingPropertyName { get; }
 
     /// <inheritdoc/>
@@ -33,6 +36,7 @@ internal sealed class ArrayArrayColumn : IParsedColumn
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
         ReferencedTable = column.References?.Table;
+        ReferencedColumn = column.References?.Column;
     }
 
     /// <inheritdoc/>
@@ -41,6 +45,7 @@ internal sealed class ArrayArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
+            ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
             $$"""public required ReadOnlyCollection<int> {{ClassPropertyName}} { get; init; }""",
         };
 

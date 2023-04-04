@@ -21,6 +21,11 @@ internal interface IParsedColumn
     public string? ReferencedTable { get; }
 
     /// <summary>
+    /// Gets referenced column.
+    /// </summary>
+    public string? ReferencedColumn { get; }
+
+    /// <summary>
     /// Gets loading property name.
     /// </summary>
     public string LoadingPropertyName { get; }
