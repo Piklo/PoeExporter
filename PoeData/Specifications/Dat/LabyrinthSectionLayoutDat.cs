@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LabyrinthSectionLayout.dat data.
 /// </summary>
-public sealed partial class LabyrinthSectionLayoutDat : ISpecificationFile<LabyrinthSectionLayoutDat>
+public sealed partial class LabyrinthSectionLayoutDat : IDat<LabyrinthSectionLayoutDat>
 {
     /// <summary> Gets LabyrinthSectionKey.</summary>
     /// <remarks> references <see cref="LabyrinthSectionDat"/> on <see cref="Specification.GetLabyrinthSectionDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BeyondDemons.dat data.
 /// </summary>
-public sealed partial class BeyondDemonsDat : ISpecificationFile<BeyondDemonsDat>
+public sealed partial class BeyondDemonsDat : IDat<BeyondDemonsDat>
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

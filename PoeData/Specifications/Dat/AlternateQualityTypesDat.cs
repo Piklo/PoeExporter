@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AlternateQualityTypes.dat data.
 /// </summary>
-public sealed partial class AlternateQualityTypesDat : ISpecificationFile<AlternateQualityTypesDat>
+public sealed partial class AlternateQualityTypesDat : IDat<AlternateQualityTypesDat>
 {
     /// <summary> Gets StatsKey.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

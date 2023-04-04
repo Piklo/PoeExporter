@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionRandomModCategories.dat data.
 /// </summary>
-public sealed partial class AfflictionRandomModCategoriesDat : ISpecificationFile<AfflictionRandomModCategoriesDat>
+public sealed partial class AfflictionRandomModCategoriesDat : IDat<AfflictionRandomModCategoriesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GroundEffects.dat data.
 /// </summary>
-public sealed partial class GroundEffectsDat : ISpecificationFile<GroundEffectsDat>
+public sealed partial class GroundEffectsDat : IDat<GroundEffectsDat>
 {
     /// <summary> Gets GroundEffectTypesKey.</summary>
     /// <remarks> references <see cref="GroundEffectTypesDat"/> on <see cref="Specification.GetGroundEffectTypesDat"/> index.</remarks>

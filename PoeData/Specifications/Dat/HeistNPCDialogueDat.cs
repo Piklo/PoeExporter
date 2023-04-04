@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistNPCDialogue.dat data.
 /// </summary>
-public sealed partial class HeistNPCDialogueDat : ISpecificationFile<HeistNPCDialogueDat>
+public sealed partial class HeistNPCDialogueDat : IDat<HeistNPCDialogueDat>
 {
     /// <summary> Gets DialogueEventKey.</summary>
     /// <remarks> references <see cref="DialogueEventDat"/> on <see cref="Specification.GetDialogueEventDat"/> index.</remarks>

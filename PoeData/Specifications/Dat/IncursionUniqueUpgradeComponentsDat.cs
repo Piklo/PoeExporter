@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing IncursionUniqueUpgradeComponents.dat data.
 /// </summary>
-public sealed partial class IncursionUniqueUpgradeComponentsDat : ISpecificationFile<IncursionUniqueUpgradeComponentsDat>
+public sealed partial class IncursionUniqueUpgradeComponentsDat : IDat<IncursionUniqueUpgradeComponentsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

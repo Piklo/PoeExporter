@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EclipseMods.dat data.
 /// </summary>
-public sealed partial class EclipseModsDat : ISpecificationFile<EclipseModsDat>
+public sealed partial class EclipseModsDat : IDat<EclipseModsDat>
 {
     /// <summary> Gets Key.</summary>
     public required string Key { get; init; }

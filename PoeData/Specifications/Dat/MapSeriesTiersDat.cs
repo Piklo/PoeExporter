@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapSeriesTiers.dat data.
 /// </summary>
-public sealed partial class MapSeriesTiersDat : ISpecificationFile<MapSeriesTiersDat>
+public sealed partial class MapSeriesTiersDat : IDat<MapSeriesTiersDat>
 {
     /// <summary> Gets MapsKey.</summary>
     /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>

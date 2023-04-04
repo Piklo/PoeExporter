@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UniqueMapInfo.dat data.
 /// </summary>
-public sealed partial class UniqueMapInfoDat : ISpecificationFile<UniqueMapInfoDat>
+public sealed partial class UniqueMapInfoDat : IDat<UniqueMapInfoDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

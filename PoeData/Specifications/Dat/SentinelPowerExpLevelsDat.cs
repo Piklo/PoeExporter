@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SentinelPowerExpLevels.dat data.
 /// </summary>
-public sealed partial class SentinelPowerExpLevelsDat : ISpecificationFile<SentinelPowerExpLevelsDat>
+public sealed partial class SentinelPowerExpLevelsDat : IDat<SentinelPowerExpLevelsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LeagueProgressQuestFlags.dat data.
 /// </summary>
-public sealed partial class LeagueProgressQuestFlagsDat : ISpecificationFile<LeagueProgressQuestFlagsDat>
+public sealed partial class LeagueProgressQuestFlagsDat : IDat<LeagueProgressQuestFlagsDat>
 {
     /// <summary> Gets QuestFlag.</summary>
     /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>

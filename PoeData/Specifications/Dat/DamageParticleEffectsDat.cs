@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DamageParticleEffects.dat data.
 /// </summary>
-public sealed partial class DamageParticleEffectsDat : ISpecificationFile<DamageParticleEffectsDat>
+public sealed partial class DamageParticleEffectsDat : IDat<DamageParticleEffectsDat>
 {
     /// <summary> Gets DamageParticleEffectTypes.</summary>
     /// <remarks> references <see cref="DamageParticleEffectTypesDat"/> on <see cref="Specification.GetDamageParticleEffectTypesDat"/> index.</remarks>

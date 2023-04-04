@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HarvestPlantBoosters.dat data.
 /// </summary>
-public sealed partial class HarvestPlantBoostersDat : ISpecificationFile<HarvestPlantBoostersDat>
+public sealed partial class HarvestPlantBoostersDat : IDat<HarvestPlantBoostersDat>
 {
     /// <summary> Gets HarvestObjectsKey.</summary>
     /// <remarks> references <see cref="HarvestObjectsDat"/> on <see cref="Specification.GetHarvestObjectsDat"/> index.</remarks>

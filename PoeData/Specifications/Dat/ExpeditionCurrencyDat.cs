@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ExpeditionCurrency.dat data.
 /// </summary>
-public sealed partial class ExpeditionCurrencyDat : ISpecificationFile<ExpeditionCurrencyDat>
+public sealed partial class ExpeditionCurrencyDat : IDat<ExpeditionCurrencyDat>
 {
     /// <summary> Gets BaseItemType.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

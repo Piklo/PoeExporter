@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapCreationInformation.dat data.
 /// </summary>
-public sealed partial class MapCreationInformationDat : ISpecificationFile<MapCreationInformationDat>
+public sealed partial class MapCreationInformationDat : IDat<MapCreationInformationDat>
 {
     /// <summary> Gets MapsKey.</summary>
     /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>

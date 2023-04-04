@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ShopCurrency.dat data.
 /// </summary>
-public sealed partial class ShopCurrencyDat : ISpecificationFile<ShopCurrencyDat>
+public sealed partial class ShopCurrencyDat : IDat<ShopCurrencyDat>
 {
     /// <summary> Gets CurrencyCode.</summary>
     public required string CurrencyCode { get; init; }

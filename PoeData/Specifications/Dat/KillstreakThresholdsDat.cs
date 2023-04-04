@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing KillstreakThresholds.dat data.
 /// </summary>
-public sealed partial class KillstreakThresholdsDat : ISpecificationFile<KillstreakThresholdsDat>
+public sealed partial class KillstreakThresholdsDat : IDat<KillstreakThresholdsDat>
 {
     /// <summary> Gets Kills.</summary>
     public required int Kills { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UltimatumItemisedRewards.dat data.
 /// </summary>
-public sealed partial class UltimatumItemisedRewardsDat : ISpecificationFile<UltimatumItemisedRewardsDat>
+public sealed partial class UltimatumItemisedRewardsDat : IDat<UltimatumItemisedRewardsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

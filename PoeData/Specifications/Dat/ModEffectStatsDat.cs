@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ModEffectStats.dat data.
 /// </summary>
-public sealed partial class ModEffectStatsDat : ISpecificationFile<ModEffectStatsDat>
+public sealed partial class ModEffectStatsDat : IDat<ModEffectStatsDat>
 {
     /// <summary> Gets StatsKey.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

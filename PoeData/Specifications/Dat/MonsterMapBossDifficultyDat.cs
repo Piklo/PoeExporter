@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterMapBossDifficulty.dat data.
 /// </summary>
-public sealed partial class MonsterMapBossDifficultyDat : ISpecificationFile<MonsterMapBossDifficultyDat>
+public sealed partial class MonsterMapBossDifficultyDat : IDat<MonsterMapBossDifficultyDat>
 {
     /// <summary> Gets MapLevel.</summary>
     public required int MapLevel { get; init; }

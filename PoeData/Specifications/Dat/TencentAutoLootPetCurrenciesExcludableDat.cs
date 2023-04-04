@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TencentAutoLootPetCurrenciesExcludable.dat data.
 /// </summary>
-public sealed partial class TencentAutoLootPetCurrenciesExcludableDat : ISpecificationFile<TencentAutoLootPetCurrenciesExcludableDat>
+public sealed partial class TencentAutoLootPetCurrenciesExcludableDat : IDat<TencentAutoLootPetCurrenciesExcludableDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

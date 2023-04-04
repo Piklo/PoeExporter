@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LeagueInfo.dat data.
 /// </summary>
-public sealed partial class LeagueInfoDat : ISpecificationFile<LeagueInfoDat>
+public sealed partial class LeagueInfoDat : IDat<LeagueInfoDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

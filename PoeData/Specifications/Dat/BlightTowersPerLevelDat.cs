@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightTowersPerLevel.dat data.
 /// </summary>
-public sealed partial class BlightTowersPerLevelDat : ISpecificationFile<BlightTowersPerLevelDat>
+public sealed partial class BlightTowersPerLevelDat : IDat<BlightTowersPerLevelDat>
 {
     /// <summary> Gets BlightTowersKey.</summary>
     /// <remarks> references <see cref="BlightTowersDat"/> on <see cref="Specification.GetBlightTowersDat"/> index.</remarks>

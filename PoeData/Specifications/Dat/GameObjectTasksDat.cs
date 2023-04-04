@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GameObjectTasks.dat data.
 /// </summary>
-public sealed partial class GameObjectTasksDat : ISpecificationFile<GameObjectTasksDat>
+public sealed partial class GameObjectTasksDat : IDat<GameObjectTasksDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

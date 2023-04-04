@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HarvestSpecialCraftOptions.dat data.
 /// </summary>
-public sealed partial class HarvestSpecialCraftOptionsDat : ISpecificationFile<HarvestSpecialCraftOptionsDat>
+public sealed partial class HarvestSpecialCraftOptionsDat : IDat<HarvestSpecialCraftOptionsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

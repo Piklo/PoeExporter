@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TerrainPlugins.dat data.
 /// </summary>
-public sealed partial class TerrainPluginsDat : ISpecificationFile<TerrainPluginsDat>
+public sealed partial class TerrainPluginsDat : IDat<TerrainPluginsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

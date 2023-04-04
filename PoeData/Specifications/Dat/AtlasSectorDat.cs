@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasSector.dat data.
 /// </summary>
-public sealed partial class AtlasSectorDat : ISpecificationFile<AtlasSectorDat>
+public sealed partial class AtlasSectorDat : IDat<AtlasSectorDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

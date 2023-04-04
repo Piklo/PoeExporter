@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasRegionUpgradeRegions.dat data.
 /// </summary>
-public sealed partial class AtlasRegionUpgradeRegionsDat : ISpecificationFile<AtlasRegionUpgradeRegionsDat>
+public sealed partial class AtlasRegionUpgradeRegionsDat : IDat<AtlasRegionUpgradeRegionsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

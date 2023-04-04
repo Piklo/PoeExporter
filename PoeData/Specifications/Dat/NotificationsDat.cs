@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Notifications.dat data.
 /// </summary>
-public sealed partial class NotificationsDat : ISpecificationFile<NotificationsDat>
+public sealed partial class NotificationsDat : IDat<NotificationsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

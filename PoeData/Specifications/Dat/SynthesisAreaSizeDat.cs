@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SynthesisAreaSize.dat data.
 /// </summary>
-public sealed partial class SynthesisAreaSizeDat : ISpecificationFile<SynthesisAreaSizeDat>
+public sealed partial class SynthesisAreaSizeDat : IDat<SynthesisAreaSizeDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

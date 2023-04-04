@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ApplyDamageFunctions.dat data.
 /// </summary>
-public sealed partial class ApplyDamageFunctionsDat : ISpecificationFile<ApplyDamageFunctionsDat>
+public sealed partial class ApplyDamageFunctionsDat : IDat<ApplyDamageFunctionsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

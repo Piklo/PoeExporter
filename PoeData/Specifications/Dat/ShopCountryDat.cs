@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ShopCountry.dat data.
 /// </summary>
-public sealed partial class ShopCountryDat : ISpecificationFile<ShopCountryDat>
+public sealed partial class ShopCountryDat : IDat<ShopCountryDat>
 {
     /// <summary> Gets CountryTwoLetterCode.</summary>
     public required string CountryTwoLetterCode { get; init; }

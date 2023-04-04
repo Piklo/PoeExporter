@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LabyrinthRewardTypes.dat data.
 /// </summary>
-public sealed partial class LabyrinthRewardTypesDat : ISpecificationFile<LabyrinthRewardTypesDat>
+public sealed partial class LabyrinthRewardTypesDat : IDat<LabyrinthRewardTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

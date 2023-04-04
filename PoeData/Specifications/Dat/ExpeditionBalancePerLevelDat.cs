@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ExpeditionBalancePerLevel.dat data.
 /// </summary>
-public sealed partial class ExpeditionBalancePerLevelDat : ISpecificationFile<ExpeditionBalancePerLevelDat>
+public sealed partial class ExpeditionBalancePerLevelDat : IDat<ExpeditionBalancePerLevelDat>
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

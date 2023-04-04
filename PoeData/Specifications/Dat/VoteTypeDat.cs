@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing VoteType.dat data.
 /// </summary>
-public sealed partial class VoteTypeDat : ISpecificationFile<VoteTypeDat>
+public sealed partial class VoteTypeDat : IDat<VoteTypeDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveAzuriteShop.dat data.
 /// </summary>
-public sealed partial class DelveAzuriteShopDat : ISpecificationFile<DelveAzuriteShopDat>
+public sealed partial class DelveAzuriteShopDat : IDat<DelveAzuriteShopDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

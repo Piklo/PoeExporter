@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RaceTimes.dat data.
 /// </summary>
-public sealed partial class RaceTimesDat : ISpecificationFile<RaceTimesDat>
+public sealed partial class RaceTimesDat : IDat<RaceTimesDat>
 {
     /// <summary> Gets RacesKey.</summary>
     /// <remarks> references <see cref="RacesDat"/> on <see cref="Specification.GetRacesDat"/> index.</remarks>

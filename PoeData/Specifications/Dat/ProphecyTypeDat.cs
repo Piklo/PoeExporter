@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ProphecyType.dat data.
 /// </summary>
-public sealed partial class ProphecyTypeDat : ISpecificationFile<ProphecyTypeDat>
+public sealed partial class ProphecyTypeDat : IDat<ProphecyTypeDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SurgeEffects.dat data.
 /// </summary>
-public sealed partial class SurgeEffectsDat : ISpecificationFile<SurgeEffectsDat>
+public sealed partial class SurgeEffectsDat : IDat<SurgeEffectsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

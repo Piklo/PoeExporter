@@ -4,7 +4,7 @@
 /// Interface containing base dat file methods.
 /// </summary>
 /// <typeparam name="T">Type of the dat file.</typeparam>
-public interface ISpecificationFile<T>
+public interface IDat<T>
 {
     /// <summary>
     /// Loads dat file.

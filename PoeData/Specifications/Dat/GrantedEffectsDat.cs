@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GrantedEffects.dat data.
 /// </summary>
-public sealed partial class GrantedEffectsDat : ISpecificationFile<GrantedEffectsDat>
+public sealed partial class GrantedEffectsDat : IDat<GrantedEffectsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

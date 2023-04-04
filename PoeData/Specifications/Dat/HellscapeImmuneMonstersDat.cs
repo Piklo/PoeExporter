@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeImmuneMonsters.dat data.
 /// </summary>
-public sealed partial class HellscapeImmuneMonstersDat : ISpecificationFile<HellscapeImmuneMonstersDat>
+public sealed partial class HellscapeImmuneMonstersDat : IDat<HellscapeImmuneMonstersDat>
 {
     /// <summary> Gets Monster.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

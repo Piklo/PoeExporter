@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing NPCShop.dat data.
 /// </summary>
-public sealed partial class NPCShopDat : ISpecificationFile<NPCShopDat>
+public sealed partial class NPCShopDat : IDat<NPCShopDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

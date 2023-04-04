@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BreachstoneUpgrades.dat data.
 /// </summary>
-public sealed partial class BreachstoneUpgradesDat : ISpecificationFile<BreachstoneUpgradesDat>
+public sealed partial class BreachstoneUpgradesDat : IDat<BreachstoneUpgradesDat>
 {
     /// <summary> Gets BaseItemTypesKey0.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

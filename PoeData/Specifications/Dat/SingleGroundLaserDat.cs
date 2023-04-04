@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SingleGroundLaser.dat data.
 /// </summary>
-public sealed partial class SingleGroundLaserDat : ISpecificationFile<SingleGroundLaserDat>
+public sealed partial class SingleGroundLaserDat : IDat<SingleGroundLaserDat>
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MissionTimerTypes.dat data.
 /// </summary>
-public sealed partial class MissionTimerTypesDat : ISpecificationFile<MissionTimerTypesDat>
+public sealed partial class MissionTimerTypesDat : IDat<MissionTimerTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

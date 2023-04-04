@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EffectDrivenSkill.dat data.
 /// </summary>
-public sealed partial class EffectDrivenSkillDat : ISpecificationFile<EffectDrivenSkillDat>
+public sealed partial class EffectDrivenSkillDat : IDat<EffectDrivenSkillDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing FixedMissions.dat data.
 /// </summary>
-public sealed partial class FixedMissionsDat : ISpecificationFile<FixedMissionsDat>
+public sealed partial class FixedMissionsDat : IDat<FixedMissionsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     /// <remarks> references <see cref="QuestAchievementsDat"/> on <see cref="Specification.GetQuestAchievementsDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LegionBalancePerLevel.dat data.
 /// </summary>
-public sealed partial class LegionBalancePerLevelDat : ISpecificationFile<LegionBalancePerLevelDat>
+public sealed partial class LegionBalancePerLevelDat : IDat<LegionBalancePerLevelDat>
 {
     /// <summary> Gets MinLevel.</summary>
     public required int MinLevel { get; init; }

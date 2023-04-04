@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ComponentCharges.dat data.
 /// </summary>
-public sealed partial class ComponentChargesDat : ISpecificationFile<ComponentChargesDat>
+public sealed partial class ComponentChargesDat : IDat<ComponentChargesDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="BaseItemTypesDat.Id"/>.</remarks>

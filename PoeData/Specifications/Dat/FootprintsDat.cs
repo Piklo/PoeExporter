@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Footprints.dat data.
 /// </summary>
-public sealed partial class FootprintsDat : ISpecificationFile<FootprintsDat>
+public sealed partial class FootprintsDat : IDat<FootprintsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

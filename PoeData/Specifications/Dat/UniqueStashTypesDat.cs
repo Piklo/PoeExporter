@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UniqueStashTypes.dat data.
 /// </summary>
-public sealed partial class UniqueStashTypesDat : ISpecificationFile<UniqueStashTypesDat>
+public sealed partial class UniqueStashTypesDat : IDat<UniqueStashTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

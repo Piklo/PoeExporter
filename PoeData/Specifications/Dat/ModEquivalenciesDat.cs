@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ModEquivalencies.dat data.
 /// </summary>
-public sealed partial class ModEquivalenciesDat : ISpecificationFile<ModEquivalenciesDat>
+public sealed partial class ModEquivalenciesDat : IDat<ModEquivalenciesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

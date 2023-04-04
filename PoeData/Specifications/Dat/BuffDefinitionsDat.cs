@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BuffDefinitions.dat data.
 /// </summary>
-public sealed partial class BuffDefinitionsDat : ISpecificationFile<BuffDefinitionsDat>
+public sealed partial class BuffDefinitionsDat : IDat<BuffDefinitionsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

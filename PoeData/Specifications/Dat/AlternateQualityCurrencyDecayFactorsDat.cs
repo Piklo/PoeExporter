@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AlternateQualityCurrencyDecayFactors.dat data.
 /// </summary>
-public sealed partial class AlternateQualityCurrencyDecayFactorsDat : ISpecificationFile<AlternateQualityCurrencyDecayFactorsDat>
+public sealed partial class AlternateQualityCurrencyDecayFactorsDat : IDat<AlternateQualityCurrencyDecayFactorsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

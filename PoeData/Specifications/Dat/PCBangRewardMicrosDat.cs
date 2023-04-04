@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PCBangRewardMicros.dat data.
 /// </summary>
-public sealed partial class PCBangRewardMicrosDat : ISpecificationFile<PCBangRewardMicrosDat>
+public sealed partial class PCBangRewardMicrosDat : IDat<PCBangRewardMicrosDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

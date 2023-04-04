@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ModFamily.dat data.
 /// </summary>
-public sealed partial class ModFamilyDat : ISpecificationFile<ModFamilyDat>
+public sealed partial class ModFamilyDat : IDat<ModFamilyDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

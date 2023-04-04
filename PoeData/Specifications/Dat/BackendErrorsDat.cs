@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BackendErrors.dat data.
 /// </summary>
-public sealed partial class BackendErrorsDat : ISpecificationFile<BackendErrorsDat>
+public sealed partial class BackendErrorsDat : IDat<BackendErrorsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

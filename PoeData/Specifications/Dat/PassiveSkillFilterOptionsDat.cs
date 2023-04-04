@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PassiveSkillFilterOptions.dat data.
 /// </summary>
-public sealed partial class PassiveSkillFilterOptionsDat : ISpecificationFile<PassiveSkillFilterOptionsDat>
+public sealed partial class PassiveSkillFilterOptionsDat : IDat<PassiveSkillFilterOptionsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

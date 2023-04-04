@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GlobalAudioConfig.dat data.
 /// </summary>
-public sealed partial class GlobalAudioConfigDat : ISpecificationFile<GlobalAudioConfigDat>
+public sealed partial class GlobalAudioConfigDat : IDat<GlobalAudioConfigDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

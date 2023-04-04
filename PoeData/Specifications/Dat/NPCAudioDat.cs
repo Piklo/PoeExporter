@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing NPCAudio.dat data.
 /// </summary>
-public sealed partial class NPCAudioDat : ISpecificationFile<NPCAudioDat>
+public sealed partial class NPCAudioDat : IDat<NPCAudioDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

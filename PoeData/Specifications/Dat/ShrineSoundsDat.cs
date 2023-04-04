@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ShrineSounds.dat data.
 /// </summary>
-public sealed partial class ShrineSoundsDat : ISpecificationFile<ShrineSoundsDat>
+public sealed partial class ShrineSoundsDat : IDat<ShrineSoundsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

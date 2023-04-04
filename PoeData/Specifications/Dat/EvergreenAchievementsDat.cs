@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EvergreenAchievements.dat data.
 /// </summary>
-public sealed partial class EvergreenAchievementsDat : ISpecificationFile<EvergreenAchievementsDat>
+public sealed partial class EvergreenAchievementsDat : IDat<EvergreenAchievementsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

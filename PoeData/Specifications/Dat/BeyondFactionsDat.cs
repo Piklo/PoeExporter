@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BeyondFactions.dat data.
 /// </summary>
-public sealed partial class BeyondFactionsDat : ISpecificationFile<BeyondFactionsDat>
+public sealed partial class BeyondFactionsDat : IDat<BeyondFactionsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

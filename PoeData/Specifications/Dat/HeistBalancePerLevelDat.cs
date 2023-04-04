@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistBalancePerLevel.dat data.
 /// </summary>
-public sealed partial class HeistBalancePerLevelDat : ISpecificationFile<HeistBalancePerLevelDat>
+public sealed partial class HeistBalancePerLevelDat : IDat<HeistBalancePerLevelDat>
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

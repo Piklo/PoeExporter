@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DropEffects.dat data.
 /// </summary>
-public sealed partial class DropEffectsDat : ISpecificationFile<DropEffectsDat>
+public sealed partial class DropEffectsDat : IDat<DropEffectsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

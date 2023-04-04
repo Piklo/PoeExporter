@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing WarbandsMapGraph.dat data.
 /// </summary>
-public sealed partial class WarbandsMapGraphDat : ISpecificationFile<WarbandsMapGraphDat>
+public sealed partial class WarbandsMapGraphDat : IDat<WarbandsMapGraphDat>
 {
     /// <summary> Gets WorldAreasKey.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

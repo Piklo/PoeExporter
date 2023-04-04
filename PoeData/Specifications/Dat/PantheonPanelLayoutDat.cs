@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PantheonPanelLayout.dat data.
 /// </summary>
-public sealed partial class PantheonPanelLayoutDat : ISpecificationFile<PantheonPanelLayoutDat>
+public sealed partial class PantheonPanelLayoutDat : IDat<PantheonPanelLayoutDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

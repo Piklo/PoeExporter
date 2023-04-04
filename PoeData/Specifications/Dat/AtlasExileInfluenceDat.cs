@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasExileInfluence.dat data.
 /// </summary>
-public sealed partial class AtlasExileInfluenceDat : ISpecificationFile<AtlasExileInfluenceDat>
+public sealed partial class AtlasExileInfluenceDat : IDat<AtlasExileInfluenceDat>
 {
     /// <summary> Gets Conqueror.</summary>
     /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.GetAtlasExilesDat"/> index.</remarks>

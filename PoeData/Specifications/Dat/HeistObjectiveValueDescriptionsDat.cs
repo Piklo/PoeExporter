@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistObjectiveValueDescriptions.dat data.
 /// </summary>
-public sealed partial class HeistObjectiveValueDescriptionsDat : ISpecificationFile<HeistObjectiveValueDescriptionsDat>
+public sealed partial class HeistObjectiveValueDescriptionsDat : IDat<HeistObjectiveValueDescriptionsDat>
 {
     /// <summary> Gets Tier.</summary>
     public required int Tier { get; init; }

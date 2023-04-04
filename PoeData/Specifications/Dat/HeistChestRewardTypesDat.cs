@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistChestRewardTypes.dat data.
 /// </summary>
-public sealed partial class HeistChestRewardTypesDat : ISpecificationFile<HeistChestRewardTypesDat>
+public sealed partial class HeistChestRewardTypesDat : IDat<HeistChestRewardTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

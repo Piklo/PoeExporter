@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeMonsterPacks.dat data.
 /// </summary>
-public sealed partial class HellscapeMonsterPacksDat : ISpecificationFile<HellscapeMonsterPacksDat>
+public sealed partial class HellscapeMonsterPacksDat : IDat<HellscapeMonsterPacksDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

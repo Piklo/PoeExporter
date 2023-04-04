@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DivinationCardArt.dat data.
 /// </summary>
-public sealed partial class DivinationCardArtDat : ISpecificationFile<DivinationCardArtDat>
+public sealed partial class DivinationCardArtDat : IDat<DivinationCardArtDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

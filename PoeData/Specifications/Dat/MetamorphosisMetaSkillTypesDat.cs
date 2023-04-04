@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MetamorphosisMetaSkillTypes.dat data.
 /// </summary>
-public sealed partial class MetamorphosisMetaSkillTypesDat : ISpecificationFile<MetamorphosisMetaSkillTypesDat>
+public sealed partial class MetamorphosisMetaSkillTypesDat : IDat<MetamorphosisMetaSkillTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

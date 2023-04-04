@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeMods.dat data.
 /// </summary>
-public sealed partial class HellscapeModsDat : ISpecificationFile<HellscapeModsDat>
+public sealed partial class HellscapeModsDat : IDat<HellscapeModsDat>
 {
     /// <summary> Gets Mod.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

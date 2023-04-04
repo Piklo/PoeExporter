@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DefaultMonsterStats.dat data.
 /// </summary>
-public sealed partial class DefaultMonsterStatsDat : ISpecificationFile<DefaultMonsterStatsDat>
+public sealed partial class DefaultMonsterStatsDat : IDat<DefaultMonsterStatsDat>
 {
     /// <summary> Gets DisplayLevel.</summary>
     public required string DisplayLevel { get; init; }

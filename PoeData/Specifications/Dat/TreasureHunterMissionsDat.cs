@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TreasureHunterMissions.dat data.
 /// </summary>
-public sealed partial class TreasureHunterMissionsDat : ISpecificationFile<TreasureHunterMissionsDat>
+public sealed partial class TreasureHunterMissionsDat : IDat<TreasureHunterMissionsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

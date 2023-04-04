@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionRewardMapMods.dat data.
 /// </summary>
-public sealed partial class AfflictionRewardMapModsDat : ISpecificationFile<AfflictionRewardMapModsDat>
+public sealed partial class AfflictionRewardMapModsDat : IDat<AfflictionRewardMapModsDat>
 {
     /// <summary> Gets ModsKey.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

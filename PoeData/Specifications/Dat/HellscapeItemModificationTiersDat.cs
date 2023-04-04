@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeItemModificationTiers.dat data.
 /// </summary>
-public sealed partial class HellscapeItemModificationTiersDat : ISpecificationFile<HellscapeItemModificationTiersDat>
+public sealed partial class HellscapeItemModificationTiersDat : IDat<HellscapeItemModificationTiersDat>
 {
     /// <summary> Gets Tier.</summary>
     public required int Tier { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GemTags.dat data.
 /// </summary>
-public sealed partial class GemTagsDat : ISpecificationFile<GemTagsDat>
+public sealed partial class GemTagsDat : IDat<GemTagsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

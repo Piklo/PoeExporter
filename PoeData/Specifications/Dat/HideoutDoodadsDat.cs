@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HideoutDoodads.dat data.
 /// </summary>
-public sealed partial class HideoutDoodadsDat : ISpecificationFile<HideoutDoodadsDat>
+public sealed partial class HideoutDoodadsDat : IDat<HideoutDoodadsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

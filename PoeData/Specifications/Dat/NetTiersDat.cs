@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing NetTiers.dat data.
 /// </summary>
-public sealed partial class NetTiersDat : ISpecificationFile<NetTiersDat>
+public sealed partial class NetTiersDat : IDat<NetTiersDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

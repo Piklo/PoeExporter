@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterDeathAchievements.dat data.
 /// </summary>
-public sealed partial class MonsterDeathAchievementsDat : ISpecificationFile<MonsterDeathAchievementsDat>
+public sealed partial class MonsterDeathAchievementsDat : IDat<MonsterDeathAchievementsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

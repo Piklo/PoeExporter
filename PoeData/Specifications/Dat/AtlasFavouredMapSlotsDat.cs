@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasFavouredMapSlots.dat data.
 /// </summary>
-public sealed partial class AtlasFavouredMapSlotsDat : ISpecificationFile<AtlasFavouredMapSlotsDat>
+public sealed partial class AtlasFavouredMapSlotsDat : IDat<AtlasFavouredMapSlotsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

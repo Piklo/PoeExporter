@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ReminderText.dat data.
 /// </summary>
-public sealed partial class ReminderTextDat : ISpecificationFile<ReminderTextDat>
+public sealed partial class ReminderTextDat : IDat<ReminderTextDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

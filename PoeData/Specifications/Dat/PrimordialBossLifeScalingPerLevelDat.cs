@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PrimordialBossLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class PrimordialBossLifeScalingPerLevelDat : ISpecificationFile<PrimordialBossLifeScalingPerLevelDat>
+public sealed partial class PrimordialBossLifeScalingPerLevelDat : IDat<PrimordialBossLifeScalingPerLevelDat>
 {
     /// <summary> Gets AreaLevel.</summary>
     public required int AreaLevel { get; init; }

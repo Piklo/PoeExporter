@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MagicMonsterLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class MagicMonsterLifeScalingPerLevelDat : ISpecificationFile<MagicMonsterLifeScalingPerLevelDat>
+public sealed partial class MagicMonsterLifeScalingPerLevelDat : IDat<MagicMonsterLifeScalingPerLevelDat>
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

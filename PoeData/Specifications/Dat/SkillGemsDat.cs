@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SkillGems.dat data.
 /// </summary>
-public sealed partial class SkillGemsDat : ISpecificationFile<SkillGemsDat>
+public sealed partial class SkillGemsDat : IDat<SkillGemsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

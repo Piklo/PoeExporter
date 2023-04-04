@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BindableVirtualKeys.dat data.
 /// </summary>
-public sealed partial class BindableVirtualKeysDat : ISpecificationFile<BindableVirtualKeysDat>
+public sealed partial class BindableVirtualKeysDat : IDat<BindableVirtualKeysDat>
 {
     /// <summary> Gets KeyCode.</summary>
     public required int KeyCode { get; init; }

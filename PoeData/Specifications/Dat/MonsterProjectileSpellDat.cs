@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterProjectileSpell.dat data.
 /// </summary>
-public sealed partial class MonsterProjectileSpellDat : ISpecificationFile<MonsterProjectileSpellDat>
+public sealed partial class MonsterProjectileSpellDat : IDat<MonsterProjectileSpellDat>
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

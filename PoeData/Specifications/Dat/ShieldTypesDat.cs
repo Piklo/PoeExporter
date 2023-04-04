@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ShieldTypes.dat data.
 /// </summary>
-public sealed partial class ShieldTypesDat : ISpecificationFile<ShieldTypesDat>
+public sealed partial class ShieldTypesDat : IDat<ShieldTypesDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveUpgrades.dat data.
 /// </summary>
-public sealed partial class DelveUpgradesDat : ISpecificationFile<DelveUpgradesDat>
+public sealed partial class DelveUpgradesDat : IDat<DelveUpgradesDat>
 {
     /// <summary> Gets DelveUpgradeTypeKey.</summary>
     public required int DelveUpgradeTypeKey { get; init; }

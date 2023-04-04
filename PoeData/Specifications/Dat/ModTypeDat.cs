@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ModType.dat data.
 /// </summary>
-public sealed partial class ModTypeDat : ISpecificationFile<ModTypeDat>
+public sealed partial class ModTypeDat : IDat<ModTypeDat>
 {
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }

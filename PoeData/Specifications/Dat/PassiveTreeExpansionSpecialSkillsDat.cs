@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PassiveTreeExpansionSpecialSkills.dat data.
 /// </summary>
-public sealed partial class PassiveTreeExpansionSpecialSkillsDat : ISpecificationFile<PassiveTreeExpansionSpecialSkillsDat>
+public sealed partial class PassiveTreeExpansionSpecialSkillsDat : IDat<PassiveTreeExpansionSpecialSkillsDat>
 {
     /// <summary> Gets PassiveSkillsKey.</summary>
     /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>

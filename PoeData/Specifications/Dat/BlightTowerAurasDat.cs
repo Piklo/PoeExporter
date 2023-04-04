@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightTowerAuras.dat data.
 /// </summary>
-public sealed partial class BlightTowerAurasDat : ISpecificationFile<BlightTowerAurasDat>
+public sealed partial class BlightTowerAurasDat : IDat<BlightTowerAurasDat>
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

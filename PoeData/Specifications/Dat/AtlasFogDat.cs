@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasFog.dat data.
 /// </summary>
-public sealed partial class AtlasFogDat : ISpecificationFile<AtlasFogDat>
+public sealed partial class AtlasFogDat : IDat<AtlasFogDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

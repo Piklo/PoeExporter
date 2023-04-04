@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ProjectileVariations.dat data.
 /// </summary>
-public sealed partial class ProjectileVariationsDat : ISpecificationFile<ProjectileVariationsDat>
+public sealed partial class ProjectileVariationsDat : IDat<ProjectileVariationsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

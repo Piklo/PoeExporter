@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CharacterPanelDescriptionModes.dat data.
 /// </summary>
-public sealed partial class CharacterPanelDescriptionModesDat : ISpecificationFile<CharacterPanelDescriptionModesDat>
+public sealed partial class CharacterPanelDescriptionModesDat : IDat<CharacterPanelDescriptionModesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

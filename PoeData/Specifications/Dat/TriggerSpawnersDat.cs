@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TriggerSpawners.dat data.
 /// </summary>
-public sealed partial class TriggerSpawnersDat : ISpecificationFile<TriggerSpawnersDat>
+public sealed partial class TriggerSpawnersDat : IDat<TriggerSpawnersDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

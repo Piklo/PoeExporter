@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ItemVisualHeldBodyModel.dat data.
 /// </summary>
-public sealed partial class ItemVisualHeldBodyModelDat : ISpecificationFile<ItemVisualHeldBodyModelDat>
+public sealed partial class ItemVisualHeldBodyModelDat : IDat<ItemVisualHeldBodyModelDat>
 {
     /// <summary> Gets ItemVisualIdentity.</summary>
     /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>

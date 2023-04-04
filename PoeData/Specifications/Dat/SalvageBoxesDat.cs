@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SalvageBoxes.dat data.
 /// </summary>
-public sealed partial class SalvageBoxesDat : ISpecificationFile<SalvageBoxesDat>
+public sealed partial class SalvageBoxesDat : IDat<SalvageBoxesDat>
 {
     /// <summary> Gets BaseItemType.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

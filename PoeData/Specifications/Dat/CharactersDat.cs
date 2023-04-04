@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Characters.dat data.
 /// </summary>
-public sealed partial class CharactersDat : ISpecificationFile<CharactersDat>
+public sealed partial class CharactersDat : IDat<CharactersDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

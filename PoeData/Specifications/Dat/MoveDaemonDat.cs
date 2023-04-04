@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MoveDaemon.dat data.
 /// </summary>
-public sealed partial class MoveDaemonDat : ISpecificationFile<MoveDaemonDat>
+public sealed partial class MoveDaemonDat : IDat<MoveDaemonDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

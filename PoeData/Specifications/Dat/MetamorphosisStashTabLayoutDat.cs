@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MetamorphosisStashTabLayout.dat data.
 /// </summary>
-public sealed partial class MetamorphosisStashTabLayoutDat : ISpecificationFile<MetamorphosisStashTabLayoutDat>
+public sealed partial class MetamorphosisStashTabLayoutDat : IDat<MetamorphosisStashTabLayoutDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

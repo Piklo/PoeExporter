@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasPrimordialBosses.dat data.
 /// </summary>
-public sealed partial class AtlasPrimordialBossesDat : ISpecificationFile<AtlasPrimordialBossesDat>
+public sealed partial class AtlasPrimordialBossesDat : IDat<AtlasPrimordialBossesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

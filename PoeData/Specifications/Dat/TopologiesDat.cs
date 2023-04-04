@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Topologies.dat data.
 /// </summary>
-public sealed partial class TopologiesDat : ISpecificationFile<TopologiesDat>
+public sealed partial class TopologiesDat : IDat<TopologiesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BetrayalTargetJobAchievements.dat data.
 /// </summary>
-public sealed partial class BetrayalTargetJobAchievementsDat : ISpecificationFile<BetrayalTargetJobAchievementsDat>
+public sealed partial class BetrayalTargetJobAchievementsDat : IDat<BetrayalTargetJobAchievementsDat>
 {
     /// <summary> Gets BetrayalTargetsKey.</summary>
     /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>

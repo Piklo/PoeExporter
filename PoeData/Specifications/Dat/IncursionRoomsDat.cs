@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing IncursionRooms.dat data.
 /// </summary>
-public sealed partial class IncursionRoomsDat : ISpecificationFile<IncursionRoomsDat>
+public sealed partial class IncursionRoomsDat : IDat<IncursionRoomsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SynthesisMonsterExperiencePerLevel.dat data.
 /// </summary>
-public sealed partial class SynthesisMonsterExperiencePerLevelDat : ISpecificationFile<SynthesisMonsterExperiencePerLevelDat>
+public sealed partial class SynthesisMonsterExperiencePerLevelDat : IDat<SynthesisMonsterExperiencePerLevelDat>
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TableMonsterSpawners.dat data.
 /// </summary>
-public sealed partial class TableMonsterSpawnersDat : ISpecificationFile<TableMonsterSpawnersDat>
+public sealed partial class TableMonsterSpawnersDat : IDat<TableMonsterSpawnersDat>
 {
     /// <summary> Gets Metadata.</summary>
     public required string Metadata { get; init; }

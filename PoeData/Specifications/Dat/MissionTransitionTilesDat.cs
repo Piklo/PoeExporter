@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MissionTransitionTiles.dat data.
 /// </summary>
-public sealed partial class MissionTransitionTilesDat : ISpecificationFile<MissionTransitionTilesDat>
+public sealed partial class MissionTransitionTilesDat : IDat<MissionTransitionTilesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

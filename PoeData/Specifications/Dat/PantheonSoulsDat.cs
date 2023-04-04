@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PantheonSouls.dat data.
 /// </summary>
-public sealed partial class PantheonSoulsDat : ISpecificationFile<PantheonSoulsDat>
+public sealed partial class PantheonSoulsDat : IDat<PantheonSoulsDat>
 {
     /// <summary> Gets WorldArea.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

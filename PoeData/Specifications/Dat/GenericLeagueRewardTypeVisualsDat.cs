@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GenericLeagueRewardTypeVisuals.dat data.
 /// </summary>
-public sealed partial class GenericLeagueRewardTypeVisualsDat : ISpecificationFile<GenericLeagueRewardTypeVisualsDat>
+public sealed partial class GenericLeagueRewardTypeVisualsDat : IDat<GenericLeagueRewardTypeVisualsDat>
 {
     /// <summary> Gets Type.</summary>
     /// <remarks> references <see cref="GenericLeagueRewardTypesDat"/> on <see cref="Specification.GetGenericLeagueRewardTypesDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing JobRaidBrackets.dat data.
 /// </summary>
-public sealed partial class JobRaidBracketsDat : ISpecificationFile<JobRaidBracketsDat>
+public sealed partial class JobRaidBracketsDat : IDat<JobRaidBracketsDat>
 {
     /// <summary> Gets MinLevel.</summary>
     public required int MinLevel { get; init; }

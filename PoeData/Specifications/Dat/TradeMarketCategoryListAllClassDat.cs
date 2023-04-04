@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TradeMarketCategoryListAllClass.dat data.
 /// </summary>
-public sealed partial class TradeMarketCategoryListAllClassDat : ISpecificationFile<TradeMarketCategoryListAllClassDat>
+public sealed partial class TradeMarketCategoryListAllClassDat : IDat<TradeMarketCategoryListAllClassDat>
 {
     /// <summary> Gets TradeCategory.</summary>
     /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.GetTradeMarketCategoryDat"/> index.</remarks>

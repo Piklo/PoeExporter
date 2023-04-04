@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AchievementSetRewards.dat data.
 /// </summary>
-public sealed partial class AchievementSetRewardsDat : ISpecificationFile<AchievementSetRewardsDat>
+public sealed partial class AchievementSetRewardsDat : IDat<AchievementSetRewardsDat>
 {
     /// <summary> Gets SetId.</summary>
     /// <remarks> references <see cref="AchievementSetsDisplayDat"/> on <see cref="AchievementSetsDisplayDat.Id"/>.</remarks>

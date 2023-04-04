@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AreaTransitionInfo.dat data.
 /// </summary>
-public sealed partial class AreaTransitionInfoDat : ISpecificationFile<AreaTransitionInfoDat>
+public sealed partial class AreaTransitionInfoDat : IDat<AreaTransitionInfoDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

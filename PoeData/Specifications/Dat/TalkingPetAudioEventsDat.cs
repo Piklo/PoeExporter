@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TalkingPetAudioEvents.dat data.
 /// </summary>
-public sealed partial class TalkingPetAudioEventsDat : ISpecificationFile<TalkingPetAudioEventsDat>
+public sealed partial class TalkingPetAudioEventsDat : IDat<TalkingPetAudioEventsDat>
 {
     /// <summary> Gets Event.</summary>
     public required string Event { get; init; }

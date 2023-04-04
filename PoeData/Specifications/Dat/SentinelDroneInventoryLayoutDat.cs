@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SentinelDroneInventoryLayout.dat data.
 /// </summary>
-public sealed partial class SentinelDroneInventoryLayoutDat : ISpecificationFile<SentinelDroneInventoryLayoutDat>
+public sealed partial class SentinelDroneInventoryLayoutDat : IDat<SentinelDroneInventoryLayoutDat>
 {
     /// <summary> Gets DroneType.</summary>
     /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.GetDroneTypesDat"/> index.</remarks>

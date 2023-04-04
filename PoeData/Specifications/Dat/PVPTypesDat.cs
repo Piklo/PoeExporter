@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PVPTypes.dat data.
 /// </summary>
-public sealed partial class PVPTypesDat : ISpecificationFile<PVPTypesDat>
+public sealed partial class PVPTypesDat : IDat<PVPTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

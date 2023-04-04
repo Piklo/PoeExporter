@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ExpandingPulse.dat data.
 /// </summary>
-public sealed partial class ExpandingPulseDat : ISpecificationFile<ExpandingPulseDat>
+public sealed partial class ExpandingPulseDat : IDat<ExpandingPulseDat>
 {
     /// <summary> Gets IntId.</summary>
     public required int IntId { get; init; }

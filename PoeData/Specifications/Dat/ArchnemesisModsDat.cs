@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ArchnemesisMods.dat data.
 /// </summary>
-public sealed partial class ArchnemesisModsDat : ISpecificationFile<ArchnemesisModsDat>
+public sealed partial class ArchnemesisModsDat : IDat<ArchnemesisModsDat>
 {
     /// <summary> Gets Mod.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

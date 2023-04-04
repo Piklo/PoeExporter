@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SafehouseCraftingSpreeCurrencies.dat data.
 /// </summary>
-public sealed partial class SafehouseCraftingSpreeCurrenciesDat : ISpecificationFile<SafehouseCraftingSpreeCurrenciesDat>
+public sealed partial class SafehouseCraftingSpreeCurrenciesDat : IDat<SafehouseCraftingSpreeCurrenciesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

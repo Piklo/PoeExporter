@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SummonedSpecificMonstersOnDeath.dat data.
 /// </summary>
-public sealed partial class SummonedSpecificMonstersOnDeathDat : ISpecificationFile<SummonedSpecificMonstersOnDeathDat>
+public sealed partial class SummonedSpecificMonstersOnDeathDat : IDat<SummonedSpecificMonstersOnDeathDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistNPCStats.dat data.
 /// </summary>
-public sealed partial class HeistNPCStatsDat : ISpecificationFile<HeistNPCStatsDat>
+public sealed partial class HeistNPCStatsDat : IDat<HeistNPCStatsDat>
 {
     /// <summary> Gets StatsKey.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

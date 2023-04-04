@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LegionRewardTypeVisuals.dat data.
 /// </summary>
-public sealed partial class LegionRewardTypeVisualsDat : ISpecificationFile<LegionRewardTypeVisualsDat>
+public sealed partial class LegionRewardTypeVisualsDat : IDat<LegionRewardTypeVisualsDat>
 {
     /// <summary> Gets IntId.</summary>
     public required int IntId { get; init; }

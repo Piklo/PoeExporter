@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ExecuteGEAL.dat data.
 /// </summary>
-public sealed partial class ExecuteGEALDat : ISpecificationFile<ExecuteGEALDat>
+public sealed partial class ExecuteGEALDat : IDat<ExecuteGEALDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

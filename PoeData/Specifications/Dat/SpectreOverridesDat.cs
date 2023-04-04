@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SpectreOverrides.dat data.
 /// </summary>
-public sealed partial class SpectreOverridesDat : ISpecificationFile<SpectreOverridesDat>
+public sealed partial class SpectreOverridesDat : IDat<SpectreOverridesDat>
 {
     /// <summary> Gets Monster.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

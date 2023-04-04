@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Incubators.dat data.
 /// </summary>
-public sealed partial class IncubatorsDat : ISpecificationFile<IncubatorsDat>
+public sealed partial class IncubatorsDat : IDat<IncubatorsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

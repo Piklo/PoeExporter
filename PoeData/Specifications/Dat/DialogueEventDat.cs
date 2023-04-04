@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DialogueEvent.dat data.
 /// </summary>
-public sealed partial class DialogueEventDat : ISpecificationFile<DialogueEventDat>
+public sealed partial class DialogueEventDat : IDat<DialogueEventDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

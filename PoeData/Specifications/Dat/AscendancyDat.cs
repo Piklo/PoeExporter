@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Ascendancy.dat data.
 /// </summary>
-public sealed partial class AscendancyDat : ISpecificationFile<AscendancyDat>
+public sealed partial class AscendancyDat : IDat<AscendancyDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EventSeason.dat data.
 /// </summary>
-public sealed partial class EventSeasonDat : ISpecificationFile<EventSeasonDat>
+public sealed partial class EventSeasonDat : IDat<EventSeasonDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

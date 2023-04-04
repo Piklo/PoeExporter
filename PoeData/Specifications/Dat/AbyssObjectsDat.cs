@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AbyssObjects.dat data.
 /// </summary>
-public sealed partial class AbyssObjectsDat : ISpecificationFile<AbyssObjectsDat>
+public sealed partial class AbyssObjectsDat : IDat<AbyssObjectsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

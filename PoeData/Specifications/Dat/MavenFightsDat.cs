@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MavenFights.dat data.
 /// </summary>
-public sealed partial class MavenFightsDat : ISpecificationFile<MavenFightsDat>
+public sealed partial class MavenFightsDat : IDat<MavenFightsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Labyrinths.dat data.
 /// </summary>
-public sealed partial class LabyrinthsDat : ISpecificationFile<LabyrinthsDat>
+public sealed partial class LabyrinthsDat : IDat<LabyrinthsDat>
 {
     /// <summary> Gets Tier.</summary>
     public required int Tier { get; init; }

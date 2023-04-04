@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PassiveTreeExpansionJewels.dat data.
 /// </summary>
-public sealed partial class PassiveTreeExpansionJewelsDat : ISpecificationFile<PassiveTreeExpansionJewelsDat>
+public sealed partial class PassiveTreeExpansionJewelsDat : IDat<PassiveTreeExpansionJewelsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

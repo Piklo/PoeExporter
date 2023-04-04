@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GrantedEffectStatSetsPerLevel.dat data.
 /// </summary>
-public sealed partial class GrantedEffectStatSetsPerLevelDat : ISpecificationFile<GrantedEffectStatSetsPerLevelDat>
+public sealed partial class GrantedEffectStatSetsPerLevelDat : IDat<GrantedEffectStatSetsPerLevelDat>
 {
     /// <summary> Gets StatSet.</summary>
     /// <remarks> references <see cref="GrantedEffectStatSetsDat"/> on <see cref="Specification.GetGrantedEffectStatSetsDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing StatsAffectingGeneration.dat data.
 /// </summary>
-public sealed partial class StatsAffectingGenerationDat : ISpecificationFile<StatsAffectingGenerationDat>
+public sealed partial class StatsAffectingGenerationDat : IDat<StatsAffectingGenerationDat>
 {
     /// <summary> Gets Stat.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

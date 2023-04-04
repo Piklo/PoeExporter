@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionRecycleSalvageValues.dat data.
 /// </summary>
-public sealed partial class MicrotransactionRecycleSalvageValuesDat : ISpecificationFile<MicrotransactionRecycleSalvageValuesDat>
+public sealed partial class MicrotransactionRecycleSalvageValuesDat : IDat<MicrotransactionRecycleSalvageValuesDat>
 {
     /// <summary> Gets BaseItemType.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SentinelPassiveStats.dat data.
 /// </summary>
-public sealed partial class SentinelPassiveStatsDat : ISpecificationFile<SentinelPassiveStatsDat>
+public sealed partial class SentinelPassiveStatsDat : IDat<SentinelPassiveStatsDat>
 {
     /// <summary> Gets Unknown0.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

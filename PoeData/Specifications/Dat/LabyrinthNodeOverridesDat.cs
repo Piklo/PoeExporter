@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LabyrinthNodeOverrides.dat data.
 /// </summary>
-public sealed partial class LabyrinthNodeOverridesDat : ISpecificationFile<LabyrinthNodeOverridesDat>
+public sealed partial class LabyrinthNodeOverridesDat : IDat<LabyrinthNodeOverridesDat>
 {
     /// <summary> Gets Id1.</summary>
     public required string Id1 { get; init; }

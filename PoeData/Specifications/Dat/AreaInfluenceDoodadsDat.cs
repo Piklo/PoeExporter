@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AreaInfluenceDoodads.dat data.
 /// </summary>
-public sealed partial class AreaInfluenceDoodadsDat : ISpecificationFile<AreaInfluenceDoodadsDat>
+public sealed partial class AreaInfluenceDoodadsDat : IDat<AreaInfluenceDoodadsDat>
 {
     /// <summary> Gets StatsKey.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

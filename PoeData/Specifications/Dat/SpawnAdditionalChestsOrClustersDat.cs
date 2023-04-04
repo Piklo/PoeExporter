@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SpawnAdditionalChestsOrClusters.dat data.
 /// </summary>
-public sealed partial class SpawnAdditionalChestsOrClustersDat : ISpecificationFile<SpawnAdditionalChestsOrClustersDat>
+public sealed partial class SpawnAdditionalChestsOrClustersDat : IDat<SpawnAdditionalChestsOrClustersDat>
 {
     /// <summary> Gets StatsKey.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

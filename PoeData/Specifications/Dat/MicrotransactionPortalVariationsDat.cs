@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionPortalVariations.dat data.
 /// </summary>
-public sealed partial class MicrotransactionPortalVariationsDat : ISpecificationFile<MicrotransactionPortalVariationsDat>
+public sealed partial class MicrotransactionPortalVariationsDat : IDat<MicrotransactionPortalVariationsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

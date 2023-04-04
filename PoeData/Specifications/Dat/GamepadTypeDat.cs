@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GamepadType.dat data.
 /// </summary>
-public sealed partial class GamepadTypeDat : ISpecificationFile<GamepadTypeDat>
+public sealed partial class GamepadTypeDat : IDat<GamepadTypeDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

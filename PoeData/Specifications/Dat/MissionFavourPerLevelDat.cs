@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MissionFavourPerLevel.dat data.
 /// </summary>
-public sealed partial class MissionFavourPerLevelDat : ISpecificationFile<MissionFavourPerLevelDat>
+public sealed partial class MissionFavourPerLevelDat : IDat<MissionFavourPerLevelDat>
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

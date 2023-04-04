@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Animation.dat data.
 /// </summary>
-public sealed partial class AnimationDat : ISpecificationFile<AnimationDat>
+public sealed partial class AnimationDat : IDat<AnimationDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

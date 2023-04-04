@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AlternateTreeVersions.dat data.
 /// </summary>
-public sealed partial class AlternateTreeVersionsDat : ISpecificationFile<AlternateTreeVersionsDat>
+public sealed partial class AlternateTreeVersionsDat : IDat<AlternateTreeVersionsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

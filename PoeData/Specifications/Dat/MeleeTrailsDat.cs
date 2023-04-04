@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MeleeTrails.dat data.
 /// </summary>
-public sealed partial class MeleeTrailsDat : ISpecificationFile<MeleeTrailsDat>
+public sealed partial class MeleeTrailsDat : IDat<MeleeTrailsDat>
 {
     /// <summary> Gets EPKFile1.</summary>
     public required string EPKFile1 { get; init; }

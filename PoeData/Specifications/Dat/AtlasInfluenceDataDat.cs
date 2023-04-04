@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasInfluenceData.dat data.
 /// </summary>
-public sealed partial class AtlasInfluenceDataDat : ISpecificationFile<AtlasInfluenceDataDat>
+public sealed partial class AtlasInfluenceDataDat : IDat<AtlasInfluenceDataDat>
 {
     /// <summary> Gets InfluencePack.</summary>
     /// <remarks> references <see cref="AtlasInfluenceOutcomesDat"/> on <see cref="Specification.GetAtlasInfluenceOutcomesDat"/> index.</remarks>

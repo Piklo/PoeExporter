@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LegionChests.dat data.
 /// </summary>
-public sealed partial class LegionChestsDat : ISpecificationFile<LegionChestsDat>
+public sealed partial class LegionChestsDat : IDat<LegionChestsDat>
 {
     /// <summary> Gets ChestsKey.</summary>
     /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>

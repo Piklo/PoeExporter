@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GenericLeagueRewardTypes.dat data.
 /// </summary>
-public sealed partial class GenericLeagueRewardTypesDat : ISpecificationFile<GenericLeagueRewardTypesDat>
+public sealed partial class GenericLeagueRewardTypesDat : IDat<GenericLeagueRewardTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

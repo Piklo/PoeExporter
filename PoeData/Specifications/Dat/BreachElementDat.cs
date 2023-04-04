@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BreachElement.dat data.
 /// </summary>
-public sealed partial class BreachElementDat : ISpecificationFile<BreachElementDat>
+public sealed partial class BreachElementDat : IDat<BreachElementDat>
 {
     /// <summary> Gets Element.</summary>
     public required string Element { get; init; }

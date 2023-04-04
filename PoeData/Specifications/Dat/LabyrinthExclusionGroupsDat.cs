@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LabyrinthExclusionGroups.dat data.
 /// </summary>
-public sealed partial class LabyrinthExclusionGroupsDat : ISpecificationFile<LabyrinthExclusionGroupsDat>
+public sealed partial class LabyrinthExclusionGroupsDat : IDat<LabyrinthExclusionGroupsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

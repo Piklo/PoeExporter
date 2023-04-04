@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CraftingBenchUnlockCategories.dat data.
 /// </summary>
-public sealed partial class CraftingBenchUnlockCategoriesDat : ISpecificationFile<CraftingBenchUnlockCategoriesDat>
+public sealed partial class CraftingBenchUnlockCategoriesDat : IDat<CraftingBenchUnlockCategoriesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

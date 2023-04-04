@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DescentStarterChest.dat data.
 /// </summary>
-public sealed partial class DescentStarterChestDat : ISpecificationFile<DescentStarterChestDat>
+public sealed partial class DescentStarterChestDat : IDat<DescentStarterChestDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

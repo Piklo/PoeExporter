@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HarvestEncounterScaling.dat data.
 /// </summary>
-public sealed partial class HarvestEncounterScalingDat : ISpecificationFile<HarvestEncounterScalingDat>
+public sealed partial class HarvestEncounterScalingDat : IDat<HarvestEncounterScalingDat>
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveStashTabLayout.dat data.
 /// </summary>
-public sealed partial class DelveStashTabLayoutDat : ISpecificationFile<DelveStashTabLayoutDat>
+public sealed partial class DelveStashTabLayoutDat : IDat<DelveStashTabLayoutDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

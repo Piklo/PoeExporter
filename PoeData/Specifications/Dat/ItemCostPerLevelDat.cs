@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ItemCostPerLevel.dat data.
 /// </summary>
-public sealed partial class ItemCostPerLevelDat : ISpecificationFile<ItemCostPerLevelDat>
+public sealed partial class ItemCostPerLevelDat : IDat<ItemCostPerLevelDat>
 {
     /// <summary> Gets Contract_BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

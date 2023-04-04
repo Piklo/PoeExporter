@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing IncursionBrackets.dat data.
 /// </summary>
-public sealed partial class IncursionBracketsDat : ISpecificationFile<IncursionBracketsDat>
+public sealed partial class IncursionBracketsDat : IDat<IncursionBracketsDat>
 {
     /// <summary> Gets MinLevel.</summary>
     public required int MinLevel { get; init; }

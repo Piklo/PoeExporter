@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PassiveJewelSlots.dat data.
 /// </summary>
-public sealed partial class PassiveJewelSlotsDat : ISpecificationFile<PassiveJewelSlotsDat>
+public sealed partial class PassiveJewelSlotsDat : IDat<PassiveJewelSlotsDat>
 {
     /// <summary> Gets Slot.</summary>
     /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>

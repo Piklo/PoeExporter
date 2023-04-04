@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeExperienceLevels.dat data.
 /// </summary>
-public sealed partial class HellscapeExperienceLevelsDat : ISpecificationFile<HellscapeExperienceLevelsDat>
+public sealed partial class HellscapeExperienceLevelsDat : IDat<HellscapeExperienceLevelsDat>
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

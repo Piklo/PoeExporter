@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing QuestFlags.dat data.
 /// </summary>
-public sealed partial class QuestFlagsDat : ISpecificationFile<QuestFlagsDat>
+public sealed partial class QuestFlagsDat : IDat<QuestFlagsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

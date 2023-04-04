@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SentinelPassives.dat data.
 /// </summary>
-public sealed partial class SentinelPassivesDat : ISpecificationFile<SentinelPassivesDat>
+public sealed partial class SentinelPassivesDat : IDat<SentinelPassivesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

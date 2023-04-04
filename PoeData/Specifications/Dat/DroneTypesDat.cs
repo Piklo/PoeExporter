@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DroneTypes.dat data.
 /// </summary>
-public sealed partial class DroneTypesDat : ISpecificationFile<DroneTypesDat>
+public sealed partial class DroneTypesDat : IDat<DroneTypesDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BestiaryRecipeComponent.dat data.
 /// </summary>
-public sealed partial class BestiaryRecipeComponentDat : ISpecificationFile<BestiaryRecipeComponentDat>
+public sealed partial class BestiaryRecipeComponentDat : IDat<BestiaryRecipeComponentDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

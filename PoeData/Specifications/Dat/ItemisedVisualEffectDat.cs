@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ItemisedVisualEffect.dat data.
 /// </summary>
-public sealed partial class ItemisedVisualEffectDat : ISpecificationFile<ItemisedVisualEffectDat>
+public sealed partial class ItemisedVisualEffectDat : IDat<ItemisedVisualEffectDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Realms.dat data.
 /// </summary>
-public sealed partial class RealmsDat : ISpecificationFile<RealmsDat>
+public sealed partial class RealmsDat : IDat<RealmsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

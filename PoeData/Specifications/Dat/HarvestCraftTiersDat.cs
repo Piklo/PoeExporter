@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HarvestCraftTiers.dat data.
 /// </summary>
-public sealed partial class HarvestCraftTiersDat : ISpecificationFile<HarvestCraftTiersDat>
+public sealed partial class HarvestCraftTiersDat : IDat<HarvestCraftTiersDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

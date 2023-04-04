@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EnvironmentTransitions.dat data.
 /// </summary>
-public sealed partial class EnvironmentTransitionsDat : ISpecificationFile<EnvironmentTransitionsDat>
+public sealed partial class EnvironmentTransitionsDat : IDat<EnvironmentTransitionsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

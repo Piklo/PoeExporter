@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightCraftingResults.dat data.
 /// </summary>
-public sealed partial class BlightCraftingResultsDat : ISpecificationFile<BlightCraftingResultsDat>
+public sealed partial class BlightCraftingResultsDat : IDat<BlightCraftingResultsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MavenDialog.dat data.
 /// </summary>
-public sealed partial class MavenDialogDat : ISpecificationFile<MavenDialogDat>
+public sealed partial class MavenDialogDat : IDat<MavenDialogDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

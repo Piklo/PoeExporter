@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GeometryTrigger.dat data.
 /// </summary>
-public sealed partial class GeometryTriggerDat : ISpecificationFile<GeometryTriggerDat>
+public sealed partial class GeometryTriggerDat : IDat<GeometryTriggerDat>
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

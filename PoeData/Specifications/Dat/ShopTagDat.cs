@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ShopTag.dat data.
 /// </summary>
-public sealed partial class ShopTagDat : ISpecificationFile<ShopTagDat>
+public sealed partial class ShopTagDat : IDat<ShopTagDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

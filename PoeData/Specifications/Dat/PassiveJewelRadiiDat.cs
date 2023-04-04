@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PassiveJewelRadii.dat data.
 /// </summary>
-public sealed partial class PassiveJewelRadiiDat : ISpecificationFile<PassiveJewelRadiiDat>
+public sealed partial class PassiveJewelRadiiDat : IDat<PassiveJewelRadiiDat>
 {
     /// <summary> Gets ID.</summary>
     public required string ID { get; init; }

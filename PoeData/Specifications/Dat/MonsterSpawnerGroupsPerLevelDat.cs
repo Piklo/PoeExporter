@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterSpawnerGroupsPerLevel.dat data.
 /// </summary>
-public sealed partial class MonsterSpawnerGroupsPerLevelDat : ISpecificationFile<MonsterSpawnerGroupsPerLevelDat>
+public sealed partial class MonsterSpawnerGroupsPerLevelDat : IDat<MonsterSpawnerGroupsPerLevelDat>
 {
     /// <summary> Gets MonsterSpawnerGroupsKey.</summary>
     /// <remarks> references <see cref="MonsterSpawnerGroupsDat"/> on <see cref="Specification.GetMonsterSpawnerGroupsDat"/> index.</remarks>

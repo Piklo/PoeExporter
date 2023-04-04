@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RecipeUnlockObjects.dat data.
 /// </summary>
-public sealed partial class RecipeUnlockObjectsDat : ISpecificationFile<RecipeUnlockObjectsDat>
+public sealed partial class RecipeUnlockObjectsDat : IDat<RecipeUnlockObjectsDat>
 {
     /// <summary> Gets WorldAreasKey.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

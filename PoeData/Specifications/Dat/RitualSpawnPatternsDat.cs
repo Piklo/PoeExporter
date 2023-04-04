@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RitualSpawnPatterns.dat data.
 /// </summary>
-public sealed partial class RitualSpawnPatternsDat : ISpecificationFile<RitualSpawnPatternsDat>
+public sealed partial class RitualSpawnPatternsDat : IDat<RitualSpawnPatternsDat>
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

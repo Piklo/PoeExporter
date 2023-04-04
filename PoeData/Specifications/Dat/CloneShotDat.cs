@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CloneShot.dat data.
 /// </summary>
-public sealed partial class CloneShotDat : ISpecificationFile<CloneShotDat>
+public sealed partial class CloneShotDat : IDat<CloneShotDat>
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

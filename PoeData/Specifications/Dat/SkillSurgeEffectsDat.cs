@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SkillSurgeEffects.dat data.
 /// </summary>
-public sealed partial class SkillSurgeEffectsDat : ISpecificationFile<SkillSurgeEffectsDat>
+public sealed partial class SkillSurgeEffectsDat : IDat<SkillSurgeEffectsDat>
 {
     /// <summary> Gets GrantedEffectsKey.</summary>
     /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
