@@ -101,18 +101,18 @@ internal class SpecificationFileGenerator
     {
         foreach (var file in specificationFiles)
         {
-            var name = file.ClassName;
+            var className = file.ClassName;
             builder.AppendLine($$"""
 
                     /// <summary>
-                    /// Gets {{name}} data.
+                    /// Gets {{className}} data.
                     /// </summary>
-                    /// <returns>readonly collection of {{name}}.</returns>
-                    public ReadOnlyCollection<{{name}}> Get{{name}}()
+                    /// <returns>readonly collection of {{className}}.</returns>
+                    public ReadOnlyCollection<{{className}}> Get{{className}}()
                     {
-                        {{name.ToLower()}} ??= {{name}}.Load(this).AsReadOnly();
+                        {{className.ToLower()}} ??= {{className}}.Load(this).AsReadOnly();
 
-                        return {{name.ToLower()}};
+                        return {{className.ToLower()}};
                     }
                 """);
         }
