@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistAreaFormationLayoutDat : ISpecificationFile<HeistAreaFormationLayoutDat>
 {
     /// <summary> Gets HeistAreasKey.</summary>
+    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.GetHeistAreasDat"/> index.</remarks>
     public required int? HeistAreasKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -76,9 +77,6 @@ public sealed partial class HeistAreaFormationLayoutDat : ISpecificationFile<Hei
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHeistAreasDat();
 
             // loading HeistAreasKey
             (var heistareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

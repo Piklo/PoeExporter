@@ -20,9 +20,11 @@ public sealed partial class TradeMarketCategoryDat : ISpecificationFile<TradeMar
     public required string Name { get; init; }
 
     /// <summary> Gets StyleFlag.</summary>
+    /// <remarks> references <see cref="TradeMarketCategoryStyleFlagDat"/> on <see cref="Specification.GetTradeMarketCategoryStyleFlagDat"/> index.</remarks>
     public required int StyleFlag { get; init; }
 
     /// <summary> Gets Group.</summary>
+    /// <remarks> references <see cref="TradeMarketCategoryGroupsDat"/> on <see cref="Specification.GetTradeMarketCategoryGroupsDat"/> index.</remarks>
     public required int? Group { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
@@ -58,9 +60,6 @@ public sealed partial class TradeMarketCategoryDat : ISpecificationFile<TradeMar
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTradeMarketCategoryGroupsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

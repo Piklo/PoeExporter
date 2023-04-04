@@ -20,6 +20,7 @@ public sealed partial class ShopCountryDat : ISpecificationFile<ShopCountryDat>
     public required string Country { get; init; }
 
     /// <summary> Gets ShopCurrencyKey.</summary>
+    /// <remarks> references <see cref="ShopCurrencyDat"/> on <see cref="Specification.GetShopCurrencyDat"/> index.</remarks>
     public required int? ShopCurrencyKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +47,6 @@ public sealed partial class ShopCountryDat : ISpecificationFile<ShopCountryDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetShopCurrencyDat();
 
             // loading CountryTwoLetterCode
             (var countrytwolettercodeLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

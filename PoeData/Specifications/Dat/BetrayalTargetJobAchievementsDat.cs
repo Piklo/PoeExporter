@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class BetrayalTargetJobAchievementsDat : ISpecificationFile<BetrayalTargetJobAchievementsDat>
 {
     /// <summary> Gets BetrayalTargetsKey.</summary>
+    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
     /// <summary> Gets BetrayalJobsKey.</summary>
+    /// <remarks> references <see cref="BetrayalJobsDat"/> on <see cref="Specification.GetBetrayalJobsDat"/> index.</remarks>
     public required int? BetrayalJobsKey { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,11 +49,6 @@ public sealed partial class BetrayalTargetJobAchievementsDat : ISpecificationFil
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBetrayalTargetsDat();
-            // specification.GetBetrayalJobsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading BetrayalTargetsKey
             (var betrayaltargetskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

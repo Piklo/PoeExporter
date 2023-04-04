@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MapCreationInformationDat : ISpecificationFile<MapCreationInformationDat>
 {
     /// <summary> Gets MapsKey.</summary>
+    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>
     public required int? MapsKey { get; init; }
 
     /// <summary> Gets Tier.</summary>
@@ -43,9 +44,6 @@ public sealed partial class MapCreationInformationDat : ISpecificationFile<MapCr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMapsDat();
 
             // loading MapsKey
             (var mapskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

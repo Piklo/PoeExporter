@@ -17,12 +17,14 @@ public sealed partial class AlternatePassiveAdditionsDat : ISpecificationFile<Al
     public required string Id { get; init; }
 
     /// <summary> Gets AlternateTreeVersionsKey.</summary>
+    /// <remarks> references <see cref="AlternateTreeVersionsDat"/> on <see cref="Specification.GetAlternateTreeVersionsDat"/> index.</remarks>
     public required int? AlternateTreeVersionsKey { get; init; }
 
     /// <summary> Gets SpawnWeight.</summary>
     public required int SpawnWeight { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets Stat1Min.</summary>
@@ -73,10 +75,6 @@ public sealed partial class AlternatePassiveAdditionsDat : ISpecificationFile<Al
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAlternateTreeVersionsDat();
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

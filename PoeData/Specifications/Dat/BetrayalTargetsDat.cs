@@ -17,12 +17,15 @@ public sealed partial class BetrayalTargetsDat : ISpecificationFile<BetrayalTarg
     public required string Id { get; init; }
 
     /// <summary> Gets BetrayalRanksKey.</summary>
+    /// <remarks> references <see cref="BetrayalRanksDat"/> on <see cref="Specification.GetBetrayalRanksDat"/> index.</remarks>
     public required int? BetrayalRanksKey { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets BetrayalJobsKey.</summary>
+    /// <remarks> references <see cref="BetrayalJobsDat"/> on <see cref="Specification.GetBetrayalJobsDat"/> index.</remarks>
     public required int? BetrayalJobsKey { get; init; }
 
     /// <summary> Gets Art.</summary>
@@ -32,6 +35,7 @@ public sealed partial class BetrayalTargetsDat : ISpecificationFile<BetrayalTarg
     public required bool Unknown64 { get; init; }
 
     /// <summary> Gets ItemClasses.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClasses { get; init; }
 
     /// <summary> Gets FullName.</summary>
@@ -47,9 +51,11 @@ public sealed partial class BetrayalTargetsDat : ISpecificationFile<BetrayalTarg
     public required int Unknown105 { get; init; }
 
     /// <summary> Gets SafehouseLeader_AcheivementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? SafehouseLeader_AcheivementItemsKey { get; init; }
 
     /// <summary> Gets Level3_AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? Level3_AchievementItemsKey { get; init; }
 
     /// <summary> Gets Unknown141.</summary>
@@ -91,13 +97,6 @@ public sealed partial class BetrayalTargetsDat : ISpecificationFile<BetrayalTarg
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBetrayalRanksDat();
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetBetrayalJobsDat();
-            // specification.GetItemClassesDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

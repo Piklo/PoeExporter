@@ -20,6 +20,7 @@ public sealed partial class BuffVisualSetEntriesDat : ISpecificationFile<BuffVis
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets BuffVisual.</summary>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisual { get; init; }
 
     /// <summary> Gets Unknown28.</summary>
@@ -49,9 +50,6 @@ public sealed partial class BuffVisualSetEntriesDat : ISpecificationFile<BuffVis
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffVisualsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

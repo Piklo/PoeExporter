@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MonsterSpawnerGroupsPerLevelDat : ISpecificationFile<MonsterSpawnerGroupsPerLevelDat>
 {
     /// <summary> Gets MonsterSpawnerGroupsKey.</summary>
+    /// <remarks> references <see cref="MonsterSpawnerGroupsDat"/> on <see cref="Specification.GetMonsterSpawnerGroupsDat"/> index.</remarks>
     public required int? MonsterSpawnerGroupsKey { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -52,9 +53,6 @@ public sealed partial class MonsterSpawnerGroupsPerLevelDat : ISpecificationFile
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterSpawnerGroupsDat();
 
             // loading MonsterSpawnerGroupsKey
             (var monsterspawnergroupskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

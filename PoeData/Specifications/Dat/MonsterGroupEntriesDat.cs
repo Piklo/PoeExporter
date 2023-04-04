@@ -17,6 +17,7 @@ public sealed partial class MonsterGroupEntriesDat : ISpecificationFile<MonsterG
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets MonsterGroupNamesId.</summary>
@@ -46,9 +47,6 @@ public sealed partial class MonsterGroupEntriesDat : ISpecificationFile<MonsterG
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

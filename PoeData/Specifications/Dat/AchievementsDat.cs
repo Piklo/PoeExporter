@@ -20,6 +20,7 @@ public sealed partial class AchievementsDat : ISpecificationFile<AchievementsDat
     public required string Description { get; init; }
 
     /// <summary> Gets SetId.</summary>
+    /// <remarks> references <see cref="AchievementSetsDisplayDat"/> on <see cref="AchievementSetsDisplayDat.Id"/>.</remarks>
     public required int SetId { get; init; }
 
     /// <summary> Gets Objective.</summary>
@@ -85,9 +86,6 @@ public sealed partial class AchievementsDat : ISpecificationFile<AchievementsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementSetsDisplayDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

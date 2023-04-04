@@ -20,6 +20,7 @@ public sealed partial class ExpeditionRelicsDat : ISpecificationFile<ExpeditionR
     public required string Name { get; init; }
 
     /// <summary> Gets ItemTag.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? ItemTag { get; init; }
 
     /// <summary> Gets AOFile.</summary>
@@ -55,9 +56,6 @@ public sealed partial class ExpeditionRelicsDat : ISpecificationFile<ExpeditionR
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

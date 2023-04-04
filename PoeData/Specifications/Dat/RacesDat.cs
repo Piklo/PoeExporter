@@ -17,6 +17,7 @@ public sealed partial class RacesDat : ISpecificationFile<RacesDat>
     public required string Id { get; init; }
 
     /// <summary> Gets Mods.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -64,9 +65,6 @@ public sealed partial class RacesDat : ISpecificationFile<RacesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

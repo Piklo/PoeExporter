@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MasterHideoutLevelsDat : ISpecificationFile<MasterHideoutLevelsDat>
 {
     /// <summary> Gets NPCMasterKey.</summary>
+    /// <remarks> references <see cref="NPCMasterDat"/> on <see cref="Specification.GetNPCMasterDat"/> index.</remarks>
     public required int? NPCMasterKey { get; init; }
 
     /// <summary> Gets Level.</summary>
@@ -46,9 +47,6 @@ public sealed partial class MasterHideoutLevelsDat : ISpecificationFile<MasterHi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCMasterDat();
 
             // loading NPCMasterKey
             (var npcmasterkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

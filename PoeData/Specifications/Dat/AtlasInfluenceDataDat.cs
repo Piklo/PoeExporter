@@ -14,15 +14,18 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AtlasInfluenceDataDat : ISpecificationFile<AtlasInfluenceDataDat>
 {
     /// <summary> Gets InfluencePack.</summary>
+    /// <remarks> references <see cref="AtlasInfluenceOutcomesDat"/> on <see cref="Specification.GetAtlasInfluenceOutcomesDat"/> index.</remarks>
     public required int? InfluencePack { get; init; }
 
     /// <summary> Gets MonsterPacks.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacks { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
     public required int? Unknown32 { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown48 { get; init; }
 
     /// <summary> Gets Unknown64.</summary>
@@ -64,11 +67,6 @@ public sealed partial class AtlasInfluenceDataDat : ISpecificationFile<AtlasInfl
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAtlasInfluenceOutcomesDat();
-            // specification.GetMonsterPacksDat();
-            // specification.GetStatsDat();
 
             // loading InfluencePack
             (var influencepackLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

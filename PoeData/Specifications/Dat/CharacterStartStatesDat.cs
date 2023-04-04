@@ -20,21 +20,25 @@ public sealed partial class CharacterStartStatesDat : ISpecificationFile<Charact
     public required string Description { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required int? CharactersKey { get; init; }
 
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }
 
     /// <summary> Gets PassiveSkillsKeys.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PassiveSkillsKeys { get; init; }
 
     /// <summary> Gets CharacterStartStateSetKey.</summary>
+    /// <remarks> references <see cref="CharacterStartStateSetDat"/> on <see cref="Specification.GetCharacterStartStateSetDat"/> index.</remarks>
     public required int? CharacterStartStateSetKey { get; init; }
 
     /// <summary> Gets Unknown68.</summary>
     public required int? Unknown68 { get; init; }
 
     /// <summary> Gets CharacterStartQuestStateKeys.</summary>
+    /// <remarks> references <see cref="CharacterStartQuestStateDat"/> on <see cref="Specification.GetCharacterStartQuestStateDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CharacterStartQuestStateKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown100 is set.</summary>
@@ -70,12 +74,6 @@ public sealed partial class CharacterStartStatesDat : ISpecificationFile<Charact
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCharactersDat();
-            // specification.GetPassiveSkillsDat();
-            // specification.GetCharacterStartStateSetDat();
-            // specification.GetCharacterStartQuestStateDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

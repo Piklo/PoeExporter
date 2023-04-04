@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class TalismansDat : ISpecificationFile<TalismansDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets SpawnWeight.</summary>
     public required int SpawnWeight { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary> Gets Tier.</summary>
@@ -64,10 +66,6 @@ public sealed partial class TalismansDat : ISpecificationFile<TalismansDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetModsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

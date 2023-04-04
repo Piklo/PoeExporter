@@ -32,6 +32,7 @@ public sealed partial class QuestDat : ISpecificationFile<QuestDat>
     public required bool Unknown32 { get; init; }
 
     /// <summary> Gets Type.</summary>
+    /// <remarks> references <see cref="QuestTypeDat"/> on <see cref="Specification.GetQuestTypeDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets Unknown49.</summary>
@@ -41,6 +42,7 @@ public sealed partial class QuestDat : ISpecificationFile<QuestDat>
     public required int Unknown65 { get; init; }
 
     /// <summary> Gets TrackerGroup.</summary>
+    /// <remarks> references <see cref="QuestTrackerGroupDat"/> on <see cref="Specification.GetQuestTrackerGroupDat"/> index.</remarks>
     public required int? TrackerGroup { get; init; }
 
     /// <inheritdoc/>
@@ -67,10 +69,6 @@ public sealed partial class QuestDat : ISpecificationFile<QuestDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestTypeDat();
-            // specification.GetQuestTrackerGroupDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

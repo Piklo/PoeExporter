@@ -23,12 +23,14 @@ public sealed partial class SkillGemInfoDat : ISpecificationFile<SkillGemInfoDat
     public required string VideoURL1 { get; init; }
 
     /// <summary> Gets SkillGemsKey.</summary>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
     public required int? SkillGemsKey { get; init; }
 
     /// <summary> Gets VideoURL2.</summary>
     public required string VideoURL2 { get; init; }
 
     /// <summary> Gets CharactersKeys.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CharactersKeys { get; init; }
 
     /// <inheritdoc/>
@@ -55,10 +57,6 @@ public sealed partial class SkillGemInfoDat : ISpecificationFile<SkillGemInfoDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetSkillGemsDat();
-            // specification.GetCharactersDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class DelveCraftingTagsDat : ISpecificationFile<DelveCraftingTagsDat>
 {
     /// <summary> Gets TagsKey.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? TagsKey { get; init; }
 
     /// <summary> Gets ItemClass.</summary>
@@ -43,9 +44,6 @@ public sealed partial class DelveCraftingTagsDat : ISpecificationFile<DelveCraft
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTagsDat();
 
             // loading TagsKey
             (var tagskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

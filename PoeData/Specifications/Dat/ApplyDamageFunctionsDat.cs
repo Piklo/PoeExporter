@@ -17,6 +17,7 @@ public sealed partial class ApplyDamageFunctionsDat : ISpecificationFile<ApplyDa
     public required string Id { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>
@@ -46,9 +47,6 @@ public sealed partial class ApplyDamageFunctionsDat : ISpecificationFile<ApplyDa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

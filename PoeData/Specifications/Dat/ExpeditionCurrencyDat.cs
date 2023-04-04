@@ -14,15 +14,18 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ExpeditionCurrencyDat : ISpecificationFile<ExpeditionCurrencyDat>
 {
     /// <summary> Gets BaseItemType.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemType { get; init; }
 
     /// <summary> Gets Tier.</summary>
     public required int Tier { get; init; }
 
     /// <summary> Gets NPC.</summary>
+    /// <remarks> references <see cref="ExpeditionNPCsDat"/> on <see cref="Specification.GetExpeditionNPCsDat"/> index.</remarks>
     public required int? NPC { get; init; }
 
     /// <summary> Gets LootSound.</summary>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
     public required int? LootSound { get; init; }
 
     /// <inheritdoc/>
@@ -49,11 +52,6 @@ public sealed partial class ExpeditionCurrencyDat : ISpecificationFile<Expeditio
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetExpeditionNPCsDat();
-            // specification.GetSoundEffectsDat();
 
             // loading BaseItemType
             (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

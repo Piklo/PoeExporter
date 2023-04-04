@@ -20,6 +20,7 @@ public sealed partial class LegionFactionsDat : ISpecificationFile<LegionFaction
     public required int SpawnWeight { get; init; }
 
     /// <summary> Gets LegionBalancePerLevelKey.</summary>
+    /// <remarks> references <see cref="LegionBalancePerLevelDat"/> on <see cref="Specification.GetLegionBalancePerLevelDat"/> index.</remarks>
     public required int? LegionBalancePerLevelKey { get; init; }
 
     /// <summary> Gets Unknown28.</summary>
@@ -29,24 +30,31 @@ public sealed partial class LegionFactionsDat : ISpecificationFile<LegionFaction
     public required float Unknown32 { get; init; }
 
     /// <summary> Gets BuffVisualsKey.</summary>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisualsKey { get; init; }
 
     /// <summary> Gets MiscAnimatedKey1.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey1 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey2.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey2 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey3.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey3 { get; init; }
 
     /// <summary> Gets AchievementItemsKeys1.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys1 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey4.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey4 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey5.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey5 { get; init; }
 
     /// <summary> Gets Unknown148.</summary>
@@ -56,9 +64,11 @@ public sealed partial class LegionFactionsDat : ISpecificationFile<LegionFaction
     public required float Unknown152 { get; init; }
 
     /// <summary> Gets AchievementItemsKeys2.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys2 { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets Shard.</summary>
@@ -91,13 +101,6 @@ public sealed partial class LegionFactionsDat : ISpecificationFile<LegionFaction
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetLegionBalancePerLevelDat();
-            // specification.GetBuffVisualsDat();
-            // specification.GetMiscAnimatedDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

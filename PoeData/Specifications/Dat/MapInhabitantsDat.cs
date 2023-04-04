@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MapInhabitantsDat : ISpecificationFile<MapInhabitantsDat>
 {
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class MapInhabitantsDat : ISpecificationFile<MapInhabitant
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetMonsterPacksDat();
 
             // loading StatsKey
             (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

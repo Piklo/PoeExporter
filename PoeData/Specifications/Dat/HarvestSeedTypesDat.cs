@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HarvestSeedTypesDat : ISpecificationFile<HarvestSeedTypesDat>
 {
     /// <summary> Gets HarvestObjectsKey.</summary>
+    /// <remarks> references <see cref="HarvestObjectsDat"/> on <see cref="Specification.GetHarvestObjectsDat"/> index.</remarks>
     public required int? HarvestObjectsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -53,6 +54,7 @@ public sealed partial class HarvestSeedTypesDat : ISpecificationFile<HarvestSeed
     public required string Text { get; init; }
 
     /// <summary> Gets HarvestCraftOptionsKeys.</summary>
+    /// <remarks> references <see cref="HarvestCraftOptionsDat"/> on <see cref="Specification.GetHarvestCraftOptionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HarvestCraftOptionsKeys { get; init; }
 
     /// <summary> Gets Unknown120.</summary>
@@ -62,6 +64,7 @@ public sealed partial class HarvestSeedTypesDat : ISpecificationFile<HarvestSeed
     public required ReadOnlyCollection<int> Unknown124 { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets OutcomeType.</summary>
@@ -91,11 +94,6 @@ public sealed partial class HarvestSeedTypesDat : ISpecificationFile<HarvestSeed
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHarvestObjectsDat();
-            // specification.GetHarvestCraftOptionsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading HarvestObjectsKey
             (var harvestobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -17,9 +17,11 @@ public sealed partial class SentinelStorageLayoutDat : ISpecificationFile<Sentin
     public required string Id { get; init; }
 
     /// <summary> Gets Unknown8.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets DroneType.</summary>
+    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.GetDroneTypesDat"/> index.</remarks>
     public required int? DroneType { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown40 is set.</summary>
@@ -50,6 +52,7 @@ public sealed partial class SentinelStorageLayoutDat : ISpecificationFile<Sentin
     public required int Unknown73 { get; init; }
 
     /// <summary> Gets Unknown77.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? Unknown77 { get; init; }
 
     /// <inheritdoc/>
@@ -76,11 +79,6 @@ public sealed partial class SentinelStorageLayoutDat : ISpecificationFile<Sentin
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetDroneTypesDat();
-            // specification.GetItemClassesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

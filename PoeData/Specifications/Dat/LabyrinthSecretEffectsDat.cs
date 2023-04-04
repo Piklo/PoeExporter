@@ -17,9 +17,11 @@ public sealed partial class LabyrinthSecretEffectsDat : ISpecificationFile<Labyr
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Buff_BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? Buff_BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Buff_StatValues.</summary>
@@ -52,10 +54,6 @@ public sealed partial class LabyrinthSecretEffectsDat : ISpecificationFile<Labyr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetBuffDefinitionsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

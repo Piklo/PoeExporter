@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class DancesDat : ISpecificationFile<DancesDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required int? CharactersKey { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class DancesDat : ISpecificationFile<DancesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetCharactersDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

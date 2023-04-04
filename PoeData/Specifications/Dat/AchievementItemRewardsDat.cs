@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AchievementItemRewardsDat : ISpecificationFile<AchievementItemRewardsDat>
 {
     /// <summary> Gets AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Message.</summary>
@@ -49,10 +51,6 @@ public sealed partial class AchievementItemRewardsDat : ISpecificationFile<Achie
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementItemsDat();
-            // specification.GetBaseItemTypesDat();
 
             // loading AchievementItemsKey
             (var achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

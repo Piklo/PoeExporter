@@ -23,6 +23,7 @@ public sealed partial class BetrayalChoicesDat : ISpecificationFile<BetrayalChoi
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <inheritdoc/>
@@ -49,9 +50,6 @@ public sealed partial class BetrayalChoicesDat : ISpecificationFile<BetrayalChoi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

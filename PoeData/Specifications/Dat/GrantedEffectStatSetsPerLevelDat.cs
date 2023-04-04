@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class GrantedEffectStatSetsPerLevelDat : ISpecificationFile<GrantedEffectStatSetsPerLevelDat>
 {
     /// <summary> Gets StatSet.</summary>
+    /// <remarks> references <see cref="GrantedEffectStatSetsDat"/> on <see cref="Specification.GetGrantedEffectStatSetsDat"/> index.</remarks>
     public required int? StatSet { get; init; }
 
     /// <summary> Gets GemLevel.</summary>
@@ -35,18 +36,23 @@ public sealed partial class GrantedEffectStatSetsPerLevelDat : ISpecificationFil
     public required int DamageEffectiveness { get; init; }
 
     /// <summary> Gets AdditionalFlags.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AdditionalFlags { get; init; }
 
     /// <summary> Gets FloatStats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> FloatStats { get; init; }
 
     /// <summary> Gets InterpolationBases.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> InterpolationBases { get; init; }
 
     /// <summary> Gets AdditionalStats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AdditionalStats { get; init; }
 
     /// <summary> Gets StatInterpolations.</summary>
+    /// <remarks> references <see cref="StatInterpolationTypesDat"/> on <see cref="Specification.GetStatInterpolationTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatInterpolations { get; init; }
 
     /// <summary> Gets FloatStatsValues.</summary>
@@ -59,6 +65,7 @@ public sealed partial class GrantedEffectStatSetsPerLevelDat : ISpecificationFil
     public required ReadOnlyCollection<int> AdditionalStatsValues { get; init; }
 
     /// <summary> Gets GrantedEffects.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GrantedEffects { get; init; }
 
     /// <inheritdoc/>
@@ -85,11 +92,6 @@ public sealed partial class GrantedEffectStatSetsPerLevelDat : ISpecificationFil
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetGrantedEffectStatSetsDat();
-            // specification.GetStatsDat();
-            // specification.GetGrantedEffectsDat();
 
             // loading StatSet
             (var statsetLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

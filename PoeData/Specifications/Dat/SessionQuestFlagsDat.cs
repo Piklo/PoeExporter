@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SessionQuestFlagsDat : ISpecificationFile<SessionQuestFlagsDat>
 {
     /// <summary> Gets QuestFlag.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? QuestFlag { get; init; }
 
     /// <inheritdoc/>
@@ -40,9 +41,6 @@ public sealed partial class SessionQuestFlagsDat : ISpecificationFile<SessionQue
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestFlagsDat();
 
             // loading QuestFlag
             (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

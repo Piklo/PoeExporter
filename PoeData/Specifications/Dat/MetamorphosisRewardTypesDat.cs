@@ -23,6 +23,7 @@ public sealed partial class MetamorphosisRewardTypesDat : ISpecificationFile<Met
     public required string Name { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <inheritdoc/>
@@ -49,9 +50,6 @@ public sealed partial class MetamorphosisRewardTypesDat : ISpecificationFile<Met
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -17,9 +17,11 @@ public sealed partial class BlightCraftingResultsDat : ISpecificationFile<Blight
     public required string Id { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary> Gets PassiveSkillsKey.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required int? PassiveSkillsKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,10 +48,6 @@ public sealed partial class BlightCraftingResultsDat : ISpecificationFile<Blight
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
-            // specification.GetPassiveSkillsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

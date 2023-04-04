@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SafehouseBYOCraftingDat : ISpecificationFile<SafehouseBYOCraftingDat>
 {
     /// <summary> Gets BetrayalJobsKey.</summary>
+    /// <remarks> references <see cref="BetrayalJobsDat"/> on <see cref="Specification.GetBetrayalJobsDat"/> index.</remarks>
     public required int? BetrayalJobsKey { get; init; }
 
     /// <summary> Gets BetrayalTargetsKey.</summary>
+    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
     /// <summary> Gets Rank.</summary>
@@ -55,10 +57,6 @@ public sealed partial class SafehouseBYOCraftingDat : ISpecificationFile<Safehou
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBetrayalJobsDat();
-            // specification.GetBetrayalTargetsDat();
 
             // loading BetrayalJobsKey
             (var betrayaljobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

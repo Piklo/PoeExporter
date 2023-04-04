@@ -20,33 +20,41 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int HASH16 { get; init; }
 
     /// <summary> Gets ModTypeKey.</summary>
+    /// <remarks> references <see cref="ModTypeDat"/> on <see cref="Specification.GetModTypeDat"/> index.</remarks>
     public required int? ModTypeKey { get; init; }
 
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }
 
     /// <summary> Gets StatsKey1.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey1 { get; init; }
 
     /// <summary> Gets StatsKey2.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey2 { get; init; }
 
     /// <summary> Gets StatsKey3.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey3 { get; init; }
 
     /// <summary> Gets StatsKey4.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey4 { get; init; }
 
     /// <summary> Gets Domain.</summary>
+    /// <remarks> references <see cref="ModDomainsDat"/> on <see cref="Specification.GetModDomainsDat"/> index.</remarks>
     public required int Domain { get; init; }
 
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
     /// <summary> Gets GenerationType.</summary>
+    /// <remarks> references <see cref="ModGenerationTypeDat"/> on <see cref="Specification.GetModGenerationTypeDat"/> index.</remarks>
     public required int GenerationType { get; init; }
 
     /// <summary> Gets Families.</summary>
+    /// <remarks> references <see cref="ModFamilyDat"/> on <see cref="Specification.GetModFamilyDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Families { get; init; }
 
     /// <summary> Gets Stat1Min.</summary>
@@ -74,15 +82,18 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Stat4Max { get; init; }
 
     /// <summary> Gets SpawnWeight_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_TagsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>
     public required ReadOnlyCollection<int> SpawnWeight_Values { get; init; }
 
     /// <summary> Gets TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TagsKeys { get; init; }
 
     /// <summary> Gets GrantedEffectsPerLevelKeys.</summary>
+    /// <remarks> references <see cref="GrantedEffectsPerLevelDat"/> on <see cref="Specification.GetGrantedEffectsPerLevelDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GrantedEffectsPerLevelKeys { get; init; }
 
     /// <summary> Gets Unknown224.</summary>
@@ -92,9 +103,11 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required string MonsterMetadata { get; init; }
 
     /// <summary> Gets MonsterKillAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterKillAchievements { get; init; }
 
     /// <summary> Gets ChestModType.</summary>
+    /// <remarks> references <see cref="ModTypeDat"/> on <see cref="Specification.GetModTypeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ChestModType { get; init; }
 
     /// <summary> Gets Stat5Min.</summary>
@@ -104,21 +117,26 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Stat5Max { get; init; }
 
     /// <summary> Gets StatsKey5.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey5 { get; init; }
 
     /// <summary> Gets FullAreaClear_AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> FullAreaClear_AchievementItemsKey { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKey { get; init; }
 
     /// <summary> Gets GenerationWeight_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GenerationWeight_TagsKeys { get; init; }
 
     /// <summary> Gets GenerationWeight_Values.</summary>
     public required ReadOnlyCollection<int> GenerationWeight_Values { get; init; }
 
     /// <summary> Gets ModifyMapsAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModifyMapsAchievements { get; init; }
 
     /// <summary> Gets a value indicating whether IsEssenceOnlyModifier is set.</summary>
@@ -131,6 +149,7 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Stat6Max { get; init; }
 
     /// <summary> Gets StatsKey6.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey6 { get; init; }
 
     /// <summary> Gets MaxLevel.</summary>
@@ -140,6 +159,7 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required bool Unknown413 { get; init; }
 
     /// <summary> Gets CraftingItemClassRestrictions.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CraftingItemClassRestrictions { get; init; }
 
     /// <summary> Gets MonsterOnDeath.</summary>
@@ -149,6 +169,7 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Unknown438 { get; init; }
 
     /// <summary> Gets Unknown442.</summary>
+    /// <remarks> references <see cref="GrantedEffectsPerLevelDat"/> on <see cref="Specification.GetGrantedEffectsPerLevelDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown442 { get; init; }
 
     /// <summary> Gets Heist_SubStatValue1.</summary>
@@ -158,9 +179,11 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Heist_SubStatValue2 { get; init; }
 
     /// <summary> Gets Heist_StatsKey0.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Heist_StatsKey0 { get; init; }
 
     /// <summary> Gets Heist_StatsKey1.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Heist_StatsKey1 { get; init; }
 
     /// <summary> Gets Heist_AddStatValue1.</summary>
@@ -170,9 +193,11 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Heist_AddStatValue2 { get; init; }
 
     /// <summary> Gets InfluenceTypes.</summary>
+    /// <remarks> references <see cref="InfluenceTypesDat"/> on <see cref="Specification.GetInfluenceTypesDat"/> index.</remarks>
     public required int InfluenceTypes { get; init; }
 
     /// <summary> Gets ImplicitTagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ImplicitTagsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown526 is set.</summary>
@@ -227,9 +252,11 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Unknown587 { get; init; }
 
     /// <summary> Gets BuffTemplate.</summary>
+    /// <remarks> references <see cref="BuffTemplatesDat"/> on <see cref="Specification.GetBuffTemplatesDat"/> index.</remarks>
     public required int? BuffTemplate { get; init; }
 
     /// <summary> Gets ArchnemesisMinionMod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ArchnemesisMinionMod { get; init; }
 
     /// <summary> Gets HASH32.</summary>
@@ -242,6 +269,7 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
     public required int Unknown635 { get; init; }
 
     /// <summary> Gets Unknown639.</summary>
+    /// <remarks> references <see cref="GrantedEffectsPerLevelDat"/> on <see cref="Specification.GetGrantedEffectsPerLevelDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown639 { get; init; }
 
     /// <inheritdoc/>
@@ -268,16 +296,6 @@ public sealed partial class ModsDat : ISpecificationFile<ModsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModTypeDat();
-            // specification.GetStatsDat();
-            // specification.GetModFamilyDat();
-            // specification.GetTagsDat();
-            // specification.GetGrantedEffectsPerLevelDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetItemClassesDat();
-            // specification.GetBuffTemplatesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

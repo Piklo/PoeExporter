@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LakeRoomCompletionDat : ISpecificationFile<LakeRoomCompletionDat>
 {
     /// <summary> Gets Room.</summary>
+    /// <remarks> references <see cref="LakeRoomsDat"/> on <see cref="Specification.GetLakeRoomsDat"/> index.</remarks>
     public required int? Room { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -23,6 +24,7 @@ public sealed partial class LakeRoomCompletionDat : ISpecificationFile<LakeRoomC
     public required int Unknown20 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -58,10 +60,6 @@ public sealed partial class LakeRoomCompletionDat : ISpecificationFile<LakeRoomC
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetLakeRoomsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Room
             (var roomLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

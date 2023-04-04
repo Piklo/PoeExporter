@@ -47,7 +47,6 @@ public sealed partial class BindableVirtualKeysDat : ISpecificationFile<Bindable
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading KeyCode
             (var keycodeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

@@ -32,9 +32,11 @@ public sealed partial class EnvironmentsDat : ISpecificationFile<EnvironmentsDat
     public required ReadOnlyCollection<int> Unknown56 { get; init; }
 
     /// <summary> Gets EnvironmentTransitionsKey.</summary>
+    /// <remarks> references <see cref="EnvironmentTransitionsDat"/> on <see cref="Specification.GetEnvironmentTransitionsDat"/> index.</remarks>
     public required int? EnvironmentTransitionsKey { get; init; }
 
     /// <summary> Gets PreloadGroup.</summary>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
     public required int? PreloadGroup { get; init; }
 
     /// <inheritdoc/>
@@ -61,10 +63,6 @@ public sealed partial class EnvironmentsDat : ISpecificationFile<EnvironmentsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetEnvironmentTransitionsDat();
-            // specification.GetPreloadGroupsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

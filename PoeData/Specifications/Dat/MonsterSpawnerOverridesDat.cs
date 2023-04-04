@@ -17,9 +17,11 @@ public sealed partial class MonsterSpawnerOverridesDat : ISpecificationFile<Mons
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Base_MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Base_MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Override_MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Override_MonsterVarietiesKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +48,6 @@ public sealed partial class MonsterSpawnerOverridesDat : ISpecificationFile<Mons
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

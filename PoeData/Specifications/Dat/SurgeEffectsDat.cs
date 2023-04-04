@@ -17,12 +17,14 @@ public sealed partial class SurgeEffectsDat : ISpecificationFile<SurgeEffectsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Unknown8.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
     public required ReadOnlyCollection<float> Unknown24 { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown40 { get; init; }
 
     /// <summary> Gets Unknown56.</summary>
@@ -52,9 +54,6 @@ public sealed partial class SurgeEffectsDat : ISpecificationFile<SurgeEffectsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscAnimatedDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

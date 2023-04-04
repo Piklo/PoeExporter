@@ -35,18 +35,23 @@ public sealed partial class HeistJobsDat : ISpecificationFile<HeistJobsDat>
     public required string MapIcon { get; init; }
 
     /// <summary> Gets Level_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Level_StatsKey { get; init; }
 
     /// <summary> Gets Alert_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Alert_StatsKey { get; init; }
 
     /// <summary> Gets Alarm_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Alarm_StatsKey { get; init; }
 
     /// <summary> Gets Cost_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Cost_StatsKey { get; init; }
 
     /// <summary> Gets ExperienceGain_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? ExperienceGain_StatsKey { get; init; }
 
     /// <summary> Gets ConsoleBlueprintLegend.</summary>
@@ -79,9 +84,6 @@ public sealed partial class HeistJobsDat : ISpecificationFile<HeistJobsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

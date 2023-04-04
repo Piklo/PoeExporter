@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class BlightedSporeAurasDat : ISpecificationFile<BlightedSporeAurasDat>
 {
     /// <summary> Gets BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -52,9 +53,6 @@ public sealed partial class BlightedSporeAurasDat : ISpecificationFile<BlightedS
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffDefinitionsDat();
 
             // loading BuffDefinitionsKey
             (var buffdefinitionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

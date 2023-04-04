@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LeagueProgressQuestFlagsDat : ISpecificationFile<LeagueProgressQuestFlagsDat>
 {
     /// <summary> Gets QuestFlag.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? QuestFlag { get; init; }
 
     /// <summary> Gets CompletionString.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? CompletionString { get; init; }
 
     /// <summary> Gets Boss.</summary>
@@ -49,10 +51,6 @@ public sealed partial class LeagueProgressQuestFlagsDat : ISpecificationFile<Lea
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestFlagsDat();
-            // specification.GetClientStringsDat();
 
             // loading QuestFlag
             (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

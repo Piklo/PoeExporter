@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class InvasionMonstersPerAreaDat : ISpecificationFile<InvasionMonstersPerAreaDat>
 {
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -23,9 +24,11 @@ public sealed partial class InvasionMonstersPerAreaDat : ISpecificationFile<Inva
     public required ReadOnlyCollection<int> Unknown20 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKeys1.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterVarietiesKeys1 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKeys2.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterVarietiesKeys2 { get; init; }
 
     /// <summary> Gets Unknown68.</summary>
@@ -64,10 +67,6 @@ public sealed partial class InvasionMonstersPerAreaDat : ISpecificationFile<Inva
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading WorldAreasKey
             (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

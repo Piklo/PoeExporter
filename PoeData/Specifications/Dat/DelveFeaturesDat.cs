@@ -23,12 +23,14 @@ public sealed partial class DelveFeaturesDat : ISpecificationFile<DelveFeaturesD
     public required ReadOnlyCollection<int> SpawnWeight { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets Image.</summary>
     public required string Image { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Unknown72.</summary>
@@ -76,10 +78,6 @@ public sealed partial class DelveFeaturesDat : ISpecificationFile<DelveFeaturesD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

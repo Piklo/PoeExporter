@@ -26,6 +26,7 @@ public sealed partial class UltimatumTrialMasterAudioDat : ISpecificationFile<Ul
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <summary> Gets RoundsMin.</summary>
@@ -58,9 +59,6 @@ public sealed partial class UltimatumTrialMasterAudioDat : ISpecificationFile<Ul
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCTextAudioDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

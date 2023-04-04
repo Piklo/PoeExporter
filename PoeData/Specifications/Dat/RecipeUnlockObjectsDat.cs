@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class RecipeUnlockObjectsDat : ISpecificationFile<RecipeUnlockObjectsDat>
 {
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets InheritsFrom.</summary>
@@ -46,9 +47,6 @@ public sealed partial class RecipeUnlockObjectsDat : ISpecificationFile<RecipeUn
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
 
             // loading WorldAreasKey
             (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

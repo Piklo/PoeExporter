@@ -17,9 +17,11 @@ public sealed partial class IncursionChestsDat : ISpecificationFile<IncursionChe
     public required string Id { get; init; }
 
     /// <summary> Gets ChestsKey.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets UniqueChestsKey.</summary>
+    /// <remarks> references <see cref="UniqueChestsDat"/> on <see cref="Specification.GetUniqueChestsDat"/> index.</remarks>
     public required int? UniqueChestsKey { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -58,10 +60,6 @@ public sealed partial class IncursionChestsDat : ISpecificationFile<IncursionChe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetChestsDat();
-            // specification.GetUniqueChestsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

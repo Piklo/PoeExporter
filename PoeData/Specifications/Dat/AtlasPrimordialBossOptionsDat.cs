@@ -32,9 +32,11 @@ public sealed partial class AtlasPrimordialBossOptionsDat : ISpecificationFile<A
     public required string EmptyIcon { get; init; }
 
     /// <summary> Gets Description.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? Description { get; init; }
 
     /// <summary> Gets DescriptionActive.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? DescriptionActive { get; init; }
 
     /// <summary> Gets ProgressTracker.</summary>
@@ -73,9 +75,6 @@ public sealed partial class AtlasPrimordialBossOptionsDat : ISpecificationFile<A
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetClientStringsDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

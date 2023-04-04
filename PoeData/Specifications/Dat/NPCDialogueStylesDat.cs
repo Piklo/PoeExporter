@@ -47,6 +47,7 @@ public sealed partial class NPCDialogueStylesDat : ISpecificationFile<NPCDialogu
     public required ReadOnlyCollection<int> Unknown76 { get; init; }
 
     /// <summary> Gets Unknown92.</summary>
+    /// <remarks> references <see cref="NPCDialogueStylesDat"/> on <see cref="Specification.GetNPCDialogueStylesDat"/> index.</remarks>
     public required int? Unknown92 { get; init; }
 
     /// <summary> Gets Unknown100.</summary>
@@ -104,7 +105,6 @@ public sealed partial class NPCDialogueStylesDat : ISpecificationFile<NPCDialogu
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

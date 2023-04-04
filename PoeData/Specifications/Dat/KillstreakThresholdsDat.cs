@@ -17,9 +17,11 @@ public sealed partial class KillstreakThresholdsDat : ISpecificationFile<Killstr
     public required int Kills { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,10 +48,6 @@ public sealed partial class KillstreakThresholdsDat : ISpecificationFile<Killstr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Kills
             (var killsLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

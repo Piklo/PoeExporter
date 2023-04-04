@@ -26,6 +26,7 @@ public sealed partial class NPCsDat : ISpecificationFile<NPCsDat>
     public required int? Unknown24 { get; init; }
 
     /// <summary> Gets NPCMasterKey.</summary>
+    /// <remarks> references <see cref="NPCMasterDat"/> on <see cref="Specification.GetNPCMasterDat"/> index.</remarks>
     public required int? NPCMasterKey { get; init; }
 
     /// <summary> Gets ShortName.</summary>
@@ -35,21 +36,26 @@ public sealed partial class NPCsDat : ISpecificationFile<NPCsDat>
     public required int Unknown64 { get; init; }
 
     /// <summary> Gets NPCAudios1.</summary>
+    /// <remarks> references <see cref="NPCAudioDat"/> on <see cref="Specification.GetNPCAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCAudios1 { get; init; }
 
     /// <summary> Gets NPCAudios2.</summary>
+    /// <remarks> references <see cref="NPCAudioDat"/> on <see cref="Specification.GetNPCAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCAudios2 { get; init; }
 
     /// <summary> Gets Unknown100.</summary>
     public required int Unknown100 { get; init; }
 
     /// <summary> Gets Unknown104.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? Unknown104 { get; init; }
 
     /// <summary> Gets Portrait.</summary>
+    /// <remarks> references <see cref="NPCPortraitsDat"/> on <see cref="Specification.GetNPCPortraitsDat"/> index.</remarks>
     public required int? Portrait { get; init; }
 
     /// <summary> Gets DialogueStyle.</summary>
+    /// <remarks> references <see cref="NPCDialogueStylesDat"/> on <see cref="Specification.GetNPCDialogueStylesDat"/> index.</remarks>
     public required int? DialogueStyle { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown144 is set.</summary>
@@ -85,12 +91,6 @@ public sealed partial class NPCsDat : ISpecificationFile<NPCsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCMasterDat();
-            // specification.GetNPCAudioDat();
-            // specification.GetNPCPortraitsDat();
-            // specification.GetNPCDialogueStylesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

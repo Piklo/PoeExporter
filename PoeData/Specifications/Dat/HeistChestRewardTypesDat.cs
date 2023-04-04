@@ -23,6 +23,7 @@ public sealed partial class HeistChestRewardTypesDat : ISpecificationFile<HeistC
     public required string RewardTypeName { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
+    /// <remarks> references <see cref="HeistChestRewardTypesDat"/> on <see cref="Specification.GetHeistChestRewardTypesDat"/> index.</remarks>
     public required int? Unknown24 { get; init; }
 
     /// <summary> Gets RewardRoomName.</summary>
@@ -41,6 +42,7 @@ public sealed partial class HeistChestRewardTypesDat : ISpecificationFile<HeistC
     public required string RewardRoomName2 { get; init; }
 
     /// <summary> Gets HeistJobsKey.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HeistJobsKey { get; init; }
 
     /// <summary> Gets Unknown76.</summary>
@@ -70,9 +72,6 @@ public sealed partial class HeistChestRewardTypesDat : ISpecificationFile<HeistC
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHeistJobsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

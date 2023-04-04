@@ -17,24 +17,29 @@ public sealed partial class HellscapeFactionsDat : ISpecificationFile<HellscapeF
     public required string Id { get; init; }
 
     /// <summary> Gets Unknown8.</summary>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
     public required int? Unknown24 { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown40 { get; init; }
 
     /// <summary> Gets Unknown56.</summary>
     public required int Unknown56 { get; init; }
 
     /// <summary> Gets Unknown60.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown60 { get; init; }
 
     /// <summary> Gets Unknown76.</summary>
     public required string Unknown76 { get; init; }
 
     /// <summary> Gets Boss.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Boss { get; init; }
 
     /// <inheritdoc/>
@@ -61,10 +66,6 @@ public sealed partial class HellscapeFactionsDat : ISpecificationFile<HellscapeF
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetEnvironmentsDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

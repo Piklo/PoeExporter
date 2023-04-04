@@ -17,9 +17,11 @@ public sealed partial class BetrayalChoiceActionsDat : ISpecificationFile<Betray
     public required string Id { get; init; }
 
     /// <summary> Gets BetrayalChoicesKey.</summary>
+    /// <remarks> references <see cref="BetrayalChoicesDat"/> on <see cref="Specification.GetBetrayalChoicesDat"/> index.</remarks>
     public required int? BetrayalChoicesKey { get; init; }
 
     /// <summary> Gets ClientStringsKey.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientStringsKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,10 +48,6 @@ public sealed partial class BetrayalChoiceActionsDat : ISpecificationFile<Betray
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBetrayalChoicesDat();
-            // specification.GetClientStringsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

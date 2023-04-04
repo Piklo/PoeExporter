@@ -17,9 +17,11 @@ public sealed partial class AfflictionSplitDemonsDat : ISpecificationFile<Afflic
     public required int Unknown0 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets AfflictionRandomModCategoriesKey.</summary>
+    /// <remarks> references <see cref="AfflictionRandomModCategoriesDat"/> on <see cref="Specification.GetAfflictionRandomModCategoriesDat"/> index.</remarks>
     public required int? AfflictionRandomModCategoriesKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,10 +48,6 @@ public sealed partial class AfflictionSplitDemonsDat : ISpecificationFile<Afflic
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetAfflictionRandomModCategoriesDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AtlasNodeDefinitionDat : ISpecificationFile<AtlasNodeDefinitionDat>
 {
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown32 is set.</summary>
@@ -55,10 +57,6 @@ public sealed partial class AtlasNodeDefinitionDat : ISpecificationFile<AtlasNod
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetItemVisualIdentityDat();
 
             // loading WorldAreasKey
             (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

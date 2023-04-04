@@ -17,9 +17,11 @@ public sealed partial class FixedHideoutDoodadTypesDat : ISpecificationFile<Fixe
     public required string Id { get; init; }
 
     /// <summary> Gets HideoutDoodadsKeys.</summary>
+    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.GetHideoutDoodadsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HideoutDoodadsKeys { get; init; }
 
     /// <summary> Gets BaseTypeHideoutDoodadsKey.</summary>
+    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.GetHideoutDoodadsDat"/> index.</remarks>
     public required int? BaseTypeHideoutDoodadsKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +48,6 @@ public sealed partial class FixedHideoutDoodadTypesDat : ISpecificationFile<Fixe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHideoutDoodadsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

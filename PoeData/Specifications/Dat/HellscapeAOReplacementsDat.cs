@@ -47,7 +47,6 @@ public sealed partial class HellscapeAOReplacementsDat : ISpecificationFile<Hell
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Original
             (var originalLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

@@ -17,9 +17,11 @@ public sealed partial class NPCConversationsDat : ISpecificationFile<NPCConversa
     public required string Id { get; init; }
 
     /// <summary> Gets DialogueEvent.</summary>
+    /// <remarks> references <see cref="DialogueEventDat"/> on <see cref="Specification.GetDialogueEventDat"/> index.</remarks>
     public required int? DialogueEvent { get; init; }
 
     /// <summary> Gets NPCTextAudioKeys.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCTextAudioKeys { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -52,10 +54,6 @@ public sealed partial class NPCConversationsDat : ISpecificationFile<NPCConversa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetDialogueEventDat();
-            // specification.GetNPCTextAudioDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

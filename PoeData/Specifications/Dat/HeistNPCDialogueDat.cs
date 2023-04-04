@@ -14,15 +14,19 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistNPCDialogueDat : ISpecificationFile<HeistNPCDialogueDat>
 {
     /// <summary> Gets DialogueEventKey.</summary>
+    /// <remarks> references <see cref="DialogueEventDat"/> on <see cref="Specification.GetDialogueEventDat"/> index.</remarks>
     public required int? DialogueEventKey { get; init; }
 
     /// <summary> Gets HeistNPCsKey.</summary>
+    /// <remarks> references <see cref="HeistNPCsDat"/> on <see cref="Specification.GetHeistNPCsDat"/> index.</remarks>
     public required int? HeistNPCsKey { get; init; }
 
     /// <summary> Gets AudioNormal.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AudioNormal { get; init; }
 
     /// <summary> Gets AudioLoud.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AudioLoud { get; init; }
 
     /// <summary> Gets Unknown64.</summary>
@@ -52,11 +56,6 @@ public sealed partial class HeistNPCDialogueDat : ISpecificationFile<HeistNPCDia
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetDialogueEventDat();
-            // specification.GetHeistNPCsDat();
-            // specification.GetNPCTextAudioDat();
 
             // loading DialogueEventKey
             (var dialogueeventkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -17,6 +17,7 @@ public sealed partial class HarvestSeedsDat : ISpecificationFile<HarvestSeedsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Monster.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Monster { get; init; }
 
     /// <summary> Gets Tier.</summary>
@@ -29,6 +30,7 @@ public sealed partial class HarvestSeedsDat : ISpecificationFile<HarvestSeedsDat
     public required ReadOnlyCollection<int> Unknown32 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary> Gets SeedAnimation.</summary>
@@ -67,10 +69,6 @@ public sealed partial class HarvestSeedsDat : ISpecificationFile<HarvestSeedsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

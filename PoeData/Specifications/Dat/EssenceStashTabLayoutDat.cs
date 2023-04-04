@@ -17,6 +17,7 @@ public sealed partial class EssenceStashTabLayoutDat : ISpecificationFile<Essenc
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets X.</summary>
@@ -61,9 +62,6 @@ public sealed partial class EssenceStashTabLayoutDat : ISpecificationFile<Essenc
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

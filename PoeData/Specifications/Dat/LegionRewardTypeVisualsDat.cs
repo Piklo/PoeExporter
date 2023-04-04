@@ -17,12 +17,14 @@ public sealed partial class LegionRewardTypeVisualsDat : ISpecificationFile<Legi
     public required int IntId { get; init; }
 
     /// <summary> Gets MinimapIconsKey.</summary>
+    /// <remarks> references <see cref="MinimapIconsDat"/> on <see cref="Specification.GetMinimapIconsDat"/> index.</remarks>
     public required int? MinimapIconsKey { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
     public required string Unknown20 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey { get; init; }
 
     /// <summary> Gets Unknown44.</summary>
@@ -55,10 +57,6 @@ public sealed partial class LegionRewardTypeVisualsDat : ISpecificationFile<Legi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMinimapIconsDat();
-            // specification.GetMiscAnimatedDat();
 
             // loading IntId
             (var intidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

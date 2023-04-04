@@ -17,6 +17,7 @@ public sealed partial class CraftingItemClassCategoriesDat : ISpecificationFile<
     public required string Id { get; init; }
 
     /// <summary> Gets ItemClasses.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ItemClasses { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -49,9 +50,6 @@ public sealed partial class CraftingItemClassCategoriesDat : ISpecificationFile<
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetItemClassesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

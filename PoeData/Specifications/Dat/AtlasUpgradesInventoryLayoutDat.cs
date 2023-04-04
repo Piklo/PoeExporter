@@ -20,6 +20,7 @@ public sealed partial class AtlasUpgradesInventoryLayoutDat : ISpecificationFile
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets Voidstone.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Voidstone { get; init; }
 
     /// <summary> Gets Unknown28.</summary>
@@ -29,6 +30,7 @@ public sealed partial class AtlasUpgradesInventoryLayoutDat : ISpecificationFile
     public required string Objective { get; init; }
 
     /// <summary> Gets GrantAtlasUpgrade.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? GrantAtlasUpgrade { get; init; }
 
     /// <summary> Gets Unknown56.</summary>
@@ -58,10 +60,6 @@ public sealed partial class AtlasUpgradesInventoryLayoutDat : ISpecificationFile
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetQuestFlagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

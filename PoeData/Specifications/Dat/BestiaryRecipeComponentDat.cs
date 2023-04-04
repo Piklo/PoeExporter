@@ -20,21 +20,27 @@ public sealed partial class BestiaryRecipeComponentDat : ISpecificationFile<Best
     public required int MinLevel { get; init; }
 
     /// <summary> Gets BestiaryFamiliesKey.</summary>
+    /// <remarks> references <see cref="BestiaryFamiliesDat"/> on <see cref="Specification.GetBestiaryFamiliesDat"/> index.</remarks>
     public required int? BestiaryFamiliesKey { get; init; }
 
     /// <summary> Gets BestiaryGroupsKey.</summary>
+    /// <remarks> references <see cref="BestiaryGroupsDat"/> on <see cref="Specification.GetBestiaryGroupsDat"/> index.</remarks>
     public required int? BestiaryGroupsKey { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary> Gets BestiaryCapturableMonstersKey.</summary>
+    /// <remarks> references <see cref="BestiaryCapturableMonstersDat"/> on <see cref="Specification.GetBestiaryCapturableMonstersDat"/> index.</remarks>
     public required int? BestiaryCapturableMonstersKey { get; init; }
 
     /// <summary> Gets BeastRarity.</summary>
+    /// <remarks> references <see cref="RarityDat"/> on <see cref="Specification.GetRarityDat"/> index.</remarks>
     public required int? BeastRarity { get; init; }
 
     /// <summary> Gets BestiaryGenusKey.</summary>
+    /// <remarks> references <see cref="BestiaryGenusDat"/> on <see cref="Specification.GetBestiaryGenusDat"/> index.</remarks>
     public required int? BestiaryGenusKey { get; init; }
 
     /// <inheritdoc/>
@@ -61,14 +67,6 @@ public sealed partial class BestiaryRecipeComponentDat : ISpecificationFile<Best
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBestiaryFamiliesDat();
-            // specification.GetBestiaryGroupsDat();
-            // specification.GetModsDat();
-            // specification.GetBestiaryCapturableMonstersDat();
-            // specification.GetRarityDat();
-            // specification.GetBestiaryGenusDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -20,6 +20,7 @@ public sealed partial class DelveUpgradesDat : ISpecificationFile<DelveUpgradesD
     public required int UpgradeLevel { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatValues.</summary>
@@ -32,6 +33,7 @@ public sealed partial class DelveUpgradesDat : ISpecificationFile<DelveUpgradesD
     public required int Unknown44 { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <summary> Gets Unknown64.</summary>
@@ -61,10 +63,6 @@ public sealed partial class DelveUpgradesDat : ISpecificationFile<DelveUpgradesD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading DelveUpgradeTypeKey
             (var delveupgradetypekeyLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -35,6 +35,7 @@ public sealed partial class MusicDat : ISpecificationFile<MusicDat>
     public required string Unknown37 { get; init; }
 
     /// <summary> Gets MusicCategories.</summary>
+    /// <remarks> references <see cref="MusicCategoriesDat"/> on <see cref="Specification.GetMusicCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MusicCategories { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown61 is set.</summary>
@@ -67,9 +68,6 @@ public sealed partial class MusicDat : ISpecificationFile<MusicDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMusicCategoriesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

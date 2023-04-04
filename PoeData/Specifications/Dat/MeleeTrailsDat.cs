@@ -62,7 +62,6 @@ public sealed partial class MeleeTrailsDat : ISpecificationFile<MeleeTrailsDat>
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading EPKFile1
             (var epkfile1Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

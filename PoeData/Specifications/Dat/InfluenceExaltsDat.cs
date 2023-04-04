@@ -17,6 +17,7 @@ public sealed partial class InfluenceExaltsDat : ISpecificationFile<InfluenceExa
     public required int Id { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <inheritdoc/>
@@ -43,9 +44,6 @@ public sealed partial class InfluenceExaltsDat : ISpecificationFile<InfluenceExa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

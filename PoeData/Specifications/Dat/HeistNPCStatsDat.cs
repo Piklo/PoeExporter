@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistNPCStatsDat : ISpecificationFile<HeistNPCStatsDat>
 {
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown16 is set.</summary>
@@ -52,9 +53,6 @@ public sealed partial class HeistNPCStatsDat : ISpecificationFile<HeistNPCStatsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading StatsKey
             (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

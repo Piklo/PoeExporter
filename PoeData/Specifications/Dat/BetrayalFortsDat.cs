@@ -26,6 +26,7 @@ public sealed partial class BetrayalFortsDat : ISpecificationFile<BetrayalFortsD
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets ExtraTerrainFeaturesKey.</summary>
+    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.GetExtraTerrainFeaturesDat"/> index.</remarks>
     public required int? ExtraTerrainFeaturesKey { get; init; }
 
     /// <inheritdoc/>
@@ -52,9 +53,6 @@ public sealed partial class BetrayalFortsDat : ISpecificationFile<BetrayalFortsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetExtraTerrainFeaturesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

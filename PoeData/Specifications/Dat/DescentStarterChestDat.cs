@@ -17,15 +17,18 @@ public sealed partial class DescentStarterChestDat : ISpecificationFile<DescentS
     public required string Id { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required int? CharactersKey { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets SocketColours.</summary>
     public required string SocketColours { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <inheritdoc/>
@@ -52,11 +55,6 @@ public sealed partial class DescentStarterChestDat : ISpecificationFile<DescentS
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCharactersDat();
-            // specification.GetBaseItemTypesDat();
-            // specification.GetWorldAreasDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

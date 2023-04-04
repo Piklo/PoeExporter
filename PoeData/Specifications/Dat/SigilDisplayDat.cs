@@ -17,9 +17,11 @@ public sealed partial class SigilDisplayDat : ISpecificationFile<SigilDisplayDat
     public required string Id { get; init; }
 
     /// <summary> Gets Active_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Active_StatsKey { get; init; }
 
     /// <summary> Gets Inactive_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Inactive_StatsKey { get; init; }
 
     /// <summary> Gets DDSFile.</summary>
@@ -58,9 +60,6 @@ public sealed partial class SigilDisplayDat : ISpecificationFile<SigilDisplayDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -14,15 +14,18 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HellscapeModsDat : ISpecificationFile<HellscapeModsDat>
 {
     /// <summary> Gets Mod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets TiersWhitelist.</summary>
     public required ReadOnlyCollection<int> TiersWhitelist { get; init; }
 
     /// <summary> Gets TransformAchievement.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? TransformAchievement { get; init; }
 
     /// <summary> Gets ModFamilies.</summary>
+    /// <remarks> references <see cref="ModFamilyDat"/> on <see cref="Specification.GetModFamilyDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModFamilies { get; init; }
 
     /// <inheritdoc/>
@@ -49,11 +52,6 @@ public sealed partial class HellscapeModsDat : ISpecificationFile<HellscapeModsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetModFamilyDat();
 
             // loading Mod
             (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

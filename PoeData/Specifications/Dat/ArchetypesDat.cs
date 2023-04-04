@@ -17,6 +17,7 @@ public sealed partial class ArchetypesDat : ISpecificationFile<ArchetypesDat>
     public required string Id { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required int? CharactersKey { get; init; }
 
     /// <summary> Gets PassiveSkillTreeURL.</summary>
@@ -85,9 +86,6 @@ public sealed partial class ArchetypesDat : ISpecificationFile<ArchetypesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCharactersDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -23,6 +23,7 @@ public sealed partial class SentinelPassiveTypesDat : ISpecificationFile<Sentine
     public required string ActiveIcon { get; init; }
 
     /// <summary> Gets DroneType.</summary>
+    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.GetDroneTypesDat"/> index.</remarks>
     public required int? DroneType { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -52,9 +53,6 @@ public sealed partial class SentinelPassiveTypesDat : ISpecificationFile<Sentine
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetDroneTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

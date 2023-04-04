@@ -35,12 +35,14 @@ public sealed partial class PantheonPanelLayoutDat : ISpecificationFile<Pantheon
     public required string SelectionImage { get; init; }
 
     /// <summary> Gets Effect1_StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Effect1_StatsKeys { get; init; }
 
     /// <summary> Gets Effect1_Values.</summary>
     public required ReadOnlyCollection<int> Effect1_Values { get; init; }
 
     /// <summary> Gets Effect2_StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Effect2_StatsKeys { get; init; }
 
     /// <summary> Gets GodName3.</summary>
@@ -50,12 +52,14 @@ public sealed partial class PantheonPanelLayoutDat : ISpecificationFile<Pantheon
     public required ReadOnlyCollection<int> Effect3_Values { get; init; }
 
     /// <summary> Gets Effect3_StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Effect3_StatsKeys { get; init; }
 
     /// <summary> Gets GodName4.</summary>
     public required string GodName4 { get; init; }
 
     /// <summary> Gets Effect4_StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Effect4_StatsKeys { get; init; }
 
     /// <summary> Gets Effect4_Values.</summary>
@@ -68,21 +72,26 @@ public sealed partial class PantheonPanelLayoutDat : ISpecificationFile<Pantheon
     public required ReadOnlyCollection<int> Effect2_Values { get; init; }
 
     /// <summary> Gets QuestState1.</summary>
+    /// <remarks> references <see cref="QuestStatesDat"/> on <see cref="Specification.GetQuestStatesDat"/> index.</remarks>
     public required int? QuestState1 { get; init; }
 
     /// <summary> Gets QuestState2.</summary>
+    /// <remarks> references <see cref="QuestStatesDat"/> on <see cref="Specification.GetQuestStatesDat"/> index.</remarks>
     public required int? QuestState2 { get; init; }
 
     /// <summary> Gets QuestState3.</summary>
+    /// <remarks> references <see cref="QuestStatesDat"/> on <see cref="Specification.GetQuestStatesDat"/> index.</remarks>
     public required int? QuestState3 { get; init; }
 
     /// <summary> Gets QuestState4.</summary>
+    /// <remarks> references <see cref="QuestStatesDat"/> on <see cref="Specification.GetQuestStatesDat"/> index.</remarks>
     public required int? QuestState4 { get; init; }
 
     /// <summary> Gets a value indicating whether IsDisabled is set.</summary>
     public required bool IsDisabled { get; init; }
 
     /// <summary> Gets AchievementItems.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItems { get; init; }
 
     /// <inheritdoc/>
@@ -109,11 +118,6 @@ public sealed partial class PantheonPanelLayoutDat : ISpecificationFile<Pantheon
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetQuestStatesDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -17,12 +17,14 @@ public sealed partial class EclipseModsDat : ISpecificationFile<EclipseModsDat>
     public required string Key { get; init; }
 
     /// <summary> Gets SpawnWeight_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_TagsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>
     public required ReadOnlyCollection<int> SpawnWeight_Values { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -58,10 +60,6 @@ public sealed partial class EclipseModsDat : ISpecificationFile<EclipseModsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTagsDat();
-            // specification.GetModsDat();
 
             // loading Key
             (var keyLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

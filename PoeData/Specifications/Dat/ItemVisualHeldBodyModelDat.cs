@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ItemVisualHeldBodyModelDat : ISpecificationFile<ItemVisualHeldBodyModelDat>
 {
     /// <summary> Gets ItemVisualIdentity.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentity { get; init; }
 
     /// <summary> Gets MarauderAnimatedObject.</summary>
@@ -82,9 +83,6 @@ public sealed partial class ItemVisualHeldBodyModelDat : ISpecificationFile<Item
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetItemVisualIdentityDat();
 
             // loading ItemVisualIdentity
             (var itemvisualidentityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

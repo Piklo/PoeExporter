@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistDoodadNPCsDat : ISpecificationFile<HeistDoodadNPCsDat>
 {
     /// <summary> Gets NPCsKey.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? NPCsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -38,6 +39,7 @@ public sealed partial class HeistDoodadNPCsDat : ISpecificationFile<HeistDoodadN
     public required string Stance { get; init; }
 
     /// <summary> Gets BetrayalTargetsKey.</summary>
+    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
     /// <inheritdoc/>
@@ -64,10 +66,6 @@ public sealed partial class HeistDoodadNPCsDat : ISpecificationFile<HeistDoodadN
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCsDat();
-            // specification.GetBetrayalTargetsDat();
 
             // loading NPCsKey
             (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

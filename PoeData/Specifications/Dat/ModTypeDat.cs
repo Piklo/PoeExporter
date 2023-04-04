@@ -17,6 +17,7 @@ public sealed partial class ModTypeDat : ISpecificationFile<ModTypeDat>
     public required string Name { get; init; }
 
     /// <summary> Gets ModSellPriceTypesKeys.</summary>
+    /// <remarks> references <see cref="ModSellPriceTypesDat"/> on <see cref="Specification.GetModSellPriceTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModSellPriceTypesKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>
@@ -46,9 +47,6 @@ public sealed partial class ModTypeDat : ISpecificationFile<ModTypeDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModSellPriceTypesDat();
 
             // loading Name
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

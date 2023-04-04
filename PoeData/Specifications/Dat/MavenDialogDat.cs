@@ -17,24 +17,30 @@ public sealed partial class MavenDialogDat : ISpecificationFile<MavenDialogDat>
     public required string Id { get; init; }
 
     /// <summary> Gets TextAudioT1.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudioT1 { get; init; }
 
     /// <summary> Gets TextAudioT2.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudioT2 { get; init; }
 
     /// <summary> Gets TextAudioT3.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudioT3 { get; init; }
 
     /// <summary> Gets TextAudioT4.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudioT4 { get; init; }
 
     /// <summary> Gets TextAudioT5.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudioT5 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown88 is set.</summary>
     public required bool Unknown88 { get; init; }
 
     /// <summary> Gets TextAudioT6.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudioT6 { get; init; }
 
     /// <inheritdoc/>
@@ -61,9 +67,6 @@ public sealed partial class MavenDialogDat : ISpecificationFile<MavenDialogDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCTextAudioDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

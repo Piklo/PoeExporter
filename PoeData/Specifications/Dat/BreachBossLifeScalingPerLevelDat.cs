@@ -44,7 +44,6 @@ public sealed partial class BreachBossLifeScalingPerLevelDat : ISpecificationFil
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading MonsterLevel
             (var monsterlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

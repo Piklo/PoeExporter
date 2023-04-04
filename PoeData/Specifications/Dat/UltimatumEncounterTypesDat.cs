@@ -29,9 +29,11 @@ public sealed partial class UltimatumEncounterTypesDat : ISpecificationFile<Ulti
     public required bool Unknown25 { get; init; }
 
     /// <summary> Gets NormalAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NormalAchievements { get; init; }
 
     /// <summary> Gets InscribedAchievement.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? InscribedAchievement { get; init; }
 
     /// <inheritdoc/>
@@ -58,9 +60,6 @@ public sealed partial class UltimatumEncounterTypesDat : ISpecificationFile<Ulti
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

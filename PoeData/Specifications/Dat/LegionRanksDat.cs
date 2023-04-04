@@ -29,6 +29,7 @@ public sealed partial class LegionRanksDat : ISpecificationFile<LegionRanksDat>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets LegionBalancePerLevelKey.</summary>
+    /// <remarks> references <see cref="LegionBalancePerLevelDat"/> on <see cref="Specification.GetLegionBalancePerLevelDat"/> index.</remarks>
     public required int? LegionBalancePerLevelKey { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
@@ -61,9 +62,6 @@ public sealed partial class LegionRanksDat : ISpecificationFile<LegionRanksDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetLegionBalancePerLevelDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

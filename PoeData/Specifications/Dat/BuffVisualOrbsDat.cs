@@ -17,15 +17,19 @@ public sealed partial class BuffVisualOrbsDat : ISpecificationFile<BuffVisualOrb
     public required string Id { get; init; }
 
     /// <summary> Gets BuffVisualOrbTypesKey.</summary>
+    /// <remarks> references <see cref="BuffVisualOrbTypesDat"/> on <see cref="Specification.GetBuffVisualOrbTypesDat"/> index.</remarks>
     public required int? BuffVisualOrbTypesKey { get; init; }
 
     /// <summary> Gets BuffVisualOrbArtKeys.</summary>
+    /// <remarks> references <see cref="BuffVisualOrbArtDat"/> on <see cref="Specification.GetBuffVisualOrbArtDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BuffVisualOrbArtKeys { get; init; }
 
     /// <summary> Gets Player_BuffVisualOrbArtKeys.</summary>
+    /// <remarks> references <see cref="BuffVisualOrbArtDat"/> on <see cref="Specification.GetBuffVisualOrbArtDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Player_BuffVisualOrbArtKeys { get; init; }
 
     /// <summary> Gets BuffVisualOrbArtKeys2.</summary>
+    /// <remarks> references <see cref="BuffVisualOrbArtDat"/> on <see cref="Specification.GetBuffVisualOrbArtDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BuffVisualOrbArtKeys2 { get; init; }
 
     /// <inheritdoc/>
@@ -52,10 +56,6 @@ public sealed partial class BuffVisualOrbsDat : ISpecificationFile<BuffVisualOrb
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffVisualOrbTypesDat();
-            // specification.GetBuffVisualOrbArtDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

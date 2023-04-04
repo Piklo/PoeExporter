@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ComponentAttributeRequirementsDat : ISpecificationFile<ComponentAttributeRequirementsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="BaseItemTypesDat.Id"/>.</remarks>
     public required string BaseItemTypesKey { get; init; }
 
     /// <summary> Gets ReqStr.</summary>
@@ -49,9 +50,6 @@ public sealed partial class ComponentAttributeRequirementsDat : ISpecificationFi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

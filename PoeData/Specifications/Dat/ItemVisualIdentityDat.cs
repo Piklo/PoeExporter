@@ -23,6 +23,7 @@ public sealed partial class ItemVisualIdentityDat : ISpecificationFile<ItemVisua
     public required string AOFile { get; init; }
 
     /// <summary> Gets InventorySoundEffect.</summary>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
     public required int? InventorySoundEffect { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -80,18 +81,21 @@ public sealed partial class ItemVisualIdentityDat : ISpecificationFile<ItemVisua
     public required int Unknown224 { get; init; }
 
     /// <summary> Gets Pickup_AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Pickup_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets SMFiles.</summary>
     public required ReadOnlyCollection<string> SMFiles { get; init; }
 
     /// <summary> Gets Identify_AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Identify_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets EPKFile.</summary>
     public required string EPKFile { get; init; }
 
     /// <summary> Gets Corrupt_AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Corrupt_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether IsAlternateArt is set.</summary>
@@ -101,6 +105,7 @@ public sealed partial class ItemVisualIdentityDat : ISpecificationFile<ItemVisua
     public required bool Unknown301 { get; init; }
 
     /// <summary> Gets CreateCorruptedJewelAchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? CreateCorruptedJewelAchievementItemsKey { get; init; }
 
     /// <summary> Gets AnimationLocation.</summary>
@@ -199,10 +204,6 @@ public sealed partial class ItemVisualIdentityDat : ISpecificationFile<ItemVisua
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetSoundEffectsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -23,9 +23,11 @@ public sealed partial class ShopTagDat : ISpecificationFile<ShopTagDat>
     public required bool IsCategory { get; init; }
 
     /// <summary> Gets Category.</summary>
+    /// <remarks> references <see cref="ShopTagDat"/> on <see cref="Specification.GetShopTagDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets SkillGem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SkillGem { get; init; }
 
     /// <inheritdoc/>
@@ -52,9 +54,6 @@ public sealed partial class ShopTagDat : ISpecificationFile<ShopTagDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

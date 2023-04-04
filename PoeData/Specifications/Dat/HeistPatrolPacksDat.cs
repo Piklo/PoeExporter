@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistPatrolPacksDat : ISpecificationFile<HeistPatrolPacksDat>
 {
     /// <summary> Gets MonsterPacksKey.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPacksKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -58,9 +59,6 @@ public sealed partial class HeistPatrolPacksDat : ISpecificationFile<HeistPatrol
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterPacksDat();
 
             // loading MonsterPacksKey
             (var monsterpackskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

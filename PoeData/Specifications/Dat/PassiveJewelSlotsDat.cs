@@ -14,18 +14,22 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class PassiveJewelSlotsDat : ISpecificationFile<PassiveJewelSlotsDat>
 {
     /// <summary> Gets Slot.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required int? Slot { get; init; }
 
     /// <summary> Gets ClusterJewelSize.</summary>
+    /// <remarks> references <see cref="PassiveTreeExpansionJewelSizesDat"/> on <see cref="Specification.GetPassiveTreeExpansionJewelSizesDat"/> index.</remarks>
     public required int? ClusterJewelSize { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
     public required int Unknown32 { get; init; }
 
     /// <summary> Gets ReplacesSlot.</summary>
+    /// <remarks> references <see cref="PassiveJewelSlotsDat"/> on <see cref="Specification.GetPassiveJewelSlotsDat"/> index.</remarks>
     public required int? ReplacesSlot { get; init; }
 
     /// <summary> Gets ProxySlot.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required int? ProxySlot { get; init; }
 
     /// <summary> Gets StartIndices.</summary>
@@ -55,10 +59,6 @@ public sealed partial class PassiveJewelSlotsDat : ISpecificationFile<PassiveJew
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPassiveSkillsDat();
-            // specification.GetPassiveTreeExpansionJewelSizesDat();
 
             // loading Slot
             (var slotLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -20,6 +20,7 @@ public sealed partial class TableMonsterSpawnersDat : ISpecificationFile<TableMo
     public required int AreaLevel { get; init; }
 
     /// <summary> Gets SpawnsMonsters.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnsMonsters { get; init; }
 
     /// <summary> Gets Unknown28.</summary>
@@ -148,9 +149,6 @@ public sealed partial class TableMonsterSpawnersDat : ISpecificationFile<TableMo
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading Metadata
             (var metadataLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

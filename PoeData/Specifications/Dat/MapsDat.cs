@@ -14,21 +14,27 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MapsDat : ISpecificationFile<MapsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Regular_WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? Regular_WorldAreasKey { get; init; }
 
     /// <summary> Gets Unique_WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? Unique_WorldAreasKey { get; init; }
 
     /// <summary> Gets MapUpgrade_BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? MapUpgrade_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets AchievementItem.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItem { get; init; }
 
     /// <summary> Gets Regular_GuildCharacter.</summary>
@@ -41,18 +47,22 @@ public sealed partial class MapsDat : ISpecificationFile<MapsDat>
     public required int Tier { get; init; }
 
     /// <summary> Gets Shaped_Base_MapsKey.</summary>
+    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>
     public required int? Shaped_Base_MapsKey { get; init; }
 
     /// <summary> Gets Shaped_AreaLevel.</summary>
     public required int Shaped_AreaLevel { get; init; }
 
     /// <summary> Gets UpgradedFrom_MapsKey.</summary>
+    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>
     public required int? UpgradedFrom_MapsKey { get; init; }
 
     /// <summary> Gets MapsKey2.</summary>
+    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>
     public required int? MapsKey2 { get; init; }
 
     /// <summary> Gets MapsKey3.</summary>
+    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>
     public required int? MapsKey3 { get; init; }
 
     /// <summary> Gets MapSeriesKey.</summary>
@@ -91,12 +101,6 @@ public sealed partial class MapsDat : ISpecificationFile<MapsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetWorldAreasDat();
-            // specification.GetMonsterPacksDat();
-            // specification.GetAchievementItemsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

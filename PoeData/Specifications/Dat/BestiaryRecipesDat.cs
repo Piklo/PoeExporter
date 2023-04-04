@@ -20,18 +20,21 @@ public sealed partial class BestiaryRecipesDat : ISpecificationFile<BestiaryReci
     public required string Description { get; init; }
 
     /// <summary> Gets BestiaryRecipeComponentKeys.</summary>
+    /// <remarks> references <see cref="BestiaryRecipeComponentDat"/> on <see cref="Specification.GetBestiaryRecipeComponentDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BestiaryRecipeComponentKeys { get; init; }
 
     /// <summary> Gets Notes.</summary>
     public required string Notes { get; init; }
 
     /// <summary> Gets Category.</summary>
+    /// <remarks> references <see cref="BestiaryRecipeCategoriesDat"/> on <see cref="Specification.GetBestiaryRecipeCategoriesDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown56 is set.</summary>
     public required bool Unknown56 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown73 is set.</summary>
@@ -47,6 +50,7 @@ public sealed partial class BestiaryRecipesDat : ISpecificationFile<BestiaryReci
     public required int Unknown82 { get; init; }
 
     /// <summary> Gets FlaskMod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? FlaskMod { get; init; }
 
     /// <inheritdoc/>
@@ -73,12 +77,6 @@ public sealed partial class BestiaryRecipesDat : ISpecificationFile<BestiaryReci
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBestiaryRecipeComponentDat();
-            // specification.GetBestiaryRecipeCategoriesDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetModsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

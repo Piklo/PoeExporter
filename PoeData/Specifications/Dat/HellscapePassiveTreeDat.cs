@@ -20,6 +20,7 @@ public sealed partial class HellscapePassiveTreeDat : ISpecificationFile<Hellsca
     public required int AllocationsRequired { get; init; }
 
     /// <summary> Gets Passives.</summary>
+    /// <remarks> references <see cref="HellscapePassivesDat"/> on <see cref="Specification.GetHellscapePassivesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Passives { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +47,6 @@ public sealed partial class HellscapePassiveTreeDat : ISpecificationFile<Hellsca
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHellscapePassivesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

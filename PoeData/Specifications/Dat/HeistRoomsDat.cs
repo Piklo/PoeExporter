@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistRoomsDat : ISpecificationFile<HeistRoomsDat>
 {
     /// <summary> Gets HeistAreasKey.</summary>
+    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.GetHeistAreasDat"/> index.</remarks>
     public required int? HeistAreasKey { get; init; }
 
     /// <summary> Gets Id.</summary>
@@ -23,9 +24,11 @@ public sealed partial class HeistRoomsDat : ISpecificationFile<HeistRoomsDat>
     public required string ARMFile { get; init; }
 
     /// <summary> Gets HeistJobsKey1.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey1 { get; init; }
 
     /// <summary> Gets HeistJobsKey2.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey2 { get; init; }
 
     /// <summary> Gets Unknown60.</summary>
@@ -73,10 +76,6 @@ public sealed partial class HeistRoomsDat : ISpecificationFile<HeistRoomsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHeistAreasDat();
-            // specification.GetHeistJobsDat();
 
             // loading HeistAreasKey
             (var heistareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

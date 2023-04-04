@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ElderMapBossOverrideDat : ISpecificationFile<ElderMapBossOverrideDat>
 {
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets MonsterVarietiesKeys.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets TerrainMetadata.</summary>
@@ -46,10 +48,6 @@ public sealed partial class ElderMapBossOverrideDat : ISpecificationFile<ElderMa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading WorldAreasKey
             (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

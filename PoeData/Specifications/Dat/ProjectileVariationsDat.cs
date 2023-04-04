@@ -17,6 +17,7 @@ public sealed partial class ProjectileVariationsDat : ISpecificationFile<Project
     public required string Id { get; init; }
 
     /// <summary> Gets ProjectileKey.</summary>
+    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.GetProjectilesDat"/> index.</remarks>
     public required int? ProjectileKey { get; init; }
 
     /// <inheritdoc/>
@@ -43,9 +44,6 @@ public sealed partial class ProjectileVariationsDat : ISpecificationFile<Project
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetProjectilesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

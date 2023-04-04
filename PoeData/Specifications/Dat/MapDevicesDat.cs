@@ -17,6 +17,7 @@ public sealed partial class MapDevicesDat : ISpecificationFile<MapDevicesDat>
     public required string Id { get; init; }
 
     /// <summary> Gets MiscObject.</summary>
+    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
     public required int? MiscObject { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -64,9 +65,6 @@ public sealed partial class MapDevicesDat : ISpecificationFile<MapDevicesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscObjectsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

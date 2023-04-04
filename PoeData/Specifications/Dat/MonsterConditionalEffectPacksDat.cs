@@ -17,15 +17,19 @@ public sealed partial class MonsterConditionalEffectPacksDat : ISpecificationFil
     public required string Id { get; init; }
 
     /// <summary> Gets MiscEffectPack1.</summary>
+    /// <remarks> references <see cref="MiscEffectPacksDat"/> on <see cref="Specification.GetMiscEffectPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscEffectPack1 { get; init; }
 
     /// <summary> Gets MiscEffectPack2.</summary>
+    /// <remarks> references <see cref="MiscEffectPacksDat"/> on <see cref="Specification.GetMiscEffectPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscEffectPack2 { get; init; }
 
     /// <summary> Gets MiscEffectPack3.</summary>
+    /// <remarks> references <see cref="MiscEffectPacksDat"/> on <see cref="Specification.GetMiscEffectPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscEffectPack3 { get; init; }
 
     /// <summary> Gets MiscEffectPack4.</summary>
+    /// <remarks> references <see cref="MiscEffectPacksDat"/> on <see cref="Specification.GetMiscEffectPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscEffectPack4 { get; init; }
 
     /// <summary> Gets Unknown72.</summary>
@@ -55,9 +59,6 @@ public sealed partial class MonsterConditionalEffectPacksDat : ISpecificationFil
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscEffectPacksDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

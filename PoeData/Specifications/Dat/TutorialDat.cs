@@ -20,6 +20,7 @@ public sealed partial class TutorialDat : ISpecificationFile<TutorialDat>
     public required string UIFile { get; init; }
 
     /// <summary> Gets ClientString.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientString { get; init; }
 
     /// <summary> Gets a value indicating whether IsEnabled is set.</summary>
@@ -73,9 +74,6 @@ public sealed partial class TutorialDat : ISpecificationFile<TutorialDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetClientStringsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

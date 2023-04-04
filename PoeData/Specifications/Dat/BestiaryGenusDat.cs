@@ -20,6 +20,7 @@ public sealed partial class BestiaryGenusDat : ISpecificationFile<BestiaryGenusD
     public required string Name { get; init; }
 
     /// <summary> Gets BestiaryGroupsKey.</summary>
+    /// <remarks> references <see cref="BestiaryGroupsDat"/> on <see cref="Specification.GetBestiaryGroupsDat"/> index.</remarks>
     public required int? BestiaryGroupsKey { get; init; }
 
     /// <summary> Gets Name2.</summary>
@@ -52,9 +53,6 @@ public sealed partial class BestiaryGenusDat : ISpecificationFile<BestiaryGenusD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBestiaryGroupsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

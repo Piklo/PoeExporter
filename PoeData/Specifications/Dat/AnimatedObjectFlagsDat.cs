@@ -50,7 +50,6 @@ public sealed partial class AnimatedObjectFlagsDat : ISpecificationFile<Animated
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading AOFile
             (var aofileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

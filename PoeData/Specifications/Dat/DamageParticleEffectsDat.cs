@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class DamageParticleEffectsDat : ISpecificationFile<DamageParticleEffectsDat>
 {
     /// <summary> Gets DamageParticleEffectTypes.</summary>
+    /// <remarks> references <see cref="DamageParticleEffectTypesDat"/> on <see cref="Specification.GetDamageParticleEffectTypesDat"/> index.</remarks>
     public required int DamageParticleEffectTypes { get; init; }
 
     /// <summary> Gets Variation.</summary>
@@ -23,9 +24,11 @@ public sealed partial class DamageParticleEffectsDat : ISpecificationFile<Damage
     public required string PETFile { get; init; }
 
     /// <summary> Gets ImpactSoundData1.</summary>
+    /// <remarks> references <see cref="ImpactSoundDataDat"/> on <see cref="Specification.GetImpactSoundDataDat"/> index.</remarks>
     public required int? ImpactSoundData1 { get; init; }
 
     /// <summary> Gets ImpactSoundData2.</summary>
+    /// <remarks> references <see cref="ImpactSoundDataDat"/> on <see cref="Specification.GetImpactSoundDataDat"/> index.</remarks>
     public required int? ImpactSoundData2 { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -55,9 +58,6 @@ public sealed partial class DamageParticleEffectsDat : ISpecificationFile<Damage
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetImpactSoundDataDat();
 
             // loading DamageParticleEffectTypes
             (var damageparticleeffecttypesLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

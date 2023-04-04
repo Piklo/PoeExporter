@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ExpeditionAreasDat : ISpecificationFile<ExpeditionAreasDat>
 {
     /// <summary> Gets Area.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? Area { get; init; }
 
     /// <summary> Gets PosX.</summary>
@@ -23,6 +24,7 @@ public sealed partial class ExpeditionAreasDat : ISpecificationFile<ExpeditionAr
     public required int PosY { get; init; }
 
     /// <summary> Gets Tags.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tags { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -32,9 +34,11 @@ public sealed partial class ExpeditionAreasDat : ISpecificationFile<ExpeditionAr
     public required bool Unknown56 { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <summary> Gets CompletionAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CompletionAchievements { get; init; }
 
     /// <inheritdoc/>
@@ -61,12 +65,6 @@ public sealed partial class ExpeditionAreasDat : ISpecificationFile<ExpeditionAr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetTagsDat();
-            // specification.GetNPCTextAudioDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Area
             (var areaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

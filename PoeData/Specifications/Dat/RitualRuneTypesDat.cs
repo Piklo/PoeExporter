@@ -17,6 +17,7 @@ public sealed partial class RitualRuneTypesDat : ISpecificationFile<RitualRuneTy
     public required string Id { get; init; }
 
     /// <summary> Gets MiscAnimatedKey1.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey1 { get; init; }
 
     /// <summary> Gets SpawnWeight.</summary>
@@ -29,15 +30,18 @@ public sealed partial class RitualRuneTypesDat : ISpecificationFile<RitualRuneTy
     public required int LevelMax { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Unknown52.</summary>
     public required ReadOnlyCollection<int> Unknown52 { get; init; }
 
     /// <summary> Gets SpawnPatterns.</summary>
+    /// <remarks> references <see cref="RitualSpawnPatternsDat"/> on <see cref="Specification.GetRitualSpawnPatternsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnPatterns { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKey { get; init; }
 
     /// <summary> Gets Unknown100.</summary>
@@ -47,15 +51,18 @@ public sealed partial class RitualRuneTypesDat : ISpecificationFile<RitualRuneTy
     public required ReadOnlyCollection<int> Unknown116 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey2.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey2 { get; init; }
 
     /// <summary> Gets EnvironmentsKey.</summary>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
     public required int? EnvironmentsKey { get; init; }
 
     /// <summary> Gets Unknown164.</summary>
     public required int Unknown164 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary> Gets Type.</summary>
@@ -65,6 +72,7 @@ public sealed partial class RitualRuneTypesDat : ISpecificationFile<RitualRuneTy
     public required string Description { get; init; }
 
     /// <summary> Gets DaemonSpawningDataKey.</summary>
+    /// <remarks> references <see cref="DaemonSpawningDataDat"/> on <see cref="Specification.GetDaemonSpawningDataDat"/> index.</remarks>
     public required int? DaemonSpawningDataKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown216 is set.</summary>
@@ -94,15 +102,6 @@ public sealed partial class RitualRuneTypesDat : ISpecificationFile<RitualRuneTy
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscAnimatedDat();
-            // specification.GetBuffDefinitionsDat();
-            // specification.GetRitualSpawnPatternsDat();
-            // specification.GetModsDat();
-            // specification.GetEnvironmentsDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetDaemonSpawningDataDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

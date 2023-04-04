@@ -44,7 +44,6 @@ public sealed partial class KiracLevelsDat : ISpecificationFile<KiracLevelsDat>
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading AreaLevel
             (var arealevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

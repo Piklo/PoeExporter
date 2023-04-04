@@ -17,6 +17,7 @@ public sealed partial class IndexableSupportGemsDat : ISpecificationFile<Indexab
     public required int Index { get; init; }
 
     /// <summary> Gets SupportGem.</summary>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
     public required int? SupportGem { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -46,9 +47,6 @@ public sealed partial class IndexableSupportGemsDat : ISpecificationFile<Indexab
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetSkillGemsDat();
 
             // loading Index
             (var indexLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

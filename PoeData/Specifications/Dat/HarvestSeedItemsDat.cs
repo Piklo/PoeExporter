@@ -17,9 +17,11 @@ public sealed partial class HarvestSeedItemsDat : ISpecificationFile<HarvestSeed
     public required int Id { get; init; }
 
     /// <summary> Gets BaseItem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItem { get; init; }
 
     /// <summary> Gets DropStat.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? DropStat { get; init; }
 
     /// <inheritdoc/>
@@ -46,10 +48,6 @@ public sealed partial class HarvestSeedItemsDat : ISpecificationFile<HarvestSeed
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

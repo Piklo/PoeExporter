@@ -17,6 +17,7 @@ public sealed partial class HideoutsDat : ISpecificationFile<HideoutsDat>
     public required string Id { get; init; }
 
     /// <summary> Gets HideoutArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? HideoutArea { get; init; }
 
     /// <summary> Gets HASH16.</summary>
@@ -26,9 +27,11 @@ public sealed partial class HideoutsDat : ISpecificationFile<HideoutsDat>
     public required string HideoutFile { get; init; }
 
     /// <summary> Gets SpawnAreas.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnAreas { get; init; }
 
     /// <summary> Gets ClaimSideArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? ClaimSideArea { get; init; }
 
     /// <summary> Gets HideoutImage.</summary>
@@ -41,6 +44,7 @@ public sealed partial class HideoutsDat : ISpecificationFile<HideoutsDat>
     public required int Weight { get; init; }
 
     /// <summary> Gets Rarity.</summary>
+    /// <remarks> references <see cref="HideoutRarityDat"/> on <see cref="Specification.GetHideoutRarityDat"/> index.</remarks>
     public required int? Rarity { get; init; }
 
     /// <summary> Gets a value indicating whether NotActsArea is set.</summary>
@@ -88,10 +92,6 @@ public sealed partial class HideoutsDat : ISpecificationFile<HideoutsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetHideoutRarityDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

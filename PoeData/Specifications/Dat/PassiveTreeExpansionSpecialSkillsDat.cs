@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class PassiveTreeExpansionSpecialSkillsDat : ISpecificationFile<PassiveTreeExpansionSpecialSkillsDat>
 {
     /// <summary> Gets PassiveSkillsKey.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required int? PassiveSkillsKey { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class PassiveTreeExpansionSpecialSkillsDat : ISpecificatio
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPassiveSkillsDat();
-            // specification.GetStatsDat();
 
             // loading PassiveSkillsKey
             (var passiveskillskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

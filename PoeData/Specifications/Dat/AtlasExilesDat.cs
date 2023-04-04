@@ -20,6 +20,7 @@ public sealed partial class AtlasExilesDat : ISpecificationFile<AtlasExilesDat>
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets InfluencedItemIncrStat.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? InfluencedItemIncrStat { get; init; }
 
     /// <summary> Gets MapIcon.</summary>
@@ -52,9 +53,6 @@ public sealed partial class AtlasExilesDat : ISpecificationFile<AtlasExilesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

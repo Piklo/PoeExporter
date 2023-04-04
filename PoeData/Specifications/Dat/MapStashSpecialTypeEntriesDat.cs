@@ -20,6 +20,7 @@ public sealed partial class MapStashSpecialTypeEntriesDat : ISpecificationFile<M
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets MapItem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? MapItem { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -64,9 +65,6 @@ public sealed partial class MapStashSpecialTypeEntriesDat : ISpecificationFile<M
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -17,6 +17,7 @@ public sealed partial class BeyondFactionsDat : ISpecificationFile<BeyondFaction
     public required string Id { get; init; }
 
     /// <summary> Gets Boss.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Boss { get; init; }
 
     /// <inheritdoc/>
@@ -43,9 +44,6 @@ public sealed partial class BeyondFactionsDat : ISpecificationFile<BeyondFaction
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

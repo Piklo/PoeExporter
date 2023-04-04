@@ -17,6 +17,7 @@ public sealed partial class TalismanPacksDat : ISpecificationFile<TalismanPacksD
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -26,6 +27,7 @@ public sealed partial class TalismanPacksDat : ISpecificationFile<TalismanPacksD
     public required int Unknown28 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -41,6 +43,7 @@ public sealed partial class TalismanPacksDat : ISpecificationFile<TalismanPacksD
     public required int Unknown72 { get; init; }
 
     /// <summary> Gets MonsterPacksKey.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPacksKey { get; init; }
 
     /// <inheritdoc/>
@@ -67,10 +70,6 @@ public sealed partial class TalismanPacksDat : ISpecificationFile<TalismanPacksD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterPacksDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

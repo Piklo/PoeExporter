@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ShopPaymentPackagePriceDat : ISpecificationFile<ShopPaymentPackagePriceDat>
 {
     /// <summary> Gets ShopPaymentPackageKey.</summary>
+    /// <remarks> references <see cref="ShopPaymentPackageDat"/> on <see cref="Specification.GetShopPaymentPackageDat"/> index.</remarks>
     public required int? ShopPaymentPackageKey { get; init; }
 
     /// <summary> Gets ShopCountryKey.</summary>
+    /// <remarks> references <see cref="ShopCountryDat"/> on <see cref="Specification.GetShopCountryDat"/> index.</remarks>
     public required int? ShopCountryKey { get; init; }
 
     /// <summary> Gets Price.</summary>
@@ -46,10 +48,6 @@ public sealed partial class ShopPaymentPackagePriceDat : ISpecificationFile<Shop
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetShopPaymentPackageDat();
-            // specification.GetShopCountryDat();
 
             // loading ShopPaymentPackageKey
             (var shoppaymentpackagekeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

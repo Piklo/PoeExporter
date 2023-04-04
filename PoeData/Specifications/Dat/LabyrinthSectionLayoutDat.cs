@@ -14,21 +14,26 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LabyrinthSectionLayoutDat : ISpecificationFile<LabyrinthSectionLayoutDat>
 {
     /// <summary> Gets LabyrinthSectionKey.</summary>
+    /// <remarks> references <see cref="LabyrinthSectionDat"/> on <see cref="Specification.GetLabyrinthSectionDat"/> index.</remarks>
     public required int? LabyrinthSectionKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets LabyrinthSectionLayoutKeys.</summary>
+    /// <remarks> references <see cref="LabyrinthSectionLayoutDat"/> on <see cref="Specification.GetLabyrinthSectionLayoutDat"/> index.</remarks>
     public required ReadOnlyCollection<int> LabyrinthSectionLayoutKeys { get; init; }
 
     /// <summary> Gets LabyrinthSecretsKey0.</summary>
+    /// <remarks> references <see cref="LabyrinthSecretsDat"/> on <see cref="Specification.GetLabyrinthSecretsDat"/> index.</remarks>
     public required int? LabyrinthSecretsKey0 { get; init; }
 
     /// <summary> Gets LabyrinthSecretsKey1.</summary>
+    /// <remarks> references <see cref="LabyrinthSecretsDat"/> on <see cref="Specification.GetLabyrinthSecretsDat"/> index.</remarks>
     public required int? LabyrinthSecretsKey1 { get; init; }
 
     /// <summary> Gets LabyrinthAreasKey.</summary>
+    /// <remarks> references <see cref="LabyrinthAreasDat"/> on <see cref="Specification.GetLabyrinthAreasDat"/> index.</remarks>
     public required int? LabyrinthAreasKey { get; init; }
 
     /// <summary> Gets Float0.</summary>
@@ -38,6 +43,7 @@ public sealed partial class LabyrinthSectionLayoutDat : ISpecificationFile<Labyr
     public required float Float1 { get; init; }
 
     /// <summary> Gets LabyrinthNodeOverridesKeys.</summary>
+    /// <remarks> references <see cref="LabyrinthNodeOverridesDat"/> on <see cref="Specification.GetLabyrinthNodeOverridesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> LabyrinthNodeOverridesKeys { get; init; }
 
     /// <inheritdoc/>
@@ -64,13 +70,6 @@ public sealed partial class LabyrinthSectionLayoutDat : ISpecificationFile<Labyr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetLabyrinthSectionDat();
-            // specification.GetLabyrinthSectionLayoutDat();
-            // specification.GetLabyrinthSecretsDat();
-            // specification.GetLabyrinthAreasDat();
-            // specification.GetLabyrinthNodeOverridesDat();
 
             // loading LabyrinthSectionKey
             (var labyrinthsectionkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

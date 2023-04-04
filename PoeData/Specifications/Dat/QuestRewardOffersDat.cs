@@ -17,6 +17,7 @@ public sealed partial class QuestRewardOffersDat : ISpecificationFile<QuestRewar
     public required string Id { get; init; }
 
     /// <summary> Gets QuestKey.</summary>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? QuestKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -26,6 +27,7 @@ public sealed partial class QuestRewardOffersDat : ISpecificationFile<QuestRewar
     public required int Unknown40 { get; init; }
 
     /// <summary> Gets RewardWindowTake.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? RewardWindowTake { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown60 is set.</summary>
@@ -35,6 +37,7 @@ public sealed partial class QuestRewardOffersDat : ISpecificationFile<QuestRewar
     public required bool Unknown61 { get; init; }
 
     /// <summary> Gets RewardWindowTitle.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? RewardWindowTitle { get; init; }
 
     /// <inheritdoc/>
@@ -61,10 +64,6 @@ public sealed partial class QuestRewardOffersDat : ISpecificationFile<QuestRewar
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestDat();
-            // specification.GetClientStringsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

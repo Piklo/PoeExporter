@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MapConnectionsDat : ISpecificationFile<MapConnectionsDat>
 {
     /// <summary> Gets MapPinsKey0.</summary>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
     public required int? MapPinsKey0 { get; init; }
 
     /// <summary> Gets MapPinsKey1.</summary>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
     public required int? MapPinsKey1 { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
@@ -61,9 +63,6 @@ public sealed partial class MapConnectionsDat : ISpecificationFile<MapConnection
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMapPinsDat();
 
             // loading MapPinsKey0
             (var mappinskey0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

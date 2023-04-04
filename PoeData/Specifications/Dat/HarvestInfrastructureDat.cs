@@ -20,6 +20,7 @@ public sealed partial class HarvestInfrastructureDat : ISpecificationFile<Harves
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets ClientStringsKey.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientStringsKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +47,6 @@ public sealed partial class HarvestInfrastructureDat : ISpecificationFile<Harves
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetClientStringsDat();
 
             // loading Object
             (var objectLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

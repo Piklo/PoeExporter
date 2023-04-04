@@ -26,6 +26,7 @@ public sealed partial class CraftingBenchUnlockCategoriesDat : ISpecificationFil
     public required string UnlockType { get; init; }
 
     /// <summary> Gets CraftingItemClassCategories.</summary>
+    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.GetCraftingItemClassCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CraftingItemClassCategories { get; init; }
 
     /// <summary> Gets ObtainingDescription.</summary>
@@ -55,9 +56,6 @@ public sealed partial class CraftingBenchUnlockCategoriesDat : ISpecificationFil
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCraftingItemClassCategoriesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

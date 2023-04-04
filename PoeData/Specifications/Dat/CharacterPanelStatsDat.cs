@@ -20,18 +20,23 @@ public sealed partial class CharacterPanelStatsDat : ISpecificationFile<Characte
     public required string Text { get; init; }
 
     /// <summary> Gets StatsKeys1.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys1 { get; init; }
 
     /// <summary> Gets CharacterPanelDescriptionModesKey.</summary>
+    /// <remarks> references <see cref="CharacterPanelDescriptionModesDat"/> on <see cref="Specification.GetCharacterPanelDescriptionModesDat"/> index.</remarks>
     public required int? CharacterPanelDescriptionModesKey { get; init; }
 
     /// <summary> Gets StatsKeys2.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys2 { get; init; }
 
     /// <summary> Gets StatsKeys3.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys3 { get; init; }
 
     /// <summary> Gets CharacterPanelTabsKey.</summary>
+    /// <remarks> references <see cref="CharacterPanelTabsDat"/> on <see cref="Specification.GetCharacterPanelTabsDat"/> index.</remarks>
     public required int? CharacterPanelTabsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown96 is set.</summary>
@@ -67,11 +72,6 @@ public sealed partial class CharacterPanelStatsDat : ISpecificationFile<Characte
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetCharacterPanelDescriptionModesDat();
-            // specification.GetCharacterPanelTabsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

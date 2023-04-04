@@ -14,18 +14,22 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LegionChestTypesDat : ISpecificationFile<LegionChestTypesDat>
 {
     /// <summary> Gets Unknown0.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Chest.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? Chest { get; init; }
 
     /// <summary> Gets HardmodeChest.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? HardmodeChest { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
     public required int Unknown48 { get; init; }
 
     /// <summary> Gets Faction.</summary>
+    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.GetLegionFactionsDat"/> index.</remarks>
     public required int? Faction { get; init; }
 
     /// <inheritdoc/>
@@ -52,11 +56,6 @@ public sealed partial class LegionChestTypesDat : ISpecificationFile<LegionChest
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetChestsDat();
-            // specification.GetLegionFactionsDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

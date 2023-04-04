@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AtlasExileBossArenasDat : ISpecificationFile<AtlasExileBossArenasDat>
 {
     /// <summary> Gets Conqueror.</summary>
+    /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.GetAtlasExilesDat"/> index.</remarks>
     public required int? Conqueror { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class AtlasExileBossArenasDat : ISpecificationFile<AtlasEx
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAtlasExilesDat();
-            // specification.GetWorldAreasDat();
 
             // loading Conqueror
             (var conquerorLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

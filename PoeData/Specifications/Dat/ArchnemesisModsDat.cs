@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ArchnemesisModsDat : ISpecificationFile<ArchnemesisModsDat>
 {
     /// <summary> Gets Mod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
     /// <summary> Gets Visual.</summary>
+    /// <remarks> references <see cref="ArchnemesisModVisualsDat"/> on <see cref="Specification.GetArchnemesisModVisualsDat"/> index.</remarks>
     public required int? Visual { get; init; }
 
     /// <summary> Gets TextStyles.</summary>
@@ -55,10 +57,6 @@ public sealed partial class ArchnemesisModsDat : ISpecificationFile<ArchnemesisM
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
-            // specification.GetArchnemesisModVisualsDat();
 
             // loading Mod
             (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

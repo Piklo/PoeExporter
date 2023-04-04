@@ -14,18 +14,22 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LegionMonsterVarietiesDat : ISpecificationFile<LegionMonsterVarietiesDat>
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets LegionFactionsKey.</summary>
+    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.GetLegionFactionsDat"/> index.</remarks>
     public required int? LegionFactionsKey { get; init; }
 
     /// <summary> Gets LegionRanksKey.</summary>
+    /// <remarks> references <see cref="LegionRanksDat"/> on <see cref="Specification.GetLegionRanksDat"/> index.</remarks>
     public required int? LegionRanksKey { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
     public required int Unknown48 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscAnimatedKey { get; init; }
 
     /// <summary> Gets Unknown68.</summary>
@@ -62,6 +66,7 @@ public sealed partial class LegionMonsterVarietiesDat : ISpecificationFile<Legio
     public required ReadOnlyCollection<int> Unknown180 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey2.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey2 { get; init; }
 
     /// <inheritdoc/>
@@ -88,12 +93,6 @@ public sealed partial class LegionMonsterVarietiesDat : ISpecificationFile<Legio
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetLegionFactionsDat();
-            // specification.GetLegionRanksDat();
-            // specification.GetMiscAnimatedDat();
 
             // loading MonsterVarietiesKey
             (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

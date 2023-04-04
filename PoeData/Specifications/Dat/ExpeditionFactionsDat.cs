@@ -29,18 +29,23 @@ public sealed partial class ExpeditionFactionsDat : ISpecificationFile<Expeditio
     public required string FactionIcon { get; init; }
 
     /// <summary> Gets MonsterVarieties.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarieties { get; init; }
 
     /// <summary> Gets Progress1.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? Progress1 { get; init; }
 
     /// <summary> Gets Progress2Vaal.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? Progress2Vaal { get; init; }
 
     /// <summary> Gets Progress3Final.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? Progress3Final { get; init; }
 
     /// <summary> Gets Tags.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? Tags { get; init; }
 
     /// <inheritdoc/>
@@ -67,11 +72,6 @@ public sealed partial class ExpeditionFactionsDat : ISpecificationFile<Expeditio
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetNPCTextAudioDat();
-            // specification.GetTagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

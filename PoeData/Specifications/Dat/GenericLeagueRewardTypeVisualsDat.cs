@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class GenericLeagueRewardTypeVisualsDat : ISpecificationFile<GenericLeagueRewardTypeVisualsDat>
 {
     /// <summary> Gets Type.</summary>
+    /// <remarks> references <see cref="GenericLeagueRewardTypesDat"/> on <see cref="Specification.GetGenericLeagueRewardTypesDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -55,9 +56,6 @@ public sealed partial class GenericLeagueRewardTypeVisualsDat : ISpecificationFi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetGenericLeagueRewardTypesDat();
 
             // loading Type
             (var typeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

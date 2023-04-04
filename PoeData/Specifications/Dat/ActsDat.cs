@@ -44,6 +44,7 @@ public sealed partial class ActsDat : ISpecificationFile<ActsDat>
     public required int Unknown49 { get; init; }
 
     /// <summary> Gets Unknown53.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown53 { get; init; }
 
     /// <inheritdoc/>
@@ -70,9 +71,6 @@ public sealed partial class ActsDat : ISpecificationFile<ActsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestFlagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

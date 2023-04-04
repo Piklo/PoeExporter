@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AchievementSetRewardsDat : ISpecificationFile<AchievementSetRewardsDat>
 {
     /// <summary> Gets SetId.</summary>
+    /// <remarks> references <see cref="AchievementSetsDisplayDat"/> on <see cref="AchievementSetsDisplayDat.Id"/>.</remarks>
     public required int SetId { get; init; }
 
     /// <summary> Gets AchievementsRequired.</summary>
     public required int AchievementsRequired { get; init; }
 
     /// <summary> Gets Rewards.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Rewards { get; init; }
 
     /// <summary> Gets TotemPieceEveryNAchievements.</summary>
@@ -61,10 +63,6 @@ public sealed partial class AchievementSetRewardsDat : ISpecificationFile<Achiev
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementSetsDisplayDat();
-            // specification.GetBaseItemTypesDat();
 
             // loading SetId
             (var setidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

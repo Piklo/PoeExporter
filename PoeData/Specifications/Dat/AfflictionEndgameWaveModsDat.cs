@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AfflictionEndgameWaveModsDat : ISpecificationFile<AfflictionEndgameWaveModsDat>
 {
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -49,9 +50,6 @@ public sealed partial class AfflictionEndgameWaveModsDat : ISpecificationFile<Af
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading ModsKey
             (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

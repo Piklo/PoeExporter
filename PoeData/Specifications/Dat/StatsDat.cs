@@ -26,6 +26,7 @@ public sealed partial class StatsDat : ISpecificationFile<StatsDat>
     public required bool IsWeaponLocal { get; init; }
 
     /// <summary> Gets Semantics.</summary>
+    /// <remarks> references <see cref="StatSemanticsDat"/> on <see cref="Specification.GetStatSemanticsDat"/> index.</remarks>
     public required int Semantics { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown15 is set.</summary>
@@ -41,9 +42,11 @@ public sealed partial class StatsDat : ISpecificationFile<StatsDat>
     public required bool IsVirtual { get; init; }
 
     /// <summary> Gets MainHandAlias_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? MainHandAlias_StatsKey { get; init; }
 
     /// <summary> Gets OffHandAlias_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? OffHandAlias_StatsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown42 is set.</summary>
@@ -53,9 +56,11 @@ public sealed partial class StatsDat : ISpecificationFile<StatsDat>
     public required int HASH32 { get; init; }
 
     /// <summary> Gets BelongsActiveSkillsKey.</summary>
+    /// <remarks> references <see cref="ActiveSkillsDat"/> on <see cref="ActiveSkillsDat.Id"/>.</remarks>
     public required ReadOnlyCollection<string> BelongsActiveSkillsKey { get; init; }
 
     /// <summary> Gets Category.</summary>
+    /// <remarks> references <see cref="PassiveSkillStatCategoriesDat"/> on <see cref="Specification.GetPassiveSkillStatCategoriesDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown79 is set.</summary>
@@ -68,6 +73,7 @@ public sealed partial class StatsDat : ISpecificationFile<StatsDat>
     public required bool IsScalable { get; init; }
 
     /// <summary> Gets ContextFlags.</summary>
+    /// <remarks> references <see cref="VirtualStatContextFlagsDat"/> on <see cref="Specification.GetVirtualStatContextFlagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ContextFlags { get; init; }
 
     /// <inheritdoc/>
@@ -94,11 +100,6 @@ public sealed partial class StatsDat : ISpecificationFile<StatsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetActiveSkillsDat();
-            // specification.GetPassiveSkillStatCategoriesDat();
-            // specification.GetVirtualStatContextFlagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

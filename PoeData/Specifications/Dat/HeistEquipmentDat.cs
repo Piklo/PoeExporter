@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistEquipmentDat : ISpecificationFile<HeistEquipmentDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets RequiredJob_HeistJobsKey.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required int? RequiredJob_HeistJobsKey { get; init; }
 
     /// <summary> Gets RequiredLevel.</summary>
@@ -46,10 +48,6 @@ public sealed partial class HeistEquipmentDat : ISpecificationFile<HeistEquipmen
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetHeistJobsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

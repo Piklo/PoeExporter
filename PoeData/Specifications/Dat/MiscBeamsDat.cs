@@ -17,12 +17,14 @@ public sealed partial class MiscBeamsDat : ISpecificationFile<MiscBeamsDat>
     public required string Id { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
     /// <summary> Gets PreloadGroupsKeys.</summary>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PreloadGroupsKeys { get; init; }
 
     /// <summary> Gets Unknown44.</summary>
@@ -52,10 +54,6 @@ public sealed partial class MiscBeamsDat : ISpecificationFile<MiscBeamsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscAnimatedDat();
-            // specification.GetPreloadGroupsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

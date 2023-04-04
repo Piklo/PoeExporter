@@ -17,9 +17,11 @@ public sealed partial class InventoriesDat : ISpecificationFile<InventoriesDat>
     public required string Id { get; init; }
 
     /// <summary> Gets InventoryIdKey.</summary>
+    /// <remarks> references <see cref="InventoryIdDat"/> on <see cref="Specification.GetInventoryIdDat"/> index.</remarks>
     public required int InventoryIdKey { get; init; }
 
     /// <summary> Gets InventoryTypeKey.</summary>
+    /// <remarks> references <see cref="InventoryTypeDat"/> on <see cref="Specification.GetInventoryTypeDat"/> index.</remarks>
     public required int InventoryTypeKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -59,7 +61,6 @@ public sealed partial class InventoriesDat : ISpecificationFile<InventoriesDat>
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

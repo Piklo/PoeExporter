@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class NPCFollowerVariationsDat : ISpecificationFile<NPCFollowerVariationsDat>
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets MiscAnimatedKey0.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey0 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey1.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey1 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown48 is set.</summary>
@@ -88,10 +91,6 @@ public sealed partial class NPCFollowerVariationsDat : ISpecificationFile<NPCFol
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetMiscAnimatedDat();
 
             // loading MonsterVarietiesKey
             (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

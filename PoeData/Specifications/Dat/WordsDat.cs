@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class WordsDat : ISpecificationFile<WordsDat>
 {
     /// <summary> Gets Wordlist.</summary>
+    /// <remarks> references <see cref="WordlistsDat"/> on <see cref="Specification.GetWordlistsDat"/> index.</remarks>
     public required int Wordlist { get; init; }
 
     /// <summary> Gets Text.</summary>
     public required string Text { get; init; }
 
     /// <summary> Gets SpawnWeight_Tags.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_Tags { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>
@@ -58,9 +60,6 @@ public sealed partial class WordsDat : ISpecificationFile<WordsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTagsDat();
 
             // loading Wordlist
             (var wordlistLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

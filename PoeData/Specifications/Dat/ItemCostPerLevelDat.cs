@@ -14,15 +14,18 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ItemCostPerLevelDat : ISpecificationFile<ItemCostPerLevelDat>
 {
     /// <summary> Gets Contract_BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Contract_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }
 
     /// <summary> Gets Cost.</summary>
+    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.GetItemCostsDat"/> index.</remarks>
     public required int? Cost { get; init; }
 
     /// <summary> Gets CostHardmode.</summary>
+    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.GetItemCostsDat"/> index.</remarks>
     public required int? CostHardmode { get; init; }
 
     /// <inheritdoc/>
@@ -49,10 +52,6 @@ public sealed partial class ItemCostPerLevelDat : ISpecificationFile<ItemCostPer
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetItemCostsDat();
 
             // loading Contract_BaseItemTypesKey
             (var contract_baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

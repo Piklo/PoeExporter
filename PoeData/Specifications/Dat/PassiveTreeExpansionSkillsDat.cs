@@ -14,15 +14,19 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class PassiveTreeExpansionSkillsDat : ISpecificationFile<PassiveTreeExpansionSkillsDat>
 {
     /// <summary> Gets PassiveSkillsKey.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required int? PassiveSkillsKey { get; init; }
 
     /// <summary> Gets Mastery_PassiveSkillsKey.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required int? Mastery_PassiveSkillsKey { get; init; }
 
     /// <summary> Gets TagsKey.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? TagsKey { get; init; }
 
     /// <summary> Gets PassiveTreeExpansionJewelSizesKey.</summary>
+    /// <remarks> references <see cref="PassiveTreeExpansionJewelSizesDat"/> on <see cref="Specification.GetPassiveTreeExpansionJewelSizesDat"/> index.</remarks>
     public required int? PassiveTreeExpansionJewelSizesKey { get; init; }
 
     /// <inheritdoc/>
@@ -49,11 +53,6 @@ public sealed partial class PassiveTreeExpansionSkillsDat : ISpecificationFile<P
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPassiveSkillsDat();
-            // specification.GetTagsDat();
-            // specification.GetPassiveTreeExpansionJewelSizesDat();
 
             // loading PassiveSkillsKey
             (var passiveskillskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

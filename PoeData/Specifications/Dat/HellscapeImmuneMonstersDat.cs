@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HellscapeImmuneMonstersDat : ISpecificationFile<HellscapeImmuneMonstersDat>
 {
     /// <summary> Gets Monster.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Monster { get; init; }
 
     /// <inheritdoc/>
@@ -40,9 +41,6 @@ public sealed partial class HellscapeImmuneMonstersDat : ISpecificationFile<Hell
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading Monster
             (var monsterLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

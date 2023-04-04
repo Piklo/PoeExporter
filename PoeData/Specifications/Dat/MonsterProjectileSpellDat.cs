@@ -17,9 +17,11 @@ public sealed partial class MonsterProjectileSpellDat : ISpecificationFile<Monst
     public required int Id { get; init; }
 
     /// <summary> Gets Projectile.</summary>
+    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.GetProjectilesDat"/> index.</remarks>
     public required int? Projectile { get; init; }
 
     /// <summary> Gets Animation.</summary>
+    /// <remarks> references <see cref="AnimationDat"/> on <see cref="Specification.GetAnimationDat"/> index.</remarks>
     public required int? Animation { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown36 is set.</summary>
@@ -58,10 +60,6 @@ public sealed partial class MonsterProjectileSpellDat : ISpecificationFile<Monst
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetProjectilesDat();
-            // specification.GetAnimationDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

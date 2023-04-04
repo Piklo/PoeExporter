@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class DelveRoomsDat : ISpecificationFile<DelveRoomsDat>
 {
     /// <summary> Gets DelveBiomesKey.</summary>
+    /// <remarks> references <see cref="DelveBiomesDat"/> on <see cref="Specification.GetDelveBiomesDat"/> index.</remarks>
     public required int? DelveBiomesKey { get; init; }
 
     /// <summary> Gets DelveFeaturesKey.</summary>
+    /// <remarks> references <see cref="DelveFeaturesDat"/> on <see cref="Specification.GetDelveFeaturesDat"/> index.</remarks>
     public required int? DelveFeaturesKey { get; init; }
 
     /// <summary> Gets ARMFile.</summary>
@@ -46,10 +48,6 @@ public sealed partial class DelveRoomsDat : ISpecificationFile<DelveRoomsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetDelveBiomesDat();
-            // specification.GetDelveFeaturesDat();
 
             // loading DelveBiomesKey
             (var delvebiomeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

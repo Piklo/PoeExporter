@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class GrantedEffectsPerLevelDat : ISpecificationFile<GrantedEffectsPerLevelDat>
 {
     /// <summary> Gets GrantedEffect.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffect { get; init; }
 
     /// <summary> Gets Level.</summary>
@@ -32,6 +33,7 @@ public sealed partial class GrantedEffectsPerLevelDat : ISpecificationFile<Grant
     public required int Cooldown { get; init; }
 
     /// <summary> Gets CooldownBypassType.</summary>
+    /// <remarks> references <see cref="CooldownBypassTypesDat"/> on <see cref="Specification.GetCooldownBypassTypesDat"/> index.</remarks>
     public required int CooldownBypassType { get; init; }
 
     /// <summary> Gets VaalSouls.</summary>
@@ -59,6 +61,7 @@ public sealed partial class GrantedEffectsPerLevelDat : ISpecificationFile<Grant
     public required ReadOnlyCollection<int> CostAmounts { get; init; }
 
     /// <summary> Gets CostTypes.</summary>
+    /// <remarks> references <see cref="CostTypesDat"/> on <see cref="Specification.GetCostTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CostTypes { get; init; }
 
     /// <summary> Gets ManaReservationFlat.</summary>
@@ -100,10 +103,6 @@ public sealed partial class GrantedEffectsPerLevelDat : ISpecificationFile<Grant
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetGrantedEffectsDat();
-            // specification.GetCostTypesDat();
 
             // loading GrantedEffect
             (var grantedeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -35,15 +35,19 @@ public sealed partial class WarbandsPackMonstersDat : ISpecificationFile<Warband
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets Tier4_MonsterVarietiesKeys.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier4_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier3_MonsterVarietiesKeys.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier3_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier2_MonsterVarietiesKeys.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier2_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier1_MonsterVarietiesKeys.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier1_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier1Name.</summary>
@@ -94,9 +98,6 @@ public sealed partial class WarbandsPackMonstersDat : ISpecificationFile<Warband
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

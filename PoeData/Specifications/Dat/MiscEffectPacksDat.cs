@@ -29,6 +29,7 @@ public sealed partial class MiscEffectPacksDat : ISpecificationFile<MiscEffectPa
     public required int Unknown24 { get; init; }
 
     /// <summary> Gets PreloadGroups.</summary>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PreloadGroups { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown44 is set.</summary>
@@ -61,9 +62,6 @@ public sealed partial class MiscEffectPacksDat : ISpecificationFile<MiscEffectPa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPreloadGroupsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

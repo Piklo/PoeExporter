@@ -29,6 +29,7 @@ public sealed partial class BuffDefinitionsDat : ISpecificationFile<BuffDefiniti
     public required string Name { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown42 is set.</summary>
@@ -41,9 +42,11 @@ public sealed partial class BuffDefinitionsDat : ISpecificationFile<BuffDefiniti
     public required bool Unknown47 { get; init; }
 
     /// <summary> Gets Maximum_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Maximum_StatsKey { get; init; }
 
     /// <summary> Gets Current_StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Current_StatsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown80 is set.</summary>
@@ -53,6 +56,7 @@ public sealed partial class BuffDefinitionsDat : ISpecificationFile<BuffDefiniti
     public required int Unknown81 { get; init; }
 
     /// <summary> Gets BuffVisualsKey.</summary>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisualsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown101 is set.</summary>
@@ -128,15 +132,19 @@ public sealed partial class BuffDefinitionsDat : ISpecificationFile<BuffDefiniti
     public required bool Unknown188 { get; init; }
 
     /// <summary> Gets Unknown189.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown189 { get; init; }
 
     /// <summary> Gets Unknown205.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown205 { get; init; }
 
     /// <summary> Gets Unknown221.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown221 { get; init; }
 
     /// <summary> Gets Unknown237.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown237 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown253 is set.</summary>
@@ -155,6 +163,7 @@ public sealed partial class BuffDefinitionsDat : ISpecificationFile<BuffDefiniti
     public required bool Unknown257 { get; init; }
 
     /// <summary> Gets Unknown258.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Unknown258 { get; init; }
 
     /// <summary> Gets Unknown274.</summary>
@@ -187,10 +196,6 @@ public sealed partial class BuffDefinitionsDat : ISpecificationFile<BuffDefiniti
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetBuffVisualsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

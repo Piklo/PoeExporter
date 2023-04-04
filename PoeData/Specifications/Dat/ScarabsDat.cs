@@ -20,6 +20,7 @@ public sealed partial class ScarabsDat : ISpecificationFile<ScarabsDat>
     public required int Tier { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +47,6 @@ public sealed partial class ScarabsDat : ISpecificationFile<ScarabsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading ScarabType
             (var scarabtypeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

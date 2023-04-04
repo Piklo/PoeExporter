@@ -17,9 +17,11 @@ public sealed partial class ExpeditionTerrainFeaturesDat : ISpecificationFile<Ex
     public required string Id { get; init; }
 
     /// <summary> Gets ExtraFeature.</summary>
+    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.GetExtraTerrainFeaturesDat"/> index.</remarks>
     public required int? ExtraFeature { get; init; }
 
     /// <summary> Gets ExpeditionFaction.</summary>
+    /// <remarks> references <see cref="ExpeditionFactionsDat"/> on <see cref="Specification.GetExpeditionFactionsDat"/> index.</remarks>
     public required int? ExpeditionFaction { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -32,9 +34,11 @@ public sealed partial class ExpeditionTerrainFeaturesDat : ISpecificationFile<Ex
     public required int Unknown48 { get; init; }
 
     /// <summary> Gets Area.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? Area { get; init; }
 
     /// <summary> Gets ExpeditionAreas.</summary>
+    /// <remarks> references <see cref="ExpeditionAreasDat"/> on <see cref="Specification.GetExpeditionAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ExpeditionAreas { get; init; }
 
     /// <summary> Gets Unknown84.</summary>
@@ -44,6 +48,7 @@ public sealed partial class ExpeditionTerrainFeaturesDat : ISpecificationFile<Ex
     public required bool Unknown88 { get; init; }
 
     /// <summary> Gets UnearthAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> UnearthAchievements { get; init; }
 
     /// <inheritdoc/>
@@ -70,13 +75,6 @@ public sealed partial class ExpeditionTerrainFeaturesDat : ISpecificationFile<Ex
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetExtraTerrainFeaturesDat();
-            // specification.GetExpeditionFactionsDat();
-            // specification.GetWorldAreasDat();
-            // specification.GetExpeditionAreasDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

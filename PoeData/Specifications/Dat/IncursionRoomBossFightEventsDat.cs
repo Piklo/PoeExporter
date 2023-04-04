@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class IncursionRoomBossFightEventsDat : ISpecificationFile<IncursionRoomBossFightEventsDat>
 {
     /// <summary> Gets Room.</summary>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
     public required int? Room { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -58,9 +59,6 @@ public sealed partial class IncursionRoomBossFightEventsDat : ISpecificationFile
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetIncursionRoomsDat();
 
             // loading Room
             (var roomLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

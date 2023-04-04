@@ -17,9 +17,11 @@ public sealed partial class TriggerBeamDat : ISpecificationFile<TriggerBeamDat>
     public required int Unknown0 { get; init; }
 
     /// <summary> Gets Unknown4.</summary>
+    /// <remarks> references <see cref="MiscBeamsDat"/> on <see cref="Specification.GetMiscBeamsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown4 { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
+    /// <remarks> references <see cref="MiscBeamsDat"/> on <see cref="Specification.GetMiscBeamsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown20 { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
@@ -76,9 +78,6 @@ public sealed partial class TriggerBeamDat : ISpecificationFile<TriggerBeamDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscBeamsDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

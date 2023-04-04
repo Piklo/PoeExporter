@@ -83,7 +83,6 @@ public sealed partial class DelveLevelScalingDat : ISpecificationFile<DelveLevel
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Depth
             (var depthLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

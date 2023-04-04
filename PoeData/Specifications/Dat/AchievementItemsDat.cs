@@ -29,6 +29,7 @@ public sealed partial class AchievementItemsDat : ISpecificationFile<Achievement
     public required int CompletionsRequired { get; init; }
 
     /// <summary> Gets AchievementsKey.</summary>
+    /// <remarks> references <see cref="AchievementsDat"/> on <see cref="Specification.GetAchievementsDat"/> index.</remarks>
     public required int? AchievementsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown44 is set.</summary>
@@ -67,9 +68,6 @@ public sealed partial class AchievementItemsDat : ISpecificationFile<Achievement
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

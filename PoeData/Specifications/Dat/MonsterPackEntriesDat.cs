@@ -17,6 +17,7 @@ public sealed partial class MonsterPackEntriesDat : ISpecificationFile<MonsterPa
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterPacksKey.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPacksKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>
@@ -26,6 +27,7 @@ public sealed partial class MonsterPackEntriesDat : ISpecificationFile<MonsterPa
     public required int Unknown25 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <inheritdoc/>
@@ -52,10 +54,6 @@ public sealed partial class MonsterPackEntriesDat : ISpecificationFile<MonsterPa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterPacksDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

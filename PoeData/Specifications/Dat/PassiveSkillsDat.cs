@@ -20,6 +20,7 @@ public sealed partial class PassiveSkillsDat : ISpecificationFile<PassiveSkillsD
     public required string Icon_DDSFile { get; init; }
 
     /// <summary> Gets Stats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets Stat1Value.</summary>
@@ -41,6 +42,7 @@ public sealed partial class PassiveSkillsDat : ISpecificationFile<PassiveSkillsD
     public required string Name { get; init; }
 
     /// <summary> Gets Characters.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Characters { get; init; }
 
     /// <summary> Gets a value indicating whether IsKeystone is set.</summary>
@@ -56,18 +58,21 @@ public sealed partial class PassiveSkillsDat : ISpecificationFile<PassiveSkillsD
     public required bool IsJustIcon { get; init; }
 
     /// <summary> Gets AchievementItem.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItem { get; init; }
 
     /// <summary> Gets a value indicating whether IsJewelSocket is set.</summary>
     public required bool IsJewelSocket { get; init; }
 
     /// <summary> Gets AscendancyKey.</summary>
+    /// <remarks> references <see cref="AscendancyDat"/> on <see cref="Specification.GetAscendancyDat"/> index.</remarks>
     public required int? AscendancyKey { get; init; }
 
     /// <summary> Gets a value indicating whether IsAscendancyStartingNode is set.</summary>
     public required bool IsAscendancyStartingNode { get; init; }
 
     /// <summary> Gets ReminderStrings.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ReminderStrings { get; init; }
 
     /// <summary> Gets SkillPointsGranted.</summary>
@@ -83,9 +88,11 @@ public sealed partial class PassiveSkillsDat : ISpecificationFile<PassiveSkillsD
     public required int Stat5Value { get; init; }
 
     /// <summary> Gets PassiveSkillBuffs.</summary>
+    /// <remarks> references <see cref="BuffTemplatesDat"/> on <see cref="Specification.GetBuffTemplatesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PassiveSkillBuffs { get; init; }
 
     /// <summary> Gets GrantedEffectsPerLevel.</summary>
+    /// <remarks> references <see cref="GrantedEffectsPerLevelDat"/> on <see cref="Specification.GetGrantedEffectsPerLevelDat"/> index.</remarks>
     public required int? GrantedEffectsPerLevel { get; init; }
 
     /// <summary> Gets a value indicating whether IsAnointmentOnly is set.</summary>
@@ -101,15 +108,18 @@ public sealed partial class PassiveSkillsDat : ISpecificationFile<PassiveSkillsD
     public required bool IsProxyPassive { get; init; }
 
     /// <summary> Gets SkillType.</summary>
+    /// <remarks> references <see cref="PassiveSkillTypesDat"/> on <see cref="Specification.GetPassiveSkillTypesDat"/> index.</remarks>
     public required int SkillType { get; init; }
 
     /// <summary> Gets MasteryGroup.</summary>
+    /// <remarks> references <see cref="PassiveSkillMasteryGroupsDat"/> on <see cref="Specification.GetPassiveSkillMasteryGroupsDat"/> index.</remarks>
     public required int? MasteryGroup { get; init; }
 
     /// <summary> Gets Unknown206.</summary>
     public required int? Unknown206 { get; init; }
 
     /// <summary> Gets SoundEffect.</summary>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
     public required int? SoundEffect { get; init; }
 
     /// <summary> Gets Unknown238.</summary>
@@ -163,17 +173,6 @@ public sealed partial class PassiveSkillsDat : ISpecificationFile<PassiveSkillsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetCharactersDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetAscendancyDat();
-            // specification.GetClientStringsDat();
-            // specification.GetBuffTemplatesDat();
-            // specification.GetGrantedEffectsPerLevelDat();
-            // specification.GetPassiveSkillMasteryGroupsDat();
-            // specification.GetSoundEffectsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

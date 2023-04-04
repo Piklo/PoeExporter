@@ -14,15 +14,19 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class BreachstoneUpgradesDat : ISpecificationFile<BreachstoneUpgradesDat>
 {
     /// <summary> Gets BaseItemTypesKey0.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey0 { get; init; }
 
     /// <summary> Gets BaseItemTypesKey1.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey1 { get; init; }
 
     /// <summary> Gets BaseItemTypesKey2.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey2 { get; init; }
 
     /// <summary> Gets BaseItemTypesKey3.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey3 { get; init; }
 
     /// <summary> Gets Unknown64.</summary>
@@ -52,9 +56,6 @@ public sealed partial class BreachstoneUpgradesDat : ISpecificationFile<Breachst
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading BaseItemTypesKey0
             (var baseitemtypeskey0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

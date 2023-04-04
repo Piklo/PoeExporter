@@ -17,6 +17,7 @@ public sealed partial class HarvestCraftFiltersDat : ISpecificationFile<HarvestC
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItem { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -46,9 +47,6 @@ public sealed partial class HarvestCraftFiltersDat : ISpecificationFile<HarvestC
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

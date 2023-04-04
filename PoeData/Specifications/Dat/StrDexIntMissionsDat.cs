@@ -32,6 +32,7 @@ public sealed partial class StrDexIntMissionsDat : ISpecificationFile<StrDexIntM
     public required int? Unknown36 { get; init; }
 
     /// <summary> Gets Extra_ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Extra_ModsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown68 is set.</summary>
@@ -103,9 +104,6 @@ public sealed partial class StrDexIntMissionsDat : ISpecificationFile<StrDexIntM
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

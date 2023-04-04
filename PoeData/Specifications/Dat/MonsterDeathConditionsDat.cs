@@ -92,7 +92,6 @@ public sealed partial class MonsterDeathConditionsDat : ISpecificationFile<Monst
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

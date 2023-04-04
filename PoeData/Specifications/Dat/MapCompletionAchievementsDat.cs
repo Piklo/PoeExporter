@@ -17,21 +17,26 @@ public sealed partial class MapCompletionAchievementsDat : ISpecificationFile<Ma
     public required string Unknown0 { get; init; }
 
     /// <summary> Gets MapStatConditionsKeys.</summary>
+    /// <remarks> references <see cref="MapStatConditionsDat"/> on <see cref="Specification.GetMapStatConditionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapStatConditionsKeys { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets MapTierAchievementsKeys.</summary>
+    /// <remarks> references <see cref="MapTierAchievementsDat"/> on <see cref="Specification.GetMapTierAchievementsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapTierAchievementsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown72 is set.</summary>
     public required bool Unknown72 { get; init; }
 
     /// <summary> Gets WorldAreasKeys.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WorldAreasKeys { get; init; }
 
     /// <inheritdoc/>
@@ -58,13 +63,6 @@ public sealed partial class MapCompletionAchievementsDat : ISpecificationFile<Ma
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMapStatConditionsDat();
-            // specification.GetStatsDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetMapTierAchievementsDat();
-            // specification.GetWorldAreasDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

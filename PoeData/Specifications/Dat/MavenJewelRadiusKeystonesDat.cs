@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MavenJewelRadiusKeystonesDat : ISpecificationFile<MavenJewelRadiusKeystonesDat>
 {
     /// <summary> Gets Keystone.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required int? Keystone { get; init; }
 
     /// <inheritdoc/>
@@ -40,9 +41,6 @@ public sealed partial class MavenJewelRadiusKeystonesDat : ISpecificationFile<Ma
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPassiveSkillsDat();
 
             // loading Keystone
             (var keystoneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

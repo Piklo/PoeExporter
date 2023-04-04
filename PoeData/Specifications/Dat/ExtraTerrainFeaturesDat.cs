@@ -32,9 +32,11 @@ public sealed partial class ExtraTerrainFeaturesDat : ISpecificationFile<ExtraTe
     public required ReadOnlyCollection<int> Unknown57 { get; init; }
 
     /// <summary> Gets Unknown73.</summary>
+    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.GetExtraTerrainFeaturesDat"/> index.</remarks>
     public required int? Unknown73 { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown97 is set.</summary>
@@ -67,9 +69,6 @@ public sealed partial class ExtraTerrainFeaturesDat : ISpecificationFile<ExtraTe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

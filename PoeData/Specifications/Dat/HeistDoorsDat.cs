@@ -20,9 +20,11 @@ public sealed partial class HeistDoorsDat : ISpecificationFile<HeistDoorsDat>
     public required string Unknown8 { get; init; }
 
     /// <summary> Gets HeistJobsKey1.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey1 { get; init; }
 
     /// <summary> Gets HeistJobsKey2.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey2 { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -38,6 +40,7 @@ public sealed partial class HeistDoorsDat : ISpecificationFile<HeistDoorsDat>
     public required int Unknown88 { get; init; }
 
     /// <summary> Gets HeistAreasKey.</summary>
+    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.GetHeistAreasDat"/> index.</remarks>
     public required int? HeistAreasKey { get; init; }
 
     /// <inheritdoc/>
@@ -64,10 +67,6 @@ public sealed partial class HeistDoorsDat : ISpecificationFile<HeistDoorsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHeistJobsDat();
-            // specification.GetHeistAreasDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

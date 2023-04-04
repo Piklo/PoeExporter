@@ -23,12 +23,14 @@ public sealed partial class UltimatumItemisedRewardsDat : ISpecificationFile<Ult
     public required string RewardText { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets RewardType.</summary>
     public required int RewardType { get; init; }
 
     /// <summary> Gets SacrificeItem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? SacrificeItem { get; init; }
 
     /// <summary> Gets SacrificeAmount.</summary>
@@ -41,6 +43,7 @@ public sealed partial class UltimatumItemisedRewardsDat : ISpecificationFile<Ult
     public required bool Unknown68 { get; init; }
 
     /// <summary> Gets TrialMods.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TrialMods { get; init; }
 
     /// <inheritdoc/>
@@ -67,11 +70,6 @@ public sealed partial class UltimatumItemisedRewardsDat : ISpecificationFile<Ult
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetItemVisualIdentityDat();
-            // specification.GetBaseItemTypesDat();
-            // specification.GetModsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -17,6 +17,7 @@ public sealed partial class AtlasBaseTypeDropsDat : ISpecificationFile<AtlasBase
     public required string Id { get; init; }
 
     /// <summary> Gets AtlasRegionsKey.</summary>
+    /// <remarks> references <see cref="AtlasRegionsDat"/> on <see cref="Specification.GetAtlasRegionsDat"/> index.</remarks>
     public required int? AtlasRegionsKey { get; init; }
 
     /// <summary> Gets MinTier.</summary>
@@ -26,6 +27,7 @@ public sealed partial class AtlasBaseTypeDropsDat : ISpecificationFile<AtlasBase
     public required int MaxTier { get; init; }
 
     /// <summary> Gets SpawnWeight_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_TagsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>
@@ -55,10 +57,6 @@ public sealed partial class AtlasBaseTypeDropsDat : ISpecificationFile<AtlasBase
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAtlasRegionsDat();
-            // specification.GetTagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

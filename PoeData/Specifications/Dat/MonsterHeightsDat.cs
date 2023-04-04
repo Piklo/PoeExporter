@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MonsterHeightsDat : ISpecificationFile<MonsterHeightsDat>
 {
     /// <summary> Gets MonsterVariety.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVariety { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required float Unknown16 { get; init; }
 
     /// <summary> Gets MonsterHeightBracket.</summary>
+    /// <remarks> references <see cref="MonsterHeightBracketsDat"/> on <see cref="Specification.GetMonsterHeightBracketsDat"/> index.</remarks>
     public required int? MonsterHeightBracket { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
@@ -52,10 +54,6 @@ public sealed partial class MonsterHeightsDat : ISpecificationFile<MonsterHeight
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetMonsterHeightBracketsDat();
 
             // loading MonsterVariety
             (var monstervarietyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

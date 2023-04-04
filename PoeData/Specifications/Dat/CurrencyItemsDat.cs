@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Stacks.</summary>
@@ -29,12 +30,14 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
     public required string Directions { get; init; }
 
     /// <summary> Gets FullStack_BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? FullStack_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Description.</summary>
     public required string Description { get; init; }
 
     /// <summary> Gets Usage_AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Usage_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown80 is set.</summary>
@@ -44,6 +47,7 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
     public required string CosmeticTypeName { get; init; }
 
     /// <summary> Gets Possession_AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? Possession_AchievementItemsKey { get; init; }
 
     /// <summary> Gets Unknown105.</summary>
@@ -68,12 +72,15 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
     public required int? Unknown169 { get; init; }
 
     /// <summary> Gets ModifyMapsAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModifyMapsAchievements { get; init; }
 
     /// <summary> Gets ModifyContractsAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModifyContractsAchievements { get; init; }
 
     /// <summary> Gets CombineAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CombineAchievements { get; init; }
 
     /// <summary> Gets Unknown233.</summary>
@@ -83,6 +90,7 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
     public required ReadOnlyCollection<int> Unknown237 { get; init; }
 
     /// <summary> Gets ShopTag.</summary>
+    /// <remarks> references <see cref="ShopTagDat"/> on <see cref="Specification.GetShopTagDat"/> index.</remarks>
     public required int? ShopTag { get; init; }
 
     /// <summary> Gets a value indicating whether IsHardmode is set.</summary>
@@ -118,11 +126,6 @@ public sealed partial class CurrencyItemsDat : ISpecificationFile<CurrencyItemsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetShopTagDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

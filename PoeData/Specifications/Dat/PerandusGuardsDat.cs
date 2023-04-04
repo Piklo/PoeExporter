@@ -26,6 +26,7 @@ public sealed partial class PerandusGuardsDat : ISpecificationFile<PerandusGuard
     public required int MaxLevel { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
@@ -61,9 +62,6 @@ public sealed partial class PerandusGuardsDat : ISpecificationFile<PerandusGuard
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterPacksDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

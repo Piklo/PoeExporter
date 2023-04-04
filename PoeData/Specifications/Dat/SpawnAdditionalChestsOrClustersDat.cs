@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SpawnAdditionalChestsOrClustersDat : ISpecificationFile<SpawnAdditionalChestsOrClustersDat>
 {
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets ChestsKey.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets ChestClustersKey.</summary>
+    /// <remarks> references <see cref="ChestClustersDat"/> on <see cref="Specification.GetChestClustersDat"/> index.</remarks>
     public required int? ChestClustersKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,11 +49,6 @@ public sealed partial class SpawnAdditionalChestsOrClustersDat : ISpecificationF
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetChestsDat();
-            // specification.GetChestClustersDat();
 
             // loading StatsKey
             (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class QuestStatesDat : ISpecificationFile<QuestStatesDat>
 {
     /// <summary> Gets QuestKey.</summary>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? QuestKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -35,6 +36,7 @@ public sealed partial class QuestStatesDat : ISpecificationFile<QuestStatesDat>
     public required string Message { get; init; }
 
     /// <summary> Gets MapPinsKeys1.</summary>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapPinsKeys1 { get; init; }
 
     /// <summary> Gets Unknown85.</summary>
@@ -44,6 +46,7 @@ public sealed partial class QuestStatesDat : ISpecificationFile<QuestStatesDat>
     public required ReadOnlyCollection<string> MapPinsTexts { get; init; }
 
     /// <summary> Gets MapPinsKeys2.</summary>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapPinsKeys2 { get; init; }
 
     /// <summary> Gets Unknown121.</summary>
@@ -62,6 +65,7 @@ public sealed partial class QuestStatesDat : ISpecificationFile<QuestStatesDat>
     public required int Unknown170 { get; init; }
 
     /// <summary> Gets SoundEffect.</summary>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
     public required int? SoundEffect { get; init; }
 
     /// <inheritdoc/>
@@ -88,11 +92,6 @@ public sealed partial class QuestStatesDat : ISpecificationFile<QuestStatesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestDat();
-            // specification.GetMapPinsDat();
-            // specification.GetSoundEffectsDat();
 
             // loading QuestKey
             (var questkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

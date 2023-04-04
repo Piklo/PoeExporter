@@ -17,6 +17,7 @@ public sealed partial class ScoutingReportsDat : ISpecificationFile<ScoutingRepo
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItemType.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemType { get; init; }
 
     /// <summary> Gets MinMapTier.</summary>
@@ -46,9 +47,6 @@ public sealed partial class ScoutingReportsDat : ISpecificationFile<ScoutingRepo
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

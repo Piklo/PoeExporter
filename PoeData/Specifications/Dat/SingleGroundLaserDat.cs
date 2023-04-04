@@ -80,7 +80,6 @@ public sealed partial class SingleGroundLaserDat : ISpecificationFile<SingleGrou
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

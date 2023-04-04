@@ -35,6 +35,7 @@ public sealed partial class AbyssObjectsDat : ISpecificationFile<AbyssObjectsDat
     public required int Unknown32 { get; init; }
 
     /// <summary> Gets DaemonSpawners.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> DaemonSpawners { get; init; }
 
     /// <summary> Gets Unknown52.</summary>
@@ -44,6 +45,7 @@ public sealed partial class AbyssObjectsDat : ISpecificationFile<AbyssObjectsDat
     public required int Unknown56 { get; init; }
 
     /// <summary> Gets AbyssalDepths.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? AbyssalDepths { get; init; }
 
     /// <summary> Gets Unknown76.</summary>
@@ -100,10 +102,6 @@ public sealed partial class AbyssObjectsDat : ISpecificationFile<AbyssObjectsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetWorldAreasDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

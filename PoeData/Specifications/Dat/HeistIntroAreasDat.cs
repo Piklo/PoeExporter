@@ -17,6 +17,7 @@ public sealed partial class HeistIntroAreasDat : ISpecificationFile<HeistIntroAr
     public required string Id { get; init; }
 
     /// <summary> Gets HeistAreasKey.</summary>
+    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.GetHeistAreasDat"/> index.</remarks>
     public required int? HeistAreasKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -70,9 +71,6 @@ public sealed partial class HeistIntroAreasDat : ISpecificationFile<HeistIntroAr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHeistAreasDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

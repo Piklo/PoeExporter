@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class OnKillAchievementsDat : ISpecificationFile<OnKillAchievementsDat>
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets GameStat.</summary>
+    /// <remarks> references <see cref="GameStatsDat"/> on <see cref="Specification.GetGameStatsDat"/> index.</remarks>
     public required int? GameStat { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class OnKillAchievementsDat : ISpecificationFile<OnKillAch
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetGameStatsDat();
 
             // loading MonsterVarietiesKey
             (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

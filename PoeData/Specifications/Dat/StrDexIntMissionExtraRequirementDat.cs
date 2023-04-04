@@ -38,6 +38,7 @@ public sealed partial class StrDexIntMissionExtraRequirementDat : ISpecification
     public required bool HasLimitedPortals { get; init; }
 
     /// <summary> Gets NPCTalkKey.</summary>
+    /// <remarks> references <see cref="NPCTalkDat"/> on <see cref="Specification.GetNPCTalkDat"/> index.</remarks>
     public required int? NPCTalkKey { get; init; }
 
     /// <summary> Gets TimeLimitBonusFromObjective.</summary>
@@ -79,9 +80,6 @@ public sealed partial class StrDexIntMissionExtraRequirementDat : ISpecification
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCTalkDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

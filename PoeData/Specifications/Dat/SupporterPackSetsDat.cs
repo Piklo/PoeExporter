@@ -29,6 +29,7 @@ public sealed partial class SupporterPackSetsDat : ISpecificationFile<SupporterP
     public required string Time1 { get; init; }
 
     /// <summary> Gets ShopPackagePlatform.</summary>
+    /// <remarks> references <see cref="ShopPackagePlatformDat"/> on <see cref="Specification.GetShopPackagePlatformDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ShopPackagePlatform { get; init; }
 
     /// <summary> Gets Unknown56.</summary>
@@ -59,7 +60,6 @@ public sealed partial class SupporterPackSetsDat : ISpecificationFile<SupporterP
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

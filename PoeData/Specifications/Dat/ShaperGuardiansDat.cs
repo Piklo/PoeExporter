@@ -17,6 +17,7 @@ public sealed partial class ShaperGuardiansDat : ISpecificationFile<ShaperGuardi
     public required string Id { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <inheritdoc/>
@@ -43,9 +44,6 @@ public sealed partial class ShaperGuardiansDat : ISpecificationFile<ShaperGuardi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

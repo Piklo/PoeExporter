@@ -20,6 +20,7 @@ public sealed partial class JobRaidBracketsDat : ISpecificationFile<JobRaidBrack
     public required int Unknown4 { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -58,9 +59,6 @@ public sealed partial class JobRaidBracketsDat : ISpecificationFile<JobRaidBrack
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
 
             // loading MinLevel
             (var minlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

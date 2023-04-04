@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class IncursionChestRewardsDat : ISpecificationFile<IncursionChestRewardsDat>
 {
     /// <summary> Gets IncursionRoomsKey.</summary>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
     public required int? IncursionRoomsKey { get; init; }
 
     /// <summary> Gets IncursionChestsKeys.</summary>
+    /// <remarks> references <see cref="IncursionChestsDat"/> on <see cref="Specification.GetIncursionChestsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> IncursionChestsKeys { get; init; }
 
     /// <summary> Gets ChestMarkerMetadata.</summary>
@@ -55,10 +57,6 @@ public sealed partial class IncursionChestRewardsDat : ISpecificationFile<Incurs
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetIncursionRoomsDat();
-            // specification.GetIncursionChestsDat();
 
             // loading IncursionRoomsKey
             (var incursionroomskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

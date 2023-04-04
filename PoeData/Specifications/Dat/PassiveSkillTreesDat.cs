@@ -65,9 +65,11 @@ public sealed partial class PassiveSkillTreesDat : ISpecificationFile<PassiveSki
     public required bool Unknown42 { get; init; }
 
     /// <summary> Gets Unknown43.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? Unknown43 { get; init; }
 
     /// <summary> Gets UIArt.</summary>
+    /// <remarks> references <see cref="PassiveSkillTreeUIArtDat"/> on <see cref="Specification.GetPassiveSkillTreeUIArtDat"/> index.</remarks>
     public required int? UIArt { get; init; }
 
     /// <inheritdoc/>
@@ -94,10 +96,6 @@ public sealed partial class PassiveSkillTreesDat : ISpecificationFile<PassiveSki
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetClientStringsDat();
-            // specification.GetPassiveSkillTreeUIArtDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

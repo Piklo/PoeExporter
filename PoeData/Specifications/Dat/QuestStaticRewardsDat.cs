@@ -14,24 +14,28 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class QuestStaticRewardsDat : ISpecificationFile<QuestStaticRewardsDat>
 {
     /// <summary> Gets QuestFlag.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? QuestFlag { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatValues.</summary>
     public required ReadOnlyCollection<int> StatValues { get; init; }
 
     /// <summary> Gets QuestKey.</summary>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? QuestKey { get; init; }
 
     /// <summary> Gets Unknown68.</summary>
     public required int Unknown68 { get; init; }
 
     /// <summary> Gets ClientStringsKey.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientStringsKey { get; init; }
 
     /// <summary> Gets Unknown88.</summary>
@@ -41,6 +45,7 @@ public sealed partial class QuestStaticRewardsDat : ISpecificationFile<QuestStat
     public required ReadOnlyCollection<int> StatValuesHardmode { get; init; }
 
     /// <summary> Gets ClientStringHardmode.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientStringHardmode { get; init; }
 
     /// <summary> Gets Unknown124.</summary>
@@ -70,12 +75,6 @@ public sealed partial class QuestStaticRewardsDat : ISpecificationFile<QuestStat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestFlagsDat();
-            // specification.GetStatsDat();
-            // specification.GetQuestDat();
-            // specification.GetClientStringsDat();
 
             // loading QuestFlag
             (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

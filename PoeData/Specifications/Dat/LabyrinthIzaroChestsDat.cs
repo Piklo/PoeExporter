@@ -17,6 +17,7 @@ public sealed partial class LabyrinthIzaroChestsDat : ISpecificationFile<Labyrin
     public required string Id { get; init; }
 
     /// <summary> Gets ChestsKey.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets SpawnWeight.</summary>
@@ -52,9 +53,6 @@ public sealed partial class LabyrinthIzaroChestsDat : ISpecificationFile<Labyrin
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetChestsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

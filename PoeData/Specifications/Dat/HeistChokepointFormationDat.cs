@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistChokepointFormationDat : ISpecificationFile<HeistChokepointFormationDat>
 {
     /// <summary> Gets Unknown0.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -23,9 +24,11 @@ public sealed partial class HeistChokepointFormationDat : ISpecificationFile<Hei
     public required ReadOnlyCollection<int> Unknown20 { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown36 { get; init; }
 
     /// <summary> Gets Unknown52.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? Unknown52 { get; init; }
 
     /// <summary> Gets Unknown68.</summary>
@@ -70,10 +73,6 @@ public sealed partial class HeistChokepointFormationDat : ISpecificationFile<Hei
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetGrantedEffectsDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

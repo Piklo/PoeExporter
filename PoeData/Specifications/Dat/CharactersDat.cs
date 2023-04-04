@@ -65,6 +65,7 @@ public sealed partial class CharactersDat : ISpecificationFile<CharactersDat>
     public required string Description { get; init; }
 
     /// <summary> Gets StartSkillGem.</summary>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
     public required int? StartSkillGem { get; init; }
 
     /// <summary> Gets Unknown120.</summary>
@@ -83,6 +84,7 @@ public sealed partial class CharactersDat : ISpecificationFile<CharactersDat>
     public required string IntroSoundFile { get; init; }
 
     /// <summary> Gets StartWeapons.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StartWeapons { get; init; }
 
     /// <summary> Gets Gender.</summary>
@@ -184,10 +186,6 @@ public sealed partial class CharactersDat : ISpecificationFile<CharactersDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetSkillGemsDat();
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

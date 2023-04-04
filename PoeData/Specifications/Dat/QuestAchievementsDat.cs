@@ -23,9 +23,11 @@ public sealed partial class QuestAchievementsDat : ISpecificationFile<QuestAchie
     public required ReadOnlyCollection<int> Unknown24 { get; init; }
 
     /// <summary> Gets AchievementItems.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItems { get; init; }
 
     /// <summary> Gets NPCs.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCs { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown72 is set.</summary>
@@ -55,10 +57,6 @@ public sealed partial class QuestAchievementsDat : ISpecificationFile<QuestAchie
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementItemsDat();
-            // specification.GetNPCsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

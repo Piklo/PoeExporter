@@ -53,6 +53,7 @@ public sealed partial class ShopPaymentPackageDat : ISpecificationFile<ShopPayme
     public required bool Unknown79 { get; init; }
 
     /// <summary> Gets Upgrade_ShopPaymentPackageKey.</summary>
+    /// <remarks> references <see cref="ShopPaymentPackageDat"/> on <see cref="Specification.GetShopPaymentPackageDat"/> index.</remarks>
     public required int? Upgrade_ShopPaymentPackageKey { get; init; }
 
     /// <summary> Gets PhysicalItemPoints.</summary>
@@ -62,6 +63,7 @@ public sealed partial class ShopPaymentPackageDat : ISpecificationFile<ShopPayme
     public required int Unknown92 { get; init; }
 
     /// <summary> Gets ShopPackagePlatform.</summary>
+    /// <remarks> references <see cref="ShopPackagePlatformDat"/> on <see cref="Specification.GetShopPackagePlatformDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ShopPackagePlatform { get; init; }
 
     /// <summary> Gets Unknown112.</summary>
@@ -92,7 +94,6 @@ public sealed partial class ShopPaymentPackageDat : ISpecificationFile<ShopPayme
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

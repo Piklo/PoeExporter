@@ -26,9 +26,11 @@ public sealed partial class IncursionRoomsDat : ISpecificationFile<IncursionRoom
     public required int MinLevel { get; init; }
 
     /// <summary> Gets RoomUpgrade_IncursionRoomsKey.</summary>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
     public required int? RoomUpgrade_IncursionRoomsKey { get; init; }
 
     /// <summary> Gets Mods.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <summary> Gets PresentARMFile.</summary>
@@ -38,6 +40,7 @@ public sealed partial class IncursionRoomsDat : ISpecificationFile<IncursionRoom
     public required int HASH16 { get; init; }
 
     /// <summary> Gets IncursionArchitectKey.</summary>
+    /// <remarks> references <see cref="IncursionArchitectDat"/> on <see cref="Specification.GetIncursionArchitectDat"/> index.</remarks>
     public required int? IncursionArchitectKey { get; init; }
 
     /// <summary> Gets PastARMFile.</summary>
@@ -56,6 +59,7 @@ public sealed partial class IncursionRoomsDat : ISpecificationFile<IncursionRoom
     public required string Description { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Unknown132.</summary>
@@ -65,15 +69,18 @@ public sealed partial class IncursionRoomsDat : ISpecificationFile<IncursionRoom
     public required int Unknown136 { get; init; }
 
     /// <summary> Gets RoomUpgradeFrom_IncursionRoomsKey.</summary>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
     public required int? RoomUpgradeFrom_IncursionRoomsKey { get; init; }
 
     /// <summary> Gets ItemisedFlavourText.</summary>
+    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.GetFlavourTextDat"/> index.</remarks>
     public required int? ItemisedFlavourText { get; init; }
 
     /// <summary> Gets Unknown164.</summary>
     public required string Unknown164 { get; init; }
 
     /// <summary> Gets Unknown172.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown172 { get; init; }
 
     /// <inheritdoc/>
@@ -100,12 +107,6 @@ public sealed partial class IncursionRoomsDat : ISpecificationFile<IncursionRoom
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
-            // specification.GetIncursionArchitectDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetFlavourTextDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class TalkingPetNPCAudioDat : ISpecificationFile<TalkingPetNPCAudioDat>
 {
     /// <summary> Gets Unknown0.</summary>
+    /// <remarks> references <see cref="TalkingPetAudioEventsDat"/> on <see cref="Specification.GetTalkingPetAudioEventsDat"/> index.</remarks>
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
+    /// <remarks> references <see cref="TalkingPetsDat"/> on <see cref="Specification.GetTalkingPetsDat"/> index.</remarks>
     public required int? Unknown16 { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
@@ -46,10 +48,6 @@ public sealed partial class TalkingPetNPCAudioDat : ISpecificationFile<TalkingPe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTalkingPetAudioEventsDat();
-            // specification.GetTalkingPetsDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

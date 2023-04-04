@@ -17,6 +17,7 @@ public sealed partial class BlightTopologiesDat : ISpecificationFile<BlightTopol
     public required string Id { get; init; }
 
     /// <summary> Gets BlightTopologyNodesKey.</summary>
+    /// <remarks> references <see cref="BlightTopologyNodesDat"/> on <see cref="Specification.GetBlightTopologyNodesDat"/> index.</remarks>
     public required int? BlightTopologyNodesKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -64,9 +65,6 @@ public sealed partial class BlightTopologiesDat : ISpecificationFile<BlightTopol
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBlightTopologyNodesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

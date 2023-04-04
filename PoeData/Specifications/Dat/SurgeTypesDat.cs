@@ -17,6 +17,7 @@ public sealed partial class SurgeTypesDat : ISpecificationFile<SurgeTypesDat>
     public required string Id { get; init; }
 
     /// <summary> Gets SurgeEffects.</summary>
+    /// <remarks> references <see cref="SurgeEffectsDat"/> on <see cref="Specification.GetSurgeEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SurgeEffects { get; init; }
 
     /// <summary> Gets IntId.</summary>
@@ -46,9 +47,6 @@ public sealed partial class SurgeTypesDat : ISpecificationFile<SurgeTypesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetSurgeEffectsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

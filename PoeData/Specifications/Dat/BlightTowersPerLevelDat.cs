@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class BlightTowersPerLevelDat : ISpecificationFile<BlightTowersPerLevelDat>
 {
     /// <summary> Gets BlightTowersKey.</summary>
+    /// <remarks> references <see cref="BlightTowersDat"/> on <see cref="Specification.GetBlightTowersDat"/> index.</remarks>
     public required int? BlightTowersKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Cost.</summary>
@@ -52,10 +54,6 @@ public sealed partial class BlightTowersPerLevelDat : ISpecificationFile<BlightT
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBlightTowersDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading BlightTowersKey
             (var blighttowerskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

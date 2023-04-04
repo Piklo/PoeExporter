@@ -23,9 +23,11 @@ public sealed partial class MapPinsDat : ISpecificationFile<MapPinsDat>
     public required int PositionY { get; init; }
 
     /// <summary> Gets Waypoint_WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? Waypoint_WorldAreasKey { get; init; }
 
     /// <summary> Gets WorldAreasKeys.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WorldAreasKeys { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -73,9 +75,6 @@ public sealed partial class MapPinsDat : ISpecificationFile<MapPinsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

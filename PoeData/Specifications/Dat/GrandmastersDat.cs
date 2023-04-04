@@ -23,6 +23,7 @@ public sealed partial class GrandmastersDat : ISpecificationFile<GrandmastersDat
     public required string AISFile { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets CharacterLevel.</summary>
@@ -55,9 +56,6 @@ public sealed partial class GrandmastersDat : ISpecificationFile<GrandmastersDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

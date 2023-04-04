@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HarvestDurabilityDat : ISpecificationFile<HarvestDurabilityDat>
 {
     /// <summary> Gets HarvestObjectsKey.</summary>
+    /// <remarks> references <see cref="HarvestObjectsDat"/> on <see cref="Specification.GetHarvestObjectsDat"/> index.</remarks>
     public required int? HarvestObjectsKey { get; init; }
 
     /// <summary> Gets Durability.</summary>
@@ -43,9 +44,6 @@ public sealed partial class HarvestDurabilityDat : ISpecificationFile<HarvestDur
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHarvestObjectsDat();
 
             // loading HarvestObjectsKey
             (var harvestobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

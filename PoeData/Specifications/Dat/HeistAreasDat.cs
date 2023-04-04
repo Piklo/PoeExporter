@@ -17,24 +17,30 @@ public sealed partial class HeistAreasDat : ISpecificationFile<HeistAreasDat>
     public required string Id { get; init; }
 
     /// <summary> Gets WorldAreasKeys.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WorldAreasKeys { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
     /// <summary> Gets EnvironmentsKey1.</summary>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
     public required int? EnvironmentsKey1 { get; init; }
 
     /// <summary> Gets EnvironmentsKey2.</summary>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
     public required int? EnvironmentsKey2 { get; init; }
 
     /// <summary> Gets HeistJobsKeys.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HeistJobsKeys { get; init; }
 
     /// <summary> Gets Contract_BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Contract_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Blueprint_BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Blueprint_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets DGRFile.</summary>
@@ -56,18 +62,23 @@ public sealed partial class HeistAreasDat : ISpecificationFile<HeistAreasDat>
     public required string Blueprint_DDSFile { get; init; }
 
     /// <summary> Gets Achievements1.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements1 { get; init; }
 
     /// <summary> Gets Achievements2.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements2 { get; init; }
 
     /// <summary> Gets Reward.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? Reward { get; init; }
 
     /// <summary> Gets Achievements3.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements3 { get; init; }
 
     /// <summary> Gets RewardHardmode.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? RewardHardmode { get; init; }
 
     /// <inheritdoc/>
@@ -94,14 +105,6 @@ public sealed partial class HeistAreasDat : ISpecificationFile<HeistAreasDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetEnvironmentsDat();
-            // specification.GetHeistJobsDat();
-            // specification.GetBaseItemTypesDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetClientStringsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

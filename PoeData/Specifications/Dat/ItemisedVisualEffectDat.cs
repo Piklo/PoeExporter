@@ -14,21 +14,27 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ItemisedVisualEffectDat : ISpecificationFile<ItemisedVisualEffectDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets ItemVisualEffectKey.</summary>
+    /// <remarks> references <see cref="ItemVisualEffectDat"/> on <see cref="Specification.GetItemVisualEffectDat"/> index.</remarks>
     public required int? ItemVisualEffectKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey1.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey1 { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey2.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey2 { get; init; }
 
     /// <summary> Gets Stats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets ItemClasses.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ItemClasses { get; init; }
 
     /// <summary> Gets Unknown96.</summary>
@@ -76,13 +82,6 @@ public sealed partial class ItemisedVisualEffectDat : ISpecificationFile<Itemise
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetItemVisualEffectDat();
-            // specification.GetItemVisualIdentityDat();
-            // specification.GetStatsDat();
-            // specification.GetItemClassesDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

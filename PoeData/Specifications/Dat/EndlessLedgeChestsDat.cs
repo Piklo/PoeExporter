@@ -17,9 +17,11 @@ public sealed partial class EndlessLedgeChestsDat : ISpecificationFile<EndlessLe
     public required string Id { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets BaseItemTypesKeys.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BaseItemTypesKeys { get; init; }
 
     /// <summary> Gets SocketColour.</summary>
@@ -49,10 +51,6 @@ public sealed partial class EndlessLedgeChestsDat : ISpecificationFile<EndlessLe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

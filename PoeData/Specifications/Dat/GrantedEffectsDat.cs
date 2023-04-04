@@ -20,18 +20,22 @@ public sealed partial class GrantedEffectsDat : ISpecificationFile<GrantedEffect
     public required bool IsSupport { get; init; }
 
     /// <summary> Gets AllowedActiveSkillTypes.</summary>
+    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.GetActiveSkillTypeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AllowedActiveSkillTypes { get; init; }
 
     /// <summary> Gets SupportGemLetter.</summary>
     public required string SupportGemLetter { get; init; }
 
     /// <summary> Gets Attribute.</summary>
+    /// <remarks> references <see cref="AttributesDat"/> on <see cref="Specification.GetAttributesDat"/> index.</remarks>
     public required int Attribute { get; init; }
 
     /// <summary> Gets AddedActiveSkillTypes.</summary>
+    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.GetActiveSkillTypeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AddedActiveSkillTypes { get; init; }
 
     /// <summary> Gets ExcludedActiveSkillTypes.</summary>
+    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.GetActiveSkillTypeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ExcludedActiveSkillTypes { get; init; }
 
     /// <summary> Gets a value indicating whether SupportsGemsOnly is set.</summary>
@@ -53,6 +57,7 @@ public sealed partial class GrantedEffectsDat : ISpecificationFile<GrantedEffect
     public required int CastTime { get; init; }
 
     /// <summary> Gets ActiveSkill.</summary>
+    /// <remarks> references <see cref="ActiveSkillsDat"/> on <see cref="Specification.GetActiveSkillsDat"/> index.</remarks>
     public required int? ActiveSkill { get; init; }
 
     /// <summary> Gets a value indicating whether IgnoreMinionTypes is set.</summary>
@@ -62,21 +67,26 @@ public sealed partial class GrantedEffectsDat : ISpecificationFile<GrantedEffect
     public required bool Unknown116 { get; init; }
 
     /// <summary> Gets AddedMinionActiveSkillTypes.</summary>
+    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.GetActiveSkillTypeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AddedMinionActiveSkillTypes { get; init; }
 
     /// <summary> Gets Animation.</summary>
+    /// <remarks> references <see cref="AnimationDat"/> on <see cref="Specification.GetAnimationDat"/> index.</remarks>
     public required int? Animation { get; init; }
 
     /// <summary> Gets MultiPartAchievement.</summary>
+    /// <remarks> references <see cref="MultiPartAchievementsDat"/> on <see cref="Specification.GetMultiPartAchievementsDat"/> index.</remarks>
     public required int? MultiPartAchievement { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown165 is set.</summary>
     public required bool Unknown165 { get; init; }
 
     /// <summary> Gets SupportWeaponRestrictions.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SupportWeaponRestrictions { get; init; }
 
     /// <summary> Gets RegularVariant.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? RegularVariant { get; init; }
 
     /// <summary> Gets Unknown190.</summary>
@@ -92,6 +102,7 @@ public sealed partial class GrantedEffectsDat : ISpecificationFile<GrantedEffect
     public required bool Unknown202 { get; init; }
 
     /// <summary> Gets StatSet.</summary>
+    /// <remarks> references <see cref="GrantedEffectStatSetsDat"/> on <see cref="Specification.GetGrantedEffectStatSetsDat"/> index.</remarks>
     public required int? StatSet { get; init; }
 
     /// <summary> Gets Unknown219.</summary>
@@ -121,14 +132,6 @@ public sealed partial class GrantedEffectsDat : ISpecificationFile<GrantedEffect
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetActiveSkillTypeDat();
-            // specification.GetActiveSkillsDat();
-            // specification.GetAnimationDat();
-            // specification.GetMultiPartAchievementsDat();
-            // specification.GetItemClassesDat();
-            // specification.GetGrantedEffectStatSetsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

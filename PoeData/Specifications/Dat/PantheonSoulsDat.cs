@@ -14,18 +14,23 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class PantheonSoulsDat : ISpecificationFile<PantheonSoulsDat>
 {
     /// <summary> Gets WorldArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <summary> Gets CapturedVessel.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? CapturedVessel { get; init; }
 
     /// <summary> Gets QuestFlag.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? QuestFlag { get; init; }
 
     /// <summary> Gets CapturedMonster.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? CapturedMonster { get; init; }
 
     /// <summary> Gets PanelLayout.</summary>
+    /// <remarks> references <see cref="PantheonPanelLayoutDat"/> on <see cref="Specification.GetPantheonPanelLayoutDat"/> index.</remarks>
     public required int? PanelLayout { get; init; }
 
     /// <inheritdoc/>
@@ -52,13 +57,6 @@ public sealed partial class PantheonSoulsDat : ISpecificationFile<PantheonSoulsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetBaseItemTypesDat();
-            // specification.GetQuestFlagsDat();
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetPantheonPanelLayoutDat();
 
             // loading WorldArea
             (var worldareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -17,6 +17,7 @@ public sealed partial class CharacterAudioEventsDat : ISpecificationFile<Charact
     public required string Id { get; init; }
 
     /// <summary> Gets Event.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? Event { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -26,9 +27,11 @@ public sealed partial class CharacterAudioEventsDat : ISpecificationFile<Charact
     public required int Unknown28 { get; init; }
 
     /// <summary> Gets Goddess_CharacterTextAudioKeys.</summary>
+    /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.GetCharacterTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Goddess_CharacterTextAudioKeys { get; init; }
 
     /// <summary> Gets JackTheAxe_CharacterTextAudioKeys.</summary>
+    /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.GetCharacterTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> JackTheAxe_CharacterTextAudioKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown64 is set.</summary>
@@ -61,10 +64,6 @@ public sealed partial class CharacterAudioEventsDat : ISpecificationFile<Charact
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestFlagsDat();
-            // specification.GetCharacterTextAudioDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

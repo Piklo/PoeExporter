@@ -20,9 +20,11 @@ public sealed partial class ShrineBuffsDat : ISpecificationFile<ShrineBuffsDat>
     public required ReadOnlyCollection<int> BuffStatValues { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets BuffVisual.</summary>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisual { get; init; }
 
     /// <inheritdoc/>
@@ -49,10 +51,6 @@ public sealed partial class ShrineBuffsDat : ISpecificationFile<ShrineBuffsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffDefinitionsDat();
-            // specification.GetBuffVisualsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

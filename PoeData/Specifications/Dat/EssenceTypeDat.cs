@@ -23,6 +23,7 @@ public sealed partial class EssenceTypeDat : ISpecificationFile<EssenceTypeDat>
     public required bool IsCorruptedEssence { get; init; }
 
     /// <summary> Gets WordsKey.</summary>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
     public required int? WordsKey { get; init; }
 
     /// <inheritdoc/>
@@ -49,9 +50,6 @@ public sealed partial class EssenceTypeDat : ISpecificationFile<EssenceTypeDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWordsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

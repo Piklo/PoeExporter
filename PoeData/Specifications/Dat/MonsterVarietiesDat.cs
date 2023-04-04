@@ -17,6 +17,7 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterTypesKey.</summary>
+    /// <remarks> references <see cref="MonsterTypesDat"/> on <see cref="Specification.GetMonsterTypesDat"/> index.</remarks>
     public required int? MonsterTypesKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -41,6 +42,7 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
     public required string BaseMonsterTypeIndex { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets Unknown96.</summary>
@@ -71,6 +73,7 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
     public required int Unknown136 { get; init; }
 
     /// <summary> Gets TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TagsKeys { get; init; }
 
     /// <summary> Gets ExperienceMultiplier.</summary>
@@ -95,12 +98,14 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
     public required int Unknown192 { get; init; }
 
     /// <summary> Gets GrantedEffectsKeys.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GrantedEffectsKeys { get; init; }
 
     /// <summary> Gets AISFile.</summary>
     public required string AISFile { get; init; }
 
     /// <summary> Gets ModsKeys2.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys2 { get; init; }
 
     /// <summary> Gets Stance.</summary>
@@ -122,33 +127,42 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
     public required int AttackSpeed { get; init; }
 
     /// <summary> Gets Weapon1_ItemVisualIdentityKeys.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Weapon1_ItemVisualIdentityKeys { get; init; }
 
     /// <summary> Gets Weapon2_ItemVisualIdentityKeys.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Weapon2_ItemVisualIdentityKeys { get; init; }
 
     /// <summary> Gets Back_ItemVisualIdentityKey.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? Back_ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets MainHand_ItemClassesKey.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? MainHand_ItemClassesKey { get; init; }
 
     /// <summary> Gets OffHand_ItemClassesKey.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? OffHand_ItemClassesKey { get; init; }
 
     /// <summary> Gets Helmet_ItemVisualIdentityKey.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? Helmet_ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets Unknown376.</summary>
     public required int Unknown376 { get; init; }
 
     /// <summary> Gets KillSpecificMonsterCount_AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> KillSpecificMonsterCount_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Special_ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Special_ModsKeys { get; init; }
 
     /// <summary> Gets KillRare_AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> KillRare_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown428 is set.</summary>
@@ -182,24 +196,31 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
     public required string Unknown458 { get; init; }
 
     /// <summary> Gets KillWhileOnslaughtIsActive_AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? KillWhileOnslaughtIsActive_AchievementItemsKey { get; init; }
 
     /// <summary> Gets MonsterSegmentsKey.</summary>
+    /// <remarks> references <see cref="MonsterSegmentsDat"/> on <see cref="Specification.GetMonsterSegmentsDat"/> index.</remarks>
     public required int? MonsterSegmentsKey { get; init; }
 
     /// <summary> Gets MonsterArmoursKey.</summary>
+    /// <remarks> references <see cref="MonsterArmoursDat"/> on <see cref="Specification.GetMonsterArmoursDat"/> index.</remarks>
     public required int? MonsterArmoursKey { get; init; }
 
     /// <summary> Gets KillWhileTalismanIsActive_AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? KillWhileTalismanIsActive_AchievementItemsKey { get; init; }
 
     /// <summary> Gets Part1_ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Part1_ModsKeys { get; init; }
 
     /// <summary> Gets Part2_ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Part2_ModsKeys { get; init; }
 
     /// <summary> Gets Endgame_ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Endgame_ModsKeys { get; init; }
 
     /// <summary> Gets Unknown578.</summary>
@@ -257,6 +278,7 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
     public required int Unknown690 { get; init; }
 
     /// <summary> Gets MonsterConditionalEffectPacksKey.</summary>
+    /// <remarks> references <see cref="MonsterConditionalEffectPacksDat"/> on <see cref="Specification.GetMonsterConditionalEffectPacksDat"/> index.</remarks>
     public required int? MonsterConditionalEffectPacksKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown710 is set.</summary>
@@ -325,18 +347,6 @@ public sealed partial class MonsterVarietiesDat : ISpecificationFile<MonsterVari
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterTypesDat();
-            // specification.GetModsDat();
-            // specification.GetTagsDat();
-            // specification.GetGrantedEffectsDat();
-            // specification.GetItemVisualIdentityDat();
-            // specification.GetItemClassesDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetMonsterSegmentsDat();
-            // specification.GetMonsterArmoursDat();
-            // specification.GetMonsterConditionalEffectPacksDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

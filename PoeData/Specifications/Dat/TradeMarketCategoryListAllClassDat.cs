@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class TradeMarketCategoryListAllClassDat : ISpecificationFile<TradeMarketCategoryListAllClassDat>
 {
     /// <summary> Gets TradeCategory.</summary>
+    /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.GetTradeMarketCategoryDat"/> index.</remarks>
     public required int? TradeCategory { get; init; }
 
     /// <summary> Gets ItemClass.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class TradeMarketCategoryListAllClassDat : ISpecificationF
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTradeMarketCategoryDat();
-            // specification.GetItemClassesDat();
 
             // loading TradeCategory
             (var tradecategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

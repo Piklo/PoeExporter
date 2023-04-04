@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class BlightCraftingUniquesDat : ISpecificationFile<BlightCraftingUniquesDat>
 {
     /// <summary> Gets WordsKey.</summary>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
     public required int? WordsKey { get; init; }
 
     /// <inheritdoc/>
@@ -40,9 +41,6 @@ public sealed partial class BlightCraftingUniquesDat : ISpecificationFile<Blight
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWordsDat();
 
             // loading WordsKey
             (var wordskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

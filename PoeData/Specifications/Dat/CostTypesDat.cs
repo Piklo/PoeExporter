@@ -17,6 +17,7 @@ public sealed partial class CostTypesDat : ISpecificationFile<CostTypesDat>
     public required string Id { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets FormatText.</summary>
@@ -49,9 +50,6 @@ public sealed partial class CostTypesDat : ISpecificationFile<CostTypesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

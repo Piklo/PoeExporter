@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistJobsExperiencePerLevelDat : ISpecificationFile<HeistJobsExperiencePerLevelDat>
 {
     /// <summary> Gets HeistJobsKey.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey { get; init; }
 
     /// <summary> Gets Tier.</summary>
@@ -26,6 +27,7 @@ public sealed partial class HeistJobsExperiencePerLevelDat : ISpecificationFile<
     public required int MinLevel { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKey { get; init; }
 
     /// <inheritdoc/>
@@ -52,10 +54,6 @@ public sealed partial class HeistJobsExperiencePerLevelDat : ISpecificationFile<
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetHeistJobsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading HeistJobsKey
             (var heistjobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

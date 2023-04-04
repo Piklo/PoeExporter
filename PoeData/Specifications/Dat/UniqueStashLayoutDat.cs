@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class UniqueStashLayoutDat : ISpecificationFile<UniqueStashLayoutDat>
 {
     /// <summary> Gets WordsKey.</summary>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
     public required int? WordsKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets UniqueStashTypesKey.</summary>
+    /// <remarks> references <see cref="UniqueStashTypesDat"/> on <see cref="Specification.GetUniqueStashTypesDat"/> index.</remarks>
     public required int? UniqueStashTypesKey { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -41,9 +44,11 @@ public sealed partial class UniqueStashLayoutDat : ISpecificationFile<UniqueStas
     public required bool ShowIfEmpty { get; init; }
 
     /// <summary> Gets RenamedVersion.</summary>
+    /// <remarks> references <see cref="UniqueStashLayoutDat"/> on <see cref="Specification.GetUniqueStashLayoutDat"/> index.</remarks>
     public required int? RenamedVersion { get; init; }
 
     /// <summary> Gets BaseVersion.</summary>
+    /// <remarks> references <see cref="UniqueStashLayoutDat"/> on <see cref="Specification.GetUniqueStashLayoutDat"/> index.</remarks>
     public required int? BaseVersion { get; init; }
 
     /// <summary> Gets a value indicating whether IsAlternateArt is set.</summary>
@@ -73,11 +78,6 @@ public sealed partial class UniqueStashLayoutDat : ISpecificationFile<UniqueStas
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWordsDat();
-            // specification.GetItemVisualIdentityDat();
-            // specification.GetUniqueStashTypesDat();
 
             // loading WordsKey
             (var wordskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

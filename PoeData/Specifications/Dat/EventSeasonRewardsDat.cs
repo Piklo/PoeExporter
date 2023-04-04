@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class EventSeasonRewardsDat : ISpecificationFile<EventSeasonRewardsDat>
 {
     /// <summary> Gets EventSeasonKey.</summary>
+    /// <remarks> references <see cref="EventSeasonDat"/> on <see cref="Specification.GetEventSeasonDat"/> index.</remarks>
     public required int? EventSeasonKey { get; init; }
 
     /// <summary> Gets Point.</summary>
@@ -46,9 +47,6 @@ public sealed partial class EventSeasonRewardsDat : ISpecificationFile<EventSeas
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetEventSeasonDat();
 
             // loading EventSeasonKey
             (var eventseasonkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

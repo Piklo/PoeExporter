@@ -17,6 +17,7 @@ public sealed partial class AlternatePassiveSkillsDat : ISpecificationFile<Alter
     public required string Id { get; init; }
 
     /// <summary> Gets AlternateTreeVersionsKey.</summary>
+    /// <remarks> references <see cref="AlternateTreeVersionsDat"/> on <see cref="Specification.GetAlternateTreeVersionsDat"/> index.</remarks>
     public required int? AlternateTreeVersionsKey { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -26,6 +27,7 @@ public sealed partial class AlternatePassiveSkillsDat : ISpecificationFile<Alter
     public required ReadOnlyCollection<int> PassiveType { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets Stat1Min.</summary>
@@ -83,6 +85,7 @@ public sealed partial class AlternatePassiveSkillsDat : ISpecificationFile<Alter
     public required string DDSIcon { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Unknown160.</summary>
@@ -115,11 +118,6 @@ public sealed partial class AlternatePassiveSkillsDat : ISpecificationFile<Alter
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAlternateTreeVersionsDat();
-            // specification.GetStatsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

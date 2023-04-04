@@ -14,24 +14,30 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class DelveCraftingModifiersDat : ISpecificationFile<DelveCraftingModifiersDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets AddedModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AddedModsKeys { get; init; }
 
     /// <summary> Gets NegativeWeight_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NegativeWeight_TagsKeys { get; init; }
 
     /// <summary> Gets NegativeWeight_Values.</summary>
     public required ReadOnlyCollection<int> NegativeWeight_Values { get; init; }
 
     /// <summary> Gets ForcedAddModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ForcedAddModsKeys { get; init; }
 
     /// <summary> Gets ForbiddenDelveCraftingTagsKeys.</summary>
+    /// <remarks> references <see cref="DelveCraftingTagsDat"/> on <see cref="Specification.GetDelveCraftingTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ForbiddenDelveCraftingTagsKeys { get; init; }
 
     /// <summary> Gets AllowedDelveCraftingTagsKeys.</summary>
+    /// <remarks> references <see cref="DelveCraftingTagsDat"/> on <see cref="Specification.GetDelveCraftingTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AllowedDelveCraftingTagsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether CanMirrorItem is set.</summary>
@@ -50,21 +56,25 @@ public sealed partial class DelveCraftingModifiersDat : ISpecificationFile<Delve
     public required bool HasLuckyRolls { get; init; }
 
     /// <summary> Gets SellPrice_ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SellPrice_ModsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether CanRollWhiteSockets is set.</summary>
     public required bool CanRollWhiteSockets { get; init; }
 
     /// <summary> Gets Weight_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Weight_TagsKeys { get; init; }
 
     /// <summary> Gets Weight_Values.</summary>
     public required ReadOnlyCollection<int> Weight_Values { get; init; }
 
     /// <summary> Gets DelveCraftingModifierDescriptionsKeys.</summary>
+    /// <remarks> references <see cref="DelveCraftingModifierDescriptionsDat"/> on <see cref="Specification.GetDelveCraftingModifierDescriptionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> DelveCraftingModifierDescriptionsKeys { get; init; }
 
     /// <summary> Gets BlockedDelveCraftingModifierDescriptionsKeys.</summary>
+    /// <remarks> references <see cref="DelveCraftingModifierDescriptionsDat"/> on <see cref="Specification.GetDelveCraftingModifierDescriptionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BlockedDelveCraftingModifierDescriptionsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown201 is set.</summary>
@@ -103,13 +113,6 @@ public sealed partial class DelveCraftingModifiersDat : ISpecificationFile<Delve
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetModsDat();
-            // specification.GetTagsDat();
-            // specification.GetDelveCraftingTagsDat();
-            // specification.GetDelveCraftingModifierDescriptionsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

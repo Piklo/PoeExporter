@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class FlasksDat : ISpecificationFile<FlasksDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -32,6 +33,7 @@ public sealed partial class FlasksDat : ISpecificationFile<FlasksDat>
     public required int RecoveryTime { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets BuffStatValues.</summary>
@@ -67,10 +69,6 @@ public sealed partial class FlasksDat : ISpecificationFile<FlasksDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetBuffDefinitionsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -17,6 +17,7 @@ public sealed partial class ExplodingStormBuffsDat : ISpecificationFile<Explodin
     public required string Id { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey1.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey1 { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -41,18 +42,23 @@ public sealed partial class ExplodingStormBuffsDat : ISpecificationFile<Explodin
     public required int Unknown84 { get; init; }
 
     /// <summary> Gets Friendly_MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Friendly_MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets MiscObjectsKey.</summary>
+    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
     public required int? MiscObjectsKey { get; init; }
 
     /// <summary> Gets MiscAnimatedKey.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey { get; init; }
 
     /// <summary> Gets BuffVisualsKey.</summary>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisualsKey { get; init; }
 
     /// <summary> Gets Enemy_MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Enemy_MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Unknown168.</summary>
@@ -65,6 +71,7 @@ public sealed partial class ExplodingStormBuffsDat : ISpecificationFile<Explodin
     public required int Unknown176 { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey2.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey2 { get; init; }
 
     /// <summary> Gets a value indicating whether IsOnlySpawningNearPlayer is set.</summary>
@@ -94,13 +101,6 @@ public sealed partial class ExplodingStormBuffsDat : ISpecificationFile<Explodin
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffDefinitionsDat();
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetMiscObjectsDat();
-            // specification.GetMiscAnimatedDat();
-            // specification.GetBuffVisualsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

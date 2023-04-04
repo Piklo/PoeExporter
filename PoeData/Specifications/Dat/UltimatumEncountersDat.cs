@@ -20,12 +20,14 @@ public sealed partial class UltimatumEncountersDat : ISpecificationFile<Ultimatu
     public required string Description { get; init; }
 
     /// <summary> Gets ModTypes.</summary>
+    /// <remarks> references <see cref="UltimatumModifierTypesDat"/> on <see cref="Specification.GetUltimatumModifierTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModTypes { get; init; }
 
     /// <summary> Gets BossARMFile.</summary>
     public required string BossARMFile { get; init; }
 
     /// <summary> Gets Type.</summary>
+    /// <remarks> references <see cref="UltimatumEncounterTypesDat"/> on <see cref="Specification.GetUltimatumEncounterTypesDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets Icon.</summary>
@@ -64,10 +66,6 @@ public sealed partial class UltimatumEncountersDat : ISpecificationFile<Ultimatu
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetUltimatumModifierTypesDat();
-            // specification.GetUltimatumEncounterTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -20,6 +20,7 @@ public sealed partial class NPCShopDat : ISpecificationFile<NPCShopDat>
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets SoldItem_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SoldItem_TagsKeys { get; init; }
 
     /// <summary> Gets SoldItem_Weights.</summary>
@@ -79,9 +80,6 @@ public sealed partial class NPCShopDat : ISpecificationFile<NPCShopDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class RaceTimesDat : ISpecificationFile<RaceTimesDat>
 {
     /// <summary> Gets RacesKey.</summary>
+    /// <remarks> references <see cref="RacesDat"/> on <see cref="Specification.GetRacesDat"/> index.</remarks>
     public required int? RacesKey { get; init; }
 
     /// <summary> Gets Index.</summary>
@@ -49,9 +50,6 @@ public sealed partial class RaceTimesDat : ISpecificationFile<RaceTimesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetRacesDat();
 
             // loading RacesKey
             (var raceskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

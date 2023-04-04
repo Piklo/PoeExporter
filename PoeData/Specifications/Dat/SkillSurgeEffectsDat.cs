@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SkillSurgeEffectsDat : ISpecificationFile<SkillSurgeEffectsDat>
 {
     /// <summary> Gets GrantedEffectsKey.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -29,6 +30,7 @@ public sealed partial class SkillSurgeEffectsDat : ISpecificationFile<SkillSurge
     public required bool Unknown26 { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown43 is set.</summary>
@@ -76,10 +78,6 @@ public sealed partial class SkillSurgeEffectsDat : ISpecificationFile<SkillSurge
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetGrantedEffectsDat();
-            // specification.GetMiscAnimatedDat();
 
             // loading GrantedEffectsKey
             (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

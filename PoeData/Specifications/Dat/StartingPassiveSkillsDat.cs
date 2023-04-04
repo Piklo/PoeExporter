@@ -17,6 +17,7 @@ public sealed partial class StartingPassiveSkillsDat : ISpecificationFile<Starti
     public required string Id { get; init; }
 
     /// <summary> Gets PassiveSkills.</summary>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PassiveSkills { get; init; }
 
     /// <inheritdoc/>
@@ -43,9 +44,6 @@ public sealed partial class StartingPassiveSkillsDat : ISpecificationFile<Starti
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPassiveSkillsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

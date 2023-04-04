@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SynthesisBracketsDat : ISpecificationFile<SynthesisBracketsDat>
 {
     /// <summary> Gets WorldAreasKey1.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey1 { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -23,6 +24,7 @@ public sealed partial class SynthesisBracketsDat : ISpecificationFile<SynthesisB
     public required int MaxLevel { get; init; }
 
     /// <summary> Gets WorldAreasKey2.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey2 { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -61,9 +63,6 @@ public sealed partial class SynthesisBracketsDat : ISpecificationFile<SynthesisB
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
 
             // loading WorldAreasKey1
             (var worldareaskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

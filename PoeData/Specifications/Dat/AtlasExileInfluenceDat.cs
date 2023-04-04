@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AtlasExileInfluenceDat : ISpecificationFile<AtlasExileInfluenceDat>
 {
     /// <summary> Gets Conqueror.</summary>
+    /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.GetAtlasExilesDat"/> index.</remarks>
     public required int? Conqueror { get; init; }
 
     /// <summary> Gets Sets.</summary>
+    /// <remarks> references <see cref="AtlasInfluenceSetsDat"/> on <see cref="Specification.GetAtlasInfluenceSetsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Sets { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class AtlasExileInfluenceDat : ISpecificationFile<AtlasExi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAtlasExilesDat();
-            // specification.GetAtlasInfluenceSetsDat();
 
             // loading Conqueror
             (var conquerorLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

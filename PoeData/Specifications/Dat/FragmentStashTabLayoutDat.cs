@@ -47,6 +47,7 @@ public sealed partial class FragmentStashTabLayoutDat : ISpecificationFile<Fragm
     public required int Subtab { get; init; }
 
     /// <summary> Gets FragmentItems.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> FragmentItems { get; init; }
 
     /// <inheritdoc/>
@@ -73,9 +74,6 @@ public sealed partial class FragmentStashTabLayoutDat : ISpecificationFile<Fragm
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

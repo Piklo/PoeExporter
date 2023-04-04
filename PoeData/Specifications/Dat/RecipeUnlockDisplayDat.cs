@@ -20,6 +20,7 @@ public sealed partial class RecipeUnlockDisplayDat : ISpecificationFile<RecipeUn
     public required string Description { get; init; }
 
     /// <summary> Gets CraftingItemClassCategoriesKeys.</summary>
+    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.GetCraftingItemClassCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CraftingItemClassCategoriesKeys { get; init; }
 
     /// <summary> Gets UnlockDescription.</summary>
@@ -29,6 +30,7 @@ public sealed partial class RecipeUnlockDisplayDat : ISpecificationFile<RecipeUn
     public required int Rank { get; init; }
 
     /// <summary> Gets UnlockArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? UnlockArea { get; init; }
 
     /// <inheritdoc/>
@@ -55,10 +57,6 @@ public sealed partial class RecipeUnlockDisplayDat : ISpecificationFile<RecipeUn
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCraftingItemClassCategoriesDat();
-            // specification.GetWorldAreasDat();
 
             // loading RecipeId
             (var recipeidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

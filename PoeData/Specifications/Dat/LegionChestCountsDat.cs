@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LegionChestCountsDat : ISpecificationFile<LegionChestCountsDat>
 {
     /// <summary> Gets LegionFactionsKey.</summary>
+    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.GetLegionFactionsDat"/> index.</remarks>
     public required int? LegionFactionsKey { get; init; }
 
     /// <summary> Gets LegionRanksKey.</summary>
+    /// <remarks> references <see cref="LegionRanksDat"/> on <see cref="Specification.GetLegionRanksDat"/> index.</remarks>
     public required int? LegionRanksKey { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
@@ -61,10 +63,6 @@ public sealed partial class LegionChestCountsDat : ISpecificationFile<LegionChes
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetLegionFactionsDat();
-            // specification.GetLegionRanksDat();
 
             // loading LegionFactionsKey
             (var legionfactionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SentinelCraftingCurrencyDat : ISpecificationFile<SentinelCraftingCurrencyDat>
 {
     /// <summary> Gets Currency.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Currency { get; init; }
 
     /// <summary> Gets Type.</summary>
@@ -43,9 +44,6 @@ public sealed partial class SentinelCraftingCurrencyDat : ISpecificationFile<Sen
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Currency
             (var currencyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

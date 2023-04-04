@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HideoutDoodadsDat : ISpecificationFile<HideoutDoodadsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Variation_AOFiles.</summary>
@@ -32,6 +33,7 @@ public sealed partial class HideoutDoodadsDat : ISpecificationFile<HideoutDoodad
     public required bool IsCraftingBench { get; init; }
 
     /// <summary> Gets Tags.</summary>
+    /// <remarks> references <see cref="HideoutDoodadTagsDat"/> on <see cref="Specification.GetHideoutDoodadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tags { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown59 is set.</summary>
@@ -41,6 +43,7 @@ public sealed partial class HideoutDoodadsDat : ISpecificationFile<HideoutDoodad
     public required int? Unknown60 { get; init; }
 
     /// <summary> Gets Category.</summary>
+    /// <remarks> references <see cref="HideoutDoodadCategoryDat"/> on <see cref="Specification.GetHideoutDoodadCategoryDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets Unknown92.</summary>
@@ -79,11 +82,6 @@ public sealed partial class HideoutDoodadsDat : ISpecificationFile<HideoutDoodad
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetHideoutDoodadTagsDat();
-            // specification.GetHideoutDoodadCategoryDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

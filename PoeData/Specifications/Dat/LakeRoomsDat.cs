@@ -26,6 +26,7 @@ public sealed partial class LakeRoomsDat : ISpecificationFile<LakeRoomsDat>
     public required ReadOnlyCollection<int> Unknown32 { get; init; }
 
     /// <summary> Gets Stats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets StatsValues.</summary>
@@ -41,6 +42,7 @@ public sealed partial class LakeRoomsDat : ISpecificationFile<LakeRoomsDat>
     public required int Type { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <summary> Gets Icon.</summary>
@@ -59,6 +61,7 @@ public sealed partial class LakeRoomsDat : ISpecificationFile<LakeRoomsDat>
     public required bool Unknown148 { get; init; }
 
     /// <summary> Gets ExtraStats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ExtraStats { get; init; }
 
     /// <summary> Gets ExtraStatsValues.</summary>
@@ -68,6 +71,7 @@ public sealed partial class LakeRoomsDat : ISpecificationFile<LakeRoomsDat>
     public required string ReminderText { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <inheritdoc/>
@@ -94,11 +98,6 @@ public sealed partial class LakeRoomsDat : ISpecificationFile<LakeRoomsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetWorldAreasDat();
-            // specification.GetNPCTextAudioDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

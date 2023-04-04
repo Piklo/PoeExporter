@@ -20,6 +20,7 @@ public sealed partial class MicrotransactionPeriodicCharacterEffectVariationsDat
     public required string AOFile { get; init; }
 
     /// <summary> Gets MiscObject.</summary>
+    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
     public required int? MiscObject { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +47,6 @@ public sealed partial class MicrotransactionPeriodicCharacterEffectVariationsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscObjectsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

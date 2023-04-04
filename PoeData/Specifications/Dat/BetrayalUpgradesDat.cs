@@ -23,6 +23,7 @@ public sealed partial class BetrayalUpgradesDat : ISpecificationFile<BetrayalUpg
     public required string Description { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKey { get; init; }
 
     /// <summary> Gets ArtFile.</summary>
@@ -35,18 +36,22 @@ public sealed partial class BetrayalUpgradesDat : ISpecificationFile<BetrayalUpg
     public required ReadOnlyCollection<int> Unknown52 { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey0.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey0 { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey1.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey1 { get; init; }
 
     /// <summary> Gets GrantedEffectsKey.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets Unknown116.</summary>
     public required int Unknown116 { get; init; }
 
     /// <summary> Gets ItemClassesKey.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClassesKey { get; init; }
 
     /// <inheritdoc/>
@@ -73,12 +78,6 @@ public sealed partial class BetrayalUpgradesDat : ISpecificationFile<BetrayalUpg
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
-            // specification.GetItemVisualIdentityDat();
-            // specification.GetGrantedEffectsDat();
-            // specification.GetItemClassesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MetamorphosisMetaSkillsDat : ISpecificationFile<MetamorphosisMetaSkillsDat>
 {
     /// <summary> Gets Monster.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Monster { get; init; }
 
     /// <summary> Gets SkillType.</summary>
+    /// <remarks> references <see cref="MetamorphosisMetaSkillTypesDat"/> on <see cref="Specification.GetMetamorphosisMetaSkillTypesDat"/> index.</remarks>
     public required int? SkillType { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
@@ -32,9 +34,11 @@ public sealed partial class MetamorphosisMetaSkillsDat : ISpecificationFile<Meta
     public required int? Unknown80 { get; init; }
 
     /// <summary> Gets Animation.</summary>
+    /// <remarks> references <see cref="AnimationDat"/> on <see cref="Specification.GetAnimationDat"/> index.</remarks>
     public required int? Animation { get; init; }
 
     /// <summary> Gets Stats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets StatsValues.</summary>
@@ -47,6 +51,7 @@ public sealed partial class MetamorphosisMetaSkillsDat : ISpecificationFile<Meta
     public required int? Unknown148 { get; init; }
 
     /// <summary> Gets GrantedEffects.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GrantedEffects { get; init; }
 
     /// <summary> Gets Unknown180.</summary>
@@ -62,6 +67,7 @@ public sealed partial class MetamorphosisMetaSkillsDat : ISpecificationFile<Meta
     public required string Script2 { get; init; }
 
     /// <summary> Gets Mods.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -92,6 +98,7 @@ public sealed partial class MetamorphosisMetaSkillsDat : ISpecificationFile<Meta
     public required ReadOnlyCollection<int> Unknown316 { get; init; }
 
     /// <summary> Gets MiscAnimations.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscAnimations { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown348 is set.</summary>
@@ -121,15 +128,6 @@ public sealed partial class MetamorphosisMetaSkillsDat : ISpecificationFile<Meta
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetMetamorphosisMetaSkillTypesDat();
-            // specification.GetAnimationDat();
-            // specification.GetStatsDat();
-            // specification.GetGrantedEffectsDat();
-            // specification.GetModsDat();
-            // specification.GetMiscAnimatedDat();
 
             // loading Monster
             (var monsterLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

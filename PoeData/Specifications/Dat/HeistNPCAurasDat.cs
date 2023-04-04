@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistNPCAurasDat : ISpecificationFile<HeistNPCAurasDat>
 {
     /// <summary> Gets Stat.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Stat { get; init; }
 
     /// <summary> Gets GrantedEffect.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffect { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class HeistNPCAurasDat : ISpecificationFile<HeistNPCAurasD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetGrantedEffectsDat();
 
             // loading Stat
             (var statLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

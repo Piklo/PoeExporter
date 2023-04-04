@@ -14,33 +14,42 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MeleeDat : ISpecificationFile<MeleeDat>
 {
     /// <summary> Gets ActiveSkill.</summary>
+    /// <remarks> references <see cref="ActiveSkillsDat"/> on <see cref="Specification.GetActiveSkillsDat"/> index.</remarks>
     public required int? ActiveSkill { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated { get; init; }
 
     /// <summary> Gets MeleeTrailsKey1.</summary>
+    /// <remarks> references <see cref="MeleeTrailsDat"/> on <see cref="Specification.GetMeleeTrailsDat"/> index.</remarks>
     public required int? MeleeTrailsKey1 { get; init; }
 
     /// <summary> Gets MeleeTrailsKey2.</summary>
+    /// <remarks> references <see cref="MeleeTrailsDat"/> on <see cref="Specification.GetMeleeTrailsDat"/> index.</remarks>
     public required int? MeleeTrailsKey2 { get; init; }
 
     /// <summary> Gets MeleeTrailsKey3.</summary>
+    /// <remarks> references <see cref="MeleeTrailsDat"/> on <see cref="Specification.GetMeleeTrailsDat"/> index.</remarks>
     public required int? MeleeTrailsKey3 { get; init; }
 
     /// <summary> Gets MeleeTrailsKey4.</summary>
+    /// <remarks> references <see cref="MeleeTrailsDat"/> on <see cref="Specification.GetMeleeTrailsDat"/> index.</remarks>
     public required int? MeleeTrailsKey4 { get; init; }
 
     /// <summary> Gets MeleeTrailsKey5.</summary>
+    /// <remarks> references <see cref="MeleeTrailsDat"/> on <see cref="Specification.GetMeleeTrailsDat"/> index.</remarks>
     public required int? MeleeTrailsKey5 { get; init; }
 
     /// <summary> Gets MeleeTrailsKey6.</summary>
+    /// <remarks> references <see cref="MeleeTrailsDat"/> on <see cref="Specification.GetMeleeTrailsDat"/> index.</remarks>
     public required int? MeleeTrailsKey6 { get; init; }
 
     /// <summary> Gets MeleeTrailsKey7.</summary>
+    /// <remarks> references <see cref="MeleeTrailsDat"/> on <see cref="Specification.GetMeleeTrailsDat"/> index.</remarks>
     public required int? MeleeTrailsKey7 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown148 is set.</summary>
@@ -79,11 +88,6 @@ public sealed partial class MeleeDat : ISpecificationFile<MeleeDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetActiveSkillsDat();
-            // specification.GetMiscAnimatedDat();
-            // specification.GetMeleeTrailsDat();
 
             // loading ActiveSkill
             (var activeskillLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

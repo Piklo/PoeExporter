@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SkillTotemVariationsDat : ISpecificationFile<SkillTotemVariationsDat>
 {
     /// <summary> Gets SkillTotemsKey.</summary>
+    /// <remarks> references <see cref="SkillTotemsDat"/> on <see cref="Specification.GetSkillTotemsDat"/> index.</remarks>
     public required int SkillTotemsKey { get; init; }
 
     /// <summary> Gets TotemSkinId.</summary>
     public required int TotemSkinId { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +48,6 @@ public sealed partial class SkillTotemVariationsDat : ISpecificationFile<SkillTo
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading SkillTotemsKey
             (var skilltotemskeyLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ArchnemesisModComboAchievementsDat : ISpecificationFile<ArchnemesisModComboAchievementsDat>
 {
     /// <summary> Gets Achievement.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? Achievement { get; init; }
 
     /// <summary> Gets Mods.</summary>
+    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class ArchnemesisModComboAchievementsDat : ISpecificationF
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementItemsDat();
-            // specification.GetArchnemesisModsDat();
 
             // loading Achievement
             (var achievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

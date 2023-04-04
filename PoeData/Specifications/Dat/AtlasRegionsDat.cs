@@ -47,12 +47,14 @@ public sealed partial class AtlasRegionsDat : ISpecificationFile<AtlasRegionsDat
     public required int Unknown80 { get; init; }
 
     /// <summary> Gets AdviceAudio.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? AdviceAudio { get; init; }
 
     /// <summary> Gets Unknown100.</summary>
     public required int? Unknown100 { get; init; }
 
     /// <summary> Gets Quest.</summary>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? Quest { get; init; }
 
     /// <inheritdoc/>
@@ -79,10 +81,6 @@ public sealed partial class AtlasRegionsDat : ISpecificationFile<AtlasRegionsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCTextAudioDat();
-            // specification.GetQuestDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

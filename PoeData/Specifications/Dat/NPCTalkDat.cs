@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class NPCTalkDat : ISpecificationFile<NPCTalkDat>
 {
     /// <summary> Gets NPCKey.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? NPCKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -35,18 +36,23 @@ public sealed partial class NPCTalkDat : ISpecificationFile<NPCTalkDat>
     public required string Script { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <summary> Gets Category.</summary>
+    /// <remarks> references <see cref="NPCTalkCategoryDat"/> on <see cref="Specification.GetNPCTalkCategoryDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets QuestRewardOffersKey.</summary>
+    /// <remarks> references <see cref="QuestRewardOffersDat"/> on <see cref="Specification.GetQuestRewardOffersDat"/> index.</remarks>
     public required int? QuestRewardOffersKey { get; init; }
 
     /// <summary> Gets QuestFlag.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? QuestFlag { get; init; }
 
     /// <summary> Gets NPCTextAudioKeys.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCTextAudioKeys { get; init; }
 
     /// <summary> Gets Script2.</summary>
@@ -127,13 +133,6 @@ public sealed partial class NPCTalkDat : ISpecificationFile<NPCTalkDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCsDat();
-            // specification.GetNPCTextAudioDat();
-            // specification.GetNPCTalkCategoryDat();
-            // specification.GetQuestRewardOffersDat();
-            // specification.GetQuestFlagsDat();
 
             // loading NPCKey
             (var npckeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

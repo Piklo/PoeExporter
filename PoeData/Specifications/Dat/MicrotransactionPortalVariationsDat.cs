@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MicrotransactionPortalVariationsDat : ISpecificationFile<MicrotransactionPortalVariationsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Id.</summary>
@@ -29,6 +30,7 @@ public sealed partial class MicrotransactionPortalVariationsDat : ISpecification
     public required float Unknown36 { get; init; }
 
     /// <summary> Gets MiscObject.</summary>
+    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
     public required int? MiscObject { get; init; }
 
     /// <summary> Gets PortalEffect.</summary>
@@ -82,10 +84,6 @@ public sealed partial class MicrotransactionPortalVariationsDat : ISpecification
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetMiscObjectsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

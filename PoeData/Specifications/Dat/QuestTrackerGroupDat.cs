@@ -20,6 +20,7 @@ public sealed partial class QuestTrackerGroupDat : ISpecificationFile<QuestTrack
     public required string Name { get; init; }
 
     /// <summary> Gets QuestType.</summary>
+    /// <remarks> references <see cref="QuestTypeDat"/> on <see cref="Specification.GetQuestTypeDat"/> index.</remarks>
     public required int? QuestType { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +47,6 @@ public sealed partial class QuestTrackerGroupDat : ISpecificationFile<QuestTrack
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestTypeDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

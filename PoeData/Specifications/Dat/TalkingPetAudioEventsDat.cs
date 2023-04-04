@@ -59,7 +59,6 @@ public sealed partial class TalkingPetAudioEventsDat : ISpecificationFile<Talkin
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Event
             (var eventLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

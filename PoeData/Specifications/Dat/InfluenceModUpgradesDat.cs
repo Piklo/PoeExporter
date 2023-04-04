@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class InfluenceModUpgradesDat : ISpecificationFile<InfluenceModUpgradesDat>
 {
     /// <summary> Gets InfluenceMod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? InfluenceMod { get; init; }
 
     /// <summary> Gets UpgradedMod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? UpgradedMod { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown32 is set.</summary>
@@ -46,9 +48,6 @@ public sealed partial class InfluenceModUpgradesDat : ISpecificationFile<Influen
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading InfluenceMod
             (var influencemodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

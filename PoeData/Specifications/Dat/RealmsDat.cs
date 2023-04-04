@@ -32,9 +32,11 @@ public sealed partial class RealmsDat : ISpecificationFile<RealmsDat>
     public required string ShortName { get; init; }
 
     /// <summary> Gets Unknown57.</summary>
+    /// <remarks> references <see cref="RealmsDat"/> on <see cref="Specification.GetRealmsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown57 { get; init; }
 
     /// <summary> Gets Unknown73.</summary>
+    /// <remarks> references <see cref="RealmsDat"/> on <see cref="Specification.GetRealmsDat"/> index.</remarks>
     public required int? Unknown73 { get; init; }
 
     /// <summary> Gets Unknown81.</summary>
@@ -70,9 +72,6 @@ public sealed partial class RealmsDat : ISpecificationFile<RealmsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetRealmsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

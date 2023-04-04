@@ -14,18 +14,22 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistNPCsDat : ISpecificationFile<HeistNPCsDat>
 {
     /// <summary> Gets NPCsKey.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? NPCsKey { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets SkillLevel_HeistJobsKeys.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SkillLevel_HeistJobsKeys { get; init; }
 
     /// <summary> Gets PortraitFile.</summary>
     public required string PortraitFile { get; init; }
 
     /// <summary> Gets HeistNPCStatsKeys.</summary>
+    /// <remarks> references <see cref="HeistNPCStatsDat"/> on <see cref="Specification.GetHeistNPCStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HeistNPCStatsKeys { get; init; }
 
     /// <summary> Gets StatValues.</summary>
@@ -50,21 +54,25 @@ public sealed partial class HeistNPCsDat : ISpecificationFile<HeistNPCsDat>
     public required int Unknown128 { get; init; }
 
     /// <summary> Gets HeistNPCsKey.</summary>
+    /// <remarks> references <see cref="HeistNPCsDat"/> on <see cref="Specification.GetHeistNPCsDat"/> index.</remarks>
     public required int? HeistNPCsKey { get; init; }
 
     /// <summary> Gets StatValues2.</summary>
     public required ReadOnlyCollection<float> StatValues2 { get; init; }
 
     /// <summary> Gets Ally_NPCsKey.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? Ally_NPCsKey { get; init; }
 
     /// <summary> Gets ActiveNPCIcon.</summary>
     public required string ActiveNPCIcon { get; init; }
 
     /// <summary> Gets HeistJobsKey.</summary>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey { get; init; }
 
     /// <summary> Gets Equip_AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Equip_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets AOFile.</summary>
@@ -97,13 +105,6 @@ public sealed partial class HeistNPCsDat : ISpecificationFile<HeistNPCsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCsDat();
-            // specification.GetMonsterVarietiesDat();
-            // specification.GetHeistJobsDat();
-            // specification.GetHeistNPCStatsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading NPCsKey
             (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

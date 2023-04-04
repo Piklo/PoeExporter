@@ -20,12 +20,15 @@ public sealed partial class BreachElementDat : ISpecificationFile<BreachElementD
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets BaseBreachstone.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseBreachstone { get; init; }
 
     /// <summary> Gets BossMapMod.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? BossMapMod { get; init; }
 
     /// <summary> Gets DuplicateBoss.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? DuplicateBoss { get; init; }
 
     /// <inheritdoc/>
@@ -52,10 +55,6 @@ public sealed partial class BreachElementDat : ISpecificationFile<BreachElementD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetStatsDat();
 
             // loading Element
             (var elementLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

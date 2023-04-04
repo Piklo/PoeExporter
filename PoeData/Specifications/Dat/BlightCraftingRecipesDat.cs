@@ -17,12 +17,15 @@ public sealed partial class BlightCraftingRecipesDat : ISpecificationFile<Blight
     public required string Id { get; init; }
 
     /// <summary> Gets BlightCraftingItemsKeys.</summary>
+    /// <remarks> references <see cref="BlightCraftingItemsDat"/> on <see cref="Specification.GetBlightCraftingItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BlightCraftingItemsKeys { get; init; }
 
     /// <summary> Gets BlightCraftingResultsKey.</summary>
+    /// <remarks> references <see cref="BlightCraftingResultsDat"/> on <see cref="Specification.GetBlightCraftingResultsDat"/> index.</remarks>
     public required int? BlightCraftingResultsKey { get; init; }
 
     /// <summary> Gets BlightCraftingTypesKey.</summary>
+    /// <remarks> references <see cref="BlightCraftingTypesDat"/> on <see cref="Specification.GetBlightCraftingTypesDat"/> index.</remarks>
     public required int? BlightCraftingTypesKey { get; init; }
 
     /// <inheritdoc/>
@@ -49,11 +52,6 @@ public sealed partial class BlightCraftingRecipesDat : ISpecificationFile<Blight
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBlightCraftingItemsDat();
-            // specification.GetBlightCraftingResultsDat();
-            // specification.GetBlightCraftingTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

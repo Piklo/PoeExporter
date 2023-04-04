@@ -20,6 +20,7 @@ public sealed partial class AscendancyDat : ISpecificationFile<AscendancyDat>
     public required int ClassNo { get; init; }
 
     /// <summary> Gets Characters.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Characters { get; init; }
 
     /// <summary> Gets CoordinateRect.</summary>
@@ -73,9 +74,6 @@ public sealed partial class AscendancyDat : ISpecificationFile<AscendancyDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCharactersDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

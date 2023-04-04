@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistRevealingNPCsDat : ISpecificationFile<HeistRevealingNPCsDat>
 {
     /// <summary> Gets NPCsKey.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? NPCsKey { get; init; }
 
     /// <summary> Gets PortraitFile.</summary>
     public required string PortraitFile { get; init; }
 
     /// <summary> Gets NPCAudioKey.</summary>
+    /// <remarks> references <see cref="NPCAudioDat"/> on <see cref="Specification.GetNPCAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCAudioKey { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -49,10 +51,6 @@ public sealed partial class HeistRevealingNPCsDat : ISpecificationFile<HeistReve
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCsDat();
-            // specification.GetNPCAudioDat();
 
             // loading NPCsKey
             (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

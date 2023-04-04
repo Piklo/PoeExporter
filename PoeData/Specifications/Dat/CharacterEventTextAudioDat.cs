@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class CharacterEventTextAudioDat : ISpecificationFile<CharacterEventTextAudioDat>
 {
     /// <summary> Gets Event.</summary>
+    /// <remarks> references <see cref="CharacterAudioEventsDat"/> on <see cref="Specification.GetCharacterAudioEventsDat"/> index.</remarks>
     public required int? Event { get; init; }
 
     /// <summary> Gets Character.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required int? Character { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
+    /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.GetCharacterTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TextAudio { get; init; }
 
     /// <inheritdoc/>
@@ -46,11 +49,6 @@ public sealed partial class CharacterEventTextAudioDat : ISpecificationFile<Char
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCharacterAudioEventsDat();
-            // specification.GetCharactersDat();
-            // specification.GetCharacterTextAudioDat();
 
             // loading Event
             (var eventLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -17,9 +17,11 @@ public sealed partial class GrantedEffectStatSetsDat : ISpecificationFile<Grante
     public required string Id { get; init; }
 
     /// <summary> Gets ImplicitStats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ImplicitStats { get; init; }
 
     /// <summary> Gets ConstantStats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ConstantStats { get; init; }
 
     /// <summary> Gets ConstantStatsValues.</summary>
@@ -55,9 +57,6 @@ public sealed partial class GrantedEffectStatSetsDat : ISpecificationFile<Grante
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

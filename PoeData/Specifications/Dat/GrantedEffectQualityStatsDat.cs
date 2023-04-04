@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class GrantedEffectQualityStatsDat : ISpecificationFile<GrantedEffectQualityStatsDat>
 {
     /// <summary> Gets GrantedEffectsKey.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets SetId.</summary>
     public required int SetId { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatsValuesPermille.</summary>
@@ -58,10 +60,6 @@ public sealed partial class GrantedEffectQualityStatsDat : ISpecificationFile<Gr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetGrantedEffectsDat();
-            // specification.GetStatsDat();
 
             // loading GrantedEffectsKey
             (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

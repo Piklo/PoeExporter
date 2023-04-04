@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AddBuffToTargetVarietiesDat : ISpecificationFile<AddBuffToTargetVarietiesDat>
 {
     /// <summary> Gets BuffDefinitions.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitions { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required ReadOnlyCollection<int> Unknown16 { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -61,10 +63,6 @@ public sealed partial class AddBuffToTargetVarietiesDat : ISpecificationFile<Add
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffDefinitionsDat();
-            // specification.GetStatsDat();
 
             // loading BuffDefinitions
             (var buffdefinitionsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

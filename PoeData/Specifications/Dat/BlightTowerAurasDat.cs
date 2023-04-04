@@ -17,12 +17,14 @@ public sealed partial class BlightTowerAurasDat : ISpecificationFile<BlightTower
     public required int Id { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
     public required int Unknown20 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey { get; init; }
 
     /// <inheritdoc/>
@@ -49,10 +51,6 @@ public sealed partial class BlightTowerAurasDat : ISpecificationFile<BlightTower
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffDefinitionsDat();
-            // specification.GetMiscAnimatedDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

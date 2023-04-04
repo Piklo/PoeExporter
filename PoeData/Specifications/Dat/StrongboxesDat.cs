@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class StrongboxesDat : ISpecificationFile<StrongboxesDat>
 {
     /// <summary> Gets ChestsKey.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets SpawnWeight.</summary>
@@ -29,6 +30,7 @@ public sealed partial class StrongboxesDat : ISpecificationFile<StrongboxesDat>
     public required bool Unknown25 { get; init; }
 
     /// <summary> Gets SpawnWeightIncrease.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? SpawnWeightIncrease { get; init; }
 
     /// <summary> Gets SpawnWeightHardmode.</summary>
@@ -58,10 +60,6 @@ public sealed partial class StrongboxesDat : ISpecificationFile<StrongboxesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetChestsDat();
-            // specification.GetStatsDat();
 
             // loading ChestsKey
             (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

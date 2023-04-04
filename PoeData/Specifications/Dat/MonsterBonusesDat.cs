@@ -26,6 +26,7 @@ public sealed partial class MonsterBonusesDat : ISpecificationFile<MonsterBonuse
     public required ReadOnlyCollection<int> Unknown40 { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatValues.</summary>
@@ -55,9 +56,6 @@ public sealed partial class MonsterBonusesDat : ISpecificationFile<MonsterBonuse
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

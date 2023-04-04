@@ -17,6 +17,7 @@ public sealed partial class BuffTemplatesDat : ISpecificationFile<BuffTemplatesD
     public required string Id { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -32,6 +33,7 @@ public sealed partial class BuffTemplatesDat : ISpecificationFile<BuffTemplatesD
     public required ReadOnlyCollection<int> Unknown60 { get; init; }
 
     /// <summary> Gets BuffVisualsKey.</summary>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisualsKey { get; init; }
 
     /// <summary> Gets Unknown92.</summary>
@@ -41,6 +43,7 @@ public sealed partial class BuffTemplatesDat : ISpecificationFile<BuffTemplatesD
     public required bool Unknown96 { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKey { get; init; }
 
     /// <summary> Gets Unknown113.</summary>
@@ -53,6 +56,7 @@ public sealed partial class BuffTemplatesDat : ISpecificationFile<BuffTemplatesD
     public required bool Unknown121 { get; init; }
 
     /// <summary> Gets Unknown122.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Unknown122 { get; init; }
 
     /// <inheritdoc/>
@@ -79,11 +83,6 @@ public sealed partial class BuffTemplatesDat : ISpecificationFile<BuffTemplatesD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBuffDefinitionsDat();
-            // specification.GetBuffVisualsDat();
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

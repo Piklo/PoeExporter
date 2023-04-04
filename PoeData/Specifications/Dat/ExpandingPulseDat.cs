@@ -62,7 +62,6 @@ public sealed partial class ExpandingPulseDat : ISpecificationFile<ExpandingPuls
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading IntId
             (var intidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

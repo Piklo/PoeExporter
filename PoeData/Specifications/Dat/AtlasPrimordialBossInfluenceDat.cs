@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AtlasPrimordialBossInfluenceDat : ISpecificationFile<AtlasPrimordialBossInfluenceDat>
 {
     /// <summary> Gets Boss.</summary>
+    /// <remarks> references <see cref="AtlasPrimordialBossesDat"/> on <see cref="Specification.GetAtlasPrimordialBossesDat"/> index.</remarks>
     public required int? Boss { get; init; }
 
     /// <summary> Gets Progress.</summary>
@@ -35,6 +36,7 @@ public sealed partial class AtlasPrimordialBossInfluenceDat : ISpecificationFile
     public required float Unknown48 { get; init; }
 
     /// <summary> Gets Unknown52.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? Unknown52 { get; init; }
 
     /// <inheritdoc/>
@@ -61,10 +63,6 @@ public sealed partial class AtlasPrimordialBossInfluenceDat : ISpecificationFile
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAtlasPrimordialBossesDat();
-            // specification.GetQuestFlagsDat();
 
             // loading Boss
             (var bossLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

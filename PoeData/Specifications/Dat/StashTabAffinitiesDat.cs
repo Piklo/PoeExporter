@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class StashTabAffinitiesDat : ISpecificationFile<StashTabAffinitiesDat>
 {
     /// <summary> Gets SpecializedStash.</summary>
+    /// <remarks> references <see cref="StashIdDat"/> on <see cref="Specification.GetStashIdDat"/> index.</remarks>
     public required int SpecializedStash { get; init; }
 
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
     /// <summary> Gets ShowInStashes.</summary>
+    /// <remarks> references <see cref="StashIdDat"/> on <see cref="Specification.GetStashIdDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ShowInStashes { get; init; }
 
     /// <inheritdoc/>
@@ -47,7 +49,6 @@ public sealed partial class StashTabAffinitiesDat : ISpecificationFile<StashTabA
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading SpecializedStash
             (var specializedstashLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

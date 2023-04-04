@@ -17,6 +17,7 @@ public sealed partial class MapPurchaseCostsDat : ISpecificationFile<MapPurchase
     public required int Tier { get; init; }
 
     /// <summary> Gets Cost.</summary>
+    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.GetItemCostsDat"/> index.</remarks>
     public required int? Cost { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
@@ -46,9 +47,6 @@ public sealed partial class MapPurchaseCostsDat : ISpecificationFile<MapPurchase
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetItemCostsDat();
 
             // loading Tier
             (var tierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

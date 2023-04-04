@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LabyrinthTrinketsDat : ISpecificationFile<LabyrinthTrinketsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets LabyrinthSecretsKey.</summary>
+    /// <remarks> references <see cref="LabyrinthSecretsDat"/> on <see cref="Specification.GetLabyrinthSecretsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> LabyrinthSecretsKey { get; init; }
 
     /// <summary> Gets Buff_BuffDefinitionsKey.</summary>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
     public required int? Buff_BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Buff_StatValues.</summary>
@@ -49,11 +52,6 @@ public sealed partial class LabyrinthTrinketsDat : ISpecificationFile<LabyrinthT
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetLabyrinthSecretsDat();
-            // specification.GetBuffDefinitionsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

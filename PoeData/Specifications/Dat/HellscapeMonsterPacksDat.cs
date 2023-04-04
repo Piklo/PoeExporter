@@ -17,9 +17,11 @@ public sealed partial class HellscapeMonsterPacksDat : ISpecificationFile<Hellsc
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterPack.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPack { get; init; }
 
     /// <summary> Gets Faction.</summary>
+    /// <remarks> references <see cref="HellscapeFactionsDat"/> on <see cref="Specification.GetHellscapeFactionsDat"/> index.</remarks>
     public required int? Faction { get; init; }
 
     /// <summary> Gets a value indicating whether IsDonutPack is set.</summary>
@@ -58,10 +60,6 @@ public sealed partial class HellscapeMonsterPacksDat : ISpecificationFile<Hellsc
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterPacksDat();
-            // specification.GetHellscapeFactionsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

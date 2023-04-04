@@ -26,6 +26,7 @@ public sealed partial class BetrayalDialogueDat : ISpecificationFile<BetrayalDia
     public required ReadOnlyCollection<int> Unknown24 { get; init; }
 
     /// <summary> Gets BetrayalTargetsKey.</summary>
+    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
     /// <summary> Gets Unknown56.</summary>
@@ -38,6 +39,7 @@ public sealed partial class BetrayalDialogueDat : ISpecificationFile<BetrayalDia
     public required ReadOnlyCollection<int> Unknown76 { get; init; }
 
     /// <summary> Gets BetrayalUpgradesKey.</summary>
+    /// <remarks> references <see cref="BetrayalUpgradesDat"/> on <see cref="Specification.GetBetrayalUpgradesDat"/> index.</remarks>
     public required int? BetrayalUpgradesKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown108 is set.</summary>
@@ -56,6 +58,7 @@ public sealed partial class BetrayalDialogueDat : ISpecificationFile<BetrayalDia
     public required ReadOnlyCollection<int> Unknown142 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey { get; init; }
 
     /// <summary> Gets Unknown174.</summary>
@@ -85,11 +88,6 @@ public sealed partial class BetrayalDialogueDat : ISpecificationFile<BetrayalDia
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBetrayalTargetsDat();
-            // specification.GetBetrayalUpgradesDat();
-            // specification.GetNPCTextAudioDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

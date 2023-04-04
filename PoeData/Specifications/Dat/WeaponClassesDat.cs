@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class WeaponClassesDat : ISpecificationFile<WeaponClassesDat>
 {
     /// <summary> Gets ItemClass.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -43,9 +44,6 @@ public sealed partial class WeaponClassesDat : ISpecificationFile<WeaponClassesD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetItemClassesDat();
 
             // loading ItemClass
             (var itemclassLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

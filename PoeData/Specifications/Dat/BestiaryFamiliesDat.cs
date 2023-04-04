@@ -38,15 +38,18 @@ public sealed partial class BestiaryFamiliesDat : ISpecificationFile<BestiaryFam
     public required bool Unknown56 { get; init; }
 
     /// <summary> Gets TagsKey.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? TagsKey { get; init; }
 
     /// <summary> Gets Unknown73.</summary>
     public required int Unknown73 { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets CurrencyItemsKey.</summary>
+    /// <remarks> references <see cref="CurrencyItemsDat"/> on <see cref="Specification.GetCurrencyItemsDat"/> index.</remarks>
     public required int? CurrencyItemsKey { get; init; }
 
     /// <inheritdoc/>
@@ -73,11 +76,6 @@ public sealed partial class BestiaryFamiliesDat : ISpecificationFile<BestiaryFam
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTagsDat();
-            // specification.GetModsDat();
-            // specification.GetCurrencyItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

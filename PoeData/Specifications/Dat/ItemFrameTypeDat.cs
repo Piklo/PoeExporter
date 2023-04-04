@@ -44,9 +44,11 @@ public sealed partial class ItemFrameTypeDat : ISpecificationFile<ItemFrameTypeD
     public required bool Unknown66 { get; init; }
 
     /// <summary> Gets Rarity.</summary>
+    /// <remarks> references <see cref="RarityDat"/> on <see cref="Specification.GetRarityDat"/> index.</remarks>
     public required int? Rarity { get; init; }
 
     /// <summary> Gets DisplayString.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? DisplayString { get; init; }
 
     /// <summary> Gets ColorMarkup.</summary>
@@ -76,10 +78,6 @@ public sealed partial class ItemFrameTypeDat : ISpecificationFile<ItemFrameTypeD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetRarityDat();
-            // specification.GetClientStringsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

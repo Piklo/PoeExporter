@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ExpeditionRelicModsDat : ISpecificationFile<ExpeditionRelicModsDat>
 {
     /// <summary> Gets Mod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Categories.</summary>
+    /// <remarks> references <see cref="ExpeditionRelicModCategoriesDat"/> on <see cref="Specification.GetExpeditionRelicModCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Categories { get; init; }
 
     /// <summary> Gets DestroyAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> DestroyAchievements { get; init; }
 
     /// <inheritdoc/>
@@ -46,10 +49,6 @@ public sealed partial class ExpeditionRelicModsDat : ISpecificationFile<Expediti
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Mod
             (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

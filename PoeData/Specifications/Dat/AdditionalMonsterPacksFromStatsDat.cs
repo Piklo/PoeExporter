@@ -14,21 +14,25 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AdditionalMonsterPacksFromStatsDat : ISpecificationFile<AdditionalMonsterPacksFromStatsDat>
 {
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets AdditionalMonsterPacksStatMode.</summary>
     public required int AdditionalMonsterPacksStatMode { get; init; }
 
     /// <summary> Gets PackCountStatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? PackCountStatsKey { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatsValues.</summary>
@@ -61,10 +65,6 @@ public sealed partial class AdditionalMonsterPacksFromStatsDat : ISpecificationF
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetMonsterPacksDat();
 
             // loading StatsKey
             (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

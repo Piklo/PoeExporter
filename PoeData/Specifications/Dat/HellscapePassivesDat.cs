@@ -20,6 +20,7 @@ public sealed partial class HellscapePassivesDat : ISpecificationFile<HellscapeP
     public required string Name { get; init; }
 
     /// <summary> Gets Stats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets StatsValues.</summary>
@@ -38,12 +39,14 @@ public sealed partial class HellscapePassivesDat : ISpecificationFile<HellscapeP
     public required string IconMaxed { get; init; }
 
     /// <summary> Gets SoundEffect.</summary>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
     public required int? SoundEffect { get; init; }
 
     /// <summary> Gets Unknown88.</summary>
     public required int Unknown88 { get; init; }
 
     /// <summary> Gets Quest.</summary>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? Quest { get; init; }
 
     /// <inheritdoc/>
@@ -70,11 +73,6 @@ public sealed partial class HellscapePassivesDat : ISpecificationFile<HellscapeP
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetSoundEffectsDat();
-            // specification.GetQuestDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

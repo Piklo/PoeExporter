@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class RitualSetKillAchievementsDat : ISpecificationFile<RitualSetKillAchievementsDat>
 {
     /// <summary> Gets Achievement.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? Achievement { get; init; }
 
     /// <summary> Gets KillBosses.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> KillBosses { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class RitualSetKillAchievementsDat : ISpecificationFile<Ri
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAchievementItemsDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading Achievement
             (var achievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

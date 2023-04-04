@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AfflictionRewardTypeVisualsDat : ISpecificationFile<AfflictionRewardTypeVisualsDat>
 {
     /// <summary> Gets AfflictionRewardTypes.</summary>
+    /// <remarks> references <see cref="AfflictionRewardTypesDat"/> on <see cref="Specification.GetAfflictionRewardTypesDat"/> index.</remarks>
     public required int AfflictionRewardTypes { get; init; }
 
     /// <summary> Gets Id.</summary>
@@ -47,7 +48,6 @@ public sealed partial class AfflictionRewardTypeVisualsDat : ISpecificationFile<
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading AfflictionRewardTypes
             (var afflictionrewardtypesLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

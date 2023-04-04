@@ -32,9 +32,11 @@ public sealed partial class BestiaryGroupsDat : ISpecificationFile<BestiaryGroup
     public required string IconSmall { get; init; }
 
     /// <summary> Gets BestiaryFamiliesKey.</summary>
+    /// <remarks> references <see cref="BestiaryFamiliesDat"/> on <see cref="Specification.GetBestiaryFamiliesDat"/> index.</remarks>
     public required int? BestiaryFamiliesKey { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <inheritdoc/>
@@ -61,10 +63,6 @@ public sealed partial class BestiaryGroupsDat : ISpecificationFile<BestiaryGroup
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBestiaryFamiliesDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

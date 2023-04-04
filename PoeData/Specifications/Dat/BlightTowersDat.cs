@@ -26,6 +26,7 @@ public sealed partial class BlightTowersDat : ISpecificationFile<BlightTowersDat
     public required string Icon { get; init; }
 
     /// <summary> Gets NextUpgradeOptions.</summary>
+    /// <remarks> references <see cref="BlightTowersDat"/> on <see cref="Specification.GetBlightTowersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NextUpgradeOptions { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -41,15 +42,19 @@ public sealed partial class BlightTowersDat : ISpecificationFile<BlightTowersDat
     public required int Unknown64 { get; init; }
 
     /// <summary> Gets SpendResourceAchievement.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? SpendResourceAchievement { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatsKeys2.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys2 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown132 is set.</summary>
@@ -79,11 +84,6 @@ public sealed partial class BlightTowersDat : ISpecificationFile<BlightTowersDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBlightTowersDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

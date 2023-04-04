@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class SkillGemsDat : ISpecificationFile<SkillGemsDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets GrantedEffectsKey.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets Str.</summary>
@@ -29,9 +31,11 @@ public sealed partial class SkillGemsDat : ISpecificationFile<SkillGemsDat>
     public required int Int { get; init; }
 
     /// <summary> Gets GemTagsKeys.</summary>
+    /// <remarks> references <see cref="GemTagsDat"/> on <see cref="Specification.GetGemTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GemTagsKeys { get; init; }
 
     /// <summary> Gets VaalVariant_BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? VaalVariant_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets a value indicating whether IsVaalVariant is set.</summary>
@@ -41,12 +45,15 @@ public sealed partial class SkillGemsDat : ISpecificationFile<SkillGemsDat>
     public required string Description { get; init; }
 
     /// <summary> Gets Consumed_ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? Consumed_ModsKey { get; init; }
 
     /// <summary> Gets GrantedEffectsKey2.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey2 { get; init; }
 
     /// <summary> Gets MinionGlobalSkillLevelStat.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? MinionGlobalSkillLevelStat { get; init; }
 
     /// <summary> Gets SupportSkillName.</summary>
@@ -71,12 +78,15 @@ public sealed partial class SkillGemsDat : ISpecificationFile<SkillGemsDat>
     public required bool Unknown146 { get; init; }
 
     /// <summary> Gets AwakenedVariant.</summary>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
     public required int? AwakenedVariant { get; init; }
 
     /// <summary> Gets RegularVariant.</summary>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
     public required int? RegularVariant { get; init; }
 
     /// <summary> Gets GrantedEffectHardMode.</summary>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectHardMode { get; init; }
 
     /// <summary> Gets Unknown179.</summary>
@@ -109,13 +119,6 @@ public sealed partial class SkillGemsDat : ISpecificationFile<SkillGemsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetGrantedEffectsDat();
-            // specification.GetGemTagsDat();
-            // specification.GetModsDat();
-            // specification.GetStatsDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

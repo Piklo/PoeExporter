@@ -35,6 +35,7 @@ public sealed partial class MonsterTypesDat : ISpecificationFile<MonsterTypesDat
     public required int DamageSpread { get; init; }
 
     /// <summary> Gets MonsterResistancesKey.</summary>
+    /// <remarks> references <see cref="MonsterResistancesDat"/> on <see cref="Specification.GetMonsterResistancesDat"/> index.</remarks>
     public required int? MonsterResistancesKey { get; init; }
 
     /// <summary> Gets a value indicating whether IsLargeAbyssMonster is set.</summary>
@@ -70,9 +71,6 @@ public sealed partial class MonsterTypesDat : ISpecificationFile<MonsterTypesDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterResistancesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

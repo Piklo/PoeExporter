@@ -20,12 +20,15 @@ public sealed partial class LabyrinthsDat : ISpecificationFile<LabyrinthsDat>
     public required string Name { get; init; }
 
     /// <summary> Gets OfferingItem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? OfferingItem { get; init; }
 
     /// <summary> Gets QuestFlag.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? QuestFlag { get; init; }
 
     /// <summary> Gets RequiredTrials.</summary>
+    /// <remarks> references <see cref="LabyrinthTrialsDat"/> on <see cref="Specification.GetLabyrinthTrialsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> RequiredTrials { get; init; }
 
     /// <summary> Gets AreaLevel.</summary>
@@ -35,6 +38,7 @@ public sealed partial class LabyrinthsDat : ISpecificationFile<LabyrinthsDat>
     public required int Unknown64 { get; init; }
 
     /// <summary> Gets JewelReward.</summary>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
     public required int? JewelReward { get; init; }
 
     /// <summary> Gets Unknown84.</summary>
@@ -53,6 +57,7 @@ public sealed partial class LabyrinthsDat : ISpecificationFile<LabyrinthsDat>
     public required int Unknown124 { get; init; }
 
     /// <summary> Gets CraftingFontDescription.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? CraftingFontDescription { get; init; }
 
     /// <inheritdoc/>
@@ -79,13 +84,6 @@ public sealed partial class LabyrinthsDat : ISpecificationFile<LabyrinthsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetQuestFlagsDat();
-            // specification.GetLabyrinthTrialsDat();
-            // specification.GetWordsDat();
-            // specification.GetClientStringsDat();
 
             // loading Tier
             (var tierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

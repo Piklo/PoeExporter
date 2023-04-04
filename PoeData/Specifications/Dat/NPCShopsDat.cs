@@ -20,9 +20,11 @@ public sealed partial class NPCShopsDat : ISpecificationFile<NPCShopsDat>
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets Shop.</summary>
+    /// <remarks> references <see cref="NPCShopDat"/> on <see cref="Specification.GetNPCShopDat"/> index.</remarks>
     public required int? Shop { get; init; }
 
     /// <summary> Gets ShopHardmode.</summary>
+    /// <remarks> references <see cref="NPCShopDat"/> on <see cref="Specification.GetNPCShopDat"/> index.</remarks>
     public required int? ShopHardmode { get; init; }
 
     /// <inheritdoc/>
@@ -49,9 +51,6 @@ public sealed partial class NPCShopsDat : ISpecificationFile<NPCShopsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCShopDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -14,12 +14,14 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class BlightCraftingItemsDat : ISpecificationFile<BlightCraftingItemsDat>
 {
     /// <summary> Gets Oil.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Oil { get; init; }
 
     /// <summary> Gets Tier.</summary>
     public required int Tier { get; init; }
 
     /// <summary> Gets Achievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary> Gets UseType.</summary>
@@ -49,10 +51,6 @@ public sealed partial class BlightCraftingItemsDat : ISpecificationFile<BlightCr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Oil
             (var oilLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

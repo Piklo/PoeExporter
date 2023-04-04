@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ComponentChargesDat : ISpecificationFile<ComponentChargesDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="BaseItemTypesDat.Id"/>.</remarks>
     public required string BaseItemTypesKey { get; init; }
 
     /// <summary> Gets MaxCharges.</summary>
@@ -52,9 +53,6 @@ public sealed partial class ComponentChargesDat : ISpecificationFile<ComponentCh
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

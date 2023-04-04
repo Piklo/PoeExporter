@@ -17,6 +17,7 @@ public sealed partial class PassiveSkillMasteryGroupsDat : ISpecificationFile<Pa
     public required string Id { get; init; }
 
     /// <summary> Gets MasteryEffects.</summary>
+    /// <remarks> references <see cref="PassiveSkillMasteryEffectsDat"/> on <see cref="Specification.GetPassiveSkillMasteryEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MasteryEffects { get; init; }
 
     /// <summary> Gets InactiveIcon.</summary>
@@ -32,9 +33,11 @@ public sealed partial class PassiveSkillMasteryGroupsDat : ISpecificationFile<Pa
     public required bool Unknown48 { get; init; }
 
     /// <summary> Gets SoundEffect.</summary>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
     public required int? SoundEffect { get; init; }
 
     /// <summary> Gets MasteryCountStat.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? MasteryCountStat { get; init; }
 
     /// <inheritdoc/>
@@ -61,11 +64,6 @@ public sealed partial class PassiveSkillMasteryGroupsDat : ISpecificationFile<Pa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPassiveSkillMasteryEffectsDat();
-            // specification.GetSoundEffectsDat();
-            // specification.GetStatsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

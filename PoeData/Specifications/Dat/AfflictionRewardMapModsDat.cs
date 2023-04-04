@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AfflictionRewardMapModsDat : ISpecificationFile<AfflictionRewardMapModsDat>
 {
     /// <summary> Gets ModsKey.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown16 is set.</summary>
@@ -43,9 +44,6 @@ public sealed partial class AfflictionRewardMapModsDat : ISpecificationFile<Affl
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading ModsKey
             (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

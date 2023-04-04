@@ -23,18 +23,21 @@ public sealed partial class ExpeditionDealsDat : ISpecificationFile<ExpeditionDe
     public required string Arguments { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <summary> Gets Description.</summary>
     public required string Description { get; init; }
 
     /// <summary> Gets BuyAchievements.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BuyAchievements { get; init; }
 
     /// <summary> Gets Unknown60.</summary>
     public required int? Unknown60 { get; init; }
 
     /// <summary> Gets DealFamily.</summary>
+    /// <remarks> references <see cref="ExpeditionDealFamiliesDat"/> on <see cref="Specification.GetExpeditionDealFamiliesDat"/> index.</remarks>
     public required int DealFamily { get; init; }
 
     /// <inheritdoc/>
@@ -61,10 +64,6 @@ public sealed partial class ExpeditionDealsDat : ISpecificationFile<ExpeditionDe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCTextAudioDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

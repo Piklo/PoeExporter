@@ -86,7 +86,6 @@ public sealed partial class DefaultMonsterStatsDat : ISpecificationFile<DefaultM
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading DisplayLevel
             (var displaylevelLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

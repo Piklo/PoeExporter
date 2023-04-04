@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MicrotransactionCategoryDat : ISpecificationFile<MicrotransactionCategoryDat>
 {
     /// <summary> Gets Id.</summary>
+    /// <remarks> references <see cref="MicrotransactionCategoryIdDat"/> on <see cref="Specification.GetMicrotransactionCategoryIdDat"/> index.</remarks>
     public required int Id { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -44,7 +45,6 @@ public sealed partial class MicrotransactionCategoryDat : ISpecificationFile<Mic
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 

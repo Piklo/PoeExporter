@@ -20,6 +20,7 @@ public sealed partial class GrantedEffectQualityTypesDat : ISpecificationFile<Gr
     public required string Text { get; init; }
 
     /// <summary> Gets ClientStringsKey.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientStringsKey { get; init; }
 
     /// <inheritdoc/>
@@ -46,9 +47,6 @@ public sealed partial class GrantedEffectQualityTypesDat : ISpecificationFile<Gr
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetClientStringsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class ArchnemesisRecipesDat : ISpecificationFile<ArchnemesisRecipesDat>
 {
     /// <summary> Gets Result.</summary>
+    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>
     public required int? Result { get; init; }
 
     /// <summary> Gets Recipe.</summary>
+    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Recipe { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
@@ -46,9 +48,6 @@ public sealed partial class ArchnemesisRecipesDat : ISpecificationFile<Archnemes
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetArchnemesisModsDat();
 
             // loading Result
             (var resultLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

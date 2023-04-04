@@ -17,6 +17,7 @@ public sealed partial class AtlasSectorDat : ISpecificationFile<AtlasSectorDat>
     public required string Id { get; init; }
 
     /// <summary> Gets SpawnWeight_TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_TagsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>
@@ -46,9 +47,6 @@ public sealed partial class AtlasSectorDat : ISpecificationFile<AtlasSectorDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTagsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

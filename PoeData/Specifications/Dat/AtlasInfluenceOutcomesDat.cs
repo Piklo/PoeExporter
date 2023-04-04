@@ -20,6 +20,7 @@ public sealed partial class AtlasInfluenceOutcomesDat : ISpecificationFile<Atlas
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets Type.</summary>
+    /// <remarks> references <see cref="AtlasInfluenceOutcomeTypesDat"/> on <see cref="Specification.GetAtlasInfluenceOutcomeTypesDat"/> index.</remarks>
     public required int Type { get; init; }
 
     /// <inheritdoc/>
@@ -47,7 +48,6 @@ public sealed partial class AtlasInfluenceOutcomesDat : ISpecificationFile<Atlas
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

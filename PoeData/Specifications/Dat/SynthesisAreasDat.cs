@@ -26,9 +26,11 @@ public sealed partial class SynthesisAreasDat : ISpecificationFile<SynthesisArea
     public required int Weight { get; init; }
 
     /// <summary> Gets TopologiesKey.</summary>
+    /// <remarks> references <see cref="TopologiesDat"/> on <see cref="Specification.GetTopologiesDat"/> index.</remarks>
     public required int? TopologiesKey { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets ArtFile.</summary>
@@ -38,9 +40,11 @@ public sealed partial class SynthesisAreasDat : ISpecificationFile<SynthesisArea
     public required string Name { get; init; }
 
     /// <summary> Gets SynthesisAreaSizeKey.</summary>
+    /// <remarks> references <see cref="SynthesisAreaSizeDat"/> on <see cref="Specification.GetSynthesisAreaSizeDat"/> index.</remarks>
     public required int? SynthesisAreaSizeKey { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <inheritdoc/>
@@ -67,12 +71,6 @@ public sealed partial class SynthesisAreasDat : ISpecificationFile<SynthesisArea
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetTopologiesDat();
-            // specification.GetMonsterPacksDat();
-            // specification.GetSynthesisAreaSizeDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

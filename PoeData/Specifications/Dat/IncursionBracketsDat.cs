@@ -17,9 +17,11 @@ public sealed partial class IncursionBracketsDat : ISpecificationFile<IncursionB
     public required int MinLevel { get; init; }
 
     /// <summary> Gets Incursion_WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? Incursion_WorldAreasKey { get; init; }
 
     /// <summary> Gets Template_WorldAreasKey.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? Template_WorldAreasKey { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
@@ -55,9 +57,6 @@ public sealed partial class IncursionBracketsDat : ISpecificationFile<IncursionB
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
 
             // loading MinLevel
             (var minlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

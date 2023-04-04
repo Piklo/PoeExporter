@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class BlightChestTypesDat : ISpecificationFile<BlightChestTypesDat>
 {
     /// <summary> Gets ChestsKey.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <inheritdoc/>
@@ -40,9 +41,6 @@ public sealed partial class BlightChestTypesDat : ISpecificationFile<BlightChest
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetChestsDat();
 
             // loading ChestsKey
             (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

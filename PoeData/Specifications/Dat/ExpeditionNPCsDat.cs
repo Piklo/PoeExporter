@@ -17,9 +17,11 @@ public sealed partial class ExpeditionNPCsDat : ISpecificationFile<ExpeditionNPC
     public required string Id { get; init; }
 
     /// <summary> Gets NPCs.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCs { get; init; }
 
     /// <summary> Gets RerollItem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? RerollItem { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -29,30 +31,39 @@ public sealed partial class ExpeditionNPCsDat : ISpecificationFile<ExpeditionNPC
     public required int Unknown44 { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
     public required int? Unknown48 { get; init; }
 
     /// <summary> Gets Faction.</summary>
+    /// <remarks> references <see cref="ExpeditionFactionsDat"/> on <see cref="Specification.GetExpeditionFactionsDat"/> index.</remarks>
     public required int? Faction { get; init; }
 
     /// <summary> Gets Reroll.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? Reroll { get; init; }
 
     /// <summary> Gets AllBombsPlaced.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? AllBombsPlaced { get; init; }
 
     /// <summary> Gets BombPlacedRemnant.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? BombPlacedRemnant { get; init; }
 
     /// <summary> Gets BombPlacedTreasure.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? BombPlacedTreasure { get; init; }
 
     /// <summary> Gets BombPlacedMonsters.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? BombPlacedMonsters { get; init; }
 
     /// <summary> Gets BombPlacedGeneric.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? BombPlacedGeneric { get; init; }
 
     /// <summary> Gets EncounterComplete.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? EncounterComplete { get; init; }
 
     /// <summary> Gets Unknown192.</summary>
@@ -85,13 +96,6 @@ public sealed partial class ExpeditionNPCsDat : ISpecificationFile<ExpeditionNPC
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCsDat();
-            // specification.GetBaseItemTypesDat();
-            // specification.GetQuestFlagsDat();
-            // specification.GetExpeditionFactionsDat();
-            // specification.GetNPCTextAudioDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

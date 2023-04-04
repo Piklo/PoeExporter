@@ -17,9 +17,11 @@ public sealed partial class MultiPartAchievementConditionsDat : ISpecificationFi
     public required string Id { get; init; }
 
     /// <summary> Gets MultiPartAchievementsKey1.</summary>
+    /// <remarks> references <see cref="MultiPartAchievementsDat"/> on <see cref="Specification.GetMultiPartAchievementsDat"/> index.</remarks>
     public required int? MultiPartAchievementsKey1 { get; init; }
 
     /// <summary> Gets MultiPartAchievementsKey2.</summary>
+    /// <remarks> references <see cref="MultiPartAchievementsDat"/> on <see cref="Specification.GetMultiPartAchievementsDat"/> index.</remarks>
     public required int? MultiPartAchievementsKey2 { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -52,9 +54,6 @@ public sealed partial class MultiPartAchievementConditionsDat : ISpecificationFi
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMultiPartAchievementsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

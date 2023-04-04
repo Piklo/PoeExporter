@@ -14,15 +14,19 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class UniqueMapInfoDat : ISpecificationFile<UniqueMapInfoDat>
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Word.</summary>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
     public required int? Word { get; init; }
 
     /// <summary> Gets FlavourTextKey.</summary>
+    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.GetFlavourTextDat"/> index.</remarks>
     public required int? FlavourTextKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown64 is set.</summary>
@@ -52,12 +56,6 @@ public sealed partial class UniqueMapInfoDat : ISpecificationFile<UniqueMapInfoD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetWordsDat();
-            // specification.GetFlavourTextDat();
-            // specification.GetItemVisualIdentityDat();
 
             // loading BaseItemTypesKey
             (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

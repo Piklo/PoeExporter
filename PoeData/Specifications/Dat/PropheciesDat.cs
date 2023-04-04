@@ -29,12 +29,14 @@ public sealed partial class PropheciesDat : ISpecificationFile<PropheciesDat>
     public required string FlavourText { get; init; }
 
     /// <summary> Gets QuestTracker_ClientStringsKeys.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> QuestTracker_ClientStringsKeys { get; init; }
 
     /// <summary> Gets OGGFile.</summary>
     public required string OGGFile { get; init; }
 
     /// <summary> Gets ProphecyChainKey.</summary>
+    /// <remarks> references <see cref="ProphecyChainDat"/> on <see cref="Specification.GetProphecyChainDat"/> index.</remarks>
     public required int? ProphecyChainKey { get; init; }
 
     /// <summary> Gets ProphecyChainPosition.</summary>
@@ -73,10 +75,6 @@ public sealed partial class PropheciesDat : ISpecificationFile<PropheciesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetClientStringsDat();
-            // specification.GetProphecyChainDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

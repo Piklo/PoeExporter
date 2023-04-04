@@ -20,6 +20,7 @@ public sealed partial class AlternateSkillTargetingBehavioursDat : ISpecificatio
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets ClientStrings.</summary>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientStrings { get; init; }
 
     /// <summary> Gets Unknown28.</summary>
@@ -58,9 +59,6 @@ public sealed partial class AlternateSkillTargetingBehavioursDat : ISpecificatio
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetClientStringsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

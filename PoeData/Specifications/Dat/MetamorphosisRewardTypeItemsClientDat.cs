@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MetamorphosisRewardTypeItemsClientDat : ISpecificationFile<MetamorphosisRewardTypeItemsClientDat>
 {
     /// <summary> Gets MetamorphosisRewardTypesKey.</summary>
+    /// <remarks> references <see cref="MetamorphosisRewardTypesDat"/> on <see cref="Specification.GetMetamorphosisRewardTypesDat"/> index.</remarks>
     public required int? MetamorphosisRewardTypesKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -46,9 +47,6 @@ public sealed partial class MetamorphosisRewardTypeItemsClientDat : ISpecificati
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMetamorphosisRewardTypesDat();
 
             // loading MetamorphosisRewardTypesKey
             (var metamorphosisrewardtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

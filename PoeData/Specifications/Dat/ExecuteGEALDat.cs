@@ -17,6 +17,7 @@ public sealed partial class ExecuteGEALDat : ISpecificationFile<ExecuteGEALDat>
     public required int Unknown0 { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscAnimated { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
@@ -154,9 +155,6 @@ public sealed partial class ExecuteGEALDat : ISpecificationFile<ExecuteGEALDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMiscAnimatedDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

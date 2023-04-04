@@ -14,15 +14,19 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LegionChestsDat : ISpecificationFile<LegionChestsDat>
 {
     /// <summary> Gets ChestsKey.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets LegionFactionsKey.</summary>
+    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.GetLegionFactionsDat"/> index.</remarks>
     public required int? LegionFactionsKey { get; init; }
 
     /// <summary> Gets LegionRanksKey.</summary>
+    /// <remarks> references <see cref="LegionRanksDat"/> on <see cref="Specification.GetLegionRanksDat"/> index.</remarks>
     public required int? LegionRanksKey { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Unknown64.</summary>
@@ -52,12 +56,6 @@ public sealed partial class LegionChestsDat : ISpecificationFile<LegionChestsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetChestsDat();
-            // specification.GetLegionFactionsDat();
-            // specification.GetLegionRanksDat();
-            // specification.GetMonsterVarietiesDat();
 
             // loading ChestsKey
             (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

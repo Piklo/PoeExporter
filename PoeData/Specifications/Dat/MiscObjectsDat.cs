@@ -20,6 +20,7 @@ public sealed partial class MiscObjectsDat : ISpecificationFile<MiscObjectsDat>
     public required string EffectVirtualPath { get; init; }
 
     /// <summary> Gets PreloadGroupsKeys.</summary>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PreloadGroupsKeys { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
@@ -52,9 +53,6 @@ public sealed partial class MiscObjectsDat : ISpecificationFile<MiscObjectsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetPreloadGroupsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

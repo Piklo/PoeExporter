@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistNPCBlueprintTypesDat : ISpecificationFile<HeistNPCBlueprintTypesDat>
 {
     /// <summary> Gets NPCsKey.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? NPCsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -43,9 +44,6 @@ public sealed partial class HeistNPCBlueprintTypesDat : ISpecificationFile<Heist
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCsDat();
 
             // loading NPCsKey
             (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

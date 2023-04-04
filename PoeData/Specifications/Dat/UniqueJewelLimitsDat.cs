@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class UniqueJewelLimitsDat : ISpecificationFile<UniqueJewelLimitsDat>
 {
     /// <summary> Gets JewelName.</summary>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
     public required int? JewelName { get; init; }
 
     /// <summary> Gets Limit.</summary>
@@ -43,9 +44,6 @@ public sealed partial class UniqueJewelLimitsDat : ISpecificationFile<UniqueJewe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWordsDat();
 
             // loading JewelName
             (var jewelnameLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

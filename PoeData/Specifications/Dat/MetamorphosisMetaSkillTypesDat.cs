@@ -32,6 +32,7 @@ public sealed partial class MetamorphosisMetaSkillTypesDat : ISpecificationFile<
     public required string AvailableArt { get; init; }
 
     /// <summary> Gets ItemisedSample.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? ItemisedSample { get; init; }
 
     /// <summary> Gets BodypartName.</summary>
@@ -41,6 +42,7 @@ public sealed partial class MetamorphosisMetaSkillTypesDat : ISpecificationFile<
     public required int Unknown72 { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets BodypartNamePlural.</summary>
@@ -73,10 +75,6 @@ public sealed partial class MetamorphosisMetaSkillTypesDat : ISpecificationFile<
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

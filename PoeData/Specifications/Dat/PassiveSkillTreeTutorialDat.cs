@@ -17,6 +17,7 @@ public sealed partial class PassiveSkillTreeTutorialDat : ISpecificationFile<Pas
     public required string Id { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required int? CharactersKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -67,9 +68,6 @@ public sealed partial class PassiveSkillTreeTutorialDat : ISpecificationFile<Pas
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetCharactersDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -20,6 +20,7 @@ public sealed partial class DelveBiomesDat : ISpecificationFile<DelveBiomesDat>
     public required string Name { get; init; }
 
     /// <summary> Gets WorldAreasKeys.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WorldAreasKeys { get; init; }
 
     /// <summary> Gets UIImage.</summary>
@@ -41,6 +42,7 @@ public sealed partial class DelveBiomesDat : ISpecificationFile<DelveBiomesDat>
     public required string Art2D { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown128 is set.</summary>
@@ -73,10 +75,6 @@ public sealed partial class DelveBiomesDat : ISpecificationFile<DelveBiomesDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

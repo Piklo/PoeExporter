@@ -14,15 +14,18 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class QuestRewardsDat : ISpecificationFile<QuestRewardsDat>
 {
     /// <summary> Gets RewardOffer.</summary>
+    /// <remarks> references <see cref="QuestRewardOffersDat"/> on <see cref="Specification.GetQuestRewardOffersDat"/> index.</remarks>
     public required int? RewardOffer { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets Characters.</summary>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Characters { get; init; }
 
     /// <summary> Gets Reward.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? Reward { get; init; }
 
     /// <summary> Gets RewardLevel.</summary>
@@ -94,11 +97,6 @@ public sealed partial class QuestRewardsDat : ISpecificationFile<QuestRewardsDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestRewardOffersDat();
-            // specification.GetCharactersDat();
-            // specification.GetBaseItemTypesDat();
 
             // loading RewardOffer
             (var rewardofferLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class FixedMissionsDat : ISpecificationFile<FixedMissionsDat>
 {
     /// <summary> Gets Unknown0.</summary>
+    /// <remarks> references <see cref="QuestAchievementsDat"/> on <see cref="Specification.GetQuestAchievementsDat"/> index.</remarks>
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -61,9 +62,6 @@ public sealed partial class FixedMissionsDat : ISpecificationFile<FixedMissionsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestAchievementsDat();
 
             // loading Unknown0
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

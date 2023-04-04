@@ -32,6 +32,7 @@ public sealed partial class ShopCategoryDat : ISpecificationFile<ShopCategoryDat
     public required int Unknown40 { get; init; }
 
     /// <summary> Gets AppliedTo_BaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? AppliedTo_BaseItemTypesKey { get; init; }
 
     /// <inheritdoc/>
@@ -58,9 +59,6 @@ public sealed partial class ShopCategoryDat : ISpecificationFile<ShopCategoryDat
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBaseItemTypesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

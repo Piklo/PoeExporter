@@ -53,7 +53,6 @@ public sealed partial class ColoursDat : ISpecificationFile<ColoursDat>
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Item
             (var itemLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

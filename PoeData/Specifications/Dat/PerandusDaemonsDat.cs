@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class PerandusDaemonsDat : ISpecificationFile<PerandusDaemonsDat>
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -61,9 +62,6 @@ public sealed partial class PerandusDaemonsDat : ISpecificationFile<PerandusDaem
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetMonsterVarietiesDat();
 
             // loading MonsterVarietiesKey
             (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

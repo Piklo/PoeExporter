@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class GroundEffectsDat : ISpecificationFile<GroundEffectsDat>
 {
     /// <summary> Gets GroundEffectTypesKey.</summary>
+    /// <remarks> references <see cref="GroundEffectTypesDat"/> on <see cref="Specification.GetGroundEffectTypesDat"/> index.</remarks>
     public required int? GroundEffectTypesKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -103,9 +104,6 @@ public sealed partial class GroundEffectsDat : ISpecificationFile<GroundEffectsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetGroundEffectTypesDat();
 
             // loading GroundEffectTypesKey
             (var groundeffecttypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

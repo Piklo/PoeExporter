@@ -17,6 +17,7 @@ public sealed partial class ChestClustersDat : ISpecificationFile<ChestClustersD
     public required string Id { get; init; }
 
     /// <summary> Gets ChestsKeys.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ChestsKeys { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -55,9 +56,6 @@ public sealed partial class ChestClustersDat : ISpecificationFile<ChestClustersD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetChestsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

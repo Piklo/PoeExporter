@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AreaInfluenceDoodadsDat : ISpecificationFile<AreaInfluenceDoodadsDat>
 {
     /// <summary> Gets StatsKey.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets StatValue.</summary>
@@ -35,6 +36,7 @@ public sealed partial class AreaInfluenceDoodadsDat : ISpecificationFile<AreaInf
     public required string Unknown45 { get; init; }
 
     /// <summary> Gets Unknown53.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Unknown53 { get; init; }
 
     /// <inheritdoc/>
@@ -61,9 +63,6 @@ public sealed partial class AreaInfluenceDoodadsDat : ISpecificationFile<AreaInf
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading StatsKey
             (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

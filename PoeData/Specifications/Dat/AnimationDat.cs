@@ -26,9 +26,11 @@ public sealed partial class AnimationDat : ISpecificationFile<AnimationDat>
     public required bool Unknown10 { get; init; }
 
     /// <summary> Gets Mainhand_AnimationKey.</summary>
+    /// <remarks> references <see cref="AnimationDat"/> on <see cref="AnimationDat.Id"/>.</remarks>
     public required string Mainhand_AnimationKey { get; init; }
 
     /// <summary> Gets Offhand_AnimationKey.</summary>
+    /// <remarks> references <see cref="AnimationDat"/> on <see cref="AnimationDat.Id"/>.</remarks>
     public required string Offhand_AnimationKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown27 is set.</summary>
@@ -61,9 +63,6 @@ public sealed partial class AnimationDat : ISpecificationFile<AnimationDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetAnimationDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

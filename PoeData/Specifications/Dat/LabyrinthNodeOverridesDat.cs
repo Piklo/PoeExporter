@@ -50,7 +50,6 @@ public sealed partial class LabyrinthNodeOverridesDat : ISpecificationFile<Labyr
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading Id1
             (var id1Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

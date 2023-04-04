@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class MapStashUniqueMapInfoDat : ISpecificationFile<MapStashUniqueMapInfoDat>
 {
     /// <summary> Gets UniqueMap.</summary>
+    /// <remarks> references <see cref="UniqueMapsDat"/> on <see cref="Specification.GetUniqueMapsDat"/> index.</remarks>
     public required int? UniqueMap { get; init; }
 
     /// <summary> Gets BaseItem.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItem { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class MapStashUniqueMapInfoDat : ISpecificationFile<MapSta
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetUniqueMapsDat();
-            // specification.GetBaseItemTypesDat();
 
             // loading UniqueMap
             (var uniquemapLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

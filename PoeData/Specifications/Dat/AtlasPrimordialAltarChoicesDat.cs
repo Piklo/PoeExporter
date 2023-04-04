@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class AtlasPrimordialAltarChoicesDat : ISpecificationFile<AtlasPrimordialAltarChoicesDat>
 {
     /// <summary> Gets Mod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Type.</summary>
+    /// <remarks> references <see cref="AtlasPrimordialAltarChoiceTypesDat"/> on <see cref="Specification.GetAtlasPrimordialAltarChoiceTypesDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown32 is set.</summary>
@@ -46,10 +48,6 @@ public sealed partial class AtlasPrimordialAltarChoicesDat : ISpecificationFile<
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
-            // specification.GetAtlasPrimordialAltarChoiceTypesDat();
 
             // loading Mod
             (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

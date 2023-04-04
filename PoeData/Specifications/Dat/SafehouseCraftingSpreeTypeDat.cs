@@ -17,6 +17,7 @@ public sealed partial class SafehouseCraftingSpreeTypeDat : ISpecificationFile<S
     public required string Id { get; init; }
 
     /// <summary> Gets Currencies.</summary>
+    /// <remarks> references <see cref="SafehouseCraftingSpreeCurrenciesDat"/> on <see cref="Specification.GetSafehouseCraftingSpreeCurrenciesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Currencies { get; init; }
 
     /// <summary> Gets CurrencyCount.</summary>
@@ -55,9 +56,6 @@ public sealed partial class SafehouseCraftingSpreeTypeDat : ISpecificationFile<S
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetSafehouseCraftingSpreeCurrenciesDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -17,6 +17,7 @@ public sealed partial class AtlasAwakeningStatsDat : ISpecificationFile<AtlasAwa
     public required int AwakeningLevel { get; init; }
 
     /// <summary> Gets Stats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets Values.</summary>
@@ -46,9 +47,6 @@ public sealed partial class AtlasAwakeningStatsDat : ISpecificationFile<AtlasAwa
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
 
             // loading AwakeningLevel
             (var awakeninglevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

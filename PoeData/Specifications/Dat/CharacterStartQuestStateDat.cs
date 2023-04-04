@@ -17,6 +17,7 @@ public sealed partial class CharacterStartQuestStateDat : ISpecificationFile<Cha
     public required string Id { get; init; }
 
     /// <summary> Gets QuestKeys.</summary>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required ReadOnlyCollection<int> QuestKeys { get; init; }
 
     /// <summary> Gets QuestStates.</summary>
@@ -26,6 +27,7 @@ public sealed partial class CharacterStartQuestStateDat : ISpecificationFile<Cha
     public required ReadOnlyCollection<int> Unknown40 { get; init; }
 
     /// <summary> Gets MapPinsKeys.</summary>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapPinsKeys { get; init; }
 
     /// <summary> Gets Unknown72.</summary>
@@ -58,10 +60,6 @@ public sealed partial class CharacterStartQuestStateDat : ISpecificationFile<Cha
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetQuestDat();
-            // specification.GetMapPinsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

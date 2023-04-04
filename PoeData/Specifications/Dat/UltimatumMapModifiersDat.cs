@@ -14,9 +14,11 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class UltimatumMapModifiersDat : ISpecificationFile<UltimatumMapModifiersDat>
 {
     /// <summary> Gets Stat.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Stat { get; init; }
 
     /// <summary> Gets Mods.</summary>
+    /// <remarks> references <see cref="UltimatumModifiersDat"/> on <see cref="Specification.GetUltimatumModifiersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <inheritdoc/>
@@ -43,10 +45,6 @@ public sealed partial class UltimatumMapModifiersDat : ISpecificationFile<Ultima
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetUltimatumModifiersDat();
 
             // loading Stat
             (var statLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

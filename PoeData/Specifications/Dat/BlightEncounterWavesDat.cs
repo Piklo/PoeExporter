@@ -17,6 +17,7 @@ public sealed partial class BlightEncounterWavesDat : ISpecificationFile<BlightE
     public required string MonsterSpawnerId { get; init; }
 
     /// <summary> Gets EncounterType.</summary>
+    /// <remarks> references <see cref="BlightEncounterTypesDat"/> on <see cref="Specification.GetBlightEncounterTypesDat"/> index.</remarks>
     public required int? EncounterType { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -55,9 +56,6 @@ public sealed partial class BlightEncounterWavesDat : ISpecificationFile<BlightE
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetBlightEncounterTypesDat();
 
             // loading MonsterSpawnerId
             (var monsterspawneridLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

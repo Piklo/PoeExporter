@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class InfluenceTagsDat : ISpecificationFile<InfluenceTagsDat>
 {
     /// <summary> Gets ItemClass.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
     /// <summary> Gets Influence.</summary>
+    /// <remarks> references <see cref="InfluenceTypesDat"/> on <see cref="Specification.GetInfluenceTypesDat"/> index.</remarks>
     public required int Influence { get; init; }
 
     /// <summary> Gets Tag.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? Tag { get; init; }
 
     /// <inheritdoc/>
@@ -46,10 +49,6 @@ public sealed partial class InfluenceTagsDat : ISpecificationFile<InfluenceTagsD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetItemClassesDat();
-            // specification.GetTagsDat();
 
             // loading ItemClass
             (var itemclassLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

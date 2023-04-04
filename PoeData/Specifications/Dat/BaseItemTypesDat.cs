@@ -17,6 +17,7 @@ public sealed partial class BaseItemTypesDat : ISpecificationFile<BaseItemTypesD
     public required string Id { get; init; }
 
     /// <summary> Gets ItemClassesKey.</summary>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClassesKey { get; init; }
 
     /// <summary> Gets Width.</summary>
@@ -35,51 +36,63 @@ public sealed partial class BaseItemTypesDat : ISpecificationFile<BaseItemTypesD
     public required int DropLevel { get; init; }
 
     /// <summary> Gets FlavourTextKey.</summary>
+    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.GetFlavourTextDat"/> index.</remarks>
     public required int? FlavourTextKey { get; init; }
 
     /// <summary> Gets Implicit_ModsKeys.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Implicit_ModsKeys { get; init; }
 
     /// <summary> Gets SizeOnGround.</summary>
     public required int SizeOnGround { get; init; }
 
     /// <summary> Gets SoundEffect.</summary>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
     public required int? SoundEffect { get; init; }
 
     /// <summary> Gets TagsKeys.</summary>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TagsKeys { get; init; }
 
     /// <summary> Gets ModDomain.</summary>
+    /// <remarks> references <see cref="ModDomainsDat"/> on <see cref="Specification.GetModDomainsDat"/> index.</remarks>
     public required int ModDomain { get; init; }
 
     /// <summary> Gets SiteVisibility.</summary>
+    /// <remarks> references <see cref="BaseItemTypeVisibilityDat"/> on <see cref="Specification.GetBaseItemTypeVisibilityDat"/> index.</remarks>
     public required int SiteVisibility { get; init; }
 
     /// <summary> Gets ItemVisualIdentity.</summary>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentity { get; init; }
 
     /// <summary> Gets HASH32.</summary>
     public required int HASH32 { get; init; }
 
     /// <summary> Gets VendorRecipe_AchievementItems.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> VendorRecipe_AchievementItems { get; init; }
 
     /// <summary> Gets Inflection.</summary>
     public required string Inflection { get; init; }
 
     /// <summary> Gets Equip_AchievementItemsKey.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? Equip_AchievementItemsKey { get; init; }
 
     /// <summary> Gets a value indicating whether IsCorrupted is set.</summary>
     public required bool IsCorrupted { get; init; }
 
     /// <summary> Gets Identify_AchievementItems.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Identify_AchievementItems { get; init; }
 
     /// <summary> Gets IdentifyMagic_AchievementItems.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> IdentifyMagic_AchievementItems { get; init; }
 
     /// <summary> Gets FragmentBaseItemTypesKey.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? FragmentBaseItemTypesKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown229 is set.</summary>
@@ -95,6 +108,7 @@ public sealed partial class BaseItemTypesDat : ISpecificationFile<BaseItemTypesD
     public required bool Unknown262 { get; init; }
 
     /// <summary> Gets TradeMarketCategory.</summary>
+    /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.GetTradeMarketCategoryDat"/> index.</remarks>
     public required int? TradeMarketCategory { get; init; }
 
     /// <inheritdoc/>
@@ -121,16 +135,6 @@ public sealed partial class BaseItemTypesDat : ISpecificationFile<BaseItemTypesD
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetItemClassesDat();
-            // specification.GetFlavourTextDat();
-            // specification.GetModsDat();
-            // specification.GetSoundEffectsDat();
-            // specification.GetTagsDat();
-            // specification.GetItemVisualIdentityDat();
-            // specification.GetAchievementItemsDat();
-            // specification.GetTradeMarketCategoryDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

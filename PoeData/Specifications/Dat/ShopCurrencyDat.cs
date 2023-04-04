@@ -44,7 +44,6 @@ public sealed partial class ShopCurrencyDat : ISpecificationFile<ShopCurrencyDat
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading referenced tables if any
             // loading CurrencyCode
             (var currencycodeLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 

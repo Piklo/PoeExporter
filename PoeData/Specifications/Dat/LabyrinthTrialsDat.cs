@@ -14,6 +14,7 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class LabyrinthTrialsDat : ISpecificationFile<LabyrinthTrialsDat>
 {
     /// <summary> Gets WorldAreas.</summary>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreas { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -26,6 +27,7 @@ public sealed partial class LabyrinthTrialsDat : ISpecificationFile<LabyrinthTri
     public required int Unknown24 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey { get; init; }
 
     /// <summary> Gets Unknown44.</summary>
@@ -61,10 +63,6 @@ public sealed partial class LabyrinthTrialsDat : ISpecificationFile<LabyrinthTri
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetWorldAreasDat();
-            // specification.GetNPCTextAudioDat();
 
             // loading WorldAreas
             (var worldareasLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -17,6 +17,7 @@ public sealed partial class UITalkTextDat : ISpecificationFile<UITalkTextDat>
     public required string Id { get; init; }
 
     /// <summary> Gets UITalkCategoriesKey.</summary>
+    /// <remarks> references <see cref="UITalkCategoriesDat"/> on <see cref="Specification.GetUITalkCategoriesDat"/> index.</remarks>
     public required int UITalkCategoriesKey { get; init; }
 
     /// <summary> Gets OGGFile.</summary>
@@ -29,6 +30,7 @@ public sealed partial class UITalkTextDat : ISpecificationFile<UITalkTextDat>
     public required bool Unknown28 { get; init; }
 
     /// <summary> Gets NPCTextAudio.</summary>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudio { get; init; }
 
     /// <inheritdoc/>
@@ -55,9 +57,6 @@ public sealed partial class UITalkTextDat : ISpecificationFile<UITalkTextDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCTextAudioDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

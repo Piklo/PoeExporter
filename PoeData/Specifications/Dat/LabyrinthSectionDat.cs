@@ -17,6 +17,7 @@ public sealed partial class LabyrinthSectionDat : ISpecificationFile<LabyrinthSe
     public required string Id { get; init; }
 
     /// <summary> Gets ExclusionGroup.</summary>
+    /// <remarks> references <see cref="LabyrinthExclusionGroupsDat"/> on <see cref="Specification.GetLabyrinthExclusionGroupsDat"/> index.</remarks>
     public required int? ExclusionGroup { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -55,9 +56,6 @@ public sealed partial class LabyrinthSectionDat : ISpecificationFile<LabyrinthSe
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetLabyrinthExclusionGroupsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

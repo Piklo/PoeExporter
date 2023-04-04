@@ -17,6 +17,7 @@ public sealed partial class AfflictionFixedModsDat : ISpecificationFile<Afflicti
     public required int Rarity { get; init; }
 
     /// <summary> Gets Mod.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
@@ -46,9 +47,6 @@ public sealed partial class AfflictionFixedModsDat : ISpecificationFile<Afflicti
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading Rarity
             (var rarityLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

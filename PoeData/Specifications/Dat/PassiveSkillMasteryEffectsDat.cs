@@ -20,6 +20,7 @@ public sealed partial class PassiveSkillMasteryEffectsDat : ISpecificationFile<P
     public required int HASH16 { get; init; }
 
     /// <summary> Gets Stats.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets Stat1Value.</summary>
@@ -32,6 +33,7 @@ public sealed partial class PassiveSkillMasteryEffectsDat : ISpecificationFile<P
     public required int Stat3Value { get; init; }
 
     /// <summary> Gets AchievementItem.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItem { get; init; }
 
     /// <inheritdoc/>
@@ -58,10 +60,6 @@ public sealed partial class PassiveSkillMasteryEffectsDat : ISpecificationFile<P
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetStatsDat();
-            // specification.GetAchievementItemsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

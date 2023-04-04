@@ -17,12 +17,15 @@ public sealed partial class ModEquivalenciesDat : ISpecificationFile<ModEquivale
     public required string Id { get; init; }
 
     /// <summary> Gets ModsKey0.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey0 { get; init; }
 
     /// <summary> Gets ModsKey1.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey1 { get; init; }
 
     /// <summary> Gets ModsKey2.</summary>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? ModsKey2 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown56 is set.</summary>
@@ -52,9 +55,6 @@ public sealed partial class ModEquivalenciesDat : ISpecificationFile<ModEquivale
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetModsDat();
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

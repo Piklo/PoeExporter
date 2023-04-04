@@ -14,15 +14,18 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HeistChestsDat : ISpecificationFile<HeistChestsDat>
 {
     /// <summary> Gets ChestsKey.</summary>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets Weight.</summary>
     public required int Weight { get; init; }
 
     /// <summary> Gets HeistAreasKey.</summary>
+    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.GetHeistAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HeistAreasKey { get; init; }
 
     /// <summary> Gets HeistChestTypesKey.</summary>
+    /// <remarks> references <see cref="HeistChestTypesDat"/> on <see cref="Specification.GetHeistChestTypesDat"/> index.</remarks>
     public required int HeistChestTypesKey { get; init; }
 
     /// <inheritdoc/>
@@ -49,10 +52,6 @@ public sealed partial class HeistChestsDat : ISpecificationFile<HeistChestsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetChestsDat();
-            // specification.GetHeistAreasDat();
 
             // loading ChestsKey
             (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);

@@ -14,12 +14,15 @@ namespace PoeData.Specifications.Dat;
 public sealed partial class HideoutNPCsDat : ISpecificationFile<HideoutNPCsDat>
 {
     /// <summary> Gets Hideout_NPCsKey.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required int? Hideout_NPCsKey { get; init; }
 
     /// <summary> Gets Regular_NPCsKeys.</summary>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Regular_NPCsKeys { get; init; }
 
     /// <summary> Gets HideoutDoodadsKey.</summary>
+    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.GetHideoutDoodadsDat"/> index.</remarks>
     public required int? HideoutDoodadsKey { get; init; }
 
     /// <summary> Gets NPCMasterKey.</summary>
@@ -70,10 +73,6 @@ public sealed partial class HideoutNPCsDat : ISpecificationFile<HideoutNPCsDat>
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-            // loading referenced tables if any
-            // specification.GetNPCsDat();
-            // specification.GetHideoutDoodadsDat();
 
             // loading Hideout_NPCsKey
             (var hideout_npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
