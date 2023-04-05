@@ -77,7 +77,7 @@ public sealed class WikiClient : IDisposable
     public async Task GetPageContent(string pageTitle)
     {
         var url = $"{ApiEndPoint}?action=query&prop=revisions&titles={pageTitle}&rvslots=*&rvprop=content&format=json";
-        logger?.Verbose($"""getting page content for page ="{url}".""");
+        logger?.Debug($"""getting page content for page = "{url}".""");
 
         var test = await httpClient.GetAsync(url);
         var content = test.Content;
