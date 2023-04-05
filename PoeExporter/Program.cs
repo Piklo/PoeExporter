@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MediaWiki;
+using Microsoft.Extensions.Configuration;
 using PoeData;
 using PoeData.Specifications;
 using Serilog;
@@ -10,7 +11,7 @@ namespace PoeExporter;
 
 internal sealed class Program
 {
-    static void Main()
+    static async Task Main()
     {
 
         var builder = new ConfigurationBuilder()
@@ -31,6 +32,10 @@ internal sealed class Program
             .WriteTo.Console()
             .CreateLogger();
 
+        using var client = new WikiClient("https://www.poewiki.net/w/api.php", logger);
+        await client.GetPageContent("Module:Blight/blight crafting recipes").ConfigureAwait(true);
+
+        return;
 
         var specification = new Specification(parsedConfig, logger);
 

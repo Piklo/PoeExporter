@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MediaWiki\MediaWiki.csproj" />
     <ProjectReference Include="..\PoeData\PoeData.csproj" />
   </ItemGroup>
 
