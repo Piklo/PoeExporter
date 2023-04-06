@@ -44,7 +44,7 @@ internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRe
             Length = length,
             Offset = offset,
             Hash = hash,
-            Name = name
+            Name = name,
         };
     }
 }
