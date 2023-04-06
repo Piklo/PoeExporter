@@ -78,7 +78,7 @@ internal sealed class GgpkLoader
         var tagStr = System.Text.Encoding.Default.GetString(tag);
         if (tagStr == "FILE")
         {
-            throw new NotImplementedException($"unknown tag = {tagStr} at offset = {recordOffset} of length {length}");
+            return FileRecordGgpk.Read(ggpkReader, length, recordOffset);
         }
         else if (tagStr == "FREE")
         {
