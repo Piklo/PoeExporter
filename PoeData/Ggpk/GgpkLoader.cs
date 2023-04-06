@@ -12,6 +12,7 @@ internal sealed class GgpkLoader
     private readonly IConfig config;
     private readonly ILogger logger;
     private readonly string filePath;
+    private readonly GgpkRecord ggpkRecord;
     private readonly Dictionary<long, IGgpkTagRecord> records = new();
 
     /// <summary>
@@ -28,7 +29,7 @@ internal sealed class GgpkLoader
         var ggpkFileStream = File.OpenRead(filePath);
         var ggpkReader = new BinaryReader(ggpkFileStream);
 
-        var ggpkRecord = ReadGgpkRecord(ggpkReader);
+        ggpkRecord = ReadGgpkRecord(ggpkReader);
         records.Add(ggpkRecord.Offset, ggpkRecord);
 
         while (ggpkFileStream.Position < ggpkFileStream.Length)
@@ -86,7 +87,7 @@ internal sealed class GgpkLoader
         }
         else if (tagStr == "PDIR")
         {
-            throw new NotImplementedException($"unknown tag = {tagStr} at offset = {recordOffset} of length {length}");
+            return DirectoryRecordGgpk.Read(ggpkReader, length, recordOffset);
         }
         else if (tagStr == "GGPK")
         {
