@@ -3,7 +3,7 @@
 /// <summary>
 /// Class containing free record data.
 /// </summary>
-internal sealed class FreeRecord : IGgpkTagRecord
+internal sealed class FreeRecord : IGgpkTagRecord, IReadGgpkTagRecord<FreeRecord>
 {
     /// <inheritdoc/>
     public required int Length { get; init; }
@@ -14,18 +14,10 @@ internal sealed class FreeRecord : IGgpkTagRecord
     /// <summary>Gets offset of next <see cref="FreeRecord"/>.</summary>
     public required long NextFree { get; init; }
 
-    /// <summary>
-    /// Reads free record data.
-    /// </summary>
-    /// <param name="ggpkFile">stream to read from.</param>
-    /// <param name="length">records length.</param>
-    /// <param name="offset">records offset.</param>
-    /// <returns>parsed free record data.</returns>
-    public static FreeRecord Read(FileStream ggpkFile, int length, long offset)
+    /// <inheritdoc/>
+    public static FreeRecord Read(BinaryReader ggpkReader, int length, long offset)
     {
-        var nextFreeBytes = new byte[sizeof(long)];
-        ggpkFile.ReadExactly(nextFreeBytes);
-        var nextFree = BitConverter.ToInt64(nextFreeBytes);
+        var nextFree = ggpkReader.ReadInt64();
 
         var record = new FreeRecord()
         {
@@ -34,7 +26,7 @@ internal sealed class FreeRecord : IGgpkTagRecord
             NextFree = nextFree,
         };
 
-        ggpkFile.Seek(length - 16, SeekOrigin.Current);
+        ggpkReader.BaseStream.Seek(length - 16, SeekOrigin.Current);
 
         return record;
     }
