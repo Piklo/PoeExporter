@@ -15,14 +15,16 @@ internal interface IGgpkTagRecord
 /// <summary>
 /// Interface containing Read method for ggpk tag records.
 /// </summary>
-internal interface IReadGgpkTagRecord
+/// <typeparam name="T">type of the returned <see cref="IGgpkTagRecord"/>.</typeparam>
+internal interface IReadGgpkTagRecord<T>
+    where T : IGgpkTagRecord
 {
     /// <summary>
-    /// Reads the file stream based on tag data.
+    /// Reads ggpk record data.
     /// </summary>
-    /// <param name="ggpkFile">ggpk file stream.</param>
-    /// <param name="length">length.</param>
-    /// <param name="offset">offset.</param>
-    /// <returns>ggpk tag record with read values.</returns>
-    public static abstract IGgpkTagRecord Read(FileStream ggpkFile, int length, long offset);
+    /// <param name="ggpkReader">reader to read from.</param>
+    /// <param name="length">records length.</param>
+    /// <param name="offset">records offset.</param>
+    /// <returns>parsed ggpk record data.</returns>
+    public static abstract T Read(BinaryReader ggpkReader, int length, long offset);
 }
