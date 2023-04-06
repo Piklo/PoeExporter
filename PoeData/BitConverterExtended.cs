@@ -6,7 +6,7 @@
 internal static class BitConverterExtended
 {
     /// <inheritdoc cref="BitConverter.ToInt32(byte[], int)"/>
-    public static (int value, int offset) ToInt32(byte[] value, int startIndex)
+    public static (int value, int offset) ToInt32(byte[] value, int startIndex = 0)
     {
         var converted = BitConverter.ToInt32(value, startIndex);
         startIndex += sizeof(int);
@@ -15,7 +15,7 @@ internal static class BitConverterExtended
     }
 
     /// <inheritdoc cref="BitConverter.ToUInt32(byte[], int)"/>
-    public static (uint value, int offset) ToUInt32(byte[] value, int startIndex)
+    public static (uint value, int offset) ToUInt32(byte[] value, int startIndex = 0)
     {
         var converted = BitConverter.ToUInt32(value, startIndex);
         startIndex += sizeof(uint);
@@ -24,7 +24,7 @@ internal static class BitConverterExtended
     }
 
     /// <inheritdoc cref="BitConverter.ToInt64(byte[], int)"/>
-    public static (long value, int offset) ToInt64(byte[] value, int startIndex)
+    public static (long value, int offset) ToInt64(byte[] value, int startIndex = 0)
     {
         var converted = BitConverter.ToInt64(value, startIndex);
         startIndex += sizeof(long);
@@ -33,7 +33,7 @@ internal static class BitConverterExtended
     }
 
     /// <inheritdoc cref="BitConverter.ToUInt64(byte[], int)"/>
-    public static (ulong value, int offset) ToUInt64(byte[] value, int startIndex)
+    public static (ulong value, int offset) ToUInt64(byte[] value, int startIndex = 0)
     {
         var converted = BitConverter.ToUInt64(value, startIndex);
         startIndex += sizeof(ulong);
@@ -41,9 +41,8 @@ internal static class BitConverterExtended
         return (converted, startIndex);
     }
 
-
     /// <inheritdoc cref="BitConverter.ToSingle(byte[], int)(byte[], int)"/>
-    public static (float value, int offset) ToSingle(byte[] value, int startIndex)
+    public static (float value, int offset) ToSingle(byte[] value, int startIndex = 0)
     {
         var converted = BitConverter.ToSingle(value, startIndex);
         startIndex += sizeof(float);
@@ -52,7 +51,7 @@ internal static class BitConverterExtended
     }
 
     /// <inheritdoc cref="BitConverter.ToBoolean(byte[], int)(byte[], int)"/>
-    public static (bool value, int offset) ToBoolean(byte[] value, int startIndex)
+    public static (bool value, int offset) ToBoolean(byte[] value, int startIndex = 0)
     {
         var converted = BitConverter.ToBoolean(value, startIndex);
         startIndex += sizeof(bool);
