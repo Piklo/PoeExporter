@@ -13,7 +13,6 @@ internal sealed class GgpkLoader
     private readonly ILogger logger;
     private readonly string filePath;
     private readonly Dictionary<long, IGgpkTagRecord> records = new();
-    private readonly FileStream ggpkFileStream;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GgpkLoader"/> class.
@@ -26,57 +25,55 @@ internal sealed class GgpkLoader
         this.logger = logger;
         filePath = Path.Combine(this.config.PoePath, FileName);
 
-        ggpkFileStream = File.OpenRead(filePath);
+        var ggpkFileStream = File.OpenRead(filePath);
+        var ggpkReader = new BinaryReader(ggpkFileStream);
 
-        var ggpkRecord = ReadGgpkRecord();
+        var ggpkRecord = ReadGgpkRecord(ggpkReader);
         records.Add(ggpkRecord.Offset, ggpkRecord);
 
         while (ggpkFileStream.Position < ggpkFileStream.Length)
         {
-            var record = ReadRecord();
+            var record = ReadRecord(ggpkReader);
             records.Add(record.Offset, record);
         }
 
         this.logger.Verbose("created {count} records", records.Count);
 
-        ggpkFileStream.Dispose();
+        ggpkReader.Dispose();
     }
 
-    private int GetLength()
+    private static int GetLength(BinaryReader ggpkReader)
     {
-        var buffer = new byte[sizeof(int)];
-        ggpkFileStream.ReadExactly(buffer);
-        var length = BitConverter.ToInt32(buffer);
+        var length = ggpkReader.ReadInt32();
 
         return length;
     }
 
-    private byte[] GetTag()
+    private static byte[] GetTag(BinaryReader ggpkReader)
     {
         const int tagLength = 4; // 4 characters long string in byte[] form.
 
-        var tag = new byte[tagLength];
-        ggpkFileStream.ReadExactly(tag);
+        var tagBytes = ggpkReader.ReadBytes(tagLength);
 
-        return tag;
+        return tagBytes;
     }
 
-    private GgpkRecord ReadGgpkRecord()
+    private static GgpkRecord ReadGgpkRecord(BinaryReader ggpkReader)
     {
-        var recordOffset = ggpkFileStream.Position;
-        var length = GetLength();
-        _ = GetTag(); // GGPK tag, we need to keep it to move the position
+        var recordOffset = ggpkReader.BaseStream.Position;
+        var length = GetLength(ggpkReader);
+        _ = GetTag(ggpkReader); // GGPK tag, we need to keep it to move the position
 
-        var record = GgpkRecord.Read(ggpkFileStream, length, recordOffset);
+        var record = GgpkRecord.Read(ggpkReader, length, recordOffset);
 
         return record;
     }
 
-    private IGgpkTagRecord ReadRecord()
+    private static IGgpkTagRecord ReadRecord(BinaryReader ggpkReader)
     {
-        var recordOffset = ggpkFileStream.Position;
-        var length = GetLength();
-        var tag = GetTag();
+        var recordOffset = ggpkReader.BaseStream.Position;
+        var length = GetLength(ggpkReader);
+        var tag = GetTag(ggpkReader);
 
         var tagStr = System.Text.Encoding.Default.GetString(tag);
         if (tagStr == "FILE")
@@ -85,7 +82,7 @@ internal sealed class GgpkLoader
         }
         else if (tagStr == "FREE")
         {
-            return FreeRecord.Read(ggpkFileStream, length, recordOffset);
+            return FreeRecord.Read(ggpkReader, length, recordOffset);
         }
         else if (tagStr == "PDIR")
         {
