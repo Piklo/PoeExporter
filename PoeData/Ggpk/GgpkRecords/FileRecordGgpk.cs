@@ -17,7 +17,7 @@ internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRe
     public required string Name { get; init; }
 
     /// <summary>Gets file hash.</summary>
-    public required ulong Hash { get; init; }
+    public required BigInteger Hash { get; init; }
 
     /// <inheritdoc/>
     public static FileRecordGgpk Read(BinaryReader ggpkReader, int length, long offset)
@@ -39,6 +39,12 @@ internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRe
 
         ggpkReader.BaseStream.Seek(dataLength, SeekOrigin.Current);
 
-        return new FileRecordGgpk() { Length = length, Offset = offset, Hash = 0, Name = "" };
+        return new FileRecordGgpk()
+        {
+            Length = length,
+            Offset = offset,
+            Hash = hash,
+            Name = name
+        };
     }
 }
