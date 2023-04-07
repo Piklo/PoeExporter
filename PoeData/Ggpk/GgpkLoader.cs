@@ -89,18 +89,25 @@ internal sealed class GgpkLoader : IDataLoader
     /// <inheritdoc/>
     public byte[] GetFileBytes(string filePath)
     {
-        var splitPath = filePath.Split('/');
+        var splitPath = filePath.Replace("\\", " ").Replace("/", " ").Split(" ");
 
         var currentDirectoryNode = rootDirectoryNode;
         foreach (var currentPath in splitPath)
         {
+            var foundCurrent = false;
             foreach (var child in currentDirectoryNode.Children)
             {
                 if (child.Name == currentPath)
                 {
                     currentDirectoryNode = child;
+                    foundCurrent = true;
                     break;
                 }
+            }
+
+            if (!foundCurrent)
+            {
+                throw new PathNotFoundException($"failed to find {currentPath}");
             }
         }
 
