@@ -30,7 +30,7 @@ internal sealed class GgpkLoader
         ggpkPath = Path.Combine(this.config.PoePath, FileName);
 
         var ggpkFileStream = File.OpenRead(ggpkPath);
-        var ggpkReader = new BinaryReader(ggpkFileStream);
+        using var ggpkReader = new BinaryReader(ggpkFileStream);
 
         ggpkRecord = ReadGgpkRecord(ggpkReader);
         records.Add(ggpkRecord.Offset, ggpkRecord);
@@ -42,8 +42,6 @@ internal sealed class GgpkLoader
         }
 
         this.logger.Verbose("created {count} records", records.Count);
-
-        ggpkReader.Dispose();
     }
 
     private static int GetLength(BinaryReader ggpkReader)
