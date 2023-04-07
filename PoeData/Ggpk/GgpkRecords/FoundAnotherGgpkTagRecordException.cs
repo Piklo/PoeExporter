@@ -7,24 +7,24 @@ namespace PoeData.Ggpk.GgpkRecords;
 /// </summary>
 public class FoundAnotherGgpkTagRecordException : Exception
 {
-    /// <inheritdoc cref="Exception"/>
+    /// <inheritdoc cref="Exception()"/>
     public FoundAnotherGgpkTagRecordException()
     {
     }
 
-    /// <inheritdoc cref="Exception"/>
+    /// <inheritdoc cref="Exception(string?)"/>
     public FoundAnotherGgpkTagRecordException(string? message)
         : base(message)
     {
     }
 
-    /// <inheritdoc cref="Exception"/>
+    /// <inheritdoc cref="Exception(string?, Exception?)"/>
     public FoundAnotherGgpkTagRecordException(string? message, Exception? innerException)
         : base(message, innerException)
     {
     }
 
-    /// <inheritdoc cref="Exception"/>
+    /// <inheritdoc cref="Exception(SerializationInfo, StreamingContext)"/>
     protected FoundAnotherGgpkTagRecordException(SerializationInfo info, StreamingContext context)
         : base(info, context)
     {
