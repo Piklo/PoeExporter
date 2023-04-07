@@ -246,7 +246,7 @@ internal sealed class DataLoader : IDataLoader
     /// </summary>
     /// <param name="path">path of a file record to get.</param>
     /// <returns><see cref="FileRecord"/>.</returns>
-    internal FileRecord GetFileRecord(byte[] path)
+    private FileRecord GetFileRecord(byte[] path)
     {
         var hash = GetHash(path, PathTypes.File);
 
