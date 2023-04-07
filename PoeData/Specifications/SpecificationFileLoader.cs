@@ -74,15 +74,6 @@ internal static class SpecificationFileLoader
         return (value, offset);
     }
 
-    public static (Unknown<int> value, int offset) LoadUnknownInt(byte[] decompressedFile, int offset, int tableRecordLength)
-    {
-        var columnOffset = GetColumnOffset(offset, tableRecordLength);
-        (var value, offset) = LoadInt(decompressedFile, offset);
-        var unknown = new Unknown<int>(value, columnOffset);
-
-        return (unknown, offset);
-    }
-
     public static (long value, int offset) LoadLong(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -190,15 +181,6 @@ internal static class SpecificationFileLoader
         (var value, offset) = BitConverterExtended.ToBoolean(decompressedFile, offset);
 
         return (value, offset);
-    }
-
-    public static (Unknown<bool> value, int offset) LoadUnknownBoolean(byte[] decompressedFile, int offset, int tableRecordLength)
-    {
-        var columnOffset = GetColumnOffset(offset, tableRecordLength);
-        (var value, offset) = LoadBoolean(decompressedFile, offset);
-        var unknown = new Unknown<bool>(value, columnOffset);
-
-        return (unknown, offset);
     }
 
     /// <summary>
