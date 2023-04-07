@@ -1,4 +1,4 @@
-﻿namespace PoeData;
+﻿namespace PoeData.Decompression;
 
 /// <summary>
 /// Encode types used by ooz.

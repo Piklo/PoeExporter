@@ -1,4 +1,4 @@
-﻿namespace PoeData;
+﻿namespace PoeData.Decompression;
 
 /// <summary>
 /// Class containing Path of Exile decompressed data.

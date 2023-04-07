@@ -2,7 +2,7 @@
 using Serilog;
 using System.Diagnostics;
 
-namespace PoeData;
+namespace PoeData.Decompression;
 
 /// <summary>
 /// Class used to decompress Bundles2\_.index.bin data.
