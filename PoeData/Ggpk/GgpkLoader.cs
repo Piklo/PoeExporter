@@ -11,7 +11,7 @@ internal sealed class GgpkLoader
     private const string FileName = "Content.ggpk";
     private readonly IConfig config;
     private readonly ILogger logger;
-    private readonly string filePath;
+    private readonly string ggpkPath;
     private readonly GgpkRecord ggpkRecord;
     private readonly Dictionary<long, IGgpkTagRecord> records = new();
 
@@ -24,9 +24,9 @@ internal sealed class GgpkLoader
     {
         this.config = config;
         this.logger = logger;
-        filePath = Path.Combine(this.config.PoePath, FileName);
+        ggpkPath = Path.Combine(this.config.PoePath, FileName);
 
-        var ggpkFileStream = File.OpenRead(filePath);
+        var ggpkFileStream = File.OpenRead(ggpkPath);
         var ggpkReader = new BinaryReader(ggpkFileStream);
 
         ggpkRecord = ReadGgpkRecord(ggpkReader);
