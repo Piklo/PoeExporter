@@ -1,4 +1,4 @@
-﻿namespace PoeData;
+﻿namespace PoeData.Steam;
 
 /// <summary>
 /// Class containing file record data.

@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace PoeData;
+namespace PoeData.Steam;
 
 /// <summary>
 /// Class used to load poe data from steam client.

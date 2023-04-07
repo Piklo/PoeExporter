@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace PoeData;
+namespace PoeData.Steam;
 
 /// <summary>
 /// A class containing paths for <see cref="DirectoryRecord"/>.

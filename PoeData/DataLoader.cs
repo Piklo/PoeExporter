@@ -1,4 +1,5 @@
 ﻿using PoeData.Ggpk;
+using PoeData.Steam;
 using Serilog;
 
 namespace PoeData;

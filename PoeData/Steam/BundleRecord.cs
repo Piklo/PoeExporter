@@ -1,4 +1,4 @@
-﻿namespace PoeData;
+﻿namespace PoeData.Steam;
 
 /// <summary>
 /// A class containing bundle record data.
