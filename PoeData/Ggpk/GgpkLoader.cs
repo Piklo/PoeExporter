@@ -17,6 +17,7 @@ internal sealed class GgpkLoader
     private readonly Dictionary<long, FileRecordGgpk> fileRecords = new();
     private readonly Dictionary<long, FreeRecord> freeRecords = new();
     private readonly Dictionary<long, DirectoryRecordGgpk> directoryRecords = new();
+    private readonly DirectoryNode rootDirectoryNode;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GgpkLoader"/> class.
@@ -41,7 +42,64 @@ internal sealed class GgpkLoader
             records.Add(record.Offset, record);
         }
 
+        rootDirectoryNode = BuildRootDirectory();
+
+        var nodes = new Queue<(DirectoryNode parent, DirectoryRecordEntry child)>();
+
+        if (rootDirectoryNode.Record.TryPickT0(out var directoryRecordGgpk, out _))
+        {
+            foreach (var entry in directoryRecordGgpk.Entries)
+            {
+                nodes.Enqueue((rootDirectoryNode, entry));
+            }
+        }
+
+        while (nodes.Count != 0)
+        {
+            var entry = nodes.Dequeue();
+            var offset = entry.child.Offset;
+
+            if (directoryRecords.TryGetValue(offset, out var directoryRecord))
+            {
+                var node = new DirectoryNode() { Parent = entry.parent, Record = directoryRecord };
+
+                entry.parent.Children.Add(node);
+
+                foreach (var recordEntry in directoryRecord.Entries)
+                {
+                    nodes.Enqueue((node, recordEntry));
+                }
+            }
+            else if (fileRecords.TryGetValue(offset, out var fileRecord))
+            {
+                var node = new DirectoryNode() { Parent = entry.parent, Record = fileRecord };
+
+                entry.parent.Children.Add(node);
+            }
+            else
+            {
+                logger.Error("unknown record type");
+                throw new NotImplementedException();
+            }
+        }
+
         this.logger.Verbose("created {count} records", records.Count);
+    }
+
+
+    private DirectoryNode BuildRootDirectory()
+    {
+        foreach (var offset in ggpkRecord.Offsets)
+        {
+            if (records.TryGetValue(offset, out var record) && record is DirectoryRecordGgpk directoryRecord)
+            {
+                var root = new DirectoryNode() { Parent = null, Record = directoryRecord };
+                return root;
+            }
+        }
+
+        logger.Error("{ggpkRecord} doesnt contain a directory record", nameof(ggpkRecord));
+        throw new NotImplementedException();
     }
 
     private static int GetLength(BinaryReader ggpkReader)
