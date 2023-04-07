@@ -5,9 +5,9 @@ using System.Text;
 namespace PoeData;
 
 /// <summary>
-/// Class used to load poe data.
+/// Class used to load poe data from steam client.
 /// </summary>
-internal sealed class DataLoader : IDataLoader
+internal sealed class SteamDataLoader : IDataLoader
 {
     private readonly DataDecompressor decompressor;
     private readonly ILogger logger;
@@ -19,11 +19,11 @@ internal sealed class DataLoader : IDataLoader
     private readonly Dictionary<ulong, DirectoryRecordWithPaths> directoryRecordsWithPaths;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="DataLoader"/> class.
+    /// Initializes a new instance of the <see cref="SteamDataLoader"/> class.
     /// </summary>
     /// <param name="config">Contains config data.</param>
     /// <param name="logger">Contains logger used through the application.</param>
-    public DataLoader(IConfig config, ILogger logger)
+    public SteamDataLoader(IConfig config, ILogger logger)
     {
         if (config is null)
         {
