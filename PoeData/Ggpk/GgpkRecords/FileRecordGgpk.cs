@@ -5,7 +5,7 @@ namespace PoeData.Ggpk.GgpkRecords;
 /// <summary>
 /// Class containing file record data.
 /// </summary>
-internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRecordGgpk>
+internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRecordGgpk>, INamedGgpkTagRecord
 {
     /// <inheritdoc/>
     public required int Length { get; init; }
@@ -13,7 +13,7 @@ internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRe
     /// <inheritdoc/>
     public required long Offset { get; init; }
 
-    /// <summary>Gets file name.</summary>
+    /// <inheritdoc/>
     public required string Name { get; init; }
 
     /// <summary>Gets file hash.</summary>

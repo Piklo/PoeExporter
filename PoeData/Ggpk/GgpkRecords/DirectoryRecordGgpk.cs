@@ -5,7 +5,7 @@ namespace PoeData.Ggpk.GgpkRecords;
 /// <summary>
 /// Class containing directory record data.
 /// </summary>
-internal sealed class DirectoryRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<DirectoryRecordGgpk>
+internal sealed class DirectoryRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<DirectoryRecordGgpk>, INamedGgpkTagRecord
 {
     /// <inheritdoc/>
     public required int Length { get; init; }
@@ -13,7 +13,7 @@ internal sealed class DirectoryRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<D
     /// <inheritdoc/>
     public required long Offset { get; init; }
 
-    /// <summary>Gets directory name.</summary>
+    /// <inheritdoc/>
     public required string Name { get; init; }
 
     /// <summary>Gets directory hash.</summary>
