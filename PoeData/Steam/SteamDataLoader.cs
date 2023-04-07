@@ -9,7 +9,6 @@ namespace PoeData.Steam;
 /// </summary>
 internal sealed class SteamDataLoader : IDataLoader
 {
-    private const string IndexPath = "Bundles2\\_.index.bin";
     private readonly DataDecompressor decompressor;
     private readonly ILogger logger;
     private readonly IConfig config;
@@ -70,7 +69,7 @@ internal sealed class SteamDataLoader : IDataLoader
     /// <returns>bytes from the index file.</returns>
     private byte[] ReadIndex()
     {
-        var combinedPath = Path.Combine(config.PoePath, IndexPath);
+        var combinedPath = Path.Combine(config.PoePath, DataLoader.IndexPath);
 
         var bytes = File.ReadAllBytes(combinedPath);
 

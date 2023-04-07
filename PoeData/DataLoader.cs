@@ -13,6 +13,9 @@ internal sealed class DataLoader : IDataLoader
     private readonly IConfig config;
     private readonly IDataLoader dataLoader;
 
+    /// <summary>path to index file.</summary>
+    internal const string IndexPath = "Bundles2\\_.index.bin";
+
     /// <summary>
     /// Initializes a new instance of the <see cref="DataLoader"/> class.
     /// </summary>
