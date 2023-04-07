@@ -81,7 +81,7 @@ internal sealed class DatFileGenerator
                 using System.Collections.ObjectModel;
                 using System.Text;
 
-                namespace PoeData.Specifications.Dat;
+                namespace PoeData.Specifications.DatFiles;
 
                 /// <summary>
                 /// Class containing {{datFileName}} data.

@@ -41,7 +41,7 @@ internal class SpecificationFileGenerator
                 // the generated class is partial, please extend it in another file
                 #nullable enable
 
-                using PoeData.Specifications.Dat;
+                using PoeData.Specifications.DatFiles;
                 using Serilog;
                 using System.Collections.ObjectModel;
 
@@ -102,7 +102,7 @@ internal class SpecificationFileGenerator
                     /// Gets {{className}} data.
                     /// </summary>
                     /// <returns>readonly collection of {{className}}.</returns>
-                    public ReadOnlyCollection<{{className}}> Get{{className}}()
+                    public ReadOnlyCollection<{{className}}> Load{{className}}()
                     {
                         return {{className}}.Load(dataLoader).AsReadOnly();
                     }

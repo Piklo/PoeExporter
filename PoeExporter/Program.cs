@@ -1,5 +1,4 @@
-﻿using MediaWiki;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using PoeData;
 using PoeData.Specifications;
 using Serilog;
@@ -32,24 +31,33 @@ internal sealed class Program
             .WriteTo.Console()
             .CreateLogger();
 
-        using var client = new WikiClient("https://www.poewiki.net/w/api.php", logger);
-        await client.GetPageContent("Module:Blight/blight crafting recipes").ConfigureAwait(true);
-
-        return;
+        //using var client = new WikiClient("https://www.poewiki.net/w/api.php", logger);
+        //await client.GetPageContent("Module:Blight/blight crafting recipes").ConfigureAwait(true);
 
         var specification = new Specification(parsedConfig, logger);
 
-        var recipes = specification.GetBlightCraftingRecipesDat();
-        var craftingItems = specification.GetBlightCraftingItemsDat();
-        var baseItems = specification.GetBaseItemTypesDat();
+        //var abyss = specification.GetAbyssObjectsDat();
 
-        //var serialized = JsonSerializer.Serialize(recipes[0], new JsonSerializerOptions()
+
+        //var serialized = System.Text.Json.JsonSerializer.Serialize(abyss[^1], new System.Text.Json.JsonSerializerOptions()
         //{
         //    WriteIndented = true,
-        //    Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        //    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
         //});
 
         //logger.Verbose(serialized);
+
+        var recipes = specification.LoadBlightCraftingRecipesDat();
+        var craftingItems = specification.LoadBlightCraftingItemsDat();
+        var baseItems = specification.LoadBaseItemTypesDat();
+
+        var serialized = System.Text.Json.JsonSerializer.Serialize(recipes[0], new System.Text.Json.JsonSerializerOptions()
+        {
+            WriteIndented = true,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        });
+
+        logger.Verbose(serialized);
 
         var results = new List<BlightCraftingRecipesItems>();
         foreach (var recipe in recipes)

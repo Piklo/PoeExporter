@@ -67,7 +67,7 @@ internal sealed class Generator
     private void GenerateSpecification(Schema schema)
     {
         var solutionDir = Path.GetFullPath("../../../../");
-        var datFilesDir = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications\\Dat"));
+        var datFilesDir = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications\\DatFiles"));
         var specificationDirectory = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications"));
 
         var files = datFilesDir.GetFiles();
