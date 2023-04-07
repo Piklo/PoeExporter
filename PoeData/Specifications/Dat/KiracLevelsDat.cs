@@ -19,16 +19,20 @@ public sealed partial class KiracLevelsDat
     /// <summary> Gets Unknown4.</summary>
     public required int Unknown4 { get; init; }
 
-    /// <inheritdoc/>
-    public static KiracLevelsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets KiracLevelsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of KiracLevelsDat.</returns>
+    internal static KiracLevelsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/KiracLevels.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

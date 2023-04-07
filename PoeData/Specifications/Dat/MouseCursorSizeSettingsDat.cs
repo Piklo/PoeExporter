@@ -22,16 +22,20 @@ public sealed partial class MouseCursorSizeSettingsDat
     /// <summary> Gets Ratio.</summary>
     public required float Ratio { get; init; }
 
-    /// <inheritdoc/>
-    public static MouseCursorSizeSettingsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MouseCursorSizeSettingsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MouseCursorSizeSettingsDat.</returns>
+    internal static MouseCursorSizeSettingsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MouseCursorSizeSettings.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

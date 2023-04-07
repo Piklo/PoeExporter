@@ -62,16 +62,20 @@ public sealed partial class AtlasPrimordialBossesDat
     /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? AltarActivated { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasPrimordialBossesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasPrimordialBossesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasPrimordialBossesDat.</returns>
+    internal static AtlasPrimordialBossesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasPrimordialBosses.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

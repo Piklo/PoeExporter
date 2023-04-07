@@ -35,16 +35,20 @@ public sealed partial class UltimatumTrialMasterAudioDat
     /// <summary> Gets RoundsMax.</summary>
     public required int RoundsMax { get; init; }
 
-    /// <inheritdoc/>
-    public static UltimatumTrialMasterAudioDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UltimatumTrialMasterAudioDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UltimatumTrialMasterAudioDat.</returns>
+    internal static UltimatumTrialMasterAudioDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UltimatumTrialMasterAudio.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

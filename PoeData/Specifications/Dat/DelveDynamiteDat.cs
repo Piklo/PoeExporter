@@ -55,16 +55,20 @@ public sealed partial class DelveDynamiteDat
     /// <summary> Gets Unknown96.</summary>
     public required int Unknown96 { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveDynamiteDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveDynamiteDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveDynamiteDat.</returns>
+    internal static DelveDynamiteDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveDynamite.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -97,16 +97,20 @@ public sealed partial class UltimatumModifiersDat
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? UniqueMapMod { get; init; }
 
-    /// <inheritdoc/>
-    public static UltimatumModifiersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UltimatumModifiersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UltimatumModifiersDat.</returns>
+    internal static UltimatumModifiersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UltimatumModifiers.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

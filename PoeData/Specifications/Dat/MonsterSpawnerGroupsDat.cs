@@ -16,16 +16,20 @@ public sealed partial class MonsterSpawnerGroupsDat
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterSpawnerGroupsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterSpawnerGroupsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterSpawnerGroupsDat.</returns>
+    internal static MonsterSpawnerGroupsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterSpawnerGroups.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

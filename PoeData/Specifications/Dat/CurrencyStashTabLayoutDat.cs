@@ -41,16 +41,20 @@ public sealed partial class CurrencyStashTabLayoutDat
     /// <summary> Gets Unknown45.</summary>
     public required int Unknown45 { get; init; }
 
-    /// <inheritdoc/>
-    public static CurrencyStashTabLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CurrencyStashTabLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CurrencyStashTabLayoutDat.</returns>
+    internal static CurrencyStashTabLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CurrencyStashTabLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

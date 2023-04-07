@@ -22,16 +22,20 @@ public sealed partial class MapTiersDat
     /// <summary> Gets Level2.</summary>
     public required int Level2 { get; init; }
 
-    /// <inheritdoc/>
-    public static MapTiersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MapTiersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MapTiersDat.</returns>
+    internal static MapTiersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MapTiers.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

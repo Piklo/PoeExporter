@@ -59,16 +59,20 @@ public sealed partial class ItemVisualHeldBodyModelDat
     /// <summary> Gets ScionBone.</summary>
     public required string ScionBone { get; init; }
 
-    /// <inheritdoc/>
-    public static ItemVisualHeldBodyModelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ItemVisualHeldBodyModelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ItemVisualHeldBodyModelDat.</returns>
+    internal static ItemVisualHeldBodyModelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ItemVisualHeldBodyModel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

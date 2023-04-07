@@ -23,16 +23,20 @@ public sealed partial class MicrotransactionSlotDat
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
-    /// <inheritdoc/>
-    public static MicrotransactionSlotDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MicrotransactionSlotDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MicrotransactionSlotDat.</returns>
+    internal static MicrotransactionSlotDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MicrotransactionSlot.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -24,16 +24,20 @@ public sealed partial class FixedHideoutDoodadTypesDat
     /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.GetHideoutDoodadsDat"/> index.</remarks>
     public required int? BaseTypeHideoutDoodadsKey { get; init; }
 
-    /// <inheritdoc/>
-    public static FixedHideoutDoodadTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets FixedHideoutDoodadTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of FixedHideoutDoodadTypesDat.</returns>
+    internal static FixedHideoutDoodadTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/FixedHideoutDoodadTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

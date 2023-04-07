@@ -61,16 +61,20 @@ public sealed partial class BloodTypesDat
     /// <summary> Gets Unknown232.</summary>
     public required int? Unknown232 { get; init; }
 
-    /// <inheritdoc/>
-    public static BloodTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BloodTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BloodTypesDat.</returns>
+    internal static BloodTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BloodTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

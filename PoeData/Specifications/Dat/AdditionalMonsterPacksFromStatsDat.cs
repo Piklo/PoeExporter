@@ -41,16 +41,20 @@ public sealed partial class AdditionalMonsterPacksFromStatsDat
     /// <summary> Gets Unknown88.</summary>
     public required int Unknown88 { get; init; }
 
-    /// <inheritdoc/>
-    public static AdditionalMonsterPacksFromStatsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AdditionalMonsterPacksFromStatsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AdditionalMonsterPacksFromStatsDat.</returns>
+    internal static AdditionalMonsterPacksFromStatsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AdditionalMonsterPacksFromStats.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

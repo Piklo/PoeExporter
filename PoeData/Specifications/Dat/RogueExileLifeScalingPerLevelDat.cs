@@ -19,16 +19,20 @@ public sealed partial class RogueExileLifeScalingPerLevelDat
     /// <summary> Gets AdditionalLife.</summary>
     public required int AdditionalLife { get; init; }
 
-    /// <inheritdoc/>
-    public static RogueExileLifeScalingPerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RogueExileLifeScalingPerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RogueExileLifeScalingPerLevelDat.</returns>
+    internal static RogueExileLifeScalingPerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/RogueExileLifeScalingPerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

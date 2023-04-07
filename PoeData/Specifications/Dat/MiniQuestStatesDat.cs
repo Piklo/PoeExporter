@@ -25,16 +25,20 @@ public sealed partial class MiniQuestStatesDat
     /// <summary> Gets Unknown36.</summary>
     public required int Unknown36 { get; init; }
 
-    /// <inheritdoc/>
-    public static MiniQuestStatesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MiniQuestStatesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MiniQuestStatesDat.</returns>
+    internal static MiniQuestStatesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MiniQuestStates.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

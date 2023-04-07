@@ -30,16 +30,20 @@ public sealed partial class MonsterHeightsDat
     /// <summary> Gets Unknown40.</summary>
     public required int Unknown40 { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterHeightsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterHeightsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterHeightsDat.</returns>
+    internal static MonsterHeightsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterHeights.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -23,16 +23,20 @@ public sealed partial class SurgeTypesDat
     /// <summary> Gets IntId.</summary>
     public required int IntId { get; init; }
 
-    /// <inheritdoc/>
-    public static SurgeTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SurgeTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SurgeTypesDat.</returns>
+    internal static SurgeTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SurgeTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

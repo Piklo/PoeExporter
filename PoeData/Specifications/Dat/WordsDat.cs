@@ -36,16 +36,20 @@ public sealed partial class WordsDat
     /// <summary> Gets Inflection.</summary>
     public required string Inflection { get; init; }
 
-    /// <inheritdoc/>
-    public static WordsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets WordsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of WordsDat.</returns>
+    internal static WordsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Words.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

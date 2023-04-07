@@ -19,16 +19,20 @@ public sealed partial class LakeMetaOptionsDat
     /// <summary> Gets Unknown8.</summary>
     public required ReadOnlyCollection<int> Unknown8 { get; init; }
 
-    /// <inheritdoc/>
-    public static LakeMetaOptionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LakeMetaOptionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LakeMetaOptionsDat.</returns>
+    internal static LakeMetaOptionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LakeMetaOptions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

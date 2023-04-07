@@ -79,16 +79,20 @@ public sealed partial class GeometryProjectilesDat
     /// <summary> Gets Unknown96.</summary>
     public required int Unknown96 { get; init; }
 
-    /// <inheritdoc/>
-    public static GeometryProjectilesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GeometryProjectilesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GeometryProjectilesDat.</returns>
+    internal static GeometryProjectilesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GeometryProjectiles.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -29,16 +29,20 @@ public sealed partial class DelveAzuriteShopDat
     /// <summary> Gets a value indicating whether IsEnabled is set.</summary>
     public required bool IsEnabled { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveAzuriteShopDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveAzuriteShopDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveAzuriteShopDat.</returns>
+    internal static DelveAzuriteShopDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveAzuriteShop.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -26,16 +26,20 @@ public sealed partial class MicroMigrationDataDat
     /// <summary> Gets Unknown36.</summary>
     public required int? Unknown36 { get; init; }
 
-    /// <inheritdoc/>
-    public static MicroMigrationDataDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MicroMigrationDataDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MicroMigrationDataDat.</returns>
+    internal static MicroMigrationDataDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MicroMigrationData.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

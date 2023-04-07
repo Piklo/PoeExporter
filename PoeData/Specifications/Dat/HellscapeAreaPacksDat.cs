@@ -27,16 +27,20 @@ public sealed partial class HellscapeAreaPacksDat
     /// <summary> Gets Unknown36.</summary>
     public required int Unknown36 { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeAreaPacksDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeAreaPacksDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeAreaPacksDat.</returns>
+    internal static HellscapeAreaPacksDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeAreaPacks.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -76,16 +76,20 @@ public sealed partial class DescentRewardChestsDat
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BaseItemTypesKeys14 { get; init; }
 
-    /// <inheritdoc/>
-    public static DescentRewardChestsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DescentRewardChestsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DescentRewardChestsDat.</returns>
+    internal static DescentRewardChestsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DescentRewardChests.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

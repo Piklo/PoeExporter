@@ -17,16 +17,20 @@ public sealed partial class HellscapeImmuneMonstersDat
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Monster { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeImmuneMonstersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeImmuneMonstersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeImmuneMonstersDat.</returns>
+    internal static HellscapeImmuneMonstersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeImmuneMonsters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

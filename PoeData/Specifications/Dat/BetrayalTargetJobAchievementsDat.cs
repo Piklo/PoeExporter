@@ -25,16 +25,20 @@ public sealed partial class BetrayalTargetJobAchievementsDat
     /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
-    /// <inheritdoc/>
-    public static BetrayalTargetJobAchievementsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BetrayalTargetJobAchievementsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BetrayalTargetJobAchievementsDat.</returns>
+    internal static BetrayalTargetJobAchievementsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BetrayalTargetJobAchievements.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -49,16 +49,20 @@ public sealed partial class HellscapeModificationInventoryLayoutDat
     /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? Quest { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeModificationInventoryLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeModificationInventoryLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeModificationInventoryLayoutDat.</returns>
+    internal static HellscapeModificationInventoryLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeModificationInventoryLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

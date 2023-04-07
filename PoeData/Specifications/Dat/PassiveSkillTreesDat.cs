@@ -72,16 +72,20 @@ public sealed partial class PassiveSkillTreesDat
     /// <remarks> references <see cref="PassiveSkillTreeUIArtDat"/> on <see cref="Specification.GetPassiveSkillTreeUIArtDat"/> index.</remarks>
     public required int? UIArt { get; init; }
 
-    /// <inheritdoc/>
-    public static PassiveSkillTreesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PassiveSkillTreesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PassiveSkillTreesDat.</returns>
+    internal static PassiveSkillTreesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PassiveSkillTrees.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

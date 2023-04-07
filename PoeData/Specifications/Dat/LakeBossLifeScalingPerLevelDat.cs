@@ -19,16 +19,20 @@ public sealed partial class LakeBossLifeScalingPerLevelDat
     /// <summary> Gets Scaling.</summary>
     public required int Scaling { get; init; }
 
-    /// <inheritdoc/>
-    public static LakeBossLifeScalingPerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LakeBossLifeScalingPerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LakeBossLifeScalingPerLevelDat.</returns>
+    internal static LakeBossLifeScalingPerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LakeBossLifeScalingPerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

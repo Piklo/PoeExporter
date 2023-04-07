@@ -62,16 +62,20 @@ public sealed partial class AchievementsDat
     /// <summary> Gets Unknown52.</summary>
     public required string Unknown52 { get; init; }
 
-    /// <inheritdoc/>
-    public static AchievementsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AchievementsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AchievementsDat.</returns>
+    internal static AchievementsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Achievements.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

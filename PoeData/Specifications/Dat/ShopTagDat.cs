@@ -30,16 +30,20 @@ public sealed partial class ShopTagDat
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SkillGem { get; init; }
 
-    /// <inheritdoc/>
-    public static ShopTagDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ShopTagDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ShopTagDat.</returns>
+    internal static ShopTagDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ShopTag.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

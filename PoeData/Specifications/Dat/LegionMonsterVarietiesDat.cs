@@ -69,16 +69,20 @@ public sealed partial class LegionMonsterVarietiesDat
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey2 { get; init; }
 
-    /// <inheritdoc/>
-    public static LegionMonsterVarietiesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LegionMonsterVarietiesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LegionMonsterVarietiesDat.</returns>
+    internal static LegionMonsterVarietiesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LegionMonsterVarieties.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

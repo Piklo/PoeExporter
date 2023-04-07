@@ -60,16 +60,20 @@ public sealed partial class MicrotransactionPortalVariationsDat
     /// <summary> Gets Unknown112.</summary>
     public required int Unknown112 { get; init; }
 
-    /// <inheritdoc/>
-    public static MicrotransactionPortalVariationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MicrotransactionPortalVariationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MicrotransactionPortalVariationsDat.</returns>
+    internal static MicrotransactionPortalVariationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MicrotransactionPortalVariations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

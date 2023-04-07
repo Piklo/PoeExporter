@@ -83,16 +83,20 @@ public sealed partial class HeistBalancePerLevelDat
     /// <summary> Gets Unknown164.</summary>
     public required int Unknown164 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistBalancePerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistBalancePerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistBalancePerLevelDat.</returns>
+    internal static HeistBalancePerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistBalancePerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

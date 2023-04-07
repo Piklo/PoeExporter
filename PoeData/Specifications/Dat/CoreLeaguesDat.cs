@@ -77,16 +77,20 @@ public sealed partial class CoreLeaguesDat
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown177 { get; init; }
 
-    /// <inheritdoc/>
-    public static CoreLeaguesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CoreLeaguesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CoreLeaguesDat.</returns>
+    internal static CoreLeaguesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CoreLeagues.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

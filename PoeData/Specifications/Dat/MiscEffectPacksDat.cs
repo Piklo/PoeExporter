@@ -38,16 +38,20 @@ public sealed partial class MiscEffectPacksDat
     /// <summary> Gets PlayerOnly_EPKFile.</summary>
     public required string PlayerOnly_EPKFile { get; init; }
 
-    /// <inheritdoc/>
-    public static MiscEffectPacksDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MiscEffectPacksDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MiscEffectPacksDat.</returns>
+    internal static MiscEffectPacksDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MiscEffectPacks.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

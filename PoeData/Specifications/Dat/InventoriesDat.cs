@@ -36,16 +36,20 @@ public sealed partial class InventoriesDat
     /// <summary> Gets a value indicating whether Unknown22 is set.</summary>
     public required bool Unknown22 { get; init; }
 
-    /// <inheritdoc/>
-    public static InventoriesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets InventoriesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of InventoriesDat.</returns>
+    internal static InventoriesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Inventories.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

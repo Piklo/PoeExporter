@@ -35,16 +35,20 @@ public sealed partial class JobRaidBracketsDat
     /// <summary> Gets Unknown36.</summary>
     public required int Unknown36 { get; init; }
 
-    /// <inheritdoc/>
-    public static JobRaidBracketsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets JobRaidBracketsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of JobRaidBracketsDat.</returns>
+    internal static JobRaidBracketsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/JobRaidBrackets.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

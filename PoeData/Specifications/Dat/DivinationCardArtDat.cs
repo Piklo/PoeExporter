@@ -23,16 +23,20 @@ public sealed partial class DivinationCardArtDat
     /// <summary> Gets Unknown24.</summary>
     public required ReadOnlyCollection<int> Unknown24 { get; init; }
 
-    /// <inheritdoc/>
-    public static DivinationCardArtDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DivinationCardArtDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DivinationCardArtDat.</returns>
+    internal static DivinationCardArtDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DivinationCardArt.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

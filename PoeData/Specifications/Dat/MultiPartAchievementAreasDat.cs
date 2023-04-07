@@ -22,16 +22,20 @@ public sealed partial class MultiPartAchievementAreasDat
     /// <summary> Gets Unknown32.</summary>
     public required int Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static MultiPartAchievementAreasDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MultiPartAchievementAreasDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MultiPartAchievementAreasDat.</returns>
+    internal static MultiPartAchievementAreasDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MultiPartAchievementAreas.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

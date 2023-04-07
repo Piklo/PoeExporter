@@ -28,16 +28,20 @@ public sealed partial class DamageHitEffectsDat
     /// <summary> Gets Unknown28.</summary>
     public required int? Unknown28 { get; init; }
 
-    /// <inheritdoc/>
-    public static DamageHitEffectsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DamageHitEffectsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DamageHitEffectsDat.</returns>
+    internal static DamageHitEffectsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DamageHitEffects.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

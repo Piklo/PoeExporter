@@ -31,16 +31,20 @@ public sealed partial class WeaponImpactSoundDataDat
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
-    /// <inheritdoc/>
-    public static WeaponImpactSoundDataDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets WeaponImpactSoundDataDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of WeaponImpactSoundDataDat.</returns>
+    internal static WeaponImpactSoundDataDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/WeaponImpactSoundData.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -50,16 +50,20 @@ public sealed partial class FragmentStashTabLayoutDat
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> FragmentItems { get; init; }
 
-    /// <inheritdoc/>
-    public static FragmentStashTabLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets FragmentStashTabLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of FragmentStashTabLayoutDat.</returns>
+    internal static FragmentStashTabLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/FragmentStashTabLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

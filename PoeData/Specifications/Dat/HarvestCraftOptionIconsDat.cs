@@ -19,16 +19,20 @@ public sealed partial class HarvestCraftOptionIconsDat
     /// <summary> Gets DDSFile.</summary>
     public required string DDSFile { get; init; }
 
-    /// <inheritdoc/>
-    public static HarvestCraftOptionIconsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HarvestCraftOptionIconsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HarvestCraftOptionIconsDat.</returns>
+    internal static HarvestCraftOptionIconsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HarvestCraftOptionIcons.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

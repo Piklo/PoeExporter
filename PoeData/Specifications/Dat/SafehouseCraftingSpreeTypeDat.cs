@@ -32,16 +32,20 @@ public sealed partial class SafehouseCraftingSpreeTypeDat
     /// <summary> Gets ItemClassText.</summary>
     public required string ItemClassText { get; init; }
 
-    /// <inheritdoc/>
-    public static SafehouseCraftingSpreeTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SafehouseCraftingSpreeTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SafehouseCraftingSpreeTypeDat.</returns>
+    internal static SafehouseCraftingSpreeTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SafehouseCraftingSpreeType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

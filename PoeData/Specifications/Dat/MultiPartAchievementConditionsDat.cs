@@ -30,16 +30,20 @@ public sealed partial class MultiPartAchievementConditionsDat
     /// <summary> Gets Unknown44.</summary>
     public required int Unknown44 { get; init; }
 
-    /// <inheritdoc/>
-    public static MultiPartAchievementConditionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MultiPartAchievementConditionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MultiPartAchievementConditionsDat.</returns>
+    internal static MultiPartAchievementConditionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MultiPartAchievementConditions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

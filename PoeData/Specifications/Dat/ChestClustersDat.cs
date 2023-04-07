@@ -32,16 +32,20 @@ public sealed partial class ChestClustersDat
     /// <summary> Gets Unknown48.</summary>
     public required int Unknown48 { get; init; }
 
-    /// <inheritdoc/>
-    public static ChestClustersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ChestClustersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ChestClustersDat.</returns>
+    internal static ChestClustersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ChestClusters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

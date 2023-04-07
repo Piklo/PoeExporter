@@ -73,16 +73,20 @@ public sealed partial class QuestRewardsDat
     /// <summary> Gets Unknown166.</summary>
     public required int Unknown166 { get; init; }
 
-    /// <inheritdoc/>
-    public static QuestRewardsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets QuestRewardsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of QuestRewardsDat.</returns>
+    internal static QuestRewardsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/QuestRewards.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

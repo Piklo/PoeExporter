@@ -81,16 +81,20 @@ public sealed partial class ShrinesDat
     /// <summary> Gets a value indicating whether Unknown161 is set.</summary>
     public required bool Unknown161 { get; init; }
 
-    /// <inheritdoc/>
-    public static ShrinesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ShrinesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ShrinesDat.</returns>
+    internal static ShrinesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Shrines.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

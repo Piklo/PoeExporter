@@ -46,16 +46,20 @@ public sealed partial class WarbandsPackNumbersDat
     /// <summary> Gets Tier1Number.</summary>
     public required int Tier1Number { get; init; }
 
-    /// <inheritdoc/>
-    public static WarbandsPackNumbersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets WarbandsPackNumbersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of WarbandsPackNumbersDat.</returns>
+    internal static WarbandsPackNumbersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/WarbandsPackNumbers.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -19,16 +19,20 @@ public sealed partial class SpecialRoomsDat
     /// <summary> Gets ARMFile.</summary>
     public required string ARMFile { get; init; }
 
-    /// <inheritdoc/>
-    public static SpecialRoomsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SpecialRoomsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SpecialRoomsDat.</returns>
+    internal static SpecialRoomsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SpecialRooms.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

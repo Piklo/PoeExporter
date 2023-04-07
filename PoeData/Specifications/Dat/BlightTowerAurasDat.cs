@@ -27,16 +27,20 @@ public sealed partial class BlightTowerAurasDat
     /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightTowerAurasDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightTowerAurasDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightTowerAurasDat.</returns>
+    internal static BlightTowerAurasDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightTowerAuras.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

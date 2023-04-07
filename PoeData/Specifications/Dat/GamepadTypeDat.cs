@@ -22,16 +22,20 @@ public sealed partial class GamepadTypeDat
     /// <summary> Gets ImageFile.</summary>
     public required string ImageFile { get; init; }
 
-    /// <inheritdoc/>
-    public static GamepadTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GamepadTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GamepadTypeDat.</returns>
+    internal static GamepadTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GamepadType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

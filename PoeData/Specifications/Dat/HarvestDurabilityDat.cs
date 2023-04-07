@@ -20,16 +20,20 @@ public sealed partial class HarvestDurabilityDat
     /// <summary> Gets Durability.</summary>
     public required int Durability { get; init; }
 
-    /// <inheritdoc/>
-    public static HarvestDurabilityDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HarvestDurabilityDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HarvestDurabilityDat.</returns>
+    internal static HarvestDurabilityDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HarvestDurability.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

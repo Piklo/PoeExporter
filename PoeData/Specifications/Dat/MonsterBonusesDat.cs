@@ -32,16 +32,20 @@ public sealed partial class MonsterBonusesDat
     /// <summary> Gets StatValues.</summary>
     public required ReadOnlyCollection<int> StatValues { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterBonusesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterBonusesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterBonusesDat.</returns>
+    internal static MonsterBonusesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterBonuses.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -44,16 +44,20 @@ public sealed partial class DroneBaseTypesDat
     /// <summary> Gets a value indicating whether Unknown80 is set.</summary>
     public required bool Unknown80 { get; init; }
 
-    /// <inheritdoc/>
-    public static DroneBaseTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DroneBaseTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DroneBaseTypesDat.</returns>
+    internal static DroneBaseTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DroneBaseTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -31,16 +31,20 @@ public sealed partial class FootprintsDat
     /// <summary> Gets Unknown72.</summary>
     public required int Unknown72 { get; init; }
 
-    /// <inheritdoc/>
-    public static FootprintsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets FootprintsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of FootprintsDat.</returns>
+    internal static FootprintsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Footprints.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

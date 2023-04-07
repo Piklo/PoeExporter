@@ -20,16 +20,20 @@ public sealed partial class MicrotransactionCategoryDat
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
-    /// <inheritdoc/>
-    public static MicrotransactionCategoryDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MicrotransactionCategoryDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MicrotransactionCategoryDat.</returns>
+    internal static MicrotransactionCategoryDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MicrotransactionCategory.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -16,16 +16,20 @@ public sealed partial class ShopRegionDat
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
 
-    /// <inheritdoc/>
-    public static ShopRegionDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ShopRegionDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ShopRegionDat.</returns>
+    internal static ShopRegionDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ShopRegion.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

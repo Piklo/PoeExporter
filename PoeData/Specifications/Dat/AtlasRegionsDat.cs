@@ -57,16 +57,20 @@ public sealed partial class AtlasRegionsDat
     /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? Quest { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasRegionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasRegionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasRegionsDat.</returns>
+    internal static AtlasRegionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasRegions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

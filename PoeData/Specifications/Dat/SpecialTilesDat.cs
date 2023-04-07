@@ -19,16 +19,20 @@ public sealed partial class SpecialTilesDat
     /// <summary> Gets TDTFile.</summary>
     public required string TDTFile { get; init; }
 
-    /// <inheritdoc/>
-    public static SpecialTilesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SpecialTilesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SpecialTilesDat.</returns>
+    internal static SpecialTilesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SpecialTiles.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

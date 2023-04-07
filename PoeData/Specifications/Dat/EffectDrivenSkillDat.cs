@@ -100,16 +100,20 @@ public sealed partial class EffectDrivenSkillDat
     /// <summary> Gets Unknown115.</summary>
     public required int Unknown115 { get; init; }
 
-    /// <inheritdoc/>
-    public static EffectDrivenSkillDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets EffectDrivenSkillDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of EffectDrivenSkillDat.</returns>
+    internal static EffectDrivenSkillDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/EffectDrivenSkill.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

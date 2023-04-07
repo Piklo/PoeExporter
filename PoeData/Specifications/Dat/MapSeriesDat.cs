@@ -40,16 +40,20 @@ public sealed partial class MapSeriesDat
     /// <summary> Gets UberBlight_DDSFile.</summary>
     public required string UberBlight_DDSFile { get; init; }
 
-    /// <inheritdoc/>
-    public static MapSeriesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MapSeriesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MapSeriesDat.</returns>
+    internal static MapSeriesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MapSeries.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -80,16 +80,20 @@ public sealed partial class NPCDialogueStylesDat
     /// <summary> Gets Unknown172.</summary>
     public required int Unknown172 { get; init; }
 
-    /// <inheritdoc/>
-    public static NPCDialogueStylesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets NPCDialogueStylesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of NPCDialogueStylesDat.</returns>
+    internal static NPCDialogueStylesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/NPCDialogueStyles.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

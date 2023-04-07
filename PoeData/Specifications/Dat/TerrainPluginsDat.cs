@@ -25,16 +25,20 @@ public sealed partial class TerrainPluginsDat
     /// <summary> Gets a value indicating whether Unknown13 is set.</summary>
     public required bool Unknown13 { get; init; }
 
-    /// <inheritdoc/>
-    public static TerrainPluginsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets TerrainPluginsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of TerrainPluginsDat.</returns>
+    internal static TerrainPluginsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/TerrainPlugins.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

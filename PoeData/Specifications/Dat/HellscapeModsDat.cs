@@ -28,16 +28,20 @@ public sealed partial class HellscapeModsDat
     /// <remarks> references <see cref="ModFamilyDat"/> on <see cref="Specification.GetModFamilyDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModFamilies { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeModsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeModsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeModsDat.</returns>
+    internal static HellscapeModsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeMods.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -25,16 +25,20 @@ public sealed partial class InfluenceTagsDat
     /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? Tag { get; init; }
 
-    /// <inheritdoc/>
-    public static InfluenceTagsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets InfluenceTagsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of InfluenceTagsDat.</returns>
+    internal static InfluenceTagsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/InfluenceTags.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

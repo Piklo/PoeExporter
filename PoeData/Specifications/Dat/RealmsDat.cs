@@ -48,16 +48,20 @@ public sealed partial class RealmsDat
     /// <summary> Gets SpeedtestUrl.</summary>
     public required ReadOnlyCollection<string> SpeedtestUrl { get; init; }
 
-    /// <inheritdoc/>
-    public static RealmsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RealmsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RealmsDat.</returns>
+    internal static RealmsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Realms.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -36,16 +36,20 @@ public sealed partial class EclipseModsDat
     /// <summary> Gets a value indicating whether IsPrefix is set.</summary>
     public required bool IsPrefix { get; init; }
 
-    /// <inheritdoc/>
-    public static EclipseModsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets EclipseModsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of EclipseModsDat.</returns>
+    internal static EclipseModsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/EclipseMods.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

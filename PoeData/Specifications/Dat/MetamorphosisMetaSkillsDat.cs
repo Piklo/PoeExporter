@@ -104,16 +104,20 @@ public sealed partial class MetamorphosisMetaSkillsDat
     /// <summary> Gets a value indicating whether Unknown348 is set.</summary>
     public required bool Unknown348 { get; init; }
 
-    /// <inheritdoc/>
-    public static MetamorphosisMetaSkillsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MetamorphosisMetaSkillsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MetamorphosisMetaSkillsDat.</returns>
+    internal static MetamorphosisMetaSkillsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MetamorphosisMetaSkills.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

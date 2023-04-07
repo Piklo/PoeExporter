@@ -26,16 +26,20 @@ public sealed partial class MysteryBoxesDat
     /// <summary> Gets BundleId.</summary>
     public required string BundleId { get; init; }
 
-    /// <inheritdoc/>
-    public static MysteryBoxesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MysteryBoxesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MysteryBoxesDat.</returns>
+    internal static MysteryBoxesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MysteryBoxes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

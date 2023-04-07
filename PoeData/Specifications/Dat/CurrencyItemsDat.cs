@@ -102,16 +102,20 @@ public sealed partial class CurrencyItemsDat
     /// <summary> Gets a value indicating whether IsGold is set.</summary>
     public required bool IsGold { get; init; }
 
-    /// <inheritdoc/>
-    public static CurrencyItemsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CurrencyItemsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CurrencyItemsDat.</returns>
+    internal static CurrencyItemsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CurrencyItems.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

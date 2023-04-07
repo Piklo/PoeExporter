@@ -25,16 +25,20 @@ public sealed partial class TagsDat
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
-    /// <inheritdoc/>
-    public static TagsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets TagsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of TagsDat.</returns>
+    internal static TagsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Tags.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

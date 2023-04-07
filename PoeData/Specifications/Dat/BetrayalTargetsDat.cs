@@ -73,16 +73,20 @@ public sealed partial class BetrayalTargetsDat
     /// <summary> Gets ScriptArgument.</summary>
     public required string ScriptArgument { get; init; }
 
-    /// <inheritdoc/>
-    public static BetrayalTargetsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BetrayalTargetsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BetrayalTargetsDat.</returns>
+    internal static BetrayalTargetsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BetrayalTargets.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

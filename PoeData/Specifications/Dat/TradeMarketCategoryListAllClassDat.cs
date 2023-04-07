@@ -21,16 +21,20 @@ public sealed partial class TradeMarketCategoryListAllClassDat
     /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
-    /// <inheritdoc/>
-    public static TradeMarketCategoryListAllClassDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets TradeMarketCategoryListAllClassDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of TradeMarketCategoryListAllClassDat.</returns>
+    internal static TradeMarketCategoryListAllClassDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/TradeMarketCategoryListAllClass.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

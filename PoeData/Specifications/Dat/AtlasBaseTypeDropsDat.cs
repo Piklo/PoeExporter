@@ -33,16 +33,20 @@ public sealed partial class AtlasBaseTypeDropsDat
     /// <summary> Gets SpawnWeight_Values.</summary>
     public required ReadOnlyCollection<int> SpawnWeight_Values { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasBaseTypeDropsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasBaseTypeDropsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasBaseTypeDropsDat.</returns>
+    internal static AtlasBaseTypeDropsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasBaseTypeDrops.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

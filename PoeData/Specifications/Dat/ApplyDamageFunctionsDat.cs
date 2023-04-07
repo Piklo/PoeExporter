@@ -23,16 +23,20 @@ public sealed partial class ApplyDamageFunctionsDat
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>
     public required bool Unknown24 { get; init; }
 
-    /// <inheritdoc/>
-    public static ApplyDamageFunctionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ApplyDamageFunctionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ApplyDamageFunctionsDat.</returns>
+    internal static ApplyDamageFunctionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ApplyDamageFunctions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

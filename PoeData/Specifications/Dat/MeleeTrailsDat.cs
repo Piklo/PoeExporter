@@ -37,16 +37,20 @@ public sealed partial class MeleeTrailsDat
     /// <summary> Gets a value indicating whether Unknown37 is set.</summary>
     public required bool Unknown37 { get; init; }
 
-    /// <inheritdoc/>
-    public static MeleeTrailsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MeleeTrailsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MeleeTrailsDat.</returns>
+    internal static MeleeTrailsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MeleeTrails.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

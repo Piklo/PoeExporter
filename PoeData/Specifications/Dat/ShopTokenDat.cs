@@ -22,16 +22,20 @@ public sealed partial class ShopTokenDat
     /// <summary> Gets Description.</summary>
     public required string Description { get; init; }
 
-    /// <inheritdoc/>
-    public static ShopTokenDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ShopTokenDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ShopTokenDat.</returns>
+    internal static ShopTokenDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ShopToken.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

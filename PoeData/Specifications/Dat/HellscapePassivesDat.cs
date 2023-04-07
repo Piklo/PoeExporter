@@ -49,16 +49,20 @@ public sealed partial class HellscapePassivesDat
     /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
     public required int? Quest { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapePassivesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapePassivesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapePassivesDat.</returns>
+    internal static HellscapePassivesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapePassives.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

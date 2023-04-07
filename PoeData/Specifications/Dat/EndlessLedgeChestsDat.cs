@@ -27,16 +27,20 @@ public sealed partial class EndlessLedgeChestsDat
     /// <summary> Gets SocketColour.</summary>
     public required string SocketColour { get; init; }
 
-    /// <inheritdoc/>
-    public static EndlessLedgeChestsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets EndlessLedgeChestsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of EndlessLedgeChestsDat.</returns>
+    internal static EndlessLedgeChestsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/EndlessLedgeChests.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

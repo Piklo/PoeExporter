@@ -19,16 +19,20 @@ public sealed partial class UltimatumModifierTypesDat
     /// <summary> Gets a value indicating whether Unknown8 is set.</summary>
     public required bool Unknown8 { get; init; }
 
-    /// <inheritdoc/>
-    public static UltimatumModifierTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UltimatumModifierTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UltimatumModifierTypesDat.</returns>
+    internal static UltimatumModifierTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UltimatumModifierTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

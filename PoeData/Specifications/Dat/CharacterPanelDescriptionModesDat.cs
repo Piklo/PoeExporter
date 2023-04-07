@@ -25,16 +25,20 @@ public sealed partial class CharacterPanelDescriptionModesDat
     /// <summary> Gets FormatString_Negative.</summary>
     public required string FormatString_Negative { get; init; }
 
-    /// <inheritdoc/>
-    public static CharacterPanelDescriptionModesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CharacterPanelDescriptionModesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CharacterPanelDescriptionModesDat.</returns>
+    internal static CharacterPanelDescriptionModesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CharacterPanelDescriptionModes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

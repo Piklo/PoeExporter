@@ -17,16 +17,20 @@ public sealed partial class BlightCraftingUniquesDat
     /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
     public required int? WordsKey { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightCraftingUniquesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightCraftingUniquesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightCraftingUniquesDat.</returns>
+    internal static BlightCraftingUniquesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightCraftingUniques.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

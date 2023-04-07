@@ -49,16 +49,20 @@ public sealed partial class LeagueInfoDat
     /// <summary> Gets PanelItems.</summary>
     public required ReadOnlyCollection<string> PanelItems { get; init; }
 
-    /// <inheritdoc/>
-    public static LeagueInfoDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LeagueInfoDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LeagueInfoDat.</returns>
+    internal static LeagueInfoDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LeagueInfo.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

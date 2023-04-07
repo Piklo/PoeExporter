@@ -67,16 +67,20 @@ public sealed partial class MonsterDeathConditionsDat
     /// <summary> Gets Unknown144.</summary>
     public required int Unknown144 { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterDeathConditionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterDeathConditionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterDeathConditionsDat.</returns>
+    internal static MonsterDeathConditionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterDeathConditions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

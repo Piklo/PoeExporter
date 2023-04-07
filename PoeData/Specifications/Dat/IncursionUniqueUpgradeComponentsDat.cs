@@ -20,16 +20,20 @@ public sealed partial class IncursionUniqueUpgradeComponentsDat
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemType { get; init; }
 
-    /// <inheritdoc/>
-    public static IncursionUniqueUpgradeComponentsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets IncursionUniqueUpgradeComponentsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of IncursionUniqueUpgradeComponentsDat.</returns>
+    internal static IncursionUniqueUpgradeComponentsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/IncursionUniqueUpgradeComponents.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

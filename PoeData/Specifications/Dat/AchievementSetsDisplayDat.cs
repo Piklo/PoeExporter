@@ -19,16 +19,20 @@ public sealed partial class AchievementSetsDisplayDat
     /// <summary> Gets Title.</summary>
     public required string Title { get; init; }
 
-    /// <inheritdoc/>
-    public static AchievementSetsDisplayDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AchievementSetsDisplayDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AchievementSetsDisplayDat.</returns>
+    internal static AchievementSetsDisplayDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AchievementSetsDisplay.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

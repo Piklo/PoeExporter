@@ -19,16 +19,20 @@ public sealed partial class AtlasRegionUpgradeRegionsDat
     /// <summary> Gets Unknown16.</summary>
     public required int? Unknown16 { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasRegionUpgradeRegionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasRegionUpgradeRegionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasRegionUpgradeRegionsDat.</returns>
+    internal static AtlasRegionUpgradeRegionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasRegionUpgradeRegions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

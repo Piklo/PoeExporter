@@ -81,16 +81,20 @@ public sealed partial class HeistAreasDat
     /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? RewardHardmode { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistAreasDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistAreasDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistAreasDat.</returns>
+    internal static HeistAreasDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistAreas.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

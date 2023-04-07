@@ -20,16 +20,20 @@ public sealed partial class ShieldTypesDat
     /// <summary> Gets Block.</summary>
     public required int Block { get; init; }
 
-    /// <inheritdoc/>
-    public static ShieldTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ShieldTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ShieldTypesDat.</returns>
+    internal static ShieldTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ShieldTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

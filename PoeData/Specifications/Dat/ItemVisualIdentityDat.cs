@@ -180,16 +180,20 @@ public sealed partial class ItemVisualIdentityDat
     /// <summary> Gets Unknown517.</summary>
     public required int? Unknown517 { get; init; }
 
-    /// <inheritdoc/>
-    public static ItemVisualIdentityDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ItemVisualIdentityDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ItemVisualIdentityDat.</returns>
+    internal static ItemVisualIdentityDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ItemVisualIdentity.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

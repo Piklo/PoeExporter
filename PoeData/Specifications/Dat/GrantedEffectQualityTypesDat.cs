@@ -23,16 +23,20 @@ public sealed partial class GrantedEffectQualityTypesDat
     /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
     public required int? ClientStringsKey { get; init; }
 
-    /// <inheritdoc/>
-    public static GrantedEffectQualityTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GrantedEffectQualityTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GrantedEffectQualityTypesDat.</returns>
+    internal static GrantedEffectQualityTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GrantedEffectQualityTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

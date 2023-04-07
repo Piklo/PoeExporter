@@ -26,16 +26,20 @@ public sealed partial class PerandusBossesDat
     /// <summary> Gets SpawnWeight.</summary>
     public required int SpawnWeight { get; init; }
 
-    /// <inheritdoc/>
-    public static PerandusBossesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PerandusBossesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PerandusBossesDat.</returns>
+    internal static PerandusBossesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PerandusBosses.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

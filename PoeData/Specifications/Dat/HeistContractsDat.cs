@@ -24,16 +24,20 @@ public sealed partial class HeistContractsDat
     /// <summary> Gets Unknown32.</summary>
     public required int Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistContractsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistContractsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistContractsDat.</returns>
+    internal static HeistContractsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistContracts.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

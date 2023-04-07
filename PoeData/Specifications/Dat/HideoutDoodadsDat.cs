@@ -58,16 +58,20 @@ public sealed partial class HideoutDoodadsDat
     /// <summary> Gets a value indicating whether Unknown113 is set.</summary>
     public required bool Unknown113 { get; init; }
 
-    /// <inheritdoc/>
-    public static HideoutDoodadsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HideoutDoodadsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HideoutDoodadsDat.</returns>
+    internal static HideoutDoodadsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HideoutDoodads.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

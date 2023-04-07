@@ -30,16 +30,20 @@ public sealed partial class ModEffectStatsDat
     /// <summary> Gets a value indicating whether Unknown37 is set.</summary>
     public required bool Unknown37 { get; init; }
 
-    /// <inheritdoc/>
-    public static ModEffectStatsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ModEffectStatsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ModEffectStatsDat.</returns>
+    internal static ModEffectStatsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ModEffectStats.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

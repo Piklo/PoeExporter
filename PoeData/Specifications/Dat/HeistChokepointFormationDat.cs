@@ -49,16 +49,20 @@ public sealed partial class HeistChokepointFormationDat
     /// <summary> Gets Unknown85.</summary>
     public required int Unknown85 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistChokepointFormationDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistChokepointFormationDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistChokepointFormationDat.</returns>
+    internal static HeistChokepointFormationDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistChokepointFormation.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -38,16 +38,20 @@ public sealed partial class BestiaryNetsDat
     /// <summary> Gets a value indicating whether IsEnabled is set.</summary>
     public required bool IsEnabled { get; init; }
 
-    /// <inheritdoc/>
-    public static BestiaryNetsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BestiaryNetsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BestiaryNetsDat.</returns>
+    internal static BestiaryNetsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BestiaryNets.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

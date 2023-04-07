@@ -73,16 +73,20 @@ public sealed partial class NPCMasterDat
     /// <summary> Gets Unknown188.</summary>
     public required int? Unknown188 { get; init; }
 
-    /// <inheritdoc/>
-    public static NPCMasterDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets NPCMasterDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of NPCMasterDat.</returns>
+    internal static NPCMasterDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/NPCMaster.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

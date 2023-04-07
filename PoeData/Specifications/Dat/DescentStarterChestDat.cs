@@ -31,16 +31,20 @@ public sealed partial class DescentStarterChestDat
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
-    /// <inheritdoc/>
-    public static DescentStarterChestDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DescentStarterChestDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DescentStarterChestDat.</returns>
+    internal static DescentStarterChestDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DescentStarterChest.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

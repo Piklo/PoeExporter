@@ -23,16 +23,20 @@ public sealed partial class RecipeUnlockObjectsDat
     /// <summary> Gets RecipeId.</summary>
     public required int RecipeId { get; init; }
 
-    /// <inheritdoc/>
-    public static RecipeUnlockObjectsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RecipeUnlockObjectsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RecipeUnlockObjectsDat.</returns>
+    internal static RecipeUnlockObjectsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/RecipeUnlockObjects.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

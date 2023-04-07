@@ -47,16 +47,20 @@ public sealed partial class MonsterTypesDat
     /// <summary> Gets a value indicating whether Unknown47 is set.</summary>
     public required bool Unknown47 { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterTypesDat.</returns>
+    internal static MonsterTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

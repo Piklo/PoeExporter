@@ -50,16 +50,20 @@ public sealed partial class BlightStashTabLayoutDat
     /// <summary> Gets a value indicating whether Unknown51 is set.</summary>
     public required bool Unknown51 { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightStashTabLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightStashTabLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightStashTabLayoutDat.</returns>
+    internal static BlightStashTabLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightStashTabLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

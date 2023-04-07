@@ -39,16 +39,20 @@ public sealed partial class PassiveTreeExpansionJewelsDat
     /// <summary> Gets TotalIndices.</summary>
     public required int TotalIndices { get; init; }
 
-    /// <inheritdoc/>
-    public static PassiveTreeExpansionJewelsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PassiveTreeExpansionJewelsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PassiveTreeExpansionJewelsDat.</returns>
+    internal static PassiveTreeExpansionJewelsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PassiveTreeExpansionJewels.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

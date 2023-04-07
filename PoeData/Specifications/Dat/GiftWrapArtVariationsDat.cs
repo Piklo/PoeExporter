@@ -25,16 +25,20 @@ public sealed partial class GiftWrapArtVariationsDat
     /// <summary> Gets Unknown12.</summary>
     public required int? Unknown12 { get; init; }
 
-    /// <inheritdoc/>
-    public static GiftWrapArtVariationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GiftWrapArtVariationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GiftWrapArtVariationsDat.</returns>
+    internal static GiftWrapArtVariationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GiftWrapArtVariations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

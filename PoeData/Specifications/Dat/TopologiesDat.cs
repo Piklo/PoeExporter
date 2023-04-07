@@ -28,16 +28,20 @@ public sealed partial class TopologiesDat
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
-    /// <inheritdoc/>
-    public static TopologiesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets TopologiesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of TopologiesDat.</returns>
+    internal static TopologiesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Topologies.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

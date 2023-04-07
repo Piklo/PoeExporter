@@ -25,16 +25,20 @@ public sealed partial class PlayerTradeWhisperFormatsDat
     /// <summary> Gets a value indicating whether IsPriced is set.</summary>
     public required bool IsPriced { get; init; }
 
-    /// <inheritdoc/>
-    public static PlayerTradeWhisperFormatsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PlayerTradeWhisperFormatsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PlayerTradeWhisperFormatsDat.</returns>
+    internal static PlayerTradeWhisperFormatsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PlayerTradeWhisperFormats.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

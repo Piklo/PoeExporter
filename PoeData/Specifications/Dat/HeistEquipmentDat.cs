@@ -24,16 +24,20 @@ public sealed partial class HeistEquipmentDat
     /// <summary> Gets RequiredLevel.</summary>
     public required int RequiredLevel { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistEquipmentDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistEquipmentDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistEquipmentDat.</returns>
+    internal static HeistEquipmentDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistEquipment.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

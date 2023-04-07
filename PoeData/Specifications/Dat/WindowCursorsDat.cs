@@ -40,16 +40,20 @@ public sealed partial class WindowCursorsDat
     /// <summary> Gets Unknown49.</summary>
     public required int Unknown49 { get; init; }
 
-    /// <inheritdoc/>
-    public static WindowCursorsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets WindowCursorsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of WindowCursorsDat.</returns>
+    internal static WindowCursorsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/WindowCursors.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

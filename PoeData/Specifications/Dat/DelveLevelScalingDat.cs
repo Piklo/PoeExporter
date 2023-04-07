@@ -58,16 +58,20 @@ public sealed partial class DelveLevelScalingDat
     /// <summary> Gets Unknown56.</summary>
     public required int Unknown56 { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveLevelScalingDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveLevelScalingDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveLevelScalingDat.</returns>
+    internal static DelveLevelScalingDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveLevelScaling.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

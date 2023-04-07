@@ -23,16 +23,20 @@ public sealed partial class HarvestCraftFiltersDat
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
-    /// <inheritdoc/>
-    public static HarvestCraftFiltersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HarvestCraftFiltersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HarvestCraftFiltersDat.</returns>
+    internal static HarvestCraftFiltersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HarvestCraftFilters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

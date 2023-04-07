@@ -31,16 +31,20 @@ public sealed partial class ArchnemesisMetaRewardsDat
     /// <summary> Gets MaxLevel.</summary>
     public required int MaxLevel { get; init; }
 
-    /// <inheritdoc/>
-    public static ArchnemesisMetaRewardsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ArchnemesisMetaRewardsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ArchnemesisMetaRewardsDat.</returns>
+    internal static ArchnemesisMetaRewardsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ArchnemesisMetaRewards.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

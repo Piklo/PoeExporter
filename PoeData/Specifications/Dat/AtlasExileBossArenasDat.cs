@@ -21,16 +21,20 @@ public sealed partial class AtlasExileBossArenasDat
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasExileBossArenasDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasExileBossArenasDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasExileBossArenasDat.</returns>
+    internal static AtlasExileBossArenasDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasExileBossArenas.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

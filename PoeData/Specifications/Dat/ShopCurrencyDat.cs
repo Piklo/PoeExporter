@@ -19,16 +19,20 @@ public sealed partial class ShopCurrencyDat
     /// <summary> Gets CurrencySign.</summary>
     public required string CurrencySign { get; init; }
 
-    /// <inheritdoc/>
-    public static ShopCurrencyDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ShopCurrencyDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ShopCurrencyDat.</returns>
+    internal static ShopCurrencyDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ShopCurrency.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

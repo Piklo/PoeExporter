@@ -19,16 +19,20 @@ public sealed partial class HellscapeExperienceLevelsDat
     /// <summary> Gets Experience.</summary>
     public required int Experience { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeExperienceLevelsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeExperienceLevelsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeExperienceLevelsDat.</returns>
+    internal static HellscapeExperienceLevelsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeExperienceLevels.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

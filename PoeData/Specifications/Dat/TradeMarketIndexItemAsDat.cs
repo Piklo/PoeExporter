@@ -19,16 +19,20 @@ public sealed partial class TradeMarketIndexItemAsDat
     /// <summary> Gets IndexAs.</summary>
     public required int? IndexAs { get; init; }
 
-    /// <inheritdoc/>
-    public static TradeMarketIndexItemAsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets TradeMarketIndexItemAsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of TradeMarketIndexItemAsDat.</returns>
+    internal static TradeMarketIndexItemAsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/TradeMarketIndexItemAs.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -21,16 +21,20 @@ public sealed partial class OnKillAchievementsDat
     /// <remarks> references <see cref="GameStatsDat"/> on <see cref="Specification.GetGameStatsDat"/> index.</remarks>
     public required int? GameStat { get; init; }
 
-    /// <inheritdoc/>
-    public static OnKillAchievementsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets OnKillAchievementsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of OnKillAchievementsDat.</returns>
+    internal static OnKillAchievementsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/OnKillAchievements.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -26,16 +26,20 @@ public sealed partial class RaceTimesDat
     /// <summary> Gets EndUNIXTime.</summary>
     public required int EndUNIXTime { get; init; }
 
-    /// <inheritdoc/>
-    public static RaceTimesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RaceTimesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RaceTimesDat.</returns>
+    internal static RaceTimesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/RaceTimes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

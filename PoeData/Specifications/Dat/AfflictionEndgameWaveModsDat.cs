@@ -26,16 +26,20 @@ public sealed partial class AfflictionEndgameWaveModsDat
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
-    /// <inheritdoc/>
-    public static AfflictionEndgameWaveModsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AfflictionEndgameWaveModsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AfflictionEndgameWaveModsDat.</returns>
+    internal static AfflictionEndgameWaveModsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AfflictionEndgameWaveMods.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

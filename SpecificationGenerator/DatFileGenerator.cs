@@ -221,19 +221,20 @@ internal sealed class DatFileGenerator
     private void AppendLoadMethod(StringBuilder builder, ReadOnlyCollection<IParsedColumn> parsedColumns)
     {
         builder.AppendLine($$"""
-                    /// <inheritdoc/>
-                    public static {{ClassName}}[] Load(Specification specification)
+                    /// <summary>
+                    /// Gets {{ClassName}} data.
+                    /// </summary>
+                    /// <param name="dataLoader">data loader.</param>
+                    /// <returns>array of {{ClassName}}.</returns>
+                    internal static {{ClassName}}[] Load(DataLoader dataLoader)
                     {
-                        if (specification is null)
+                        if (dataLoader is null)
                         {
-                            throw new ArgumentNullException(nameof(specification));
+                            throw new ArgumentNullException(nameof(dataLoader));
                         }
 
-                """);
-
-        builder.AppendLine($$"""
                         const string filePath = "Data/{{table.Name}}.dat64";
-                        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+                        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
                         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
                         const int TableOffset = 4;

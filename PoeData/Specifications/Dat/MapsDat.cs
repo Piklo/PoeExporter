@@ -77,16 +77,20 @@ public sealed partial class MapsDat
     /// <summary> Gets a value indicating whether Unknown158 is set.</summary>
     public required bool Unknown158 { get; init; }
 
-    /// <inheritdoc/>
-    public static MapsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MapsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MapsDat.</returns>
+    internal static MapsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Maps.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

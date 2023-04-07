@@ -39,16 +39,20 @@ public sealed partial class LegionChestCountsDat
     /// <summary> Gets Unknown52.</summary>
     public required int Unknown52 { get; init; }
 
-    /// <inheritdoc/>
-    public static LegionChestCountsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LegionChestCountsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LegionChestCountsDat.</returns>
+    internal static LegionChestCountsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LegionChestCounts.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

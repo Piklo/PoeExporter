@@ -28,16 +28,20 @@ public sealed partial class ColoursDat
     /// <summary> Gets RgbCode.</summary>
     public required string RgbCode { get; init; }
 
-    /// <inheritdoc/>
-    public static ColoursDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ColoursDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ColoursDat.</returns>
+    internal static ColoursDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Colours.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

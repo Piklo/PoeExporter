@@ -31,16 +31,20 @@ public sealed partial class ModEquivalenciesDat
     /// <summary> Gets a value indicating whether Unknown56 is set.</summary>
     public required bool Unknown56 { get; init; }
 
-    /// <inheritdoc/>
-    public static ModEquivalenciesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ModEquivalenciesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ModEquivalenciesDat.</returns>
+    internal static ModEquivalenciesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ModEquivalencies.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

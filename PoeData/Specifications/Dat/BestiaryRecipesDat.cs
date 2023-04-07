@@ -53,16 +53,20 @@ public sealed partial class BestiaryRecipesDat
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
     public required int? FlaskMod { get; init; }
 
-    /// <inheritdoc/>
-    public static BestiaryRecipesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BestiaryRecipesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BestiaryRecipesDat.</returns>
+    internal static BestiaryRecipesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BestiaryRecipes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

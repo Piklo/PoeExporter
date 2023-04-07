@@ -259,16 +259,20 @@ public sealed partial class EssencesDat
     /// <summary> Gets Unknown945.</summary>
     public required int Unknown945 { get; init; }
 
-    /// <inheritdoc/>
-    public static EssencesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets EssencesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of EssencesDat.</returns>
+    internal static EssencesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Essences.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

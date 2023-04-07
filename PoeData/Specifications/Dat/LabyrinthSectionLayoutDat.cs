@@ -46,16 +46,20 @@ public sealed partial class LabyrinthSectionLayoutDat
     /// <remarks> references <see cref="LabyrinthNodeOverridesDat"/> on <see cref="Specification.GetLabyrinthNodeOverridesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> LabyrinthNodeOverridesKeys { get; init; }
 
-    /// <inheritdoc/>
-    public static LabyrinthSectionLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LabyrinthSectionLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LabyrinthSectionLayoutDat.</returns>
+    internal static LabyrinthSectionLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LabyrinthSectionLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

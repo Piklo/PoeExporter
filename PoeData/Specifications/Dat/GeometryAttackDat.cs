@@ -151,16 +151,20 @@ public sealed partial class GeometryAttackDat
     /// <summary> Gets a value indicating whether Unknown237 is set.</summary>
     public required bool Unknown237 { get; init; }
 
-    /// <inheritdoc/>
-    public static GeometryAttackDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GeometryAttackDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GeometryAttackDat.</returns>
+    internal static GeometryAttackDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GeometryAttack.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

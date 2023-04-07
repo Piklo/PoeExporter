@@ -22,16 +22,20 @@ public sealed partial class EvergreenAchievementsDat
     /// <summary> Gets Unknown8.</summary>
     public required ReadOnlyCollection<int> Unknown8 { get; init; }
 
-    /// <inheritdoc/>
-    public static EvergreenAchievementsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets EvergreenAchievementsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of EvergreenAchievementsDat.</returns>
+    internal static EvergreenAchievementsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/EvergreenAchievements.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

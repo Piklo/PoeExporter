@@ -24,16 +24,20 @@ public sealed partial class ShopPaymentPackagePriceDat
     /// <summary> Gets Price.</summary>
     public required int Price { get; init; }
 
-    /// <inheritdoc/>
-    public static ShopPaymentPackagePriceDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ShopPaymentPackagePriceDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ShopPaymentPackagePriceDat.</returns>
+    internal static ShopPaymentPackagePriceDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ShopPaymentPackagePrice.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

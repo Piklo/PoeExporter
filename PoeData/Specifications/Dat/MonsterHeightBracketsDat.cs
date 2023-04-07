@@ -46,16 +46,20 @@ public sealed partial class MonsterHeightBracketsDat
     /// <summary> Gets Unknown76.</summary>
     public required float Unknown76 { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterHeightBracketsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterHeightBracketsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterHeightBracketsDat.</returns>
+    internal static MonsterHeightBracketsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterHeightBrackets.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

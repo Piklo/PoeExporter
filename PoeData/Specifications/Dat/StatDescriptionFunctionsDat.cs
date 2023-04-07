@@ -19,16 +19,20 @@ public sealed partial class StatDescriptionFunctionsDat
     /// <summary> Gets TranslationId.</summary>
     public required string TranslationId { get; init; }
 
-    /// <inheritdoc/>
-    public static StatDescriptionFunctionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets StatDescriptionFunctionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of StatDescriptionFunctionsDat.</returns>
+    internal static StatDescriptionFunctionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/StatDescriptionFunctions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

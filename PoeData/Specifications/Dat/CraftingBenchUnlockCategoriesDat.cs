@@ -32,16 +32,20 @@ public sealed partial class CraftingBenchUnlockCategoriesDat
     /// <summary> Gets ObtainingDescription.</summary>
     public required string ObtainingDescription { get; init; }
 
-    /// <inheritdoc/>
-    public static CraftingBenchUnlockCategoriesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CraftingBenchUnlockCategoriesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CraftingBenchUnlockCategoriesDat.</returns>
+    internal static CraftingBenchUnlockCategoriesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CraftingBenchUnlockCategories.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

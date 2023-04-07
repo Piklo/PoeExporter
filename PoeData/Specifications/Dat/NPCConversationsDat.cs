@@ -30,16 +30,20 @@ public sealed partial class NPCConversationsDat
     /// <summary> Gets Unknown56.</summary>
     public required int Unknown56 { get; init; }
 
-    /// <inheritdoc/>
-    public static NPCConversationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets NPCConversationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of NPCConversationsDat.</returns>
+    internal static NPCConversationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/NPCConversations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -37,16 +37,20 @@ public sealed partial class LeagueStaticRewardsDat
     /// <summary> Gets a value indicating whether Unknown52 is set.</summary>
     public required bool Unknown52 { get; init; }
 
-    /// <inheritdoc/>
-    public static LeagueStaticRewardsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LeagueStaticRewardsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LeagueStaticRewardsDat.</returns>
+    internal static LeagueStaticRewardsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LeagueStaticRewards.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

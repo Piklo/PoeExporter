@@ -22,16 +22,20 @@ public sealed partial class HarvestSpecialCraftCostsDat
     /// <summary> Gets Unknown20.</summary>
     public required int Unknown20 { get; init; }
 
-    /// <inheritdoc/>
-    public static HarvestSpecialCraftCostsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HarvestSpecialCraftCostsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HarvestSpecialCraftCostsDat.</returns>
+    internal static HarvestSpecialCraftCostsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HarvestSpecialCraftCosts.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

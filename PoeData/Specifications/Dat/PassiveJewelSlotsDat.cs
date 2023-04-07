@@ -35,16 +35,20 @@ public sealed partial class PassiveJewelSlotsDat
     /// <summary> Gets StartIndices.</summary>
     public required ReadOnlyCollection<int> StartIndices { get; init; }
 
-    /// <inheritdoc/>
-    public static PassiveJewelSlotsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PassiveJewelSlotsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PassiveJewelSlotsDat.</returns>
+    internal static PassiveJewelSlotsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PassiveJewelSlots.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

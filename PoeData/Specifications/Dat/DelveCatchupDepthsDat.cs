@@ -19,16 +19,20 @@ public sealed partial class DelveCatchupDepthsDat
     /// <summary> Gets Depth.</summary>
     public required int Depth { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveCatchupDepthsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveCatchupDepthsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveCatchupDepthsDat.</returns>
+    internal static DelveCatchupDepthsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveCatchupDepths.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

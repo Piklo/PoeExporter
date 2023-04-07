@@ -33,16 +33,20 @@ public sealed partial class AtlasNodeDefinitionDat
     /// <summary> Gets Unknown41.</summary>
     public required int Unknown41 { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasNodeDefinitionDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasNodeDefinitionDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasNodeDefinitionDat.</returns>
+    internal static AtlasNodeDefinitionDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasNodeDefinition.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -22,16 +22,20 @@ public sealed partial class MiscEffectPacksArtVariationsDat
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
-    /// <inheritdoc/>
-    public static MiscEffectPacksArtVariationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MiscEffectPacksArtVariationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MiscEffectPacksArtVariationsDat.</returns>
+    internal static MiscEffectPacksArtVariationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MiscEffectPacksArtVariations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

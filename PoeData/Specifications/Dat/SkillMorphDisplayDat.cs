@@ -40,16 +40,20 @@ public sealed partial class SkillMorphDisplayDat
     /// <summary> Gets a value indicating whether Unknown89 is set.</summary>
     public required bool Unknown89 { get; init; }
 
-    /// <inheritdoc/>
-    public static SkillMorphDisplayDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SkillMorphDisplayDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SkillMorphDisplayDat.</returns>
+    internal static SkillMorphDisplayDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SkillMorphDisplay.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

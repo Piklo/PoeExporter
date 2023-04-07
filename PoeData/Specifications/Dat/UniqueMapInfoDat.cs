@@ -32,16 +32,20 @@ public sealed partial class UniqueMapInfoDat
     /// <summary> Gets a value indicating whether Unknown64 is set.</summary>
     public required bool Unknown64 { get; init; }
 
-    /// <inheritdoc/>
-    public static UniqueMapInfoDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UniqueMapInfoDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UniqueMapInfoDat.</returns>
+    internal static UniqueMapInfoDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UniqueMapInfo.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

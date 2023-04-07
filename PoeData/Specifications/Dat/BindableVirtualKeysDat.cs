@@ -22,16 +22,20 @@ public sealed partial class BindableVirtualKeysDat
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
 
-    /// <inheritdoc/>
-    public static BindableVirtualKeysDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BindableVirtualKeysDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BindableVirtualKeysDat.</returns>
+    internal static BindableVirtualKeysDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BindableVirtualKeys.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

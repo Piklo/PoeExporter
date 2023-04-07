@@ -65,16 +65,20 @@ public sealed partial class MapSeriesTiersDat
     /// <summary> Gets SanctumTier.</summary>
     public required int SanctumTier { get; init; }
 
-    /// <inheritdoc/>
-    public static MapSeriesTiersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MapSeriesTiersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MapSeriesTiersDat.</returns>
+    internal static MapSeriesTiersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MapSeriesTiers.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

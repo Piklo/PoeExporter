@@ -68,16 +68,20 @@ public sealed partial class SummonedSpecificMonstersDat
     /// <summary> Gets Unknown102.</summary>
     public required int Unknown102 { get; init; }
 
-    /// <inheritdoc/>
-    public static SummonedSpecificMonstersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SummonedSpecificMonstersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SummonedSpecificMonstersDat.</returns>
+    internal static SummonedSpecificMonstersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SummonedSpecificMonsters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

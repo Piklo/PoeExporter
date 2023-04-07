@@ -45,16 +45,20 @@ public sealed partial class QuestDat
     /// <remarks> references <see cref="QuestTrackerGroupDat"/> on <see cref="Specification.GetQuestTrackerGroupDat"/> index.</remarks>
     public required int? TrackerGroup { get; init; }
 
-    /// <inheritdoc/>
-    public static QuestDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets QuestDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of QuestDat.</returns>
+    internal static QuestDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Quest.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

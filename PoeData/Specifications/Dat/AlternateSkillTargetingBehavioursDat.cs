@@ -35,16 +35,20 @@ public sealed partial class AlternateSkillTargetingBehavioursDat
     /// <summary> Gets Unknown40.</summary>
     public required ReadOnlyCollection<int> Unknown40 { get; init; }
 
-    /// <inheritdoc/>
-    public static AlternateSkillTargetingBehavioursDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AlternateSkillTargetingBehavioursDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AlternateSkillTargetingBehavioursDat.</returns>
+    internal static AlternateSkillTargetingBehavioursDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AlternateSkillTargetingBehaviours.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

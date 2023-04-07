@@ -36,16 +36,20 @@ public sealed partial class UltimatumEncounterTypesDat
     /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? InscribedAchievement { get; init; }
 
-    /// <inheritdoc/>
-    public static UltimatumEncounterTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UltimatumEncounterTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UltimatumEncounterTypesDat.</returns>
+    internal static UltimatumEncounterTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UltimatumEncounterTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

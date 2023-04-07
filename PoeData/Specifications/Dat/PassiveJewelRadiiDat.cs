@@ -25,16 +25,20 @@ public sealed partial class PassiveJewelRadiiDat
     /// <summary> Gets Radius.</summary>
     public required int Radius { get; init; }
 
-    /// <inheritdoc/>
-    public static PassiveJewelRadiiDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PassiveJewelRadiiDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PassiveJewelRadiiDat.</returns>
+    internal static PassiveJewelRadiiDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PassiveJewelRadii.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

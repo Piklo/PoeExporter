@@ -19,16 +19,20 @@ public sealed partial class BetrayalWallLifeScalingPerLevelDat
     /// <summary> Gets MoreLife.</summary>
     public required int MoreLife { get; init; }
 
-    /// <inheritdoc/>
-    public static BetrayalWallLifeScalingPerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BetrayalWallLifeScalingPerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BetrayalWallLifeScalingPerLevelDat.</returns>
+    internal static BetrayalWallLifeScalingPerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BetrayalWallLifeScalingPerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

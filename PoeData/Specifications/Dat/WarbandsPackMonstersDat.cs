@@ -74,16 +74,20 @@ public sealed partial class WarbandsPackMonstersDat
     /// <summary> Gets Tier4Art.</summary>
     public required string Tier4Art { get; init; }
 
-    /// <inheritdoc/>
-    public static WarbandsPackMonstersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets WarbandsPackMonstersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of WarbandsPackMonstersDat.</returns>
+    internal static WarbandsPackMonstersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/WarbandsPackMonsters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

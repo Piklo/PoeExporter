@@ -19,16 +19,20 @@ public sealed partial class HellscapeLifeScalingPerLevelDat
     /// <summary> Gets Scale.</summary>
     public required int Scale { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeLifeScalingPerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeLifeScalingPerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeLifeScalingPerLevelDat.</returns>
+    internal static HellscapeLifeScalingPerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeLifeScalingPerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

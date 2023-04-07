@@ -36,16 +36,20 @@ public sealed partial class CharacterStartQuestStateDat
     /// <summary> Gets Unknown88.</summary>
     public required ReadOnlyCollection<int> Unknown88 { get; init; }
 
-    /// <inheritdoc/>
-    public static CharacterStartQuestStateDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CharacterStartQuestStateDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CharacterStartQuestStateDat.</returns>
+    internal static CharacterStartQuestStateDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CharacterStartQuestState.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

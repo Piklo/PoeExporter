@@ -27,16 +27,20 @@ public sealed partial class NPCShopsDat
     /// <remarks> references <see cref="NPCShopDat"/> on <see cref="Specification.GetNPCShopDat"/> index.</remarks>
     public required int? ShopHardmode { get; init; }
 
-    /// <inheritdoc/>
-    public static NPCShopsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets NPCShopsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of NPCShopsDat.</returns>
+    internal static NPCShopsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/NPCShops.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

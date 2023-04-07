@@ -54,16 +54,20 @@ public sealed partial class BetrayalUpgradesDat
     /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
     public required int? ItemClassesKey { get; init; }
 
-    /// <inheritdoc/>
-    public static BetrayalUpgradesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BetrayalUpgradesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BetrayalUpgradesDat.</returns>
+    internal static BetrayalUpgradesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BetrayalUpgrades.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

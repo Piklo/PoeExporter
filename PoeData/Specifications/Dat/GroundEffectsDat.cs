@@ -80,16 +80,20 @@ public sealed partial class GroundEffectsDat
     /// <summary> Gets a value indicating whether Unknown217 is set.</summary>
     public required bool Unknown217 { get; init; }
 
-    /// <inheritdoc/>
-    public static GroundEffectsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GroundEffectsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GroundEffectsDat.</returns>
+    internal static GroundEffectsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GroundEffects.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

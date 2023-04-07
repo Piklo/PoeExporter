@@ -51,16 +51,20 @@ public sealed partial class MonsterMapBossDifficultyDat
     /// <summary> Gets Stat5Value.</summary>
     public required int Stat5Value { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterMapBossDifficultyDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterMapBossDifficultyDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterMapBossDifficultyDat.</returns>
+    internal static MonsterMapBossDifficultyDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterMapBossDifficulty.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

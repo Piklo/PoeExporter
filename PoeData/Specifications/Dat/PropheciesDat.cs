@@ -51,16 +51,20 @@ public sealed partial class PropheciesDat
     /// <summary> Gets PredictionText2.</summary>
     public required string PredictionText2 { get; init; }
 
-    /// <inheritdoc/>
-    public static PropheciesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PropheciesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PropheciesDat.</returns>
+    internal static PropheciesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Prophecies.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

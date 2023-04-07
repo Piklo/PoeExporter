@@ -19,16 +19,20 @@ public sealed partial class DelveResourcePerLevelDat
     /// <summary> Gets Sulphite.</summary>
     public required int Sulphite { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveResourcePerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveResourcePerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveResourcePerLevelDat.</returns>
+    internal static DelveResourcePerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveResourcePerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

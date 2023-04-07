@@ -47,16 +47,20 @@ public sealed partial class ExpeditionStorageLayoutDat
     /// <summary> Gets Unknown53.</summary>
     public required int? Unknown53 { get; init; }
 
-    /// <inheritdoc/>
-    public static ExpeditionStorageLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ExpeditionStorageLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ExpeditionStorageLayoutDat.</returns>
+    internal static ExpeditionStorageLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ExpeditionStorageLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

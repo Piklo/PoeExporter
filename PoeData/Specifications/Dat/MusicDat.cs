@@ -44,16 +44,20 @@ public sealed partial class MusicDat
     /// <summary> Gets Unknown62.</summary>
     public required int Unknown62 { get; init; }
 
-    /// <inheritdoc/>
-    public static MusicDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MusicDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MusicDat.</returns>
+    internal static MusicDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Music.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

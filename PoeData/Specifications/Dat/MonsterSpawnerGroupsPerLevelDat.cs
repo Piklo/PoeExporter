@@ -29,16 +29,20 @@ public sealed partial class MonsterSpawnerGroupsPerLevelDat
     /// <summary> Gets Unknown28.</summary>
     public required int Unknown28 { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterSpawnerGroupsPerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterSpawnerGroupsPerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterSpawnerGroupsPerLevelDat.</returns>
+    internal static MonsterSpawnerGroupsPerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterSpawnerGroupsPerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

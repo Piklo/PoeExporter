@@ -151,16 +151,20 @@ public sealed partial class GeometryTriggerDat
     /// <summary> Gets a value indicating whether Unknown219 is set.</summary>
     public required bool Unknown219 { get; init; }
 
-    /// <inheritdoc/>
-    public static GeometryTriggerDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GeometryTriggerDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GeometryTriggerDat.</returns>
+    internal static GeometryTriggerDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GeometryTrigger.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

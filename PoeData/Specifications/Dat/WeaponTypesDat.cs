@@ -35,16 +35,20 @@ public sealed partial class WeaponTypesDat
     /// <summary> Gets Null6.</summary>
     public required int Null6 { get; init; }
 
-    /// <inheritdoc/>
-    public static WeaponTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets WeaponTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of WeaponTypesDat.</returns>
+    internal static WeaponTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/WeaponTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

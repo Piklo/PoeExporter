@@ -19,16 +19,20 @@ public sealed partial class NPCTalkCategoryDat
     /// <summary> Gets a value indicating whether Unknown8 is set.</summary>
     public required bool Unknown8 { get; init; }
 
-    /// <inheritdoc/>
-    public static NPCTalkCategoryDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets NPCTalkCategoryDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of NPCTalkCategoryDat.</returns>
+    internal static NPCTalkCategoryDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/NPCTalkCategory.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

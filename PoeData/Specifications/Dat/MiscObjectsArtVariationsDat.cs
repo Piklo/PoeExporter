@@ -28,16 +28,20 @@ public sealed partial class MiscObjectsArtVariationsDat
     /// <summary> Gets Unknown32.</summary>
     public required int? Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static MiscObjectsArtVariationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MiscObjectsArtVariationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MiscObjectsArtVariationsDat.</returns>
+    internal static MiscObjectsArtVariationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MiscObjectsArtVariations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

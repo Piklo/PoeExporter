@@ -32,16 +32,20 @@ public sealed partial class GrandmastersDat
     /// <summary> Gets a value indicating whether Unknown44 is set.</summary>
     public required bool Unknown44 { get; init; }
 
-    /// <inheritdoc/>
-    public static GrandmastersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GrandmastersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GrandmastersDat.</returns>
+    internal static GrandmastersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Grandmasters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

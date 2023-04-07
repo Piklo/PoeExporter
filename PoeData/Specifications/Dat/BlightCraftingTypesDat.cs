@@ -22,16 +22,20 @@ public sealed partial class BlightCraftingTypesDat
     /// <summary> Gets a value indicating whether Unknown12 is set.</summary>
     public required bool Unknown12 { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightCraftingTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightCraftingTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightCraftingTypesDat.</returns>
+    internal static BlightCraftingTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightCraftingTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

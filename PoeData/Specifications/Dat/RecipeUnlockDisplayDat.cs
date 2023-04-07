@@ -33,16 +33,20 @@ public sealed partial class RecipeUnlockDisplayDat
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
     public required int? UnlockArea { get; init; }
 
-    /// <inheritdoc/>
-    public static RecipeUnlockDisplayDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RecipeUnlockDisplayDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RecipeUnlockDisplayDat.</returns>
+    internal static RecipeUnlockDisplayDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/RecipeUnlockDisplay.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

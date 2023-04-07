@@ -30,16 +30,20 @@ public sealed partial class SurgeEffectsDat
     /// <summary> Gets Unknown56.</summary>
     public required ReadOnlyCollection<string> Unknown56 { get; init; }
 
-    /// <inheritdoc/>
-    public static SurgeEffectsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SurgeEffectsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SurgeEffectsDat.</returns>
+    internal static SurgeEffectsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SurgeEffects.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

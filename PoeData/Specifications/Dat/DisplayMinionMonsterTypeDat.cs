@@ -20,16 +20,20 @@ public sealed partial class DisplayMinionMonsterTypeDat
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
-    /// <inheritdoc/>
-    public static DisplayMinionMonsterTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DisplayMinionMonsterTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DisplayMinionMonsterTypeDat.</returns>
+    internal static DisplayMinionMonsterTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DisplayMinionMonsterType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

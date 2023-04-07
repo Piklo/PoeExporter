@@ -43,16 +43,20 @@ public sealed partial class InvasionMonstersPerAreaDat
     /// <summary> Gets Unknown80.</summary>
     public required int Unknown80 { get; init; }
 
-    /// <inheritdoc/>
-    public static InvasionMonstersPerAreaDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets InvasionMonstersPerAreaDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of InvasionMonstersPerAreaDat.</returns>
+    internal static InvasionMonstersPerAreaDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/InvasionMonstersPerArea.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

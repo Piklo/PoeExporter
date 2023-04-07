@@ -23,16 +23,20 @@ public sealed partial class ItemExperiencePerLevelDat
     /// <summary> Gets Experience.</summary>
     public required int Experience { get; init; }
 
-    /// <inheritdoc/>
-    public static ItemExperiencePerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ItemExperiencePerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ItemExperiencePerLevelDat.</returns>
+    internal static ItemExperiencePerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ItemExperiencePerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

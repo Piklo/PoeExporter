@@ -43,16 +43,20 @@ public sealed partial class DaressoPitFightsDat
     /// <summary> Gets a value indicating whether Unknown58 is set.</summary>
     public required bool Unknown58 { get; init; }
 
-    /// <inheritdoc/>
-    public static DaressoPitFightsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DaressoPitFightsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DaressoPitFightsDat.</returns>
+    internal static DaressoPitFightsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DaressoPitFights.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

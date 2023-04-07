@@ -24,16 +24,20 @@ public sealed partial class MonsterSpawnerOverridesDat
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
     public required int? Override_MonsterVarietiesKey { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterSpawnerOverridesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterSpawnerOverridesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterSpawnerOverridesDat.</returns>
+    internal static MonsterSpawnerOverridesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterSpawnerOverrides.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -23,16 +23,20 @@ public sealed partial class MasterHideoutLevelsDat
     /// <summary> Gets MissionsRequired.</summary>
     public required int MissionsRequired { get; init; }
 
-    /// <inheritdoc/>
-    public static MasterHideoutLevelsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MasterHideoutLevelsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MasterHideoutLevelsDat.</returns>
+    internal static MasterHideoutLevelsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MasterHideoutLevels.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

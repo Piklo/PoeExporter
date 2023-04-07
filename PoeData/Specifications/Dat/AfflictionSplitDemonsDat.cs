@@ -24,16 +24,20 @@ public sealed partial class AfflictionSplitDemonsDat
     /// <remarks> references <see cref="AfflictionRandomModCategoriesDat"/> on <see cref="Specification.GetAfflictionRandomModCategoriesDat"/> index.</remarks>
     public required int? AfflictionRandomModCategoriesKey { get; init; }
 
-    /// <inheritdoc/>
-    public static AfflictionSplitDemonsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AfflictionSplitDemonsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AfflictionSplitDemonsDat.</returns>
+    internal static AfflictionSplitDemonsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AfflictionSplitDemons.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

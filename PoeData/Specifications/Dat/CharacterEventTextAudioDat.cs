@@ -25,16 +25,20 @@ public sealed partial class CharacterEventTextAudioDat
     /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.GetCharacterTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TextAudio { get; init; }
 
-    /// <inheritdoc/>
-    public static CharacterEventTextAudioDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CharacterEventTextAudioDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CharacterEventTextAudioDat.</returns>
+    internal static CharacterEventTextAudioDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CharacterEventTextAudio.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

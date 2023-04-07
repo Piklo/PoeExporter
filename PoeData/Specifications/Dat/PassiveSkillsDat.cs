@@ -149,16 +149,20 @@ public sealed partial class PassiveSkillsDat
     /// <summary> Gets Unknown283.</summary>
     public required int Unknown283 { get; init; }
 
-    /// <inheritdoc/>
-    public static PassiveSkillsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PassiveSkillsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PassiveSkillsDat.</returns>
+    internal static PassiveSkillsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PassiveSkills.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

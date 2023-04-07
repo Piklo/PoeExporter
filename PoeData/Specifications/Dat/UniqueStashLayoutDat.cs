@@ -54,16 +54,20 @@ public sealed partial class UniqueStashLayoutDat
     /// <summary> Gets a value indicating whether IsAlternateArt is set.</summary>
     public required bool IsAlternateArt { get; init; }
 
-    /// <inheritdoc/>
-    public static UniqueStashLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UniqueStashLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UniqueStashLayoutDat.</returns>
+    internal static UniqueStashLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UniqueStashLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

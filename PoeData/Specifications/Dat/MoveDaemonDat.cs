@@ -106,16 +106,20 @@ public sealed partial class MoveDaemonDat
     /// <summary> Gets Unknown118.</summary>
     public required int Unknown118 { get; init; }
 
-    /// <inheritdoc/>
-    public static MoveDaemonDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MoveDaemonDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MoveDaemonDat.</returns>
+    internal static MoveDaemonDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MoveDaemon.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

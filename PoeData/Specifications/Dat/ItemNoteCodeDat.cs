@@ -26,16 +26,20 @@ public sealed partial class ItemNoteCodeDat
     /// <summary> Gets a value indicating whether Unknown28 is set.</summary>
     public required bool Unknown28 { get; init; }
 
-    /// <inheritdoc/>
-    public static ItemNoteCodeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ItemNoteCodeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ItemNoteCodeDat.</returns>
+    internal static ItemNoteCodeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ItemNoteCode.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

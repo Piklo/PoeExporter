@@ -25,16 +25,20 @@ public sealed partial class RitualSpawnPatternsDat
     /// <summary> Gets a value indicating whether Unknown28 is set.</summary>
     public required bool Unknown28 { get; init; }
 
-    /// <inheritdoc/>
-    public static RitualSpawnPatternsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RitualSpawnPatternsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RitualSpawnPatternsDat.</returns>
+    internal static RitualSpawnPatternsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/RitualSpawnPatterns.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

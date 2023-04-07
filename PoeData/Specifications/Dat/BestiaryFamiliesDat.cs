@@ -52,16 +52,20 @@ public sealed partial class BestiaryFamiliesDat
     /// <remarks> references <see cref="CurrencyItemsDat"/> on <see cref="Specification.GetCurrencyItemsDat"/> index.</remarks>
     public required int? CurrencyItemsKey { get; init; }
 
-    /// <inheritdoc/>
-    public static BestiaryFamiliesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BestiaryFamiliesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BestiaryFamiliesDat.</returns>
+    internal static BestiaryFamiliesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BestiaryFamilies.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

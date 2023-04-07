@@ -42,16 +42,20 @@ public sealed partial class UltimatumEncountersDat
     /// <summary> Gets Unknown69.</summary>
     public required int Unknown69 { get; init; }
 
-    /// <inheritdoc/>
-    public static UltimatumEncountersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UltimatumEncountersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UltimatumEncountersDat.</returns>
+    internal static UltimatumEncountersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UltimatumEncounters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

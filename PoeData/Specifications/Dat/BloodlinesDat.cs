@@ -67,16 +67,20 @@ public sealed partial class BloodlinesDat
     /// <summary> Gets a value indicating whether Unknown169 is set.</summary>
     public required bool Unknown169 { get; init; }
 
-    /// <inheritdoc/>
-    public static BloodlinesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BloodlinesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BloodlinesDat.</returns>
+    internal static BloodlinesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Bloodlines.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

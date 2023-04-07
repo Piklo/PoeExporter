@@ -41,16 +41,20 @@ public sealed partial class NearbyMonsterConditionsDat
     /// <summary> Gets MinimumHealthPercentage.</summary>
     public required int MinimumHealthPercentage { get; init; }
 
-    /// <inheritdoc/>
-    public static NearbyMonsterConditionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets NearbyMonsterConditionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of NearbyMonsterConditionsDat.</returns>
+    internal static NearbyMonsterConditionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/NearbyMonsterConditions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

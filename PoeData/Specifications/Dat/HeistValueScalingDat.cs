@@ -22,16 +22,20 @@ public sealed partial class HeistValueScalingDat
     /// <summary> Gets Unknown12.</summary>
     public required float Unknown12 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistValueScalingDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistValueScalingDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistValueScalingDat.</returns>
+    internal static HeistValueScalingDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistValueScaling.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

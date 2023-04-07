@@ -38,16 +38,20 @@ public sealed partial class SynthesisBonusesDat
     /// <summary> Gets a value indicating whether Unknown37 is set.</summary>
     public required bool Unknown37 { get; init; }
 
-    /// <inheritdoc/>
-    public static SynthesisBonusesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SynthesisBonusesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SynthesisBonusesDat.</returns>
+    internal static SynthesisBonusesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SynthesisBonuses.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

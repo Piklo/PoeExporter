@@ -42,16 +42,20 @@ public sealed partial class HeistDoodadNPCsDat
     /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistDoodadNPCsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistDoodadNPCsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistDoodadNPCsDat.</returns>
+    internal static HeistDoodadNPCsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistDoodadNPCs.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

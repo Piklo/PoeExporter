@@ -46,16 +46,20 @@ public sealed partial class TalismanPacksDat
     /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPacksKey { get; init; }
 
-    /// <inheritdoc/>
-    public static TalismanPacksDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets TalismanPacksDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of TalismanPacksDat.</returns>
+    internal static TalismanPacksDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/TalismanPacks.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

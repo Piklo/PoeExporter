@@ -33,16 +33,20 @@ public sealed partial class PantheonSoulsDat
     /// <remarks> references <see cref="PantheonPanelLayoutDat"/> on <see cref="Specification.GetPantheonPanelLayoutDat"/> index.</remarks>
     public required int? PanelLayout { get; init; }
 
-    /// <inheritdoc/>
-    public static PantheonSoulsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PantheonSoulsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PantheonSoulsDat.</returns>
+    internal static PantheonSoulsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PantheonSouls.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

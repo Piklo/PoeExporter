@@ -46,16 +46,20 @@ public sealed partial class MapFragmentModsDat
     /// <summary> Gets a value indicating whether Unknown57 is set.</summary>
     public required bool Unknown57 { get; init; }
 
-    /// <inheritdoc/>
-    public static MapFragmentModsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MapFragmentModsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MapFragmentModsDat.</returns>
+    internal static MapFragmentModsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MapFragmentMods.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

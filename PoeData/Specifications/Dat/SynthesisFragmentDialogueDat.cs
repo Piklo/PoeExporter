@@ -40,16 +40,20 @@ public sealed partial class SynthesisFragmentDialogueDat
     /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey6 { get; init; }
 
-    /// <inheritdoc/>
-    public static SynthesisFragmentDialogueDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SynthesisFragmentDialogueDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SynthesisFragmentDialogueDat.</returns>
+    internal static SynthesisFragmentDialogueDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SynthesisFragmentDialogue.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

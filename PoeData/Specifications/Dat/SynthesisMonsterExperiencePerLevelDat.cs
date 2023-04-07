@@ -19,16 +19,20 @@ public sealed partial class SynthesisMonsterExperiencePerLevelDat
     /// <summary> Gets ExperienceBonus.</summary>
     public required int ExperienceBonus { get; init; }
 
-    /// <inheritdoc/>
-    public static SynthesisMonsterExperiencePerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SynthesisMonsterExperiencePerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SynthesisMonsterExperiencePerLevelDat.</returns>
+    internal static SynthesisMonsterExperiencePerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SynthesisMonsterExperiencePerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

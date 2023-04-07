@@ -59,16 +59,20 @@ public sealed partial class BuffTemplatesDat
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? Unknown122 { get; init; }
 
-    /// <inheritdoc/>
-    public static BuffTemplatesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BuffTemplatesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BuffTemplatesDat.</returns>
+    internal static BuffTemplatesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BuffTemplates.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

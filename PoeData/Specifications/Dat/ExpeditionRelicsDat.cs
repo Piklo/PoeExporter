@@ -32,16 +32,20 @@ public sealed partial class ExpeditionRelicsDat
     /// <summary> Gets MaxLevel.</summary>
     public required int MaxLevel { get; init; }
 
-    /// <inheritdoc/>
-    public static ExpeditionRelicsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ExpeditionRelicsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ExpeditionRelicsDat.</returns>
+    internal static ExpeditionRelicsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ExpeditionRelics.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

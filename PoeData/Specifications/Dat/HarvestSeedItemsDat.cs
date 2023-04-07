@@ -24,16 +24,20 @@ public sealed partial class HarvestSeedItemsDat
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? DropStat { get; init; }
 
-    /// <inheritdoc/>
-    public static HarvestSeedItemsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HarvestSeedItemsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HarvestSeedItemsDat.</returns>
+    internal static HarvestSeedItemsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HarvestSeedItems.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

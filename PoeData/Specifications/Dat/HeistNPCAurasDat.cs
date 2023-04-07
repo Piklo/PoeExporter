@@ -21,16 +21,20 @@ public sealed partial class HeistNPCAurasDat
     /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffect { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistNPCAurasDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistNPCAurasDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistNPCAurasDat.</returns>
+    internal static HeistNPCAurasDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistNPCAuras.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -23,16 +23,20 @@ public sealed partial class HeistLockTypeDat
     /// <summary> Gets SkillIcon.</summary>
     public required string SkillIcon { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistLockTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistLockTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistLockTypeDat.</returns>
+    internal static HeistLockTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistLockType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -25,16 +25,20 @@ public sealed partial class CharacterPanelTabsDat
     /// <summary> Gets Unknown20.</summary>
     public required int Unknown20 { get; init; }
 
-    /// <inheritdoc/>
-    public static CharacterPanelTabsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CharacterPanelTabsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CharacterPanelTabsDat.</returns>
+    internal static CharacterPanelTabsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CharacterPanelTabs.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

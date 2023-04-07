@@ -35,16 +35,20 @@ public sealed partial class MetamorphosisScalingDat
     /// <summary> Gets ScalingValuesHardmode2.</summary>
     public required ReadOnlyCollection<int> ScalingValuesHardmode2 { get; init; }
 
-    /// <inheritdoc/>
-    public static MetamorphosisScalingDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MetamorphosisScalingDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MetamorphosisScalingDat.</returns>
+    internal static MetamorphosisScalingDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MetamorphosisScaling.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

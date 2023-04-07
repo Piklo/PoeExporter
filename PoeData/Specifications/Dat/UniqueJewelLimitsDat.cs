@@ -20,16 +20,20 @@ public sealed partial class UniqueJewelLimitsDat
     /// <summary> Gets Limit.</summary>
     public required int Limit { get; init; }
 
-    /// <inheritdoc/>
-    public static UniqueJewelLimitsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UniqueJewelLimitsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UniqueJewelLimitsDat.</returns>
+    internal static UniqueJewelLimitsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UniqueJewelLimits.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

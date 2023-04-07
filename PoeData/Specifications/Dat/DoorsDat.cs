@@ -19,16 +19,20 @@ public sealed partial class DoorsDat
     /// <summary> Gets a value indicating whether Unknown8 is set.</summary>
     public required bool Unknown8 { get; init; }
 
-    /// <inheritdoc/>
-    public static DoorsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DoorsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DoorsDat.</returns>
+    internal static DoorsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Doors.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

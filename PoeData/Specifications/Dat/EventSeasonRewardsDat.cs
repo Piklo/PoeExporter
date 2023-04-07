@@ -23,16 +23,20 @@ public sealed partial class EventSeasonRewardsDat
     /// <summary> Gets RewardCommand.</summary>
     public required string RewardCommand { get; init; }
 
-    /// <inheritdoc/>
-    public static EventSeasonRewardsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets EventSeasonRewardsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of EventSeasonRewardsDat.</returns>
+    internal static EventSeasonRewardsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/EventSeasonRewards.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

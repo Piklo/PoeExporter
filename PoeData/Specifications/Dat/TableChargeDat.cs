@@ -97,16 +97,20 @@ public sealed partial class TableChargeDat
     /// <summary> Gets Unknown147.</summary>
     public required int Unknown147 { get; init; }
 
-    /// <inheritdoc/>
-    public static TableChargeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets TableChargeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of TableChargeDat.</returns>
+    internal static TableChargeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/TableCharge.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -47,16 +47,20 @@ public sealed partial class HeistIntroAreasDat
     /// <summary> Gets Unknown57.</summary>
     public required int Unknown57 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistIntroAreasDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistIntroAreasDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistIntroAreasDat.</returns>
+    internal static HeistIntroAreasDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistIntroAreas.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

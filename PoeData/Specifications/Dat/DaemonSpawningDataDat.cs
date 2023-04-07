@@ -41,16 +41,20 @@ public sealed partial class DaemonSpawningDataDat
     /// <summary> Gets a value indicating whether Unknown39 is set.</summary>
     public required bool Unknown39 { get; init; }
 
-    /// <inheritdoc/>
-    public static DaemonSpawningDataDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DaemonSpawningDataDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DaemonSpawningDataDat.</returns>
+    internal static DaemonSpawningDataDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DaemonSpawningData.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

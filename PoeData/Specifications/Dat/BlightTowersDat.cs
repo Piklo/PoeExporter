@@ -60,16 +60,20 @@ public sealed partial class BlightTowersDat
     /// <summary> Gets a value indicating whether Unknown132 is set.</summary>
     public required bool Unknown132 { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightTowersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightTowersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightTowersDat.</returns>
+    internal static BlightTowersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightTowers.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

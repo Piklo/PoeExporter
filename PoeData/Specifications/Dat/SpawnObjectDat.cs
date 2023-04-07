@@ -64,16 +64,20 @@ public sealed partial class SpawnObjectDat
     /// <summary> Gets Unknown86.</summary>
     public required int Unknown86 { get; init; }
 
-    /// <inheritdoc/>
-    public static SpawnObjectDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SpawnObjectDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SpawnObjectDat.</returns>
+    internal static SpawnObjectDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SpawnObject.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

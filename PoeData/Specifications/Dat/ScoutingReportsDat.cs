@@ -23,16 +23,20 @@ public sealed partial class ScoutingReportsDat
     /// <summary> Gets MinMapTier.</summary>
     public required int MinMapTier { get; init; }
 
-    /// <inheritdoc/>
-    public static ScoutingReportsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ScoutingReportsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ScoutingReportsDat.</returns>
+    internal static ScoutingReportsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ScoutingReports.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

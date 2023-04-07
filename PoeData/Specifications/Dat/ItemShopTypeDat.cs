@@ -19,16 +19,20 @@ public sealed partial class ItemShopTypeDat
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
-    /// <inheritdoc/>
-    public static ItemShopTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ItemShopTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ItemShopTypeDat.</returns>
+    internal static ItemShopTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ItemShopType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

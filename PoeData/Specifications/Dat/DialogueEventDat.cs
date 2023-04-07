@@ -19,16 +19,20 @@ public sealed partial class DialogueEventDat
     /// <summary> Gets Timer.</summary>
     public required int Timer { get; init; }
 
-    /// <inheritdoc/>
-    public static DialogueEventDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DialogueEventDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DialogueEventDat.</returns>
+    internal static DialogueEventDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DialogueEvent.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

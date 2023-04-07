@@ -22,16 +22,20 @@ public sealed partial class CharacterTextAudioDat
     /// <summary> Gets SoundFile.</summary>
     public required string SoundFile { get; init; }
 
-    /// <inheritdoc/>
-    public static CharacterTextAudioDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CharacterTextAudioDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CharacterTextAudioDat.</returns>
+    internal static CharacterTextAudioDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CharacterTextAudio.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

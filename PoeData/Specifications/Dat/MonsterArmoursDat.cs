@@ -19,16 +19,20 @@ public sealed partial class MonsterArmoursDat
     /// <summary> Gets ArtString_SMFile.</summary>
     public required string ArtString_SMFile { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterArmoursDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterArmoursDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterArmoursDat.</returns>
+    internal static MonsterArmoursDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterArmours.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

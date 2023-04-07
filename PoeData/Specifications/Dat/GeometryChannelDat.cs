@@ -55,16 +55,20 @@ public sealed partial class GeometryChannelDat
     /// <summary> Gets Unknown126.</summary>
     public required int Unknown126 { get; init; }
 
-    /// <inheritdoc/>
-    public static GeometryChannelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets GeometryChannelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of GeometryChannelDat.</returns>
+    internal static GeometryChannelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/GeometryChannel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

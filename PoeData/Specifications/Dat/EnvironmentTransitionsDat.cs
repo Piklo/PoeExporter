@@ -22,16 +22,20 @@ public sealed partial class EnvironmentTransitionsDat
     /// <summary> Gets Unknown24.</summary>
     public required ReadOnlyCollection<string> Unknown24 { get; init; }
 
-    /// <inheritdoc/>
-    public static EnvironmentTransitionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets EnvironmentTransitionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of EnvironmentTransitionsDat.</returns>
+    internal static EnvironmentTransitionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/EnvironmentTransitions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

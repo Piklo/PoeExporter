@@ -48,16 +48,20 @@ public sealed partial class ExpeditionFactionsDat
     /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
     public required int? Tags { get; init; }
 
-    /// <inheritdoc/>
-    public static ExpeditionFactionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ExpeditionFactionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ExpeditionFactionsDat.</returns>
+    internal static ExpeditionFactionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ExpeditionFactions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

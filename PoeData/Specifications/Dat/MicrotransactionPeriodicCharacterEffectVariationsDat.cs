@@ -23,16 +23,20 @@ public sealed partial class MicrotransactionPeriodicCharacterEffectVariationsDat
     /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
     public required int? MiscObject { get; init; }
 
-    /// <inheritdoc/>
-    public static MicrotransactionPeriodicCharacterEffectVariationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MicrotransactionPeriodicCharacterEffectVariationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MicrotransactionPeriodicCharacterEffectVariationsDat.</returns>
+    internal static MicrotransactionPeriodicCharacterEffectVariationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MicrotransactionPeriodicCharacterEffectVariations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

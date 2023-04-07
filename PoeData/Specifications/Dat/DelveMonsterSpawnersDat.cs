@@ -106,16 +106,20 @@ public sealed partial class DelveMonsterSpawnersDat
     /// <summary> Gets a value indicating whether Unknown116 is set.</summary>
     public required bool Unknown116 { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveMonsterSpawnersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveMonsterSpawnersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveMonsterSpawnersDat.</returns>
+    internal static DelveMonsterSpawnersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveMonsterSpawners.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

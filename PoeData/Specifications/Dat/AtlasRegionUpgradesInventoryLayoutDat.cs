@@ -28,16 +28,20 @@ public sealed partial class AtlasRegionUpgradesInventoryLayoutDat
     /// <summary> Gets Unknown32.</summary>
     public required int? Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasRegionUpgradesInventoryLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasRegionUpgradesInventoryLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasRegionUpgradesInventoryLayoutDat.</returns>
+    internal static AtlasRegionUpgradesInventoryLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasRegionUpgradesInventoryLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -21,16 +21,20 @@ public sealed partial class ArchnemesisModComboAchievementsDat
     /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
-    /// <inheritdoc/>
-    public static ArchnemesisModComboAchievementsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ArchnemesisModComboAchievementsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ArchnemesisModComboAchievementsDat.</returns>
+    internal static ArchnemesisModComboAchievementsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ArchnemesisModComboAchievements.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

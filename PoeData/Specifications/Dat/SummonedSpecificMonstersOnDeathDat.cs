@@ -32,16 +32,20 @@ public sealed partial class SummonedSpecificMonstersOnDeathDat
     /// <summary> Gets a value indicating whether Unknown48 is set.</summary>
     public required bool Unknown48 { get; init; }
 
-    /// <inheritdoc/>
-    public static SummonedSpecificMonstersOnDeathDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SummonedSpecificMonstersOnDeathDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SummonedSpecificMonstersOnDeathDat.</returns>
+    internal static SummonedSpecificMonstersOnDeathDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SummonedSpecificMonstersOnDeath.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

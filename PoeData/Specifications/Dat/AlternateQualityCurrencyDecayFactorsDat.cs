@@ -20,16 +20,20 @@ public sealed partial class AlternateQualityCurrencyDecayFactorsDat
     /// <summary> Gets Factor.</summary>
     public required int Factor { get; init; }
 
-    /// <inheritdoc/>
-    public static AlternateQualityCurrencyDecayFactorsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AlternateQualityCurrencyDecayFactorsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AlternateQualityCurrencyDecayFactorsDat.</returns>
+    internal static AlternateQualityCurrencyDecayFactorsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AlternateQualityCurrencyDecayFactors.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

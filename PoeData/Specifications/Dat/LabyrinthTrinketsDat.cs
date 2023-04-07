@@ -28,16 +28,20 @@ public sealed partial class LabyrinthTrinketsDat
     /// <summary> Gets Buff_StatValues.</summary>
     public required ReadOnlyCollection<int> Buff_StatValues { get; init; }
 
-    /// <inheritdoc/>
-    public static LabyrinthTrinketsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LabyrinthTrinketsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LabyrinthTrinketsDat.</returns>
+    internal static LabyrinthTrinketsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LabyrinthTrinkets.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

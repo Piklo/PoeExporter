@@ -28,16 +28,20 @@ public sealed partial class HeistChestsDat
     /// <remarks> references <see cref="HeistChestTypesDat"/> on <see cref="Specification.GetHeistChestTypesDat"/> index.</remarks>
     public required int HeistChestTypesKey { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistChestsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistChestsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistChestsDat.</returns>
+    internal static HeistChestsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistChests.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

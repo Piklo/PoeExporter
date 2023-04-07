@@ -94,16 +94,20 @@ public sealed partial class PantheonPanelLayoutDat
     /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItems { get; init; }
 
-    /// <inheritdoc/>
-    public static PantheonPanelLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PantheonPanelLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PantheonPanelLayoutDat.</returns>
+    internal static PantheonPanelLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PantheonPanelLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

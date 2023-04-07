@@ -28,16 +28,20 @@ public sealed partial class VoteTypeDat
     /// <summary> Gets Unknown32.</summary>
     public required int Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static VoteTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets VoteTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of VoteTypeDat.</returns>
+    internal static VoteTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/VoteType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

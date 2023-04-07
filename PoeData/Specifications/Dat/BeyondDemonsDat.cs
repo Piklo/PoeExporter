@@ -23,16 +23,20 @@ public sealed partial class BeyondDemonsDat
     /// <summary> Gets a value indicating whether Unknown17 is set.</summary>
     public required bool Unknown17 { get; init; }
 
-    /// <inheritdoc/>
-    public static BeyondDemonsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BeyondDemonsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BeyondDemonsDat.</returns>
+    internal static BeyondDemonsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BeyondDemons.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

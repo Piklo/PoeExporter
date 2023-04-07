@@ -22,16 +22,20 @@ public sealed partial class AdditionalLifeScalingDat
     /// <summary> Gets DatFile.</summary>
     public required string DatFile { get; init; }
 
-    /// <inheritdoc/>
-    public static AdditionalLifeScalingDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AdditionalLifeScalingDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AdditionalLifeScalingDat.</returns>
+    internal static AdditionalLifeScalingDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AdditionalLifeScaling.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

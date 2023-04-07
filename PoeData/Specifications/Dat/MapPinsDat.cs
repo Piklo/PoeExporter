@@ -51,16 +51,20 @@ public sealed partial class MapPinsDat
     /// <summary> Gets Unknown108.</summary>
     public required int Unknown108 { get; init; }
 
-    /// <inheritdoc/>
-    public static MapPinsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MapPinsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MapPinsDat.</returns>
+    internal static MapPinsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MapPins.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

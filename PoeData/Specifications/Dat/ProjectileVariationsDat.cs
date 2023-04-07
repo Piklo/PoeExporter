@@ -20,16 +20,20 @@ public sealed partial class ProjectileVariationsDat
     /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.GetProjectilesDat"/> index.</remarks>
     public required int? ProjectileKey { get; init; }
 
-    /// <inheritdoc/>
-    public static ProjectileVariationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ProjectileVariationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ProjectileVariationsDat.</returns>
+    internal static ProjectileVariationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ProjectileVariations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -29,16 +29,20 @@ public sealed partial class LabyrinthIzaroChestsDat
     /// <summary> Gets MaxLabyrinthTier.</summary>
     public required int MaxLabyrinthTier { get; init; }
 
-    /// <inheritdoc/>
-    public static LabyrinthIzaroChestsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LabyrinthIzaroChestsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LabyrinthIzaroChestsDat.</returns>
+    internal static LabyrinthIzaroChestsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LabyrinthIzaroChests.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

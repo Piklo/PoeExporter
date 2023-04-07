@@ -32,16 +32,20 @@ public sealed partial class HeistNPCDialogueDat
     /// <summary> Gets Unknown64.</summary>
     public required int Unknown64 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistNPCDialogueDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistNPCDialogueDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistNPCDialogueDat.</returns>
+    internal static HeistNPCDialogueDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistNPCDialogue.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

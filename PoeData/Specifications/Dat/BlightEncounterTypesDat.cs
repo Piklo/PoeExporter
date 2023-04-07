@@ -25,16 +25,20 @@ public sealed partial class BlightEncounterTypesDat
     /// <summary> Gets Weight.</summary>
     public required int Weight { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightEncounterTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightEncounterTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightEncounterTypesDat.</returns>
+    internal static BlightEncounterTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightEncounterTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

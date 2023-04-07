@@ -25,16 +25,20 @@ public sealed partial class HellscapeItemModificationTiersDat
     /// <summary> Gets MinItemLvl.</summary>
     public required int MinItemLvl { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeItemModificationTiersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeItemModificationTiersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeItemModificationTiersDat.</returns>
+    internal static HellscapeItemModificationTiersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeItemModificationTiers.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -20,16 +20,20 @@ public sealed partial class AtlasModsDat
     /// <summary> Gets AtlasModTiers.</summary>
     public required int AtlasModTiers { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasModsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasModsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasModsDat.</returns>
+    internal static AtlasModsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasMods.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

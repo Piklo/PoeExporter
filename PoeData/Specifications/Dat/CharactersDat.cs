@@ -162,16 +162,20 @@ public sealed partial class CharactersDat
     /// <summary> Gets Unknown416.</summary>
     public required int? Unknown416 { get; init; }
 
-    /// <inheritdoc/>
-    public static CharactersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CharactersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CharactersDat.</returns>
+    internal static CharactersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Characters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

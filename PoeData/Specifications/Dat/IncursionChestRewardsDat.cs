@@ -33,16 +33,20 @@ public sealed partial class IncursionChestRewardsDat
     /// <summary> Gets Unknown48.</summary>
     public required int Unknown48 { get; init; }
 
-    /// <inheritdoc/>
-    public static IncursionChestRewardsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets IncursionChestRewardsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of IncursionChestRewardsDat.</returns>
+    internal static IncursionChestRewardsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/IncursionChestRewards.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

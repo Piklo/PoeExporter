@@ -40,16 +40,20 @@ public sealed partial class BlightBalancePerLevelDat
     /// <summary> Gets Unknown44.</summary>
     public required int Unknown44 { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightBalancePerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightBalancePerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightBalancePerLevelDat.</returns>
+    internal static BlightBalancePerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightBalancePerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

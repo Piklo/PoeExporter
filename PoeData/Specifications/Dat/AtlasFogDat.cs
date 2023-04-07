@@ -25,16 +25,20 @@ public sealed partial class AtlasFogDat
     /// <summary> Gets Unknown12.</summary>
     public required int Unknown12 { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasFogDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasFogDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasFogDat.</returns>
+    internal static AtlasFogDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasFog.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

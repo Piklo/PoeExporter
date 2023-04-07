@@ -19,16 +19,20 @@ public sealed partial class RareMonsterLifeScalingPerLevelDat
     /// <summary> Gets Life.</summary>
     public required int Life { get; init; }
 
-    /// <inheritdoc/>
-    public static RareMonsterLifeScalingPerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RareMonsterLifeScalingPerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RareMonsterLifeScalingPerLevelDat.</returns>
+    internal static RareMonsterLifeScalingPerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/RareMonsterLifeScalingPerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

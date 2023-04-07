@@ -20,16 +20,20 @@ public sealed partial class DelveCraftingTagsDat
     /// <summary> Gets ItemClass.</summary>
     public required string ItemClass { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveCraftingTagsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveCraftingTagsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveCraftingTagsDat.</returns>
+    internal static DelveCraftingTagsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveCraftingTags.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -31,16 +31,20 @@ public sealed partial class StashTypeDat
     /// <summary> Gets Unknown28.</summary>
     public required int Unknown28 { get; init; }
 
-    /// <inheritdoc/>
-    public static StashTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets StashTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of StashTypeDat.</returns>
+    internal static StashTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/StashType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

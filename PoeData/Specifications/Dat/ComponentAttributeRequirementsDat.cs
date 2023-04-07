@@ -26,16 +26,20 @@ public sealed partial class ComponentAttributeRequirementsDat
     /// <summary> Gets ReqInt.</summary>
     public required int ReqInt { get; init; }
 
-    /// <inheritdoc/>
-    public static ComponentAttributeRequirementsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ComponentAttributeRequirementsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ComponentAttributeRequirementsDat.</returns>
+    internal static ComponentAttributeRequirementsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ComponentAttributeRequirements.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -22,16 +22,20 @@ public sealed partial class HellscapeAOReplacementsDat
     /// <summary> Gets Replacement.</summary>
     public required string Replacement { get; init; }
 
-    /// <inheritdoc/>
-    public static HellscapeAOReplacementsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HellscapeAOReplacementsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HellscapeAOReplacementsDat.</returns>
+    internal static HellscapeAOReplacementsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HellscapeAOReplacements.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

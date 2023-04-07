@@ -39,16 +39,20 @@ public sealed partial class LabyrinthTrialsDat
     /// <summary> Gets Unknown60.</summary>
     public required int Unknown60 { get; init; }
 
-    /// <inheritdoc/>
-    public static LabyrinthTrialsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets LabyrinthTrialsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of LabyrinthTrialsDat.</returns>
+    internal static LabyrinthTrialsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/LabyrinthTrials.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -22,16 +22,20 @@ public sealed partial class ItemClassCategoriesDat
     /// <summary> Gets Unknown16.</summary>
     public required int? Unknown16 { get; init; }
 
-    /// <inheritdoc/>
-    public static ItemClassCategoriesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ItemClassCategoriesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ItemClassCategoriesDat.</returns>
+    internal static ItemClassCategoriesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ItemClassCategories.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

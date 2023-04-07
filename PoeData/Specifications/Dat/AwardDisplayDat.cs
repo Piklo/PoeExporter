@@ -49,16 +49,20 @@ public sealed partial class AwardDisplayDat
     /// <summary> Gets Unknown84.</summary>
     public required int Unknown84 { get; init; }
 
-    /// <inheritdoc/>
-    public static AwardDisplayDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AwardDisplayDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AwardDisplayDat.</returns>
+    internal static AwardDisplayDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AwardDisplay.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

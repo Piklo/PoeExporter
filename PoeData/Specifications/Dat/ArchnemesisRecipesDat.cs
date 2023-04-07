@@ -24,16 +24,20 @@ public sealed partial class ArchnemesisRecipesDat
     /// <summary> Gets Unknown32.</summary>
     public required int Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static ArchnemesisRecipesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ArchnemesisRecipesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ArchnemesisRecipesDat.</returns>
+    internal static ArchnemesisRecipesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ArchnemesisRecipes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

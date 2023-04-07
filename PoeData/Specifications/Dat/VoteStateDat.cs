@@ -19,16 +19,20 @@ public sealed partial class VoteStateDat
     /// <summary> Gets Text.</summary>
     public required string Text { get; init; }
 
-    /// <inheritdoc/>
-    public static VoteStateDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets VoteStateDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of VoteStateDat.</returns>
+    internal static VoteStateDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/VoteState.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -43,16 +43,20 @@ public sealed partial class BestiaryRecipeComponentDat
     /// <remarks> references <see cref="BestiaryGenusDat"/> on <see cref="Specification.GetBestiaryGenusDat"/> index.</remarks>
     public required int? BestiaryGenusKey { get; init; }
 
-    /// <inheritdoc/>
-    public static BestiaryRecipeComponentDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BestiaryRecipeComponentDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BestiaryRecipeComponentDat.</returns>
+    internal static BestiaryRecipeComponentDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BestiaryRecipeComponent.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

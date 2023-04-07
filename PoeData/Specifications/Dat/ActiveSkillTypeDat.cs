@@ -20,16 +20,20 @@ public sealed partial class ActiveSkillTypeDat
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? FlagStat { get; init; }
 
-    /// <inheritdoc/>
-    public static ActiveSkillTypeDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ActiveSkillTypeDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ActiveSkillTypeDat.</returns>
+    internal static ActiveSkillTypeDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ActiveSkillType.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -24,16 +24,20 @@ public sealed partial class AtlasPrimordialAltarChoicesDat
     /// <summary> Gets a value indicating whether Unknown32 is set.</summary>
     public required bool Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static AtlasPrimordialAltarChoicesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets AtlasPrimordialAltarChoicesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of AtlasPrimordialAltarChoicesDat.</returns>
+    internal static AtlasPrimordialAltarChoicesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/AtlasPrimordialAltarChoices.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -78,16 +78,20 @@ public sealed partial class RitualRuneTypesDat
     /// <summary> Gets a value indicating whether Unknown216 is set.</summary>
     public required bool Unknown216 { get; init; }
 
-    /// <inheritdoc/>
-    public static RitualRuneTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets RitualRuneTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of RitualRuneTypesDat.</returns>
+    internal static RitualRuneTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/RitualRuneTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

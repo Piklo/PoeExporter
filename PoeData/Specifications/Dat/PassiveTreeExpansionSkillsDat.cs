@@ -29,16 +29,20 @@ public sealed partial class PassiveTreeExpansionSkillsDat
     /// <remarks> references <see cref="PassiveTreeExpansionJewelSizesDat"/> on <see cref="Specification.GetPassiveTreeExpansionJewelSizesDat"/> index.</remarks>
     public required int? PassiveTreeExpansionJewelSizesKey { get; init; }
 
-    /// <inheritdoc/>
-    public static PassiveTreeExpansionSkillsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PassiveTreeExpansionSkillsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PassiveTreeExpansionSkillsDat.</returns>
+    internal static PassiveTreeExpansionSkillsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PassiveTreeExpansionSkills.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

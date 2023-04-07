@@ -49,16 +49,20 @@ public sealed partial class HideoutNPCsDat
     /// <summary> Gets Unknown109.</summary>
     public required int? Unknown109 { get; init; }
 
-    /// <inheritdoc/>
-    public static HideoutNPCsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HideoutNPCsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HideoutNPCsDat.</returns>
+    internal static HideoutNPCsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HideoutNPCs.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -44,16 +44,20 @@ public sealed partial class DelveStashTabLayoutDat
     /// <summary> Gets Image.</summary>
     public required string Image { get; init; }
 
-    /// <inheritdoc/>
-    public static DelveStashTabLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets DelveStashTabLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of DelveStashTabLayoutDat.</returns>
+    internal static DelveStashTabLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/DelveStashTabLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

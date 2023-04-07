@@ -76,16 +76,20 @@ public sealed partial class StatsDat
     /// <remarks> references <see cref="VirtualStatContextFlagsDat"/> on <see cref="Specification.GetVirtualStatContextFlagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ContextFlags { get; init; }
 
-    /// <inheritdoc/>
-    public static StatsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets StatsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of StatsDat.</returns>
+    internal static StatsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/Stats.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

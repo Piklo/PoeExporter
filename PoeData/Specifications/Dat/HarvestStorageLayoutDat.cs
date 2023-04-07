@@ -52,16 +52,20 @@ public sealed partial class HarvestStorageLayoutDat
     /// <summary> Gets a value indicating whether HasButton is set.</summary>
     public required bool HasButton { get; init; }
 
-    /// <inheritdoc/>
-    public static HarvestStorageLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HarvestStorageLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HarvestStorageLayoutDat.</returns>
+    internal static HarvestStorageLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HarvestStorageLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

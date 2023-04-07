@@ -16,16 +16,20 @@ public sealed partial class CharacterStartStateSetDat
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
 
-    /// <inheritdoc/>
-    public static CharacterStartStateSetDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets CharacterStartStateSetDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of CharacterStartStateSetDat.</returns>
+    internal static CharacterStartStateSetDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/CharacterStartStateSet.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

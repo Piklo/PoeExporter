@@ -19,16 +19,20 @@ public sealed partial class MicrotransactionRarityDisplayDat
     /// <summary> Gets ImageFile.</summary>
     public required string ImageFile { get; init; }
 
-    /// <inheritdoc/>
-    public static MicrotransactionRarityDisplayDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MicrotransactionRarityDisplayDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MicrotransactionRarityDisplayDat.</returns>
+    internal static MicrotransactionRarityDisplayDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MicrotransactionRarityDisplay.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -53,16 +53,20 @@ public sealed partial class HeistAreaFormationLayoutDat
     /// <summary> Gets Unknown57.</summary>
     public required int Unknown57 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistAreaFormationLayoutDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistAreaFormationLayoutDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistAreaFormationLayoutDat.</returns>
+    internal static HeistAreaFormationLayoutDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistAreaFormationLayout.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

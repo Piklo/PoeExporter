@@ -56,25 +56,28 @@ internal class SpecificationFileGenerator
                     /// thats where the table ends?
                     internal static byte[] DatFileMagicNumber { get; } = new byte[] { (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb' };
 
-                    /// <summary>Gets data loader.</summary>
-                    internal DataLoader DataLoader { get; }
+                    private readonly DataLoader dataLoader;
 
+                    /// <summary>
+                    /// Initializes a new instance of the <see cref="Specification"/> class.
+                    /// </summary>
+                    /// <param name="config">Contains config data.</param>
+                    /// <param name="logger">Contains logger used through the application.</param>
+                    public Specification(IConfig config, ILogger logger)
+                    {
+                        if (config is null)
+                        {
+                            throw new ArgumentNullException(nameof(config));
+                        }
+
+                        if (logger is null)
+                        {
+                            throw new ArgumentNullException(nameof(logger));
+                        }
+
+                        dataLoader = new DataLoader(config, logger);
+                    }
                 """);
-
-        AppendProperties(builder);
-
-        builder.AppendLine("""
-
-                /// <summary>
-                /// Initializes a new instance of the <see cref="Specification"/> class.
-                /// </summary>
-                /// <param name="config">Contains config data.</param>
-                /// <param name="logger">Contains logger used through the application.</param>
-                public Specification(IConfig config, ILogger logger)
-                {
-                    DataLoader = new DataLoader(config, logger);
-                }
-            """);
 
         AppendLoadMethods(builder);
 
@@ -86,15 +89,6 @@ internal class SpecificationFileGenerator
 
         logger.Verbose("generated {fileName} string in {elapsed}", FileName, Stopwatch.GetElapsedTime(startTimestamp));
         return str;
-    }
-
-    private void AppendProperties(StringBuilder builder)
-    {
-        foreach (var file in specificationFiles)
-        {
-            var name = file.ClassName;
-            builder.AppendLine($"{Tabs.Tab1}private ReadOnlyCollection<{name}>? {name.ToLower()};");
-        }
     }
 
     private void AppendLoadMethods(StringBuilder builder)
@@ -110,9 +104,7 @@ internal class SpecificationFileGenerator
                     /// <returns>readonly collection of {{className}}.</returns>
                     public ReadOnlyCollection<{{className}}> Get{{className}}()
                     {
-                        {{className.ToLower()}} ??= {{className}}.Load(this).AsReadOnly();
-
-                        return {{className.ToLower()}};
+                        return {{className}}.Load(dataLoader).AsReadOnly();
                     }
                 """);
         }

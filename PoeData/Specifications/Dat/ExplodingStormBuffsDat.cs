@@ -77,16 +77,20 @@ public sealed partial class ExplodingStormBuffsDat
     /// <summary> Gets a value indicating whether IsOnlySpawningNearPlayer is set.</summary>
     public required bool IsOnlySpawningNearPlayer { get; init; }
 
-    /// <inheritdoc/>
-    public static ExplodingStormBuffsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets ExplodingStormBuffsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of ExplodingStormBuffsDat.</returns>
+    internal static ExplodingStormBuffsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/ExplodingStormBuffs.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

@@ -38,16 +38,20 @@ public sealed partial class PerandusDaemonsDat
     /// <summary> Gets Unknown49.</summary>
     public required ReadOnlyCollection<int> Unknown49 { get; init; }
 
-    /// <inheritdoc/>
-    public static PerandusDaemonsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PerandusDaemonsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PerandusDaemonsDat.</returns>
+    internal static PerandusDaemonsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PerandusDaemons.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

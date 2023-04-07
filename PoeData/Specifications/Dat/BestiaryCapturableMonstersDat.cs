@@ -61,16 +61,20 @@ public sealed partial class BestiaryCapturableMonstersDat
     /// <summary> Gets a value indicating whether Unknown119 is set.</summary>
     public required bool Unknown119 { get; init; }
 
-    /// <inheritdoc/>
-    public static BestiaryCapturableMonstersDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BestiaryCapturableMonstersDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BestiaryCapturableMonstersDat.</returns>
+    internal static BestiaryCapturableMonstersDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BestiaryCapturableMonsters.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

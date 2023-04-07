@@ -19,16 +19,20 @@ public sealed partial class BreachBossLifeScalingPerLevelDat
     /// <summary> Gets LifeMultiplier.</summary>
     public required int LifeMultiplier { get; init; }
 
-    /// <inheritdoc/>
-    public static BreachBossLifeScalingPerLevelDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BreachBossLifeScalingPerLevelDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BreachBossLifeScalingPerLevelDat.</returns>
+    internal static BreachBossLifeScalingPerLevelDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BreachBossLifeScalingPerLevel.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

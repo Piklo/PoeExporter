@@ -23,16 +23,20 @@ public sealed partial class MicrotransactionCursorVariationsDat
     /// <summary> Gets Unknown32.</summary>
     public required int Unknown32 { get; init; }
 
-    /// <inheritdoc/>
-    public static MicrotransactionCursorVariationsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MicrotransactionCursorVariationsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MicrotransactionCursorVariationsDat.</returns>
+    internal static MicrotransactionCursorVariationsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MicrotransactionCursorVariations.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

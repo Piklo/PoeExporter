@@ -28,16 +28,20 @@ public sealed partial class BlightCraftingRecipesDat
     /// <remarks> references <see cref="BlightCraftingTypesDat"/> on <see cref="Specification.GetBlightCraftingTypesDat"/> index.</remarks>
     public required int? BlightCraftingTypesKey { get; init; }
 
-    /// <inheritdoc/>
-    public static BlightCraftingRecipesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets BlightCraftingRecipesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of BlightCraftingRecipesDat.</returns>
+    internal static BlightCraftingRecipesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/BlightCraftingRecipes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

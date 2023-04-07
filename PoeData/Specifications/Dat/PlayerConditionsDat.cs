@@ -46,16 +46,20 @@ public sealed partial class PlayerConditionsDat
     /// <summary> Gets a value indicating whether Unknown82 is set.</summary>
     public required bool Unknown82 { get; init; }
 
-    /// <inheritdoc/>
-    public static PlayerConditionsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets PlayerConditionsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of PlayerConditionsDat.</returns>
+    internal static PlayerConditionsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/PlayerConditions.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

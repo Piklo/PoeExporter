@@ -55,16 +55,20 @@ public sealed partial class SingleGroundLaserDat
     /// <summary> Gets a value indicating whether Unknown98 is set.</summary>
     public required bool Unknown98 { get; init; }
 
-    /// <inheritdoc/>
-    public static SingleGroundLaserDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets SingleGroundLaserDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of SingleGroundLaserDat.</returns>
+    internal static SingleGroundLaserDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/SingleGroundLaser.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

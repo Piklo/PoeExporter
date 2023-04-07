@@ -119,16 +119,20 @@ public sealed partial class HeistQuestContractsDat
     /// <summary> Gets Unknown250.</summary>
     public required string Unknown250 { get; init; }
 
-    /// <inheritdoc/>
-    public static HeistQuestContractsDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets HeistQuestContractsDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of HeistQuestContractsDat.</returns>
+    internal static HeistQuestContractsDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/HeistQuestContracts.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

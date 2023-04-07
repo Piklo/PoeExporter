@@ -46,16 +46,20 @@ public sealed partial class UniqueStashTypesDat
     /// <summary> Gets a value indicating whether IsDisabled is set.</summary>
     public required bool IsDisabled { get; init; }
 
-    /// <inheritdoc/>
-    public static UniqueStashTypesDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets UniqueStashTypesDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of UniqueStashTypesDat.</returns>
+    internal static UniqueStashTypesDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/UniqueStashTypes.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

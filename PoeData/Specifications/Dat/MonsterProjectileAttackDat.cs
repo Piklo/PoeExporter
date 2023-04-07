@@ -32,16 +32,20 @@ public sealed partial class MonsterProjectileAttackDat
     /// <summary> Gets Unknown23.</summary>
     public required int Unknown23 { get; init; }
 
-    /// <inheritdoc/>
-    public static MonsterProjectileAttackDat[] Load(Specification specification)
+    /// <summary>
+    /// Gets MonsterProjectileAttackDat data.
+    /// </summary>
+    /// <param name="dataLoader">data loader.</param>
+    /// <returns>array of MonsterProjectileAttackDat.</returns>
+    internal static MonsterProjectileAttackDat[] Load(DataLoader dataLoader)
     {
-        if (specification is null)
+        if (dataLoader is null)
         {
-            throw new ArgumentNullException(nameof(specification));
+            throw new ArgumentNullException(nameof(dataLoader));
         }
 
         const string filePath = "Data/MonsterProjectileAttack.dat64";
-        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
+        var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;
