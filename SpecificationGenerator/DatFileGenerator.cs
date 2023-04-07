@@ -86,7 +86,7 @@ internal sealed class DatFileGenerator
                 /// <summary>
                 /// Class containing {{datFileName}} data.
                 /// </summary>
-                public sealed partial class {{ClassName}} : IDat<{{ClassName}}>
+                public sealed partial class {{ClassName}}
                 {
                 """);
 
