@@ -6,7 +6,7 @@ namespace PoeData.Ggpk;
 /// <summary>
 /// Class containing .ggpk data.
 /// </summary>
-internal sealed class GgpkLoader
+internal sealed class GgpkLoader : IDataLoader
 {
     private const string FileName = "Content.ggpk";
     private readonly IConfig config;
@@ -86,6 +86,34 @@ internal sealed class GgpkLoader
         this.logger.Verbose("created {count} records", records.Count);
     }
 
+    /// <inheritdoc/>
+    public byte[] GetFileBytes(string filePath)
+    {
+        var splitPath = filePath.Split('/');
+
+        var currentDirectoryNode = rootDirectoryNode;
+        foreach (var currentPath in splitPath)
+        {
+            foreach (var child in currentDirectoryNode.Children)
+            {
+                if (child.Name == currentPath)
+                {
+                    currentDirectoryNode = child;
+                    break;
+                }
+            }
+        }
+
+        currentDirectoryNode.Record.TryPickT1(out var fileRecord, out _);
+
+        using var ggpkFileStream = File.OpenRead(ggpkPath);
+        ggpkFileStream.Seek(fileRecord.Offset, SeekOrigin.Begin);
+
+        var bytes = new byte[fileRecord.Length];
+        ggpkFileStream.Read(bytes);
+
+        return bytes;
+    }
 
     private DirectoryNode BuildRootDirectory()
     {
