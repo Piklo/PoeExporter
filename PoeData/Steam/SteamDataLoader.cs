@@ -9,6 +9,7 @@ namespace PoeData.Steam;
 /// </summary>
 internal sealed class SteamDataLoader : IDataLoader
 {
+    private const string IndexPath = "Bundles2\\_.index.bin";
     private readonly DataDecompressor decompressor;
     private readonly ILogger logger;
     private readonly IConfig config;
@@ -43,7 +44,7 @@ internal sealed class SteamDataLoader : IDataLoader
         var timestampStart = Stopwatch.GetTimestamp();
         logger.Debug("loading data");
 
-        var indexBytes = decompressor.ReadIndex();
+        var indexBytes = ReadIndex();
         var decompressedData = decompressor.Decompress(indexBytes);
         var data = decompressedData.Data;
 
@@ -61,6 +62,19 @@ internal sealed class SteamDataLoader : IDataLoader
         directoryRecordsWithPaths = AddPathsToDirectoryRecords(directoryRecords, decompressedRemainingData);
 
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
+    }
+
+    /// <summary>
+    /// Reads all bytes from the index file.
+    /// </summary>
+    /// <returns>bytes from the index file.</returns>
+    private byte[] ReadIndex()
+    {
+        var combinedPath = Path.Combine(config.PoePath, IndexPath);
+
+        var bytes = File.ReadAllBytes(combinedPath);
+
+        return bytes;
     }
 
     private (BundleRecord[] bundleRecords, int movedOffset) CreateBundleRecords(byte[] data, int offset)
@@ -279,7 +293,7 @@ internal sealed class SteamDataLoader : IDataLoader
         else
         {
             var combinedPath = Path.Combine(config.PoePath, bundleRecord.GgpkPath);
-            var bytes = decompressor.ReadFile(combinedPath);
+            var bytes = File.ReadAllBytes(combinedPath);
             var decompressed = decompressor.Decompress(bytes);
             decompressedFilesCache.Add(bundleRecord.Name, decompressed);
 
