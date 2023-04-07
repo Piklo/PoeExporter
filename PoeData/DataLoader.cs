@@ -1,12 +1,13 @@
 ﻿using Serilog;
 using System.Diagnostics;
+using System.Text;
 
 namespace PoeData;
 
 /// <summary>
 /// Class used to load poe data.
 /// </summary>
-internal sealed class DataLoader
+internal sealed class DataLoader : IDataLoader
 {
     private readonly DataDecompressor decompressor;
     private readonly ILogger logger;
@@ -254,13 +255,12 @@ internal sealed class DataLoader
         return fileRecord;
     }
 
-    /// <summary>
-    /// Gets bytes for a file record.
-    /// </summary>
-    /// <param name="fileRecord">file record to get bytes from.</param>
-    /// <returns>bytes for a file.</returns>
-    internal byte[] GetFileBytes(FileRecord fileRecord)
+    /// <inheritdoc/>
+    public byte[] GetFileBytes(string filePath)
     {
+        var pathBytes = Encoding.ASCII.GetBytes(filePath);
+        var fileRecord = GetFileRecord(pathBytes);
+
         var decompressedData = GetDecompressedData(fileRecord.BundleRecord);
 
         var start = (int)fileRecord.FileOffset;
