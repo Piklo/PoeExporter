@@ -232,9 +232,8 @@ internal sealed class DatFileGenerator
                 """);
 
         builder.AppendLine($$"""
-                        var fileToFind = Encoding.ASCII.GetBytes("Data/{{table.Name}}.dat64");
-                        var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
-                        var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
+                        const string filePath = "Data/{{table.Name}}.dat64";
+                        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
 
                         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
                         const int TableOffset = 4;
