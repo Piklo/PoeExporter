@@ -11,4 +11,10 @@ internal interface IDataLoader
     /// <param name="filePath">file path to get bytes from.</param>
     /// <returns>bytes for a file.</returns>
     public byte[] GetFileBytes(string filePath);
+
+    /// <summary>
+    /// Reads all bytes from the index file.
+    /// </summary>
+    /// <returns>bytes from the index file.</returns>
+    public byte[] ReadIndex();
 }

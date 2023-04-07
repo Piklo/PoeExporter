@@ -123,7 +123,8 @@ internal sealed class GgpkLoader : IDataLoader
         return bytes;
     }
 
-    private byte[] ReadIndex()
+    /// <inheritdoc/>
+    public byte[] ReadIndex()
     {
         var bytes = GetFileBytes(DataLoader.IndexPath);
         return bytes;
