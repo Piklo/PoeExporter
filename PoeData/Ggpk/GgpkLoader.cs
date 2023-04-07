@@ -83,6 +83,7 @@ internal sealed class GgpkLoader : IDataLoader
             }
         }
 
+        var indexBytes = ReadIndex();
         this.logger.Verbose("created {count} records", records.Count);
     }
 
@@ -119,6 +120,12 @@ internal sealed class GgpkLoader : IDataLoader
         var bytes = new byte[fileRecord.Length];
         ggpkFileStream.Read(bytes);
 
+        return bytes;
+    }
+
+    private byte[] ReadIndex()
+    {
+        var bytes = GetFileBytes(DataLoader.IndexPath);
         return bytes;
     }
 
