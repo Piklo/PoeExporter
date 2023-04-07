@@ -115,9 +115,9 @@ internal sealed class GgpkLoader : IDataLoader
         currentDirectoryNode.Record.TryPickT1(out var fileRecord, out _);
 
         using var ggpkFileStream = File.OpenRead(ggpkPath);
-        ggpkFileStream.Seek(fileRecord.Offset, SeekOrigin.Begin);
+        ggpkFileStream.Seek(fileRecord.DataStart, SeekOrigin.Begin);
 
-        var bytes = new byte[fileRecord.Length];
+        var bytes = new byte[fileRecord.DataLength];
         ggpkFileStream.Read(bytes);
 
         return bytes;
