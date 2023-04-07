@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SkillGemInfo.dat data.
 /// </summary>
-public sealed partial class SkillGemInfoDat : IDat<SkillGemInfoDat>
+public sealed partial class SkillGemInfoDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

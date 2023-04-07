@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Words.dat data.
 /// </summary>
-public sealed partial class WordsDat : IDat<WordsDat>
+public sealed partial class WordsDat
 {
     /// <summary> Gets Wordlist.</summary>
     /// <remarks> references <see cref="WordlistsDat"/> on <see cref="Specification.GetWordlistsDat"/> index.</remarks>

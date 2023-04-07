@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing VirtualStatContextFlags.dat data.
 /// </summary>
-public sealed partial class VirtualStatContextFlagsDat : IDat<VirtualStatContextFlagsDat>
+public sealed partial class VirtualStatContextFlagsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing WeaponImpactSoundData.dat data.
 /// </summary>
-public sealed partial class WeaponImpactSoundDataDat : IDat<WeaponImpactSoundDataDat>
+public sealed partial class WeaponImpactSoundDataDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

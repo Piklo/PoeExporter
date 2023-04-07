@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing InfluenceExalts.dat data.
 /// </summary>
-public sealed partial class InfluenceExaltsDat : IDat<InfluenceExaltsDat>
+public sealed partial class InfluenceExaltsDat
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

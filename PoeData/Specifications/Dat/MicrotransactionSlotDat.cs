@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionSlot.dat data.
 /// </summary>
-public sealed partial class MicrotransactionSlotDat : IDat<MicrotransactionSlotDat>
+public sealed partial class MicrotransactionSlotDat
 {
     /// <summary> Gets Id.</summary>
     /// <remarks> references <see cref="MicrotransactionSlotIdDat"/> on <see cref="Specification.GetMicrotransactionSlotIdDat"/> index.</remarks>

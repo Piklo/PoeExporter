@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RitualBalancePerLevel.dat data.
 /// </summary>
-public sealed partial class RitualBalancePerLevelDat : IDat<RitualBalancePerLevelDat>
+public sealed partial class RitualBalancePerLevelDat
 {
     /// <summary> Gets MinLevel.</summary>
     public required int MinLevel { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterSpawnerOverrides.dat data.
 /// </summary>
-public sealed partial class MonsterSpawnerOverridesDat : IDat<MonsterSpawnerOverridesDat>
+public sealed partial class MonsterSpawnerOverridesDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

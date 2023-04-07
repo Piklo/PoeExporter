@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MultiPartAchievementConditions.dat data.
 /// </summary>
-public sealed partial class MultiPartAchievementConditionsDat : IDat<MultiPartAchievementConditionsDat>
+public sealed partial class MultiPartAchievementConditionsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

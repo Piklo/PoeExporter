@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MavenJewelRadiusKeystones.dat data.
 /// </summary>
-public sealed partial class MavenJewelRadiusKeystonesDat : IDat<MavenJewelRadiusKeystonesDat>
+public sealed partial class MavenJewelRadiusKeystonesDat
 {
     /// <summary> Gets Keystone.</summary>
     /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>

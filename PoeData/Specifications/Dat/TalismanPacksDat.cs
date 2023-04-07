@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TalismanPacks.dat data.
 /// </summary>
-public sealed partial class TalismanPacksDat : IDat<TalismanPacksDat>
+public sealed partial class TalismanPacksDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

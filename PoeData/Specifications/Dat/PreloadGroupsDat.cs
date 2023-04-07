@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PreloadGroups.dat data.
 /// </summary>
-public sealed partial class PreloadGroupsDat : IDat<PreloadGroupsDat>
+public sealed partial class PreloadGroupsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

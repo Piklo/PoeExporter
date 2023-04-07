@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasRegionUpgradesInventoryLayout.dat data.
 /// </summary>
-public sealed partial class AtlasRegionUpgradesInventoryLayoutDat : IDat<AtlasRegionUpgradesInventoryLayoutDat>
+public sealed partial class AtlasRegionUpgradesInventoryLayoutDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

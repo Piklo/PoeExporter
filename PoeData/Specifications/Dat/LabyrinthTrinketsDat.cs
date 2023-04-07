@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LabyrinthTrinkets.dat data.
 /// </summary>
-public sealed partial class LabyrinthTrinketsDat : IDat<LabyrinthTrinketsDat>
+public sealed partial class LabyrinthTrinketsDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

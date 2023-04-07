@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RunicCircles.dat data.
 /// </summary>
-public sealed partial class RunicCirclesDat : IDat<RunicCirclesDat>
+public sealed partial class RunicCirclesDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required string Unknown0 { get; init; }

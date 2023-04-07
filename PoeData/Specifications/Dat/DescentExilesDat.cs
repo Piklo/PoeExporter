@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DescentExiles.dat data.
 /// </summary>
-public sealed partial class DescentExilesDat : IDat<DescentExilesDat>
+public sealed partial class DescentExilesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

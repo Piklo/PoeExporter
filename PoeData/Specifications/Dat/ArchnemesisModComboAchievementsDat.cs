@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ArchnemesisModComboAchievements.dat data.
 /// </summary>
-public sealed partial class ArchnemesisModComboAchievementsDat : IDat<ArchnemesisModComboAchievementsDat>
+public sealed partial class ArchnemesisModComboAchievementsDat
 {
     /// <summary> Gets Achievement.</summary>
     /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>

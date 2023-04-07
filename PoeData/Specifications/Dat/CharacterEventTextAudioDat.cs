@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CharacterEventTextAudio.dat data.
 /// </summary>
-public sealed partial class CharacterEventTextAudioDat : IDat<CharacterEventTextAudioDat>
+public sealed partial class CharacterEventTextAudioDat
 {
     /// <summary> Gets Event.</summary>
     /// <remarks> references <see cref="CharacterAudioEventsDat"/> on <see cref="Specification.GetCharacterAudioEventsDat"/> index.</remarks>

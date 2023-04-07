@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionRewardTypeVisuals.dat data.
 /// </summary>
-public sealed partial class AfflictionRewardTypeVisualsDat : IDat<AfflictionRewardTypeVisualsDat>
+public sealed partial class AfflictionRewardTypeVisualsDat
 {
     /// <summary> Gets AfflictionRewardTypes.</summary>
     /// <remarks> references <see cref="AfflictionRewardTypesDat"/> on <see cref="Specification.GetAfflictionRewardTypesDat"/> index.</remarks>

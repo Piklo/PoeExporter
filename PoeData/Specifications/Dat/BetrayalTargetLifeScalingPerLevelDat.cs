@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BetrayalTargetLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class BetrayalTargetLifeScalingPerLevelDat : IDat<BetrayalTargetLifeScalingPerLevelDat>
+public sealed partial class BetrayalTargetLifeScalingPerLevelDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

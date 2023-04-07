@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PerandusDaemons.dat data.
 /// </summary>
-public sealed partial class PerandusDaemonsDat : IDat<PerandusDaemonsDat>
+public sealed partial class PerandusDaemonsDat
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapInhabitants.dat data.
 /// </summary>
-public sealed partial class MapInhabitantsDat : IDat<MapInhabitantsDat>
+public sealed partial class MapInhabitantsDat
 {
     /// <summary> Gets StatsKey.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

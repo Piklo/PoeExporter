@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing FlavourText.dat data.
 /// </summary>
-public sealed partial class FlavourTextDat : IDat<FlavourTextDat>
+public sealed partial class FlavourTextDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

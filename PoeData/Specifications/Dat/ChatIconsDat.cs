@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ChatIcons.dat data.
 /// </summary>
-public sealed partial class ChatIconsDat : IDat<ChatIconsDat>
+public sealed partial class ChatIconsDat
 {
     /// <summary> Gets Icon.</summary>
     public required string Icon { get; init; }

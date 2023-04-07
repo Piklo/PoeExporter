@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GroundEffectTypes.dat data.
 /// </summary>
-public sealed partial class GroundEffectTypesDat : IDat<GroundEffectTypesDat>
+public sealed partial class GroundEffectTypesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

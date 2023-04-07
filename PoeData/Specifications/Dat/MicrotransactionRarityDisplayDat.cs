@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionRarityDisplay.dat data.
 /// </summary>
-public sealed partial class MicrotransactionRarityDisplayDat : IDat<MicrotransactionRarityDisplayDat>
+public sealed partial class MicrotransactionRarityDisplayDat
 {
     /// <summary> Gets Rarity.</summary>
     public required string Rarity { get; init; }

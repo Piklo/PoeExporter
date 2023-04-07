@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CharacterTextAudio.dat data.
 /// </summary>
-public sealed partial class CharacterTextAudioDat : IDat<CharacterTextAudioDat>
+public sealed partial class CharacterTextAudioDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

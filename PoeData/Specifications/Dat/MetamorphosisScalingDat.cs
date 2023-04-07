@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MetamorphosisScaling.dat data.
 /// </summary>
-public sealed partial class MetamorphosisScalingDat : IDat<MetamorphosisScalingDat>
+public sealed partial class MetamorphosisScalingDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

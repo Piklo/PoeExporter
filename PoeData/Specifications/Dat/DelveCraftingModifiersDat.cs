@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveCraftingModifiers.dat data.
 /// </summary>
-public sealed partial class DelveCraftingModifiersDat : IDat<DelveCraftingModifiersDat>
+public sealed partial class DelveCraftingModifiersDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UniqueJewelLimits.dat data.
 /// </summary>
-public sealed partial class UniqueJewelLimitsDat : IDat<UniqueJewelLimitsDat>
+public sealed partial class UniqueJewelLimitsDat
 {
     /// <summary> Gets JewelName.</summary>
     /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>

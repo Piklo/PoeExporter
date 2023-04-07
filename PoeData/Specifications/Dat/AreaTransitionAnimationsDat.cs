@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AreaTransitionAnimations.dat data.
 /// </summary>
-public sealed partial class AreaTransitionAnimationsDat : IDat<AreaTransitionAnimationsDat>
+public sealed partial class AreaTransitionAnimationsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SynthesisFragmentDialogue.dat data.
 /// </summary>
-public sealed partial class SynthesisFragmentDialogueDat : IDat<SynthesisFragmentDialogueDat>
+public sealed partial class SynthesisFragmentDialogueDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

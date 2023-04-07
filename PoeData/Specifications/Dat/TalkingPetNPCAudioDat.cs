@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TalkingPetNPCAudio.dat data.
 /// </summary>
-public sealed partial class TalkingPetNPCAudioDat : IDat<TalkingPetNPCAudioDat>
+public sealed partial class TalkingPetNPCAudioDat
 {
     /// <summary> Gets Unknown0.</summary>
     /// <remarks> references <see cref="TalkingPetAudioEventsDat"/> on <see cref="Specification.GetTalkingPetAudioEventsDat"/> index.</remarks>

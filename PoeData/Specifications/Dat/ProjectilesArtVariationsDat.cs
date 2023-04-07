@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ProjectilesArtVariations.dat data.
 /// </summary>
-public sealed partial class ProjectilesArtVariationsDat : IDat<ProjectilesArtVariationsDat>
+public sealed partial class ProjectilesArtVariationsDat
 {
     /// <summary> Gets Projectile.</summary>
     public required string Projectile { get; init; }

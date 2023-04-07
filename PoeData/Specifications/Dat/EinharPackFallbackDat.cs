@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EinharPackFallback.dat data.
 /// </summary>
-public sealed partial class EinharPackFallbackDat : IDat<EinharPackFallbackDat>
+public sealed partial class EinharPackFallbackDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

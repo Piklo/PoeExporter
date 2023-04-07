@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MinimapIcons.dat data.
 /// </summary>
-public sealed partial class MinimapIconsDat : IDat<MinimapIconsDat>
+public sealed partial class MinimapIconsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

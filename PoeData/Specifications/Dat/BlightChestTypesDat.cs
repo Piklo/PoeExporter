@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightChestTypes.dat data.
 /// </summary>
-public sealed partial class BlightChestTypesDat : IDat<BlightChestTypesDat>
+public sealed partial class BlightChestTypesDat
 {
     /// <summary> Gets ChestsKey.</summary>
     /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>

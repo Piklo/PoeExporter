@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasInfluenceOutcomes.dat data.
 /// </summary>
-public sealed partial class AtlasInfluenceOutcomesDat : IDat<AtlasInfluenceOutcomesDat>
+public sealed partial class AtlasInfluenceOutcomesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

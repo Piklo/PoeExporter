@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightBossLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class BlightBossLifeScalingPerLevelDat : IDat<BlightBossLifeScalingPerLevelDat>
+public sealed partial class BlightBossLifeScalingPerLevelDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

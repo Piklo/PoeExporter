@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UniqueStashLayout.dat data.
 /// </summary>
-public sealed partial class UniqueStashLayoutDat : IDat<UniqueStashLayoutDat>
+public sealed partial class UniqueStashLayoutDat
 {
     /// <summary> Gets WordsKey.</summary>
     /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>

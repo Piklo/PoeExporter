@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing WorldAreaLeagueChances.dat data.
 /// </summary>
-public sealed partial class WorldAreaLeagueChancesDat : IDat<WorldAreaLeagueChancesDat>
+public sealed partial class WorldAreaLeagueChancesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeAOReplacements.dat data.
 /// </summary>
-public sealed partial class HellscapeAOReplacementsDat : IDat<HellscapeAOReplacementsDat>
+public sealed partial class HellscapeAOReplacementsDat
 {
     /// <summary> Gets Original.</summary>
     public required string Original { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ElderBossArenas.dat data.
 /// </summary>
-public sealed partial class ElderBossArenasDat : IDat<ElderBossArenasDat>
+public sealed partial class ElderBossArenasDat
 {
     /// <summary> Gets WorldAreasKey.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

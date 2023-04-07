@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DropPool.dat data.
 /// </summary>
-public sealed partial class DropPoolDat : IDat<DropPoolDat>
+public sealed partial class DropPoolDat
 {
     /// <summary> Gets Group.</summary>
     public required string Group { get; init; }

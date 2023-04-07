@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveFeatures.dat data.
 /// </summary>
-public sealed partial class DelveFeaturesDat : IDat<DelveFeaturesDat>
+public sealed partial class DelveFeaturesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

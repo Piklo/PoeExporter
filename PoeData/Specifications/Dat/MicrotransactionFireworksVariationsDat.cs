@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionFireworksVariations.dat data.
 /// </summary>
-public sealed partial class MicrotransactionFireworksVariationsDat : IDat<MicrotransactionFireworksVariationsDat>
+public sealed partial class MicrotransactionFireworksVariationsDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

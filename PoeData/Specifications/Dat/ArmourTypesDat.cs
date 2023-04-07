@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ArmourTypes.dat data.
 /// </summary>
-public sealed partial class ArmourTypesDat : IDat<ArmourTypesDat>
+public sealed partial class ArmourTypesDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

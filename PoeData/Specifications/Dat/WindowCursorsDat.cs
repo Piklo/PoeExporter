@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing WindowCursors.dat data.
 /// </summary>
-public sealed partial class WindowCursorsDat : IDat<WindowCursorsDat>
+public sealed partial class WindowCursorsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

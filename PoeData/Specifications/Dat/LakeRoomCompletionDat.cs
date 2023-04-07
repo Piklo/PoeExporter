@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LakeRoomCompletion.dat data.
 /// </summary>
-public sealed partial class LakeRoomCompletionDat : IDat<LakeRoomCompletionDat>
+public sealed partial class LakeRoomCompletionDat
 {
     /// <summary> Gets Room.</summary>
     /// <remarks> references <see cref="LakeRoomsDat"/> on <see cref="Specification.GetLakeRoomsDat"/> index.</remarks>

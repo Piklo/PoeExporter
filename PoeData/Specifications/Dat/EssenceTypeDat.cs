@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EssenceType.dat data.
 /// </summary>
-public sealed partial class EssenceTypeDat : IDat<EssenceTypeDat>
+public sealed partial class EssenceTypeDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

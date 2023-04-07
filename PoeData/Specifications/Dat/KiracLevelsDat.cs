@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing KiracLevels.dat data.
 /// </summary>
-public sealed partial class KiracLevelsDat : IDat<KiracLevelsDat>
+public sealed partial class KiracLevelsDat
 {
     /// <summary> Gets AreaLevel.</summary>
     public required int AreaLevel { get; init; }

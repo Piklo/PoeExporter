@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LakeBossLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class LakeBossLifeScalingPerLevelDat : IDat<LakeBossLifeScalingPerLevelDat>
+public sealed partial class LakeBossLifeScalingPerLevelDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

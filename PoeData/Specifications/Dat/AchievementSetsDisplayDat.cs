@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AchievementSetsDisplay.dat data.
 /// </summary>
-public sealed partial class AchievementSetsDisplayDat : IDat<AchievementSetsDisplayDat>
+public sealed partial class AchievementSetsDisplayDat
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

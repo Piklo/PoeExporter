@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DaemonSpawningData.dat data.
 /// </summary>
-public sealed partial class DaemonSpawningDataDat : IDat<DaemonSpawningDataDat>
+public sealed partial class DaemonSpawningDataDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

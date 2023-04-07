@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasMods.dat data.
 /// </summary>
-public sealed partial class AtlasModsDat : IDat<AtlasModsDat>
+public sealed partial class AtlasModsDat
 {
     /// <summary> Gets ModsKey.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

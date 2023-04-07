@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SkillMineVariations.dat data.
 /// </summary>
-public sealed partial class SkillMineVariationsDat : IDat<SkillMineVariationsDat>
+public sealed partial class SkillMineVariationsDat
 {
     /// <summary> Gets SkillMinesKey.</summary>
     public required int SkillMinesKey { get; init; }

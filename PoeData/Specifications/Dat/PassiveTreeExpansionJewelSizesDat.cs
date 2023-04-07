@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PassiveTreeExpansionJewelSizes.dat data.
 /// </summary>
-public sealed partial class PassiveTreeExpansionJewelSizesDat : IDat<PassiveTreeExpansionJewelSizesDat>
+public sealed partial class PassiveTreeExpansionJewelSizesDat
 {
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }

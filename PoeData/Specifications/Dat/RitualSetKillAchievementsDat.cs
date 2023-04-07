@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RitualSetKillAchievements.dat data.
 /// </summary>
-public sealed partial class RitualSetKillAchievementsDat : IDat<RitualSetKillAchievementsDat>
+public sealed partial class RitualSetKillAchievementsDat
 {
     /// <summary> Gets Achievement.</summary>
     /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>

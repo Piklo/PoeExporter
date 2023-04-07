@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapStashUniqueMapInfo.dat data.
 /// </summary>
-public sealed partial class MapStashUniqueMapInfoDat : IDat<MapStashUniqueMapInfoDat>
+public sealed partial class MapStashUniqueMapInfoDat
 {
     /// <summary> Gets UniqueMap.</summary>
     /// <remarks> references <see cref="UniqueMapsDat"/> on <see cref="Specification.GetUniqueMapsDat"/> index.</remarks>

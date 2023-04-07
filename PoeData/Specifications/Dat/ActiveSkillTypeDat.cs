@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ActiveSkillType.dat data.
 /// </summary>
-public sealed partial class ActiveSkillTypeDat : IDat<ActiveSkillTypeDat>
+public sealed partial class ActiveSkillTypeDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

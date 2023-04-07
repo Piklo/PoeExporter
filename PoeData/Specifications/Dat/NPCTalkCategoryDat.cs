@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing NPCTalkCategory.dat data.
 /// </summary>
-public sealed partial class NPCTalkCategoryDat : IDat<NPCTalkCategoryDat>
+public sealed partial class NPCTalkCategoryDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

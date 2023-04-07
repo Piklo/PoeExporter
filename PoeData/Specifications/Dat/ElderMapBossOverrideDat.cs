@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ElderMapBossOverride.dat data.
 /// </summary>
-public sealed partial class ElderMapBossOverrideDat : IDat<ElderMapBossOverrideDat>
+public sealed partial class ElderMapBossOverrideDat
 {
     /// <summary> Gets WorldAreasKey.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

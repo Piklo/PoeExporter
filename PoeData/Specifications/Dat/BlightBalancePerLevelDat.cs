@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightBalancePerLevel.dat data.
 /// </summary>
-public sealed partial class BlightBalancePerLevelDat : IDat<BlightBalancePerLevelDat>
+public sealed partial class BlightBalancePerLevelDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

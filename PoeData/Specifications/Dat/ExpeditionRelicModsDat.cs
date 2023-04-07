@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ExpeditionRelicMods.dat data.
 /// </summary>
-public sealed partial class ExpeditionRelicModsDat : IDat<ExpeditionRelicModsDat>
+public sealed partial class ExpeditionRelicModsDat
 {
     /// <summary> Gets Mod.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

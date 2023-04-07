@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ArchitectLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class ArchitectLifeScalingPerLevelDat : IDat<ArchitectLifeScalingPerLevelDat>
+public sealed partial class ArchitectLifeScalingPerLevelDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

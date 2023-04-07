@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AddBuffToTargetVarieties.dat data.
 /// </summary>
-public sealed partial class AddBuffToTargetVarietiesDat : IDat<AddBuffToTargetVarietiesDat>
+public sealed partial class AddBuffToTargetVarietiesDat
 {
     /// <summary> Gets BuffDefinitions.</summary>
     /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>

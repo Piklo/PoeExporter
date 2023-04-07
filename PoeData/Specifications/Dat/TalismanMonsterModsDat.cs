@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TalismanMonsterMods.dat data.
 /// </summary>
-public sealed partial class TalismanMonsterModsDat : IDat<TalismanMonsterModsDat>
+public sealed partial class TalismanMonsterModsDat
 {
     /// <summary> Gets ModTypeKey.</summary>
     /// <remarks> references <see cref="ModTypeDat"/> on <see cref="Specification.GetModTypeDat"/> index.</remarks>

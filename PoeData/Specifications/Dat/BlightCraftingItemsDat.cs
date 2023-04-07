@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightCraftingItems.dat data.
 /// </summary>
-public sealed partial class BlightCraftingItemsDat : IDat<BlightCraftingItemsDat>
+public sealed partial class BlightCraftingItemsDat
 {
     /// <summary> Gets Oil.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

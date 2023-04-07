@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LeagueStaticRewards.dat data.
 /// </summary>
-public sealed partial class LeagueStaticRewardsDat : IDat<LeagueStaticRewardsDat>
+public sealed partial class LeagueStaticRewardsDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

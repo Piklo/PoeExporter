@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapePassiveTree.dat data.
 /// </summary>
-public sealed partial class HellscapePassiveTreeDat : IDat<HellscapePassiveTreeDat>
+public sealed partial class HellscapePassiveTreeDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

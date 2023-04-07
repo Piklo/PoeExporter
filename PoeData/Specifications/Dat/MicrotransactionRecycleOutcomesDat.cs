@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionRecycleOutcomes.dat data.
 /// </summary>
-public sealed partial class MicrotransactionRecycleOutcomesDat : IDat<MicrotransactionRecycleOutcomesDat>
+public sealed partial class MicrotransactionRecycleOutcomesDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

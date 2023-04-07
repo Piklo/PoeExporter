@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterHeightBrackets.dat data.
 /// </summary>
-public sealed partial class MonsterHeightBracketsDat : IDat<MonsterHeightBracketsDat>
+public sealed partial class MonsterHeightBracketsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

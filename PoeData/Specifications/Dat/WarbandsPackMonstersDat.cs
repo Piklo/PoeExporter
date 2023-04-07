@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing WarbandsPackMonsters.dat data.
 /// </summary>
-public sealed partial class WarbandsPackMonstersDat : IDat<WarbandsPackMonstersDat>
+public sealed partial class WarbandsPackMonstersDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

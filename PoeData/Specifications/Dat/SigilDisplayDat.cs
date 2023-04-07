@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SigilDisplay.dat data.
 /// </summary>
-public sealed partial class SigilDisplayDat : IDat<SigilDisplayDat>
+public sealed partial class SigilDisplayDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

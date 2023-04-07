@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ExpeditionAreas.dat data.
 /// </summary>
-public sealed partial class ExpeditionAreasDat : IDat<ExpeditionAreasDat>
+public sealed partial class ExpeditionAreasDat
 {
     /// <summary> Gets Area.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

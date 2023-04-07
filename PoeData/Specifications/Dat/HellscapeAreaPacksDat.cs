@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeAreaPacks.dat data.
 /// </summary>
-public sealed partial class HellscapeAreaPacksDat : IDat<HellscapeAreaPacksDat>
+public sealed partial class HellscapeAreaPacksDat
 {
     /// <summary> Gets WorldArea.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

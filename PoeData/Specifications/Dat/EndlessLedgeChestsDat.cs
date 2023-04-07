@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EndlessLedgeChests.dat data.
 /// </summary>
-public sealed partial class EndlessLedgeChestsDat : IDat<EndlessLedgeChestsDat>
+public sealed partial class EndlessLedgeChestsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

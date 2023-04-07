@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicroMigrationData.dat data.
 /// </summary>
-public sealed partial class MicroMigrationDataDat : IDat<MicroMigrationDataDat>
+public sealed partial class MicroMigrationDataDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

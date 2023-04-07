@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasSkillGraphs.dat data.
 /// </summary>
-public sealed partial class AtlasSkillGraphsDat : IDat<AtlasSkillGraphsDat>
+public sealed partial class AtlasSkillGraphsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ArchnemesisRecipes.dat data.
 /// </summary>
-public sealed partial class ArchnemesisRecipesDat : IDat<ArchnemesisRecipesDat>
+public sealed partial class ArchnemesisRecipesDat
 {
     /// <summary> Gets Result.</summary>
     /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>

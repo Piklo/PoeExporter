@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Archetypes.dat data.
 /// </summary>
-public sealed partial class ArchetypesDat : IDat<ArchetypesDat>
+public sealed partial class ArchetypesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

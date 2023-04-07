@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TradeMarketIndexItemAs.dat data.
 /// </summary>
-public sealed partial class TradeMarketIndexItemAsDat : IDat<TradeMarketIndexItemAsDat>
+public sealed partial class TradeMarketIndexItemAsDat
 {
     /// <summary> Gets Item.</summary>
     public required int? Item { get; init; }

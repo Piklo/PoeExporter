@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing NPCTalkConsoleQuickActions.dat data.
 /// </summary>
-public sealed partial class NPCTalkConsoleQuickActionsDat : IDat<NPCTalkConsoleQuickActionsDat>
+public sealed partial class NPCTalkConsoleQuickActionsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

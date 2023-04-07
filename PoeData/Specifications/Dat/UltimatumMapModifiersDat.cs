@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UltimatumMapModifiers.dat data.
 /// </summary>
-public sealed partial class UltimatumMapModifiersDat : IDat<UltimatumMapModifiersDat>
+public sealed partial class UltimatumMapModifiersDat
 {
     /// <summary> Gets Stat.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

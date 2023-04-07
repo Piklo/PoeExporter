@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveMonsterSpawners.dat data.
 /// </summary>
-public sealed partial class DelveMonsterSpawnersDat : IDat<DelveMonsterSpawnersDat>
+public sealed partial class DelveMonsterSpawnersDat
 {
     /// <summary> Gets BaseMetadata.</summary>
     public required string BaseMetadata { get; init; }

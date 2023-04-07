@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PlayerTradeWhisperFormats.dat data.
 /// </summary>
-public sealed partial class PlayerTradeWhisperFormatsDat : IDat<PlayerTradeWhisperFormatsDat>
+public sealed partial class PlayerTradeWhisperFormatsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

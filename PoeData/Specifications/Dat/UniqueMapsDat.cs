@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UniqueMaps.dat data.
 /// </summary>
-public sealed partial class UniqueMapsDat : IDat<UniqueMapsDat>
+public sealed partial class UniqueMapsDat
 {
     /// <summary> Gets ItemVisualIdentityKey.</summary>
     /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DisplayMinionMonsterType.dat data.
 /// </summary>
-public sealed partial class DisplayMinionMonsterTypeDat : IDat<DisplayMinionMonsterTypeDat>
+public sealed partial class DisplayMinionMonsterTypeDat
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

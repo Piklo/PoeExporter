@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LevelRelativePlayerScaling.dat data.
 /// </summary>
-public sealed partial class LevelRelativePlayerScalingDat : IDat<LevelRelativePlayerScalingDat>
+public sealed partial class LevelRelativePlayerScalingDat
 {
     /// <summary> Gets PlayerLevel.</summary>
     public required int PlayerLevel { get; init; }

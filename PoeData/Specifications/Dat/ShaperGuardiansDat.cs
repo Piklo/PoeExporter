@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ShaperGuardians.dat data.
 /// </summary>
-public sealed partial class ShaperGuardiansDat : IDat<ShaperGuardiansDat>
+public sealed partial class ShaperGuardiansDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

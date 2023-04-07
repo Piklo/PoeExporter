@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AdditionalLifeScaling.dat data.
 /// </summary>
-public sealed partial class AdditionalLifeScalingDat : IDat<AdditionalLifeScalingDat>
+public sealed partial class AdditionalLifeScalingDat
 {
     /// <summary> Gets IntId.</summary>
     public required int IntId { get; init; }

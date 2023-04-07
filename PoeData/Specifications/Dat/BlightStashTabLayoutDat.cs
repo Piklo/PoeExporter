@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightStashTabLayout.dat data.
 /// </summary>
-public sealed partial class BlightStashTabLayoutDat : IDat<BlightStashTabLayoutDat>
+public sealed partial class BlightStashTabLayoutDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

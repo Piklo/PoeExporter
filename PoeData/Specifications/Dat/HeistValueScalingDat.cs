@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistValueScaling.dat data.
 /// </summary>
-public sealed partial class HeistValueScalingDat : IDat<HeistValueScalingDat>
+public sealed partial class HeistValueScalingDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CurrencyStashTabLayout.dat data.
 /// </summary>
-public sealed partial class CurrencyStashTabLayoutDat : IDat<CurrencyStashTabLayoutDat>
+public sealed partial class CurrencyStashTabLayoutDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterHeights.dat data.
 /// </summary>
-public sealed partial class MonsterHeightsDat : IDat<MonsterHeightsDat>
+public sealed partial class MonsterHeightsDat
 {
     /// <summary> Gets MonsterVariety.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

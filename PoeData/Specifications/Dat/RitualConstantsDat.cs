@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RitualConstants.dat data.
 /// </summary>
-public sealed partial class RitualConstantsDat : IDat<RitualConstantsDat>
+public sealed partial class RitualConstantsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

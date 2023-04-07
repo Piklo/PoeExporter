@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Strongboxes.dat data.
 /// </summary>
-public sealed partial class StrongboxesDat : IDat<StrongboxesDat>
+public sealed partial class StrongboxesDat
 {
     /// <summary> Gets ChestsKey.</summary>
     /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapFragmentMods.dat data.
 /// </summary>
-public sealed partial class MapFragmentModsDat : IDat<MapFragmentModsDat>
+public sealed partial class MapFragmentModsDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

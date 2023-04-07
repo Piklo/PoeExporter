@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BestiaryNets.dat data.
 /// </summary>
-public sealed partial class BestiaryNetsDat : IDat<BestiaryNetsDat>
+public sealed partial class BestiaryNetsDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

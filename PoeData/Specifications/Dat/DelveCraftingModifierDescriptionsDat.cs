@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveCraftingModifierDescriptions.dat data.
 /// </summary>
-public sealed partial class DelveCraftingModifierDescriptionsDat : IDat<DelveCraftingModifierDescriptionsDat>
+public sealed partial class DelveCraftingModifierDescriptionsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

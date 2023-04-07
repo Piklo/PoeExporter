@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RecipeUnlockDisplay.dat data.
 /// </summary>
-public sealed partial class RecipeUnlockDisplayDat : IDat<RecipeUnlockDisplayDat>
+public sealed partial class RecipeUnlockDisplayDat
 {
     /// <summary> Gets RecipeId.</summary>
     public required int RecipeId { get; init; }

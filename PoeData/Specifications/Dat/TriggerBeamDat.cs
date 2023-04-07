@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TriggerBeam.dat data.
 /// </summary>
-public sealed partial class TriggerBeamDat : IDat<TriggerBeamDat>
+public sealed partial class TriggerBeamDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

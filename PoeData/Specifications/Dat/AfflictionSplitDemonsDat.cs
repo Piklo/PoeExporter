@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionSplitDemons.dat data.
 /// </summary>
-public sealed partial class AfflictionSplitDemonsDat : IDat<AfflictionSplitDemonsDat>
+public sealed partial class AfflictionSplitDemonsDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightCraftingUniques.dat data.
 /// </summary>
-public sealed partial class BlightCraftingUniquesDat : IDat<BlightCraftingUniquesDat>
+public sealed partial class BlightCraftingUniquesDat
 {
     /// <summary> Gets WordsKey.</summary>
     /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>

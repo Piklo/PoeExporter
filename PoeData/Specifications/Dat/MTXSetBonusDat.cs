@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MTXSetBonus.dat data.
 /// </summary>
-public sealed partial class MTXSetBonusDat : IDat<MTXSetBonusDat>
+public sealed partial class MTXSetBonusDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

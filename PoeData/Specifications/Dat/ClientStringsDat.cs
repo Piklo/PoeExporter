@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ClientStrings.dat data.
 /// </summary>
-public sealed partial class ClientStringsDat : IDat<ClientStringsDat>
+public sealed partial class ClientStringsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

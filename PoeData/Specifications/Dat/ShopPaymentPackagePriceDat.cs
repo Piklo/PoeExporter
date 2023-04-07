@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ShopPaymentPackagePrice.dat data.
 /// </summary>
-public sealed partial class ShopPaymentPackagePriceDat : IDat<ShopPaymentPackagePriceDat>
+public sealed partial class ShopPaymentPackagePriceDat
 {
     /// <summary> Gets ShopPaymentPackageKey.</summary>
     /// <remarks> references <see cref="ShopPaymentPackageDat"/> on <see cref="Specification.GetShopPaymentPackageDat"/> index.</remarks>

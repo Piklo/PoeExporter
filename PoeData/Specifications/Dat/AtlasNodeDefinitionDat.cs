@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasNodeDefinition.dat data.
 /// </summary>
-public sealed partial class AtlasNodeDefinitionDat : IDat<AtlasNodeDefinitionDat>
+public sealed partial class AtlasNodeDefinitionDat
 {
     /// <summary> Gets WorldAreasKey.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

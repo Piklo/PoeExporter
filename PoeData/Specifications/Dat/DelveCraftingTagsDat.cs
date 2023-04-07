@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveCraftingTags.dat data.
 /// </summary>
-public sealed partial class DelveCraftingTagsDat : IDat<DelveCraftingTagsDat>
+public sealed partial class DelveCraftingTagsDat
 {
     /// <summary> Gets TagsKey.</summary>
     /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>

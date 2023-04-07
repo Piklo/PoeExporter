@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasPassiveSkillTreeGroupType.dat data.
 /// </summary>
-public sealed partial class AtlasPassiveSkillTreeGroupTypeDat : IDat<AtlasPassiveSkillTreeGroupTypeDat>
+public sealed partial class AtlasPassiveSkillTreeGroupTypeDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

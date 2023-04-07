@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GenericBuffAuras.dat data.
 /// </summary>
-public sealed partial class GenericBuffAurasDat : IDat<GenericBuffAurasDat>
+public sealed partial class GenericBuffAurasDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

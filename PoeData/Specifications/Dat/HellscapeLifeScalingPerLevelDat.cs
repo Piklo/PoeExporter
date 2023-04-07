@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HellscapeLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class HellscapeLifeScalingPerLevelDat : IDat<HellscapeLifeScalingPerLevelDat>
+public sealed partial class HellscapeLifeScalingPerLevelDat
 {
     /// <summary> Gets AreaLevel.</summary>
     public required int AreaLevel { get; init; }

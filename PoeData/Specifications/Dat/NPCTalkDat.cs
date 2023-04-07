@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing NPCTalk.dat data.
 /// </summary>
-public sealed partial class NPCTalkDat : IDat<NPCTalkDat>
+public sealed partial class NPCTalkDat
 {
     /// <summary> Gets NPCKey.</summary>
     /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>

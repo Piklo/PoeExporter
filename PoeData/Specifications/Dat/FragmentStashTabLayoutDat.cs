@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing FragmentStashTabLayout.dat data.
 /// </summary>
-public sealed partial class FragmentStashTabLayoutDat : IDat<FragmentStashTabLayoutDat>
+public sealed partial class FragmentStashTabLayoutDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

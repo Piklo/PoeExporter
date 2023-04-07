@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing UITalkText.dat data.
 /// </summary>
-public sealed partial class UITalkTextDat : IDat<UITalkTextDat>
+public sealed partial class UITalkTextDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

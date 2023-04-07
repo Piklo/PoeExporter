@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SynthesisGlobalMods.dat data.
 /// </summary>
-public sealed partial class SynthesisGlobalModsDat : IDat<SynthesisGlobalModsDat>
+public sealed partial class SynthesisGlobalModsDat
 {
     /// <summary> Gets ModsKey.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

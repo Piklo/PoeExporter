@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing NPCConversations.dat data.
 /// </summary>
-public sealed partial class NPCConversationsDat : IDat<NPCConversationsDat>
+public sealed partial class NPCConversationsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SocketNotches.dat data.
 /// </summary>
-public sealed partial class SocketNotchesDat : IDat<SocketNotchesDat>
+public sealed partial class SocketNotchesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

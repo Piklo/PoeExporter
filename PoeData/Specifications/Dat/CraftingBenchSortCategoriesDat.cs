@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CraftingBenchSortCategories.dat data.
 /// </summary>
-public sealed partial class CraftingBenchSortCategoriesDat : IDat<CraftingBenchSortCategoriesDat>
+public sealed partial class CraftingBenchSortCategoriesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

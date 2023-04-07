@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SafehouseBYOCrafting.dat data.
 /// </summary>
-public sealed partial class SafehouseBYOCraftingDat : IDat<SafehouseBYOCraftingDat>
+public sealed partial class SafehouseBYOCraftingDat
 {
     /// <summary> Gets BetrayalJobsKey.</summary>
     /// <remarks> references <see cref="BetrayalJobsDat"/> on <see cref="Specification.GetBetrayalJobsDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing RogueExileLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class RogueExileLifeScalingPerLevelDat : IDat<RogueExileLifeScalingPerLevelDat>
+public sealed partial class RogueExileLifeScalingPerLevelDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

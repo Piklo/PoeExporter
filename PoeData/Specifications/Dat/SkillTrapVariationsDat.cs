@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SkillTrapVariations.dat data.
 /// </summary>
-public sealed partial class SkillTrapVariationsDat : IDat<SkillTrapVariationsDat>
+public sealed partial class SkillTrapVariationsDat
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

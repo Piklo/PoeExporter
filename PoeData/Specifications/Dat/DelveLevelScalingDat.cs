@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveLevelScaling.dat data.
 /// </summary>
-public sealed partial class DelveLevelScalingDat : IDat<DelveLevelScalingDat>
+public sealed partial class DelveLevelScalingDat
 {
     /// <summary> Gets Depth.</summary>
     public required int Depth { get; init; }

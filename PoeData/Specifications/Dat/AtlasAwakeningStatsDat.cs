@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasAwakeningStats.dat data.
 /// </summary>
-public sealed partial class AtlasAwakeningStatsDat : IDat<AtlasAwakeningStatsDat>
+public sealed partial class AtlasAwakeningStatsDat
 {
     /// <summary> Gets AwakeningLevel.</summary>
     public required int AwakeningLevel { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Scarabs.dat data.
 /// </summary>
-public sealed partial class ScarabsDat : IDat<ScarabsDat>
+public sealed partial class ScarabsDat
 {
     /// <summary> Gets ScarabType.</summary>
     public required int ScarabType { get; init; }

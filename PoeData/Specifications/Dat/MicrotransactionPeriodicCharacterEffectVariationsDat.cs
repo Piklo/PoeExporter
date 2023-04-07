@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionPeriodicCharacterEffectVariations.dat data.
 /// </summary>
-public sealed partial class MicrotransactionPeriodicCharacterEffectVariationsDat : IDat<MicrotransactionPeriodicCharacterEffectVariationsDat>
+public sealed partial class MicrotransactionPeriodicCharacterEffectVariationsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

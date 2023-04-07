@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionFixedMods.dat data.
 /// </summary>
-public sealed partial class AfflictionFixedModsDat : IDat<AfflictionFixedModsDat>
+public sealed partial class AfflictionFixedModsDat
 {
     /// <summary> Gets Rarity.</summary>
     public required int Rarity { get; init; }

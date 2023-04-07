@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterConditionalEffectPacks.dat data.
 /// </summary>
-public sealed partial class MonsterConditionalEffectPacksDat : IDat<MonsterConditionalEffectPacksDat>
+public sealed partial class MonsterConditionalEffectPacksDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

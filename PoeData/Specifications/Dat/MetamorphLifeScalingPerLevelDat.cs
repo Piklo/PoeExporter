@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MetamorphLifeScalingPerLevel.dat data.
 /// </summary>
-public sealed partial class MetamorphLifeScalingPerLevelDat : IDat<MetamorphLifeScalingPerLevelDat>
+public sealed partial class MetamorphLifeScalingPerLevelDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

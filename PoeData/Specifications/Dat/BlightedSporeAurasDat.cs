@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BlightedSporeAuras.dat data.
 /// </summary>
-public sealed partial class BlightedSporeAurasDat : IDat<BlightedSporeAurasDat>
+public sealed partial class BlightedSporeAurasDat
 {
     /// <summary> Gets BuffDefinitionsKey.</summary>
     /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapDevices.dat data.
 /// </summary>
-public sealed partial class MapDevicesDat : IDat<MapDevicesDat>
+public sealed partial class MapDevicesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

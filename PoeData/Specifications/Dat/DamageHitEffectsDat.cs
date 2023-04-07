@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DamageHitEffects.dat data.
 /// </summary>
-public sealed partial class DamageHitEffectsDat : IDat<DamageHitEffectsDat>
+public sealed partial class DamageHitEffectsDat
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

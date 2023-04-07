@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SynthesisRewardTypes.dat data.
 /// </summary>
-public sealed partial class SynthesisRewardTypesDat : IDat<SynthesisRewardTypesDat>
+public sealed partial class SynthesisRewardTypesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

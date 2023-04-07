@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing IncursionChestRewards.dat data.
 /// </summary>
-public sealed partial class IncursionChestRewardsDat : IDat<IncursionChestRewardsDat>
+public sealed partial class IncursionChestRewardsDat
 {
     /// <summary> Gets IncursionRoomsKey.</summary>
     /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>

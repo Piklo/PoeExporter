@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveDynamite.dat data.
 /// </summary>
-public sealed partial class DelveDynamiteDat : IDat<DelveDynamiteDat>
+public sealed partial class DelveDynamiteDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

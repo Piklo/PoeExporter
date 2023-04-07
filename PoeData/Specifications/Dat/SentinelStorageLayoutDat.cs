@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SentinelStorageLayout.dat data.
 /// </summary>
-public sealed partial class SentinelStorageLayoutDat : IDat<SentinelStorageLayoutDat>
+public sealed partial class SentinelStorageLayoutDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

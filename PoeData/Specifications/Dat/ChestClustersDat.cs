@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ChestClusters.dat data.
 /// </summary>
-public sealed partial class ChestClustersDat : IDat<ChestClustersDat>
+public sealed partial class ChestClustersDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

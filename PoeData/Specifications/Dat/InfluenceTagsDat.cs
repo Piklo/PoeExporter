@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing InfluenceTags.dat data.
 /// </summary>
-public sealed partial class InfluenceTagsDat : IDat<InfluenceTagsDat>
+public sealed partial class InfluenceTagsDat
 {
     /// <summary> Gets ItemClass.</summary>
     /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>

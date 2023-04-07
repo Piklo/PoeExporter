@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing InfluenceModUpgrades.dat data.
 /// </summary>
-public sealed partial class InfluenceModUpgradesDat : IDat<InfluenceModUpgradesDat>
+public sealed partial class InfluenceModUpgradesDat
 {
     /// <summary> Gets InfluenceMod.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

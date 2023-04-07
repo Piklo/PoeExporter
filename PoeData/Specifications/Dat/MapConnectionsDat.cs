@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapConnections.dat data.
 /// </summary>
-public sealed partial class MapConnectionsDat : IDat<MapConnectionsDat>
+public sealed partial class MapConnectionsDat
 {
     /// <summary> Gets MapPinsKey0.</summary>
     /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>

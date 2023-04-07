@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GameConstants.dat data.
 /// </summary>
-public sealed partial class GameConstantsDat : IDat<GameConstantsDat>
+public sealed partial class GameConstantsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

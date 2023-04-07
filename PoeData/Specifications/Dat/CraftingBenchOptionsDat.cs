@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CraftingBenchOptions.dat data.
 /// </summary>
-public sealed partial class CraftingBenchOptionsDat : IDat<CraftingBenchOptionsDat>
+public sealed partial class CraftingBenchOptionsDat
 {
     /// <summary> Gets HideoutNPCsKey.</summary>
     /// <remarks> references <see cref="HideoutNPCsDat"/> on <see cref="Specification.GetHideoutNPCsDat"/> index.</remarks>

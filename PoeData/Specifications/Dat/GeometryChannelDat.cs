@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GeometryChannel.dat data.
 /// </summary>
-public sealed partial class GeometryChannelDat : IDat<GeometryChannelDat>
+public sealed partial class GeometryChannelDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

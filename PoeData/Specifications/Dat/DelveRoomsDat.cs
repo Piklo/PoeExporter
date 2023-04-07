@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveRooms.dat data.
 /// </summary>
-public sealed partial class DelveRoomsDat : IDat<DelveRoomsDat>
+public sealed partial class DelveRoomsDat
 {
     /// <summary> Gets DelveBiomesKey.</summary>
     /// <remarks> references <see cref="DelveBiomesDat"/> on <see cref="Specification.GetDelveBiomesDat"/> index.</remarks>

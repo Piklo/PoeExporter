@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionEndgameWaveMods.dat data.
 /// </summary>
-public sealed partial class AfflictionEndgameWaveModsDat : IDat<AfflictionEndgameWaveModsDat>
+public sealed partial class AfflictionEndgameWaveModsDat
 {
     /// <summary> Gets ModsKey.</summary>
     /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Hideouts.dat data.
 /// </summary>
-public sealed partial class HideoutsDat : IDat<HideoutsDat>
+public sealed partial class HideoutsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

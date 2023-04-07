@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Melee.dat data.
 /// </summary>
-public sealed partial class MeleeDat : IDat<MeleeDat>
+public sealed partial class MeleeDat
 {
     /// <summary> Gets ActiveSkill.</summary>
     /// <remarks> references <see cref="ActiveSkillsDat"/> on <see cref="Specification.GetActiveSkillsDat"/> index.</remarks>

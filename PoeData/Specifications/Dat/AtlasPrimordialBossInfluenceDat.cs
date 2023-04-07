@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasPrimordialBossInfluence.dat data.
 /// </summary>
-public sealed partial class AtlasPrimordialBossInfluenceDat : IDat<AtlasPrimordialBossInfluenceDat>
+public sealed partial class AtlasPrimordialBossInfluenceDat
 {
     /// <summary> Gets Boss.</summary>
     /// <remarks> references <see cref="AtlasPrimordialBossesDat"/> on <see cref="Specification.GetAtlasPrimordialBossesDat"/> index.</remarks>

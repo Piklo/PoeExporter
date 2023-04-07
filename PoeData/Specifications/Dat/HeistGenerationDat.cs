@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistGeneration.dat data.
 /// </summary>
-public sealed partial class HeistGenerationDat : IDat<HeistGenerationDat>
+public sealed partial class HeistGenerationDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

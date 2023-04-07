@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SentinelTaggedMonsterStats.dat data.
 /// </summary>
-public sealed partial class SentinelTaggedMonsterStatsDat : IDat<SentinelTaggedMonsterStatsDat>
+public sealed partial class SentinelTaggedMonsterStatsDat
 {
     /// <summary> Gets TaggedStat.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

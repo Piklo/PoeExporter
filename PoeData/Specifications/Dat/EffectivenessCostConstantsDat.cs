@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EffectivenessCostConstants.dat data.
 /// </summary>
-public sealed partial class EffectivenessCostConstantsDat : IDat<EffectivenessCostConstantsDat>
+public sealed partial class EffectivenessCostConstantsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

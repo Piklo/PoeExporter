@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing CraftingItemClassCategories.dat data.
 /// </summary>
-public sealed partial class CraftingItemClassCategoriesDat : IDat<CraftingItemClassCategoriesDat>
+public sealed partial class CraftingItemClassCategoriesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

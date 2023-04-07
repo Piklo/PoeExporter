@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionCursorVariations.dat data.
 /// </summary>
-public sealed partial class MicrotransactionCursorVariationsDat : IDat<MicrotransactionCursorVariationsDat>
+public sealed partial class MicrotransactionCursorVariationsDat
 {
     /// <summary> Gets Unknown0.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

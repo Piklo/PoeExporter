@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasExiles.dat data.
 /// </summary>
-public sealed partial class AtlasExilesDat : IDat<AtlasExilesDat>
+public sealed partial class AtlasExilesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

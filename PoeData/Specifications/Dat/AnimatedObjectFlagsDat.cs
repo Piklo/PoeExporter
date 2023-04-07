@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AnimatedObjectFlags.dat data.
 /// </summary>
-public sealed partial class AnimatedObjectFlagsDat : IDat<AnimatedObjectFlagsDat>
+public sealed partial class AnimatedObjectFlagsDat
 {
     /// <summary> Gets AOFile.</summary>
     public required string AOFile { get; init; }

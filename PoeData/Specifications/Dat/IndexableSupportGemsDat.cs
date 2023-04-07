@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing IndexableSupportGems.dat data.
 /// </summary>
-public sealed partial class IndexableSupportGemsDat : IDat<IndexableSupportGemsDat>
+public sealed partial class IndexableSupportGemsDat
 {
     /// <summary> Gets Index.</summary>
     public required int Index { get; init; }

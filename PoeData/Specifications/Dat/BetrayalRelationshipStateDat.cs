@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BetrayalRelationshipState.dat data.
 /// </summary>
-public sealed partial class BetrayalRelationshipStateDat : IDat<BetrayalRelationshipStateDat>
+public sealed partial class BetrayalRelationshipStateDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

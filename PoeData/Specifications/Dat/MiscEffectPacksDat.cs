@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MiscEffectPacks.dat data.
 /// </summary>
-public sealed partial class MiscEffectPacksDat : IDat<MiscEffectPacksDat>
+public sealed partial class MiscEffectPacksDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

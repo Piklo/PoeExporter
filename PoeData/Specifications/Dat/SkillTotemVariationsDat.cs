@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SkillTotemVariations.dat data.
 /// </summary>
-public sealed partial class SkillTotemVariationsDat : IDat<SkillTotemVariationsDat>
+public sealed partial class SkillTotemVariationsDat
 {
     /// <summary> Gets SkillTotemsKey.</summary>
     /// <remarks> references <see cref="SkillTotemsDat"/> on <see cref="Specification.GetSkillTotemsDat"/> index.</remarks>

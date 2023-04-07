@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Tutorial.dat data.
 /// </summary>
-public sealed partial class TutorialDat : IDat<TutorialDat>
+public sealed partial class TutorialDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

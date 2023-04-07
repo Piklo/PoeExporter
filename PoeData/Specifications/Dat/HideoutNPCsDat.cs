@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HideoutNPCs.dat data.
 /// </summary>
-public sealed partial class HideoutNPCsDat : IDat<HideoutNPCsDat>
+public sealed partial class HideoutNPCsDat
 {
     /// <summary> Gets Hideout_NPCsKey.</summary>
     /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>

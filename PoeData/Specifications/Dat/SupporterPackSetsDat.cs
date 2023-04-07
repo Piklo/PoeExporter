@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SupporterPackSets.dat data.
 /// </summary>
-public sealed partial class SupporterPackSetsDat : IDat<SupporterPackSetsDat>
+public sealed partial class SupporterPackSetsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

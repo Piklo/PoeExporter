@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SummonedSpecificBarrels.dat data.
 /// </summary>
-public sealed partial class SummonedSpecificBarrelsDat : IDat<SummonedSpecificBarrelsDat>
+public sealed partial class SummonedSpecificBarrelsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

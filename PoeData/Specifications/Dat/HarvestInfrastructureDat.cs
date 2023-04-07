@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HarvestInfrastructure.dat data.
 /// </summary>
-public sealed partial class HarvestInfrastructureDat : IDat<HarvestInfrastructureDat>
+public sealed partial class HarvestInfrastructureDat
 {
     /// <summary> Gets Object.</summary>
     public required string Object { get; init; }

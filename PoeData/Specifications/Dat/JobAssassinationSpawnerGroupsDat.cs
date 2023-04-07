@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing JobAssassinationSpawnerGroups.dat data.
 /// </summary>
-public sealed partial class JobAssassinationSpawnerGroupsDat : IDat<JobAssassinationSpawnerGroupsDat>
+public sealed partial class JobAssassinationSpawnerGroupsDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

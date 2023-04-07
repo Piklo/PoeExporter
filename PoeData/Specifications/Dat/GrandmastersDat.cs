@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Grandmasters.dat data.
 /// </summary>
-public sealed partial class GrandmastersDat : IDat<GrandmastersDat>
+public sealed partial class GrandmastersDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

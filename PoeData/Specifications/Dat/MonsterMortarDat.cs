@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MonsterMortar.dat data.
 /// </summary>
-public sealed partial class MonsterMortarDat : IDat<MonsterMortarDat>
+public sealed partial class MonsterMortarDat
 {
     /// <summary> Gets Id.</summary>
     public required int Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ArchnemesisMetaRewards.dat data.
 /// </summary>
-public sealed partial class ArchnemesisMetaRewardsDat : IDat<ArchnemesisMetaRewardsDat>
+public sealed partial class ArchnemesisMetaRewardsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

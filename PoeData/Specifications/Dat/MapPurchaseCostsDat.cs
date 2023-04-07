@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapPurchaseCosts.dat data.
 /// </summary>
-public sealed partial class MapPurchaseCostsDat : IDat<MapPurchaseCostsDat>
+public sealed partial class MapPurchaseCostsDat
 {
     /// <summary> Gets Tier.</summary>
     public required int Tier { get; init; }

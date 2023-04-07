@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ItemExperiencePerLevel.dat data.
 /// </summary>
-public sealed partial class ItemExperiencePerLevelDat : IDat<ItemExperiencePerLevelDat>
+public sealed partial class ItemExperiencePerLevelDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

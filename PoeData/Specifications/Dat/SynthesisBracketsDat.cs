@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SynthesisBrackets.dat data.
 /// </summary>
-public sealed partial class SynthesisBracketsDat : IDat<SynthesisBracketsDat>
+public sealed partial class SynthesisBracketsDat
 {
     /// <summary> Gets WorldAreasKey1.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

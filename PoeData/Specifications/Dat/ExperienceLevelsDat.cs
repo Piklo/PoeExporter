@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ExperienceLevels.dat data.
 /// </summary>
-public sealed partial class ExperienceLevelsDat : IDat<ExperienceLevelsDat>
+public sealed partial class ExperienceLevelsDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required string Unknown0 { get; init; }

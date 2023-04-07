@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing PackFormation.dat data.
 /// </summary>
-public sealed partial class PackFormationDat : IDat<PackFormationDat>
+public sealed partial class PackFormationDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AtlasExileBossArenas.dat data.
 /// </summary>
-public sealed partial class AtlasExileBossArenasDat : IDat<AtlasExileBossArenasDat>
+public sealed partial class AtlasExileBossArenasDat
 {
     /// <summary> Gets Conqueror.</summary>
     /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.GetAtlasExilesDat"/> index.</remarks>

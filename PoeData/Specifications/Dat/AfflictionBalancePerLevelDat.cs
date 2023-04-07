@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionBalancePerLevel.dat data.
 /// </summary>
-public sealed partial class AfflictionBalancePerLevelDat : IDat<AfflictionBalancePerLevelDat>
+public sealed partial class AfflictionBalancePerLevelDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

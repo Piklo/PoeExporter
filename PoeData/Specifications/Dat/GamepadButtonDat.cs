@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GamepadButton.dat data.
 /// </summary>
-public sealed partial class GamepadButtonDat : IDat<GamepadButtonDat>
+public sealed partial class GamepadButtonDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required string Unknown0 { get; init; }

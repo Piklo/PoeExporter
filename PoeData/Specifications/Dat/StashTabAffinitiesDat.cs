@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing StashTabAffinities.dat data.
 /// </summary>
-public sealed partial class StashTabAffinitiesDat : IDat<StashTabAffinitiesDat>
+public sealed partial class StashTabAffinitiesDat
 {
     /// <summary> Gets SpecializedStash.</summary>
     /// <remarks> references <see cref="StashIdDat"/> on <see cref="Specification.GetStashIdDat"/> index.</remarks>

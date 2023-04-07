@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveCatchupDepths.dat data.
 /// </summary>
-public sealed partial class DelveCatchupDepthsDat : IDat<DelveCatchupDepthsDat>
+public sealed partial class DelveCatchupDepthsDat
 {
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }

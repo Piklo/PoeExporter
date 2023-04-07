@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing TalkingPets.dat data.
 /// </summary>
-public sealed partial class TalkingPetsDat : IDat<TalkingPetsDat>
+public sealed partial class TalkingPetsDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int? Unknown0 { get; init; }

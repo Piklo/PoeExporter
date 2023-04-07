@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DroneBaseTypes.dat data.
 /// </summary>
-public sealed partial class DroneBaseTypesDat : IDat<DroneBaseTypesDat>
+public sealed partial class DroneBaseTypesDat
 {
     /// <summary> Gets BaseType.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

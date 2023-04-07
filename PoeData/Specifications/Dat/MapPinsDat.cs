@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapPins.dat data.
 /// </summary>
-public sealed partial class MapPinsDat : IDat<MapPinsDat>
+public sealed partial class MapPinsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing EventSeasonRewards.dat data.
 /// </summary>
-public sealed partial class EventSeasonRewardsDat : IDat<EventSeasonRewardsDat>
+public sealed partial class EventSeasonRewardsDat
 {
     /// <summary> Gets EventSeasonKey.</summary>
     /// <remarks> references <see cref="EventSeasonDat"/> on <see cref="Specification.GetEventSeasonDat"/> index.</remarks>

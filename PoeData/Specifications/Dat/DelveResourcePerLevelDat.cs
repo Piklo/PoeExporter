@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing DelveResourcePerLevel.dat data.
 /// </summary>
-public sealed partial class DelveResourcePerLevelDat : IDat<DelveResourcePerLevelDat>
+public sealed partial class DelveResourcePerLevelDat
 {
     /// <summary> Gets AreaLevel.</summary>
     public required int AreaLevel { get; init; }

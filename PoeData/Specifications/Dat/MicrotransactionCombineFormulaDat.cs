@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionCombineFormula.dat data.
 /// </summary>
-public sealed partial class MicrotransactionCombineFormulaDat : IDat<MicrotransactionCombineFormulaDat>
+public sealed partial class MicrotransactionCombineFormulaDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

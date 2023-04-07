@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MouseCursorSizeSettings.dat data.
 /// </summary>
-public sealed partial class MouseCursorSizeSettingsDat : IDat<MouseCursorSizeSettingsDat>
+public sealed partial class MouseCursorSizeSettingsDat
 {
     /// <summary> Gets Size.</summary>
     public required string Size { get; init; }

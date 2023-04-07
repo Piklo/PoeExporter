@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AfflictionStartDialogue.dat data.
 /// </summary>
-public sealed partial class AfflictionStartDialogueDat : IDat<AfflictionStartDialogueDat>
+public sealed partial class AfflictionStartDialogueDat
 {
     /// <summary> Gets WorldAreasKey.</summary>
     /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>

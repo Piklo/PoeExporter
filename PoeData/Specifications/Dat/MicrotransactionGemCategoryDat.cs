@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MicrotransactionGemCategory.dat data.
 /// </summary>
-public sealed partial class MicrotransactionGemCategoryDat : IDat<MicrotransactionGemCategoryDat>
+public sealed partial class MicrotransactionGemCategoryDat
 {
     /// <summary> Gets Unknown0.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

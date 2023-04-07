@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ZanaLevels.dat data.
 /// </summary>
-public sealed partial class ZanaLevelsDat : IDat<ZanaLevelsDat>
+public sealed partial class ZanaLevelsDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing Rarity.dat data.
 /// </summary>
-public sealed partial class RarityDat : IDat<RarityDat>
+public sealed partial class RarityDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

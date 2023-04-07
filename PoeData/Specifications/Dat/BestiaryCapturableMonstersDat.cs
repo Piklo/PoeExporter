@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BestiaryCapturableMonsters.dat data.
 /// </summary>
-public sealed partial class BestiaryCapturableMonstersDat : IDat<BestiaryCapturableMonstersDat>
+public sealed partial class BestiaryCapturableMonstersDat
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

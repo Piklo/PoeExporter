@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing FootstepAudio.dat data.
 /// </summary>
-public sealed partial class FootstepAudioDat : IDat<FootstepAudioDat>
+public sealed partial class FootstepAudioDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

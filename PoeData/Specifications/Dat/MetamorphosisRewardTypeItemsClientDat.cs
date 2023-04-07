@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MetamorphosisRewardTypeItemsClient.dat data.
 /// </summary>
-public sealed partial class MetamorphosisRewardTypeItemsClientDat : IDat<MetamorphosisRewardTypeItemsClientDat>
+public sealed partial class MetamorphosisRewardTypeItemsClientDat
 {
     /// <summary> Gets MetamorphosisRewardTypesKey.</summary>
     /// <remarks> references <see cref="MetamorphosisRewardTypesDat"/> on <see cref="Specification.GetMetamorphosisRewardTypesDat"/> index.</remarks>

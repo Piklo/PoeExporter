@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MiscAnimatedArtVariations.dat data.
 /// </summary>
-public sealed partial class MiscAnimatedArtVariationsDat : IDat<MiscAnimatedArtVariationsDat>
+public sealed partial class MiscAnimatedArtVariationsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing QuestStaticRewards.dat data.
 /// </summary>
-public sealed partial class QuestStaticRewardsDat : IDat<QuestStaticRewardsDat>
+public sealed partial class QuestStaticRewardsDat
 {
     /// <summary> Gets QuestFlag.</summary>
     /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing OnKillAchievements.dat data.
 /// </summary>
-public sealed partial class OnKillAchievementsDat : IDat<OnKillAchievementsDat>
+public sealed partial class OnKillAchievementsDat
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

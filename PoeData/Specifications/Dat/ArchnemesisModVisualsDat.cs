@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ArchnemesisModVisuals.dat data.
 /// </summary>
-public sealed partial class ArchnemesisModVisualsDat : IDat<ArchnemesisModVisualsDat>
+public sealed partial class ArchnemesisModVisualsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing HeistChokepointFormation.dat data.
 /// </summary>
-public sealed partial class HeistChokepointFormationDat : IDat<HeistChokepointFormationDat>
+public sealed partial class HeistChokepointFormationDat
 {
     /// <summary> Gets Unknown0.</summary>
     /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>

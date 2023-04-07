@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AdditionalMonsterPacksFromStats.dat data.
 /// </summary>
-public sealed partial class AdditionalMonsterPacksFromStatsDat : IDat<AdditionalMonsterPacksFromStatsDat>
+public sealed partial class AdditionalMonsterPacksFromStatsDat
 {
     /// <summary> Gets StatsKey.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>

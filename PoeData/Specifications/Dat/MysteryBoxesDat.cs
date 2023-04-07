@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MysteryBoxes.dat data.
 /// </summary>
-public sealed partial class MysteryBoxesDat : IDat<MysteryBoxesDat>
+public sealed partial class MysteryBoxesDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

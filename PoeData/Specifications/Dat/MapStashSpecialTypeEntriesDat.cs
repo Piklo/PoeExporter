@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing MapStashSpecialTypeEntries.dat data.
 /// </summary>
-public sealed partial class MapStashSpecialTypeEntriesDat : IDat<MapStashSpecialTypeEntriesDat>
+public sealed partial class MapStashSpecialTypeEntriesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing SentinelCraftingCurrency.dat data.
 /// </summary>
-public sealed partial class SentinelCraftingCurrencyDat : IDat<SentinelCraftingCurrencyDat>
+public sealed partial class SentinelCraftingCurrencyDat
 {
     /// <summary> Gets Currency.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>

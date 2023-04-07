@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing LabyrinthIzaroChests.dat data.
 /// </summary>
-public sealed partial class LabyrinthIzaroChestsDat : IDat<LabyrinthIzaroChestsDat>
+public sealed partial class LabyrinthIzaroChestsDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

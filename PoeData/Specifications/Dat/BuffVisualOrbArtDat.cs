@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing BuffVisualOrbArt.dat data.
 /// </summary>
-public sealed partial class BuffVisualOrbArtDat : IDat<BuffVisualOrbArtDat>
+public sealed partial class BuffVisualOrbArtDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

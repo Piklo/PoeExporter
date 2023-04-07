@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing AegisVariations.dat data.
 /// </summary>
-public sealed partial class AegisVariationsDat : IDat<AegisVariationsDat>
+public sealed partial class AegisVariationsDat
 {
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }

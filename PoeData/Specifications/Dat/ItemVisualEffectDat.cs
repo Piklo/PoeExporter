@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing ItemVisualEffect.dat data.
 /// </summary>
-public sealed partial class ItemVisualEffectDat : IDat<ItemVisualEffectDat>
+public sealed partial class ItemVisualEffectDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }

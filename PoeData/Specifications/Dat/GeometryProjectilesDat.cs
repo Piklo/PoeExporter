@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing GeometryProjectiles.dat data.
 /// </summary>
-public sealed partial class GeometryProjectilesDat : IDat<GeometryProjectilesDat>
+public sealed partial class GeometryProjectilesDat
 {
     /// <summary> Gets Unknown0.</summary>
     public required int Unknown0 { get; init; }

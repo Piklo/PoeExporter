@@ -11,7 +11,7 @@ namespace PoeData.Specifications.Dat;
 /// <summary>
 /// Class containing StrDexIntMissionExtraRequirement.dat data.
 /// </summary>
-public sealed partial class StrDexIntMissionExtraRequirementDat : IDat<StrDexIntMissionExtraRequirementDat>
+public sealed partial class StrDexIntMissionExtraRequirementDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
