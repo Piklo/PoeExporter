@@ -26,7 +26,7 @@ internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRe
 
         var nameLength = ggpkReader.ReadInt32();
         var hashBytes = ggpkReader.ReadBytes(32);
-        var hash = new BigInteger(hashBytes);
+        var hash = new BigInteger(hashBytes, isUnsigned: true, isBigEndian: true);
 
         var nameBytes = ggpkReader.ReadBytes(CharWidth * (nameLength - 1));
         var name = System.Text.Encoding.Unicode.GetString(nameBytes);
