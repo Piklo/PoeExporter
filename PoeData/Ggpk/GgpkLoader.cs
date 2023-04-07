@@ -14,6 +14,9 @@ internal sealed class GgpkLoader
     private readonly string ggpkPath;
     private readonly GgpkRecord ggpkRecord;
     private readonly Dictionary<long, IGgpkTagRecord> records = new();
+    private readonly Dictionary<long, FileRecordGgpk> fileRecords = new();
+    private readonly Dictionary<long, FreeRecord> freeRecords = new();
+    private readonly Dictionary<long, DirectoryRecordGgpk> directoryRecords = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GgpkLoader"/> class.
@@ -70,7 +73,7 @@ internal sealed class GgpkLoader
         return record;
     }
 
-    private static IGgpkTagRecord ReadRecord(BinaryReader ggpkReader)
+    private IGgpkTagRecord ReadRecord(BinaryReader ggpkReader)
     {
         var recordOffset = ggpkReader.BaseStream.Position;
         var length = GetLength(ggpkReader);
@@ -79,15 +82,21 @@ internal sealed class GgpkLoader
         var tagStr = System.Text.Encoding.Default.GetString(tag);
         if (tagStr == "FILE")
         {
-            return FileRecordGgpk.Read(ggpkReader, length, recordOffset);
+            var fileRecord = FileRecordGgpk.Read(ggpkReader, length, recordOffset);
+            fileRecords.Add(fileRecord.Offset, fileRecord);
+            return fileRecord;
         }
         else if (tagStr == "FREE")
         {
-            return FreeRecord.Read(ggpkReader, length, recordOffset);
+            var freeRecord = FreeRecord.Read(ggpkReader, length, recordOffset);
+            freeRecords.Add(freeRecord.Offset, freeRecord);
+            return freeRecord;
         }
         else if (tagStr == "PDIR")
         {
-            return DirectoryRecordGgpk.Read(ggpkReader, length, recordOffset);
+            var directoryRecord = DirectoryRecordGgpk.Read(ggpkReader, length, recordOffset);
+            directoryRecords.Add(directoryRecord.Offset, directoryRecord);
+            return directoryRecord;
         }
         else if (tagStr == "GGPK")
         {
