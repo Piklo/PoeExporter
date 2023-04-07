@@ -39,9 +39,8 @@ public sealed partial class ClientStringsDat : IDat<ClientStringsDat>
             throw new ArgumentNullException(nameof(specification));
         }
 
-        var fileToFind = Encoding.ASCII.GetBytes("Data/ClientStrings.dat64");
-        var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
-        var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
+        const string filePath = "Data/ClientStrings.dat64";
+        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

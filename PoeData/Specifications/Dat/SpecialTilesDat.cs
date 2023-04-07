@@ -27,9 +27,8 @@ public sealed partial class SpecialTilesDat : IDat<SpecialTilesDat>
             throw new ArgumentNullException(nameof(specification));
         }
 
-        var fileToFind = Encoding.ASCII.GetBytes("Data/SpecialTiles.dat64");
-        var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
-        var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
+        const string filePath = "Data/SpecialTiles.dat64";
+        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

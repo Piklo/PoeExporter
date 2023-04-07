@@ -37,9 +37,8 @@ public sealed partial class SentinelPassiveTypesDat : IDat<SentinelPassiveTypesD
             throw new ArgumentNullException(nameof(specification));
         }
 
-        var fileToFind = Encoding.ASCII.GetBytes("Data/SentinelPassiveTypes.dat64");
-        var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
-        var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
+        const string filePath = "Data/SentinelPassiveTypes.dat64";
+        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

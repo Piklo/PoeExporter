@@ -27,9 +27,8 @@ public sealed partial class MicrotransactionRecycleOutcomesDat : IDat<Microtrans
             throw new ArgumentNullException(nameof(specification));
         }
 
-        var fileToFind = Encoding.ASCII.GetBytes("Data/MicrotransactionRecycleOutcomes.dat64");
-        var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
-        var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
+        const string filePath = "Data/MicrotransactionRecycleOutcomes.dat64";
+        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;

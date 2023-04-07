@@ -91,9 +91,8 @@ public sealed partial class IncursionRoomsDat : IDat<IncursionRoomsDat>
             throw new ArgumentNullException(nameof(specification));
         }
 
-        var fileToFind = Encoding.ASCII.GetBytes("Data/IncursionRooms.dat64");
-        var fileRecord = specification.DataLoader.GetFileRecord(fileToFind);
-        var decompressedFile = specification.DataLoader.GetFileBytes(fileRecord);
+        const string filePath = "Data/IncursionRooms.dat64";
+        var decompressedFile = specification.DataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
         const int TableOffset = 4;
