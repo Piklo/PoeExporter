@@ -98,7 +98,7 @@ public sealed partial class ExpeditionAreasDat
 
             if (offset != expectedOffset)
             {
-                throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
+                throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
             var obj = new ExpeditionAreasDat()

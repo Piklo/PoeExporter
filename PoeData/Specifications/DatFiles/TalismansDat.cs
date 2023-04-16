@@ -99,7 +99,7 @@ public sealed partial class TalismansDat
 
             if (offset != expectedOffset)
             {
-                throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
+                throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
             var obj = new TalismansDat()

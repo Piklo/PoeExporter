@@ -124,7 +124,7 @@ public sealed partial class SentinelStorageLayoutDat
 
             if (offset != expectedOffset)
             {
-                throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
+                throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
             var obj = new SentinelStorageLayoutDat()

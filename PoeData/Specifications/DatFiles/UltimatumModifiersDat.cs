@@ -208,7 +208,7 @@ public sealed partial class UltimatumModifiersDat
 
             if (offset != expectedOffset)
             {
-                throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
+                throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
             var obj = new UltimatumModifiersDat()

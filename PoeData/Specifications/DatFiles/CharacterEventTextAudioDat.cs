@@ -65,7 +65,7 @@ public sealed partial class CharacterEventTextAudioDat
 
             if (offset != expectedOffset)
             {
-                throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
+                throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
             var obj = new CharacterEventTextAudioDat()

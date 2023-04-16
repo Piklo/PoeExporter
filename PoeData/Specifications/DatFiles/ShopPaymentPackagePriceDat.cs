@@ -63,7 +63,7 @@ public sealed partial class ShopPaymentPackagePriceDat
 
             if (offset != expectedOffset)
             {
-                throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
+                throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
             var obj = new ShopPaymentPackagePriceDat()

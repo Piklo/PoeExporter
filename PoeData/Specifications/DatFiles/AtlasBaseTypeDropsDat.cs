@@ -83,7 +83,7 @@ public sealed partial class AtlasBaseTypeDropsDat
 
             if (offset != expectedOffset)
             {
-                throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
+                throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
             var obj = new AtlasBaseTypeDropsDat()
