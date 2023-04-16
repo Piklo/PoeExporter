@@ -323,6 +323,15 @@ public sealed partial class MonsterVarietiesDat
     /// <summary> Gets Unknown765.</summary>
     public required int Unknown765 { get; init; }
 
+    /// <summary> Gets Unknown769.</summary>
+    public required int Unknown769 { get; init; }
+
+    /// <summary> Gets Unknown773.</summary>
+    public required int Unknown773 { get; init; }
+
+    /// <summary> Gets a value indicating whether Unknown777 is set.</summary>
+    public required bool Unknown777 { get; init; }
+
     /// <summary>
     /// Gets MonsterVarietiesDat data.
     /// </summary>
@@ -658,6 +667,15 @@ public sealed partial class MonsterVarietiesDat
             // loading Unknown765
             (var unknown765Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
+            // loading Unknown769
+            (var unknown769Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
+            // loading Unknown773
+            (var unknown773Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
+            // loading Unknown777
+            (var unknown777Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -761,6 +779,9 @@ public sealed partial class MonsterVarietiesDat
                 Unknown757 = unknown757Loading,
                 Unknown761 = unknown761Loading,
                 Unknown765 = unknown765Loading,
+                Unknown769 = unknown769Loading,
+                Unknown773 = unknown773Loading,
+                Unknown777 = unknown777Loading,
             };
 
             objects[rowId] = obj;

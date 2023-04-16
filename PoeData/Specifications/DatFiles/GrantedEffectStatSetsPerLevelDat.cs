@@ -21,7 +21,7 @@ public sealed partial class GrantedEffectStatSetsPerLevelDat
     public required int GemLevel { get; init; }
 
     /// <summary> Gets PlayerLevelReq.</summary>
-    public required int PlayerLevelReq { get; init; }
+    public required float PlayerLevelReq { get; init; }
 
     /// <summary> Gets SpellCritChance.</summary>
     public required int SpellCritChance { get; init; }
@@ -103,7 +103,7 @@ public sealed partial class GrantedEffectStatSetsPerLevelDat
             (var gemlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading PlayerLevelReq
-            (var playerlevelreqLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            (var playerlevelreqLoading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading SpellCritChance
             (var spellcritchanceLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

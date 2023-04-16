@@ -21,7 +21,7 @@ public sealed partial class GrantedEffectsPerLevelDat
     public required int Level { get; init; }
 
     /// <summary> Gets PlayerLevelReq.</summary>
-    public required int PlayerLevelReq { get; init; }
+    public required float PlayerLevelReq { get; init; }
 
     /// <summary> Gets CostMultiplier.</summary>
     public required int CostMultiplier { get; init; }
@@ -114,7 +114,7 @@ public sealed partial class GrantedEffectsPerLevelDat
             (var levelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading PlayerLevelReq
-            (var playerlevelreqLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            (var playerlevelreqLoading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading CostMultiplier
             (var costmultiplierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -49,6 +49,18 @@ public sealed partial class BuffVisualOrbTypesDat
     /// <summary> Gets Unknown66.</summary>
     public required float Unknown66 { get; init; }
 
+    /// <summary> Gets Unknown70.</summary>
+    public required int Unknown70 { get; init; }
+
+    /// <summary> Gets Unknown74.</summary>
+    public required float Unknown74 { get; init; }
+
+    /// <summary> Gets a value indicating whether Unknown78 is set.</summary>
+    public required bool Unknown78 { get; init; }
+
+    /// <summary> Gets Unknown79.</summary>
+    public required float Unknown79 { get; init; }
+
     /// <summary>
     /// Gets BuffVisualOrbTypesDat data.
     /// </summary>
@@ -113,6 +125,18 @@ public sealed partial class BuffVisualOrbTypesDat
             // loading Unknown66
             (var unknown66Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
+            // loading Unknown70
+            (var unknown70Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
+            // loading Unknown74
+            (var unknown74Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
+
+            // loading Unknown78
+            (var unknown78Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
+            // loading Unknown79
+            (var unknown79Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -132,6 +156,10 @@ public sealed partial class BuffVisualOrbTypesDat
                 Unknown61 = unknown61Loading,
                 Unknown65 = unknown65Loading,
                 Unknown66 = unknown66Loading,
+                Unknown70 = unknown70Loading,
+                Unknown74 = unknown74Loading,
+                Unknown78 = unknown78Loading,
+                Unknown79 = unknown79Loading,
             };
 
             objects[rowId] = obj;

@@ -111,6 +111,13 @@ public sealed partial class BaseItemTypesDat
     /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.GetTradeMarketCategoryDat"/> index.</remarks>
     public required int? TradeMarketCategory { get; init; }
 
+    /// <summary> Gets a value indicating whether Unknown279 is set.</summary>
+    public required bool Unknown279 { get; init; }
+
+    /// <summary> Gets Achievement.</summary>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    public required ReadOnlyCollection<int> Achievement { get; init; }
+
     /// <summary>
     /// Gets BaseItemTypesDat data.
     /// </summary>
@@ -228,6 +235,13 @@ public sealed partial class BaseItemTypesDat
             // loading TradeMarketCategory
             (var trademarketcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
+            // loading Unknown279
+            (var unknown279Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
+            // loading Achievement
+            (var tempachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var achievementLoading = tempachievementLoading.AsReadOnly();
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -263,6 +277,8 @@ public sealed partial class BaseItemTypesDat
                 Unknown246 = unknown246Loading,
                 Unknown262 = unknown262Loading,
                 TradeMarketCategory = trademarketcategoryLoading,
+                Unknown279 = unknown279Loading,
+                Achievement = achievementLoading,
             };
 
             objects[rowId] = obj;

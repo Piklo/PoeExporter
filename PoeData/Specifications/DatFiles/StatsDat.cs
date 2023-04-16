@@ -29,14 +29,11 @@ public sealed partial class StatsDat
     /// <remarks> references <see cref="StatSemanticsDat"/> on <see cref="Specification.GetStatSemanticsDat"/> index.</remarks>
     public required int Semantics { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown15 is set.</summary>
-    public required bool Unknown15 { get; init; }
-
     /// <summary> Gets Text.</summary>
     public required string Text { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown24 is set.</summary>
-    public required bool Unknown24 { get; init; }
+    /// <summary> Gets a value indicating whether Unknown23 is set.</summary>
+    public required bool Unknown23 { get; init; }
 
     /// <summary> Gets a value indicating whether IsVirtual is set.</summary>
     public required bool IsVirtual { get; init; }
@@ -49,8 +46,8 @@ public sealed partial class StatsDat
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
     public required int? OffHandAlias_StatsKey { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown42 is set.</summary>
-    public required bool Unknown42 { get; init; }
+    /// <summary> Gets a value indicating whether Unknown41 is set.</summary>
+    public required bool Unknown41 { get; init; }
 
     /// <summary> Gets HASH32.</summary>
     public required int HASH32 { get; init; }
@@ -63,11 +60,11 @@ public sealed partial class StatsDat
     /// <remarks> references <see cref="PassiveSkillStatCategoriesDat"/> on <see cref="Specification.GetPassiveSkillStatCategoriesDat"/> index.</remarks>
     public required int? Category { get; init; }
 
+    /// <summary> Gets a value indicating whether Unknown78 is set.</summary>
+    public required bool Unknown78 { get; init; }
+
     /// <summary> Gets a value indicating whether Unknown79 is set.</summary>
     public required bool Unknown79 { get; init; }
-
-    /// <summary> Gets a value indicating whether Unknown80 is set.</summary>
-    public required bool Unknown80 { get; init; }
 
     /// <summary> Gets a value indicating whether IsScalable is set.</summary>
     public required bool IsScalable { get; init; }
@@ -75,6 +72,9 @@ public sealed partial class StatsDat
     /// <summary> Gets ContextFlags.</summary>
     /// <remarks> references <see cref="VirtualStatContextFlagsDat"/> on <see cref="Specification.GetVirtualStatContextFlagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ContextFlags { get; init; }
+
+    /// <summary> Gets Unknown97.</summary>
+    public required ReadOnlyCollection<int> Unknown97 { get; init; }
 
     /// <summary>
     /// Gets StatsDat data.
@@ -119,14 +119,11 @@ public sealed partial class StatsDat
             // loading Semantics
             (var semanticsLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown15
-            (var unknown15Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
-
             // loading Text
             (var textLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown24
-            (var unknown24Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            // loading Unknown23
+            (var unknown23Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading IsVirtual
             (var isvirtualLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -137,8 +134,8 @@ public sealed partial class StatsDat
             // loading OffHandAlias_StatsKey
             (var offhandalias_statskeyLoading, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);
 
-            // loading Unknown42
-            (var unknown42Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            // loading Unknown41
+            (var unknown41Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading HASH32
             (var hash32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -150,11 +147,11 @@ public sealed partial class StatsDat
             // loading Category
             (var categoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
+            // loading Unknown78
+            (var unknown78Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
             // loading Unknown79
             (var unknown79Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
-
-            // loading Unknown80
-            (var unknown80Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading IsScalable
             (var isscalableLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -162,6 +159,10 @@ public sealed partial class StatsDat
             // loading ContextFlags
             (var tempcontextflagsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
             var contextflagsLoading = tempcontextflagsLoading.AsReadOnly();
+
+            // loading Unknown97
+            (var tempunknown97Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown97Loading = tempunknown97Loading.AsReadOnly();
 
             if (offset != expectedOffset)
             {
@@ -175,20 +176,20 @@ public sealed partial class StatsDat
                 IsLocal = islocalLoading,
                 IsWeaponLocal = isweaponlocalLoading,
                 Semantics = semanticsLoading,
-                Unknown15 = unknown15Loading,
                 Text = textLoading,
-                Unknown24 = unknown24Loading,
+                Unknown23 = unknown23Loading,
                 IsVirtual = isvirtualLoading,
                 MainHandAlias_StatsKey = mainhandalias_statskeyLoading,
                 OffHandAlias_StatsKey = offhandalias_statskeyLoading,
-                Unknown42 = unknown42Loading,
+                Unknown41 = unknown41Loading,
                 HASH32 = hash32Loading,
                 BelongsActiveSkillsKey = belongsactiveskillskeyLoading,
                 Category = categoryLoading,
+                Unknown78 = unknown78Loading,
                 Unknown79 = unknown79Loading,
-                Unknown80 = unknown80Loading,
                 IsScalable = isscalableLoading,
                 ContextFlags = contextflagsLoading,
+                Unknown97 = unknown97Loading,
             };
 
             objects[rowId] = obj;

@@ -13,18 +13,21 @@ namespace PoeData.Specifications.DatFiles;
 /// </summary>
 public sealed partial class ItemNoteCodeDat
 {
-    /// <summary> Gets BaseItemTypesKey.</summary>
+    /// <summary> Gets BaseItem.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
-    public required int? BaseItemTypesKey { get; init; }
+    public required int? BaseItem { get; init; }
 
     /// <summary> Gets Code.</summary>
     public required string Code { get; init; }
 
-    /// <summary> Gets Unknown24.</summary>
-    public required int Unknown24 { get; init; }
+    /// <summary> Gets Order1.</summary>
+    public required int Order1 { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown28 is set.</summary>
-    public required bool Unknown28 { get; init; }
+    /// <summary> Gets a value indicating whether Show is set.</summary>
+    public required bool Show { get; init; }
+
+    /// <summary> Gets Order2.</summary>
+    public required int Order2 { get; init; }
 
     /// <summary>
     /// Gets ItemNoteCodeDat data.
@@ -54,17 +57,20 @@ public sealed partial class ItemNoteCodeDat
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading BaseItem
+            (var baseitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
             // loading Code
             (var codeLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown24
-            (var unknown24Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading Order1
+            (var order1Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown28
-            (var unknown28Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            // loading Show
+            (var showLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
+            // loading Order2
+            (var order2Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {
@@ -73,10 +79,11 @@ public sealed partial class ItemNoteCodeDat
 
             var obj = new ItemNoteCodeDat()
             {
-                BaseItemTypesKey = baseitemtypeskeyLoading,
+                BaseItem = baseitemLoading,
                 Code = codeLoading,
-                Unknown24 = unknown24Loading,
-                Unknown28 = unknown28Loading,
+                Order1 = order1Loading,
+                Show = showLoading,
+                Order2 = order2Loading,
             };
 
             objects[rowId] = obj;

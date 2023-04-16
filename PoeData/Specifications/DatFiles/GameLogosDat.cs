@@ -9,29 +9,32 @@ using System.Text;
 namespace PoeData.Specifications.DatFiles;
 
 /// <summary>
-/// Class containing QuestFlags.dat data.
+/// Class containing GameLogos.dat data.
 /// </summary>
-public sealed partial class QuestFlagsDat
+public sealed partial class GameLogosDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
 
-    /// <summary> Gets HASH32.</summary>
-    public required int HASH32 { get; init; }
+    /// <summary> Gets LogoIntl.</summary>
+    public required string LogoIntl { get; init; }
+
+    /// <summary> Gets LogoTW.</summary>
+    public required string LogoTW { get; init; }
 
     /// <summary>
-    /// Gets QuestFlagsDat data.
+    /// Gets GameLogosDat data.
     /// </summary>
     /// <param name="dataLoader">data loader.</param>
-    /// <returns>array of QuestFlagsDat.</returns>
-    internal static QuestFlagsDat[] Load(DataLoader dataLoader)
+    /// <returns>array of GameLogosDat.</returns>
+    internal static GameLogosDat[] Load(DataLoader dataLoader)
     {
         if (dataLoader is null)
         {
             throw new ArgumentNullException(nameof(dataLoader));
         }
 
-        const string filePath = "Data/QuestFlags.dat64";
+        const string filePath = "Data/GameLogos.dat64";
         var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
@@ -41,7 +44,7 @@ public sealed partial class QuestFlagsDat
         var tableLength = dataOffset - TableOffset;
         var tableRecordLength = tableLength / (int)tableRows;
 
-        var objects = new QuestFlagsDat[tableRows];
+        var objects = new GameLogosDat[tableRows];
         for (var rowId = 0; rowId < tableRows; rowId++)
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
@@ -50,18 +53,22 @@ public sealed partial class QuestFlagsDat
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading HASH32
-            (var hash32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading LogoIntl
+            (var logointlLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
+            // loading LogoTW
+            (var logotwLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
-            var obj = new QuestFlagsDat()
+            var obj = new GameLogosDat()
             {
                 Id = idLoading,
-                HASH32 = hash32Loading,
+                LogoIntl = logointlLoading,
+                LogoTW = logotwLoading,
             };
 
             objects[rowId] = obj;

@@ -34,14 +34,14 @@ public sealed partial class UniqueStashTypesDat
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
-    /// <summary> Gets Unknown36.</summary>
-    public required int Unknown36 { get; init; }
+    /// <summary> Gets StandardCount.</summary>
+    public required int StandardCount { get; init; }
 
     /// <summary> Gets Image.</summary>
     public required string Image { get; init; }
 
-    /// <summary> Gets Unknown48.</summary>
-    public required int Unknown48 { get; init; }
+    /// <summary> Gets ChallengeLeagueCount.</summary>
+    public required int ChallengeLeagueCount { get; init; }
 
     /// <summary> Gets a value indicating whether IsDisabled is set.</summary>
     public required bool IsDisabled { get; init; }
@@ -95,14 +95,14 @@ public sealed partial class UniqueStashTypesDat
             // loading Name
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown36
-            (var unknown36Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading StandardCount
+            (var standardcountLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Image
             (var imageLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown48
-            (var unknown48Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading ChallengeLeagueCount
+            (var challengeleaguecountLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading IsDisabled
             (var isdisabledLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -121,9 +121,9 @@ public sealed partial class UniqueStashTypesDat
                 Unknown20 = unknown20Loading,
                 Unknown24 = unknown24Loading,
                 Name = nameLoading,
-                Unknown36 = unknown36Loading,
+                StandardCount = standardcountLoading,
                 Image = imageLoading,
-                Unknown48 = unknown48Loading,
+                ChallengeLeagueCount = challengeleaguecountLoading,
                 IsDisabled = isdisabledLoading,
             };
 

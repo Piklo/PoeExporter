@@ -38,6 +38,9 @@ public sealed partial class MiscEffectPacksDat
     /// <summary> Gets PlayerOnly_EPKFile.</summary>
     public required string PlayerOnly_EPKFile { get; init; }
 
+    /// <summary> Gets a value indicating whether Unknown53 is set.</summary>
+    public required bool Unknown53 { get; init; }
+
     /// <summary>
     /// Gets MiscEffectPacksDat data.
     /// </summary>
@@ -91,6 +94,9 @@ public sealed partial class MiscEffectPacksDat
             // loading PlayerOnly_EPKFile
             (var playeronly_epkfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
+            // loading Unknown53
+            (var unknown53Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -106,6 +112,7 @@ public sealed partial class MiscEffectPacksDat
                 PreloadGroups = preloadgroupsLoading,
                 Unknown44 = unknown44Loading,
                 PlayerOnly_EPKFile = playeronly_epkfileLoading,
+                Unknown53 = unknown53Loading,
             };
 
             objects[rowId] = obj;

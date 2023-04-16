@@ -13,9 +13,9 @@ namespace PoeData.Specifications.DatFiles;
 /// </summary>
 public sealed partial class ItemExperiencePerLevelDat
 {
-    /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
-    public required int? BaseItemTypesKey { get; init; }
+    /// <summary> Gets ItemExperienceType.</summary>
+    /// <remarks> references <see cref="ItemExperienceTypesDat"/> on <see cref="Specification.GetItemExperienceTypesDat"/> index.</remarks>
+    public required int? ItemExperienceType { get; init; }
 
     /// <summary> Gets ItemCurrentLevel.</summary>
     public required int ItemCurrentLevel { get; init; }
@@ -51,8 +51,8 @@ public sealed partial class ItemExperiencePerLevelDat
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading ItemExperienceType
+            (var itemexperiencetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
             // loading ItemCurrentLevel
             (var itemcurrentlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -67,7 +67,7 @@ public sealed partial class ItemExperiencePerLevelDat
 
             var obj = new ItemExperiencePerLevelDat()
             {
-                BaseItemTypesKey = baseitemtypeskeyLoading,
+                ItemExperienceType = itemexperiencetypeLoading,
                 ItemCurrentLevel = itemcurrentlevelLoading,
                 Experience = experienceLoading,
             };

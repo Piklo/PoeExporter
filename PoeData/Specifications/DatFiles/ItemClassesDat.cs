@@ -107,6 +107,9 @@ public sealed partial class ItemClassesDat
     /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
     public required int? EquipAchievements { get; init; }
 
+    /// <summary> Gets a value indicating whether Unknown181 is set.</summary>
+    public required bool Unknown181 { get; init; }
+
     /// <summary>
     /// Gets ItemClassesDat data.
     /// </summary>
@@ -226,6 +229,9 @@ public sealed partial class ItemClassesDat
             // loading EquipAchievements
             (var equipachievementsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
+            // loading Unknown181
+            (var unknown181Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -262,6 +268,7 @@ public sealed partial class ItemClassesDat
                 IsUnmodifiable = isunmodifiableLoading,
                 CanBeFractured = canbefracturedLoading,
                 EquipAchievements = equipachievementsLoading,
+                Unknown181 = unknown181Loading,
             };
 
             objects[rowId] = obj;

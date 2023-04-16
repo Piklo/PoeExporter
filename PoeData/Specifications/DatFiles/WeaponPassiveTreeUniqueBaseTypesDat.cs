@@ -9,29 +9,30 @@ using System.Text;
 namespace PoeData.Specifications.DatFiles;
 
 /// <summary>
-/// Class containing QuestFlags.dat data.
+/// Class containing WeaponPassiveTreeUniqueBaseTypes.dat data.
 /// </summary>
-public sealed partial class QuestFlagsDat
+public sealed partial class WeaponPassiveTreeUniqueBaseTypesDat
 {
-    /// <summary> Gets Id.</summary>
-    public required string Id { get; init; }
+    /// <summary> Gets UniqueBase.</summary>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    public required int? UniqueBase { get; init; }
 
-    /// <summary> Gets HASH32.</summary>
-    public required int HASH32 { get; init; }
+    /// <summary> Gets Unknown16.</summary>
+    public required int Unknown16 { get; init; }
 
     /// <summary>
-    /// Gets QuestFlagsDat data.
+    /// Gets WeaponPassiveTreeUniqueBaseTypesDat data.
     /// </summary>
     /// <param name="dataLoader">data loader.</param>
-    /// <returns>array of QuestFlagsDat.</returns>
-    internal static QuestFlagsDat[] Load(DataLoader dataLoader)
+    /// <returns>array of WeaponPassiveTreeUniqueBaseTypesDat.</returns>
+    internal static WeaponPassiveTreeUniqueBaseTypesDat[] Load(DataLoader dataLoader)
     {
         if (dataLoader is null)
         {
             throw new ArgumentNullException(nameof(dataLoader));
         }
 
-        const string filePath = "Data/QuestFlags.dat64";
+        const string filePath = "Data/WeaponPassiveTreeUniqueBaseTypes.dat64";
         var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
@@ -41,27 +42,27 @@ public sealed partial class QuestFlagsDat
         var tableLength = dataOffset - TableOffset;
         var tableRecordLength = tableLength / (int)tableRows;
 
-        var objects = new QuestFlagsDat[tableRows];
+        var objects = new WeaponPassiveTreeUniqueBaseTypesDat[tableRows];
         for (var rowId = 0; rowId < tableRows; rowId++)
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading Id
-            (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+            // loading UniqueBase
+            (var uniquebaseLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
-            // loading HASH32
-            (var hash32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading Unknown16
+            (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
-            var obj = new QuestFlagsDat()
+            var obj = new WeaponPassiveTreeUniqueBaseTypesDat()
             {
-                Id = idLoading,
-                HASH32 = hash32Loading,
+                UniqueBase = uniquebaseLoading,
+                Unknown16 = unknown16Loading,
             };
 
             objects[rowId] = obj;

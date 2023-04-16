@@ -9,29 +9,29 @@ using System.Text;
 namespace PoeData.Specifications.DatFiles;
 
 /// <summary>
-/// Class containing QuestFlags.dat data.
+/// Class containing WeaponPassiveSkillTypes.dat data.
 /// </summary>
-public sealed partial class QuestFlagsDat
+public sealed partial class WeaponPassiveSkillTypesDat
 {
     /// <summary> Gets Id.</summary>
     public required string Id { get; init; }
 
-    /// <summary> Gets HASH32.</summary>
-    public required int HASH32 { get; init; }
+    /// <summary> Gets Unknown8.</summary>
+    public required int Unknown8 { get; init; }
 
     /// <summary>
-    /// Gets QuestFlagsDat data.
+    /// Gets WeaponPassiveSkillTypesDat data.
     /// </summary>
     /// <param name="dataLoader">data loader.</param>
-    /// <returns>array of QuestFlagsDat.</returns>
-    internal static QuestFlagsDat[] Load(DataLoader dataLoader)
+    /// <returns>array of WeaponPassiveSkillTypesDat.</returns>
+    internal static WeaponPassiveSkillTypesDat[] Load(DataLoader dataLoader)
     {
         if (dataLoader is null)
         {
             throw new ArgumentNullException(nameof(dataLoader));
         }
 
-        const string filePath = "Data/QuestFlags.dat64";
+        const string filePath = "Data/WeaponPassiveSkillTypes.dat64";
         var decompressedFile = dataLoader.GetFileBytes(filePath);
 
         var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
@@ -41,7 +41,7 @@ public sealed partial class QuestFlagsDat
         var tableLength = dataOffset - TableOffset;
         var tableRecordLength = tableLength / (int)tableRows;
 
-        var objects = new QuestFlagsDat[tableRows];
+        var objects = new WeaponPassiveSkillTypesDat[tableRows];
         for (var rowId = 0; rowId < tableRows; rowId++)
         {
             // offset = 4 + (rowId * tableRecordLength); // debug only
@@ -50,18 +50,18 @@ public sealed partial class QuestFlagsDat
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading HASH32
-            (var hash32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading Unknown8
+            (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
             }
 
-            var obj = new QuestFlagsDat()
+            var obj = new WeaponPassiveSkillTypesDat()
             {
                 Id = idLoading,
-                HASH32 = hash32Loading,
+                Unknown8 = unknown8Loading,
             };
 
             objects[rowId] = obj;

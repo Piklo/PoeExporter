@@ -138,17 +138,21 @@ public sealed partial class CharactersDat
     /// <summary> Gets AfterImage.</summary>
     public required string AfterImage { get; init; }
 
-    /// <summary> Gets Unknown336.</summary>
-    public required int? Unknown336 { get; init; }
+    /// <summary> Gets Mirage.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? Mirage { get; init; }
 
-    /// <summary> Gets Unknown352.</summary>
-    public required int? Unknown352 { get; init; }
+    /// <summary> Gets CloneImmobile.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? CloneImmobile { get; init; }
 
-    /// <summary> Gets Unknown368.</summary>
-    public required int? Unknown368 { get; init; }
+    /// <summary> Gets ReplicateClone.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? ReplicateClone { get; init; }
 
-    /// <summary> Gets Unknown384.</summary>
-    public required int? Unknown384 { get; init; }
+    /// <summary> Gets LightningClone.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? LightningClone { get; init; }
 
     /// <summary> Gets Unknown400.</summary>
     public required float Unknown400 { get; init; }
@@ -159,8 +163,40 @@ public sealed partial class CharactersDat
     /// <summary> Gets SkillTreeBackground.</summary>
     public required string SkillTreeBackground { get; init; }
 
-    /// <summary> Gets Unknown416.</summary>
-    public required int? Unknown416 { get; init; }
+    /// <summary> Gets Clone.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? Clone { get; init; }
+
+    /// <summary> Gets Double.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? Double { get; init; }
+
+    /// <summary> Gets MirageWarrior.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? MirageWarrior { get; init; }
+
+    /// <summary> Gets DoubleTwo.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? DoubleTwo { get; init; }
+
+    /// <summary> Gets DarkExile.</summary>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    public required int? DarkExile { get; init; }
+
+    /// <summary> Gets Attr.</summary>
+    public required string Attr { get; init; }
+
+    /// <summary> Gets AttrLowercase.</summary>
+    public required string AttrLowercase { get; init; }
+
+    /// <summary> Gets Script.</summary>
+    public required string Script { get; init; }
+
+    /// <summary> Gets Unknown520.</summary>
+    public required int? Unknown520 { get; init; }
+
+    /// <summary> Gets Unknown536.</summary>
+    public required int Unknown536 { get; init; }
 
     /// <summary>
     /// Gets CharactersDat data.
@@ -316,17 +352,17 @@ public sealed partial class CharactersDat
             // loading AfterImage
             (var afterimageLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown336
-            (var unknown336Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading Mirage
+            (var mirageLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
-            // loading Unknown352
-            (var unknown352Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading CloneImmobile
+            (var cloneimmobileLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
-            // loading Unknown368
-            (var unknown368Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading ReplicateClone
+            (var replicatecloneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
-            // loading Unknown384
-            (var unknown384Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading LightningClone
+            (var lightningcloneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
             // loading Unknown400
             (var unknown400Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
@@ -337,8 +373,35 @@ public sealed partial class CharactersDat
             // loading SkillTreeBackground
             (var skilltreebackgroundLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown416
-            (var unknown416Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading Clone
+            (var cloneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
+            // loading Double
+            (var doubleLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
+            // loading MirageWarrior
+            (var miragewarriorLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
+            // loading DoubleTwo
+            (var doubletwoLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
+            // loading DarkExile
+            (var darkexileLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
+            // loading Attr
+            (var attrLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
+            // loading AttrLowercase
+            (var attrlowercaseLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
+            // loading Script
+            (var scriptLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
+            // loading Unknown520
+            (var unknown520Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
+            // loading Unknown536
+            (var unknown536Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {
@@ -388,14 +451,23 @@ public sealed partial class CharactersDat
                 PlayerCritter = playercritterLoading,
                 PlayerEffect = playereffectLoading,
                 AfterImage = afterimageLoading,
-                Unknown336 = unknown336Loading,
-                Unknown352 = unknown352Loading,
-                Unknown368 = unknown368Loading,
-                Unknown384 = unknown384Loading,
+                Mirage = mirageLoading,
+                CloneImmobile = cloneimmobileLoading,
+                ReplicateClone = replicatecloneLoading,
+                LightningClone = lightningcloneLoading,
                 Unknown400 = unknown400Loading,
                 Unknown404 = unknown404Loading,
                 SkillTreeBackground = skilltreebackgroundLoading,
-                Unknown416 = unknown416Loading,
+                Clone = cloneLoading,
+                Double = doubleLoading,
+                MirageWarrior = miragewarriorLoading,
+                DoubleTwo = doubletwoLoading,
+                DarkExile = darkexileLoading,
+                Attr = attrLoading,
+                AttrLowercase = attrlowercaseLoading,
+                Script = scriptLoading,
+                Unknown520 = unknown520Loading,
+                Unknown536 = unknown536Loading,
             };
 
             objects[rowId] = obj;

@@ -95,6 +95,10 @@ public sealed partial class SkillGemsDat
     /// <summary> Gets Unknown195.</summary>
     public required int Unknown195 { get; init; }
 
+    /// <summary> Gets ItemExperienceType.</summary>
+    /// <remarks> references <see cref="ItemExperienceTypesDat"/> on <see cref="Specification.GetItemExperienceTypesDat"/> index.</remarks>
+    public required int? ItemExperienceType { get; init; }
+
     /// <summary>
     /// Gets SkillGemsDat data.
     /// </summary>
@@ -196,6 +200,9 @@ public sealed partial class SkillGemsDat
             // loading Unknown195
             (var unknown195Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
+            // loading ItemExperienceType
+            (var itemexperiencetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -227,6 +234,7 @@ public sealed partial class SkillGemsDat
                 GrantedEffectHardMode = grantedeffecthardmodeLoading,
                 Unknown179 = unknown179Loading,
                 Unknown195 = unknown195Loading,
+                ItemExperienceType = itemexperiencetypeLoading,
             };
 
             objects[rowId] = obj;

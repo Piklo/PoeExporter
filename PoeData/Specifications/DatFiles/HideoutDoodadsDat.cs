@@ -58,6 +58,9 @@ public sealed partial class HideoutDoodadsDat
     /// <summary> Gets a value indicating whether Unknown113 is set.</summary>
     public required bool Unknown113 { get; init; }
 
+    /// <summary> Gets Unknown114.</summary>
+    public required int? Unknown114 { get; init; }
+
     /// <summary>
     /// Gets HideoutDoodadsDat data.
     /// </summary>
@@ -130,6 +133,9 @@ public sealed partial class HideoutDoodadsDat
             // loading Unknown113
             (var unknown113Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
+            // loading Unknown114
+            (var unknown114Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -151,6 +157,7 @@ public sealed partial class HideoutDoodadsDat
                 Unknown96 = unknown96Loading,
                 Unknown97 = unknown97Loading,
                 Unknown113 = unknown113Loading,
+                Unknown114 = unknown114Loading,
             };
 
             objects[rowId] = obj;

@@ -32,8 +32,8 @@ public sealed partial class WeaponTypesDat
     /// <summary> Gets RangeMax.</summary>
     public required int RangeMax { get; init; }
 
-    /// <summary> Gets Null6.</summary>
-    public required int Null6 { get; init; }
+    /// <summary> Gets Unknown36.</summary>
+    public required int Unknown36 { get; init; }
 
     /// <summary>
     /// Gets WeaponTypesDat data.
@@ -81,8 +81,8 @@ public sealed partial class WeaponTypesDat
             // loading RangeMax
             (var rangemaxLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Null6
-            (var null6Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading Unknown36
+            (var unknown36Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {
@@ -97,7 +97,7 @@ public sealed partial class WeaponTypesDat
                 DamageMin = damageminLoading,
                 DamageMax = damagemaxLoading,
                 RangeMax = rangemaxLoading,
-                Null6 = null6Loading,
+                Unknown36 = unknown36Loading,
             };
 
             objects[rowId] = obj;

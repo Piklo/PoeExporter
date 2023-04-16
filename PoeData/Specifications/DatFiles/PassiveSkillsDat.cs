@@ -149,6 +149,12 @@ public sealed partial class PassiveSkillsDat
     /// <summary> Gets Unknown283.</summary>
     public required int Unknown283 { get; init; }
 
+    /// <summary> Gets Unknown287.</summary>
+    public required ReadOnlyCollection<int> Unknown287 { get; init; }
+
+    /// <summary> Gets a value indicating whether Unknown303 is set.</summary>
+    public required bool Unknown303 { get; init; }
+
     /// <summary>
     /// Gets PassiveSkillsDat data.
     /// </summary>
@@ -308,6 +314,13 @@ public sealed partial class PassiveSkillsDat
             // loading Unknown283
             (var unknown283Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
+            // loading Unknown287
+            (var tempunknown287Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown287Loading = tempunknown287Loading.AsReadOnly();
+
+            // loading Unknown303
+            (var unknown303Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -357,6 +370,8 @@ public sealed partial class PassiveSkillsDat
                 Unknown266 = unknown266Loading,
                 Unknown267 = unknown267Loading,
                 Unknown283 = unknown283Loading,
+                Unknown287 = unknown287Loading,
+                Unknown303 = unknown303Loading,
             };
 
             objects[rowId] = obj;

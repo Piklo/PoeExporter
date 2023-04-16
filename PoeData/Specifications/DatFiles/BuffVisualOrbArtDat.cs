@@ -32,6 +32,12 @@ public sealed partial class BuffVisualOrbArtDat
     /// <summary> Gets Unknown64.</summary>
     public required string Unknown64 { get; init; }
 
+    /// <summary> Gets Unknown72.</summary>
+    public required string Unknown72 { get; init; }
+
+    /// <summary> Gets Unknown80.</summary>
+    public required string Unknown80 { get; init; }
+
     /// <summary>
     /// Gets BuffVisualOrbArtDat data.
     /// </summary>
@@ -80,6 +86,12 @@ public sealed partial class BuffVisualOrbArtDat
             // loading Unknown64
             (var unknown64Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
+            // loading Unknown72
+            (var unknown72Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
+            // loading Unknown80
+            (var unknown80Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -93,6 +105,8 @@ public sealed partial class BuffVisualOrbArtDat
                 Unknown40 = unknown40Loading,
                 Unknown56 = unknown56Loading,
                 Unknown64 = unknown64Loading,
+                Unknown72 = unknown72Loading,
+                Unknown80 = unknown80Loading,
             };
 
             objects[rowId] = obj;

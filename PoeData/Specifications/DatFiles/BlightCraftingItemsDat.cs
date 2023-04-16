@@ -27,6 +27,9 @@ public sealed partial class BlightCraftingItemsDat
     /// <summary> Gets UseType.</summary>
     public required int UseType { get; init; }
 
+    /// <summary> Gets NameShort.</summary>
+    public required string NameShort { get; init; }
+
     /// <summary>
     /// Gets BlightCraftingItemsDat data.
     /// </summary>
@@ -68,6 +71,9 @@ public sealed partial class BlightCraftingItemsDat
             // loading UseType
             (var usetypeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
+            // loading NameShort
+            (var nameshortLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -79,6 +85,7 @@ public sealed partial class BlightCraftingItemsDat
                 Tier = tierLoading,
                 Achievements = achievementsLoading,
                 UseType = usetypeLoading,
+                NameShort = nameshortLoading,
             };
 
             objects[rowId] = obj;

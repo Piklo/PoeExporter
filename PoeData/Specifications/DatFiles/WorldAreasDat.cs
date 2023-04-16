@@ -245,6 +245,10 @@ public sealed partial class WorldAreasDat
     /// <summary> Gets Unknown608.</summary>
     public required int? Unknown608 { get; init; }
 
+    /// <summary> Gets Unknown624.</summary>
+    /// <remarks> references <see cref="RulesetsDat"/> on <see cref="Specification.GetRulesetsDat"/> index.</remarks>
+    public required int? Unknown624 { get; init; }
+
     /// <summary>
     /// Gets WorldAreasDat data.
     /// </summary>
@@ -500,6 +504,9 @@ public sealed partial class WorldAreasDat
             // loading Unknown608
             (var unknown608Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
+            // loading Unknown624
+            (var unknown624Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -578,6 +585,7 @@ public sealed partial class WorldAreasDat
                 Unknown588 = unknown588Loading,
                 Unknown592 = unknown592Loading,
                 Unknown608 = unknown608Loading,
+                Unknown624 = unknown624Loading,
             };
 
             objects[rowId] = obj;

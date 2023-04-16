@@ -95,57 +95,57 @@ public sealed partial class BuffDefinitionsDat
     /// <summary> Gets a value indicating whether Unknown125 is set.</summary>
     public required bool Unknown125 { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown126 is set.</summary>
-    public required bool Unknown126 { get; init; }
+    /// <summary> Gets Unknown126.</summary>
+    public required int? Unknown126 { get; init; }
 
-    /// <summary> Gets Unknown127.</summary>
-    public required int? Unknown127 { get; init; }
+    /// <summary> Gets a value indicating whether Unknown142 is set.</summary>
+    public required bool Unknown142 { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown143 is set.</summary>
-    public required bool Unknown143 { get; init; }
+    /// <summary> Gets Unknown143.</summary>
+    public required int Unknown143 { get; init; }
 
-    /// <summary> Gets Unknown144.</summary>
-    public required int Unknown144 { get; init; }
+    /// <summary> Gets a value indicating whether Unknown147 is set.</summary>
+    public required bool Unknown147 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown148 is set.</summary>
     public required bool Unknown148 { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown149 is set.</summary>
-    public required bool Unknown149 { get; init; }
+    /// <summary> Gets Unknown149.</summary>
+    public required int Unknown149 { get; init; }
 
-    /// <summary> Gets Unknown150.</summary>
-    public required int Unknown150 { get; init; }
+    /// <summary> Gets Unknown153.</summary>
+    public required ReadOnlyCollection<int> Unknown153 { get; init; }
 
-    /// <summary> Gets Unknown154.</summary>
-    public required ReadOnlyCollection<int> Unknown154 { get; init; }
+    /// <summary> Gets a value indicating whether Unknown169 is set.</summary>
+    public required bool Unknown169 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown170 is set.</summary>
     public required bool Unknown170 { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown171 is set.</summary>
-    public required bool Unknown171 { get; init; }
+    /// <summary> Gets Unknown171.</summary>
+    public required ReadOnlyCollection<int> Unknown171 { get; init; }
 
-    /// <summary> Gets Unknown172.</summary>
-    public required ReadOnlyCollection<int> Unknown172 { get; init; }
+    /// <summary> Gets a value indicating whether Unknown187 is set.</summary>
+    public required bool Unknown187 { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown188 is set.</summary>
-    public required bool Unknown188 { get; init; }
-
-    /// <summary> Gets Unknown189.</summary>
+    /// <summary> Gets Unknown188.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
-    public required ReadOnlyCollection<int> Unknown189 { get; init; }
+    public required ReadOnlyCollection<int> Unknown188 { get; init; }
 
-    /// <summary> Gets Unknown205.</summary>
+    /// <summary> Gets Unknown204.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
-    public required ReadOnlyCollection<int> Unknown205 { get; init; }
+    public required ReadOnlyCollection<int> Unknown204 { get; init; }
 
-    /// <summary> Gets Unknown221.</summary>
+    /// <summary> Gets Unknown220.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
-    public required ReadOnlyCollection<int> Unknown221 { get; init; }
+    public required ReadOnlyCollection<int> Unknown220 { get; init; }
 
-    /// <summary> Gets Unknown237.</summary>
+    /// <summary> Gets Unknown236.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
-    public required ReadOnlyCollection<int> Unknown237 { get; init; }
+    public required ReadOnlyCollection<int> Unknown236 { get; init; }
+
+    /// <summary> Gets a value indicating whether Unknown252 is set.</summary>
+    public required bool Unknown252 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown253 is set.</summary>
     public required bool Unknown253 { get; init; }
@@ -159,18 +159,19 @@ public sealed partial class BuffDefinitionsDat
     /// <summary> Gets a value indicating whether Unknown256 is set.</summary>
     public required bool Unknown256 { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown257 is set.</summary>
-    public required bool Unknown257 { get; init; }
-
-    /// <summary> Gets Unknown258.</summary>
+    /// <summary> Gets Unknown257.</summary>
     /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
-    public required int? Unknown258 { get; init; }
+    public required int? Unknown257 { get; init; }
 
-    /// <summary> Gets Unknown274.</summary>
-    public required ReadOnlyCollection<int> Unknown274 { get; init; }
+    /// <summary> Gets Unknown273.</summary>
+    public required ReadOnlyCollection<int> Unknown273 { get; init; }
 
-    /// <summary> Gets Unknown290.</summary>
-    public required string Unknown290 { get; init; }
+    /// <summary> Gets Unknown289.</summary>
+    public required string Unknown289 { get; init; }
+
+    /// <summary> Gets Unknown297.</summary>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    public required ReadOnlyCollection<int> Unknown297 { get; init; }
 
     /// <summary>
     /// Gets BuffDefinitionsDat data.
@@ -280,58 +281,58 @@ public sealed partial class BuffDefinitionsDat
             (var unknown125Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown126
-            (var unknown126Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            (var unknown126Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
-            // loading Unknown127
-            (var unknown127Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading Unknown142
+            (var unknown142Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown143
-            (var unknown143Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            (var unknown143Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown144
-            (var unknown144Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading Unknown147
+            (var unknown147Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown148
             (var unknown148Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown149
-            (var unknown149Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            (var unknown149Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown150
-            (var unknown150Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+            // loading Unknown153
+            (var tempunknown153Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
+            var unknown153Loading = tempunknown153Loading.AsReadOnly();
 
-            // loading Unknown154
-            (var tempunknown154Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
-            var unknown154Loading = tempunknown154Loading.AsReadOnly();
+            // loading Unknown169
+            (var unknown169Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown170
             (var unknown170Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown171
-            (var unknown171Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            (var tempunknown171Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown171Loading = tempunknown171Loading.AsReadOnly();
 
-            // loading Unknown172
-            (var tempunknown172Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
-            var unknown172Loading = tempunknown172Loading.AsReadOnly();
+            // loading Unknown187
+            (var unknown187Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown188
-            (var unknown188Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            (var tempunknown188Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown188Loading = tempunknown188Loading.AsReadOnly();
 
-            // loading Unknown189
-            (var tempunknown189Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
-            var unknown189Loading = tempunknown189Loading.AsReadOnly();
+            // loading Unknown204
+            (var tempunknown204Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown204Loading = tempunknown204Loading.AsReadOnly();
 
-            // loading Unknown205
-            (var tempunknown205Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
-            var unknown205Loading = tempunknown205Loading.AsReadOnly();
+            // loading Unknown220
+            (var tempunknown220Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown220Loading = tempunknown220Loading.AsReadOnly();
 
-            // loading Unknown221
-            (var tempunknown221Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
-            var unknown221Loading = tempunknown221Loading.AsReadOnly();
+            // loading Unknown236
+            (var tempunknown236Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown236Loading = tempunknown236Loading.AsReadOnly();
 
-            // loading Unknown237
-            (var tempunknown237Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
-            var unknown237Loading = tempunknown237Loading.AsReadOnly();
+            // loading Unknown252
+            (var unknown252Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown253
             (var unknown253Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -346,17 +347,18 @@ public sealed partial class BuffDefinitionsDat
             (var unknown256Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown257
-            (var unknown257Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            (var unknown257Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
 
-            // loading Unknown258
-            (var unknown258Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            // loading Unknown273
+            (var tempunknown273Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
+            var unknown273Loading = tempunknown273Loading.AsReadOnly();
 
-            // loading Unknown274
-            (var tempunknown274Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
-            var unknown274Loading = tempunknown274Loading.AsReadOnly();
+            // loading Unknown289
+            (var unknown289Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
-            // loading Unknown290
-            (var unknown290Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
+            // loading Unknown297
+            (var tempunknown297Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
+            var unknown297Loading = tempunknown297Loading.AsReadOnly();
 
             if (offset != expectedOffset)
             {
@@ -392,29 +394,29 @@ public sealed partial class BuffDefinitionsDat
                 IsRecovery = isrecoveryLoading,
                 Unknown125 = unknown125Loading,
                 Unknown126 = unknown126Loading,
-                Unknown127 = unknown127Loading,
+                Unknown142 = unknown142Loading,
                 Unknown143 = unknown143Loading,
-                Unknown144 = unknown144Loading,
+                Unknown147 = unknown147Loading,
                 Unknown148 = unknown148Loading,
                 Unknown149 = unknown149Loading,
-                Unknown150 = unknown150Loading,
-                Unknown154 = unknown154Loading,
+                Unknown153 = unknown153Loading,
+                Unknown169 = unknown169Loading,
                 Unknown170 = unknown170Loading,
                 Unknown171 = unknown171Loading,
-                Unknown172 = unknown172Loading,
+                Unknown187 = unknown187Loading,
                 Unknown188 = unknown188Loading,
-                Unknown189 = unknown189Loading,
-                Unknown205 = unknown205Loading,
-                Unknown221 = unknown221Loading,
-                Unknown237 = unknown237Loading,
+                Unknown204 = unknown204Loading,
+                Unknown220 = unknown220Loading,
+                Unknown236 = unknown236Loading,
+                Unknown252 = unknown252Loading,
                 Unknown253 = unknown253Loading,
                 Unknown254 = unknown254Loading,
                 Unknown255 = unknown255Loading,
                 Unknown256 = unknown256Loading,
                 Unknown257 = unknown257Loading,
-                Unknown258 = unknown258Loading,
-                Unknown274 = unknown274Loading,
-                Unknown290 = unknown290Loading,
+                Unknown273 = unknown273Loading,
+                Unknown289 = unknown289Loading,
+                Unknown297 = unknown297Loading,
             };
 
             objects[rowId] = obj;

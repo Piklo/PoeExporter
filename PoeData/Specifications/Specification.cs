@@ -2497,6 +2497,42 @@ public sealed partial class Specification
     }
 
     /// <summary>
+    /// Gets WeaponPassiveSkillTypesDat data.
+    /// </summary>
+    /// <returns>readonly collection of WeaponPassiveSkillTypesDat.</returns>
+    public ReadOnlyCollection<WeaponPassiveSkillTypesDat> LoadWeaponPassiveSkillTypesDat()
+    {
+        return WeaponPassiveSkillTypesDat.Load(dataLoader).AsReadOnly();
+    }
+
+    /// <summary>
+    /// Gets WeaponPassiveTreeBalancePerItemLevelDat data.
+    /// </summary>
+    /// <returns>readonly collection of WeaponPassiveTreeBalancePerItemLevelDat.</returns>
+    public ReadOnlyCollection<WeaponPassiveTreeBalancePerItemLevelDat> LoadWeaponPassiveTreeBalancePerItemLevelDat()
+    {
+        return WeaponPassiveTreeBalancePerItemLevelDat.Load(dataLoader).AsReadOnly();
+    }
+
+    /// <summary>
+    /// Gets WeaponPassiveTreeUniqueBaseTypesDat data.
+    /// </summary>
+    /// <returns>readonly collection of WeaponPassiveTreeUniqueBaseTypesDat.</returns>
+    public ReadOnlyCollection<WeaponPassiveTreeUniqueBaseTypesDat> LoadWeaponPassiveTreeUniqueBaseTypesDat()
+    {
+        return WeaponPassiveTreeUniqueBaseTypesDat.Load(dataLoader).AsReadOnly();
+    }
+
+    /// <summary>
+    /// Gets WeaponPassiveSkillsDat data.
+    /// </summary>
+    /// <returns>readonly collection of WeaponPassiveSkillsDat.</returns>
+    public ReadOnlyCollection<WeaponPassiveSkillsDat> LoadWeaponPassiveSkillsDat()
+    {
+        return WeaponPassiveSkillsDat.Load(dataLoader).AsReadOnly();
+    }
+
+    /// <summary>
     /// Gets AchievementItemRewardsDat data.
     /// </summary>
     /// <returns>readonly collection of AchievementItemRewardsDat.</returns>
@@ -3658,6 +3694,15 @@ public sealed partial class Specification
     }
 
     /// <summary>
+    /// Gets GameLogosDat data.
+    /// </summary>
+    /// <returns>readonly collection of GameLogosDat.</returns>
+    public ReadOnlyCollection<GameLogosDat> LoadGameLogosDat()
+    {
+        return GameLogosDat.Load(dataLoader).AsReadOnly();
+    }
+
+    /// <summary>
     /// Gets GameObjectTasksDat data.
     /// </summary>
     /// <returns>readonly collection of GameObjectTasksDat.</returns>
@@ -4024,6 +4069,15 @@ public sealed partial class Specification
     public ReadOnlyCollection<ItemFrameTypeDat> LoadItemFrameTypeDat()
     {
         return ItemFrameTypeDat.Load(dataLoader).AsReadOnly();
+    }
+
+    /// <summary>
+    /// Gets ItemExperienceTypesDat data.
+    /// </summary>
+    /// <returns>readonly collection of ItemExperienceTypesDat.</returns>
+    public ReadOnlyCollection<ItemExperienceTypesDat> LoadItemExperienceTypesDat()
+    {
+        return ItemExperienceTypesDat.Load(dataLoader).AsReadOnly();
     }
 
     /// <summary>

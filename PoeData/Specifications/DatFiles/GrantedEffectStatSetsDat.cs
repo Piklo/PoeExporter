@@ -33,6 +33,9 @@ public sealed partial class GrantedEffectStatSetsDat
     /// <summary> Gets IncrementalEffectiveness.</summary>
     public required float IncrementalEffectiveness { get; init; }
 
+    /// <summary> Gets Unknown64.</summary>
+    public required int Unknown64 { get; init; }
+
     /// <summary>
     /// Gets GrantedEffectStatSetsDat data.
     /// </summary>
@@ -82,6 +85,9 @@ public sealed partial class GrantedEffectStatSetsDat
             // loading IncrementalEffectiveness
             (var incrementaleffectivenessLoading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
+            // loading Unknown64
+            (var unknown64Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new NotImplementedException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -95,6 +101,7 @@ public sealed partial class GrantedEffectStatSetsDat
                 ConstantStatsValues = constantstatsvaluesLoading,
                 BaseEffectiveness = baseeffectivenessLoading,
                 IncrementalEffectiveness = incrementaleffectivenessLoading,
+                Unknown64 = unknown64Loading,
             };
 
             objects[rowId] = obj;

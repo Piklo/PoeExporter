@@ -37,11 +37,11 @@ public sealed partial class UniqueStashLayoutDat
     /// <summary> Gets OverrideHeight.</summary>
     public required int OverrideHeight { get; init; }
 
-    /// <summary> Gets a value indicating whether Unknown64 is set.</summary>
-    public required bool Unknown64 { get; init; }
+    /// <summary> Gets a value indicating whether ShowIfEmptyChallengeLeague is set.</summary>
+    public required bool ShowIfEmptyChallengeLeague { get; init; }
 
-    /// <summary> Gets a value indicating whether ShowIfEmpty is set.</summary>
-    public required bool ShowIfEmpty { get; init; }
+    /// <summary> Gets a value indicating whether ShowIfEmptyStandard is set.</summary>
+    public required bool ShowIfEmptyStandard { get; init; }
 
     /// <summary> Gets RenamedVersion.</summary>
     /// <remarks> references <see cref="UniqueStashLayoutDat"/> on <see cref="Specification.GetUniqueStashLayoutDat"/> index.</remarks>
@@ -103,11 +103,11 @@ public sealed partial class UniqueStashLayoutDat
             // loading OverrideHeight
             (var overrideheightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading Unknown64
-            (var unknown64Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            // loading ShowIfEmptyChallengeLeague
+            (var showifemptychallengeleagueLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
-            // loading ShowIfEmpty
-            (var showifemptyLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
+            // loading ShowIfEmptyStandard
+            (var showifemptystandardLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading RenamedVersion
             (var renamedversionLoading, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);
@@ -132,8 +132,8 @@ public sealed partial class UniqueStashLayoutDat
                 Unknown52 = unknown52Loading,
                 OverrideWidth = overridewidthLoading,
                 OverrideHeight = overrideheightLoading,
-                Unknown64 = unknown64Loading,
-                ShowIfEmpty = showifemptyLoading,
+                ShowIfEmptyChallengeLeague = showifemptychallengeleagueLoading,
+                ShowIfEmptyStandard = showifemptystandardLoading,
                 RenamedVersion = renamedversionLoading,
                 BaseVersion = baseversionLoading,
                 IsAlternateArt = isalternateartLoading,
