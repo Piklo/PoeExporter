@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AtlasExileBossArenasDat
 {
     /// <summary> Gets Conqueror.</summary>
-    /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.GetAtlasExilesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.LoadAtlasExilesDat"/> index.</remarks>
     public required int? Conqueror { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <summary>

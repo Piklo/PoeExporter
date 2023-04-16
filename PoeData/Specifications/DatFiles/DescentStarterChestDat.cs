@@ -17,18 +17,18 @@ public sealed partial class DescentStarterChestDat
     public required string Id { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
-    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.LoadCharactersDat"/> index.</remarks>
     public required int? CharactersKey { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets SocketColours.</summary>
     public required string SocketColours { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary>

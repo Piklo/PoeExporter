@@ -20,7 +20,7 @@ public sealed partial class MicrotransactionPeriodicCharacterEffectVariationsDat
     public required string AOFile { get; init; }
 
     /// <summary> Gets MiscObject.</summary>
-    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.LoadMiscObjectsDat"/> index.</remarks>
     public required int? MiscObject { get; init; }
 
     /// <summary>

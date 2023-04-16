@@ -17,7 +17,7 @@ public sealed partial class BeyondFactionsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Boss.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Boss { get; init; }
 
     /// <summary>

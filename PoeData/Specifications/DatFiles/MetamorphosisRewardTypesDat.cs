@@ -23,7 +23,7 @@ public sealed partial class MetamorphosisRewardTypesDat
     public required string Name { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary>

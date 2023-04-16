@@ -29,11 +29,11 @@ public sealed partial class UltimatumEncounterTypesDat
     public required bool Unknown25 { get; init; }
 
     /// <summary> Gets NormalAchievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NormalAchievements { get; init; }
 
     /// <summary> Gets InscribedAchievement.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? InscribedAchievement { get; init; }
 
     /// <summary>

@@ -17,18 +17,18 @@ public sealed partial class UniqueChestsDat
     public required string Id { get; init; }
 
     /// <summary> Gets WordsKey.</summary>
-    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.LoadWordsDat"/> index.</remarks>
     public required int? WordsKey { get; init; }
 
     /// <summary> Gets FlavourTextKey.</summary>
-    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.GetFlavourTextDat"/> index.</remarks>
+    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.LoadFlavourTextDat"/> index.</remarks>
     public required int? FlavourTextKey { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
     public required int MinLevel { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight.</summary>
@@ -47,11 +47,11 @@ public sealed partial class UniqueChestsDat
     public required ReadOnlyCollection<int> Unknown89 { get; init; }
 
     /// <summary> Gets AppearanceChestsKey.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required int? AppearanceChestsKey { get; init; }
 
     /// <summary> Gets ChestsKey.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets Unknown137.</summary>

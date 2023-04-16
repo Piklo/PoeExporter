@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ItemNoteCodeDat
 {
     /// <summary> Gets BaseItem.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItem { get; init; }
 
     /// <summary> Gets Code.</summary>

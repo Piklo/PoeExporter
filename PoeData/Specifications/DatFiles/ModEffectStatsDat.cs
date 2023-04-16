@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ModEffectStatsDat
 {
     /// <summary> Gets StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets TagsKeys.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TagsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown32 is set.</summary>

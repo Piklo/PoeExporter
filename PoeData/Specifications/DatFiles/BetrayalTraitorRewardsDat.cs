@@ -14,15 +14,15 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class BetrayalTraitorRewardsDat
 {
     /// <summary> Gets BetrayalJobsKey.</summary>
-    /// <remarks> references <see cref="BetrayalJobsDat"/> on <see cref="Specification.GetBetrayalJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BetrayalJobsDat"/> on <see cref="Specification.LoadBetrayalJobsDat"/> index.</remarks>
     public required int? BetrayalJobsKey { get; init; }
 
     /// <summary> Gets BetrayalTargetsKey.</summary>
-    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.LoadBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
     /// <summary> Gets BetrayalRanksKey.</summary>
-    /// <remarks> references <see cref="BetrayalRanksDat"/> on <see cref="Specification.GetBetrayalRanksDat"/> index.</remarks>
+    /// <remarks> references <see cref="BetrayalRanksDat"/> on <see cref="Specification.LoadBetrayalRanksDat"/> index.</remarks>
     public required int? BetrayalRanksKey { get; init; }
 
     /// <summary> Gets Description.</summary>

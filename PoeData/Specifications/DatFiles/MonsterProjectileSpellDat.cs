@@ -17,11 +17,11 @@ public sealed partial class MonsterProjectileSpellDat
     public required int Id { get; init; }
 
     /// <summary> Gets Projectile.</summary>
-    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.GetProjectilesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.LoadProjectilesDat"/> index.</remarks>
     public required int? Projectile { get; init; }
 
     /// <summary> Gets Animation.</summary>
-    /// <remarks> references <see cref="AnimationDat"/> on <see cref="Specification.GetAnimationDat"/> index.</remarks>
+    /// <remarks> references <see cref="AnimationDat"/> on <see cref="Specification.LoadAnimationDat"/> index.</remarks>
     public required int? Animation { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown36 is set.</summary>

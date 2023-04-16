@@ -14,14 +14,14 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class BlightTowersPerLevelDat
 {
     /// <summary> Gets BlightTowersKey.</summary>
-    /// <remarks> references <see cref="BlightTowersDat"/> on <see cref="Specification.GetBlightTowersDat"/> index.</remarks>
+    /// <remarks> references <see cref="BlightTowersDat"/> on <see cref="Specification.LoadBlightTowersDat"/> index.</remarks>
     public required int? BlightTowersKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Cost.</summary>

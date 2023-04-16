@@ -14,14 +14,14 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class GrantedEffectQualityStatsDat
 {
     /// <summary> Gets GrantedEffectsKey.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets SetId.</summary>
     public required int SetId { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatsValuesPermille.</summary>

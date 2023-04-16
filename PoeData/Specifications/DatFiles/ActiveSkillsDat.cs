@@ -29,15 +29,15 @@ public sealed partial class ActiveSkillsDat
     public required string Icon_DDSFile { get; init; }
 
     /// <summary> Gets ActiveSkillTargetTypes.</summary>
-    /// <remarks> references <see cref="ActiveSkillTargetTypesDat"/> on <see cref="Specification.GetActiveSkillTargetTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ActiveSkillTargetTypesDat"/> on <see cref="Specification.LoadActiveSkillTargetTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ActiveSkillTargetTypes { get; init; }
 
     /// <summary> Gets ActiveSkillTypes.</summary>
-    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.GetActiveSkillTypeDat"/> index.</remarks>
+    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.LoadActiveSkillTypeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ActiveSkillTypes { get; init; }
 
     /// <summary> Gets WeaponRestriction_ItemClassesKeys.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WeaponRestriction_ItemClassesKeys { get; init; }
 
     /// <summary> Gets WebsiteDescription.</summary>
@@ -56,22 +56,22 @@ public sealed partial class ActiveSkillsDat
     public required bool Unknown113 { get; init; }
 
     /// <summary> Gets SkillTotemId.</summary>
-    /// <remarks> references <see cref="SkillTotemsDat"/> on <see cref="Specification.GetSkillTotemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillTotemsDat"/> on <see cref="Specification.LoadSkillTotemsDat"/> index.</remarks>
     public required int SkillTotemId { get; init; }
 
     /// <summary> Gets a value indicating whether IsManuallyCasted is set.</summary>
     public required bool IsManuallyCasted { get; init; }
 
     /// <summary> Gets Input_StatKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Input_StatKeys { get; init; }
 
     /// <summary> Gets Output_StatKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Output_StatKeys { get; init; }
 
     /// <summary> Gets MinionActiveSkillTypes.</summary>
-    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.GetActiveSkillTypeDat"/> index.</remarks>
+    /// <remarks> references <see cref="ActiveSkillTypeDat"/> on <see cref="Specification.LoadActiveSkillTypeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MinionActiveSkillTypes { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown167 is set.</summary>
@@ -81,14 +81,14 @@ public sealed partial class ActiveSkillsDat
     public required bool Unknown168 { get; init; }
 
     /// <summary> Gets Unknown169.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown169 { get; init; }
 
     /// <summary> Gets Unknown185.</summary>
     public required int Unknown185 { get; init; }
 
     /// <summary> Gets AlternateSkillTargetingBehavioursKey.</summary>
-    /// <remarks> references <see cref="AlternateSkillTargetingBehavioursDat"/> on <see cref="Specification.GetAlternateSkillTargetingBehavioursDat"/> index.</remarks>
+    /// <remarks> references <see cref="AlternateSkillTargetingBehavioursDat"/> on <see cref="Specification.LoadAlternateSkillTargetingBehavioursDat"/> index.</remarks>
     public required int? AlternateSkillTargetingBehavioursKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown205 is set.</summary>

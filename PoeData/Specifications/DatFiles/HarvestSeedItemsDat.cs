@@ -17,11 +17,11 @@ public sealed partial class HarvestSeedItemsDat
     public required int Id { get; init; }
 
     /// <summary> Gets BaseItem.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItem { get; init; }
 
     /// <summary> Gets DropStat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? DropStat { get; init; }
 
     /// <summary>

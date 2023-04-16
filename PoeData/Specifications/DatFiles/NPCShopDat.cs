@@ -20,7 +20,7 @@ public sealed partial class NPCShopDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets SoldItem_TagsKeys.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SoldItem_TagsKeys { get; init; }
 
     /// <summary> Gets SoldItem_Weights.</summary>

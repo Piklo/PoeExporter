@@ -20,7 +20,7 @@ public sealed partial class RecipeUnlockDisplayDat
     public required string Description { get; init; }
 
     /// <summary> Gets CraftingItemClassCategoriesKeys.</summary>
-    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.GetCraftingItemClassCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.LoadCraftingItemClassCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CraftingItemClassCategoriesKeys { get; init; }
 
     /// <summary> Gets UnlockDescription.</summary>
@@ -30,7 +30,7 @@ public sealed partial class RecipeUnlockDisplayDat
     public required int Rank { get; init; }
 
     /// <summary> Gets UnlockArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? UnlockArea { get; init; }
 
     /// <summary>

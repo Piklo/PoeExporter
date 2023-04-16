@@ -20,7 +20,7 @@ public sealed partial class BestiaryGenusDat
     public required string Name { get; init; }
 
     /// <summary> Gets BestiaryGroupsKey.</summary>
-    /// <remarks> references <see cref="BestiaryGroupsDat"/> on <see cref="Specification.GetBestiaryGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BestiaryGroupsDat"/> on <see cref="Specification.LoadBestiaryGroupsDat"/> index.</remarks>
     public required int? BestiaryGroupsKey { get; init; }
 
     /// <summary> Gets Name2.</summary>

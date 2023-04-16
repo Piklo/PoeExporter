@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SessionQuestFlagsDat
 {
     /// <summary> Gets QuestFlag.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? QuestFlag { get; init; }
 
     /// <summary>

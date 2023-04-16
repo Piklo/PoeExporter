@@ -17,7 +17,7 @@ public sealed partial class LabyrinthSectionDat
     public required string Id { get; init; }
 
     /// <summary> Gets ExclusionGroup.</summary>
-    /// <remarks> references <see cref="LabyrinthExclusionGroupsDat"/> on <see cref="Specification.GetLabyrinthExclusionGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="LabyrinthExclusionGroupsDat"/> on <see cref="Specification.LoadLabyrinthExclusionGroupsDat"/> index.</remarks>
     public required int? ExclusionGroup { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

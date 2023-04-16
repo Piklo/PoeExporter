@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class FlasksDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -33,7 +33,7 @@ public sealed partial class FlasksDat
     public required int RecoveryTime { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
-    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.LoadBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets BuffStatValues.</summary>

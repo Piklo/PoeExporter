@@ -23,11 +23,11 @@ public sealed partial class MapPinsDat
     public required int PositionY { get; init; }
 
     /// <summary> Gets Waypoint_WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? Waypoint_WorldAreasKey { get; init; }
 
     /// <summary> Gets WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WorldAreasKeys { get; init; }
 
     /// <summary> Gets Name.</summary>

@@ -20,15 +20,15 @@ public sealed partial class BreachElementDat
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets BaseBreachstone.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseBreachstone { get; init; }
 
     /// <summary> Gets BossMapMod.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? BossMapMod { get; init; }
 
     /// <summary> Gets DuplicateBoss.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? DuplicateBoss { get; init; }
 
     /// <summary>

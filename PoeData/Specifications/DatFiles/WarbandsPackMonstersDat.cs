@@ -35,19 +35,19 @@ public sealed partial class WarbandsPackMonstersDat
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets Tier4_MonsterVarietiesKeys.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier4_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier3_MonsterVarietiesKeys.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier3_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier2_MonsterVarietiesKeys.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier2_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier1_MonsterVarietiesKeys.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tier1_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Tier1Name.</summary>

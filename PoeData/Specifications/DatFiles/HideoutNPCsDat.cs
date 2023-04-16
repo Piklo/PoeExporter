@@ -14,15 +14,15 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HideoutNPCsDat
 {
     /// <summary> Gets Hideout_NPCsKey.</summary>
-    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.LoadNPCsDat"/> index.</remarks>
     public required int? Hideout_NPCsKey { get; init; }
 
     /// <summary> Gets Regular_NPCsKeys.</summary>
-    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.LoadNPCsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Regular_NPCsKeys { get; init; }
 
     /// <summary> Gets HideoutDoodadsKey.</summary>
-    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.GetHideoutDoodadsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.LoadHideoutDoodadsDat"/> index.</remarks>
     public required int? HideoutDoodadsKey { get; init; }
 
     /// <summary> Gets NPCMasterKey.</summary>

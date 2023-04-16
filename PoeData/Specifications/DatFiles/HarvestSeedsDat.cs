@@ -17,7 +17,7 @@ public sealed partial class HarvestSeedsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Monster.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Monster { get; init; }
 
     /// <summary> Gets Tier.</summary>
@@ -30,7 +30,7 @@ public sealed partial class HarvestSeedsDat
     public required ReadOnlyCollection<int> Unknown32 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary> Gets SeedAnimation.</summary>

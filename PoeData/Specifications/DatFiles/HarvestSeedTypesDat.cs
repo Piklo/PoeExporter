@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HarvestSeedTypesDat
 {
     /// <summary> Gets HarvestObjectsKey.</summary>
-    /// <remarks> references <see cref="HarvestObjectsDat"/> on <see cref="Specification.GetHarvestObjectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HarvestObjectsDat"/> on <see cref="Specification.LoadHarvestObjectsDat"/> index.</remarks>
     public required int? HarvestObjectsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -54,7 +54,7 @@ public sealed partial class HarvestSeedTypesDat
     public required string Text { get; init; }
 
     /// <summary> Gets HarvestCraftOptionsKeys.</summary>
-    /// <remarks> references <see cref="HarvestCraftOptionsDat"/> on <see cref="Specification.GetHarvestCraftOptionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HarvestCraftOptionsDat"/> on <see cref="Specification.LoadHarvestCraftOptionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HarvestCraftOptionsKeys { get; init; }
 
     /// <summary> Gets Unknown120.</summary>
@@ -64,7 +64,7 @@ public sealed partial class HarvestSeedTypesDat
     public required ReadOnlyCollection<int> Unknown124 { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets OutcomeType.</summary>

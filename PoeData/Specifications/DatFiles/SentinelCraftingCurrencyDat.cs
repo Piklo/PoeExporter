@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SentinelCraftingCurrencyDat
 {
     /// <summary> Gets Currency.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Currency { get; init; }
 
     /// <summary> Gets Type.</summary>

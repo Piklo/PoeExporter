@@ -20,7 +20,7 @@ public sealed partial class WeaponPassiveSkillsDat
     public required int Tier { get; init; }
 
     /// <summary> Gets Mod.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Unknown28.</summary>
@@ -33,11 +33,11 @@ public sealed partial class WeaponPassiveSkillsDat
     public required string Icon { get; init; }
 
     /// <summary> Gets Type.</summary>
-    /// <remarks> references <see cref="WeaponPassiveSkillTypesDat"/> on <see cref="Specification.GetWeaponPassiveSkillTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="WeaponPassiveSkillTypesDat"/> on <see cref="Specification.LoadWeaponPassiveSkillTypesDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets Achievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary>

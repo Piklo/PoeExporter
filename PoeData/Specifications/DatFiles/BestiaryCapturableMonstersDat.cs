@@ -14,18 +14,18 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class BestiaryCapturableMonstersDat
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets BestiaryGroupsKey.</summary>
-    /// <remarks> references <see cref="BestiaryGroupsDat"/> on <see cref="Specification.GetBestiaryGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BestiaryGroupsDat"/> on <see cref="Specification.LoadBestiaryGroupsDat"/> index.</remarks>
     public required int? BestiaryGroupsKey { get; init; }
 
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
     /// <summary> Gets BestiaryEncountersKey.</summary>
-    /// <remarks> references <see cref="BestiaryEncountersDat"/> on <see cref="Specification.GetBestiaryEncountersDat"/> index.</remarks>
+    /// <remarks> references <see cref="BestiaryEncountersDat"/> on <see cref="Specification.LoadBestiaryEncountersDat"/> index.</remarks>
     public required int? BestiaryEncountersKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown56 is set.</summary>
@@ -38,18 +38,18 @@ public sealed partial class BestiaryCapturableMonstersDat
     public required string Icon { get; init; }
 
     /// <summary> Gets Boss_MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Boss_MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets BestiaryGenusKey.</summary>
-    /// <remarks> references <see cref="BestiaryGenusDat"/> on <see cref="Specification.GetBestiaryGenusDat"/> index.</remarks>
+    /// <remarks> references <see cref="BestiaryGenusDat"/> on <see cref="Specification.LoadBestiaryGenusDat"/> index.</remarks>
     public required int? BestiaryGenusKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown105 is set.</summary>
     public required bool Unknown105 { get; init; }
 
     /// <summary> Gets BestiaryCapturableMonstersKey.</summary>
-    /// <remarks> references <see cref="BestiaryCapturableMonstersDat"/> on <see cref="Specification.GetBestiaryCapturableMonstersDat"/> index.</remarks>
+    /// <remarks> references <see cref="BestiaryCapturableMonstersDat"/> on <see cref="Specification.LoadBestiaryCapturableMonstersDat"/> index.</remarks>
     public required int? BestiaryCapturableMonstersKey { get; init; }
 
     /// <summary> Gets a value indicating whether IsDisabled is set.</summary>

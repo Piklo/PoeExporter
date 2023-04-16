@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SpectreOverridesDat
 {
     /// <summary> Gets Monster.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Monster { get; init; }
 
     /// <summary> Gets Spectre.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Spectre { get; init; }
 
     /// <summary> Gets Unknown32.</summary>

@@ -26,7 +26,7 @@ public sealed partial class CraftingBenchUnlockCategoriesDat
     public required string UnlockType { get; init; }
 
     /// <summary> Gets CraftingItemClassCategories.</summary>
-    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.GetCraftingItemClassCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.LoadCraftingItemClassCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CraftingItemClassCategories { get; init; }
 
     /// <summary> Gets ObtainingDescription.</summary>

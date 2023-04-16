@@ -26,11 +26,11 @@ public sealed partial class SynthesisAreasDat
     public required int Weight { get; init; }
 
     /// <summary> Gets TopologiesKey.</summary>
-    /// <remarks> references <see cref="TopologiesDat"/> on <see cref="Specification.GetTopologiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="TopologiesDat"/> on <see cref="Specification.LoadTopologiesDat"/> index.</remarks>
     public required int? TopologiesKey { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
-    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.LoadMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets ArtFile.</summary>
@@ -40,11 +40,11 @@ public sealed partial class SynthesisAreasDat
     public required string Name { get; init; }
 
     /// <summary> Gets SynthesisAreaSizeKey.</summary>
-    /// <remarks> references <see cref="SynthesisAreaSizeDat"/> on <see cref="Specification.GetSynthesisAreaSizeDat"/> index.</remarks>
+    /// <remarks> references <see cref="SynthesisAreaSizeDat"/> on <see cref="Specification.LoadSynthesisAreaSizeDat"/> index.</remarks>
     public required int? SynthesisAreaSizeKey { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <summary>

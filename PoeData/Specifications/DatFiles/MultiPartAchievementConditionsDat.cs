@@ -17,11 +17,11 @@ public sealed partial class MultiPartAchievementConditionsDat
     public required string Id { get; init; }
 
     /// <summary> Gets MultiPartAchievementsKey1.</summary>
-    /// <remarks> references <see cref="MultiPartAchievementsDat"/> on <see cref="Specification.GetMultiPartAchievementsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MultiPartAchievementsDat"/> on <see cref="Specification.LoadMultiPartAchievementsDat"/> index.</remarks>
     public required int? MultiPartAchievementsKey1 { get; init; }
 
     /// <summary> Gets MultiPartAchievementsKey2.</summary>
-    /// <remarks> references <see cref="MultiPartAchievementsDat"/> on <see cref="Specification.GetMultiPartAchievementsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MultiPartAchievementsDat"/> on <see cref="Specification.LoadMultiPartAchievementsDat"/> index.</remarks>
     public required int? MultiPartAchievementsKey2 { get; init; }
 
     /// <summary> Gets Unknown40.</summary>

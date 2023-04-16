@@ -17,19 +17,19 @@ public sealed partial class LabyrinthAreasDat
     public required string Id { get; init; }
 
     /// <summary> Gets Normal_WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Normal_WorldAreasKeys { get; init; }
 
     /// <summary> Gets Cruel_WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Cruel_WorldAreasKeys { get; init; }
 
     /// <summary> Gets Merciless_WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Merciless_WorldAreasKeys { get; init; }
 
     /// <summary> Gets Endgame_WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Endgame_WorldAreasKeys { get; init; }
 
     /// <summary> Gets Unknown72.</summary>

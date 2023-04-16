@@ -17,7 +17,7 @@ public sealed partial class SafehouseCraftingSpreeCurrenciesDat
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets a value indicating whether HasSpecificBaseItem is set.</summary>

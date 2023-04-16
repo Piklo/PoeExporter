@@ -17,7 +17,7 @@ public sealed partial class DelveStashTabLayoutDat
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets X.</summary>

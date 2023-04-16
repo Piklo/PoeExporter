@@ -20,7 +20,7 @@ public sealed partial class AlternateSkillTargetingBehavioursDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets ClientStrings.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? ClientStrings { get; init; }
 
     /// <summary> Gets Unknown28.</summary>

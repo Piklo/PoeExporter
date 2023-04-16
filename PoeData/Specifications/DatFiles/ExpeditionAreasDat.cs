@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ExpeditionAreasDat
 {
     /// <summary> Gets Area.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? Area { get; init; }
 
     /// <summary> Gets PosX.</summary>
@@ -24,7 +24,7 @@ public sealed partial class ExpeditionAreasDat
     public required int PosY { get; init; }
 
     /// <summary> Gets Tags.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tags { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
@@ -34,11 +34,11 @@ public sealed partial class ExpeditionAreasDat
     public required bool Unknown56 { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <summary> Gets CompletionAchievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CompletionAchievements { get; init; }
 
     /// <summary>

@@ -20,7 +20,7 @@ public sealed partial class MultiPartAchievementsDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <summary> Gets Unknown28.</summary>

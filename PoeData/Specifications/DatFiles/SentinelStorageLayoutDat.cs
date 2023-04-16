@@ -17,11 +17,11 @@ public sealed partial class SentinelStorageLayoutDat
     public required string Id { get; init; }
 
     /// <summary> Gets Unknown8.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets DroneType.</summary>
-    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.GetDroneTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.LoadDroneTypesDat"/> index.</remarks>
     public required int? DroneType { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown40 is set.</summary>
@@ -52,7 +52,7 @@ public sealed partial class SentinelStorageLayoutDat
     public required int Unknown73 { get; init; }
 
     /// <summary> Gets Unknown77.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required int? Unknown77 { get; init; }
 
     /// <summary>

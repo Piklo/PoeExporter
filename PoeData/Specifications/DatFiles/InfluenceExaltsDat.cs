@@ -17,7 +17,7 @@ public sealed partial class InfluenceExaltsDat
     public required int Id { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary>

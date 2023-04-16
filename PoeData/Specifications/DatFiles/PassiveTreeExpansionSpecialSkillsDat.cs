@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class PassiveTreeExpansionSpecialSkillsDat
 {
     /// <summary> Gets PassiveSkillsKey.</summary>
-    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.LoadPassiveSkillsDat"/> index.</remarks>
     public required int? PassiveSkillsKey { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary>

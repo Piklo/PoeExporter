@@ -20,7 +20,7 @@ public sealed partial class MetamorphosisScalingDat
     public required float StatValueMultiplier { get; init; }
 
     /// <summary> Gets ScalingStats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ScalingStats { get; init; }
 
     /// <summary> Gets ScalingValues.</summary>

@@ -14,19 +14,19 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class UniqueMapInfoDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Word.</summary>
-    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.LoadWordsDat"/> index.</remarks>
     public required int? Word { get; init; }
 
     /// <summary> Gets FlavourTextKey.</summary>
-    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.GetFlavourTextDat"/> index.</remarks>
+    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.LoadFlavourTextDat"/> index.</remarks>
     public required int? FlavourTextKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown64 is set.</summary>

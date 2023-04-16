@@ -47,7 +47,7 @@ public sealed partial class FragmentStashTabLayoutDat
     public required int Subtab { get; init; }
 
     /// <summary> Gets FragmentItems.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> FragmentItems { get; init; }
 
     /// <summary>

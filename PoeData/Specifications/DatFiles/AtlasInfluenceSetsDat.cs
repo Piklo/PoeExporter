@@ -17,7 +17,7 @@ public sealed partial class AtlasInfluenceSetsDat
     public required string Id { get; init; }
 
     /// <summary> Gets InfluencePacks.</summary>
-    /// <remarks> references <see cref="AtlasInfluenceOutcomesDat"/> on <see cref="Specification.GetAtlasInfluenceOutcomesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasInfluenceOutcomesDat"/> on <see cref="Specification.LoadAtlasInfluenceOutcomesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> InfluencePacks { get; init; }
 
     /// <summary>

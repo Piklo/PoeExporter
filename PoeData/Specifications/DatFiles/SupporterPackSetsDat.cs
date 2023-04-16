@@ -29,7 +29,7 @@ public sealed partial class SupporterPackSetsDat
     public required string Time1 { get; init; }
 
     /// <summary> Gets ShopPackagePlatform.</summary>
-    /// <remarks> references <see cref="ShopPackagePlatformDat"/> on <see cref="Specification.GetShopPackagePlatformDat"/> index.</remarks>
+    /// <remarks> references <see cref="ShopPackagePlatformDat"/> on <see cref="Specification.LoadShopPackagePlatformDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ShopPackagePlatform { get; init; }
 
     /// <summary> Gets Unknown56.</summary>

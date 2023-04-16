@@ -32,11 +32,11 @@ public sealed partial class EnvironmentsDat
     public required ReadOnlyCollection<int> Unknown56 { get; init; }
 
     /// <summary> Gets EnvironmentTransitionsKey.</summary>
-    /// <remarks> references <see cref="EnvironmentTransitionsDat"/> on <see cref="Specification.GetEnvironmentTransitionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="EnvironmentTransitionsDat"/> on <see cref="Specification.LoadEnvironmentTransitionsDat"/> index.</remarks>
     public required int? EnvironmentTransitionsKey { get; init; }
 
     /// <summary> Gets PreloadGroup.</summary>
-    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.LoadPreloadGroupsDat"/> index.</remarks>
     public required int? PreloadGroup { get; init; }
 
     /// <summary>

@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AfflictionEndgameWaveModsDat
 {
     /// <summary> Gets ModsKey.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

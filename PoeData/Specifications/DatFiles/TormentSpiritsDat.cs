@@ -14,19 +14,19 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class TormentSpiritsDat
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Spirit_ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Spirit_ModsKeys { get; init; }
 
     /// <summary> Gets Touched_ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Touched_ModsKeys { get; init; }
 
     /// <summary> Gets Possessed_ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Possessed_ModsKeys { get; init; }
 
     /// <summary> Gets MinZoneLevel.</summary>
@@ -39,18 +39,18 @@ public sealed partial class TormentSpiritsDat
     public required int SpawnWeight { get; init; }
 
     /// <summary> Gets SummonedMonster_MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? SummonedMonster_MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Unknown92.</summary>
     public required int Unknown92 { get; init; }
 
     /// <summary> Gets ModsKeys0.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys0 { get; init; }
 
     /// <summary> Gets ModsKeys1.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys1 { get; init; }
 
     /// <summary>

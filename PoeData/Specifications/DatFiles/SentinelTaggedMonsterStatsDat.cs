@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SentinelTaggedMonsterStatsDat
 {
     /// <summary> Gets TaggedStat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? TaggedStat { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown16 { get; init; }
 
     /// <summary> Gets Unknown32.</summary>

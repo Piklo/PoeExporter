@@ -17,27 +17,27 @@ public sealed partial class SynthesisFragmentDialogueDat
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey1.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey1 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey2.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey2 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey3.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey3 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey4.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey4 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey5.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey5 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey6.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey6 { get; init; }
 
     /// <summary>

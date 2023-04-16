@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class GrantedEffectsPerLevelDat
 {
     /// <summary> Gets GrantedEffect.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffect { get; init; }
 
     /// <summary> Gets Level.</summary>
@@ -33,7 +33,7 @@ public sealed partial class GrantedEffectsPerLevelDat
     public required int Cooldown { get; init; }
 
     /// <summary> Gets CooldownBypassType.</summary>
-    /// <remarks> references <see cref="CooldownBypassTypesDat"/> on <see cref="Specification.GetCooldownBypassTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="CooldownBypassTypesDat"/> on <see cref="Specification.LoadCooldownBypassTypesDat"/> index.</remarks>
     public required int CooldownBypassType { get; init; }
 
     /// <summary> Gets VaalSouls.</summary>
@@ -61,7 +61,7 @@ public sealed partial class GrantedEffectsPerLevelDat
     public required ReadOnlyCollection<int> CostAmounts { get; init; }
 
     /// <summary> Gets CostTypes.</summary>
-    /// <remarks> references <see cref="CostTypesDat"/> on <see cref="Specification.GetCostTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="CostTypesDat"/> on <see cref="Specification.LoadCostTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CostTypes { get; init; }
 
     /// <summary> Gets ManaReservationFlat.</summary>

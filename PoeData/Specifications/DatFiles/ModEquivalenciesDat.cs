@@ -17,15 +17,15 @@ public sealed partial class ModEquivalenciesDat
     public required string Id { get; init; }
 
     /// <summary> Gets ModsKey0.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? ModsKey0 { get; init; }
 
     /// <summary> Gets ModsKey1.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? ModsKey1 { get; init; }
 
     /// <summary> Gets ModsKey2.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? ModsKey2 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown56 is set.</summary>

@@ -14,14 +14,14 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class WordsDat
 {
     /// <summary> Gets Wordlist.</summary>
-    /// <remarks> references <see cref="WordlistsDat"/> on <see cref="Specification.GetWordlistsDat"/> index.</remarks>
+    /// <remarks> references <see cref="WordlistsDat"/> on <see cref="Specification.LoadWordlistsDat"/> index.</remarks>
     public required int Wordlist { get; init; }
 
     /// <summary> Gets Text.</summary>
     public required string Text { get; init; }
 
     /// <summary> Gets SpawnWeight_Tags.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_Tags { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>

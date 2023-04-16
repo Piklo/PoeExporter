@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class BlightChestTypesDat
 {
     /// <summary> Gets ChestsKey.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary>

@@ -23,7 +23,7 @@ public sealed partial class BetrayalChoicesDat
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary>

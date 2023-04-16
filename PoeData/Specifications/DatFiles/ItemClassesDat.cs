@@ -20,11 +20,11 @@ public sealed partial class ItemClassesDat
     public required string Name { get; init; }
 
     /// <summary> Gets TradeMarketCategory.</summary>
-    /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.GetTradeMarketCategoryDat"/> index.</remarks>
+    /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.LoadTradeMarketCategoryDat"/> index.</remarks>
     public required int? TradeMarketCategory { get; init; }
 
     /// <summary> Gets ItemClassCategory.</summary>
-    /// <remarks> references <see cref="ItemClassCategoriesDat"/> on <see cref="Specification.GetItemClassCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassCategoriesDat"/> on <see cref="Specification.LoadItemClassCategoriesDat"/> index.</remarks>
     public required int? ItemClassCategory { get; init; }
 
     /// <summary> Gets a value indicating whether RemovedIfLeavesArea is set.</summary>
@@ -34,7 +34,7 @@ public sealed partial class ItemClassesDat
     public required ReadOnlyCollection<int> Unknown49 { get; init; }
 
     /// <summary> Gets IdentifyAchievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> IdentifyAchievements { get; init; }
 
     /// <summary> Gets a value indicating whether AllocateToMapOwner is set.</summary>
@@ -47,7 +47,7 @@ public sealed partial class ItemClassesDat
     public required bool CanHaveVeiledMods { get; init; }
 
     /// <summary> Gets PickedUpQuest.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? PickedUpQuest { get; init; }
 
     /// <summary> Gets Unknown100.</summary>
@@ -75,7 +75,7 @@ public sealed partial class ItemClassesDat
     public required bool CanTransferSkin { get; init; }
 
     /// <summary> Gets ItemStance.</summary>
-    /// <remarks> references <see cref="ItemStancesDat"/> on <see cref="Specification.GetItemStancesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemStancesDat"/> on <see cref="Specification.LoadItemStancesDat"/> index.</remarks>
     public required int? ItemStance { get; init; }
 
     /// <summary> Gets a value indicating whether CanScourge is set.</summary>
@@ -94,7 +94,7 @@ public sealed partial class ItemClassesDat
     public required ReadOnlyCollection<int> MaxInventoryDimensions { get; init; }
 
     /// <summary> Gets Flags.</summary>
-    /// <remarks> references <see cref="ItemClassFlagsDat"/> on <see cref="Specification.GetItemClassFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassFlagsDat"/> on <see cref="Specification.LoadItemClassFlagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Flags { get; init; }
 
     /// <summary> Gets a value indicating whether IsUnmodifiable is set.</summary>
@@ -104,7 +104,7 @@ public sealed partial class ItemClassesDat
     public required bool CanBeFractured { get; init; }
 
     /// <summary> Gets EquipAchievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? EquipAchievements { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown181 is set.</summary>

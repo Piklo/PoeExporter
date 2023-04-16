@@ -32,7 +32,7 @@ public sealed partial class ShopCategoryDat
     public required int Unknown40 { get; init; }
 
     /// <summary> Gets AppliedTo_BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? AppliedTo_BaseItemTypesKey { get; init; }
 
     /// <summary>

@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MonsterSpawnerGroupsPerLevelDat
 {
     /// <summary> Gets MonsterSpawnerGroupsKey.</summary>
-    /// <remarks> references <see cref="MonsterSpawnerGroupsDat"/> on <see cref="Specification.GetMonsterSpawnerGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterSpawnerGroupsDat"/> on <see cref="Specification.LoadMonsterSpawnerGroupsDat"/> index.</remarks>
     public required int? MonsterSpawnerGroupsKey { get; init; }
 
     /// <summary> Gets MinLevel.</summary>

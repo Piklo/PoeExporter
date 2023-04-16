@@ -32,7 +32,7 @@ public sealed partial class QuestDat
     public required bool Unknown32 { get; init; }
 
     /// <summary> Gets Type.</summary>
-    /// <remarks> references <see cref="QuestTypeDat"/> on <see cref="Specification.GetQuestTypeDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestTypeDat"/> on <see cref="Specification.LoadQuestTypeDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets Unknown49.</summary>
@@ -42,7 +42,7 @@ public sealed partial class QuestDat
     public required int Unknown65 { get; init; }
 
     /// <summary> Gets TrackerGroup.</summary>
-    /// <remarks> references <see cref="QuestTrackerGroupDat"/> on <see cref="Specification.GetQuestTrackerGroupDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestTrackerGroupDat"/> on <see cref="Specification.LoadQuestTrackerGroupDat"/> index.</remarks>
     public required int? TrackerGroup { get; init; }
 
     /// <summary>

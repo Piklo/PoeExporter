@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ArchnemesisRecipesDat
 {
     /// <summary> Gets Result.</summary>
-    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.LoadArchnemesisModsDat"/> index.</remarks>
     public required int? Result { get; init; }
 
     /// <summary> Gets Recipe.</summary>
-    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.LoadArchnemesisModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Recipe { get; init; }
 
     /// <summary> Gets Unknown32.</summary>

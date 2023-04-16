@@ -23,14 +23,14 @@ public sealed partial class DelveFeaturesDat
     public required ReadOnlyCollection<int> SpawnWeight { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets Image.</summary>
     public required string Image { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Unknown72.</summary>

@@ -17,11 +17,11 @@ public sealed partial class SigilDisplayDat
     public required string Id { get; init; }
 
     /// <summary> Gets Active_StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Active_StatsKey { get; init; }
 
     /// <summary> Gets Inactive_StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Inactive_StatsKey { get; init; }
 
     /// <summary> Gets DDSFile.</summary>

@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class InvasionMonstersPerAreaDat
 {
     /// <summary> Gets WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -24,11 +24,11 @@ public sealed partial class InvasionMonstersPerAreaDat
     public required ReadOnlyCollection<int> Unknown20 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKeys1.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterVarietiesKeys1 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKeys2.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterVarietiesKeys2 { get; init; }
 
     /// <summary> Gets Unknown68.</summary>

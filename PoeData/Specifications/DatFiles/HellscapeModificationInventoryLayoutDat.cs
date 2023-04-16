@@ -35,18 +35,18 @@ public sealed partial class HellscapeModificationInventoryLayoutDat
     public required int Height { get; init; }
 
     /// <summary> Gets Stat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Stat { get; init; }
 
     /// <summary> Gets StatValue.</summary>
     public required int StatValue { get; init; }
 
     /// <summary> Gets UnlockedWith.</summary>
-    /// <remarks> references <see cref="HellscapePassivesDat"/> on <see cref="Specification.GetHellscapePassivesDat"/> index.</remarks>
+    /// <remarks> references <see cref="HellscapePassivesDat"/> on <see cref="Specification.LoadHellscapePassivesDat"/> index.</remarks>
     public required int? UnlockedWith { get; init; }
 
     /// <summary> Gets Quest.</summary>
-    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.LoadQuestDat"/> index.</remarks>
     public required int? Quest { get; init; }
 
     /// <summary>

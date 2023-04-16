@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AtlasPrimordialAltarChoicesDat
 {
     /// <summary> Gets Mod.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Type.</summary>
-    /// <remarks> references <see cref="AtlasPrimordialAltarChoiceTypesDat"/> on <see cref="Specification.GetAtlasPrimordialAltarChoiceTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasPrimordialAltarChoiceTypesDat"/> on <see cref="Specification.LoadAtlasPrimordialAltarChoiceTypesDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown32 is set.</summary>

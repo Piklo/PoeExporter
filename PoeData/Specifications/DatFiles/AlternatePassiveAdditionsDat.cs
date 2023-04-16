@@ -17,14 +17,14 @@ public sealed partial class AlternatePassiveAdditionsDat
     public required string Id { get; init; }
 
     /// <summary> Gets AlternateTreeVersionsKey.</summary>
-    /// <remarks> references <see cref="AlternateTreeVersionsDat"/> on <see cref="Specification.GetAlternateTreeVersionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AlternateTreeVersionsDat"/> on <see cref="Specification.LoadAlternateTreeVersionsDat"/> index.</remarks>
     public required int? AlternateTreeVersionsKey { get; init; }
 
     /// <summary> Gets SpawnWeight.</summary>
     public required int SpawnWeight { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets Stat1Min.</summary>

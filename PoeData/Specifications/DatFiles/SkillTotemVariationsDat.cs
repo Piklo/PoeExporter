@@ -14,14 +14,14 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SkillTotemVariationsDat
 {
     /// <summary> Gets SkillTotemsKey.</summary>
-    /// <remarks> references <see cref="SkillTotemsDat"/> on <see cref="Specification.GetSkillTotemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillTotemsDat"/> on <see cref="Specification.LoadSkillTotemsDat"/> index.</remarks>
     public required int SkillTotemsKey { get; init; }
 
     /// <summary> Gets TotemSkinId.</summary>
     public required int TotemSkinId { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary>

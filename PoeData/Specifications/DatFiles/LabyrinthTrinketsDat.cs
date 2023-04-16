@@ -14,15 +14,15 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class LabyrinthTrinketsDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets LabyrinthSecretsKey.</summary>
-    /// <remarks> references <see cref="LabyrinthSecretsDat"/> on <see cref="Specification.GetLabyrinthSecretsDat"/> index.</remarks>
+    /// <remarks> references <see cref="LabyrinthSecretsDat"/> on <see cref="Specification.LoadLabyrinthSecretsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> LabyrinthSecretsKey { get; init; }
 
     /// <summary> Gets Buff_BuffDefinitionsKey.</summary>
-    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.LoadBuffDefinitionsDat"/> index.</remarks>
     public required int? Buff_BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Buff_StatValues.</summary>

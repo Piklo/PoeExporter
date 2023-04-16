@@ -17,7 +17,7 @@ public sealed partial class CraftingBenchSortCategoriesDat
     public required string Id { get; init; }
 
     /// <summary> Gets Name.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? Name { get; init; }
 
     /// <summary> Gets a value indicating whether IsVisible is set.</summary>

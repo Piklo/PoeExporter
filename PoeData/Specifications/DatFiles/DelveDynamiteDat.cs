@@ -17,14 +17,14 @@ public sealed partial class DelveDynamiteDat
     public required int Unknown0 { get; init; }
 
     /// <summary> Gets ProjectilesKey.</summary>
-    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.GetProjectilesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.LoadProjectilesDat"/> index.</remarks>
     public required int? ProjectilesKey { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
     public required int? Unknown20 { get; init; }
 
     /// <summary> Gets Dynamite_MiscObjectsKey.</summary>
-    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.LoadMiscObjectsDat"/> index.</remarks>
     public required int? Dynamite_MiscObjectsKey { get; init; }
 
     /// <summary> Gets Unknown52.</summary>
@@ -49,7 +49,7 @@ public sealed partial class DelveDynamiteDat
     public required int Unknown76 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey { get; init; }
 
     /// <summary> Gets Unknown96.</summary>

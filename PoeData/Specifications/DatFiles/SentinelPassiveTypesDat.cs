@@ -23,7 +23,7 @@ public sealed partial class SentinelPassiveTypesDat
     public required string ActiveIcon { get; init; }
 
     /// <summary> Gets DroneType.</summary>
-    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.GetDroneTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.LoadDroneTypesDat"/> index.</remarks>
     public required int? DroneType { get; init; }
 
     /// <summary> Gets Unknown40.</summary>

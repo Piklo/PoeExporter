@@ -17,7 +17,7 @@ public sealed partial class CharacterStartQuestStateDat
     public required string Id { get; init; }
 
     /// <summary> Gets QuestKeys.</summary>
-    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.LoadQuestDat"/> index.</remarks>
     public required ReadOnlyCollection<int> QuestKeys { get; init; }
 
     /// <summary> Gets QuestStates.</summary>
@@ -27,7 +27,7 @@ public sealed partial class CharacterStartQuestStateDat
     public required ReadOnlyCollection<int> Unknown40 { get; init; }
 
     /// <summary> Gets MapPinsKeys.</summary>
-    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.LoadMapPinsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapPinsKeys { get; init; }
 
     /// <summary> Gets Unknown72.</summary>

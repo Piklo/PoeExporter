@@ -17,7 +17,7 @@ public sealed partial class BlightEncounterWavesDat
     public required string MonsterSpawnerId { get; init; }
 
     /// <summary> Gets EncounterType.</summary>
-    /// <remarks> references <see cref="BlightEncounterTypesDat"/> on <see cref="Specification.GetBlightEncounterTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BlightEncounterTypesDat"/> on <see cref="Specification.LoadBlightEncounterTypesDat"/> index.</remarks>
     public required int? EncounterType { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

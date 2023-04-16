@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SynthesisBracketsDat
 {
     /// <summary> Gets WorldAreasKey1.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey1 { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -24,7 +24,7 @@ public sealed partial class SynthesisBracketsDat
     public required int MaxLevel { get; init; }
 
     /// <summary> Gets WorldAreasKey2.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey2 { get; init; }
 
     /// <summary> Gets Unknown40.</summary>

@@ -17,7 +17,7 @@ public sealed partial class BuffVisualOrbArtDat
     public required string Id { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

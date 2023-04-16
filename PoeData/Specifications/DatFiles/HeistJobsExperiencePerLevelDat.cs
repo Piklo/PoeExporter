@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistJobsExperiencePerLevelDat
 {
     /// <summary> Gets HeistJobsKey.</summary>
-    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.LoadHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey { get; init; }
 
     /// <summary> Gets Tier.</summary>
@@ -27,7 +27,7 @@ public sealed partial class HeistJobsExperiencePerLevelDat
     public required int MinLevel { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKey { get; init; }
 
     /// <summary>

@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class TradeMarketCategoryListAllClassDat
 {
     /// <summary> Gets TradeCategory.</summary>
-    /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.GetTradeMarketCategoryDat"/> index.</remarks>
+    /// <remarks> references <see cref="TradeMarketCategoryDat"/> on <see cref="Specification.LoadTradeMarketCategoryDat"/> index.</remarks>
     public required int? TradeCategory { get; init; }
 
     /// <summary> Gets ItemClass.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
     /// <summary>

@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AtlasPrimordialBossInfluenceDat
 {
     /// <summary> Gets Boss.</summary>
-    /// <remarks> references <see cref="AtlasPrimordialBossesDat"/> on <see cref="Specification.GetAtlasPrimordialBossesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasPrimordialBossesDat"/> on <see cref="Specification.LoadAtlasPrimordialBossesDat"/> index.</remarks>
     public required int? Boss { get; init; }
 
     /// <summary> Gets Progress.</summary>
@@ -36,7 +36,7 @@ public sealed partial class AtlasPrimordialBossInfluenceDat
     public required float Unknown48 { get; init; }
 
     /// <summary> Gets Unknown52.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? Unknown52 { get; init; }
 
     /// <summary>

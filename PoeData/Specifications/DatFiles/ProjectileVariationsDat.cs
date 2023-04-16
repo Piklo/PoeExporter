@@ -17,7 +17,7 @@ public sealed partial class ProjectileVariationsDat
     public required string Id { get; init; }
 
     /// <summary> Gets ProjectileKey.</summary>
-    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.GetProjectilesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.LoadProjectilesDat"/> index.</remarks>
     public required int? ProjectileKey { get; init; }
 
     /// <summary>

@@ -21,7 +21,7 @@ public sealed partial class AchievementSetRewardsDat
     public required int AchievementsRequired { get; init; }
 
     /// <summary> Gets Rewards.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Rewards { get; init; }
 
     /// <summary> Gets TotemPieceEveryNAchievements.</summary>

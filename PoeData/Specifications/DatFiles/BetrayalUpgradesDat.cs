@@ -23,7 +23,7 @@ public sealed partial class BetrayalUpgradesDat
     public required string Description { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKey { get; init; }
 
     /// <summary> Gets ArtFile.</summary>
@@ -36,22 +36,22 @@ public sealed partial class BetrayalUpgradesDat
     public required ReadOnlyCollection<int> Unknown52 { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey0.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey0 { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey1.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey1 { get; init; }
 
     /// <summary> Gets GrantedEffectsKey.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets Unknown116.</summary>
     public required int Unknown116 { get; init; }
 
     /// <summary> Gets ItemClassesKey.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required int? ItemClassesKey { get; init; }
 
     /// <summary>

@@ -17,30 +17,30 @@ public sealed partial class HeistAreasDat
     public required string Id { get; init; }
 
     /// <summary> Gets WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WorldAreasKeys { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
     public required int Unknown24 { get; init; }
 
     /// <summary> Gets EnvironmentsKey1.</summary>
-    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.LoadEnvironmentsDat"/> index.</remarks>
     public required int? EnvironmentsKey1 { get; init; }
 
     /// <summary> Gets EnvironmentsKey2.</summary>
-    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.LoadEnvironmentsDat"/> index.</remarks>
     public required int? EnvironmentsKey2 { get; init; }
 
     /// <summary> Gets HeistJobsKeys.</summary>
-    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.LoadHeistJobsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HeistJobsKeys { get; init; }
 
     /// <summary> Gets Contract_BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Contract_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Blueprint_BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Blueprint_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets DGRFile.</summary>
@@ -62,23 +62,23 @@ public sealed partial class HeistAreasDat
     public required string Blueprint_DDSFile { get; init; }
 
     /// <summary> Gets Achievements1.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements1 { get; init; }
 
     /// <summary> Gets Achievements2.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements2 { get; init; }
 
     /// <summary> Gets Reward.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? Reward { get; init; }
 
     /// <summary> Gets Achievements3.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements3 { get; init; }
 
     /// <summary> Gets RewardHardmode.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? RewardHardmode { get; init; }
 
     /// <summary>

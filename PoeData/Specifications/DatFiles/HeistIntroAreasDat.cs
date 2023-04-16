@@ -17,7 +17,7 @@ public sealed partial class HeistIntroAreasDat
     public required string Id { get; init; }
 
     /// <summary> Gets HeistAreasKey.</summary>
-    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.GetHeistAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.LoadHeistAreasDat"/> index.</remarks>
     public required int? HeistAreasKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

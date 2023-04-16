@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class BlightCraftingUniquesDat
 {
     /// <summary> Gets WordsKey.</summary>
-    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.LoadWordsDat"/> index.</remarks>
     public required int? WordsKey { get; init; }
 
     /// <summary>

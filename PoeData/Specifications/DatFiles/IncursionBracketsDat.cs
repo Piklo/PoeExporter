@@ -17,11 +17,11 @@ public sealed partial class IncursionBracketsDat
     public required int MinLevel { get; init; }
 
     /// <summary> Gets Incursion_WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? Incursion_WorldAreasKey { get; init; }
 
     /// <summary> Gets Template_WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? Template_WorldAreasKey { get; init; }
 
     /// <summary> Gets Unknown36.</summary>

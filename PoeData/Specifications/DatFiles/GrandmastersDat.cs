@@ -23,7 +23,7 @@ public sealed partial class GrandmastersDat
     public required string AISFile { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets CharacterLevel.</summary>

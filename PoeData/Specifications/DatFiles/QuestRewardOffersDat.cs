@@ -17,7 +17,7 @@ public sealed partial class QuestRewardOffersDat
     public required string Id { get; init; }
 
     /// <summary> Gets QuestKey.</summary>
-    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.LoadQuestDat"/> index.</remarks>
     public required int? QuestKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -27,7 +27,7 @@ public sealed partial class QuestRewardOffersDat
     public required int Unknown40 { get; init; }
 
     /// <summary> Gets RewardWindowTake.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? RewardWindowTake { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown60 is set.</summary>
@@ -37,7 +37,7 @@ public sealed partial class QuestRewardOffersDat
     public required bool Unknown61 { get; init; }
 
     /// <summary> Gets RewardWindowTitle.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? RewardWindowTitle { get; init; }
 
     /// <summary>

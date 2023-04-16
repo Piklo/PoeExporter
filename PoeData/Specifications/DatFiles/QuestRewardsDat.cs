@@ -14,18 +14,18 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class QuestRewardsDat
 {
     /// <summary> Gets RewardOffer.</summary>
-    /// <remarks> references <see cref="QuestRewardOffersDat"/> on <see cref="Specification.GetQuestRewardOffersDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestRewardOffersDat"/> on <see cref="Specification.LoadQuestRewardOffersDat"/> index.</remarks>
     public required int? RewardOffer { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets Characters.</summary>
-    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.LoadCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Characters { get; init; }
 
     /// <summary> Gets Reward.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Reward { get; init; }
 
     /// <summary> Gets RewardLevel.</summary>

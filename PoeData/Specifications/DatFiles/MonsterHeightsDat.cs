@@ -14,14 +14,14 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MonsterHeightsDat
 {
     /// <summary> Gets MonsterVariety.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVariety { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
     public required float Unknown16 { get; init; }
 
     /// <summary> Gets MonsterHeightBracket.</summary>
-    /// <remarks> references <see cref="MonsterHeightBracketsDat"/> on <see cref="Specification.GetMonsterHeightBracketsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterHeightBracketsDat"/> on <see cref="Specification.LoadMonsterHeightBracketsDat"/> index.</remarks>
     public required int? MonsterHeightBracket { get; init; }
 
     /// <summary> Gets Unknown36.</summary>

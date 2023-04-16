@@ -17,7 +17,7 @@ public sealed partial class ExecuteGEALDat
     public required int Unknown0 { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscAnimated { get; init; }
 
     /// <summary> Gets Unknown20.</summary>

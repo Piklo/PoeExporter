@@ -17,11 +17,11 @@ public sealed partial class DroneTypesDat
     public required string Id { get; init; }
 
     /// <summary> Gets Unknown8.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Unknown24 { get; init; }
 
     /// <summary> Gets DeployText.</summary>
@@ -31,7 +31,7 @@ public sealed partial class DroneTypesDat
     public required string Unknown48 { get; init; }
 
     /// <summary> Gets UnlockedStat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? UnlockedStat { get; init; }
 
     /// <summary> Gets SocketableText.</summary>

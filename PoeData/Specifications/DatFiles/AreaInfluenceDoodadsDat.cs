@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AreaInfluenceDoodadsDat
 {
     /// <summary> Gets StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets StatValue.</summary>
@@ -36,7 +36,7 @@ public sealed partial class AreaInfluenceDoodadsDat
     public required string Unknown45 { get; init; }
 
     /// <summary> Gets Unknown53.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown53 { get; init; }
 
     /// <summary>

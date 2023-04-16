@@ -38,18 +38,18 @@ public sealed partial class BestiaryFamiliesDat
     public required bool Unknown56 { get; init; }
 
     /// <summary> Gets TagsKey.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required int? TagsKey { get; init; }
 
     /// <summary> Gets Unknown73.</summary>
     public required int Unknown73 { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets CurrencyItemsKey.</summary>
-    /// <remarks> references <see cref="CurrencyItemsDat"/> on <see cref="Specification.GetCurrencyItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="CurrencyItemsDat"/> on <see cref="Specification.LoadCurrencyItemsDat"/> index.</remarks>
     public required int? CurrencyItemsKey { get; init; }
 
     /// <summary>

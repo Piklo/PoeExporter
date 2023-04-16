@@ -14,19 +14,19 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistNPCDialogueDat
 {
     /// <summary> Gets DialogueEventKey.</summary>
-    /// <remarks> references <see cref="DialogueEventDat"/> on <see cref="Specification.GetDialogueEventDat"/> index.</remarks>
+    /// <remarks> references <see cref="DialogueEventDat"/> on <see cref="Specification.LoadDialogueEventDat"/> index.</remarks>
     public required int? DialogueEventKey { get; init; }
 
     /// <summary> Gets HeistNPCsKey.</summary>
-    /// <remarks> references <see cref="HeistNPCsDat"/> on <see cref="Specification.GetHeistNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistNPCsDat"/> on <see cref="Specification.LoadHeistNPCsDat"/> index.</remarks>
     public required int? HeistNPCsKey { get; init; }
 
     /// <summary> Gets AudioNormal.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AudioNormal { get; init; }
 
     /// <summary> Gets AudioLoud.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AudioLoud { get; init; }
 
     /// <summary> Gets Unknown64.</summary>

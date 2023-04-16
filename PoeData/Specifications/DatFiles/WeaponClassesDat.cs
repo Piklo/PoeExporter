@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class WeaponClassesDat
 {
     /// <summary> Gets ItemClass.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

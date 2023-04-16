@@ -17,11 +17,11 @@ public sealed partial class ExpeditionTerrainFeaturesDat
     public required string Id { get; init; }
 
     /// <summary> Gets ExtraFeature.</summary>
-    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.GetExtraTerrainFeaturesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.LoadExtraTerrainFeaturesDat"/> index.</remarks>
     public required int? ExtraFeature { get; init; }
 
     /// <summary> Gets ExpeditionFaction.</summary>
-    /// <remarks> references <see cref="ExpeditionFactionsDat"/> on <see cref="Specification.GetExpeditionFactionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ExpeditionFactionsDat"/> on <see cref="Specification.LoadExpeditionFactionsDat"/> index.</remarks>
     public required int? ExpeditionFaction { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -34,11 +34,11 @@ public sealed partial class ExpeditionTerrainFeaturesDat
     public required int Unknown48 { get; init; }
 
     /// <summary> Gets Area.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? Area { get; init; }
 
     /// <summary> Gets ExpeditionAreas.</summary>
-    /// <remarks> references <see cref="ExpeditionAreasDat"/> on <see cref="Specification.GetExpeditionAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="ExpeditionAreasDat"/> on <see cref="Specification.LoadExpeditionAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ExpeditionAreas { get; init; }
 
     /// <summary> Gets Unknown84.</summary>
@@ -48,7 +48,7 @@ public sealed partial class ExpeditionTerrainFeaturesDat
     public required bool Unknown88 { get; init; }
 
     /// <summary> Gets UnearthAchievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> UnearthAchievements { get; init; }
 
     /// <summary>

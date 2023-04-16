@@ -20,7 +20,7 @@ public sealed partial class AtlasInfluenceOutcomesDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets Type.</summary>
-    /// <remarks> references <see cref="AtlasInfluenceOutcomeTypesDat"/> on <see cref="Specification.GetAtlasInfluenceOutcomeTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasInfluenceOutcomeTypesDat"/> on <see cref="Specification.LoadAtlasInfluenceOutcomeTypesDat"/> index.</remarks>
     public required int Type { get; init; }
 
     /// <summary>

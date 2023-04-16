@@ -17,14 +17,14 @@ public sealed partial class LegionRewardTypeVisualsDat
     public required int IntId { get; init; }
 
     /// <summary> Gets MinimapIconsKey.</summary>
-    /// <remarks> references <see cref="MinimapIconsDat"/> on <see cref="Specification.GetMinimapIconsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MinimapIconsDat"/> on <see cref="Specification.LoadMinimapIconsDat"/> index.</remarks>
     public required int? MinimapIconsKey { get; init; }
 
     /// <summary> Gets Unknown20.</summary>
     public required string Unknown20 { get; init; }
 
     /// <summary> Gets MiscAnimatedKey.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimatedKey { get; init; }
 
     /// <summary> Gets Unknown44.</summary>

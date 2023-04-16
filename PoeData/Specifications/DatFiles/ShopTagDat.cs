@@ -23,11 +23,11 @@ public sealed partial class ShopTagDat
     public required bool IsCategory { get; init; }
 
     /// <summary> Gets Category.</summary>
-    /// <remarks> references <see cref="ShopTagDat"/> on <see cref="Specification.GetShopTagDat"/> index.</remarks>
+    /// <remarks> references <see cref="ShopTagDat"/> on <see cref="Specification.LoadShopTagDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets SkillGem.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SkillGem { get; init; }
 
     /// <summary>

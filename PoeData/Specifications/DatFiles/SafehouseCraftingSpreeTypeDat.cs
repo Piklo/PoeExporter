@@ -17,7 +17,7 @@ public sealed partial class SafehouseCraftingSpreeTypeDat
     public required string Id { get; init; }
 
     /// <summary> Gets Currencies.</summary>
-    /// <remarks> references <see cref="SafehouseCraftingSpreeCurrenciesDat"/> on <see cref="Specification.GetSafehouseCraftingSpreeCurrenciesDat"/> index.</remarks>
+    /// <remarks> references <see cref="SafehouseCraftingSpreeCurrenciesDat"/> on <see cref="Specification.LoadSafehouseCraftingSpreeCurrenciesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Currencies { get; init; }
 
     /// <summary> Gets CurrencyCount.</summary>

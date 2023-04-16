@@ -17,7 +17,7 @@ public sealed partial class HideoutsDat
     public required string Id { get; init; }
 
     /// <summary> Gets HideoutArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? HideoutArea { get; init; }
 
     /// <summary> Gets HASH16.</summary>
@@ -27,11 +27,11 @@ public sealed partial class HideoutsDat
     public required string HideoutFile { get; init; }
 
     /// <summary> Gets SpawnAreas.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnAreas { get; init; }
 
     /// <summary> Gets ClaimSideArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? ClaimSideArea { get; init; }
 
     /// <summary> Gets HideoutImage.</summary>
@@ -44,7 +44,7 @@ public sealed partial class HideoutsDat
     public required int Weight { get; init; }
 
     /// <summary> Gets Rarity.</summary>
-    /// <remarks> references <see cref="HideoutRarityDat"/> on <see cref="Specification.GetHideoutRarityDat"/> index.</remarks>
+    /// <remarks> references <see cref="HideoutRarityDat"/> on <see cref="Specification.LoadHideoutRarityDat"/> index.</remarks>
     public required int? Rarity { get; init; }
 
     /// <summary> Gets a value indicating whether NotActsArea is set.</summary>

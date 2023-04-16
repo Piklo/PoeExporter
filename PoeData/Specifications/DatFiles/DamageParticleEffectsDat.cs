@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class DamageParticleEffectsDat
 {
     /// <summary> Gets DamageParticleEffectTypes.</summary>
-    /// <remarks> references <see cref="DamageParticleEffectTypesDat"/> on <see cref="Specification.GetDamageParticleEffectTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="DamageParticleEffectTypesDat"/> on <see cref="Specification.LoadDamageParticleEffectTypesDat"/> index.</remarks>
     public required int DamageParticleEffectTypes { get; init; }
 
     /// <summary> Gets Variation.</summary>
@@ -24,11 +24,11 @@ public sealed partial class DamageParticleEffectsDat
     public required string PETFile { get; init; }
 
     /// <summary> Gets ImpactSoundData1.</summary>
-    /// <remarks> references <see cref="ImpactSoundDataDat"/> on <see cref="Specification.GetImpactSoundDataDat"/> index.</remarks>
+    /// <remarks> references <see cref="ImpactSoundDataDat"/> on <see cref="Specification.LoadImpactSoundDataDat"/> index.</remarks>
     public required int? ImpactSoundData1 { get; init; }
 
     /// <summary> Gets ImpactSoundData2.</summary>
-    /// <remarks> references <see cref="ImpactSoundDataDat"/> on <see cref="Specification.GetImpactSoundDataDat"/> index.</remarks>
+    /// <remarks> references <see cref="ImpactSoundDataDat"/> on <see cref="Specification.LoadImpactSoundDataDat"/> index.</remarks>
     public required int? ImpactSoundData2 { get; init; }
 
     /// <summary> Gets Unknown48.</summary>

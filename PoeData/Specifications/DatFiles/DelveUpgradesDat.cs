@@ -20,7 +20,7 @@ public sealed partial class DelveUpgradesDat
     public required int UpgradeLevel { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatValues.</summary>
@@ -33,7 +33,7 @@ public sealed partial class DelveUpgradesDat
     public required int Unknown44 { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <summary> Gets Unknown64.</summary>

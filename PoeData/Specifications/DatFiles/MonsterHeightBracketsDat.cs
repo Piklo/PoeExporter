@@ -20,11 +20,11 @@ public sealed partial class MonsterHeightBracketsDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets BuffVisuals1.</summary>
-    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.LoadBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisuals1 { get; init; }
 
     /// <summary> Gets BuffVisuals2.</summary>
-    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.LoadBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisuals2 { get; init; }
 
     /// <summary> Gets Unknown44.</summary>
@@ -37,7 +37,7 @@ public sealed partial class MonsterHeightBracketsDat
     public required float Unknown52 { get; init; }
 
     /// <summary> Gets Tag.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required int? Tag { get; init; }
 
     /// <summary> Gets Unknown72.</summary>

@@ -29,7 +29,7 @@ public sealed partial class LegionRanksDat
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets LegionBalancePerLevelKey.</summary>
-    /// <remarks> references <see cref="LegionBalancePerLevelDat"/> on <see cref="Specification.GetLegionBalancePerLevelDat"/> index.</remarks>
+    /// <remarks> references <see cref="LegionBalancePerLevelDat"/> on <see cref="Specification.LoadLegionBalancePerLevelDat"/> index.</remarks>
     public required int? LegionBalancePerLevelKey { get; init; }
 
     /// <summary> Gets Unknown36.</summary>

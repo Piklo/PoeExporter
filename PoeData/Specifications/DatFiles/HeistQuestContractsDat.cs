@@ -14,19 +14,19 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistQuestContractsDat
 {
     /// <summary> Gets HeistContractsKey.</summary>
-    /// <remarks> references <see cref="HeistContractsDat"/> on <see cref="Specification.GetHeistContractsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistContractsDat"/> on <see cref="Specification.LoadHeistContractsDat"/> index.</remarks>
     public required int? HeistContractsKey { get; init; }
 
     /// <summary> Gets HeistObjectivesKey.</summary>
-    /// <remarks> references <see cref="HeistObjectivesDat"/> on <see cref="Specification.GetHeistObjectivesDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistObjectivesDat"/> on <see cref="Specification.LoadHeistObjectivesDat"/> index.</remarks>
     public required int? HeistObjectivesKey { get; init; }
 
     /// <summary> Gets HeistNPCsKey.</summary>
-    /// <remarks> references <see cref="HeistNPCsDat"/> on <see cref="Specification.GetHeistNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistNPCsDat"/> on <see cref="Specification.LoadHeistNPCsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HeistNPCsKey { get; init; }
 
     /// <summary> Gets HeistJobsKey.</summary>
-    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.LoadHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey { get; init; }
 
     /// <summary> Gets Unknown64.</summary>
@@ -42,11 +42,11 @@ public sealed partial class HeistQuestContractsDat
     public required bool Unknown76 { get; init; }
 
     /// <summary> Gets HeistRoomsKey1.</summary>
-    /// <remarks> references <see cref="HeistRoomsDat"/> on <see cref="Specification.GetHeistRoomsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistRoomsDat"/> on <see cref="Specification.LoadHeistRoomsDat"/> index.</remarks>
     public required int? HeistRoomsKey1 { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown109 is set.</summary>
@@ -68,22 +68,22 @@ public sealed partial class HeistQuestContractsDat
     public required bool Unknown120 { get; init; }
 
     /// <summary> Gets HaveObjective.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? HaveObjective { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown137 is set.</summary>
     public required bool Unknown137 { get; init; }
 
     /// <summary> Gets QuestActive.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? QuestActive { get; init; }
 
     /// <summary> Gets HaveQuest.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? HaveQuest { get; init; }
 
     /// <summary> Gets HaveObjective2.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? HaveObjective2 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown186 is set.</summary>
@@ -99,21 +99,21 @@ public sealed partial class HeistQuestContractsDat
     public required bool Unknown196 { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown213 is set.</summary>
     public required bool Unknown213 { get; init; }
 
     /// <summary> Gets HeistIntroAreasKey.</summary>
-    /// <remarks> references <see cref="HeistIntroAreasDat"/> on <see cref="Specification.GetHeistIntroAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistIntroAreasDat"/> on <see cref="Specification.LoadHeistIntroAreasDat"/> index.</remarks>
     public required int? HeistIntroAreasKey { get; init; }
 
     /// <summary> Gets Unknown230.</summary>
     public required int Unknown230 { get; init; }
 
     /// <summary> Gets HeistRoomsKey2.</summary>
-    /// <remarks> references <see cref="HeistRoomsDat"/> on <see cref="Specification.GetHeistRoomsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistRoomsDat"/> on <see cref="Specification.LoadHeistRoomsDat"/> index.</remarks>
     public required int? HeistRoomsKey2 { get; init; }
 
     /// <summary> Gets Unknown250.</summary>

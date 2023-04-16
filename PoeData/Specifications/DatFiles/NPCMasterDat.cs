@@ -23,14 +23,14 @@ public sealed partial class NPCMasterDat
     public required bool Unknown9 { get; init; }
 
     /// <summary> Gets Signature_ModsKey.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? Signature_ModsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown26 is set.</summary>
     public required bool Unknown26 { get; init; }
 
     /// <summary> Gets SpawnWeight_TagsKeys.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_TagsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>
@@ -58,7 +58,7 @@ public sealed partial class NPCMasterDat
     public required int Unknown135 { get; init; }
 
     /// <summary> Gets Unknown139.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown139 { get; init; }
 
     /// <summary> Gets a value indicating whether HasAreaMissions is set.</summary>

@@ -23,14 +23,14 @@ public sealed partial class SkillGemInfoDat
     public required string VideoURL1 { get; init; }
 
     /// <summary> Gets SkillGemsKey.</summary>
-    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.LoadSkillGemsDat"/> index.</remarks>
     public required int? SkillGemsKey { get; init; }
 
     /// <summary> Gets VideoURL2.</summary>
     public required string VideoURL2 { get; init; }
 
     /// <summary> Gets CharactersKeys.</summary>
-    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.LoadCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CharactersKeys { get; init; }
 
     /// <summary>

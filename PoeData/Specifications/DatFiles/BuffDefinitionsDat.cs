@@ -29,7 +29,7 @@ public sealed partial class BuffDefinitionsDat
     public required string Name { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown42 is set.</summary>
@@ -42,11 +42,11 @@ public sealed partial class BuffDefinitionsDat
     public required bool Unknown47 { get; init; }
 
     /// <summary> Gets Maximum_StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Maximum_StatsKey { get; init; }
 
     /// <summary> Gets Current_StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Current_StatsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown80 is set.</summary>
@@ -56,7 +56,7 @@ public sealed partial class BuffDefinitionsDat
     public required int Unknown81 { get; init; }
 
     /// <summary> Gets BuffVisualsKey.</summary>
-    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.LoadBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisualsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown101 is set.</summary>
@@ -129,19 +129,19 @@ public sealed partial class BuffDefinitionsDat
     public required bool Unknown187 { get; init; }
 
     /// <summary> Gets Unknown188.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown188 { get; init; }
 
     /// <summary> Gets Unknown204.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown204 { get; init; }
 
     /// <summary> Gets Unknown220.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown220 { get; init; }
 
     /// <summary> Gets Unknown236.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown236 { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown252 is set.</summary>
@@ -160,7 +160,7 @@ public sealed partial class BuffDefinitionsDat
     public required bool Unknown256 { get; init; }
 
     /// <summary> Gets Unknown257.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown257 { get; init; }
 
     /// <summary> Gets Unknown273.</summary>
@@ -170,7 +170,7 @@ public sealed partial class BuffDefinitionsDat
     public required string Unknown289 { get; init; }
 
     /// <summary> Gets Unknown297.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown297 { get; init; }
 
     /// <summary>

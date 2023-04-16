@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class GenericLeagueRewardTypeVisualsDat
 {
     /// <summary> Gets Type.</summary>
-    /// <remarks> references <see cref="GenericLeagueRewardTypesDat"/> on <see cref="Specification.GetGenericLeagueRewardTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="GenericLeagueRewardTypesDat"/> on <see cref="Specification.LoadGenericLeagueRewardTypesDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

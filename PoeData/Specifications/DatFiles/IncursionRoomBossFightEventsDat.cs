@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class IncursionRoomBossFightEventsDat
 {
     /// <summary> Gets Room.</summary>
-    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.LoadIncursionRoomsDat"/> index.</remarks>
     public required int? Room { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

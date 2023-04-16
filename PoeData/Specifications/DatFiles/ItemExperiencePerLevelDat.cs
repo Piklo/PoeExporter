@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ItemExperiencePerLevelDat
 {
     /// <summary> Gets ItemExperienceType.</summary>
-    /// <remarks> references <see cref="ItemExperienceTypesDat"/> on <see cref="Specification.GetItemExperienceTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemExperienceTypesDat"/> on <see cref="Specification.LoadItemExperienceTypesDat"/> index.</remarks>
     public required int? ItemExperienceType { get; init; }
 
     /// <summary> Gets ItemCurrentLevel.</summary>

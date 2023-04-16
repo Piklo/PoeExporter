@@ -35,7 +35,7 @@ public sealed partial class MonsterTypesDat
     public required int DamageSpread { get; init; }
 
     /// <summary> Gets MonsterResistancesKey.</summary>
-    /// <remarks> references <see cref="MonsterResistancesDat"/> on <see cref="Specification.GetMonsterResistancesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterResistancesDat"/> on <see cref="Specification.LoadMonsterResistancesDat"/> index.</remarks>
     public required int? MonsterResistancesKey { get; init; }
 
     /// <summary> Gets a value indicating whether IsLargeAbyssMonster is set.</summary>

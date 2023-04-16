@@ -17,7 +17,7 @@ public sealed partial class MapTierAchievementsDat
     public required string Id { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKey { get; init; }
 
     /// <summary> Gets MapTiers.</summary>

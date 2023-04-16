@@ -17,7 +17,7 @@ public sealed partial class BuffTemplatesDat
     public required string Id { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
-    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.LoadBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -33,7 +33,7 @@ public sealed partial class BuffTemplatesDat
     public required ReadOnlyCollection<int> Unknown60 { get; init; }
 
     /// <summary> Gets BuffVisualsKey.</summary>
-    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.LoadBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisualsKey { get; init; }
 
     /// <summary> Gets Unknown92.</summary>
@@ -43,7 +43,7 @@ public sealed partial class BuffTemplatesDat
     public required bool Unknown96 { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKey { get; init; }
 
     /// <summary> Gets Unknown113.</summary>
@@ -56,7 +56,7 @@ public sealed partial class BuffTemplatesDat
     public required bool Unknown121 { get; init; }
 
     /// <summary> Gets Unknown122.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown122 { get; init; }
 
     /// <summary>

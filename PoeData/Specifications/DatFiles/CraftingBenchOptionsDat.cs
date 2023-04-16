@@ -14,18 +14,18 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class CraftingBenchOptionsDat
 {
     /// <summary> Gets HideoutNPCsKey.</summary>
-    /// <remarks> references <see cref="HideoutNPCsDat"/> on <see cref="Specification.GetHideoutNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HideoutNPCsDat"/> on <see cref="Specification.LoadHideoutNPCsDat"/> index.</remarks>
     public required int? HideoutNPCsKey { get; init; }
 
     /// <summary> Gets Order.</summary>
     public required int Order { get; init; }
 
     /// <summary> Gets AddMod.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? AddMod { get; init; }
 
     /// <summary> Gets Cost_BaseItemTypes.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Cost_BaseItemTypes { get; init; }
 
     /// <summary> Gets Cost_Values.</summary>
@@ -38,11 +38,11 @@ public sealed partial class CraftingBenchOptionsDat
     public required string Name { get; init; }
 
     /// <summary> Gets CraftingBenchCustomAction.</summary>
-    /// <remarks> references <see cref="CraftingBenchCustomActionsDat"/> on <see cref="Specification.GetCraftingBenchCustomActionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="CraftingBenchCustomActionsDat"/> on <see cref="Specification.LoadCraftingBenchCustomActionsDat"/> index.</remarks>
     public required int CraftingBenchCustomAction { get; init; }
 
     /// <summary> Gets ItemClasses.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ItemClasses { get; init; }
 
     /// <summary> Gets Links.</summary>
@@ -77,14 +77,14 @@ public sealed partial class CraftingBenchOptionsDat
     public required int Tier { get; init; }
 
     /// <summary> Gets CraftingItemClassCategories.</summary>
-    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.GetCraftingItemClassCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="CraftingItemClassCategoriesDat"/> on <see cref="Specification.LoadCraftingItemClassCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CraftingItemClassCategories { get; init; }
 
     /// <summary> Gets Unknown182.</summary>
     public required int Unknown182 { get; init; }
 
     /// <summary> Gets UnlockCategory.</summary>
-    /// <remarks> references <see cref="CraftingBenchUnlockCategoriesDat"/> on <see cref="Specification.GetCraftingBenchUnlockCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="CraftingBenchUnlockCategoriesDat"/> on <see cref="Specification.LoadCraftingBenchUnlockCategoriesDat"/> index.</remarks>
     public required int? UnlockCategory { get; init; }
 
     /// <summary> Gets UnveilsRequired.</summary>
@@ -109,11 +109,11 @@ public sealed partial class CraftingBenchOptionsDat
     public required int? Unknown250 { get; init; }
 
     /// <summary> Gets AddEnchantment.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? AddEnchantment { get; init; }
 
     /// <summary> Gets SortCategory.</summary>
-    /// <remarks> references <see cref="CraftingBenchSortCategoriesDat"/> on <see cref="Specification.GetCraftingBenchSortCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="CraftingBenchSortCategoriesDat"/> on <see cref="Specification.LoadCraftingBenchSortCategoriesDat"/> index.</remarks>
     public required int? SortCategory { get; init; }
 
     /// <summary> Gets Unknown298.</summary>
@@ -126,15 +126,15 @@ public sealed partial class CraftingBenchOptionsDat
     public required int Unknown315 { get; init; }
 
     /// <summary> Gets Unknown319.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown319 { get; init; }
 
     /// <summary> Gets Unknown335.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown335 { get; init; }
 
     /// <summary> Gets Unknown351.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? Unknown351 { get; init; }
 
     /// <summary>

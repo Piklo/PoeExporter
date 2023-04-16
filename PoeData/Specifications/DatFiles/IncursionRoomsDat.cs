@@ -26,11 +26,11 @@ public sealed partial class IncursionRoomsDat
     public required int MinLevel { get; init; }
 
     /// <summary> Gets RoomUpgrade_IncursionRoomsKey.</summary>
-    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.LoadIncursionRoomsDat"/> index.</remarks>
     public required int? RoomUpgrade_IncursionRoomsKey { get; init; }
 
     /// <summary> Gets Mods.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <summary> Gets PresentARMFile.</summary>
@@ -40,7 +40,7 @@ public sealed partial class IncursionRoomsDat
     public required int HASH16 { get; init; }
 
     /// <summary> Gets IncursionArchitectKey.</summary>
-    /// <remarks> references <see cref="IncursionArchitectDat"/> on <see cref="Specification.GetIncursionArchitectDat"/> index.</remarks>
+    /// <remarks> references <see cref="IncursionArchitectDat"/> on <see cref="Specification.LoadIncursionArchitectDat"/> index.</remarks>
     public required int? IncursionArchitectKey { get; init; }
 
     /// <summary> Gets PastARMFile.</summary>
@@ -59,7 +59,7 @@ public sealed partial class IncursionRoomsDat
     public required string Description { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Unknown132.</summary>
@@ -69,18 +69,18 @@ public sealed partial class IncursionRoomsDat
     public required int Unknown136 { get; init; }
 
     /// <summary> Gets RoomUpgradeFrom_IncursionRoomsKey.</summary>
-    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.LoadIncursionRoomsDat"/> index.</remarks>
     public required int? RoomUpgradeFrom_IncursionRoomsKey { get; init; }
 
     /// <summary> Gets ItemisedFlavourText.</summary>
-    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.GetFlavourTextDat"/> index.</remarks>
+    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.LoadFlavourTextDat"/> index.</remarks>
     public required int? ItemisedFlavourText { get; init; }
 
     /// <summary> Gets Unknown164.</summary>
     public required string Unknown164 { get; init; }
 
     /// <summary> Gets Unknown172.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown172 { get; init; }
 
     /// <summary>

@@ -17,7 +17,7 @@ public sealed partial class HeistStorageLayoutDat
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItemType.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemType { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>
@@ -30,7 +30,7 @@ public sealed partial class HeistStorageLayoutDat
     public required int Unknown33 { get; init; }
 
     /// <summary> Gets HeistJobsKey.</summary>
-    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.LoadHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey { get; init; }
 
     /// <summary> Gets Columns.</summary>
@@ -52,7 +52,7 @@ public sealed partial class HeistStorageLayoutDat
     public required int Unknown73 { get; init; }
 
     /// <summary> Gets ItemClass.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
     /// <summary>

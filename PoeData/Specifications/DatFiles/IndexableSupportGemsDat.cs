@@ -17,7 +17,7 @@ public sealed partial class IndexableSupportGemsDat
     public required int Index { get; init; }
 
     /// <summary> Gets SupportGem.</summary>
-    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.LoadSkillGemsDat"/> index.</remarks>
     public required int? SupportGem { get; init; }
 
     /// <summary> Gets Name.</summary>

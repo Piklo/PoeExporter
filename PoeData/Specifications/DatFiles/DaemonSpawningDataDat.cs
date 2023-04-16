@@ -17,7 +17,7 @@ public sealed partial class DaemonSpawningDataDat
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterVarieties.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterVarieties { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

@@ -14,14 +14,14 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistRevealingNPCsDat
 {
     /// <summary> Gets NPCsKey.</summary>
-    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.LoadNPCsDat"/> index.</remarks>
     public required int? NPCsKey { get; init; }
 
     /// <summary> Gets PortraitFile.</summary>
     public required string PortraitFile { get; init; }
 
     /// <summary> Gets NPCAudioKey.</summary>
-    /// <remarks> references <see cref="NPCAudioDat"/> on <see cref="Specification.GetNPCAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCAudioDat"/> on <see cref="Specification.LoadNPCAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCAudioKey { get; init; }
 
     /// <summary> Gets Unknown40.</summary>

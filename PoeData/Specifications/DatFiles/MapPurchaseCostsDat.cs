@@ -17,7 +17,7 @@ public sealed partial class MapPurchaseCostsDat
     public required int Tier { get; init; }
 
     /// <summary> Gets Cost.</summary>
-    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.GetItemCostsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.LoadItemCostsDat"/> index.</remarks>
     public required int? Cost { get; init; }
 
     /// <summary> Gets Unknown20.</summary>

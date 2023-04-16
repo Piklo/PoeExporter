@@ -26,7 +26,7 @@ public sealed partial class BetrayalDialogueDat
     public required ReadOnlyCollection<int> Unknown24 { get; init; }
 
     /// <summary> Gets BetrayalTargetsKey.</summary>
-    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.LoadBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
     /// <summary> Gets Unknown56.</summary>
@@ -39,7 +39,7 @@ public sealed partial class BetrayalDialogueDat
     public required ReadOnlyCollection<int> Unknown76 { get; init; }
 
     /// <summary> Gets BetrayalUpgradesKey.</summary>
-    /// <remarks> references <see cref="BetrayalUpgradesDat"/> on <see cref="Specification.GetBetrayalUpgradesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BetrayalUpgradesDat"/> on <see cref="Specification.LoadBetrayalUpgradesDat"/> index.</remarks>
     public required int? BetrayalUpgradesKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown108 is set.</summary>
@@ -58,7 +58,7 @@ public sealed partial class BetrayalDialogueDat
     public required ReadOnlyCollection<int> Unknown142 { get; init; }
 
     /// <summary> Gets NPCTextAudioKey.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudioKey { get; init; }
 
     /// <summary> Gets Unknown174.</summary>

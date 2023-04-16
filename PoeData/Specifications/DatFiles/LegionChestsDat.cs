@@ -14,19 +14,19 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class LegionChestsDat
 {
     /// <summary> Gets ChestsKey.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets LegionFactionsKey.</summary>
-    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.GetLegionFactionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.LoadLegionFactionsDat"/> index.</remarks>
     public required int? LegionFactionsKey { get; init; }
 
     /// <summary> Gets LegionRanksKey.</summary>
-    /// <remarks> references <see cref="LegionRanksDat"/> on <see cref="Specification.GetLegionRanksDat"/> index.</remarks>
+    /// <remarks> references <see cref="LegionRanksDat"/> on <see cref="Specification.LoadLegionRanksDat"/> index.</remarks>
     public required int? LegionRanksKey { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Unknown64.</summary>

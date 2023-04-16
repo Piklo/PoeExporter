@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class LegionMonsterCountsDat
 {
     /// <summary> Gets LegionFactionsKey.</summary>
-    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.GetLegionFactionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="LegionFactionsDat"/> on <see cref="Specification.LoadLegionFactionsDat"/> index.</remarks>
     public required int? LegionFactionsKey { get; init; }
 
     /// <summary> Gets LegionRanksKey.</summary>
-    /// <remarks> references <see cref="LegionRanksDat"/> on <see cref="Specification.GetLegionRanksDat"/> index.</remarks>
+    /// <remarks> references <see cref="LegionRanksDat"/> on <see cref="Specification.LoadLegionRanksDat"/> index.</remarks>
     public required int? LegionRanksKey { get; init; }
 
     /// <summary> Gets Unknown32.</summary>

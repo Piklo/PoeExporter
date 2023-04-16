@@ -17,22 +17,22 @@ public sealed partial class MonsterDeathAchievementsDat
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterVarietiesKeys.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown40 is set.</summary>
     public required bool Unknown40 { get; init; }
 
     /// <summary> Gets PlayerConditionsKeys.</summary>
-    /// <remarks> references <see cref="PlayerConditionsDat"/> on <see cref="Specification.GetPlayerConditionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PlayerConditionsDat"/> on <see cref="Specification.LoadPlayerConditionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PlayerConditionsKeys { get; init; }
 
     /// <summary> Gets MonsterDeathConditionsKeys.</summary>
-    /// <remarks> references <see cref="MonsterDeathConditionsDat"/> on <see cref="Specification.GetMonsterDeathConditionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterDeathConditionsDat"/> on <see cref="Specification.LoadMonsterDeathConditionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterDeathConditionsKeys { get; init; }
 
     /// <summary> Gets Unknown73.</summary>
@@ -69,14 +69,14 @@ public sealed partial class MonsterDeathAchievementsDat
     public required int Unknown179 { get; init; }
 
     /// <summary> Gets NearbyMonsterConditionsKeys.</summary>
-    /// <remarks> references <see cref="NearbyMonsterConditionsDat"/> on <see cref="Specification.GetNearbyMonsterConditionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="NearbyMonsterConditionsDat"/> on <see cref="Specification.LoadNearbyMonsterConditionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NearbyMonsterConditionsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown199 is set.</summary>
     public required bool Unknown199 { get; init; }
 
     /// <summary> Gets MultiPartAchievementConditionsKeys.</summary>
-    /// <remarks> references <see cref="MultiPartAchievementConditionsDat"/> on <see cref="Specification.GetMultiPartAchievementConditionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MultiPartAchievementConditionsDat"/> on <see cref="Specification.LoadMultiPartAchievementConditionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MultiPartAchievementConditionsKeys { get; init; }
 
     /// <summary> Gets Unknown216.</summary>

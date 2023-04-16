@@ -20,11 +20,11 @@ public sealed partial class HeistDoorsDat
     public required string Unknown8 { get; init; }
 
     /// <summary> Gets HeistJobsKey1.</summary>
-    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.LoadHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey1 { get; init; }
 
     /// <summary> Gets HeistJobsKey2.</summary>
-    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.LoadHeistJobsDat"/> index.</remarks>
     public required int? HeistJobsKey2 { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -40,7 +40,7 @@ public sealed partial class HeistDoorsDat
     public required int Unknown88 { get; init; }
 
     /// <summary> Gets HeistAreasKey.</summary>
-    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.GetHeistAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistAreasDat"/> on <see cref="Specification.LoadHeistAreasDat"/> index.</remarks>
     public required int? HeistAreasKey { get; init; }
 
     /// <summary>

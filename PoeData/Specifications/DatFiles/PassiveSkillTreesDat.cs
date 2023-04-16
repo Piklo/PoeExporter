@@ -65,11 +65,11 @@ public sealed partial class PassiveSkillTreesDat
     public required bool Unknown42 { get; init; }
 
     /// <summary> Gets Unknown43.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? Unknown43 { get; init; }
 
     /// <summary> Gets UIArt.</summary>
-    /// <remarks> references <see cref="PassiveSkillTreeUIArtDat"/> on <see cref="Specification.GetPassiveSkillTreeUIArtDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveSkillTreeUIArtDat"/> on <see cref="Specification.LoadPassiveSkillTreeUIArtDat"/> index.</remarks>
     public required int? UIArt { get; init; }
 
     /// <summary>

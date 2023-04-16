@@ -20,7 +20,7 @@ public sealed partial class AtlasExilesDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets InfluencedItemIncrStat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? InfluencedItemIncrStat { get; init; }
 
     /// <summary> Gets MapIcon.</summary>

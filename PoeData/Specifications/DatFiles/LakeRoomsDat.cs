@@ -26,7 +26,7 @@ public sealed partial class LakeRoomsDat
     public required ReadOnlyCollection<int> Unknown32 { get; init; }
 
     /// <summary> Gets Stats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets StatsValues.</summary>
@@ -42,7 +42,7 @@ public sealed partial class LakeRoomsDat
     public required int Type { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <summary> Gets Icon.</summary>
@@ -61,7 +61,7 @@ public sealed partial class LakeRoomsDat
     public required bool Unknown148 { get; init; }
 
     /// <summary> Gets ExtraStats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ExtraStats { get; init; }
 
     /// <summary> Gets ExtraStatsValues.</summary>
@@ -71,7 +71,7 @@ public sealed partial class LakeRoomsDat
     public required string ReminderText { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <summary>

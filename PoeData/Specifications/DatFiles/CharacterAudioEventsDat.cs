@@ -17,7 +17,7 @@ public sealed partial class CharacterAudioEventsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Event.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? Event { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -27,11 +27,11 @@ public sealed partial class CharacterAudioEventsDat
     public required int Unknown28 { get; init; }
 
     /// <summary> Gets Goddess_CharacterTextAudioKeys.</summary>
-    /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.GetCharacterTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.LoadCharacterTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Goddess_CharacterTextAudioKeys { get; init; }
 
     /// <summary> Gets JackTheAxe_CharacterTextAudioKeys.</summary>
-    /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.GetCharacterTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharacterTextAudioDat"/> on <see cref="Specification.LoadCharacterTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> JackTheAxe_CharacterTextAudioKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown64 is set.</summary>

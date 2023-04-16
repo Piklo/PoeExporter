@@ -44,7 +44,7 @@ public sealed partial class ActsDat
     public required int Unknown49 { get; init; }
 
     /// <summary> Gets Unknown53.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown53 { get; init; }
 
     /// <summary>

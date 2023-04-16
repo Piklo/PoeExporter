@@ -20,11 +20,11 @@ public sealed partial class TradeMarketCategoryDat
     public required string Name { get; init; }
 
     /// <summary> Gets StyleFlag.</summary>
-    /// <remarks> references <see cref="TradeMarketCategoryStyleFlagDat"/> on <see cref="Specification.GetTradeMarketCategoryStyleFlagDat"/> index.</remarks>
+    /// <remarks> references <see cref="TradeMarketCategoryStyleFlagDat"/> on <see cref="Specification.LoadTradeMarketCategoryStyleFlagDat"/> index.</remarks>
     public required int StyleFlag { get; init; }
 
     /// <summary> Gets Group.</summary>
-    /// <remarks> references <see cref="TradeMarketCategoryGroupsDat"/> on <see cref="Specification.GetTradeMarketCategoryGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TradeMarketCategoryGroupsDat"/> on <see cref="Specification.LoadTradeMarketCategoryGroupsDat"/> index.</remarks>
     public required int? Group { get; init; }
 
     /// <summary> Gets Unknown36.</summary>

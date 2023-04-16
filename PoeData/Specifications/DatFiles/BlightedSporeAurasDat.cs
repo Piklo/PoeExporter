@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class BlightedSporeAurasDat
 {
     /// <summary> Gets BuffDefinitionsKey.</summary>
-    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.LoadBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

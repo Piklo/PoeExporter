@@ -17,11 +17,11 @@ public sealed partial class GrantedEffectStatSetsDat
     public required string Id { get; init; }
 
     /// <summary> Gets ImplicitStats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ImplicitStats { get; init; }
 
     /// <summary> Gets ConstantStats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ConstantStats { get; init; }
 
     /// <summary> Gets ConstantStatsValues.</summary>

@@ -17,7 +17,7 @@ public sealed partial class MapDevicesDat
     public required string Id { get; init; }
 
     /// <summary> Gets MiscObject.</summary>
-    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.GetMiscObjectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscObjectsDat"/> on <see cref="Specification.LoadMiscObjectsDat"/> index.</remarks>
     public required int? MiscObject { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

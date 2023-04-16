@@ -17,7 +17,7 @@ public sealed partial class UITalkTextDat
     public required string Id { get; init; }
 
     /// <summary> Gets UITalkCategoriesKey.</summary>
-    /// <remarks> references <see cref="UITalkCategoriesDat"/> on <see cref="Specification.GetUITalkCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="UITalkCategoriesDat"/> on <see cref="Specification.LoadUITalkCategoriesDat"/> index.</remarks>
     public required int UITalkCategoriesKey { get; init; }
 
     /// <summary> Gets OGGFile.</summary>
@@ -30,7 +30,7 @@ public sealed partial class UITalkTextDat
     public required bool Unknown28 { get; init; }
 
     /// <summary> Gets NPCTextAudio.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? NPCTextAudio { get; init; }
 
     /// <summary>

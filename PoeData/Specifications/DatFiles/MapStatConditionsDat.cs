@@ -17,7 +17,7 @@ public sealed partial class MapStatConditionsDat
     public required string Id { get; init; }
 
     /// <summary> Gets StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>

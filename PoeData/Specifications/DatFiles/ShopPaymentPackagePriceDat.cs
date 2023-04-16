@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ShopPaymentPackagePriceDat
 {
     /// <summary> Gets ShopPaymentPackageKey.</summary>
-    /// <remarks> references <see cref="ShopPaymentPackageDat"/> on <see cref="Specification.GetShopPaymentPackageDat"/> index.</remarks>
+    /// <remarks> references <see cref="ShopPaymentPackageDat"/> on <see cref="Specification.LoadShopPaymentPackageDat"/> index.</remarks>
     public required int? ShopPaymentPackageKey { get; init; }
 
     /// <summary> Gets ShopCountryKey.</summary>
-    /// <remarks> references <see cref="ShopCountryDat"/> on <see cref="Specification.GetShopCountryDat"/> index.</remarks>
+    /// <remarks> references <see cref="ShopCountryDat"/> on <see cref="Specification.LoadShopCountryDat"/> index.</remarks>
     public required int? ShopCountryKey { get; init; }
 
     /// <summary> Gets Price.</summary>

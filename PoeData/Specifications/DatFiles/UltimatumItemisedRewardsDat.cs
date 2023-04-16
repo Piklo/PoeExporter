@@ -23,14 +23,14 @@ public sealed partial class UltimatumItemisedRewardsDat
     public required string RewardText { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets RewardType.</summary>
     public required int RewardType { get; init; }
 
     /// <summary> Gets SacrificeItem.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? SacrificeItem { get; init; }
 
     /// <summary> Gets SacrificeAmount.</summary>
@@ -43,7 +43,7 @@ public sealed partial class UltimatumItemisedRewardsDat
     public required bool Unknown68 { get; init; }
 
     /// <summary> Gets TrialMods.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TrialMods { get; init; }
 
     /// <summary>

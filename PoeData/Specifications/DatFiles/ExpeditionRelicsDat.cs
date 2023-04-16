@@ -20,7 +20,7 @@ public sealed partial class ExpeditionRelicsDat
     public required string Name { get; init; }
 
     /// <summary> Gets ItemTag.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required int? ItemTag { get; init; }
 
     /// <summary> Gets AOFile.</summary>

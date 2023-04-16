@@ -20,7 +20,7 @@ public sealed partial class HellscapePassiveTreeDat
     public required int AllocationsRequired { get; init; }
 
     /// <summary> Gets Passives.</summary>
-    /// <remarks> references <see cref="HellscapePassivesDat"/> on <see cref="Specification.GetHellscapePassivesDat"/> index.</remarks>
+    /// <remarks> references <see cref="HellscapePassivesDat"/> on <see cref="Specification.LoadHellscapePassivesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Passives { get; init; }
 
     /// <summary>

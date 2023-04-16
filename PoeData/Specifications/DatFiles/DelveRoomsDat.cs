@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class DelveRoomsDat
 {
     /// <summary> Gets DelveBiomesKey.</summary>
-    /// <remarks> references <see cref="DelveBiomesDat"/> on <see cref="Specification.GetDelveBiomesDat"/> index.</remarks>
+    /// <remarks> references <see cref="DelveBiomesDat"/> on <see cref="Specification.LoadDelveBiomesDat"/> index.</remarks>
     public required int? DelveBiomesKey { get; init; }
 
     /// <summary> Gets DelveFeaturesKey.</summary>
-    /// <remarks> references <see cref="DelveFeaturesDat"/> on <see cref="Specification.GetDelveFeaturesDat"/> index.</remarks>
+    /// <remarks> references <see cref="DelveFeaturesDat"/> on <see cref="Specification.LoadDelveFeaturesDat"/> index.</remarks>
     public required int? DelveFeaturesKey { get; init; }
 
     /// <summary> Gets ARMFile.</summary>

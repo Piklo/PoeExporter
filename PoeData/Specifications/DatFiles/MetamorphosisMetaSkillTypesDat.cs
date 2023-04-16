@@ -32,7 +32,7 @@ public sealed partial class MetamorphosisMetaSkillTypesDat
     public required string AvailableArt { get; init; }
 
     /// <summary> Gets ItemisedSample.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? ItemisedSample { get; init; }
 
     /// <summary> Gets BodypartName.</summary>
@@ -42,7 +42,7 @@ public sealed partial class MetamorphosisMetaSkillTypesDat
     public required int Unknown72 { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets BodypartNamePlural.</summary>

@@ -35,7 +35,7 @@ public sealed partial class MusicDat
     public required string Unknown37 { get; init; }
 
     /// <summary> Gets MusicCategories.</summary>
-    /// <remarks> references <see cref="MusicCategoriesDat"/> on <see cref="Specification.GetMusicCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MusicCategoriesDat"/> on <see cref="Specification.LoadMusicCategoriesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MusicCategories { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown61 is set.</summary>

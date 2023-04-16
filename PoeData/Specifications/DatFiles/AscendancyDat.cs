@@ -20,7 +20,7 @@ public sealed partial class AscendancyDat
     public required int ClassNo { get; init; }
 
     /// <summary> Gets Characters.</summary>
-    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.LoadCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Characters { get; init; }
 
     /// <summary> Gets CoordinateRect.</summary>

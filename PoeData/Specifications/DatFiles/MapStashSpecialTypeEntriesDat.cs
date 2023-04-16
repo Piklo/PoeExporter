@@ -20,7 +20,7 @@ public sealed partial class MapStashSpecialTypeEntriesDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets MapItem.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? MapItem { get; init; }
 
     /// <summary> Gets Name.</summary>

@@ -20,7 +20,7 @@ public sealed partial class QuestTrackerGroupDat
     public required string Name { get; init; }
 
     /// <summary> Gets QuestType.</summary>
-    /// <remarks> references <see cref="QuestTypeDat"/> on <see cref="Specification.GetQuestTypeDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestTypeDat"/> on <see cref="Specification.LoadQuestTypeDat"/> index.</remarks>
     public required int? QuestType { get; init; }
 
     /// <summary>

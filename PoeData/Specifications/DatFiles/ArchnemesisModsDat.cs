@@ -14,14 +14,14 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ArchnemesisModsDat
 {
     /// <summary> Gets Mod.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Name.</summary>
     public required string Name { get; init; }
 
     /// <summary> Gets Visual.</summary>
-    /// <remarks> references <see cref="ArchnemesisModVisualsDat"/> on <see cref="Specification.GetArchnemesisModVisualsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ArchnemesisModVisualsDat"/> on <see cref="Specification.LoadArchnemesisModVisualsDat"/> index.</remarks>
     public required int? Visual { get; init; }
 
     /// <summary> Gets TextStyles.</summary>

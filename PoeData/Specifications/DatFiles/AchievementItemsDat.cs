@@ -29,7 +29,7 @@ public sealed partial class AchievementItemsDat
     public required int CompletionsRequired { get; init; }
 
     /// <summary> Gets AchievementsKey.</summary>
-    /// <remarks> references <see cref="AchievementsDat"/> on <see cref="Specification.GetAchievementsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementsDat"/> on <see cref="Specification.LoadAchievementsDat"/> index.</remarks>
     public required int? AchievementsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown44 is set.</summary>

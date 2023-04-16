@@ -26,7 +26,7 @@ public sealed partial class BuffVisualsDat
     public required ReadOnlyCollection<string> EPKFiles2 { get; init; }
 
     /// <summary> Gets PreloadGroups.</summary>
-    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.LoadPreloadGroupsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PreloadGroups { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown64 is set.</summary>
@@ -36,11 +36,11 @@ public sealed partial class BuffVisualsDat
     public required string BuffName { get; init; }
 
     /// <summary> Gets MiscAnimated1.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated1 { get; init; }
 
     /// <summary> Gets MiscAnimated2.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated2 { get; init; }
 
     /// <summary> Gets BuffDescription.</summary>
@@ -62,11 +62,11 @@ public sealed partial class BuffVisualsDat
     public required ReadOnlyCollection<string> EPKFiles { get; init; }
 
     /// <summary> Gets BuffVisualOrbs.</summary>
-    /// <remarks> references <see cref="BuffVisualOrbsDat"/> on <see cref="Specification.GetBuffVisualOrbsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffVisualOrbsDat"/> on <see cref="Specification.LoadBuffVisualOrbsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BuffVisualOrbs { get; init; }
 
     /// <summary> Gets MiscAnimated3.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated3 { get; init; }
 
     /// <summary> Gets Unknown194.</summary>

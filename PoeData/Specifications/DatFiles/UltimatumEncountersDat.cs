@@ -20,14 +20,14 @@ public sealed partial class UltimatumEncountersDat
     public required string Description { get; init; }
 
     /// <summary> Gets ModTypes.</summary>
-    /// <remarks> references <see cref="UltimatumModifierTypesDat"/> on <see cref="Specification.GetUltimatumModifierTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="UltimatumModifierTypesDat"/> on <see cref="Specification.LoadUltimatumModifierTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModTypes { get; init; }
 
     /// <summary> Gets BossARMFile.</summary>
     public required string BossARMFile { get; init; }
 
     /// <summary> Gets Type.</summary>
-    /// <remarks> references <see cref="UltimatumEncounterTypesDat"/> on <see cref="Specification.GetUltimatumEncounterTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="UltimatumEncounterTypesDat"/> on <see cref="Specification.LoadUltimatumEncounterTypesDat"/> index.</remarks>
     public required int? Type { get; init; }
 
     /// <summary> Gets Icon.</summary>

@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SkillSurgeEffectsDat
 {
     /// <summary> Gets GrantedEffectsKey.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -30,7 +30,7 @@ public sealed partial class SkillSurgeEffectsDat
     public required bool Unknown26 { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown43 is set.</summary>

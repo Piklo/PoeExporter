@@ -17,7 +17,7 @@ public sealed partial class AtlasAwakeningStatsDat
     public required int AwakeningLevel { get; init; }
 
     /// <summary> Gets Stats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets Values.</summary>

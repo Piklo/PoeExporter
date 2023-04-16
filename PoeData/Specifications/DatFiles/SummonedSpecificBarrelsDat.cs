@@ -17,7 +17,7 @@ public sealed partial class SummonedSpecificBarrelsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Chest.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required int? Chest { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

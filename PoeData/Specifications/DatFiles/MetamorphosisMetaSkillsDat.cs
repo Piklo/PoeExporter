@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MetamorphosisMetaSkillsDat
 {
     /// <summary> Gets Monster.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Monster { get; init; }
 
     /// <summary> Gets SkillType.</summary>
-    /// <remarks> references <see cref="MetamorphosisMetaSkillTypesDat"/> on <see cref="Specification.GetMetamorphosisMetaSkillTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MetamorphosisMetaSkillTypesDat"/> on <see cref="Specification.LoadMetamorphosisMetaSkillTypesDat"/> index.</remarks>
     public required int? SkillType { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
@@ -34,11 +34,11 @@ public sealed partial class MetamorphosisMetaSkillsDat
     public required int? Unknown80 { get; init; }
 
     /// <summary> Gets Animation.</summary>
-    /// <remarks> references <see cref="AnimationDat"/> on <see cref="Specification.GetAnimationDat"/> index.</remarks>
+    /// <remarks> references <see cref="AnimationDat"/> on <see cref="Specification.LoadAnimationDat"/> index.</remarks>
     public required int? Animation { get; init; }
 
     /// <summary> Gets Stats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets StatsValues.</summary>
@@ -51,7 +51,7 @@ public sealed partial class MetamorphosisMetaSkillsDat
     public required int? Unknown148 { get; init; }
 
     /// <summary> Gets GrantedEffects.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GrantedEffects { get; init; }
 
     /// <summary> Gets Unknown180.</summary>
@@ -67,7 +67,7 @@ public sealed partial class MetamorphosisMetaSkillsDat
     public required string Script2 { get; init; }
 
     /// <summary> Gets Mods.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <summary> Gets Name.</summary>
@@ -98,7 +98,7 @@ public sealed partial class MetamorphosisMetaSkillsDat
     public required ReadOnlyCollection<int> Unknown316 { get; init; }
 
     /// <summary> Gets MiscAnimations.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MiscAnimations { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown348 is set.</summary>

@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class RaceTimesDat
 {
     /// <summary> Gets RacesKey.</summary>
-    /// <remarks> references <see cref="RacesDat"/> on <see cref="Specification.GetRacesDat"/> index.</remarks>
+    /// <remarks> references <see cref="RacesDat"/> on <see cref="Specification.LoadRacesDat"/> index.</remarks>
     public required int? RacesKey { get; init; }
 
     /// <summary> Gets Index.</summary>

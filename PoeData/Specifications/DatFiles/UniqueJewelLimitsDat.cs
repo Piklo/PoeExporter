@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class UniqueJewelLimitsDat
 {
     /// <summary> Gets JewelName.</summary>
-    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.LoadWordsDat"/> index.</remarks>
     public required int? JewelName { get; init; }
 
     /// <summary> Gets Limit.</summary>

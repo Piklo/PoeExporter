@@ -47,14 +47,14 @@ public sealed partial class AtlasRegionsDat
     public required int Unknown80 { get; init; }
 
     /// <summary> Gets AdviceAudio.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? AdviceAudio { get; init; }
 
     /// <summary> Gets Unknown100.</summary>
     public required int? Unknown100 { get; init; }
 
     /// <summary> Gets Quest.</summary>
-    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.GetQuestDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestDat"/> on <see cref="Specification.LoadQuestDat"/> index.</remarks>
     public required int? Quest { get; init; }
 
     /// <summary>

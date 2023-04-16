@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HarvestPlantBoostersDat
 {
     /// <summary> Gets HarvestObjectsKey.</summary>
-    /// <remarks> references <see cref="HarvestObjectsDat"/> on <see cref="Specification.GetHarvestObjectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HarvestObjectsDat"/> on <see cref="Specification.LoadHarvestObjectsDat"/> index.</remarks>
     public required int? HarvestObjectsKey { get; init; }
 
     /// <summary> Gets Radius.</summary>

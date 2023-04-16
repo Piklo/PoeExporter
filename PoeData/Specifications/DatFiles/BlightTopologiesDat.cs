@@ -17,7 +17,7 @@ public sealed partial class BlightTopologiesDat
     public required string Id { get; init; }
 
     /// <summary> Gets BlightTopologyNodesKey.</summary>
-    /// <remarks> references <see cref="BlightTopologyNodesDat"/> on <see cref="Specification.GetBlightTopologyNodesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BlightTopologyNodesDat"/> on <see cref="Specification.LoadBlightTopologyNodesDat"/> index.</remarks>
     public required int? BlightTopologyNodesKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

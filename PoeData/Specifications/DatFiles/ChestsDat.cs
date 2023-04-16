@@ -50,22 +50,22 @@ public sealed partial class ChestsDat
     public required ReadOnlyCollection<int> Unknown49 { get; init; }
 
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown81 is set.</summary>
     public required bool Unknown81 { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets TagsKeys.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TagsKeys { get; init; }
 
     /// <summary> Gets ChestEffectsKey.</summary>
-    /// <remarks> references <see cref="ChestEffectsDat"/> on <see cref="Specification.GetChestEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestEffectsDat"/> on <see cref="Specification.LoadChestEffectsDat"/> index.</remarks>
     public required int? ChestEffectsKey { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
@@ -78,15 +78,15 @@ public sealed partial class ChestsDat
     public required int MaxLevel { get; init; }
 
     /// <summary> Gets Corrupt_AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? Corrupt_AchievementItemsKey { get; init; }
 
     /// <summary> Gets CurrencyUse_AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? CurrencyUse_AchievementItemsKey { get; init; }
 
     /// <summary> Gets Encounter_AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Encounter_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Unknown194.</summary>
@@ -135,7 +135,7 @@ public sealed partial class ChestsDat
     public required bool IsHardmode { get; init; }
 
     /// <summary> Gets StatsHardmode.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsHardmode { get; init; }
 
     /// <summary>

@@ -47,7 +47,7 @@ public sealed partial class NPCDialogueStylesDat
     public required ReadOnlyCollection<int> Unknown76 { get; init; }
 
     /// <summary> Gets Unknown92.</summary>
-    /// <remarks> references <see cref="NPCDialogueStylesDat"/> on <see cref="Specification.GetNPCDialogueStylesDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCDialogueStylesDat"/> on <see cref="Specification.LoadNPCDialogueStylesDat"/> index.</remarks>
     public required int? Unknown92 { get; init; }
 
     /// <summary> Gets Unknown100.</summary>

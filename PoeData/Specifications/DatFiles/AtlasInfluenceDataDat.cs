@@ -14,18 +14,18 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AtlasInfluenceDataDat
 {
     /// <summary> Gets InfluencePack.</summary>
-    /// <remarks> references <see cref="AtlasInfluenceOutcomesDat"/> on <see cref="Specification.GetAtlasInfluenceOutcomesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasInfluenceOutcomesDat"/> on <see cref="Specification.LoadAtlasInfluenceOutcomesDat"/> index.</remarks>
     public required int? InfluencePack { get; init; }
 
     /// <summary> Gets MonsterPacks.</summary>
-    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.LoadMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacks { get; init; }
 
     /// <summary> Gets Unknown32.</summary>
     public required int? Unknown32 { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown48 { get; init; }
 
     /// <summary> Gets Unknown64.</summary>

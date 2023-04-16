@@ -17,7 +17,7 @@ public sealed partial class ChestClustersDat
     public required string Id { get; init; }
 
     /// <summary> Gets ChestsKeys.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ChestsKeys { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

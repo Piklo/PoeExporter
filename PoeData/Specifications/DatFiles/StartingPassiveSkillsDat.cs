@@ -17,7 +17,7 @@ public sealed partial class StartingPassiveSkillsDat
     public required string Id { get; init; }
 
     /// <summary> Gets PassiveSkills.</summary>
-    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.LoadPassiveSkillsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PassiveSkills { get; init; }
 
     /// <summary>

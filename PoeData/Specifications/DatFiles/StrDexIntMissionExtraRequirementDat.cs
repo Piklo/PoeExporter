@@ -38,7 +38,7 @@ public sealed partial class StrDexIntMissionExtraRequirementDat
     public required bool HasLimitedPortals { get; init; }
 
     /// <summary> Gets NPCTalkKey.</summary>
-    /// <remarks> references <see cref="NPCTalkDat"/> on <see cref="Specification.GetNPCTalkDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTalkDat"/> on <see cref="Specification.LoadNPCTalkDat"/> index.</remarks>
     public required int? NPCTalkKey { get; init; }
 
     /// <summary> Gets TimeLimitBonusFromObjective.</summary>

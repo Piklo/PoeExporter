@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class EventSeasonRewardsDat
 {
     /// <summary> Gets EventSeasonKey.</summary>
-    /// <remarks> references <see cref="EventSeasonDat"/> on <see cref="Specification.GetEventSeasonDat"/> index.</remarks>
+    /// <remarks> references <see cref="EventSeasonDat"/> on <see cref="Specification.LoadEventSeasonDat"/> index.</remarks>
     public required int? EventSeasonKey { get; init; }
 
     /// <summary> Gets Point.</summary>

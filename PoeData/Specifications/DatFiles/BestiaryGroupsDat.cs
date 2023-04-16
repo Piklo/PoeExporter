@@ -32,11 +32,11 @@ public sealed partial class BestiaryGroupsDat
     public required string IconSmall { get; init; }
 
     /// <summary> Gets BestiaryFamiliesKey.</summary>
-    /// <remarks> references <see cref="BestiaryFamiliesDat"/> on <see cref="Specification.GetBestiaryFamiliesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BestiaryFamiliesDat"/> on <see cref="Specification.LoadBestiaryFamiliesDat"/> index.</remarks>
     public required int? BestiaryFamiliesKey { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary>

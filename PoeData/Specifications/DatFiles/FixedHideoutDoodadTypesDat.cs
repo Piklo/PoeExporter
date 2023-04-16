@@ -17,11 +17,11 @@ public sealed partial class FixedHideoutDoodadTypesDat
     public required string Id { get; init; }
 
     /// <summary> Gets HideoutDoodadsKeys.</summary>
-    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.GetHideoutDoodadsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.LoadHideoutDoodadsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HideoutDoodadsKeys { get; init; }
 
     /// <summary> Gets BaseTypeHideoutDoodadsKey.</summary>
-    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.GetHideoutDoodadsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HideoutDoodadsDat"/> on <see cref="Specification.LoadHideoutDoodadsDat"/> index.</remarks>
     public required int? BaseTypeHideoutDoodadsKey { get; init; }
 
     /// <summary>

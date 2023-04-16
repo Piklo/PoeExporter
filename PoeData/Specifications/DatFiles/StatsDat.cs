@@ -26,7 +26,7 @@ public sealed partial class StatsDat
     public required bool IsWeaponLocal { get; init; }
 
     /// <summary> Gets Semantics.</summary>
-    /// <remarks> references <see cref="StatSemanticsDat"/> on <see cref="Specification.GetStatSemanticsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatSemanticsDat"/> on <see cref="Specification.LoadStatSemanticsDat"/> index.</remarks>
     public required int Semantics { get; init; }
 
     /// <summary> Gets Text.</summary>
@@ -39,11 +39,11 @@ public sealed partial class StatsDat
     public required bool IsVirtual { get; init; }
 
     /// <summary> Gets MainHandAlias_StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? MainHandAlias_StatsKey { get; init; }
 
     /// <summary> Gets OffHandAlias_StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? OffHandAlias_StatsKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown41 is set.</summary>
@@ -57,7 +57,7 @@ public sealed partial class StatsDat
     public required ReadOnlyCollection<string> BelongsActiveSkillsKey { get; init; }
 
     /// <summary> Gets Category.</summary>
-    /// <remarks> references <see cref="PassiveSkillStatCategoriesDat"/> on <see cref="Specification.GetPassiveSkillStatCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveSkillStatCategoriesDat"/> on <see cref="Specification.LoadPassiveSkillStatCategoriesDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown78 is set.</summary>
@@ -70,7 +70,7 @@ public sealed partial class StatsDat
     public required bool IsScalable { get; init; }
 
     /// <summary> Gets ContextFlags.</summary>
-    /// <remarks> references <see cref="VirtualStatContextFlagsDat"/> on <see cref="Specification.GetVirtualStatContextFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="VirtualStatContextFlagsDat"/> on <see cref="Specification.LoadVirtualStatContextFlagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ContextFlags { get; init; }
 
     /// <summary> Gets Unknown97.</summary>

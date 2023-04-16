@@ -26,7 +26,7 @@ public sealed partial class PerandusGuardsDat
     public required int MaxLevel { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
-    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.LoadMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets Unknown36.</summary>

@@ -17,7 +17,7 @@ public sealed partial class ActiveSkillTypeDat
     public required string Id { get; init; }
 
     /// <summary> Gets FlagStat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? FlagStat { get; init; }
 
     /// <summary>

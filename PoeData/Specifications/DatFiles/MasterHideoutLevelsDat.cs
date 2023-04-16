@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MasterHideoutLevelsDat
 {
     /// <summary> Gets NPCMasterKey.</summary>
-    /// <remarks> references <see cref="NPCMasterDat"/> on <see cref="Specification.GetNPCMasterDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCMasterDat"/> on <see cref="Specification.LoadNPCMasterDat"/> index.</remarks>
     public required int? NPCMasterKey { get; init; }
 
     /// <summary> Gets Level.</summary>

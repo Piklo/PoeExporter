@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MicrotransactionSlotDat
 {
     /// <summary> Gets Id.</summary>
-    /// <remarks> references <see cref="MicrotransactionSlotIdDat"/> on <see cref="Specification.GetMicrotransactionSlotIdDat"/> index.</remarks>
+    /// <remarks> references <see cref="MicrotransactionSlotIdDat"/> on <see cref="Specification.LoadMicrotransactionSlotIdDat"/> index.</remarks>
     public required int Id { get; init; }
 
     /// <summary> Gets Unknown4.</summary>

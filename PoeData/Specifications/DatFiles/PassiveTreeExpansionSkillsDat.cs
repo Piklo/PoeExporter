@@ -14,19 +14,19 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class PassiveTreeExpansionSkillsDat
 {
     /// <summary> Gets PassiveSkillsKey.</summary>
-    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.LoadPassiveSkillsDat"/> index.</remarks>
     public required int? PassiveSkillsKey { get; init; }
 
     /// <summary> Gets Mastery_PassiveSkillsKey.</summary>
-    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.GetPassiveSkillsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveSkillsDat"/> on <see cref="Specification.LoadPassiveSkillsDat"/> index.</remarks>
     public required int? Mastery_PassiveSkillsKey { get; init; }
 
     /// <summary> Gets TagsKey.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required int? TagsKey { get; init; }
 
     /// <summary> Gets PassiveTreeExpansionJewelSizesKey.</summary>
-    /// <remarks> references <see cref="PassiveTreeExpansionJewelSizesDat"/> on <see cref="Specification.GetPassiveTreeExpansionJewelSizesDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveTreeExpansionJewelSizesDat"/> on <see cref="Specification.LoadPassiveTreeExpansionJewelSizesDat"/> index.</remarks>
     public required int? PassiveTreeExpansionJewelSizesKey { get; init; }
 
     /// <summary>

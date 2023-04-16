@@ -29,7 +29,7 @@ public sealed partial class WorldAreasDat
     public required bool HasWaypoint { get; init; }
 
     /// <summary> Gets Connections_WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Connections_WorldAreasKeys { get; init; }
 
     /// <summary> Gets AreaLevel.</summary>
@@ -57,11 +57,11 @@ public sealed partial class WorldAreasDat
     public required int Unknown94 { get; init; }
 
     /// <summary> Gets TopologiesKeys.</summary>
-    /// <remarks> references <see cref="TopologiesDat"/> on <see cref="Specification.GetTopologiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="TopologiesDat"/> on <see cref="Specification.LoadTopologiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> TopologiesKeys { get; init; }
 
     /// <summary> Gets ParentTown_WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? ParentTown_WorldAreasKey { get; init; }
 
     /// <summary> Gets Unknown122.</summary>
@@ -74,15 +74,15 @@ public sealed partial class WorldAreasDat
     public required int? Unknown142 { get; init; }
 
     /// <summary> Gets Bosses_MonsterVarietiesKeys.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Bosses_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets Monsters_MonsterVarietiesKeys.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Monsters_MonsterVarietiesKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_TagsKeys.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_TagsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>
@@ -92,25 +92,25 @@ public sealed partial class WorldAreasDat
     public required bool IsMapArea { get; init; }
 
     /// <summary> Gets FullClear_AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> FullClear_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets Unknown239.</summary>
     public required int? Unknown239 { get; init; }
 
     /// <summary> Gets AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItemsKey { get; init; }
 
     /// <summary> Gets ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModsKeys { get; init; }
 
     /// <summary> Gets Unknown287.</summary>
     public required int Unknown287 { get; init; }
 
     /// <summary> Gets VaalArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> VaalArea { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown307 is set.</summary>
@@ -120,7 +120,7 @@ public sealed partial class WorldAreasDat
     public required int MaxLevel { get; init; }
 
     /// <summary> Gets AreaTypeTags.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AreaTypeTags { get; init; }
 
     /// <summary> Gets Unknown328.</summary>
@@ -139,7 +139,7 @@ public sealed partial class WorldAreasDat
     public required int Unknown345 { get; init; }
 
     /// <summary> Gets Tags.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tags { get; init; }
 
     /// <summary> Gets a value indicating whether IsVaalArea is set.</summary>
@@ -152,11 +152,11 @@ public sealed partial class WorldAreasDat
     public required bool IsLabyrinthArea { get; init; }
 
     /// <summary> Gets TwinnedFullClear_AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? TwinnedFullClear_AchievementItemsKey { get; init; }
 
     /// <summary> Gets Enter_AchievementItemsKey.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? Enter_AchievementItemsKey { get; init; }
 
     /// <summary> Gets TSIFile.</summary>
@@ -166,7 +166,7 @@ public sealed partial class WorldAreasDat
     public required int? Unknown408 { get; init; }
 
     /// <summary> Gets WaypointActivation_AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WaypointActivation_AchievementItemsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether IsUniqueMapArea is set.</summary>
@@ -176,11 +176,11 @@ public sealed partial class WorldAreasDat
     public required bool IsLabyrinthBossArea { get; init; }
 
     /// <summary> Gets FirstEntry_NPCTextAudioKey.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? FirstEntry_NPCTextAudioKey { get; init; }
 
     /// <summary> Gets FirstEntry_SoundEffectsKey.</summary>
-    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.LoadSoundEffectsDat"/> index.</remarks>
     public required int? FirstEntry_SoundEffectsKey { get; init; }
 
     /// <summary> Gets FirstEntry_NPCsKey.</summary>
@@ -191,7 +191,7 @@ public sealed partial class WorldAreasDat
     public required int Unknown482 { get; init; }
 
     /// <summary> Gets EnvironmentsKey.</summary>
-    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.GetEnvironmentsDat"/> index.</remarks>
+    /// <remarks> references <see cref="EnvironmentsDat"/> on <see cref="Specification.LoadEnvironmentsDat"/> index.</remarks>
     public required int? EnvironmentsKey { get; init; }
 
     /// <summary> Gets Unknown502.</summary>
@@ -246,7 +246,7 @@ public sealed partial class WorldAreasDat
     public required int? Unknown608 { get; init; }
 
     /// <summary> Gets Unknown624.</summary>
-    /// <remarks> references <see cref="RulesetsDat"/> on <see cref="Specification.GetRulesetsDat"/> index.</remarks>
+    /// <remarks> references <see cref="RulesetsDat"/> on <see cref="Specification.LoadRulesetsDat"/> index.</remarks>
     public required int? Unknown624 { get; init; }
 
     /// <summary>

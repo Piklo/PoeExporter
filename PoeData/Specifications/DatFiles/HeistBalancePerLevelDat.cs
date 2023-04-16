@@ -35,23 +35,23 @@ public sealed partial class HeistBalancePerLevelDat
     public required float Unknown24 { get; init; }
 
     /// <summary> Gets HeistValueScalingKey1.</summary>
-    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.GetHeistValueScalingDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.LoadHeistValueScalingDat"/> index.</remarks>
     public required int? HeistValueScalingKey1 { get; init; }
 
     /// <summary> Gets HeistValueScalingKey2.</summary>
-    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.GetHeistValueScalingDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.LoadHeistValueScalingDat"/> index.</remarks>
     public required int? HeistValueScalingKey2 { get; init; }
 
     /// <summary> Gets HeistValueScalingKey3.</summary>
-    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.GetHeistValueScalingDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.LoadHeistValueScalingDat"/> index.</remarks>
     public required int? HeistValueScalingKey3 { get; init; }
 
     /// <summary> Gets HeistValueScalingKey4.</summary>
-    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.GetHeistValueScalingDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.LoadHeistValueScalingDat"/> index.</remarks>
     public required int? HeistValueScalingKey4 { get; init; }
 
     /// <summary> Gets HeistValueScalingKey5.</summary>
-    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.GetHeistValueScalingDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.LoadHeistValueScalingDat"/> index.</remarks>
     public required int? HeistValueScalingKey5 { get; init; }
 
     /// <summary> Gets Unknown108.</summary>
@@ -67,11 +67,11 @@ public sealed partial class HeistBalancePerLevelDat
     public required float Unknown120 { get; init; }
 
     /// <summary> Gets HeistValueScalingKey6.</summary>
-    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.GetHeistValueScalingDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.LoadHeistValueScalingDat"/> index.</remarks>
     public required int? HeistValueScalingKey6 { get; init; }
 
     /// <summary> Gets HeistValueScalingKey7.</summary>
-    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.GetHeistValueScalingDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistValueScalingDat"/> on <see cref="Specification.LoadHeistValueScalingDat"/> index.</remarks>
     public required int? HeistValueScalingKey7 { get; init; }
 
     /// <summary> Gets Unknown156.</summary>

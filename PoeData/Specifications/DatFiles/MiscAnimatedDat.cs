@@ -20,7 +20,7 @@ public sealed partial class MiscAnimatedDat
     public required string AOFile { get; init; }
 
     /// <summary> Gets PreloadGroupsKeys.</summary>
-    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.LoadPreloadGroupsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PreloadGroupsKeys { get; init; }
 
     /// <summary> Gets Unknown32.</summary>

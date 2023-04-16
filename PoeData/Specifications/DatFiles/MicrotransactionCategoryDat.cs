@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MicrotransactionCategoryDat
 {
     /// <summary> Gets Id.</summary>
-    /// <remarks> references <see cref="MicrotransactionCategoryIdDat"/> on <see cref="Specification.GetMicrotransactionCategoryIdDat"/> index.</remarks>
+    /// <remarks> references <see cref="MicrotransactionCategoryIdDat"/> on <see cref="Specification.LoadMicrotransactionCategoryIdDat"/> index.</remarks>
     public required int Id { get; init; }
 
     /// <summary> Gets Name.</summary>

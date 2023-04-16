@@ -17,7 +17,7 @@ public sealed partial class HarvestCraftFiltersDat
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItem.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItem { get; init; }
 
     /// <summary> Gets Name.</summary>

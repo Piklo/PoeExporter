@@ -17,7 +17,7 @@ public sealed partial class RacesDat
     public required string Id { get; init; }
 
     /// <summary> Gets Mods.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

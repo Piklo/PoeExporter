@@ -17,11 +17,11 @@ public sealed partial class BetrayalChoiceActionsDat
     public required string Id { get; init; }
 
     /// <summary> Gets BetrayalChoicesKey.</summary>
-    /// <remarks> references <see cref="BetrayalChoicesDat"/> on <see cref="Specification.GetBetrayalChoicesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BetrayalChoicesDat"/> on <see cref="Specification.LoadBetrayalChoicesDat"/> index.</remarks>
     public required int? BetrayalChoicesKey { get; init; }
 
     /// <summary> Gets ClientStringsKey.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? ClientStringsKey { get; init; }
 
     /// <summary>

@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistPatrolPacksDat
 {
     /// <summary> Gets MonsterPacksKey.</summary>
-    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.LoadMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPacksKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

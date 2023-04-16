@@ -20,11 +20,11 @@ public sealed partial class ShrineBuffsDat
     public required ReadOnlyCollection<int> BuffStatValues { get; init; }
 
     /// <summary> Gets BuffDefinitionsKey.</summary>
-    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.GetBuffDefinitionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffDefinitionsDat"/> on <see cref="Specification.LoadBuffDefinitionsDat"/> index.</remarks>
     public required int? BuffDefinitionsKey { get; init; }
 
     /// <summary> Gets BuffVisual.</summary>
-    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.LoadBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisual { get; init; }
 
     /// <summary>

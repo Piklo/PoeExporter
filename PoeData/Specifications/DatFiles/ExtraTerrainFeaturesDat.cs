@@ -32,11 +32,11 @@ public sealed partial class ExtraTerrainFeaturesDat
     public required ReadOnlyCollection<int> Unknown57 { get; init; }
 
     /// <summary> Gets Unknown73.</summary>
-    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.GetExtraTerrainFeaturesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.LoadExtraTerrainFeaturesDat"/> index.</remarks>
     public required int? Unknown73 { get; init; }
 
     /// <summary> Gets WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown97 is set.</summary>

@@ -17,11 +17,11 @@ public sealed partial class MonsterSpawnerOverridesDat
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Base_MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Base_MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Override_MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Override_MonsterVarietiesKey { get; init; }
 
     /// <summary>

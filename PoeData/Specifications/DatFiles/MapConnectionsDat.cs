@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MapConnectionsDat
 {
     /// <summary> Gets MapPinsKey0.</summary>
-    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.LoadMapPinsDat"/> index.</remarks>
     public required int? MapPinsKey0 { get; init; }
 
     /// <summary> Gets MapPinsKey1.</summary>
-    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.GetMapPinsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MapPinsDat"/> on <see cref="Specification.LoadMapPinsDat"/> index.</remarks>
     public required int? MapPinsKey1 { get; init; }
 
     /// <summary> Gets Unknown32.</summary>

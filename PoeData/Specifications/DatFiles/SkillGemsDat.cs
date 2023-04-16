@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SkillGemsDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets GrantedEffectsKey.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey { get; init; }
 
     /// <summary> Gets Str.</summary>
@@ -31,11 +31,11 @@ public sealed partial class SkillGemsDat
     public required int Int { get; init; }
 
     /// <summary> Gets GemTagsKeys.</summary>
-    /// <remarks> references <see cref="GemTagsDat"/> on <see cref="Specification.GetGemTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GemTagsDat"/> on <see cref="Specification.LoadGemTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> GemTagsKeys { get; init; }
 
     /// <summary> Gets VaalVariant_BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? VaalVariant_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets a value indicating whether IsVaalVariant is set.</summary>
@@ -45,15 +45,15 @@ public sealed partial class SkillGemsDat
     public required string Description { get; init; }
 
     /// <summary> Gets Consumed_ModsKey.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? Consumed_ModsKey { get; init; }
 
     /// <summary> Gets GrantedEffectsKey2.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectsKey2 { get; init; }
 
     /// <summary> Gets MinionGlobalSkillLevelStat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? MinionGlobalSkillLevelStat { get; init; }
 
     /// <summary> Gets SupportSkillName.</summary>
@@ -78,15 +78,15 @@ public sealed partial class SkillGemsDat
     public required bool Unknown146 { get; init; }
 
     /// <summary> Gets AwakenedVariant.</summary>
-    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.LoadSkillGemsDat"/> index.</remarks>
     public required int? AwakenedVariant { get; init; }
 
     /// <summary> Gets RegularVariant.</summary>
-    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.LoadSkillGemsDat"/> index.</remarks>
     public required int? RegularVariant { get; init; }
 
     /// <summary> Gets GrantedEffectHardMode.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? GrantedEffectHardMode { get; init; }
 
     /// <summary> Gets Unknown179.</summary>
@@ -96,7 +96,7 @@ public sealed partial class SkillGemsDat
     public required int Unknown195 { get; init; }
 
     /// <summary> Gets ItemExperienceType.</summary>
-    /// <remarks> references <see cref="ItemExperienceTypesDat"/> on <see cref="Specification.GetItemExperienceTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemExperienceTypesDat"/> on <see cref="Specification.LoadItemExperienceTypesDat"/> index.</remarks>
     public required int? ItemExperienceType { get; init; }
 
     /// <summary>

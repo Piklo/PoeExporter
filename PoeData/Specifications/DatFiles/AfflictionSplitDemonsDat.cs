@@ -17,11 +17,11 @@ public sealed partial class AfflictionSplitDemonsDat
     public required int Unknown0 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets AfflictionRandomModCategoriesKey.</summary>
-    /// <remarks> references <see cref="AfflictionRandomModCategoriesDat"/> on <see cref="Specification.GetAfflictionRandomModCategoriesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AfflictionRandomModCategoriesDat"/> on <see cref="Specification.LoadAfflictionRandomModCategoriesDat"/> index.</remarks>
     public required int? AfflictionRandomModCategoriesKey { get; init; }
 
     /// <summary>

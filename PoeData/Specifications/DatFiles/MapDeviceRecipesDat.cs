@@ -17,15 +17,15 @@ public sealed partial class MapDeviceRecipesDat
     public required string Id { get; init; }
 
     /// <summary> Gets RecipeItems.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> RecipeItems { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <summary> Gets MicrotransactionPortalVariation.</summary>
-    /// <remarks> references <see cref="MicrotransactionPortalVariationsDat"/> on <see cref="Specification.GetMicrotransactionPortalVariationsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MicrotransactionPortalVariationsDat"/> on <see cref="Specification.LoadMicrotransactionPortalVariationsDat"/> index.</remarks>
     public required int? MicrotransactionPortalVariation { get; init; }
 
     /// <summary> Gets AreaLevel.</summary>
@@ -47,7 +47,7 @@ public sealed partial class MapDeviceRecipesDat
     public required bool Unknown82 { get; init; }
 
     /// <summary> Gets OpenAchievemnts.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> OpenAchievemnts { get; init; }
 
     /// <summary>

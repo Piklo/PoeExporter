@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class DelveCraftingTagsDat
 {
     /// <summary> Gets TagsKey.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required int? TagsKey { get; init; }
 
     /// <summary> Gets ItemClass.</summary>

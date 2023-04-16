@@ -20,7 +20,7 @@ public sealed partial class TutorialDat
     public required string UIFile { get; init; }
 
     /// <summary> Gets ClientString.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? ClientString { get; init; }
 
     /// <summary> Gets a value indicating whether IsEnabled is set.</summary>

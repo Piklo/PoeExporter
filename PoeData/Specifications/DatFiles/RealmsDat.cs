@@ -32,11 +32,11 @@ public sealed partial class RealmsDat
     public required string ShortName { get; init; }
 
     /// <summary> Gets Unknown57.</summary>
-    /// <remarks> references <see cref="RealmsDat"/> on <see cref="Specification.GetRealmsDat"/> index.</remarks>
+    /// <remarks> references <see cref="RealmsDat"/> on <see cref="Specification.LoadRealmsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown57 { get; init; }
 
     /// <summary> Gets Unknown73.</summary>
-    /// <remarks> references <see cref="RealmsDat"/> on <see cref="Specification.GetRealmsDat"/> index.</remarks>
+    /// <remarks> references <see cref="RealmsDat"/> on <see cref="Specification.LoadRealmsDat"/> index.</remarks>
     public required int? Unknown73 { get; init; }
 
     /// <summary> Gets Unknown81.</summary>

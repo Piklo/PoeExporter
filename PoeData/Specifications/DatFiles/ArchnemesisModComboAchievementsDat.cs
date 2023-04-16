@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ArchnemesisModComboAchievementsDat
 {
     /// <summary> Gets Achievement.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? Achievement { get; init; }
 
     /// <summary> Gets Mods.</summary>
-    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.GetArchnemesisModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ArchnemesisModsDat"/> on <see cref="Specification.LoadArchnemesisModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Mods { get; init; }
 
     /// <summary>

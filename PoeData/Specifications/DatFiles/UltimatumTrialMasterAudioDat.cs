@@ -26,7 +26,7 @@ public sealed partial class UltimatumTrialMasterAudioDat
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets TextAudio.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required int? TextAudio { get; init; }
 
     /// <summary> Gets RoundsMin.</summary>

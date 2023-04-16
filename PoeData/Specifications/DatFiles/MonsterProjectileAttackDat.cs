@@ -17,7 +17,7 @@ public sealed partial class MonsterProjectileAttackDat
     public required int Id { get; init; }
 
     /// <summary> Gets Projectile.</summary>
-    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.GetProjectilesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ProjectilesDat"/> on <see cref="Specification.LoadProjectilesDat"/> index.</remarks>
     public required int? Projectile { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown20 is set.</summary>

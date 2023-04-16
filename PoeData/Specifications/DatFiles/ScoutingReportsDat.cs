@@ -17,7 +17,7 @@ public sealed partial class ScoutingReportsDat
     public required string Id { get; init; }
 
     /// <summary> Gets BaseItemType.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemType { get; init; }
 
     /// <summary> Gets MinMapTier.</summary>

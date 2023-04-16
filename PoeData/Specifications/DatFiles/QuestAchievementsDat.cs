@@ -23,11 +23,11 @@ public sealed partial class QuestAchievementsDat
     public required ReadOnlyCollection<int> Unknown24 { get; init; }
 
     /// <summary> Gets AchievementItems.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItems { get; init; }
 
     /// <summary> Gets NPCs.</summary>
-    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.LoadNPCsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCs { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown72 is set.</summary>

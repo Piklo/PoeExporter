@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HideoutDoodadsDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Variation_AOFiles.</summary>
@@ -33,7 +33,7 @@ public sealed partial class HideoutDoodadsDat
     public required bool IsCraftingBench { get; init; }
 
     /// <summary> Gets Tags.</summary>
-    /// <remarks> references <see cref="HideoutDoodadTagsDat"/> on <see cref="Specification.GetHideoutDoodadTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HideoutDoodadTagsDat"/> on <see cref="Specification.LoadHideoutDoodadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Tags { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown59 is set.</summary>
@@ -43,7 +43,7 @@ public sealed partial class HideoutDoodadsDat
     public required int? Unknown60 { get; init; }
 
     /// <summary> Gets Category.</summary>
-    /// <remarks> references <see cref="HideoutDoodadCategoryDat"/> on <see cref="Specification.GetHideoutDoodadCategoryDat"/> index.</remarks>
+    /// <remarks> references <see cref="HideoutDoodadCategoryDat"/> on <see cref="Specification.LoadHideoutDoodadCategoryDat"/> index.</remarks>
     public required int? Category { get; init; }
 
     /// <summary> Gets Unknown92.</summary>

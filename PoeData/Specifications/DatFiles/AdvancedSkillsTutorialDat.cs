@@ -17,11 +17,11 @@ public sealed partial class AdvancedSkillsTutorialDat
     public required string Id { get; init; }
 
     /// <summary> Gets SkillGemInfoKey1.</summary>
-    /// <remarks> references <see cref="SkillGemInfoDat"/> on <see cref="Specification.GetSkillGemInfoDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillGemInfoDat"/> on <see cref="Specification.LoadSkillGemInfoDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SkillGemInfoKey1 { get; init; }
 
     /// <summary> Gets SkillGemInfoKey2.</summary>
-    /// <remarks> references <see cref="SkillGemInfoDat"/> on <see cref="Specification.GetSkillGemInfoDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillGemInfoDat"/> on <see cref="Specification.LoadSkillGemInfoDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SkillGemInfoKey2 { get; init; }
 
     /// <summary> Gets Description.</summary>
@@ -31,14 +31,14 @@ public sealed partial class AdvancedSkillsTutorialDat
     public required string International_BK2File { get; init; }
 
     /// <summary> Gets SkillGemsKey.</summary>
-    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.GetSkillGemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SkillGemsDat"/> on <see cref="Specification.LoadSkillGemsDat"/> index.</remarks>
     public required int? SkillGemsKey { get; init; }
 
     /// <summary> Gets China_BK2File.</summary>
     public required string China_BK2File { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
-    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.LoadCharactersDat"/> index.</remarks>
     public required ReadOnlyCollection<int> CharactersKey { get; init; }
 
     /// <summary>

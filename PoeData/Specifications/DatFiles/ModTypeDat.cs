@@ -17,7 +17,7 @@ public sealed partial class ModTypeDat
     public required string Name { get; init; }
 
     /// <summary> Gets ModSellPriceTypesKeys.</summary>
-    /// <remarks> references <see cref="ModSellPriceTypesDat"/> on <see cref="Specification.GetModSellPriceTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModSellPriceTypesDat"/> on <see cref="Specification.LoadModSellPriceTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ModSellPriceTypesKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>

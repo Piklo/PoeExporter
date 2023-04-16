@@ -17,28 +17,28 @@ public sealed partial class ItemCostsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Cost1Currencies.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Cost1Currencies { get; init; }
 
     /// <summary> Gets Cost1Values.</summary>
     public required ReadOnlyCollection<int> Cost1Values { get; init; }
 
     /// <summary> Gets Cost2Currencies.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Cost2Currencies { get; init; }
 
     /// <summary> Gets Cost2Values.</summary>
     public required ReadOnlyCollection<int> Cost2Values { get; init; }
 
     /// <summary> Gets Cost3Currencies.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Cost3Currencies { get; init; }
 
     /// <summary> Gets Cost3Values.</summary>
     public required ReadOnlyCollection<int> Cost3Values { get; init; }
 
     /// <summary> Gets Cost4Currencies.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Cost4Currencies { get; init; }
 
     /// <summary> Gets Cost4Values.</summary>

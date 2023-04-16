@@ -26,7 +26,7 @@ public sealed partial class BetrayalFortsDat
     public required int Unknown16 { get; init; }
 
     /// <summary> Gets ExtraTerrainFeaturesKey.</summary>
-    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.GetExtraTerrainFeaturesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ExtraTerrainFeaturesDat"/> on <see cref="Specification.LoadExtraTerrainFeaturesDat"/> index.</remarks>
     public required int? ExtraTerrainFeaturesKey { get; init; }
 
     /// <summary>

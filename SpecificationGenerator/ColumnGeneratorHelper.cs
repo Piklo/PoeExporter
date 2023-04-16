@@ -108,7 +108,7 @@ internal static class ColumnGeneratorHelper
         }
         else if (referencedClassName is not null)
         {
-            return $"""<see cref="Specification.Get{referencedClassName}"/> index""";
+            return $"""<see cref="Specification.Load{referencedClassName}"/> index""";
         }
         else
         {

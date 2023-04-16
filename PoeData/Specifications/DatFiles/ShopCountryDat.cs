@@ -20,7 +20,7 @@ public sealed partial class ShopCountryDat
     public required string Country { get; init; }
 
     /// <summary> Gets ShopCurrencyKey.</summary>
-    /// <remarks> references <see cref="ShopCurrencyDat"/> on <see cref="Specification.GetShopCurrencyDat"/> index.</remarks>
+    /// <remarks> references <see cref="ShopCurrencyDat"/> on <see cref="Specification.LoadShopCurrencyDat"/> index.</remarks>
     public required int? ShopCurrencyKey { get; init; }
 
     /// <summary>

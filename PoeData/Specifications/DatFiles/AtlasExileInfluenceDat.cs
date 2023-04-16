@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AtlasExileInfluenceDat
 {
     /// <summary> Gets Conqueror.</summary>
-    /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.GetAtlasExilesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasExilesDat"/> on <see cref="Specification.LoadAtlasExilesDat"/> index.</remarks>
     public required int? Conqueror { get; init; }
 
     /// <summary> Gets Sets.</summary>
-    /// <remarks> references <see cref="AtlasInfluenceSetsDat"/> on <see cref="Specification.GetAtlasInfluenceSetsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasInfluenceSetsDat"/> on <see cref="Specification.LoadAtlasInfluenceSetsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Sets { get; init; }
 
     /// <summary>

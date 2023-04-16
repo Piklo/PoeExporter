@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistChokepointFormationDat
 {
     /// <summary> Gets Unknown0.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -24,11 +24,11 @@ public sealed partial class HeistChokepointFormationDat
     public required ReadOnlyCollection<int> Unknown20 { get; init; }
 
     /// <summary> Gets Unknown36.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown36 { get; init; }
 
     /// <summary> Gets Unknown52.</summary>
-    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.GetGrantedEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GrantedEffectsDat"/> on <see cref="Specification.LoadGrantedEffectsDat"/> index.</remarks>
     public required int? Unknown52 { get; init; }
 
     /// <summary> Gets Unknown68.</summary>

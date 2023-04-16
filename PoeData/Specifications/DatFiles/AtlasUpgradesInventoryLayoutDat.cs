@@ -20,7 +20,7 @@ public sealed partial class AtlasUpgradesInventoryLayoutDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets Voidstone.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Voidstone { get; init; }
 
     /// <summary> Gets Unknown28.</summary>
@@ -30,7 +30,7 @@ public sealed partial class AtlasUpgradesInventoryLayoutDat
     public required string Objective { get; init; }
 
     /// <summary> Gets GrantAtlasUpgrade.</summary>
-    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.GetQuestFlagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="QuestFlagsDat"/> on <see cref="Specification.LoadQuestFlagsDat"/> index.</remarks>
     public required int? GrantAtlasUpgrade { get; init; }
 
     /// <summary> Gets Unknown56.</summary>

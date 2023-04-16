@@ -20,11 +20,11 @@ public sealed partial class NPCShopsDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets Shop.</summary>
-    /// <remarks> references <see cref="NPCShopDat"/> on <see cref="Specification.GetNPCShopDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCShopDat"/> on <see cref="Specification.LoadNPCShopDat"/> index.</remarks>
     public required int? Shop { get; init; }
 
     /// <summary> Gets ShopHardmode.</summary>
-    /// <remarks> references <see cref="NPCShopDat"/> on <see cref="Specification.GetNPCShopDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCShopDat"/> on <see cref="Specification.LoadNPCShopDat"/> index.</remarks>
     public required int? ShopHardmode { get; init; }
 
     /// <summary>

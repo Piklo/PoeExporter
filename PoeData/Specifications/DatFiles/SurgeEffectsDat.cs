@@ -17,14 +17,14 @@ public sealed partial class SurgeEffectsDat
     public required string Id { get; init; }
 
     /// <summary> Gets Unknown8.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? Unknown8 { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
     public required ReadOnlyCollection<float> Unknown24 { get; init; }
 
     /// <summary> Gets Unknown40.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Unknown40 { get; init; }
 
     /// <summary> Gets Unknown56.</summary>

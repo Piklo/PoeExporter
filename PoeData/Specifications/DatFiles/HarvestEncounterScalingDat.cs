@@ -20,7 +20,7 @@ public sealed partial class HarvestEncounterScalingDat
     public required float Multiplier { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets StatsValues.</summary>

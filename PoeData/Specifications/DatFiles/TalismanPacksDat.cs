@@ -17,7 +17,7 @@ public sealed partial class TalismanPacksDat
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterPacksKeys.</summary>
-    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.LoadMonsterPacksDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MonsterPacksKeys { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
@@ -27,7 +27,7 @@ public sealed partial class TalismanPacksDat
     public required int Unknown28 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -43,7 +43,7 @@ public sealed partial class TalismanPacksDat
     public required int Unknown72 { get; init; }
 
     /// <summary> Gets MonsterPacksKey.</summary>
-    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.LoadMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPacksKey { get; init; }
 
     /// <summary>

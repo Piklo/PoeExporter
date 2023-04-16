@@ -17,7 +17,7 @@ public sealed partial class CraftingItemClassCategoriesDat
     public required string Id { get; init; }
 
     /// <summary> Gets ItemClasses.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ItemClasses { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

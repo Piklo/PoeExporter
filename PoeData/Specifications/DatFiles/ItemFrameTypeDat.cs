@@ -44,11 +44,11 @@ public sealed partial class ItemFrameTypeDat
     public required bool Unknown66 { get; init; }
 
     /// <summary> Gets Rarity.</summary>
-    /// <remarks> references <see cref="RarityDat"/> on <see cref="Specification.GetRarityDat"/> index.</remarks>
+    /// <remarks> references <see cref="RarityDat"/> on <see cref="Specification.LoadRarityDat"/> index.</remarks>
     public required int? Rarity { get; init; }
 
     /// <summary> Gets DisplayString.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? DisplayString { get; init; }
 
     /// <summary> Gets ColorMarkup.</summary>

@@ -17,7 +17,7 @@ public sealed partial class PassiveSkillTreeTutorialDat
     public required string Id { get; init; }
 
     /// <summary> Gets CharactersKey.</summary>
-    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.GetCharactersDat"/> index.</remarks>
+    /// <remarks> references <see cref="CharactersDat"/> on <see cref="Specification.LoadCharactersDat"/> index.</remarks>
     public required int? CharactersKey { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

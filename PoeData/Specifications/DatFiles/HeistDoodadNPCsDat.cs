@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistDoodadNPCsDat
 {
     /// <summary> Gets NPCsKey.</summary>
-    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.LoadNPCsDat"/> index.</remarks>
     public required int? NPCsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -39,7 +39,7 @@ public sealed partial class HeistDoodadNPCsDat
     public required string Stance { get; init; }
 
     /// <summary> Gets BetrayalTargetsKey.</summary>
-    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.GetBetrayalTargetsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BetrayalTargetsDat"/> on <see cref="Specification.LoadBetrayalTargetsDat"/> index.</remarks>
     public required int? BetrayalTargetsKey { get; init; }
 
     /// <summary>

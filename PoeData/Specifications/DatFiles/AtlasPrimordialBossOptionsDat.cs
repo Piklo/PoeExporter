@@ -32,11 +32,11 @@ public sealed partial class AtlasPrimordialBossOptionsDat
     public required string EmptyIcon { get; init; }
 
     /// <summary> Gets Description.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? Description { get; init; }
 
     /// <summary> Gets DescriptionActive.</summary>
-    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.GetClientStringsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ClientStringsDat"/> on <see cref="Specification.LoadClientStringsDat"/> index.</remarks>
     public required int? DescriptionActive { get; init; }
 
     /// <summary> Gets ProgressTracker.</summary>

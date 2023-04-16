@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MetamorphosisRewardTypeItemsClientDat
 {
     /// <summary> Gets MetamorphosisRewardTypesKey.</summary>
-    /// <remarks> references <see cref="MetamorphosisRewardTypesDat"/> on <see cref="Specification.GetMetamorphosisRewardTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MetamorphosisRewardTypesDat"/> on <see cref="Specification.LoadMetamorphosisRewardTypesDat"/> index.</remarks>
     public required int? MetamorphosisRewardTypesKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

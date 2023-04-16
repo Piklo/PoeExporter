@@ -20,7 +20,7 @@ public sealed partial class JobRaidBracketsDat
     public required int Unknown4 { get; init; }
 
     /// <summary> Gets WorldArea.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldArea { get; init; }
 
     /// <summary> Gets Unknown24.</summary>

@@ -14,26 +14,26 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AtlasNodeDat
 {
     /// <summary> Gets WorldAreasKey.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required int? WorldAreasKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown32 is set.</summary>
     public required bool Unknown32 { get; init; }
 
     /// <summary> Gets MapsKey.</summary>
-    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.LoadMapsDat"/> index.</remarks>
     public required int? MapsKey { get; init; }
 
     /// <summary> Gets FlavourTextKey.</summary>
-    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.GetFlavourTextDat"/> index.</remarks>
+    /// <remarks> references <see cref="FlavourTextDat"/> on <see cref="Specification.LoadFlavourTextDat"/> index.</remarks>
     public required int? FlavourTextKey { get; init; }
 
     /// <summary> Gets AtlasNodeKeys.</summary>
-    /// <remarks> references <see cref="AtlasNodeDat"/> on <see cref="Specification.GetAtlasNodeDat"/> index.</remarks>
+    /// <remarks> references <see cref="AtlasNodeDat"/> on <see cref="Specification.LoadAtlasNodeDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AtlasNodeKeys { get; init; }
 
     /// <summary> Gets Tier0.</summary>

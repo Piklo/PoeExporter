@@ -17,7 +17,7 @@ public sealed partial class AtlasSectorDat
     public required string Id { get; init; }
 
     /// <summary> Gets SpawnWeight_TagsKeys.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnWeight_TagsKeys { get; init; }
 
     /// <summary> Gets SpawnWeight_Values.</summary>

@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class TalkingPetNPCAudioDat
 {
     /// <summary> Gets Unknown0.</summary>
-    /// <remarks> references <see cref="TalkingPetAudioEventsDat"/> on <see cref="Specification.GetTalkingPetAudioEventsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TalkingPetAudioEventsDat"/> on <see cref="Specification.LoadTalkingPetAudioEventsDat"/> index.</remarks>
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
-    /// <remarks> references <see cref="TalkingPetsDat"/> on <see cref="Specification.GetTalkingPetsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TalkingPetsDat"/> on <see cref="Specification.LoadTalkingPetsDat"/> index.</remarks>
     public required int? Unknown16 { get; init; }
 
     /// <summary> Gets Unknown32.</summary>

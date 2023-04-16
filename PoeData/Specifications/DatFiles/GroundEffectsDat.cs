@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class GroundEffectsDat
 {
     /// <summary> Gets GroundEffectTypesKey.</summary>
-    /// <remarks> references <see cref="GroundEffectTypesDat"/> on <see cref="Specification.GetGroundEffectTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="GroundEffectTypesDat"/> on <see cref="Specification.LoadGroundEffectTypesDat"/> index.</remarks>
     public required int? GroundEffectTypesKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

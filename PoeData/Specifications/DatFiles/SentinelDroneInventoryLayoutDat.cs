@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SentinelDroneInventoryLayoutDat
 {
     /// <summary> Gets DroneType.</summary>
-    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.GetDroneTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="DroneTypesDat"/> on <see cref="Specification.LoadDroneTypesDat"/> index.</remarks>
     public required int? DroneType { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

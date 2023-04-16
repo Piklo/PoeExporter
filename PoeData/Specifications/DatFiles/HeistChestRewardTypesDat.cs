@@ -23,7 +23,7 @@ public sealed partial class HeistChestRewardTypesDat
     public required string RewardTypeName { get; init; }
 
     /// <summary> Gets Unknown24.</summary>
-    /// <remarks> references <see cref="HeistChestRewardTypesDat"/> on <see cref="Specification.GetHeistChestRewardTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistChestRewardTypesDat"/> on <see cref="Specification.LoadHeistChestRewardTypesDat"/> index.</remarks>
     public required int? Unknown24 { get; init; }
 
     /// <summary> Gets RewardRoomName.</summary>
@@ -42,7 +42,7 @@ public sealed partial class HeistChestRewardTypesDat
     public required string RewardRoomName2 { get; init; }
 
     /// <summary> Gets HeistJobsKey.</summary>
-    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.GetHeistJobsDat"/> index.</remarks>
+    /// <remarks> references <see cref="HeistJobsDat"/> on <see cref="Specification.LoadHeistJobsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> HeistJobsKey { get; init; }
 
     /// <summary> Gets Unknown76.</summary>

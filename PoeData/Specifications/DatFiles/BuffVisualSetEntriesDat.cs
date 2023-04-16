@@ -20,7 +20,7 @@ public sealed partial class BuffVisualSetEntriesDat
     public required int Unknown8 { get; init; }
 
     /// <summary> Gets BuffVisual.</summary>
-    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.GetBuffVisualsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BuffVisualsDat"/> on <see cref="Specification.LoadBuffVisualsDat"/> index.</remarks>
     public required int? BuffVisual { get; init; }
 
     /// <summary> Gets Unknown28.</summary>

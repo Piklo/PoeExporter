@@ -14,27 +14,27 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ItemisedVisualEffectDat
 {
     /// <summary> Gets BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemTypesKey { get; init; }
 
     /// <summary> Gets ItemVisualEffectKey.</summary>
-    /// <remarks> references <see cref="ItemVisualEffectDat"/> on <see cref="Specification.GetItemVisualEffectDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualEffectDat"/> on <see cref="Specification.LoadItemVisualEffectDat"/> index.</remarks>
     public required int? ItemVisualEffectKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey1.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey1 { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey2.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey2 { get; init; }
 
     /// <summary> Gets Stats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets ItemClasses.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> ItemClasses { get; init; }
 
     /// <summary> Gets Unknown96.</summary>

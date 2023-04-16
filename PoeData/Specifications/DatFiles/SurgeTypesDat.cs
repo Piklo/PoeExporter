@@ -17,7 +17,7 @@ public sealed partial class SurgeTypesDat
     public required string Id { get; init; }
 
     /// <summary> Gets SurgeEffects.</summary>
-    /// <remarks> references <see cref="SurgeEffectsDat"/> on <see cref="Specification.GetSurgeEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SurgeEffectsDat"/> on <see cref="Specification.LoadSurgeEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SurgeEffects { get; init; }
 
     /// <summary> Gets IntId.</summary>

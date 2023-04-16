@@ -29,7 +29,7 @@ public sealed partial class MiscEffectPacksDat
     public required int Unknown24 { get; init; }
 
     /// <summary> Gets PreloadGroups.</summary>
-    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.GetPreloadGroupsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PreloadGroupsDat"/> on <see cref="Specification.LoadPreloadGroupsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> PreloadGroups { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown44 is set.</summary>

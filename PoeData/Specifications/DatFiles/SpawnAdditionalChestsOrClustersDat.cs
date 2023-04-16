@@ -14,15 +14,15 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class SpawnAdditionalChestsOrClustersDat
 {
     /// <summary> Gets StatsKey.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? StatsKey { get; init; }
 
     /// <summary> Gets ChestsKey.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets ChestClustersKey.</summary>
-    /// <remarks> references <see cref="ChestClustersDat"/> on <see cref="Specification.GetChestClustersDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestClustersDat"/> on <see cref="Specification.LoadChestClustersDat"/> index.</remarks>
     public required int? ChestClustersKey { get; init; }
 
     /// <summary>

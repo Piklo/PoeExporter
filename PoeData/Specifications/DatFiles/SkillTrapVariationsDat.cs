@@ -20,7 +20,7 @@ public sealed partial class SkillTrapVariationsDat
     public required string Metadata { get; init; }
 
     /// <summary> Gets MiscAnimated.</summary>
-    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.GetMiscAnimatedDat"/> index.</remarks>
+    /// <remarks> references <see cref="MiscAnimatedDat"/> on <see cref="Specification.LoadMiscAnimatedDat"/> index.</remarks>
     public required int? MiscAnimated { get; init; }
 
     /// <summary>

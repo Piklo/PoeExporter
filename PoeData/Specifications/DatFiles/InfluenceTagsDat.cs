@@ -14,15 +14,15 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class InfluenceTagsDat
 {
     /// <summary> Gets ItemClass.</summary>
-    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.GetItemClassesDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemClassesDat"/> on <see cref="Specification.LoadItemClassesDat"/> index.</remarks>
     public required int? ItemClass { get; init; }
 
     /// <summary> Gets Influence.</summary>
-    /// <remarks> references <see cref="InfluenceTypesDat"/> on <see cref="Specification.GetInfluenceTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="InfluenceTypesDat"/> on <see cref="Specification.LoadInfluenceTypesDat"/> index.</remarks>
     public required int Influence { get; init; }
 
     /// <summary> Gets Tag.</summary>
-    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.GetTagsDat"/> index.</remarks>
+    /// <remarks> references <see cref="TagsDat"/> on <see cref="Specification.LoadTagsDat"/> index.</remarks>
     public required int? Tag { get; init; }
 
     /// <summary>

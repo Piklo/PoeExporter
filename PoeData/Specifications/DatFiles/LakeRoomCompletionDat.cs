@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class LakeRoomCompletionDat
 {
     /// <summary> Gets Room.</summary>
-    /// <remarks> references <see cref="LakeRoomsDat"/> on <see cref="Specification.GetLakeRoomsDat"/> index.</remarks>
+    /// <remarks> references <see cref="LakeRoomsDat"/> on <see cref="Specification.LoadLakeRoomsDat"/> index.</remarks>
     public required int? Room { get; init; }
 
     /// <summary> Gets Unknown16.</summary>
@@ -24,7 +24,7 @@ public sealed partial class LakeRoomCompletionDat
     public required int Unknown20 { get; init; }
 
     /// <summary> Gets Achievements.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Achievements { get; init; }
 
     /// <summary> Gets Unknown40.</summary>

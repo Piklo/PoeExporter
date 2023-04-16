@@ -17,7 +17,7 @@ public sealed partial class IncursionUniqueUpgradeComponentsDat
     public required int? Unknown0 { get; init; }
 
     /// <summary> Gets BaseItemType.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? BaseItemType { get; init; }
 
     /// <summary>

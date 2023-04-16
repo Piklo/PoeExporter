@@ -14,15 +14,15 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class UniqueStashLayoutDat
 {
     /// <summary> Gets WordsKey.</summary>
-    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.GetWordsDat"/> index.</remarks>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.LoadWordsDat"/> index.</remarks>
     public required int? WordsKey { get; init; }
 
     /// <summary> Gets ItemVisualIdentityKey.</summary>
-    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.GetItemVisualIdentityDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemVisualIdentityDat"/> on <see cref="Specification.LoadItemVisualIdentityDat"/> index.</remarks>
     public required int? ItemVisualIdentityKey { get; init; }
 
     /// <summary> Gets UniqueStashTypesKey.</summary>
-    /// <remarks> references <see cref="UniqueStashTypesDat"/> on <see cref="Specification.GetUniqueStashTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="UniqueStashTypesDat"/> on <see cref="Specification.LoadUniqueStashTypesDat"/> index.</remarks>
     public required int? UniqueStashTypesKey { get; init; }
 
     /// <summary> Gets Unknown48.</summary>
@@ -44,11 +44,11 @@ public sealed partial class UniqueStashLayoutDat
     public required bool ShowIfEmptyStandard { get; init; }
 
     /// <summary> Gets RenamedVersion.</summary>
-    /// <remarks> references <see cref="UniqueStashLayoutDat"/> on <see cref="Specification.GetUniqueStashLayoutDat"/> index.</remarks>
+    /// <remarks> references <see cref="UniqueStashLayoutDat"/> on <see cref="Specification.LoadUniqueStashLayoutDat"/> index.</remarks>
     public required int? RenamedVersion { get; init; }
 
     /// <summary> Gets BaseVersion.</summary>
-    /// <remarks> references <see cref="UniqueStashLayoutDat"/> on <see cref="Specification.GetUniqueStashLayoutDat"/> index.</remarks>
+    /// <remarks> references <see cref="UniqueStashLayoutDat"/> on <see cref="Specification.LoadUniqueStashLayoutDat"/> index.</remarks>
     public required int? BaseVersion { get; init; }
 
     /// <summary> Gets a value indicating whether IsAlternateArt is set.</summary>

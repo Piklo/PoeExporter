@@ -17,11 +17,11 @@ public sealed partial class NPCConversationsDat
     public required string Id { get; init; }
 
     /// <summary> Gets DialogueEvent.</summary>
-    /// <remarks> references <see cref="DialogueEventDat"/> on <see cref="Specification.GetDialogueEventDat"/> index.</remarks>
+    /// <remarks> references <see cref="DialogueEventDat"/> on <see cref="Specification.LoadDialogueEventDat"/> index.</remarks>
     public required int? DialogueEvent { get; init; }
 
     /// <summary> Gets NPCTextAudioKeys.</summary>
-    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.GetNPCTextAudioDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCTextAudioDat"/> on <see cref="Specification.LoadNPCTextAudioDat"/> index.</remarks>
     public required ReadOnlyCollection<int> NPCTextAudioKeys { get; init; }
 
     /// <summary> Gets Unknown40.</summary>

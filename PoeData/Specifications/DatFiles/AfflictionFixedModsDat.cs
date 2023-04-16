@@ -17,7 +17,7 @@ public sealed partial class AfflictionFixedModsDat
     public required int Rarity { get; init; }
 
     /// <summary> Gets Mod.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? Mod { get; init; }
 
     /// <summary> Gets Unknown20.</summary>

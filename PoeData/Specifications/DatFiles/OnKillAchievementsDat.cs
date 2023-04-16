@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class OnKillAchievementsDat
 {
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary> Gets GameStat.</summary>
-    /// <remarks> references <see cref="GameStatsDat"/> on <see cref="Specification.GetGameStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="GameStatsDat"/> on <see cref="Specification.LoadGameStatsDat"/> index.</remarks>
     public required int? GameStat { get; init; }
 
     /// <summary>

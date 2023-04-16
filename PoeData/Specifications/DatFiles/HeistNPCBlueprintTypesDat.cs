@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class HeistNPCBlueprintTypesDat
 {
     /// <summary> Gets NPCsKey.</summary>
-    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.GetNPCsDat"/> index.</remarks>
+    /// <remarks> references <see cref="NPCsDat"/> on <see cref="Specification.LoadNPCsDat"/> index.</remarks>
     public required int? NPCsKey { get; init; }
 
     /// <summary> Gets Unknown16.</summary>

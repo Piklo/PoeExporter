@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class IncursionChestRewardsDat
 {
     /// <summary> Gets IncursionRoomsKey.</summary>
-    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.GetIncursionRoomsDat"/> index.</remarks>
+    /// <remarks> references <see cref="IncursionRoomsDat"/> on <see cref="Specification.LoadIncursionRoomsDat"/> index.</remarks>
     public required int? IncursionRoomsKey { get; init; }
 
     /// <summary> Gets IncursionChestsKeys.</summary>
-    /// <remarks> references <see cref="IncursionChestsDat"/> on <see cref="Specification.GetIncursionChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="IncursionChestsDat"/> on <see cref="Specification.LoadIncursionChestsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> IncursionChestsKeys { get; init; }
 
     /// <summary> Gets ChestMarkerMetadata.</summary>

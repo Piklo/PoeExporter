@@ -17,7 +17,7 @@ public sealed partial class PassiveSkillMasteryGroupsDat
     public required string Id { get; init; }
 
     /// <summary> Gets MasteryEffects.</summary>
-    /// <remarks> references <see cref="PassiveSkillMasteryEffectsDat"/> on <see cref="Specification.GetPassiveSkillMasteryEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="PassiveSkillMasteryEffectsDat"/> on <see cref="Specification.LoadPassiveSkillMasteryEffectsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MasteryEffects { get; init; }
 
     /// <summary> Gets InactiveIcon.</summary>
@@ -33,11 +33,11 @@ public sealed partial class PassiveSkillMasteryGroupsDat
     public required bool Unknown48 { get; init; }
 
     /// <summary> Gets SoundEffect.</summary>
-    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.GetSoundEffectsDat"/> index.</remarks>
+    /// <remarks> references <see cref="SoundEffectsDat"/> on <see cref="Specification.LoadSoundEffectsDat"/> index.</remarks>
     public required int? SoundEffect { get; init; }
 
     /// <summary> Gets MasteryCountStat.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required int? MasteryCountStat { get; init; }
 
     /// <summary>

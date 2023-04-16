@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class MapCreationInformationDat
 {
     /// <summary> Gets MapsKey.</summary>
-    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.GetMapsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MapsDat"/> on <see cref="Specification.LoadMapsDat"/> index.</remarks>
     public required int? MapsKey { get; init; }
 
     /// <summary> Gets Tier.</summary>

@@ -20,7 +20,7 @@ public sealed partial class TableMonsterSpawnersDat
     public required int AreaLevel { get; init; }
 
     /// <summary> Gets SpawnsMonsters.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> SpawnsMonsters { get; init; }
 
     /// <summary> Gets Unknown28.</summary>

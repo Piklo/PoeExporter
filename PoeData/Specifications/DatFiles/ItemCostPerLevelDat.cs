@@ -14,18 +14,18 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class ItemCostPerLevelDat
 {
     /// <summary> Gets Contract_BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Contract_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Level.</summary>
     public required int Level { get; init; }
 
     /// <summary> Gets Cost.</summary>
-    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.GetItemCostsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.LoadItemCostsDat"/> index.</remarks>
     public required int? Cost { get; init; }
 
     /// <summary> Gets CostHardmode.</summary>
-    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.GetItemCostsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ItemCostsDat"/> on <see cref="Specification.LoadItemCostsDat"/> index.</remarks>
     public required int? CostHardmode { get; init; }
 
     /// <summary>

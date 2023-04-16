@@ -17,7 +17,7 @@ public sealed partial class MonsterPackEntriesDat
     public required string Id { get; init; }
 
     /// <summary> Gets MonsterPacksKey.</summary>
-    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.GetMonsterPacksDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterPacksDat"/> on <see cref="Specification.LoadMonsterPacksDat"/> index.</remarks>
     public required int? MonsterPacksKey { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown24 is set.</summary>
@@ -27,7 +27,7 @@ public sealed partial class MonsterPackEntriesDat
     public required int Unknown25 { get; init; }
 
     /// <summary> Gets MonsterVarietiesKey.</summary>
-    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.GetMonsterVarietiesDat"/> index.</remarks>
+    /// <remarks> references <see cref="MonsterVarietiesDat"/> on <see cref="Specification.LoadMonsterVarietiesDat"/> index.</remarks>
     public required int? MonsterVarietiesKey { get; init; }
 
     /// <summary>

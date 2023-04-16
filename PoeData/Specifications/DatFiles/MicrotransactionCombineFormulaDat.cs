@@ -17,11 +17,11 @@ public sealed partial class MicrotransactionCombineFormulaDat
     public required string Id { get; init; }
 
     /// <summary> Gets Result_BaseItemTypesKey.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required int? Result_BaseItemTypesKey { get; init; }
 
     /// <summary> Gets Ingredients_BaseItemTypesKeys.</summary>
-    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.GetBaseItemTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Ingredients_BaseItemTypesKeys { get; init; }
 
     /// <summary> Gets BK2File.</summary>

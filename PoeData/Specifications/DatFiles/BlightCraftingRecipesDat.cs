@@ -17,15 +17,15 @@ public sealed partial class BlightCraftingRecipesDat
     public required string Id { get; init; }
 
     /// <summary> Gets BlightCraftingItemsKeys.</summary>
-    /// <remarks> references <see cref="BlightCraftingItemsDat"/> on <see cref="Specification.GetBlightCraftingItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BlightCraftingItemsDat"/> on <see cref="Specification.LoadBlightCraftingItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> BlightCraftingItemsKeys { get; init; }
 
     /// <summary> Gets BlightCraftingResultsKey.</summary>
-    /// <remarks> references <see cref="BlightCraftingResultsDat"/> on <see cref="Specification.GetBlightCraftingResultsDat"/> index.</remarks>
+    /// <remarks> references <see cref="BlightCraftingResultsDat"/> on <see cref="Specification.LoadBlightCraftingResultsDat"/> index.</remarks>
     public required int? BlightCraftingResultsKey { get; init; }
 
     /// <summary> Gets BlightCraftingTypesKey.</summary>
-    /// <remarks> references <see cref="BlightCraftingTypesDat"/> on <see cref="Specification.GetBlightCraftingTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="BlightCraftingTypesDat"/> on <see cref="Specification.LoadBlightCraftingTypesDat"/> index.</remarks>
     public required int? BlightCraftingTypesKey { get; init; }
 
     /// <summary>

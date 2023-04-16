@@ -20,7 +20,7 @@ public sealed partial class PassiveSkillMasteryEffectsDat
     public required int HASH16 { get; init; }
 
     /// <summary> Gets Stats.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Stats { get; init; }
 
     /// <summary> Gets Stat1Value.</summary>
@@ -33,7 +33,7 @@ public sealed partial class PassiveSkillMasteryEffectsDat
     public required int Stat3Value { get; init; }
 
     /// <summary> Gets AchievementItem.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required int? AchievementItem { get; init; }
 
     /// <summary>

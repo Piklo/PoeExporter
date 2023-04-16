@@ -14,7 +14,7 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class AfflictionRewardTypeVisualsDat
 {
     /// <summary> Gets AfflictionRewardTypes.</summary>
-    /// <remarks> references <see cref="AfflictionRewardTypesDat"/> on <see cref="Specification.GetAfflictionRewardTypesDat"/> index.</remarks>
+    /// <remarks> references <see cref="AfflictionRewardTypesDat"/> on <see cref="Specification.LoadAfflictionRewardTypesDat"/> index.</remarks>
     public required int AfflictionRewardTypes { get; init; }
 
     /// <summary> Gets Id.</summary>

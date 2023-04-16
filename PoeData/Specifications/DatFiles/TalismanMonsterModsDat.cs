@@ -14,11 +14,11 @@ namespace PoeData.Specifications.DatFiles;
 public sealed partial class TalismanMonsterModsDat
 {
     /// <summary> Gets ModTypeKey.</summary>
-    /// <remarks> references <see cref="ModTypeDat"/> on <see cref="Specification.GetModTypeDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModTypeDat"/> on <see cref="Specification.LoadModTypeDat"/> index.</remarks>
     public required int? ModTypeKey { get; init; }
 
     /// <summary> Gets ModsKey.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required int? ModsKey { get; init; }
 
     /// <summary>

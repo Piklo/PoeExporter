@@ -32,7 +32,7 @@ public sealed partial class StrDexIntMissionsDat
     public required int? Unknown36 { get; init; }
 
     /// <summary> Gets Extra_ModsKeys.</summary>
-    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.GetModsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ModsDat"/> on <see cref="Specification.LoadModsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> Extra_ModsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown68 is set.</summary>

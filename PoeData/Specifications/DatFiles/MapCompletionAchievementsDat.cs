@@ -17,26 +17,26 @@ public sealed partial class MapCompletionAchievementsDat
     public required string Unknown0 { get; init; }
 
     /// <summary> Gets MapStatConditionsKeys.</summary>
-    /// <remarks> references <see cref="MapStatConditionsDat"/> on <see cref="Specification.GetMapStatConditionsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MapStatConditionsDat"/> on <see cref="Specification.LoadMapStatConditionsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapStatConditionsKeys { get; init; }
 
     /// <summary> Gets StatsKeys.</summary>
-    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.GetStatsDat"/> index.</remarks>
+    /// <remarks> references <see cref="StatsDat"/> on <see cref="Specification.LoadStatsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> StatsKeys { get; init; }
 
     /// <summary> Gets AchievementItemsKeys.</summary>
-    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.GetAchievementItemsDat"/> index.</remarks>
+    /// <remarks> references <see cref="AchievementItemsDat"/> on <see cref="Specification.LoadAchievementItemsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> AchievementItemsKeys { get; init; }
 
     /// <summary> Gets MapTierAchievementsKeys.</summary>
-    /// <remarks> references <see cref="MapTierAchievementsDat"/> on <see cref="Specification.GetMapTierAchievementsDat"/> index.</remarks>
+    /// <remarks> references <see cref="MapTierAchievementsDat"/> on <see cref="Specification.LoadMapTierAchievementsDat"/> index.</remarks>
     public required ReadOnlyCollection<int> MapTierAchievementsKeys { get; init; }
 
     /// <summary> Gets a value indicating whether Unknown72 is set.</summary>
     public required bool Unknown72 { get; init; }
 
     /// <summary> Gets WorldAreasKeys.</summary>
-    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.GetWorldAreasDat"/> index.</remarks>
+    /// <remarks> references <see cref="WorldAreasDat"/> on <see cref="Specification.LoadWorldAreasDat"/> index.</remarks>
     public required ReadOnlyCollection<int> WorldAreasKeys { get; init; }
 
     /// <summary>

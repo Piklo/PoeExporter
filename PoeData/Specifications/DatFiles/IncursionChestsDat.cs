@@ -17,11 +17,11 @@ public sealed partial class IncursionChestsDat
     public required string Id { get; init; }
 
     /// <summary> Gets ChestsKey.</summary>
-    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.GetChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="ChestsDat"/> on <see cref="Specification.LoadChestsDat"/> index.</remarks>
     public required int? ChestsKey { get; init; }
 
     /// <summary> Gets UniqueChestsKey.</summary>
-    /// <remarks> references <see cref="UniqueChestsDat"/> on <see cref="Specification.GetUniqueChestsDat"/> index.</remarks>
+    /// <remarks> references <see cref="UniqueChestsDat"/> on <see cref="Specification.LoadUniqueChestsDat"/> index.</remarks>
     public required int? UniqueChestsKey { get; init; }
 
     /// <summary> Gets MinLevel.</summary>
