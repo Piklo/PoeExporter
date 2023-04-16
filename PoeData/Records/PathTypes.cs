@@ -1,4 +1,4 @@
-﻿namespace PoeData.Steam;
+﻿namespace PoeData.Records;
 
 /// <summary>
 /// Enum containing path types.

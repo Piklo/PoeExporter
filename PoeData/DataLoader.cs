@@ -1,5 +1,6 @@
 ﻿using PoeData.Decompression;
 using PoeData.Ggpk;
+using PoeData.Records;
 using PoeData.Steam;
 using Serilog;
 using System.Diagnostics;
