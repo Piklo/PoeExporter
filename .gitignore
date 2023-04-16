@@ -362,6 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-/PoeExporter/config.json
+config.json
 /ooz/libooz.dll
 /SpecificationGenerator/schema.min.json
