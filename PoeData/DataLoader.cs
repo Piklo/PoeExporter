@@ -284,9 +284,14 @@ internal sealed class DataLoader
     {
         var hash = GetHash(path, PathTypes.File);
 
-        var fileRecord = fileRecords[hash];
-
-        return fileRecord;
+        if (fileRecords.TryGetValue(hash, out var fileRecord))
+        {
+            return fileRecord;
+        }
+        else
+        {
+            throw new FileRecordNotFoundException($"failed to find file record with hash = {hash}, path = {Encoding.ASCII.GetString(path)}");
+        }
     }
 
     /// <inheritdoc/>
