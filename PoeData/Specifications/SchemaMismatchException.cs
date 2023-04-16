@@ -18,13 +18,13 @@ public sealed class SchemaMismatchException : Exception
     {
     }
 
-    /// <inheritdoc cref="Exception.Exception(SerializationInfo, StreamingContext)"/>
+    /// <inheritdoc cref="Exception(SerializationInfo, StreamingContext)"/>
     public SchemaMismatchException(SerializationInfo info, StreamingContext context)
         : base(info, context)
     {
     }
 
-    /// <inheritdoc cref="Exception.Exception(string?, Exception?)"/>
+    /// <inheritdoc cref="Exception(string?, Exception?)"/>
     public SchemaMismatchException(string? message, Exception? innerException)
         : base(message, innerException)
     {
