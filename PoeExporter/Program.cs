@@ -34,4 +34,4 @@ JsonCommands.AddCommands(specificationWrapper, logger, rootCommand);
 // rootCommand.Add(wikiCommand);
 // var luaCommand = new Command("lua", "exports lua data");
 // wikiCommand.Add(luaCommand);
-// rootCommand.Invoke(args);
+rootCommand.Invoke(args);
