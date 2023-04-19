@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PoeData;
 using PoeData.Specifications;
+using PoeExporter.WikiExporters;
 using Serilog;
 using Serilog.Core;
 
