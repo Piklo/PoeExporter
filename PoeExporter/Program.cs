@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Configuration;
-using PoeData;
 using PoeData.Specifications;
 using PoeExporter.WikiExporters;
 using Serilog;
@@ -92,7 +91,3 @@ internal sealed class Program
     }
 }
 
-public class Config : IConfig
-{
-    public required string PoePath { get; init; }
-}
