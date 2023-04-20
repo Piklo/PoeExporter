@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "PoeExporter": {
+      "commandName": "Project"
+    },
+    "json allDatFiles": {
+      "commandName": "Project",
+      "commandLineArgs": "json allDatFiles"
+    }
+  }
+}
