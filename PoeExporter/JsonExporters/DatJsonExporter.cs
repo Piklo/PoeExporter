@@ -1,7 +1,6 @@
 ﻿using PoeData.Specifications;
 using Serilog;
 using System.Diagnostics;
-using System.Reflection;
 using System.Text;
 using System.Text.Json;
 
@@ -10,10 +9,13 @@ namespace PoeExporter.JsonExporters;
 /// <summary>
 /// Exports all dat data and saves as json.
 /// </summary>
-internal sealed class DatJsonExporter
+internal sealed partial class DatJsonExporter
 {
     private ILogger logger;
     private readonly Specification specification;
+    private readonly DirectoryInfo resultsDir;
+    private int exceptionCounter;
+    private bool throwOnException;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DatJsonExporter"/> class.
@@ -24,6 +26,13 @@ internal sealed class DatJsonExporter
     {
         this.logger = logger;
         this.specification = specification;
+        resultsDir = new DirectoryInfo("results"); // pass this in Config?
+        if (!resultsDir.Exists)
+        {
+            resultsDir.Create();
+        }
+
+        throwOnException = false; // pass this in Config?
     }
 
     /// <summary>
@@ -32,54 +41,22 @@ internal sealed class DatJsonExporter
     public void Run()
     {
         var startTime = Stopwatch.GetTimestamp();
+        logger.Information("running");
+        RunAll();
 
-        var type = typeof(Specification);
-        var methods = type.GetMethods(BindingFlags.Public | BindingFlags.Instance);
-
-        var resultsDir = new DirectoryInfo("results");
-
-        if (resultsDir.Exists)
-        {
-            resultsDir.Delete(true);
-        }
-
-        resultsDir.Create();
-
-        var exceptionsCount = 0;
-        foreach (var method in methods)
-        {
-            if (!method.Name.StartsWith("Load"))
-            {
-                continue;
-            }
-
-            try
-            {
-                var result = method.Invoke(specification, null);
-                if (result is not IReadOnlyList<object> collection)
-                {
-                    logger.Error("result isnt an indexable type");
-                    continue;
-                }
-
-                var resType = collection[0].GetType();
-                var className = resType.Name;
-
-                var serialized = JsonSerializer.Serialize(result, new System.Text.Json.JsonSerializerOptions()
-                {
-                    WriteIndented = true,
-                });
-
-                File.WriteAllText(Path.Combine(resultsDir.FullName, $"{className}.json"), serialized, Encoding.UTF8);
-            }
-            catch (TargetInvocationException e)
-            {
-                logger.Error("{error}", e.InnerException);
-                exceptionsCount++;
-            }
-        }
-
-        logger.Information("{count} exceptions", exceptionsCount);
+        logger.Information("{count} exceptions", exceptionCounter);
         logger.Information("total duration {elapsed} elapsed", Stopwatch.GetElapsedTime(startTime));
     }
+
+    private void Save<T>(IReadOnlyList<T> result, string fileName)
+    {
+        var serialized = JsonSerializer.Serialize(result, new System.Text.Json.JsonSerializerOptions()
+        {
+            WriteIndented = true,
+        });
+
+        File.WriteAllText(Path.Combine(resultsDir.FullName, $"{fileName}.json"), serialized, Encoding.UTF8);
+    }
+
+    private partial void RunAll();
 }

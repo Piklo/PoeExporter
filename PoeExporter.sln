@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecificationGenerator", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaWiki", "MediaWiki\MediaWiki.csproj", "{10159C0C-0862-4CF0-AA8A-D765A3A0C410}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoeExporterGenerator", "PoeExporterGenerator\PoeExporterGenerator.csproj", "{1C9A1183-5485-41A5-8344-ADEEE6EEC9C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{10159C0C-0862-4CF0-AA8A-D765A3A0C410}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10159C0C-0862-4CF0-AA8A-D765A3A0C410}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10159C0C-0862-4CF0-AA8A-D765A3A0C410}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C9A1183-5485-41A5-8344-ADEEE6EEC9C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9A1183-5485-41A5-8344-ADEEE6EEC9C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9A1183-5485-41A5-8344-ADEEE6EEC9C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9A1183-5485-41A5-8344-ADEEE6EEC9C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
