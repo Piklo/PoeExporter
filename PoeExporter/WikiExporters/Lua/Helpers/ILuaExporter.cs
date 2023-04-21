@@ -11,5 +11,5 @@ internal interface ILuaExporter<T>
     /// </summary>
     /// <param name="currentIndentation">current indentation</param>
     /// <returns>converted object in lua strings.</returns>
-    public LuaString[] ToLuaString(int currentIndentation = 0);
+    public LuaString[] ToLuaStrings(int currentIndentation = 0);
 }

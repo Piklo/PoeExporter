@@ -23,7 +23,7 @@ internal static class LuaConverter
 
         foreach (var item in items)
         {
-            var strings = item.ToLuaString(baseIndentation);
+            var strings = item.ToLuaStrings(baseIndentation);
             foreach (var line in strings)
             {
                 builder.AppendLine($"{new string('\t', line.Indentation)}{line.Value}");
