@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PoeExporterGenerator;
+namespace PoeExporterGenerator.LuaGenerator;
 
 /// <summary>
 /// Class used to generate to lua strings methods.
