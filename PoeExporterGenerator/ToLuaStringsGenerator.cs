@@ -71,7 +71,8 @@ internal sealed class ToLuaStringsGenerator : ISourceGenerator
 
             {{classDeclaration.Modifiers}} class {{className}}
             {
-                public partial LuaString[] {{MethodNameToImplement}}(int currentIndentation)
+                /// <inheritdoc/>
+                LuaString[] ILuaExporter<{{className}}>.{{MethodNameToImplement}}(int currentIndentation)
                 {
                     var strings = new List<LuaString>();
 

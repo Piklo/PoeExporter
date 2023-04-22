@@ -18,7 +18,4 @@ internal sealed partial class BlightCraftingRecipesItems : ILuaExporter<BlightCr
     /// <summary>Gets ItemId.</summary>
     [LuaPropertyName("item_id")]
     public required string ItemId { get; init; }
-
-    /// <inheritdoc/>
-    public partial LuaString[] ToLuaStrings(int currentIndentation = 0);
 }
