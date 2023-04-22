@@ -11,7 +11,7 @@ namespace PoeExporter.WikiExporters.Lua.Helpers;
     "StyleCop.CSharp.NamingRules",
     "SA1313:Parameter names should begin with lower-case letter",
     Justification = "its a record not a method with parameters :ICANT:")]
-internal readonly record struct LuaString(string Value, int Indentation)
+internal readonly partial record struct LuaString(string Value, int Indentation)
 {
     /// <summary>
     /// Generates a lua strings for a string.
@@ -98,21 +98,19 @@ internal readonly record struct LuaString(string Value, int Indentation)
     }
 
     /// <summary>
-    /// Generates a lua strings for a another <see cref="ILuaExporter{T}"/>.
+    /// Generates lua strings for another <see cref="ILuaExporter{T}"/>.
     /// </summary>
     /// <typeparam name="T">type of a lua exporter.</typeparam>
     /// <param name="name">name of a lua variable.</param>
     /// <param name="exporter">exporter to generater values from.</param>
     /// <param name="indentation">indentation of lua strings.</param>
     /// <returns>parsed lua strings.</returns>
+    /// <exception cref="DefaultNonGeneratorMethodUsedException">Thrown when the generic method is used.
+    /// Which means the generator failed to generate overload specific for the given T.</exception>
     internal static LuaString[] Generate<T>(string name, ILuaExporter<T> exporter, int indentation)
+        where T : ILuaExporter<T>
     {
-        var strings = exporter.ToLuaStrings(indentation);
-        var first = strings[0];
-        var overridenFirst = new LuaString($"{name} = {first.Value}", indentation);
-        strings[0] = overridenFirst;
-
-        return strings;
+        throw new DefaultNonGeneratorMethodUsedException();
     }
 
     // private string GetName(Type type)

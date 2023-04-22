@@ -1,12 +1,9 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using System.Text;
-
-namespace PoeExporter.WikiExporters.Lua;
+﻿namespace PoeExporter.WikiExporters.Lua.Helpers;
 
 /// <summary>
 /// Class used to convert c# classes to lua objects.
 /// </summary>
-internal static class LuaConverter
+internal static partial class LuaConverter
 {
     /// <summary>
     /// Converts a list of c# objects to lua string.
@@ -14,26 +11,26 @@ internal static class LuaConverter
     /// <typeparam name="T">type of the object.</typeparam>
     /// <param name="items">items.</param>
     /// <returns>converted objects in lua string.</returns>
+    /// <exception cref="DefaultNonGeneratorMethodUsedException">Thrown when the generic method is used.
+    /// Which means the generator failed to generate overload specific for the given T.</exception>
     public static string ToLuaString<T>(IReadOnlyList<T> items)
         where T : ILuaExporter<T>
     {
-        var builder = new StringBuilder();
-        builder.AppendLine("local data = {");
-        var baseIndentation = 1; // from the data indentation
+        throw new DefaultNonGeneratorMethodUsedException();
+    }
 
-        foreach (var item in items)
-        {
-            var strings = item.ToLuaStrings(baseIndentation);
-            foreach (var line in strings)
-            {
-                builder.AppendLine($"{new string('\t', line.Indentation)}{line.Value}");
-            }
-        }
-
-        builder.AppendLine("}");
-        builder.AppendLine("return data");
-
-        var str = builder.ToString();
-        return str;
+    /// <summary>
+    /// Converts the object to lua strings.
+    /// </summary>
+    /// <typeparam name="T">type of the item.</typeparam>
+    /// <param name="exporter">exporter to get lua strings from.</param>
+    /// <param name="currentIndentation">current indentation.</param>
+    /// <returns>converted object in lua strings.</returns>
+    /// <exception cref="DefaultNonGeneratorMethodUsedException">Thrown when the generic method is used.
+    /// Which means the generator failed to generate overload specific for the given T.</exception>
+    public static LuaString[] ToLuaStrings<T>(ILuaExporter<T> exporter, int currentIndentation = 0)
+        where T : ILuaExporter<T>
+    {
+        throw new DefaultNonGeneratorMethodUsedException();
     }
 }
