@@ -5,7 +5,7 @@ namespace PoeExporter.WikiExporters;
 /// <summary>
 /// Class representing values of https://www.poewiki.net/wiki/Module:Blight/blight_crafting_recipes.
 /// </summary>
-internal sealed partial class BlightCraftingRecipesItems : ILuaExporter<BlightCraftingRecipesItems>
+internal sealed class BlightCraftingRecipesItems : ILuaExporter<BlightCraftingRecipesItems>
 {
     /// <summary>Gets Ordinal.</summary>
     [LuaPropertyName("ordinal")]
