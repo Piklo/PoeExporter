@@ -98,10 +98,10 @@ public sealed partial class AtlasPrimordialBossOptionsDat
             (var emptyiconLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Description
-            (var descriptionLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var descriptionLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading DescriptionActive
-            (var descriptionactiveLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var descriptionactiveLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ProgressTracker
             (var progresstrackerLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

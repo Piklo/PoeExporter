@@ -86,16 +86,16 @@ public sealed partial class MapDeviceRecipesDat
             var recipeitemsLoading = temprecipeitemsLoading.AsReadOnly();
 
             // loading WorldArea
-            (var worldareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MicrotransactionPortalVariation
-            (var microtransactionportalvariationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var microtransactionportalvariationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading AreaLevel
             (var arealevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown60
-            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown76
             (var unknown76Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

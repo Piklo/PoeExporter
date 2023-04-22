@@ -84,13 +84,13 @@ public sealed partial class UltimatumItemisedRewardsDat
             (var rewardtextLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading ItemVisualIdentityKey
-            (var itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading RewardType
             (var rewardtypeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading SacrificeItem
-            (var sacrificeitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var sacrificeitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SacrificeAmount
             (var sacrificeamountLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -97,7 +97,7 @@ public sealed partial class QuestStatesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading QuestKey
-            (var questkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -153,7 +153,7 @@ public sealed partial class QuestStatesDat
             (var unknown170Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading SoundEffect
-            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

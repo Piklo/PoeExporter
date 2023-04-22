@@ -76,7 +76,7 @@ public sealed partial class MapStashSpecialTypeEntriesDat
             (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MapItem
-            (var mapitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var mapitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Name
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

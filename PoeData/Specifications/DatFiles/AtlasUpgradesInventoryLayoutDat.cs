@@ -71,7 +71,7 @@ public sealed partial class AtlasUpgradesInventoryLayoutDat
             (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Voidstone
-            (var voidstoneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var voidstoneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown28
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -80,10 +80,10 @@ public sealed partial class AtlasUpgradesInventoryLayoutDat
             (var objectiveLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading GrantAtlasUpgrade
-            (var grantatlasupgradeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var grantatlasupgradeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown56
-            (var unknown56Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown56Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

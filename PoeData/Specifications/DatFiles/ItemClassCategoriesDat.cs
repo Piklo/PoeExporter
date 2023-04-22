@@ -57,7 +57,7 @@ public sealed partial class ItemClassCategoriesDat
             (var textLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown16
-            (var unknown16Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown16Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

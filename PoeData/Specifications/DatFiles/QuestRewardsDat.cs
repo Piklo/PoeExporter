@@ -102,7 +102,7 @@ public sealed partial class QuestRewardsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading RewardOffer
-            (var rewardofferLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var rewardofferLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -112,13 +112,13 @@ public sealed partial class QuestRewardsDat
             var charactersLoading = tempcharactersLoading.AsReadOnly();
 
             // loading Reward
-            (var rewardLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var rewardLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading RewardLevel
             (var rewardlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown56
-            (var unknown56Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown56Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown72
             (var unknown72Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -157,7 +157,7 @@ public sealed partial class QuestRewardsDat
             (var unknown146Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown150
-            (var unknown150Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown150Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown166
             (var unknown166Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

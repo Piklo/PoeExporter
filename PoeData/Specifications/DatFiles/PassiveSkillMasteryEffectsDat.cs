@@ -84,7 +84,7 @@ public sealed partial class PassiveSkillMasteryEffectsDat
             (var stat3valueLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AchievementItem
-            (var achievementitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var achievementitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

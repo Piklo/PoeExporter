@@ -49,7 +49,7 @@ public sealed partial class StatsAffectingGenerationDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Stat
-            (var statLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatValue
             (var statvalueLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

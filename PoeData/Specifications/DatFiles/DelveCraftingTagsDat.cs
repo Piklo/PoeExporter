@@ -49,7 +49,7 @@ public sealed partial class DelveCraftingTagsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading TagsKey
-            (var tagskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var tagskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ItemClass
             (var itemclassLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

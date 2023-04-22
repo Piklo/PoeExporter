@@ -116,7 +116,7 @@ public sealed partial class SkillArtVariationsDat
             var unknown120Loading = tempunknown120Loading.AsReadOnly();
 
             // loading Unknown136
-            (var unknown136Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown136Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown152
             (var tempunknown152Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

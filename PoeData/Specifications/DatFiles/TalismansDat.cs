@@ -71,13 +71,13 @@ public sealed partial class TalismansDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SpawnWeight
             (var spawnweightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ModsKey
-            (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Tier
             (var tierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -89,10 +89,10 @@ public sealed partial class TalismansDat
             (var unknown41Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown42
-            (var unknown42Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown42Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown58
-            (var unknown58Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown58Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown74
             (var unknown74Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

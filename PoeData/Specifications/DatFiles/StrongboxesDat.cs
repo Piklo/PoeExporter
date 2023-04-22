@@ -65,7 +65,7 @@ public sealed partial class StrongboxesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ChestsKey
-            (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SpawnWeight
             (var spawnweightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -80,7 +80,7 @@ public sealed partial class StrongboxesDat
             (var unknown25Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading SpawnWeightIncrease
-            (var spawnweightincreaseLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var spawnweightincreaseLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SpawnWeightHardmode
             (var spawnweighthardmodeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

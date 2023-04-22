@@ -267,7 +267,7 @@ public sealed partial class GeometryAttackDat
             (var unknown126Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown127
-            (var unknown127Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown127Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown143
             (var tempunknown143Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
@@ -283,7 +283,7 @@ public sealed partial class GeometryAttackDat
             (var unknown164Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown165
-            (var unknown165Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown165Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown181
             (var unknown181Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -299,7 +299,7 @@ public sealed partial class GeometryAttackDat
             (var unknown199Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown200
-            (var unknown200Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown200Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown216
             (var unknown216Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

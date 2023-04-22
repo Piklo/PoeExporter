@@ -52,7 +52,7 @@ public sealed partial class ActiveSkillTypeDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading FlagStat
-            (var flagstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var flagstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

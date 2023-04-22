@@ -65,7 +65,7 @@ public sealed partial class LakeRoomCompletionDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Room
-            (var roomLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var roomLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

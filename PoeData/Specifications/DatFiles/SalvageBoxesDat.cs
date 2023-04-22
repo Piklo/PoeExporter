@@ -52,7 +52,7 @@ public sealed partial class SalvageBoxesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemType
-            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

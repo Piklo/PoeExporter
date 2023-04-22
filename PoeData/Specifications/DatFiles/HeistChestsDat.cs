@@ -57,7 +57,7 @@ public sealed partial class HeistChestsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ChestsKey
-            (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Weight
             (var weightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -77,7 +77,7 @@ public sealed partial class UITalkTextDat
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading NPCTextAudio
-            (var npctextaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var npctextaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

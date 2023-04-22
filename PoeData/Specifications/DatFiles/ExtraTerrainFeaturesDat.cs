@@ -99,7 +99,7 @@ public sealed partial class ExtraTerrainFeaturesDat
             (var unknown73Loading, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);
 
             // loading WorldAreasKey
-            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown97
             (var unknown97Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

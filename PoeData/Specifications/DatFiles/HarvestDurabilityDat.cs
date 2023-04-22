@@ -49,7 +49,7 @@ public sealed partial class HarvestDurabilityDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading HarvestObjectsKey
-            (var harvestobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var harvestobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Durability
             (var durabilityLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

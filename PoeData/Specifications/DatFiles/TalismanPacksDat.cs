@@ -88,10 +88,10 @@ public sealed partial class TalismanPacksDat
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MonsterVarietiesKey
-            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown48
-            (var unknown48Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown48Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown64
             (var unknown64Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -103,7 +103,7 @@ public sealed partial class TalismanPacksDat
             (var unknown72Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MonsterPacksKey
-            (var monsterpackskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monsterpackskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

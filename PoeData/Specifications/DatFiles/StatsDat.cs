@@ -145,7 +145,7 @@ public sealed partial class StatsDat
             var belongsactiveskillskeyLoading = tempbelongsactiveskillskeyLoading.AsReadOnly();
 
             // loading Category
-            (var categoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var categoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown78
             (var unknown78Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

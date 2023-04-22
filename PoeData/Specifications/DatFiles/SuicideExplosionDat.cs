@@ -72,10 +72,10 @@ public sealed partial class SuicideExplosionDat
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown4
-            (var unknown4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown20
-            (var unknown20Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown20Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown36
             (var unknown36Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

@@ -46,7 +46,7 @@ public sealed partial class TencentAutoLootPetCurrenciesExcludableDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

@@ -87,10 +87,10 @@ public sealed partial class SentinelStorageLayoutDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown8
-            (var unknown8Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown8Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading DroneType
-            (var dronetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var dronetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown40
             (var unknown40Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -120,7 +120,7 @@ public sealed partial class SentinelStorageLayoutDat
             (var unknown73Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown77
-            (var unknown77Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown77Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

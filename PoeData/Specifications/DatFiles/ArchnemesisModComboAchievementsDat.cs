@@ -50,7 +50,7 @@ public sealed partial class ArchnemesisModComboAchievementsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Achievement
-            (var achievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var achievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Mods
             (var tempmodsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

@@ -230,10 +230,10 @@ public sealed partial class BuffDefinitionsDat
             (var unknown47Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Maximum_StatsKey
-            (var maximum_statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var maximum_statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Current_StatsKey
-            (var current_statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var current_statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown80
             (var unknown80Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -242,7 +242,7 @@ public sealed partial class BuffDefinitionsDat
             (var unknown81Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading BuffVisualsKey
-            (var buffvisualskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffvisualskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown101
             (var unknown101Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -281,7 +281,7 @@ public sealed partial class BuffDefinitionsDat
             (var unknown125Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown126
-            (var unknown126Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown126Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown142
             (var unknown142Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -347,7 +347,7 @@ public sealed partial class BuffDefinitionsDat
             (var unknown256Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown257
-            (var unknown257Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown257Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown273
             (var tempunknown273Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

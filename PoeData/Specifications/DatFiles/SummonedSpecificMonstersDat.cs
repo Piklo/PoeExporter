@@ -100,13 +100,13 @@ public sealed partial class SummonedSpecificMonstersDat
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MonsterVarietiesKey
-            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown20
             (var unknown20Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown24
-            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown40
             (var unknown40Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -124,10 +124,10 @@ public sealed partial class SummonedSpecificMonstersDat
             (var unknown50Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown51
-            (var unknown51Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown51Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown67
-            (var unknown67Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown67Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown83
             (var unknown83Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

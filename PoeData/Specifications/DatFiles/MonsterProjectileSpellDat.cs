@@ -68,10 +68,10 @@ public sealed partial class MonsterProjectileSpellDat
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Projectile
-            (var projectileLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var projectileLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Animation
-            (var animationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var animationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown36
             (var unknown36Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

@@ -59,7 +59,7 @@ public sealed partial class SkillTotemVariationsDat
             (var totemskinidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MonsterVarietiesKey
-            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

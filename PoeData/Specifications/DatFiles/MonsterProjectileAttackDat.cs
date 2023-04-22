@@ -64,7 +64,7 @@ public sealed partial class MonsterProjectileAttackDat
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Projectile
-            (var projectileLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var projectileLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown20
             (var unknown20Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

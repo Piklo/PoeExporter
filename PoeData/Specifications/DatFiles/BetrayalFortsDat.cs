@@ -70,7 +70,7 @@ public sealed partial class BetrayalFortsDat
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ExtraTerrainFeaturesKey
-            (var extraterrainfeatureskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var extraterrainfeatureskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

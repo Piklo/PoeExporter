@@ -46,7 +46,7 @@ public sealed partial class MavenJewelRadiusKeystonesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Keystone
-            (var keystoneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var keystoneLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

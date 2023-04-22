@@ -58,7 +58,7 @@ public sealed partial class CostTypesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading StatsKey
-            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading FormatText
             (var formattextLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -46,7 +46,7 @@ public sealed partial class HellscapeImmuneMonstersDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Monster
-            (var monsterLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monsterLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

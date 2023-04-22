@@ -97,7 +97,7 @@ public sealed partial class MonsterTypesDat
             (var damagespreadLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MonsterResistancesKey
-            (var monsterresistanceskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monsterresistanceskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsLargeAbyssMonster
             (var islargeabyssmonsterLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

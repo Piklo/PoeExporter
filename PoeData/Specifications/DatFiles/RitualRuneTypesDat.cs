@@ -110,7 +110,7 @@ public sealed partial class RitualRuneTypesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading MiscAnimatedKey1
-            (var miscanimatedkey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SpawnWeight
             (var spawnweightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -122,7 +122,7 @@ public sealed partial class RitualRuneTypesDat
             (var levelmaxLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading BuffDefinitionsKey
-            (var buffdefinitionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffdefinitionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown52
             (var tempunknown52Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
@@ -145,10 +145,10 @@ public sealed partial class RitualRuneTypesDat
             var unknown116Loading = tempunknown116Loading.AsReadOnly();
 
             // loading MiscAnimatedKey2
-            (var miscanimatedkey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading EnvironmentsKey
-            (var environmentskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var environmentskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown164
             (var unknown164Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -164,7 +164,7 @@ public sealed partial class RitualRuneTypesDat
             (var descriptionLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading DaemonSpawningDataKey
-            (var daemonspawningdatakeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var daemonspawningdatakeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown216
             (var unknown216Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

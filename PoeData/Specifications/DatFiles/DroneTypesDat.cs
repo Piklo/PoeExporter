@@ -72,10 +72,10 @@ public sealed partial class DroneTypesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown8
-            (var unknown8Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown8Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown24
-            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading DeployText
             (var deploytextLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -84,7 +84,7 @@ public sealed partial class DroneTypesDat
             (var unknown48Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading UnlockedStat
-            (var unlockedstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unlockedstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SocketableText
             (var socketabletextLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -111,7 +111,7 @@ public sealed partial class GeometryProjectilesDat
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown4
-            (var unknown4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown20
             (var unknown20Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -162,13 +162,13 @@ public sealed partial class GeometryProjectilesDat
             (var unknown62Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown63
-            (var unknown63Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown63Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown79
             (var unknown79Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown80
-            (var unknown80Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown80Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown96
             (var unknown96Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

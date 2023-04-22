@@ -84,7 +84,7 @@ public sealed partial class UltimatumEncountersDat
             (var bossarmfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Type
-            (var typeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var typeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Icon
             (var iconLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

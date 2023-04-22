@@ -55,7 +55,7 @@ public sealed partial class CraftingBenchSortCategoriesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Name
-            (var nameLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var nameLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsVisible
             (var isvisibleLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

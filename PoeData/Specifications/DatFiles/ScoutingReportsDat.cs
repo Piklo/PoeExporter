@@ -55,7 +55,7 @@ public sealed partial class ScoutingReportsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading BaseItemType
-            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MinMapTier
             (var minmaptierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

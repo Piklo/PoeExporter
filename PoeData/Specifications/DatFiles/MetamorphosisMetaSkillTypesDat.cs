@@ -98,7 +98,7 @@ public sealed partial class MetamorphosisMetaSkillTypesDat
             (var availableartLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading ItemisedSample
-            (var itemisedsampleLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemisedsampleLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BodypartName
             (var bodypartnameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

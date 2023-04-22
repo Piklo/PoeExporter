@@ -87,7 +87,7 @@ public sealed partial class CharacterPanelStatsDat
             var statskeys1Loading = tempstatskeys1Loading.AsReadOnly();
 
             // loading CharacterPanelDescriptionModesKey
-            (var characterpaneldescriptionmodeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var characterpaneldescriptionmodeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatsKeys2
             (var tempstatskeys2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -98,7 +98,7 @@ public sealed partial class CharacterPanelStatsDat
             var statskeys3Loading = tempstatskeys3Loading.AsReadOnly();
 
             // loading CharacterPanelTabsKey
-            (var characterpaneltabskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var characterpaneltabskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown96
             (var unknown96Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

@@ -65,7 +65,7 @@ public sealed partial class GrantedEffectQualityStatsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading GrantedEffectsKey
-            (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SetId
             (var setidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

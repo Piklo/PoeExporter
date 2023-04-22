@@ -109,10 +109,10 @@ public sealed partial class ExplodingStormBuffsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading BuffDefinitionsKey1
-            (var buffdefinitionskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffdefinitionskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown24
-            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatValues
             (var tempstatvaluesLoading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
@@ -135,19 +135,19 @@ public sealed partial class ExplodingStormBuffsDat
             (var unknown84Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Friendly_MonsterVarietiesKey
-            (var friendly_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var friendly_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MiscObjectsKey
-            (var miscobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MiscAnimatedKey
-            (var miscanimatedkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BuffVisualsKey
-            (var buffvisualskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffvisualskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Enemy_MonsterVarietiesKey
-            (var enemy_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var enemy_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown168
             (var unknown168Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -159,7 +159,7 @@ public sealed partial class ExplodingStormBuffsDat
             (var unknown176Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading BuffDefinitionsKey2
-            (var buffdefinitionskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffdefinitionskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsOnlySpawningNearPlayer
             (var isonlyspawningnearplayerLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

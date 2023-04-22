@@ -53,7 +53,7 @@ public sealed partial class ElderMapBossOverrideDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading WorldAreasKey
-            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MonsterVarietiesKeys
             (var tempmonstervarietieskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

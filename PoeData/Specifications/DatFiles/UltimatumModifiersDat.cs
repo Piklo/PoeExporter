@@ -141,7 +141,7 @@ public sealed partial class UltimatumModifiersDat
             var typesfilteredLoading = temptypesfilteredLoading.AsReadOnly();
 
             // loading DaemonSpawningData
-            (var daemonspawningdataLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var daemonspawningdataLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading PreviousTiers
             (var tempprevioustiersLoading, offset) = SpecificationFileLoader.LoadRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -174,7 +174,7 @@ public sealed partial class UltimatumModifiersDat
             (var monstertypesapplyingruinLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MiscAnimated
-            (var miscanimatedLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BuffTemplates
             (var tempbufftemplatesLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -201,10 +201,10 @@ public sealed partial class UltimatumModifiersDat
             var achievementsLoading = tempachievementsLoading.AsReadOnly();
 
             // loading TextAudio
-            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading UniqueMapMod
-            (var uniquemapmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var uniquemapmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

@@ -128,10 +128,10 @@ public sealed partial class SkillGemsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading GrantedEffectsKey
-            (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Str
             (var strLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -147,7 +147,7 @@ public sealed partial class SkillGemsDat
             var gemtagskeysLoading = tempgemtagskeysLoading.AsReadOnly();
 
             // loading VaalVariant_BaseItemTypesKey
-            (var vaalvariant_baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var vaalvariant_baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsVaalVariant
             (var isvaalvariantLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -156,13 +156,13 @@ public sealed partial class SkillGemsDat
             (var descriptionLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Consumed_ModsKey
-            (var consumed_modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var consumed_modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading GrantedEffectsKey2
-            (var grantedeffectskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var grantedeffectskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MinionGlobalSkillLevelStat
-            (var minionglobalskilllevelstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var minionglobalskilllevelstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SupportSkillName
             (var supportskillnameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -192,16 +192,16 @@ public sealed partial class SkillGemsDat
             (var regularvariantLoading, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);
 
             // loading GrantedEffectHardMode
-            (var grantedeffecthardmodeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var grantedeffecthardmodeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown179
-            (var unknown179Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown179Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown195
             (var unknown195Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ItemExperienceType
-            (var itemexperiencetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemexperiencetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

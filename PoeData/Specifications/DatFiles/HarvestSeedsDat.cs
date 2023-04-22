@@ -77,7 +77,7 @@ public sealed partial class HarvestSeedsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Monster
-            (var monsterLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monsterLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Tier
             (var tierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

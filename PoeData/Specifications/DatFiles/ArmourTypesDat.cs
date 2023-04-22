@@ -79,7 +79,7 @@ public sealed partial class ArmourTypesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ArmourMin
             (var armourminLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

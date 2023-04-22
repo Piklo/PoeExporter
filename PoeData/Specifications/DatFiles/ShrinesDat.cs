@@ -119,7 +119,7 @@ public sealed partial class ShrinesDat
             (var chargessharedLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Player_ShrineBuffsKey
-            (var player_shrinebuffskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var player_shrinebuffskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown29
             (var unknown29Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -128,13 +128,13 @@ public sealed partial class ShrinesDat
             (var unknown33Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Monster_ShrineBuffsKey
-            (var monster_shrinebuffskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monster_shrinebuffskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SummonMonster_MonsterVarietiesKey
-            (var summonmonster_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var summonmonster_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SummonPlayer_MonsterVarietiesKey
-            (var summonplayer_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var summonplayer_monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown85
             (var unknown85Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -143,7 +143,7 @@ public sealed partial class ShrinesDat
             (var unknown89Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ShrineSoundsKey
-            (var shrinesoundskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var shrinesoundskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown109
             (var unknown109Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -162,10 +162,10 @@ public sealed partial class ShrinesDat
             (var islessershrineLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Description
-            (var descriptionLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var descriptionLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Name
-            (var nameLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var nameLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown161
             (var unknown161Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

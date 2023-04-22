@@ -58,7 +58,7 @@ public sealed partial class HarvestInfrastructureDat
             (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ClientStringsKey
-            (var clientstringskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var clientstringskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

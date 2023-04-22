@@ -59,7 +59,7 @@ public sealed partial class BlightCraftingItemsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Oil
-            (var oilLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var oilLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Tier
             (var tierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

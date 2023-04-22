@@ -65,7 +65,7 @@ public sealed partial class AtlasBaseTypeDropsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading AtlasRegionsKey
-            (var atlasregionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var atlasregionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MinTier
             (var mintierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

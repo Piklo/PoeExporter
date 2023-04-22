@@ -53,7 +53,7 @@ public sealed partial class ArchnemesisRecipesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Result
-            (var resultLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var resultLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Recipe
             (var temprecipeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

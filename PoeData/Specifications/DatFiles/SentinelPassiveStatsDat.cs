@@ -53,10 +53,10 @@ public sealed partial class SentinelPassiveStatsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Unknown0
-            (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
-            (var unknown16Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown16Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown32
             (var unknown32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -17,7 +17,7 @@ internal sealed class GgpkRecord : IGgpkTagRecord, IReadGgpkTagRecord<GgpkRecord
     /// <summary>Gets ggpk version.</summary>
     public required int Version { get; init; }
 
-    /// <inheritdoc/>
+    /// <inheritdoc cref="IReadGgpkTagRecord{T}.Read(BinaryReader, int, long)"/>
     public static GgpkRecord Read(BinaryReader ggpkReader, int length, long offset)
     {
         var version = ggpkReader.ReadInt32();

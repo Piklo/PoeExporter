@@ -95,7 +95,7 @@ public sealed partial class BestiaryRecipesDat
             (var notesLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Category
-            (var categoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var categoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown56
             (var unknown56Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -117,7 +117,7 @@ public sealed partial class BestiaryRecipesDat
             (var unknown82Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading FlaskMod
-            (var flaskmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var flaskmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

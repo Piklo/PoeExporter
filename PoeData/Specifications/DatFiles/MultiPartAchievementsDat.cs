@@ -70,7 +70,7 @@ public sealed partial class MultiPartAchievementsDat
             (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AchievementItemsKey
-            (var achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown28
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

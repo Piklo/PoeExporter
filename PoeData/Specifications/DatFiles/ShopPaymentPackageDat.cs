@@ -126,7 +126,7 @@ public sealed partial class ShopPaymentPackageDat
             var unknown31Loading = tempunknown31Loading.AsReadOnly();
 
             // loading Unknown47
-            (var unknown47Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown47Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BackgroundImage
             (var backgroundimageLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

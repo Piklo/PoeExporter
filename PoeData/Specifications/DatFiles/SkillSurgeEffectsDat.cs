@@ -83,7 +83,7 @@ public sealed partial class SkillSurgeEffectsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading GrantedEffectsKey
-            (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var grantedeffectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -98,7 +98,7 @@ public sealed partial class SkillSurgeEffectsDat
             (var unknown26Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading MiscAnimated
-            (var miscanimatedLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown43
             (var unknown43Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

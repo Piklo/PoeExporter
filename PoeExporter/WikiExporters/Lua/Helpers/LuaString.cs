@@ -107,7 +107,9 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     /// <returns>parsed lua strings.</returns>
     /// <exception cref="DefaultNonGeneratorMethodUsedException">Thrown when the generic method is used.
     /// Which means the generator failed to generate overload specific for the given T.</exception>
+#pragma warning disable IDE0060 // Remove unused parameter
     internal static LuaString[] Generate<T>(string name, ILuaExporter<T> exporter, int indentation)
+#pragma warning restore IDE0060 // Remove unused parameter
         where T : ILuaExporter<T>
     {
         throw new DefaultNonGeneratorMethodUsedException();

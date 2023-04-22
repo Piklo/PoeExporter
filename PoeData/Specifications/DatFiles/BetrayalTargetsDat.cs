@@ -105,13 +105,13 @@ public sealed partial class BetrayalTargetsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading BetrayalRanksKey
-            (var betrayalrankskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var betrayalrankskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MonsterVarietiesKey
-            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BetrayalJobsKey
-            (var betrayaljobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var betrayaljobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Art
             (var artLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -120,7 +120,7 @@ public sealed partial class BetrayalTargetsDat
             (var unknown64Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading ItemClasses
-            (var itemclassesLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemclassesLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading FullName
             (var fullnameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -135,10 +135,10 @@ public sealed partial class BetrayalTargetsDat
             (var unknown105Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading SafehouseLeader_AcheivementItemsKey
-            (var safehouseleader_acheivementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var safehouseleader_acheivementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Level3_AchievementItemsKey
-            (var level3_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var level3_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown141
             (var unknown141Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -150,7 +150,7 @@ public sealed partial class BetrayalTargetsDat
             (var unknown149Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown153
-            (var unknown153Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown153Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ScriptArgument
             (var scriptargumentLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

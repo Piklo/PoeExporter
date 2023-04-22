@@ -60,7 +60,7 @@ public sealed partial class FixedHideoutDoodadTypesDat
             var hideoutdoodadskeysLoading = temphideoutdoodadskeysLoading.AsReadOnly();
 
             // loading BaseTypeHideoutDoodadsKey
-            (var basetypehideoutdoodadskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var basetypehideoutdoodadskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

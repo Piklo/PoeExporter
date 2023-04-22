@@ -7,7 +7,6 @@ namespace PoeData;
 /// </summary>
 public sealed class FileRecordNotFoundException : Exception
 {
-
     /// <inheritdoc cref="Exception()"/>
     public FileRecordNotFoundException()
     {

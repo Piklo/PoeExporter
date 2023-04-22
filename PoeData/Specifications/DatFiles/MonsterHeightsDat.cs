@@ -59,13 +59,13 @@ public sealed partial class MonsterHeightsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading MonsterVariety
-            (var monstervarietyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstervarietyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading MonsterHeightBracket
-            (var monsterheightbracketLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monsterheightbracketLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown36
             (var unknown36Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

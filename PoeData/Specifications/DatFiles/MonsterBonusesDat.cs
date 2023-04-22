@@ -68,7 +68,7 @@ public sealed partial class MonsterBonusesDat
             var unknown8Loading = tempunknown8Loading.AsReadOnly();
 
             // loading Unknown24
-            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown40
             (var tempunknown40Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

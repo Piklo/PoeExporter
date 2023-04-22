@@ -56,14 +56,14 @@ internal sealed class GgpkLoader : IDataLoader
 
         while (nodes.Count != 0)
         {
-            var entry = nodes.Dequeue();
-            var offset = entry.child.Offset;
+            var (parent, child) = nodes.Dequeue();
+            var offset = child.Offset;
 
             if (directoryRecords.TryGetValue(offset, out var directoryRecord))
             {
-                var node = new DirectoryNode() { Parent = entry.parent, Record = directoryRecord };
+                var node = new DirectoryNode() { Parent = parent, Record = directoryRecord };
 
-                entry.parent.Children.Add(node);
+                parent.Children.Add(node);
 
                 foreach (var recordEntry in directoryRecord.Entries)
                 {
@@ -72,9 +72,9 @@ internal sealed class GgpkLoader : IDataLoader
             }
             else if (fileRecords.TryGetValue(offset, out var fileRecord))
             {
-                var node = new DirectoryNode() { Parent = entry.parent, Record = fileRecord };
+                var node = new DirectoryNode() { Parent = parent, Record = fileRecord };
 
-                entry.parent.Children.Add(node);
+                parent.Children.Add(node);
             }
             else
             {

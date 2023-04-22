@@ -71,7 +71,7 @@ public sealed partial class SkillGemInfoDat
             (var videourl1Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading SkillGemsKey
-            (var skillgemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var skillgemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading VideoURL2
             (var videourl2Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

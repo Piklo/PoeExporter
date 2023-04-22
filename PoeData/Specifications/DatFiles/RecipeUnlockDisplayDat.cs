@@ -78,7 +78,7 @@ public sealed partial class RecipeUnlockDisplayDat
             (var rankLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading UnlockArea
-            (var unlockareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unlockareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

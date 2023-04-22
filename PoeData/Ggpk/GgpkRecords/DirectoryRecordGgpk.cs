@@ -22,7 +22,7 @@ internal sealed class DirectoryRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<D
     /// <summary>Gets directory entries.</summary>
     public required IReadOnlyCollection<DirectoryRecordEntry> Entries { get; init; }
 
-    /// <inheritdoc/>
+    /// <inheritdoc cref="IReadGgpkTagRecord{T}.Read(BinaryReader, int, long)"/>
     public static DirectoryRecordGgpk Read(BinaryReader ggpkReader, int length, long offset)
     {
         const int CharWidth = 2;

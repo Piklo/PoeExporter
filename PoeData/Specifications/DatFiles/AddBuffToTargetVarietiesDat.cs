@@ -68,7 +68,7 @@ public sealed partial class AddBuffToTargetVarietiesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BuffDefinitions
-            (var buffdefinitionsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffdefinitionsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var tempunknown16Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

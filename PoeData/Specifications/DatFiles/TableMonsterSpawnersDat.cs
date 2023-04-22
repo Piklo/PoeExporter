@@ -218,7 +218,7 @@ public sealed partial class TableMonsterSpawnersDat
             (var unknown78Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown82
-            (var unknown82Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown82Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown98
             (var unknown98Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

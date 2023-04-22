@@ -53,10 +53,10 @@ public sealed partial class AtlasPrimordialAltarChoicesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Mod
-            (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Type
-            (var typeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var typeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown32
             (var unknown32Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

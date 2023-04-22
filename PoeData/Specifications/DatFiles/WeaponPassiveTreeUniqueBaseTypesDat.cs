@@ -49,7 +49,7 @@ public sealed partial class WeaponPassiveTreeUniqueBaseTypesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading UniqueBase
-            (var uniquebaseLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var uniquebaseLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

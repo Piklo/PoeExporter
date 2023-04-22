@@ -83,7 +83,7 @@ public sealed partial class AlternatePassiveAdditionsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading AlternateTreeVersionsKey
-            (var alternatetreeversionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var alternatetreeversionskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SpawnWeight
             (var spawnweightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

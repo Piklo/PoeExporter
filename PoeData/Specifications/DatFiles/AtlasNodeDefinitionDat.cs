@@ -62,10 +62,10 @@ public sealed partial class AtlasNodeDefinitionDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading WorldAreasKey
-            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ItemVisualIdentityKey
-            (var itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown32
             (var unknown32Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

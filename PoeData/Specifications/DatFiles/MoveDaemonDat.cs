@@ -153,7 +153,7 @@ public sealed partial class MoveDaemonDat
             (var unknown20Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown24
-            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown24Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown40
             (var unknown40Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

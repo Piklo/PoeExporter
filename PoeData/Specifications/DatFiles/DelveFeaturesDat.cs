@@ -93,7 +93,7 @@ public sealed partial class DelveFeaturesDat
             var spawnweightLoading = tempspawnweightLoading.AsReadOnly();
 
             // loading WorldAreasKey
-            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Image
             (var imageLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

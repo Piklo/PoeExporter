@@ -53,10 +53,10 @@ public sealed partial class InfluenceModUpgradesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading InfluenceMod
-            (var influencemodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var influencemodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading UpgradedMod
-            (var upgradedmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var upgradedmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown32
             (var unknown32Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

@@ -56,7 +56,7 @@ public sealed partial class HeistRevealingNPCsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading NPCsKey
-            (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading PortraitFile
             (var portraitfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -211,7 +211,7 @@ public sealed partial class ActiveSkillsDat
             (var unknown185Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AlternateSkillTargetingBehavioursKey
-            (var alternateskilltargetingbehaviourskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var alternateskilltargetingbehaviourskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown205
             (var unknown205Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

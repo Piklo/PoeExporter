@@ -72,7 +72,7 @@ public sealed partial class CharacterAudioEventsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Event
-            (var eventLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var eventLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown24
             (var unknown24Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

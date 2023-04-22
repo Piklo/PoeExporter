@@ -48,7 +48,6 @@ internal sealed class DataLoader
             dataLoader = new SteamDataLoader(config, logger);
         }
 
-
         decompressor = new(this.logger) { PoePath = this.config.PoePath };
 
         // data loading
@@ -75,7 +74,11 @@ internal sealed class DataLoader
         logger.Verbose("loaded data in {elapsed}", Stopwatch.GetElapsedTime(timestampStart));
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Gets bytes for a file.
+    /// </summary>
+    /// <param name="filePath">file path to get bytes from.</param>
+    /// <returns>bytes for a file.</returns>
     public byte[] GetFileBytes(string filePath)
     {
         var pathBytes = Encoding.ASCII.GetBytes(filePath);
@@ -88,7 +91,6 @@ internal sealed class DataLoader
         var fileBytes = decompressedData[start..end];
 
         return fileBytes;
-        return dataLoader.GetFileBytes(filePath);
     }
 
     private bool IsStandaloneClient()
@@ -292,21 +294,6 @@ internal sealed class DataLoader
         {
             throw new FileRecordNotFoundException($"failed to find file record with hash = {hash}, path = {Encoding.ASCII.GetString(path)}");
         }
-    }
-
-    /// <inheritdoc/>
-    public byte[] GetFileBytes2(string filePath)
-    {
-        var pathBytes = Encoding.ASCII.GetBytes(filePath);
-        var fileRecord = GetFileRecord(pathBytes);
-
-        var decompressedData = GetDecompressedData(fileRecord.BundleRecord);
-
-        var start = (int)fileRecord.FileOffset;
-        var end = start + (int)fileRecord.FileSize;
-        var fileBytes = decompressedData[start..end];
-
-        return fileBytes;
     }
 
     private byte[] GetDecompressedData(BundleRecord bundleRecord)

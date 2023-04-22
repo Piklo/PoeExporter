@@ -8,8 +8,13 @@ namespace PoeData.Specifications;
 /// </summary>
 internal static class SpecificationFileLoader
 {
-    private const int TableOffset = 4;
-
+    /// <summary>
+    /// Loads a string from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read string from.</param>
+    /// <param name="offset">offset to read the string offset from.</param>
+    /// <param name="dataOffset">offset of referenced data.</param>
+    /// <returns>read string and moved offset.</returns>
     public static (string value, int offset) LoadString(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -34,6 +39,13 @@ internal static class SpecificationFileLoader
         return (str, offset);
     }
 
+    /// <summary>
+    /// Loads a string array from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read strings from.</param>
+    /// <param name="offset">offset to read the strings offset from.</param>
+    /// <param name="dataOffset">offset of referenced data.</param>
+    /// <returns>read strings and moved offset.</returns>
     public static (string[] value, int offset) LoadStringArray(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var stringsCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -48,10 +60,9 @@ internal static class SpecificationFileLoader
         var newOffset = dataOffset + (int)stringsOffset;
         for (var i = 0; i < stringsCount; i++)
         {
-            //(var stringSomething, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
-            //var strOffset = stringSomething + dataOffset;
-
-            //strings[i] = "";
+            // (var stringSomething, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
+            // var strOffset = stringSomething + dataOffset;
+            // strings[i] = "";
             (var str, newOffset) = LoadString(decompressedFile, newOffset, dataOffset);
 
             strings[i] = str;
@@ -60,6 +71,12 @@ internal static class SpecificationFileLoader
         return (strings, offset);
     }
 
+    /// <summary>
+    /// Loads an int from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read int from.</param>
+    /// <param name="offset">offset to read the int from.</param>
+    /// <returns>read int and moved offset.</returns>
     public static (int value, int offset) LoadInt(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToInt32(decompressedFile, offset);
@@ -67,6 +84,12 @@ internal static class SpecificationFileLoader
         return (value, offset);
     }
 
+    /// <summary>
+    /// Loads a float from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read float from.</param>
+    /// <param name="offset">offset to read the float from.</param>
+    /// <returns>read float and moved offset.</returns>
     public static (float value, int offset) LoadFloat(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToSingle(decompressedFile, offset);
@@ -74,6 +97,12 @@ internal static class SpecificationFileLoader
         return (value, offset);
     }
 
+    /// <summary>
+    /// Loads a long from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read long from.</param>
+    /// <param name="offset">offset to read the long from.</param>
+    /// <returns>read long and moved offset.</returns>
     public static (long value, int offset) LoadLong(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -81,6 +110,12 @@ internal static class SpecificationFileLoader
         return (value, offset);
     }
 
+    /// <summary>
+    /// Loads a row primary key from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read primary key from.</param>
+    /// <param name="offset">offset to read the primary key from.</param>
+    /// <returns>read primary key and moved offset.</returns>
     public static (int? value, int offset) LoadRowPrimaryKey(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -93,6 +128,13 @@ internal static class SpecificationFileLoader
         return ((int)value, offset);
     }
 
+    /// <summary>
+    /// Loads row primary keys array from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read primary keys from.</param>
+    /// <param name="offset">offset to read the primary keys offset from.</param>
+    /// <param name="dataOffset">offset of referenced data.</param>
+    /// <returns>read primary keys and moved offset.</returns>
     public static (int[] values, int offset) LoadRowPrimaryKeys(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -115,7 +157,13 @@ internal static class SpecificationFileLoader
         return (primaryKeys, offset);
     }
 
-    public static (int? value, int offset) LoadForeignRowPrimaryKey(byte[] decompressedFile, int offset, int dataOffset)
+    /// <summary>
+    /// Loads foreign row primary key from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read primary key from.</param>
+    /// <param name="offset">offset to read the primary key from.</param>
+    /// <returns>read primary key and moved offset.</returns>
+    public static (int? value, int offset) LoadForeignRowPrimaryKey(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
         (var _, offset) = BitConverterExtended.ToInt64(decompressedFile, offset); // throwaway value in case of 1 primary key?
@@ -128,6 +176,13 @@ internal static class SpecificationFileLoader
         return ((int)value, offset);
     }
 
+    /// <summary>
+    /// Loads foreign row primary keys array from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read primary keys from.</param>
+    /// <param name="offset">offset to read the primary keys offset from.</param>
+    /// <param name="dataOffset">offset of referenced data.</param>
+    /// <returns>read primary keys and moved offset.</returns>
     public static (int[] values, int offset) LoadForeignRowPrimaryKeys(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -151,7 +206,6 @@ internal static class SpecificationFileLoader
         var newOffset = dataOffset + (int)keysLength;
         for (var i = 0; i < keysCount; i++)
         {
-
             (var primaryKey, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset);
             (var _, newOffset) = BitConverterExtended.ToInt64(decompressedFile, newOffset); // what is this padding?
 
@@ -176,6 +230,12 @@ internal static class SpecificationFileLoader
         // return value == -0x1010102 || value == 0xFEFEFEFE || value == -0x101010101010102 || value == 0xFEFEFEFEFEFEFEFE || value == 0xFFFFFFFF;
     }
 
+    /// <summary>
+    /// Loads a boolean from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read boolean from.</param>
+    /// <param name="offset">offset to read the boolean from.</param>
+    /// <returns>read boolean and moved offset.</returns>
     public static (bool value, int offset) LoadBoolean(byte[] decompressedFile, int offset)
     {
         (var value, offset) = BitConverterExtended.ToBoolean(decompressedFile, offset);
@@ -184,16 +244,12 @@ internal static class SpecificationFileLoader
     }
 
     /// <summary>
-    /// Gets column offset.
+    /// Loads int array from the file and moves the offset.
     /// </summary>
-    /// <param name="fileOffset">current file offset.</param>
-    /// <param name="tableRecordLength">length of the table record.</param>
-    /// <returns>column offset.</returns>
-    public static int GetColumnOffset(int fileOffset, int tableRecordLength)
-    {
-        return (fileOffset - TableOffset) % tableRecordLength;
-    }
-
+    /// <param name="decompressedFile">file to read ints from.</param>
+    /// <param name="offset">offset to read the ints offset from.</param>
+    /// <param name="dataOffset">offset of referenced data.</param>
+    /// <returns>read ints and moved offset.</returns>
     internal static (int[] value, int offset) LoadIntArray(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);
@@ -216,6 +272,13 @@ internal static class SpecificationFileLoader
         return (primaryKeys, offset);
     }
 
+    /// <summary>
+    /// Loads float array from the file and moves the offset.
+    /// </summary>
+    /// <param name="decompressedFile">file to read float from.</param>
+    /// <param name="offset">offset to read the float offset from.</param>
+    /// <param name="dataOffset">offset of referenced data.</param>
+    /// <returns>read float and moved offset.</returns>
     internal static (float[] value, int offset) LoadFloatArray(byte[] decompressedFile, int offset, int dataOffset)
     {
         (var keysCount, offset) = BitConverterExtended.ToInt64(decompressedFile, offset);

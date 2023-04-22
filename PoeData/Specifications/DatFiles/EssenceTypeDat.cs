@@ -64,7 +64,7 @@ public sealed partial class EssenceTypeDat
             (var iscorruptedessenceLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading WordsKey
-            (var wordskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var wordskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

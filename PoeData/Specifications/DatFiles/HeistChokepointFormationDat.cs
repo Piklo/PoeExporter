@@ -78,7 +78,7 @@ public sealed partial class HeistChokepointFormationDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Unknown0
-            (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -92,7 +92,7 @@ public sealed partial class HeistChokepointFormationDat
             var unknown36Loading = tempunknown36Loading.AsReadOnly();
 
             // loading Unknown52
-            (var unknown52Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown52Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown68
             (var unknown68Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

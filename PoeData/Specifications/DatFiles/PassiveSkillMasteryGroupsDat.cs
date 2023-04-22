@@ -88,10 +88,10 @@ public sealed partial class PassiveSkillMasteryGroupsDat
             (var unknown48Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading SoundEffect
-            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MasteryCountStat
-            (var masterycountstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var masterycountstatLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

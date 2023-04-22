@@ -102,7 +102,7 @@ public sealed partial class PropheciesDat
             (var oggfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading ProphecyChainKey
-            (var prophecychainkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var prophecychainkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ProphecyChainPosition
             (var prophecychainpositionLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -119,7 +119,7 @@ public sealed partial class MonsterDeathConditionsDat
             (var unknown46Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown50
-            (var unknown50Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown50Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown66
             (var unknown66Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -142,10 +142,10 @@ public sealed partial class MonsterDeathConditionsDat
             (var unknown104Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown108
-            (var unknown108Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown108Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown124
-            (var unknown124Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown124Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown140
             (var unknown140Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -108,7 +108,7 @@ public sealed partial class AwardDisplayDat
             (var oggfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown68
-            (var unknown68Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown68Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown84
             (var unknown84Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

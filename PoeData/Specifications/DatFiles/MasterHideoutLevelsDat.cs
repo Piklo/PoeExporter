@@ -52,7 +52,7 @@ public sealed partial class MasterHideoutLevelsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading NPCMasterKey
-            (var npcmasterkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var npcmasterkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Level
             (var levelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

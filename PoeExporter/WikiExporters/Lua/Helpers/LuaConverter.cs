@@ -13,7 +13,9 @@ internal static partial class LuaConverter
     /// <returns>converted objects in lua string.</returns>
     /// <exception cref="DefaultNonGeneratorMethodUsedException">Thrown when the generic method is used.
     /// Which means the generator failed to generate overload specific for the given T.</exception>
+#pragma warning disable IDE0060 // Remove unused parameter
     public static string ToLuaString<T>(IReadOnlyList<T> items)
+#pragma warning restore IDE0060 // Remove unused parameter
         where T : ILuaExporter<T>
     {
         throw new DefaultNonGeneratorMethodUsedException();
@@ -28,7 +30,9 @@ internal static partial class LuaConverter
     /// <returns>converted object in lua strings.</returns>
     /// <exception cref="DefaultNonGeneratorMethodUsedException">Thrown when the generic method is used.
     /// Which means the generator failed to generate overload specific for the given T.</exception>
+#pragma warning disable IDE0060 // Remove unused parameter
     public static LuaString[] ToLuaStrings<T>(ILuaExporter<T> exporter, int currentIndentation = 0)
+#pragma warning restore IDE0060 // Remove unused parameter
         where T : ILuaExporter<T>
     {
         throw new DefaultNonGeneratorMethodUsedException();

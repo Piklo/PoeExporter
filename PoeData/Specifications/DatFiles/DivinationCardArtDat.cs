@@ -52,7 +52,7 @@ public sealed partial class DivinationCardArtDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading VirtualFile
             (var virtualfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

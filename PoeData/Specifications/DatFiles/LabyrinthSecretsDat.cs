@@ -166,7 +166,7 @@ public sealed partial class LabyrinthSecretsDat
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading AchievementItemsKey
-            (var achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading LabyrinthTierMinimum
             (var labyrinthtierminimumLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

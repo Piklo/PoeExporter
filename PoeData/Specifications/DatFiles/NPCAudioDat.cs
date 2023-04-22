@@ -101,7 +101,7 @@ public sealed partial class NPCAudioDat
             (var unknown56Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown60
-            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown76
             (var unknown76Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

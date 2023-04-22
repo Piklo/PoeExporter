@@ -52,7 +52,7 @@ public sealed partial class EventSeasonRewardsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading EventSeasonKey
-            (var eventseasonkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var eventseasonkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Point
             (var pointLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

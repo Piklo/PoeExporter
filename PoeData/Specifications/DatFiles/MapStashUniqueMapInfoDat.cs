@@ -50,10 +50,10 @@ public sealed partial class MapStashUniqueMapInfoDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading UniqueMap
-            (var uniquemapLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var uniquemapLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BaseItem
-            (var baseitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

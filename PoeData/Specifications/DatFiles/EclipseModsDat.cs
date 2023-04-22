@@ -76,7 +76,7 @@ public sealed partial class EclipseModsDat
             var spawnweight_valuesLoading = tempspawnweight_valuesLoading.AsReadOnly();
 
             // loading ModsKey
-            (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MinLevel
             (var minlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

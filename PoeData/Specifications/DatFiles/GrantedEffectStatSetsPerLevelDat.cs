@@ -97,7 +97,7 @@ public sealed partial class GrantedEffectStatSetsPerLevelDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading StatSet
-            (var statsetLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statsetLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading GemLevel
             (var gemlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

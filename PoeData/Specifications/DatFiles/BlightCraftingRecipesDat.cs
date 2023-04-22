@@ -64,10 +64,10 @@ public sealed partial class BlightCraftingRecipesDat
             var blightcraftingitemskeysLoading = tempblightcraftingitemskeysLoading.AsReadOnly();
 
             // loading BlightCraftingResultsKey
-            (var blightcraftingresultskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var blightcraftingresultskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BlightCraftingTypesKey
-            (var blightcraftingtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var blightcraftingtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

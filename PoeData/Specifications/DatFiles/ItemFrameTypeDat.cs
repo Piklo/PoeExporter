@@ -114,10 +114,10 @@ public sealed partial class ItemFrameTypeDat
             (var unknown66Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Rarity
-            (var rarityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var rarityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading DisplayString
-            (var displaystringLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var displaystringLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ColorMarkup
             (var colormarkupLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

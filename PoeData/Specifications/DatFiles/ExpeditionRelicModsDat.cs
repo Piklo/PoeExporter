@@ -54,7 +54,7 @@ public sealed partial class ExpeditionRelicModsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Mod
-            (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Categories
             (var tempcategoriesLoading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

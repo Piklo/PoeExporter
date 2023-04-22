@@ -65,13 +65,13 @@ public sealed partial class LegionRewardTypeVisualsDat
             (var intidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MinimapIconsKey
-            (var minimapiconskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var minimapiconskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown20
             (var unknown20Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading MiscAnimatedKey
-            (var miscanimatedkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown44
             (var unknown44Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);

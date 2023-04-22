@@ -307,22 +307,22 @@ public sealed partial class ModsDat
             (var hash16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ModTypeKey
-            (var modtypekeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var modtypekeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Level
             (var levelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading StatsKey1
-            (var statskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatsKey2
-            (var statskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatsKey3
-            (var statskey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatsKey4
-            (var statskey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Domain
             (var domainLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -399,7 +399,7 @@ public sealed partial class ModsDat
             (var stat5maxLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading StatsKey5
-            (var statskey5Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey5Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading FullAreaClear_AchievementItemsKey
             (var tempfullareaclear_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -431,7 +431,7 @@ public sealed partial class ModsDat
             (var stat6maxLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading StatsKey6
-            (var statskey6Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey6Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MaxLevel
             (var maxlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -460,10 +460,10 @@ public sealed partial class ModsDat
             (var heist_substatvalue2Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Heist_StatsKey0
-            (var heist_statskey0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heist_statskey0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Heist_StatsKey1
-            (var heist_statskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heist_statskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Heist_AddStatValue1
             (var heist_addstatvalue1Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -530,7 +530,7 @@ public sealed partial class ModsDat
             (var unknown587Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading BuffTemplate
-            (var bufftemplateLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var bufftemplateLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ArchnemesisMinionMod
             (var archnemesisminionmodLoading, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);

@@ -52,7 +52,7 @@ public sealed partial class MetamorphosisRewardTypeItemsClientDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading MetamorphosisRewardTypesKey
-            (var metamorphosisrewardtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var metamorphosisrewardtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

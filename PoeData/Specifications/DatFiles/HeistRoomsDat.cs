@@ -81,7 +81,7 @@ public sealed partial class HeistRoomsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading HeistAreasKey
-            (var heistareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -90,10 +90,10 @@ public sealed partial class HeistRoomsDat
             (var armfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading HeistJobsKey1
-            (var heistjobskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistjobskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistJobsKey2
-            (var heistjobskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistjobskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown60
             (var unknown60Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

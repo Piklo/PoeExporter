@@ -68,7 +68,7 @@ public sealed partial class SynthesisBracketsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading WorldAreasKey1
-            (var worldareaskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MinLevel
             (var minlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -77,7 +77,7 @@ public sealed partial class SynthesisBracketsDat
             (var maxlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading WorldAreasKey2
-            (var worldareaskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown40
             (var unknown40Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

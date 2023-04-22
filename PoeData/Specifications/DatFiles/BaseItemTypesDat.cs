@@ -150,7 +150,7 @@ public sealed partial class BaseItemTypesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading ItemClassesKey
-            (var itemclasseskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemclasseskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Width
             (var widthLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -168,7 +168,7 @@ public sealed partial class BaseItemTypesDat
             (var droplevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading FlavourTextKey
-            (var flavourtextkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var flavourtextkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Implicit_ModsKeys
             (var tempimplicit_modskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -178,7 +178,7 @@ public sealed partial class BaseItemTypesDat
             (var sizeongroundLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading SoundEffect
-            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading TagsKeys
             (var temptagskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -191,7 +191,7 @@ public sealed partial class BaseItemTypesDat
             (var sitevisibilityLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ItemVisualIdentity
-            (var itemvisualidentityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemvisualidentityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HASH32
             (var hash32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -204,7 +204,7 @@ public sealed partial class BaseItemTypesDat
             (var inflectionLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Equip_AchievementItemsKey
-            (var equip_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var equip_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsCorrupted
             (var iscorruptedLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -224,16 +224,16 @@ public sealed partial class BaseItemTypesDat
             (var unknown229Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown230
-            (var unknown230Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown230Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown246
-            (var unknown246Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown246Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown262
             (var unknown262Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading TradeMarketCategory
-            (var trademarketcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var trademarketcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown279
             (var unknown279Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

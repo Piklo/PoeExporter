@@ -50,7 +50,7 @@ public sealed partial class AtlasExileInfluenceDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Conqueror
-            (var conquerorLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var conquerorLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Sets
             (var tempsetsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

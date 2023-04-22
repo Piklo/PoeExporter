@@ -138,7 +138,7 @@ public sealed partial class AbyssObjectsDat
             (var unknown56Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AbyssalDepths
-            (var abyssaldepthsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var abyssaldepthsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown76
             (var unknown76Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

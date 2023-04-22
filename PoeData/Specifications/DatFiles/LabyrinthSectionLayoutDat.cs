@@ -75,7 +75,7 @@ public sealed partial class LabyrinthSectionLayoutDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading LabyrinthSectionKey
-            (var labyrinthsectionkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var labyrinthsectionkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -85,13 +85,13 @@ public sealed partial class LabyrinthSectionLayoutDat
             var labyrinthsectionlayoutkeysLoading = templabyrinthsectionlayoutkeysLoading.AsReadOnly();
 
             // loading LabyrinthSecretsKey0
-            (var labyrinthsecretskey0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var labyrinthsecretskey0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading LabyrinthSecretsKey1
-            (var labyrinthsecretskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var labyrinthsecretskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading LabyrinthAreasKey
-            (var labyrinthareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var labyrinthareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Float0
             (var float0Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);

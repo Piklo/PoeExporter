@@ -93,7 +93,7 @@ public sealed partial class BetrayalDialogueDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Unknown0
-            (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -106,20 +106,20 @@ public sealed partial class BetrayalDialogueDat
             var unknown24Loading = tempunknown24Loading.AsReadOnly();
 
             // loading BetrayalTargetsKey
-            (var betrayaltargetskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var betrayaltargetskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown56
             (var unknown56Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown60
-            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown76
             (var tempunknown76Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
             var unknown76Loading = tempunknown76Loading.AsReadOnly();
 
             // loading BetrayalUpgradesKey
-            (var betrayalupgradeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var betrayalupgradeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown108
             (var unknown108Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -140,7 +140,7 @@ public sealed partial class BetrayalDialogueDat
             var unknown142Loading = tempunknown142Loading.AsReadOnly();
 
             // loading NPCTextAudioKey
-            (var npctextaudiokeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var npctextaudiokeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown174
             (var tempunknown174Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

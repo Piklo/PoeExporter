@@ -137,7 +137,7 @@ public sealed partial class IncursionRoomsDat
             (var hash16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading IncursionArchitectKey
-            (var incursionarchitectkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var incursionarchitectkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading PastARMFile
             (var pastarmfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -168,7 +168,7 @@ public sealed partial class IncursionRoomsDat
             (var roomupgradefrom_incursionroomskeyLoading, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);
 
             // loading ItemisedFlavourText
-            (var itemisedflavourtextLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemisedflavourtextLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown164
             (var unknown164Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

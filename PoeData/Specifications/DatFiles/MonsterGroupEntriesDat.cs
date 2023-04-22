@@ -55,7 +55,7 @@ public sealed partial class MonsterGroupEntriesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading MonsterVarietiesKey
-            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstervarietieskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MonsterGroupNamesId
             (var monstergroupnamesidLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

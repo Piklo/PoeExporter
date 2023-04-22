@@ -64,13 +64,13 @@ public sealed partial class HarvestPlantBoostersDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading HarvestObjectsKey
-            (var harvestobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var harvestobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Radius
             (var radiusLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown20
-            (var unknown20Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown20Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Lifeforce
             (var lifeforceLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

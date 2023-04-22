@@ -94,7 +94,7 @@ public sealed partial class HarvestCraftOptionsDat
             (var textLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown16
-            (var unknown16Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown16Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Command
             (var commandLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

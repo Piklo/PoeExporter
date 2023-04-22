@@ -46,7 +46,7 @@ public sealed partial class BlightCraftingUniquesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading WordsKey
-            (var wordskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var wordskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

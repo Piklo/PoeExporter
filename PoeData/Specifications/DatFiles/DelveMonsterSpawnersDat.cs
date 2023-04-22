@@ -211,7 +211,7 @@ public sealed partial class DelveMonsterSpawnersDat
             (var unknown82Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown86
-            (var unknown86Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown86Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown102
             (var unknown102Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

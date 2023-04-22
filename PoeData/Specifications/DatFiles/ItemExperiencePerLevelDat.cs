@@ -52,7 +52,7 @@ public sealed partial class ItemExperiencePerLevelDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ItemExperienceType
-            (var itemexperiencetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemexperiencetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ItemCurrentLevel
             (var itemcurrentlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

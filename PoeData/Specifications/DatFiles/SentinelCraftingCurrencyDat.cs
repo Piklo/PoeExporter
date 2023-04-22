@@ -49,7 +49,7 @@ public sealed partial class SentinelCraftingCurrencyDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Currency
-            (var currencyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var currencyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Type
             (var typeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

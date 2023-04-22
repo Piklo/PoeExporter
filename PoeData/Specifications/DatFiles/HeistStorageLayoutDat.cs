@@ -87,7 +87,7 @@ public sealed partial class HeistStorageLayoutDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading BaseItemType
-            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown24
             (var unknown24Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -99,7 +99,7 @@ public sealed partial class HeistStorageLayoutDat
             (var unknown33Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading HeistJobsKey
-            (var heistjobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistjobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Columns
             (var columnsLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -120,7 +120,7 @@ public sealed partial class HeistStorageLayoutDat
             (var unknown73Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ItemClass
-            (var itemclassLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemclassLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

@@ -52,7 +52,7 @@ public sealed partial class LabyrinthBonusItemsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemType
-            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading AreaLevel
             (var arealevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -166,13 +166,13 @@ public sealed partial class CraftingBenchOptionsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading HideoutNPCsKey
-            (var hideoutnpcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var hideoutnpcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Order
             (var orderLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AddMod
-            (var addmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var addmodLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Cost_BaseItemTypes
             (var tempcost_baseitemtypesLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -235,7 +235,7 @@ public sealed partial class CraftingBenchOptionsDat
             (var unknown182Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading UnlockCategory
-            (var unlockcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unlockcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading UnveilsRequired
             (var unveilsrequiredLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -258,16 +258,16 @@ public sealed partial class CraftingBenchOptionsDat
             (var unknown246Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown250
-            (var unknown250Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown250Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading AddEnchantment
-            (var addenchantmentLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var addenchantmentLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SortCategory
-            (var sortcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var sortcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown298
-            (var unknown298Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown298Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown314
             (var unknown314Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -276,13 +276,13 @@ public sealed partial class CraftingBenchOptionsDat
             (var unknown315Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown319
-            (var unknown319Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown319Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown335
-            (var unknown335Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown335Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown351
-            (var unknown351Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown351Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

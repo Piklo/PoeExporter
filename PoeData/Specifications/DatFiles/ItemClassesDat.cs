@@ -145,10 +145,10 @@ public sealed partial class ItemClassesDat
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading TradeMarketCategory
-            (var trademarketcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var trademarketcategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ItemClassCategory
-            (var itemclasscategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemclasscategoryLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading RemovedIfLeavesArea
             (var removedifleavesareaLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -171,7 +171,7 @@ public sealed partial class ItemClassesDat
             (var canhaveveiledmodsLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading PickedUpQuest
-            (var pickedupquestLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var pickedupquestLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown100
             (var unknown100Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -198,7 +198,7 @@ public sealed partial class ItemClassesDat
             (var cantransferskinLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading ItemStance
-            (var itemstanceLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemstanceLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading CanScourge
             (var canscourgeLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -227,7 +227,7 @@ public sealed partial class ItemClassesDat
             (var canbefracturedLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading EquipAchievements
-            (var equipachievementsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var equipachievementsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown181
             (var unknown181Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

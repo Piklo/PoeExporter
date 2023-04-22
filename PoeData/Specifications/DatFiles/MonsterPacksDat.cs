@@ -151,7 +151,7 @@ public sealed partial class MonsterPacksDat
             (var unknown117Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading PackFormation
-            (var packformationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var packformationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown137
             (var unknown137Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

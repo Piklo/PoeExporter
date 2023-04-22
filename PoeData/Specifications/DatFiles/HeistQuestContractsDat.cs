@@ -148,17 +148,17 @@ public sealed partial class HeistQuestContractsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading HeistContractsKey
-            (var heistcontractskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistcontractskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistObjectivesKey
-            (var heistobjectiveskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistobjectiveskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistNPCsKey
             (var tempheistnpcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
             var heistnpcskeyLoading = tempheistnpcskeyLoading.AsReadOnly();
 
             // loading HeistJobsKey
-            (var heistjobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistjobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown64
             (var unknown64Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -173,10 +173,10 @@ public sealed partial class HeistQuestContractsDat
             (var unknown76Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading HeistRoomsKey1
-            (var heistroomskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistroomskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading WorldAreasKey
-            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown109
             (var unknown109Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -197,19 +197,19 @@ public sealed partial class HeistQuestContractsDat
             (var unknown120Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading HaveObjective
-            (var haveobjectiveLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var haveobjectiveLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown137
             (var unknown137Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading QuestActive
-            (var questactiveLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questactiveLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HaveQuest
-            (var havequestLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var havequestLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HaveObjective2
-            (var haveobjective2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var haveobjective2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown186
             (var unknown186Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -224,19 +224,19 @@ public sealed partial class HeistQuestContractsDat
             (var unknown196Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown213
             (var unknown213Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading HeistIntroAreasKey
-            (var heistintroareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistintroareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown230
             (var unknown230Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading HeistRoomsKey2
-            (var heistroomskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistroomskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown250
             (var unknown250Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -134,7 +134,7 @@ public sealed partial class LakeRoomsDat
             (var typeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading WorldArea
-            (var worldareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Icon
             (var iconLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -146,7 +146,7 @@ public sealed partial class LakeRoomsDat
             (var minlevelLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown132
-            (var unknown132Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown132Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown148
             (var unknown148Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -163,7 +163,7 @@ public sealed partial class LakeRoomsDat
             (var remindertextLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading TextAudio
-            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

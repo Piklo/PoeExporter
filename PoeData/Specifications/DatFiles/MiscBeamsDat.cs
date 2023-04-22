@@ -62,7 +62,7 @@ public sealed partial class MiscBeamsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading MiscAnimated
-            (var miscanimatedLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown24
             (var unknown24Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

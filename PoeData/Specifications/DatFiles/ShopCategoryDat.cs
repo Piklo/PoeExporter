@@ -82,7 +82,7 @@ public sealed partial class ShopCategoryDat
             (var unknown40Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AppliedTo_BaseItemTypesKey
-            (var appliedto_baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var appliedto_baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

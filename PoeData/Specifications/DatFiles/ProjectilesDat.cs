@@ -171,7 +171,7 @@ public sealed partial class ProjectilesDat
             (var unknown75Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown79
-            (var unknown79Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown79Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown95
             (var unknown95Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -202,10 +202,10 @@ public sealed partial class ProjectilesDat
             (var unknown137Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown141
-            (var unknown141Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown141Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown157
-            (var unknown157Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown157Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown173
             (var unknown173Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

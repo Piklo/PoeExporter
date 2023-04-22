@@ -64,10 +64,10 @@ public sealed partial class PassiveJewelSlotsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Slot
-            (var slotLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var slotLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ClusterJewelSize
-            (var clusterjewelsizeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var clusterjewelsizeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown32
             (var unknown32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -76,7 +76,7 @@ public sealed partial class PassiveJewelSlotsDat
             (var replacesslotLoading, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);
 
             // loading ProxySlot
-            (var proxyslotLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var proxyslotLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StartIndices
             (var tempstartindicesLoading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

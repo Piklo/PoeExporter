@@ -58,7 +58,7 @@ public sealed partial class SentinelDroneInventoryLayoutDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading DroneType
-            (var dronetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var dronetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

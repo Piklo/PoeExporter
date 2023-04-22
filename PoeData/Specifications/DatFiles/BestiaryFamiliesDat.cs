@@ -105,7 +105,7 @@ public sealed partial class BestiaryFamiliesDat
             (var unknown56Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading TagsKey
-            (var tagskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var tagskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown73
             (var unknown73Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -115,7 +115,7 @@ public sealed partial class BestiaryFamiliesDat
             var modskeysLoading = tempmodskeysLoading.AsReadOnly();
 
             // loading CurrencyItemsKey
-            (var currencyitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var currencyitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

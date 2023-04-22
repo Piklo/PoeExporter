@@ -64,7 +64,7 @@ public sealed partial class BestiaryGenusDat
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading BestiaryGroupsKey
-            (var bestiarygroupskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var bestiarygroupskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Name2
             (var name2Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

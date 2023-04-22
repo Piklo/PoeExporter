@@ -109,7 +109,7 @@ public sealed partial class StrDexIntMissionExtraRequirementDat
             (var haslimitedportalsLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading NPCTalkKey
-            (var npctalkkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var npctalkkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading TimeLimitBonusFromObjective
             (var timelimitbonusfromobjectiveLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

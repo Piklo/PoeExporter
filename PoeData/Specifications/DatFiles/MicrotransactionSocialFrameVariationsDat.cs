@@ -52,7 +52,7 @@ public sealed partial class MicrotransactionSocialFrameVariationsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

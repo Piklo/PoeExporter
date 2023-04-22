@@ -228,13 +228,13 @@ public sealed partial class PassiveSkillsDat
             (var isjusticonLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading AchievementItem
-            (var achievementitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var achievementitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsJewelSocket
             (var isjewelsocketLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading AscendancyKey
-            (var ascendancykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var ascendancykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsAscendancyStartingNode
             (var isascendancystartingnodeLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -260,7 +260,7 @@ public sealed partial class PassiveSkillsDat
             var passiveskillbuffsLoading = temppassiveskillbuffsLoading.AsReadOnly();
 
             // loading GrantedEffectsPerLevel
-            (var grantedeffectsperlevelLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var grantedeffectsperlevelLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsAnointmentOnly
             (var isanointmentonlyLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -278,13 +278,13 @@ public sealed partial class PassiveSkillsDat
             (var skilltypeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MasteryGroup
-            (var masterygroupLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var masterygroupLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown206
-            (var unknown206Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown206Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading SoundEffect
-            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var soundeffectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown238
             (var unknown238Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

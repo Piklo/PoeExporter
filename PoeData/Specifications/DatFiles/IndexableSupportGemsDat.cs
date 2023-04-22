@@ -55,7 +55,7 @@ public sealed partial class IndexableSupportGemsDat
             (var indexLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading SupportGem
-            (var supportgemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var supportgemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Name
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

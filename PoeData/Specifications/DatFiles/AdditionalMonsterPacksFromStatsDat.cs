@@ -70,7 +70,7 @@ public sealed partial class AdditionalMonsterPacksFromStatsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading StatsKey
-            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -83,7 +83,7 @@ public sealed partial class AdditionalMonsterPacksFromStatsDat
             (var additionalmonsterpacksstatmodeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading PackCountStatsKey
-            (var packcountstatskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var packcountstatskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatsKeys
             (var tempstatskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

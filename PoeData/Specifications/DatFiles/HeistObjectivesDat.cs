@@ -52,7 +52,7 @@ public sealed partial class HeistObjectivesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemType
-            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Scaling
             (var scalingLoading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);

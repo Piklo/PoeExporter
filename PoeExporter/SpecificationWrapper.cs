@@ -7,7 +7,7 @@ namespace PoeExporter;
 /// <summary>
 /// Wrapper class which holds the instance of <see cref="Specification"/>.
 /// </summary>
-internal class SpecificationWrapper
+internal sealed class SpecificationWrapper
 {
     private readonly IConfig config;
     private readonly ILogger logger;

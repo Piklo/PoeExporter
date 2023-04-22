@@ -73,7 +73,7 @@ public sealed partial class PetDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HASH16
             (var hash16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -95,7 +95,7 @@ public sealed partial class PetDat
             var unknown38Loading = tempunknown38Loading.AsReadOnly();
 
             // loading Unknown54
-            (var unknown54Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown54Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

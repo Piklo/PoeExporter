@@ -85,7 +85,7 @@ public sealed partial class TutorialDat
             (var uifileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading ClientString
-            (var clientstringLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var clientstringLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsEnabled
             (var isenabledLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -98,7 +98,7 @@ public sealed partial class TutorialDat
             var unknown37Loading = tempunknown37Loading.AsReadOnly();
 
             // loading Unknown53
-            (var unknown53Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown53Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown69
             (var unknown69Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

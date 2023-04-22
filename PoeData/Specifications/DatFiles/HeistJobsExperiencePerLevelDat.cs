@@ -59,7 +59,7 @@ public sealed partial class HeistJobsExperiencePerLevelDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading HeistJobsKey
-            (var heistjobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistjobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Tier
             (var tierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -152,7 +152,7 @@ public sealed partial class MonsterDeathAchievementsDat
             (var unknown98Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown99
-            (var unknown99Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown99Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown115
             (var tempunknown115Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -167,7 +167,7 @@ public sealed partial class MonsterDeathAchievementsDat
             var unknown147Loading = tempunknown147Loading.AsReadOnly();
 
             // loading Unknown163
-            (var unknown163Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown163Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown179
             (var unknown179Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

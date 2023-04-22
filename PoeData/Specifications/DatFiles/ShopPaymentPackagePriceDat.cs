@@ -53,10 +53,10 @@ public sealed partial class ShopPaymentPackagePriceDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ShopPaymentPackageKey
-            (var shoppaymentpackagekeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var shoppaymentpackagekeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ShopCountryKey
-            (var shopcountrykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var shopcountrykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Price
             (var priceLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

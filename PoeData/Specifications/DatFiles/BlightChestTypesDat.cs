@@ -46,7 +46,7 @@ public sealed partial class BlightChestTypesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ChestsKey
-            (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var chestskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

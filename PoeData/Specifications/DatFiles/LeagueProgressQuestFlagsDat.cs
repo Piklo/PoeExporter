@@ -56,10 +56,10 @@ public sealed partial class LeagueProgressQuestFlagsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading QuestFlag
-            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading CompletionString
-            (var completionstringLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var completionstringLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Boss
             (var bossLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

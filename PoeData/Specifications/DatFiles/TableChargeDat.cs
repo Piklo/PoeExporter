@@ -138,7 +138,7 @@ public sealed partial class TableChargeDat
             (var unknown12Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown13
-            (var unknown13Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown13Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown29
             (var unknown29Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -148,7 +148,7 @@ public sealed partial class TableChargeDat
             var unknown30Loading = tempunknown30Loading.AsReadOnly();
 
             // loading Unknown46
-            (var unknown46Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown46Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown62
             (var unknown62Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -169,10 +169,10 @@ public sealed partial class TableChargeDat
             (var unknown79Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Unknown80
-            (var unknown80Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown80Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown96
-            (var unknown96Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown96Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown112
             (var unknown112Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

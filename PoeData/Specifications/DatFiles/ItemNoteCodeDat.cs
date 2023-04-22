@@ -58,7 +58,7 @@ public sealed partial class ItemNoteCodeDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItem
-            (var baseitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Code
             (var codeLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

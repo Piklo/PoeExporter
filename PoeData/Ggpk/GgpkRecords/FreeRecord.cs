@@ -14,7 +14,7 @@ internal sealed class FreeRecord : IGgpkTagRecord, IReadGgpkTagRecord<FreeRecord
     /// <summary>Gets offset of next <see cref="FreeRecord"/>.</summary>
     public required long NextFree { get; init; }
 
-    /// <inheritdoc/>
+    /// <inheritdoc cref="IReadGgpkTagRecord{T}.Read(BinaryReader, int, long)"/>
     public static FreeRecord Read(BinaryReader ggpkReader, int length, long offset)
     {
         var nextFree = ggpkReader.ReadInt64();

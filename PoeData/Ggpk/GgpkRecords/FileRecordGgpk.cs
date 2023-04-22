@@ -25,7 +25,7 @@ internal sealed class FileRecordGgpk : IGgpkTagRecord, IReadGgpkTagRecord<FileRe
     /// <summary>Gets data start.</summary>
     public required int DataLength { get; init; }
 
-    /// <inheritdoc/>
+    /// <inheritdoc cref="IReadGgpkTagRecord{T}.Read(BinaryReader, int, long)"/>
     public static FileRecordGgpk Read(BinaryReader ggpkReader, int length, long offset)
     {
         const int CharWidth = 2;

@@ -82,7 +82,7 @@ public sealed partial class HeistAreaFormationLayoutDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading HeistAreasKey
-            (var heistareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

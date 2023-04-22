@@ -88,7 +88,7 @@ public sealed partial class DelveUpgradesDat
             (var unknown44Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AchievementItemsKey
-            (var achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown64
             (var unknown64Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

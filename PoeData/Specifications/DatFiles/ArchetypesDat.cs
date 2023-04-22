@@ -94,7 +94,7 @@ public sealed partial class ArchetypesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading CharactersKey
-            (var characterskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var characterskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading PassiveSkillTreeURL
             (var passiveskilltreeurlLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

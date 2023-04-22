@@ -89,7 +89,7 @@ public sealed partial class MapPinsDat
             (var positionyLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Waypoint_WorldAreasKey
-            (var waypoint_worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var waypoint_worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading WorldAreasKeys
             (var tempworldareaskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

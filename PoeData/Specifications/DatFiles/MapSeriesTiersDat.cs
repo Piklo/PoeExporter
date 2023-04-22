@@ -94,7 +94,7 @@ public sealed partial class MapSeriesTiersDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading MapsKey
-            (var mapskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var mapskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MapWorldsTier
             (var mapworldstierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

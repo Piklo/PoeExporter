@@ -89,7 +89,7 @@ public sealed partial class MicrotransactionPortalVariationsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Id
             (var idLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -104,7 +104,7 @@ public sealed partial class MicrotransactionPortalVariationsDat
             (var unknown36Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading MiscObject
-            (var miscobjectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscobjectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading PortalEffect
             (var portaleffectLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

@@ -61,10 +61,10 @@ public sealed partial class HeistNPCDialogueDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading DialogueEventKey
-            (var dialogueeventkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var dialogueeventkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistNPCsKey
-            (var heistnpcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistnpcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading AudioNormal
             (var tempaudionormalLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

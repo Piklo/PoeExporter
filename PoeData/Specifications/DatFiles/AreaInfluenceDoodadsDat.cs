@@ -68,7 +68,7 @@ public sealed partial class AreaInfluenceDoodadsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading StatsKey
-            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatValue
             (var statvalueLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -90,7 +90,7 @@ public sealed partial class AreaInfluenceDoodadsDat
             (var unknown45Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown53
-            (var unknown53Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown53Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

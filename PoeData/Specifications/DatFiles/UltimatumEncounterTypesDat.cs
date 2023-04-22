@@ -84,7 +84,7 @@ public sealed partial class UltimatumEncounterTypesDat
             var normalachievementsLoading = tempnormalachievementsLoading.AsReadOnly();
 
             // loading InscribedAchievement
-            (var inscribedachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var inscribedachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

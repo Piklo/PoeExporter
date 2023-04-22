@@ -70,7 +70,7 @@ public sealed partial class AlternateSkillTargetingBehavioursDat
             (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ClientStrings
-            (var clientstringsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var clientstringsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown28
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

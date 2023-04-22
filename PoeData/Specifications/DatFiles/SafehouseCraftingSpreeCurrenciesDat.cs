@@ -55,7 +55,7 @@ public sealed partial class SafehouseCraftingSpreeCurrenciesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HasSpecificBaseItem
             (var hasspecificbaseitemLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

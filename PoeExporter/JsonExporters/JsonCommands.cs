@@ -47,8 +47,8 @@ internal static class JsonCommands
         {
             AllowMultipleArgumentsPerToken = true,
             IsRequired = true,
-
         };
+
         listedDatFilesCommand.Add(datFiles);
 
         listedDatFilesCommand.SetHandler(

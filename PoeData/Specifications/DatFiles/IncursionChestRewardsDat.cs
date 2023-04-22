@@ -62,7 +62,7 @@ public sealed partial class IncursionChestRewardsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading IncursionRoomsKey
-            (var incursionroomskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var incursionroomskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IncursionChestsKeys
             (var tempincursionchestskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

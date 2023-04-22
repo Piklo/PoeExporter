@@ -55,7 +55,7 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"// loading {ClassPropertyName}",
-            $"(var {LoadingPropertyName}, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);",
+            $"(var {LoadingPropertyName}, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);",
         };
 
         return strings;

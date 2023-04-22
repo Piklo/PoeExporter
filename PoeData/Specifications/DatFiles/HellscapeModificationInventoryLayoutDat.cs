@@ -99,16 +99,16 @@ public sealed partial class HellscapeModificationInventoryLayoutDat
             (var heightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Stat
-            (var statLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatValue
             (var statvalueLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading UnlockedWith
-            (var unlockedwithLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unlockedwithLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Quest
-            (var questLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

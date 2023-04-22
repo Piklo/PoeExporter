@@ -180,7 +180,7 @@ public sealed partial class GrantedEffectsDat
             (var casttimeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ActiveSkill
-            (var activeskillLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var activeskillLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IgnoreMinionTypes
             (var ignoreminiontypesLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -193,10 +193,10 @@ public sealed partial class GrantedEffectsDat
             var addedminionactiveskilltypesLoading = tempaddedminionactiveskilltypesLoading.AsReadOnly();
 
             // loading Animation
-            (var animationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var animationLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MultiPartAchievement
-            (var multipartachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var multipartachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown165
             (var unknown165Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -221,7 +221,7 @@ public sealed partial class GrantedEffectsDat
             (var unknown202Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading StatSet
-            (var statsetLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statsetLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown219
             (var tempunknown219Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

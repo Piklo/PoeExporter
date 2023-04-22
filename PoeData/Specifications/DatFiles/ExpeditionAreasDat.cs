@@ -70,7 +70,7 @@ public sealed partial class ExpeditionAreasDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Area
-            (var areaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var areaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading PosX
             (var posxLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -90,7 +90,7 @@ public sealed partial class ExpeditionAreasDat
             (var unknown56Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading TextAudio
-            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading CompletionAchievements
             (var tempcompletionachievementsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

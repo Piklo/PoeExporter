@@ -49,7 +49,7 @@ public sealed partial class MapCreationInformationDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading MapsKey
-            (var mapskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var mapskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Tier
             (var tierLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

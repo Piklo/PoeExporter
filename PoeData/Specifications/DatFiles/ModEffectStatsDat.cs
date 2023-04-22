@@ -59,7 +59,7 @@ public sealed partial class ModEffectStatsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading StatsKey
-            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading TagsKeys
             (var temptagskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

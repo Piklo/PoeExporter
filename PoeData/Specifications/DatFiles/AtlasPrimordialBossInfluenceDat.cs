@@ -68,7 +68,7 @@ public sealed partial class AtlasPrimordialBossInfluenceDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Boss
-            (var bossLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var bossLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Progress
             (var progressLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -83,13 +83,13 @@ public sealed partial class AtlasPrimordialBossInfluenceDat
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown32
-            (var unknown32Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown32Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown48
             (var unknown48Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading Unknown52
-            (var unknown52Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown52Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

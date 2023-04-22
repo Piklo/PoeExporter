@@ -87,13 +87,13 @@ public sealed partial class DelveDynamiteDat
             (var unknown0Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ProjectilesKey
-            (var projectileskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var projectileskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown20
-            (var unknown20Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown20Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Dynamite_MiscObjectsKey
-            (var dynamite_miscobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var dynamite_miscobjectskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown52
             (var unknown52Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -117,7 +117,7 @@ public sealed partial class DelveDynamiteDat
             (var unknown76Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MiscAnimatedKey
-            (var miscanimatedkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown96
             (var unknown96Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

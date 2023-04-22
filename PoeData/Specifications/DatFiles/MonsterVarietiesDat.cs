@@ -364,7 +364,7 @@ public sealed partial class MonsterVarietiesDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading MonsterTypesKey
-            (var monstertypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstertypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown24
             (var unknown24Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -461,7 +461,7 @@ public sealed partial class MonsterVarietiesDat
             (var stanceLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown244
-            (var unknown244Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown244Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Name
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -484,16 +484,16 @@ public sealed partial class MonsterVarietiesDat
             var weapon2_itemvisualidentitykeysLoading = tempweapon2_itemvisualidentitykeysLoading.AsReadOnly();
 
             // loading Back_ItemVisualIdentityKey
-            (var back_itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var back_itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MainHand_ItemClassesKey
-            (var mainhand_itemclasseskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var mainhand_itemclasseskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading OffHand_ItemClassesKey
-            (var offhand_itemclasseskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var offhand_itemclasseskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Helmet_ItemVisualIdentityKey
-            (var helmet_itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var helmet_itemvisualidentitykeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown376
             (var unknown376Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -541,16 +541,16 @@ public sealed partial class MonsterVarietiesDat
             (var unknown458Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading KillWhileOnslaughtIsActive_AchievementItemsKey
-            (var killwhileonslaughtisactive_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var killwhileonslaughtisactive_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MonsterSegmentsKey
-            (var monstersegmentskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monstersegmentskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MonsterArmoursKey
-            (var monsterarmourskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monsterarmourskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading KillWhileTalismanIsActive_AchievementItemsKey
-            (var killwhiletalismanisactive_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var killwhiletalismanisactive_achievementitemskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Part1_ModsKeys
             (var temppart1_modskeysLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -565,7 +565,7 @@ public sealed partial class MonsterVarietiesDat
             var endgame_modskeysLoading = tempendgame_modskeysLoading.AsReadOnly();
 
             // loading Unknown578
-            (var unknown578Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown578Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown594
             (var unknown594Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -622,7 +622,7 @@ public sealed partial class MonsterVarietiesDat
             (var unknown690Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MonsterConditionalEffectPacksKey
-            (var monsterconditionaleffectpackskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var monsterconditionaleffectpackskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown710
             (var unknown710Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

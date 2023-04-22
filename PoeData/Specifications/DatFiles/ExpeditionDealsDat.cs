@@ -78,7 +78,7 @@ public sealed partial class ExpeditionDealsDat
             (var argumentsLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading TextAudio
-            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Description
             (var descriptionLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -88,7 +88,7 @@ public sealed partial class ExpeditionDealsDat
             var buyachievementsLoading = tempbuyachievementsLoading.AsReadOnly();
 
             // loading Unknown60
-            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown60Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading DealFamily
             (var dealfamilyLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

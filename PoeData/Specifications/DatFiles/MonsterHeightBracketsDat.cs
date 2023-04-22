@@ -81,10 +81,10 @@ public sealed partial class MonsterHeightBracketsDat
             (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading BuffVisuals1
-            (var buffvisuals1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffvisuals1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BuffVisuals2
-            (var buffvisuals2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffvisuals2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown44
             (var unknown44Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -96,7 +96,7 @@ public sealed partial class MonsterHeightBracketsDat
             (var unknown52Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading Tag
-            (var tagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var tagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown72
             (var unknown72Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

@@ -55,7 +55,7 @@ public sealed partial class RaceTimesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading RacesKey
-            (var raceskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var raceskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Index
             (var indexLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

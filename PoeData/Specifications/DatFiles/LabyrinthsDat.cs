@@ -95,10 +95,10 @@ public sealed partial class LabyrinthsDat
             (var nameLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading OfferingItem
-            (var offeringitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var offeringitemLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading QuestFlag
-            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading RequiredTrials
             (var temprequiredtrialsLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
@@ -111,7 +111,7 @@ public sealed partial class LabyrinthsDat
             (var unknown64Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading JewelReward
-            (var jewelrewardLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var jewelrewardLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown84
             (var tempunknown84Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
@@ -131,7 +131,7 @@ public sealed partial class LabyrinthsDat
             (var unknown124Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading CraftingFontDescription
-            (var craftingfontdescriptionLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var craftingfontdescriptionLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

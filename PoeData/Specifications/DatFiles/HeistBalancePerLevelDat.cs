@@ -133,19 +133,19 @@ public sealed partial class HeistBalancePerLevelDat
             (var unknown24Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading HeistValueScalingKey1
-            (var heistvaluescalingkey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistvaluescalingkey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistValueScalingKey2
-            (var heistvaluescalingkey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistvaluescalingkey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistValueScalingKey3
-            (var heistvaluescalingkey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistvaluescalingkey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistValueScalingKey4
-            (var heistvaluescalingkey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistvaluescalingkey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistValueScalingKey5
-            (var heistvaluescalingkey5Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistvaluescalingkey5Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown108
             (var unknown108Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
@@ -160,10 +160,10 @@ public sealed partial class HeistBalancePerLevelDat
             (var unknown120Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading HeistValueScalingKey6
-            (var heistvaluescalingkey6Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistvaluescalingkey6Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HeistValueScalingKey7
-            (var heistvaluescalingkey7Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var heistvaluescalingkey7Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown156
             (var unknown156Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);

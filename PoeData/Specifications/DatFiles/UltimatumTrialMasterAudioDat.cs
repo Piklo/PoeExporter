@@ -76,7 +76,7 @@ public sealed partial class UltimatumTrialMasterAudioDat
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading TextAudio
-            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var textaudioLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading RoundsMin
             (var roundsminLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

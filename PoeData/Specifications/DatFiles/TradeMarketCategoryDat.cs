@@ -74,7 +74,7 @@ public sealed partial class TradeMarketCategoryDat
             (var styleflagLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Group
-            (var groupLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var groupLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown36
             (var tempunknown36Loading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);

@@ -88,7 +88,7 @@ public sealed partial class AchievementItemsDat
             (var completionsrequiredLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading AchievementsKey
-            (var achievementskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var achievementskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown44
             (var unknown44Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

@@ -58,7 +58,7 @@ public sealed partial class HeistNPCStatsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading StatsKey
-            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

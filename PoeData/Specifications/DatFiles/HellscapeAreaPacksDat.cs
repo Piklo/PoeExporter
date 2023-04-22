@@ -56,7 +56,7 @@ public sealed partial class HellscapeAreaPacksDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading WorldArea
-            (var worldareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MonsterPacks
             (var tempmonsterpacksLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

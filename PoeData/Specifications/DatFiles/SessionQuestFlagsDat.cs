@@ -46,7 +46,7 @@ public sealed partial class SessionQuestFlagsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading QuestFlag
-            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

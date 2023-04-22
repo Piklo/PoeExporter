@@ -68,7 +68,7 @@ public sealed partial class LabyrinthTrialsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading WorldAreas
-            (var worldareasLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareasLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -80,7 +80,7 @@ public sealed partial class LabyrinthTrialsDat
             (var unknown24Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading NPCTextAudioKey
-            (var npctextaudiokeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var npctextaudiokeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown44
             (var unknown44Loading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

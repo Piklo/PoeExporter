@@ -80,7 +80,7 @@ public sealed partial class QuestStaticRewardsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading QuestFlag
-            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questflagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -94,13 +94,13 @@ public sealed partial class QuestStaticRewardsDat
             var statvaluesLoading = tempstatvaluesLoading.AsReadOnly();
 
             // loading QuestKey
-            (var questkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var questkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown68
             (var unknown68Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading ClientStringsKey
-            (var clientstringskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var clientstringskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown88
             (var unknown88Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -110,7 +110,7 @@ public sealed partial class QuestStaticRewardsDat
             var statvalueshardmodeLoading = tempstatvalueshardmodeLoading.AsReadOnly();
 
             // loading ClientStringHardmode
-            (var clientstringhardmodeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var clientstringhardmodeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown124
             (var unknown124Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

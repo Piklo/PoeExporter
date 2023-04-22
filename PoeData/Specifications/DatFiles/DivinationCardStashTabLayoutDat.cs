@@ -52,7 +52,7 @@ public sealed partial class DivinationCardStashTabLayoutDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseItemTypesKey
-            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var baseitemtypeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsEnabled
             (var isenabledLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

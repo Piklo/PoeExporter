@@ -62,10 +62,10 @@ public sealed partial class SafehouseBYOCraftingDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BetrayalJobsKey
-            (var betrayaljobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var betrayaljobskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BetrayalTargetsKey
-            (var betrayaltargetskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var betrayaltargetskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Rank
             (var rankLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

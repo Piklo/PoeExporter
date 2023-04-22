@@ -49,7 +49,7 @@ public sealed partial class HeistNPCBlueprintTypesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading NPCsKey
-            (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var npcskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown16
             (var unknown16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

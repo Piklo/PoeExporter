@@ -49,7 +49,7 @@ public sealed partial class UniqueJewelLimitsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading JewelName
-            (var jewelnameLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var jewelnameLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Limit
             (var limitLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

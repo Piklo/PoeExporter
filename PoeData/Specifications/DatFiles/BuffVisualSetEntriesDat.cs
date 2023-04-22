@@ -61,7 +61,7 @@ public sealed partial class BuffVisualSetEntriesDat
             (var unknown8Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading BuffVisual
-            (var buffvisualLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffvisualLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown28
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

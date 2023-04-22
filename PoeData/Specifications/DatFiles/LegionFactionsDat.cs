@@ -112,7 +112,7 @@ public sealed partial class LegionFactionsDat
             (var spawnweightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading LegionBalancePerLevelKey
-            (var legionbalanceperlevelkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var legionbalanceperlevelkeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown28
             (var unknown28Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
@@ -121,26 +121,26 @@ public sealed partial class LegionFactionsDat
             (var unknown32Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
 
             // loading BuffVisualsKey
-            (var buffvisualskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var buffvisualskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MiscAnimatedKey1
-            (var miscanimatedkey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MiscAnimatedKey2
-            (var miscanimatedkey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MiscAnimatedKey3
-            (var miscanimatedkey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading AchievementItemsKeys1
             (var tempachievementitemskeys1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);
             var achievementitemskeys1Loading = tempachievementitemskeys1Loading.AsReadOnly();
 
             // loading MiscAnimatedKey4
-            (var miscanimatedkey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MiscAnimatedKey5
-            (var miscanimatedkey5Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscanimatedkey5Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown148
             (var unknown148Loading, offset) = SpecificationFileLoader.LoadFloat(decompressedFile, offset);
@@ -153,7 +153,7 @@ public sealed partial class LegionFactionsDat
             var achievementitemskeys2Loading = tempachievementitemskeys2Loading.AsReadOnly();
 
             // loading StatsKey
-            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Shard
             (var shardLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

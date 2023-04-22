@@ -185,16 +185,16 @@ public sealed partial class PantheonPanelLayoutDat
             var effect2_valuesLoading = tempeffect2_valuesLoading.AsReadOnly();
 
             // loading QuestState1
-            (var queststate1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var queststate1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading QuestState2
-            (var queststate2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var queststate2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading QuestState3
-            (var queststate3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var queststate3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading QuestState4
-            (var queststate4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var queststate4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading IsDisabled
             (var isdisabledLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

@@ -156,7 +156,7 @@ public sealed partial class DescentRewardChestsDat
             var baseitemtypeskeys12Loading = tempbaseitemtypeskeys12Loading.AsReadOnly();
 
             // loading WorldAreasKey
-            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var worldareaskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading BaseItemTypesKeys13
             (var tempbaseitemtypeskeys13Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

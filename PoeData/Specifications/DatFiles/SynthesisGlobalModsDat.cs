@@ -55,7 +55,7 @@ public sealed partial class SynthesisGlobalModsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ModsKey
-            (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Weight
             (var weightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

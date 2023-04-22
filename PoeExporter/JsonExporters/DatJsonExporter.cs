@@ -11,11 +11,11 @@ namespace PoeExporter.JsonExporters;
 /// </summary>
 internal sealed partial class DatJsonExporter
 {
-    private ILogger logger;
+    private readonly ILogger logger;
     private readonly Specification specification;
     private readonly DirectoryInfo resultsDir;
+    private readonly bool throwOnException;
     private int exceptionCounter;
-    private bool throwOnException;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="DatJsonExporter"/> class.

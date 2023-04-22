@@ -73,10 +73,10 @@ public sealed partial class DroneBaseTypesDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading BaseType
-            (var basetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var basetypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Type
-            (var typeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var typeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown32
             (var unknown32Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -88,13 +88,13 @@ public sealed partial class DroneBaseTypesDat
             (var unknown40Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Visual
-            (var visualLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var visualLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown60
             (var unknown60Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading UseAchievement
-            (var useachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var useachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown80
             (var unknown80Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

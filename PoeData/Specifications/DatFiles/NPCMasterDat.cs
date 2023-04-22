@@ -111,7 +111,7 @@ public sealed partial class NPCMasterDat
             (var unknown9Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
 
             // loading Signature_ModsKey
-            (var signature_modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var signature_modskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown26
             (var unknown26Loading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -133,7 +133,7 @@ public sealed partial class NPCMasterDat
             var unknown75Loading = tempunknown75Loading.AsReadOnly();
 
             // loading Unknown91
-            (var unknown91Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown91Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown107
             (var unknown107Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -142,13 +142,13 @@ public sealed partial class NPCMasterDat
             (var areadescriptionLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading Unknown119
-            (var unknown119Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown119Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Unknown135
             (var unknown135Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Unknown139
-            (var unknown139Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown139Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HasAreaMissions
             (var hasareamissionsLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);
@@ -162,7 +162,7 @@ public sealed partial class NPCMasterDat
             var unknown172Loading = tempunknown172Loading.AsReadOnly();
 
             // loading Unknown188
-            (var unknown188Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var unknown188Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

@@ -100,7 +100,7 @@ public sealed partial class HideoutsDat
             (var idLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
 
             // loading HideoutArea
-            (var hideoutareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var hideoutareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HASH16
             (var hash16Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -113,7 +113,7 @@ public sealed partial class HideoutsDat
             var spawnareasLoading = tempspawnareasLoading.AsReadOnly();
 
             // loading ClaimSideArea
-            (var claimsideareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var claimsideareaLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading HideoutImage
             (var hideoutimageLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
@@ -125,7 +125,7 @@ public sealed partial class HideoutsDat
             (var weightLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Rarity
-            (var rarityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var rarityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading NotActsArea
             (var notactsareaLoading, offset) = SpecificationFileLoader.LoadBoolean(decompressedFile, offset);

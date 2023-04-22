@@ -88,7 +88,7 @@ public sealed partial class ItemVisualHeldBodyModelDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ItemVisualIdentity
-            (var itemvisualidentityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemvisualidentityLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading MarauderAnimatedObject
             (var marauderanimatedobjectLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);

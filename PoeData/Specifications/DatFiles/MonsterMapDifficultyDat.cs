@@ -82,19 +82,19 @@ public sealed partial class MonsterMapDifficultyDat
             (var stat2valueLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading StatsKey1
-            (var statskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey1Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatsKey2
-            (var statskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey2Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading StatsKey3
-            (var statskey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey3Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Stat3Value
             (var stat3valueLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading StatsKey4
-            (var statskey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var statskey4Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Stat4Value
             (var stat4valueLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);

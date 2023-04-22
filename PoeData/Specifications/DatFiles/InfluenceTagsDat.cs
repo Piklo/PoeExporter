@@ -54,13 +54,13 @@ public sealed partial class InfluenceTagsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading ItemClass
-            (var itemclassLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var itemclassLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading Influence
             (var influenceLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading Tag
-            (var tagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var tagLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

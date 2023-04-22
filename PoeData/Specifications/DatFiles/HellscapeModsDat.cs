@@ -57,14 +57,14 @@ public sealed partial class HellscapeModsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading Mod
-            (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var modLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading TiersWhitelist
             (var temptierswhitelistLoading, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);
             var tierswhitelistLoading = temptierswhitelistLoading.AsReadOnly();
 
             // loading TransformAchievement
-            (var transformachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var transformachievementLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ModFamilies
             (var tempmodfamiliesLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKeys(decompressedFile, offset, dataOffset);

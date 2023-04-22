@@ -58,7 +58,7 @@ public sealed partial class SkillMineVariationsDat
             (var unknown4Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading MiscObject
-            (var miscobjectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var miscobjectLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {

@@ -53,10 +53,10 @@ public sealed partial class DelveRoomsDat
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
             // loading DelveBiomesKey
-            (var delvebiomeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var delvebiomeskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading DelveFeaturesKey
-            (var delvefeatureskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset, dataOffset);
+            (var delvefeatureskeyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             // loading ARMFile
             (var armfileLoading, offset) = SpecificationFileLoader.LoadString(decompressedFile, offset, dataOffset);
