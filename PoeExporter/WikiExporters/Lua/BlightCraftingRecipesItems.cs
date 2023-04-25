@@ -1,6 +1,6 @@
 ﻿using PoeExporter.WikiExporters.Lua.Helpers;
 
-namespace PoeExporter.WikiExporters;
+namespace PoeExporter.WikiExporters.Lua;
 
 /// <summary>
 /// Class representing values of https://www.poewiki.net/wiki/Module:Blight/blight_crafting_recipes.
