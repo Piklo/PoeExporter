@@ -118,6 +118,11 @@ internal sealed class ToLuaStringsGenerator : ISourceGenerator
             }
 
             var luaPropertyName = GetLuaPropertyName(property);
+            if (luaPropertyName is null)
+            {
+                continue;
+            }
+
             var actualPropertyName = property.Identifier.ValueText;
             var variableName = $"{actualPropertyName.ToLower()}LuaStrings";
 
@@ -138,7 +143,7 @@ internal sealed class ToLuaStringsGenerator : ISourceGenerator
             """);
     }
 
-    private static string GetLuaPropertyName(PropertyDeclarationSyntax property)
+    private static string? GetLuaPropertyName(PropertyDeclarationSyntax property)
     {
         var attributesList = property.AttributeLists;
         foreach (var attributes in attributesList)
@@ -168,7 +173,7 @@ internal sealed class ToLuaStringsGenerator : ISourceGenerator
             }
         }
 
-        // if the property name is not overriden with the attribute default to actual property name
-        return property.Identifier.ValueText;
+        // if the property doesnt have the attribute then ignore it
+        return null;
     }
 }
