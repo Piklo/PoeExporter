@@ -8,7 +8,7 @@ namespace PoeExporterGenerator.LuaGenerator;
 /// Class used to generate to lua strings methods.
 /// </summary>
 [Generator]
-internal sealed class ToLuaStringsGenerator : ISourceGenerator
+internal sealed class LuaConverterGenerator : ISourceGenerator
 {
     private const string ToLuaStringMethodName = "ToLuaString";
     private const string ToLuaStringsMethodName = "ToLuaStrings";

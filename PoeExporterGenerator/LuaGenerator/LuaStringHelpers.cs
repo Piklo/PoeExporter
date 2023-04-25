@@ -6,7 +6,7 @@ using System.Linq;
 namespace PoeExporterGenerator.LuaGenerator;
 
 /// <summary>
-/// Class containing helper methods for <see cref="LuaStringGenerator"/> and <see cref="ToLuaStringsGenerator"/>.
+/// Class containing helper methods for <see cref="LuaStringGenerator"/> and <see cref="LuaConverterGenerator"/>.
 /// </summary>
 internal static class LuaStringHelpers
 {
