@@ -43,4 +43,38 @@ internal static class LuaStringHelpers
 
         return classes;
     }
+
+    /// <summary>
+    /// Gets namespace string.
+    /// </summary>
+    /// <param name="item">class to look for namespace in.</param>
+    /// <returns>namespace string.</returns>
+    /// <exception cref="NamespaceNotFoundException">throw if namespace was not found.</exception>
+    public static string GetNamespace(ClassDeclarationSyntax item)
+    {
+        if (item.Parent is BaseNamespaceDeclarationSyntax namespaceDeclarationSyntax)
+        {
+            return namespaceDeclarationSyntax.Name.ToString();
+        }
+
+        throw new NamespaceNotFoundException();
+    }
+
+    /// <summary>
+    /// Gets namespace strings.
+    /// </summary>
+    /// <param name="classes">class declarations.</param>
+    /// <returns>set of namespace strings.</returns>
+    public static HashSet<string> GetNamespaces(IReadOnlyList<ClassDeclarationSyntax> classes)
+    {
+        var results = new HashSet<string>();
+
+        foreach (var item in classes)
+        {
+            var namespaceString = GetNamespace(item);
+            results.Add(namespaceString);
+        }
+
+        return results;
+    }
 }
