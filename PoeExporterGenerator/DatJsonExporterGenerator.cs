@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using PoeExporterGenerator.LuaGenerator;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ internal sealed class DatJsonExporterGenerator : ISourceGenerator
 
         var datJsonExporterDeclaration = classDeclarations
             .Where(x => x.Identifier.ValueText == DatJsonExporter).First();
-        var datJsonExporterNamespace = GetNamespaceFrom(datJsonExporterDeclaration);
+        var datJsonExporterNamespace = LuaStringHelpers.GetNamespace(datJsonExporterDeclaration);
 
         var builder = new StringBuilder();
         builder.AppendLine($$"""
@@ -56,19 +57,6 @@ internal sealed class DatJsonExporterGenerator : ISourceGenerator
     /// <inheritdoc/>
     public void Initialize(GeneratorInitializationContext context)
     {
-    }
-
-    // https://stackoverflow.com/a/63686228
-    private static string GetNamespaceFrom(SyntaxNode s)
-    {
-        if (s.Parent is BaseNamespaceDeclarationSyntax namespaceDeclarationSyntax)
-        {
-            return namespaceDeclarationSyntax.Name.ToString();
-        }
-        else
-        {
-            throw new NamespaceNotFoundException();
-        }
     }
 
     // https://stackoverflow.com/a/68733955
