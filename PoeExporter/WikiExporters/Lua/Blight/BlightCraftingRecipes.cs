@@ -16,7 +16,11 @@ internal sealed class BlightCraftingRecipes : ILuaExporter<BlightCraftingRecipes
 
     /// <summary>Gets passive id.</summary>
     [LuaPropertyName("passive_id")]
-    public required string PassiveId { get; init; }
+    public required string? PassiveId { get; init; }
+
+    /// <summary>Gets modifier id.</summary>
+    [LuaPropertyName("modifier_id")]
+    public required string? ModifierId { get; init; }
 
     /// <summary>Gets type.</summary>
     [LuaPropertyName("type")]
