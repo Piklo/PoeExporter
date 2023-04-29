@@ -306,7 +306,7 @@ internal sealed class DataLoader
         {
             var bytes = dataLoader.GetFileBytes(bundleRecord.GgpkPath);
             var decompressed = decompressor.Decompress(bytes);
-            decompressedFilesCache.Add(bundleRecord.Name, decompressed);
+            // decompressedFilesCache.Add(bundleRecord.Name, decompressed); // is caching really a good idea? it kinda just wastes the memory tbh
 
             return decompressed.Data;
         }
