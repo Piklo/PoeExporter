@@ -5,7 +5,7 @@ namespace PoeExporter.WikiExporters.Lua.Blight;
 /// <summary>
 /// Class representing values of https://www.poewiki.net/wiki/Module:Blight/blight_towers.
 /// </summary>
-internal sealed class BlightTowers : ILuaExporter<BlightTowers>
+internal sealed class BlightTower : ILuaExporter<BlightTower>
 {
     /// <summary>Gets id.</summary>
     [LuaPropertyName("id")]
