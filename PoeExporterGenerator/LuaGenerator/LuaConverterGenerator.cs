@@ -145,7 +145,7 @@ internal sealed class LuaConverterGenerator : ISourceGenerator
 
         builder.AppendLine("""
                     currentIndentation--;
-                    var endBracket = new LuaString("}", currentIndentation);
+                    var endBracket = new LuaString("},", currentIndentation);
                     strings.Add(endBracket);
 
                     return strings.ToArray();
