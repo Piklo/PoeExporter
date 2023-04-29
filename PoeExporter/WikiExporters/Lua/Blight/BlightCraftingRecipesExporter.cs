@@ -7,7 +7,7 @@ namespace PoeExporter.WikiExporters.Lua.Blight;
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Blight/blight_crafting_recipes.
 /// </summary>
-internal class BlightCraftingRecipesExporter : IExporter<BlightCraftingRecipesExporter>
+internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRecipesExporter>
 {
     private readonly SpecificationWrapper specificationWrapper;
     private readonly ILogger logger;

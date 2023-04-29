@@ -5,7 +5,7 @@ namespace PoeExporter.WikiExporters;
 /// <summary>
 /// Interface containing exporter methods.
 /// </summary>
-/// <typeparam name="T">type of the exporter</typeparam>
+/// <typeparam name="T">type of the exporter.</typeparam>
 internal interface IExporter<T>
 {
     /// <summary>
