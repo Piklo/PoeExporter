@@ -11,19 +11,19 @@ internal sealed class AtlasBaseItemType : ILuaExporter<AtlasBaseItemType>
     [LuaPropertyName("region_id")]
     public required string RegionId { get; init; }
 
-    /// <summary>Gets name.</summary>
-    [LuaPropertyName("name")]
+    /// <summary>Gets min tier.</summary>
+    [LuaPropertyName("tier_min")]
     public required int TierMin { get; init; }
 
-    /// <summary>Gets name.</summary>
-    [LuaPropertyName("name")]
+    /// <summary>Gets max tier.</summary>
+    [LuaPropertyName("tier_max")]
     public required int TierMax { get; init; }
 
-    /// <summary>Gets name.</summary>
-    [LuaPropertyName("name")]
+    /// <summary>Gets tag.</summary>
+    [LuaPropertyName("tag")]
     public required string Tag { get; init; }
 
-    /// <summary>Gets name.</summary>
-    [LuaPropertyName("name")]
+    /// <summary>Gets weight.</summary>
+    [LuaPropertyName("weight")]
     public required int Weight { get; init; }
 }
