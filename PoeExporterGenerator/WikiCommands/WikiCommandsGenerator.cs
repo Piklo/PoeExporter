@@ -327,7 +327,7 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
 
         AddPrintExporting(builder, attribute.Exporters);
 
-        AdWriteExporting(builder, attribute.Exporters);
+        AddWriteExporting(builder, attribute.Exporters);
 
         builder.AppendLine("""
                 }
@@ -391,13 +391,30 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
             """);
     }
 
-    private static void AdWriteExporting(StringBuilder builder, IReadOnlyList<string> exporters)
+    private static void AddWriteExporting(StringBuilder builder, IReadOnlyList<string> exporters)
     {
         builder.AppendLine($$"""
 
                     if (writeResult)
                     {
-                        // export to file here. TODO
+                        var output = new DirectoryInfo(config.Output);
+                        if (!output.Exists)
+                        {
+                            output.Create();
+                        }
+
+            """);
+
+        for (var i = 0; i < exporters.Count; i++)
+        {
+            var instance = GetExporterInstanceName(i);
+            var resultName = GetExporterResultName(i);
+            builder.AppendLine($$"""
+                        File.WriteAllText(Path.Combine(output.FullName, $"{{{instance}}.PageName}.txt"), {{resultName}});
+            """);
+        }
+
+        builder.AppendLine("""
                     }
             """);
     }
