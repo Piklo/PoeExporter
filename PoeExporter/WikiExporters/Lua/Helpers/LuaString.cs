@@ -27,7 +27,7 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
             return Array.Empty<LuaString>();
         }
 
-        return new LuaString[] { new LuaString($"{name} = \"{value}\",", indentation) };
+        return new LuaString[] { new LuaString($"{name} = \"{value.Replace("\r\n", "<br>")}\",", indentation) };
     }
 
     /// <summary>
