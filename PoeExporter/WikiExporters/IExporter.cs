@@ -8,6 +8,9 @@ namespace PoeExporter.WikiExporters;
 /// <typeparam name="T">type of the exporter.</typeparam>
 internal interface IExporter<T>
 {
+    /// <summary>Gets page name.</summary>
+    public string PageName { get; }
+
     /// <summary>
     /// Creates instance of <see cref="IExporter{T}"/>.
     /// </summary>

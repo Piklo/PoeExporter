@@ -7,9 +7,6 @@ namespace PoeExporter.WikiExporters.Lua;
 /// </summary>
 internal sealed class BlightCraftingRecipe : ILuaExporter<BlightCraftingRecipe>
 {
-    /// <inheritdoc/>
-    public string PageName { get; } = "blight_crafting_recipes";
-
     /// <summary>Gets id.</summary>
     [LuaPropertyName("id")]
     public required string Id { get; init; }

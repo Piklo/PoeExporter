@@ -6,6 +6,4 @@
 /// <typeparam name="T">type of the exporter.</typeparam>
 internal interface ILuaExporter<T>
 {
-    /// <summary>Gets page name.</summary>
-    public string PageName { get; }
 }

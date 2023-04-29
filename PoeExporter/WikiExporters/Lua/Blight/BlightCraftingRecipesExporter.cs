@@ -12,6 +12,9 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
     private readonly SpecificationWrapper specificationWrapper;
     private readonly ILogger logger;
 
+    /// <inheritdoc/>
+    public string PageName { get; } = "blight_crafting_recipes";
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BlightCraftingRecipesExporter"/> class.
     /// </summary>

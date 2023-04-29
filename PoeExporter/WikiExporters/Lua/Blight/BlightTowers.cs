@@ -7,9 +7,6 @@ namespace PoeExporter.WikiExporters.Lua.Blight;
 /// </summary>
 internal sealed class BlightTowers : ILuaExporter<BlightTowers>
 {
-    /// <inheritdoc />
-    public string PageName { get; } = "blight_towers";
-
     /// <summary>Gets id.</summary>
     [LuaPropertyName("id")]
     public required string Id { get; init; }
