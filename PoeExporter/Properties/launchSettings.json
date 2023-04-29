@@ -10,6 +10,10 @@
     "wiki blight print": {
       "commandName": "Project",
       "commandLineArgs": "wiki --blight -p"
+    },
+    "wiki blight write": {
+      "commandName": "Project",
+      "commandLineArgs": "wiki --blight -wr"
     }
   }
 }
