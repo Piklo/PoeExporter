@@ -1,6 +1,4 @@
-﻿using PoeData;
-
-namespace PoeExporter;
+﻿namespace PoeExporter;
 
 /// <summary>
 /// Class containing config data.
@@ -9,4 +7,7 @@ public class Config : IConfig
 {
     /// <inheritdoc/>
     public required string PoePath { get; init; }
+
+    /// <inheritdoc/>
+    public required string Output { get; init; }
 }
