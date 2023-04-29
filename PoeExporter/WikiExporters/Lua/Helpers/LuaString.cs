@@ -20,8 +20,13 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     /// <param name="value">value of a lua variable.</param>
     /// <param name="indentation">indentation of lua strings.</param>
     /// <returns>parsed lua strings.</returns>
-    internal static LuaString[] Generate(string name, string value, int indentation)
+    internal static LuaString[] Generate(string name, string? value, int indentation)
     {
+        if (value is null)
+        {
+            return Array.Empty<LuaString>();
+        }
+
         return new LuaString[] { new LuaString($"{name} = \"{value}\",", indentation) };
     }
 
