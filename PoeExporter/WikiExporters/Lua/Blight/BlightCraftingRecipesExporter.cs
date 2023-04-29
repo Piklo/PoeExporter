@@ -46,7 +46,7 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
     /// Gets <see cref="BlightCraftingRecipe"/>.
     /// </summary>
     /// <returns>list of blight crafting recipes.</returns>
-    public IReadOnlyList<BlightCraftingRecipe> GetBlightCraftingRecipes()
+    private IReadOnlyList<BlightCraftingRecipe> GetBlightCraftingRecipes()
     {
         logger.Verbose("running {method}", nameof(GetBlightCraftingRecipes));
         var results = new List<BlightCraftingRecipe>();
