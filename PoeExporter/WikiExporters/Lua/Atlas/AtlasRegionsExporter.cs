@@ -12,7 +12,7 @@ internal sealed class AtlasRegionsExporter : IExporter<AtlasRegionsExporter>
     private readonly ILogger logger;
 
     /// <inheritdoc/>
-    public string PageName { get; } = "atlas_regions";
+    public string PageName { get; } = "atlas_base_item_types";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AtlasRegionsExporter"/> class.
