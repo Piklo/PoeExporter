@@ -4,7 +4,7 @@ using Serilog;
 namespace PoeExporter.WikiExporters.Lua.Atlas;
 
 /// <summary>
-/// Class used to export data for https://www.poewiki.net/wiki/Module:Atlas/atlas_regions.
+/// Class used to export data for https://www.poewiki.net/wiki/Module:Atlas/atlas_base_item_types.
 /// </summary>
 internal sealed class AtlasBaseItemTypesExporter : IExporter<AtlasBaseItemTypesExporter>
 {
