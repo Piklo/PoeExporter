@@ -137,6 +137,7 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
             {
                 private readonly SpecificationWrapper specificationWrapper;
                 private readonly ILogger logger;
+                private readonly IConfig config;
                 private readonly Command command;
                 private readonly Option<bool> wiki;
                 private readonly Option<bool> print;
@@ -200,13 +201,15 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
                     /// <summary>
                     /// Initializes a new instance of the <see cref="WikiCommands"/> class.
                     /// </summary>
-                    /// <param name="specificationWrapper">specification wrapper.</param>
-                    /// <param name="logger">logger.</param>
                     /// <param name="ownerCommand">command to which the method adds subcommands.</param>
-                    private {{WikiCommandsClassName}}(SpecificationWrapper specificationWrapper, ILogger logger, Command ownerCommand)
+                    /// <param name="specificationWrapper">specification wrapper.</param>
+                    /// <param name="config">config.</param>
+                    /// <param name="logger">logger.</param>
+                    private {{WikiCommandsClassName}}(Command ownerCommand, SpecificationWrapper specificationWrapper, IConfig config, ILogger logger)
                     {
                         this.specificationWrapper = specificationWrapper;
                         this.logger = logger;
+                        this.config = config;
 
                         command = new Command("wiki", "exports wiki data");
                         ownerCommand.Add(command);

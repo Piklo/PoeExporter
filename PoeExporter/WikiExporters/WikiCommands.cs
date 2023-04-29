@@ -21,11 +21,12 @@ internal sealed partial class WikiCommands
     /// <summary>
     /// Adds wiki commands.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
     /// <param name="rootCommand">command to which the method adds subcommands.</param>
-    public static void AddCommands(SpecificationWrapper specificationWrapper, ILogger logger, Command rootCommand)
+    /// <param name="specificationWrapper">specification wrapper.</param>
+    /// <param name="config">config.</param>
+    /// <param name="logger">logger.</param>
+    public static void AddCommands(Command rootCommand, SpecificationWrapper specificationWrapper, IConfig config, ILogger logger)
     {
-        _ = new WikiCommands(specificationWrapper, logger, rootCommand);
+        _ = new WikiCommands(rootCommand, specificationWrapper, config, logger);
     }
 }

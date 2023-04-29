@@ -30,7 +30,7 @@ var specificationWrapper = new SpecificationWrapper(parsedConfig, logger);
 
 var rootCommand = new RootCommand("exports poe data.");
 JsonCommands.AddCommands(specificationWrapper, logger, rootCommand);
-WikiCommands.AddCommands(specificationWrapper, logger, rootCommand);
+WikiCommands.AddCommands(rootCommand, specificationWrapper, parsedConfig, logger);
 
 // var wikiCommand = new Command("wiki", "exports data to wiki");
 // rootCommand.Add(wikiCommand);
