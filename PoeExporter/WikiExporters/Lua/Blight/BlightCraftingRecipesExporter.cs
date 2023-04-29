@@ -40,13 +40,13 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
     }
 
     /// <summary>
-    /// Gets <see cref="BlightCraftingRecipes"/>.
+    /// Gets <see cref="BlightCraftingRecipe"/>.
     /// </summary>
     /// <returns>list of blight crafting recipes.</returns>
-    public IReadOnlyList<BlightCraftingRecipes> GetBlightCraftingRecipes()
+    public IReadOnlyList<BlightCraftingRecipe> GetBlightCraftingRecipes()
     {
         logger.Verbose("running {method}", nameof(GetBlightCraftingRecipes));
-        var results = new List<BlightCraftingRecipes>();
+        var results = new List<BlightCraftingRecipe>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var craftingRecipes = specification.LoadBlightCraftingRecipesDat();
@@ -103,7 +103,7 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
             var craftingType = craftingTypes[typesKey.Value];
             var type = craftingType.Id;
 
-            var result = new BlightCraftingRecipes()
+            var result = new BlightCraftingRecipe()
             {
                 Id = recipe.Id,
                 PassiveId = passiveId,
