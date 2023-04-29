@@ -8,7 +8,10 @@ namespace PoeExporter.WikiExporters;
 /// Class which adds wiki exporter commands to a <see cref="Command"/>.
 /// </summary>
 [AddWikiExporter(
-    new Type[] { typeof(BlightCraftingRecipesExporter) },
+    new Type[] {
+        typeof(BlightCraftingRecipesExporter),
+        typeof(BlightCraftingRecipesItemsExporter),
+    },
     new string[] { "--luablight", "--blight" },
     "Exports lua blight data")]
 internal sealed partial class WikiCommands
