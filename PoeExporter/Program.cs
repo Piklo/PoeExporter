@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using PoeExporter;
 using PoeExporter.JsonExporters;
-using PoeExporter.WikiExporters.Lua;
-using PoeExporter.WikiExporters.Lua.Helpers;
+using PoeExporter.WikiExporters;
 using Serilog;
 using Serilog.Core;
 using System.CommandLine;
@@ -27,22 +26,11 @@ var logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
 
-var test = new FossilsTest()
-{
-    BaseItemId = "test",
-    AllowedTags = new[] { "garbage", "garbage 2" },
-    InnerFossil = new() { Test = 2 },
-};
-
-var array = new FossilsTest[] { test };
-
-var str = LuaConverter.ToLuaString(array);
-
-return;
 var specificationWrapper = new SpecificationWrapper(parsedConfig, logger);
 
 var rootCommand = new RootCommand("exports poe data.");
 JsonCommands.AddCommands(specificationWrapper, logger, rootCommand);
+WikiCommands.AddCommands(specificationWrapper, logger, rootCommand);
 
 // var wikiCommand = new Command("wiki", "exports data to wiki");
 // rootCommand.Add(wikiCommand);
