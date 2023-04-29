@@ -6,6 +6,10 @@
     "json allDatFiles": {
       "commandName": "Project",
       "commandLineArgs": "json allDatFiles"
+    },
+    "wiki blight print": {
+      "commandName": "Project",
+      "commandLineArgs": "wiki --blight -p"
     }
   }
 }
