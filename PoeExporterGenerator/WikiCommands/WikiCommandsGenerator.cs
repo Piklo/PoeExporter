@@ -377,7 +377,6 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
 
         for (var i = 0; i < exporters.Count; i++)
         {
-            var exporter = exporters[i];
             var resultName = GetExporterResultName(i);
             builder.AppendLine($"""
                         logger.Information({resultName});
