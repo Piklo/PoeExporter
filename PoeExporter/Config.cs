@@ -10,4 +10,7 @@ public class Config : IConfig
 
     /// <inheritdoc/>
     public required string Output { get; init; }
+
+    /// <inheritdoc/>
+    public required int MinimumLoggerLevel { get; init; }
 }

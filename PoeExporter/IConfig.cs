@@ -7,4 +7,7 @@ internal interface IConfig : PoeData.IConfig
 {
     /// <summary>Gets output directory.</summary>
     string Output { get; init; }
+
+    /// <summary>Gets minimum logger level.</summary>
+    int MinimumLoggerLevel { get; init; }
 }

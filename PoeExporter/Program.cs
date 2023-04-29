@@ -17,9 +17,15 @@ if (parsedConfig is null)
     return;
 }
 
+if (!Enum.IsDefined(typeof(Serilog.Events.LogEventLevel), parsedConfig.MinimumLoggerLevel))
+{
+    Console.WriteLine($"{nameof(parsedConfig.MinimumLoggerLevel)} is set to unknown value");
+    return;
+}
+
 var levelSwitch = new LoggingLevelSwitch
 {
-    MinimumLevel = Serilog.Events.LogEventLevel.Verbose,
+    MinimumLevel = (Serilog.Events.LogEventLevel)parsedConfig.MinimumLoggerLevel,
 };
 var logger = new LoggerConfiguration()
     .MinimumLevel.ControlledBy(levelSwitch)
