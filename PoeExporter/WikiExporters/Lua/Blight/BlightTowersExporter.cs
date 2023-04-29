@@ -62,14 +62,19 @@ internal sealed class BlightTowersExporter : IExporter<BlightTowersExporter>
 
             var tower = blightTowers[key.Value];
 
+            var replacedTier = string.IsNullOrEmpty(tower.Tier) ? null : tower.Tier;
+
+            var replacedIcon = tower.Icon.StartsWith("Art/2DArt/UIImages/InGame/Blight/Tower Icons")
+                ? $"""File:{tower.Icon.Replace("Art/2DArt/UIImages/InGame/Blight/Tower Icons/Icon", string.Empty)} tower icon.png""" : null;
+
             var res = new BlightTower()
             {
                 Id = tower.Id,
                 Name = tower.Name,
                 Description = tower.Description,
-                Tier = tower.Tier,
+                Tier = replacedTier,
                 Radius = tower.Radius,
-                Icon = tower.Icon,
+                Icon = replacedIcon,
                 Cost = towerPerLevel.Cost,
             };
 
