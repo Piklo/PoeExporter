@@ -70,7 +70,7 @@ internal sealed class BestiaryRecipesExporter : IExporter<BestiaryRecipesExporte
                 Id = recipe.Id,
                 Header = category.Value,
                 Subheader = recipe.Description,
-                Notes = string.IsNullOrEmpty(recipe.Notes) ? null : recipe.Notes,
+                Notes = recipe.Notes,
             };
 
             results.Add(obj);

@@ -22,7 +22,8 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     /// <returns>parsed lua strings.</returns>
     internal static LuaString[] Generate(string name, string? value, int indentation)
     {
-        if (value is null)
+        // do we ever want to export empty strings as ""?
+        if (string.IsNullOrEmpty(value))
         {
             return Array.Empty<LuaString>();
         }
