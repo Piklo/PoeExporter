@@ -340,7 +340,7 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
             var result = GetExporterResultName(i);
             builder.AppendLine($"""
 
-                        var {instance} = {exporter}.Create(specificationWrapper, logger);
+                        IExporter<{exporter}> {instance} = {exporter}.Create(specificationWrapper, logger);
                         var {result} = {instance}.Export();
                 """);
         }
