@@ -1,10 +1,11 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using PoeExporterGenerator;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+
+namespace PoeExporterGenerator.LuaGenerator;
 
 /// <summary>
 /// Class used to generate to LuaConverter methods.
