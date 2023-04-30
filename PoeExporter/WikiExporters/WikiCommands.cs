@@ -30,6 +30,7 @@ namespace PoeExporter.WikiExporters;
     new Type[]
     {
         typeof(BestiaryRecipesExporter),
+        typeof(BestiaryComponentsExporter),
     },
     new string[] { "--luabestiary", "--bestiary" },
     "Exports lua bestiary data")]
