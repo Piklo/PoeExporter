@@ -11,20 +11,21 @@ internal static class JsonCommands
     /// <summary>
     /// Adds json commands.
     /// </summary>
+    /// <param name="rootCommand">command to which the method adds subcommands.</param>
     /// <param name="specificationWrapper">specification wrapper.</param>
+    /// <param name="config">config.</param>
     /// <param name="logger">logger.</param>
-    /// <param name="command">command to which the method adds subcommands.</param>
-    public static void AddCommands(SpecificationWrapper specificationWrapper, ILogger logger, Command command)
+    public static void AddCommands(Command rootCommand, SpecificationWrapper specificationWrapper, IConfig config, ILogger logger)
     {
         var jsonCommand = new Command("json", "exports data to json");
-        command.Add(jsonCommand);
+        rootCommand.Add(jsonCommand);
 
-        AddExportAllDatFiles(specificationWrapper, logger, jsonCommand);
+        AddExportAllDatFiles(jsonCommand, specificationWrapper, config, logger);
 
-        AddExportListedDatFiles(specificationWrapper, logger, jsonCommand);
+        AddExportListedDatFiles(jsonCommand, specificationWrapper, config, logger);
     }
 
-    private static void AddExportAllDatFiles(SpecificationWrapper specificationWrapper, ILogger logger, Command jsonCommand)
+    private static void AddExportAllDatFiles(Command jsonCommand, SpecificationWrapper specificationWrapper, IConfig config, ILogger logger)
     {
         var allDatFilesCommand = new Command("allDatFiles", "exports all dat files");
         jsonCommand.Add(allDatFilesCommand);
@@ -32,13 +33,13 @@ internal static class JsonCommands
         allDatFilesCommand.SetHandler(
             () =>
             {
-                var datExporter = new DatJsonExporter(logger, specificationWrapper.GetOrCreateSpecification());
+                var datExporter = new DatJsonExporter(specificationWrapper.GetOrCreateSpecification(), config, logger);
                 logger.Information("exporing all dat files");
                 datExporter.Run();
             });
     }
 
-    private static void AddExportListedDatFiles(SpecificationWrapper specificationWrapper, ILogger logger, Command jsonCommand)
+    private static void AddExportListedDatFiles(Command jsonCommand, SpecificationWrapper specificationWrapper, IConfig config, ILogger logger)
     {
         var listedDatFilesCommand = new Command("datFiles", "exports listed dat files");
         jsonCommand.Add(listedDatFilesCommand);
@@ -56,7 +57,7 @@ internal static class JsonCommands
             {
                 if (datFiles.Length != 0)
                 {
-                    var datExporter = new DatJsonExporter(logger, specificationWrapper.GetOrCreateSpecification());
+                    var datExporter = new DatJsonExporter(specificationWrapper.GetOrCreateSpecification(), config, logger);
                     logger.Information("exporing listed dat files: {files}", string.Join(", ", datFiles));
                     logger.Error("not yet implemented");
                 }

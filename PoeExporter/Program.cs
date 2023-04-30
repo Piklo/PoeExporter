@@ -35,7 +35,7 @@ var logger = new LoggerConfiguration()
 var specificationWrapper = new SpecificationWrapper(parsedConfig, logger);
 
 var rootCommand = new RootCommand("exports poe data.");
-JsonCommands.AddCommands(specificationWrapper, logger, rootCommand);
+JsonCommands.AddCommands(rootCommand, specificationWrapper, parsedConfig, logger);
 WikiCommands.AddCommands(rootCommand, specificationWrapper, parsedConfig, logger);
 
 rootCommand.Invoke(args);

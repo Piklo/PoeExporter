@@ -11,8 +11,8 @@ namespace PoeExporter.JsonExporters;
 /// </summary>
 internal sealed partial class DatJsonExporter
 {
-    private readonly ILogger logger;
     private readonly Specification specification;
+    private readonly ILogger logger;
     private readonly DirectoryInfo resultsDir;
     private readonly bool throwOnException;
     private int exceptionCounter;
@@ -20,19 +20,21 @@ internal sealed partial class DatJsonExporter
     /// <summary>
     /// Initializes a new instance of the <see cref="DatJsonExporter"/> class.
     /// </summary>
-    /// <param name="logger">logger.</param>
     /// <param name="specification">specification.</param>
-    public DatJsonExporter(ILogger logger, Specification specification)
+    /// <param name="config">config.</param>
+    /// <param name="logger">logger.</param>
+    public DatJsonExporter(Specification specification, IConfig config, ILogger logger)
     {
-        this.logger = logger;
         this.specification = specification;
-        resultsDir = new DirectoryInfo("results"); // pass this in Config?
+        this.logger = logger;
+
+        resultsDir = new DirectoryInfo(config.Output);
         if (!resultsDir.Exists)
         {
             resultsDir.Create();
         }
 
-        throwOnException = false; // pass this in Config?
+        throwOnException = false;
     }
 
     /// <summary>
