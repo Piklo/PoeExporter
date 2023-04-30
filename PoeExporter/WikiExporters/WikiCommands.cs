@@ -17,15 +17,6 @@ namespace PoeExporter.WikiExporters;
     },
     new string[] { "--luablight", "--blight" },
     "Exports lua blight data")]
-
-// [AddWikiExporter(
-//    new Type[]
-//    {
-//        // typeof(AtlasRegionsExporter), // atlas regions are no longer a thing
-//        typeof(AtlasBaseItemTypesExporter), // AtlasBaseTypeDrops.dat is no longer a thing
-//    },
-//    new string[] { "--luaatlas", "--atlas" },
-//    "Exports lua atlas data")]
 [AddWikiExporter(
     new Type[]
     {
