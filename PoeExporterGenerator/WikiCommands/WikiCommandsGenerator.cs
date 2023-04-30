@@ -39,34 +39,12 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
 
         var attributes = classDeclaration.AttributeLists;
 
-        if (!HasAttribute(attributes, cancellationToken))
+        if (!Helpers.HasAttribute(attributes, AttributeName, AttributeFullName, cancellationToken))
         {
             return false;
         }
 
         return true;
-    }
-
-    private static bool HasAttribute(SyntaxList<AttributeListSyntax> attributeLists, CancellationToken cancellationToken)
-    {
-        foreach (var attributes in attributeLists)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            foreach (var attribute in attributes.Attributes)
-            {
-                if (attribute.Name is not IdentifierNameSyntax identifierNameSyntax)
-                {
-                    continue;
-                }
-
-                if (identifierNameSyntax.Identifier.ValueText == AttributeName || identifierNameSyntax.Identifier.ValueText == AttributeFullName)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage(
