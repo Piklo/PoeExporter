@@ -105,29 +105,4 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
 
         return strings.ToArray();
     }
-
-    /// <summary>
-    /// Generates lua strings for another <see cref="ILuaExporter{T}"/>.
-    /// </summary>
-    /// <typeparam name="T">type of a lua exporter.</typeparam>
-    /// <param name="name">name of a lua variable.</param>
-    /// <param name="exporter">exporter to generater values from.</param>
-    /// <param name="indentation">indentation of lua strings.</param>
-    /// <returns>parsed lua strings.</returns>
-    /// <exception cref="DefaultNonGeneratorMethodUsedException">Thrown when the generic method is used.
-    /// Which means the generator failed to generate overload specific for the given T.</exception>
-#pragma warning disable IDE0060 // Remove unused parameter
-    internal static LuaString[] Generate<T>(string name, ILuaExporter<T> exporter, int indentation)
-#pragma warning restore IDE0060 // Remove unused parameter
-        where T : ILuaExporter<T>
-    {
-        throw new DefaultNonGeneratorMethodUsedException();
-    }
-
-    // private string GetName(Type type)
-    // {
-    //     var attribute = Attribute.GetCustomAttribute(type, typeof(LuaPropertyNameAttribute)) as LuaPropertyNameAttribute;
-    //     var name = attribute is not null ? attribute.Name : type.Name;
-    //     return name;
-    // }
 }
