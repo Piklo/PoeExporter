@@ -1,9 +1,12 @@
 # PoeExporter
 
 Add config.json to PoeExporter project with PoePath set to poe directory, e.g.
+
+Check what other options you can set in PoeExporter.Config class.
 ```json
 {
-  "PoePath": "C:\\Path of Exile"
+  "PoePath": "C:\\Path of Exile",
+  "Output": "C:\\Output"
 }
 ```
 
