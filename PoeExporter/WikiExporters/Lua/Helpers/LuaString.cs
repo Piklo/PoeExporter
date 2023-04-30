@@ -43,6 +43,11 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     /// <returns>parsed lua strings.</returns>
     internal static LuaString[] Generate(string name, IReadOnlyList<string> values, int indentation)
     {
+        if (values.Count == 0)
+        {
+            return Array.Empty<LuaString>();
+        }
+
         var strings = new List<LuaString>();
 
         var tagsBracket = new LuaString($"{name} = {{", indentation);
@@ -104,6 +109,11 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     internal static LuaString[] Generate<T>(string name, IReadOnlyList<T> values, int indentation)
         where T : INumber<T>
     {
+        if (values.Count == 0)
+        {
+            return Array.Empty<LuaString>();
+        }
+
         var strings = new List<LuaString>();
 
         var tagsBracket = new LuaString($"{name} = {{", indentation);
