@@ -77,6 +77,23 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     }
 
     /// <summary>
+    /// Generates a lua strings for a nullable int.
+    /// </summary>
+    /// <param name="name">name of a lua variable.</param>
+    /// <param name="value">value of a lua variable.</param>
+    /// <param name="indentation">indentation of lua strings.</param>
+    /// <returns>parsed lua strings.</returns>
+    internal static LuaString[] Generate(string name, int? value, int indentation)
+    {
+        if (value is null)
+        {
+            return Array.Empty<LuaString>();
+        }
+
+        return new LuaString[] { new LuaString($"{name} = {value},", indentation) };
+    }
+
+    /// <summary>
     /// Generates a lua strings for a list of numbers.
     /// </summary>
     /// <typeparam name="T">number type.</typeparam>
