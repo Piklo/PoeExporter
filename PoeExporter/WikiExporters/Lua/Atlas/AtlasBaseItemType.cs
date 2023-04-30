@@ -5,7 +5,8 @@ namespace PoeExporter.WikiExporters.Lua.Atlas;
 /// <summary>
 /// Class representing values of https://www.poewiki.net/wiki/Module:Atlas/atlas_base_item_types.
 /// </summary>
-internal sealed class AtlasBaseItemType : ILuaExporter<AtlasBaseItemType>
+[LuaItem]
+internal sealed class AtlasBaseItemType
 {
     /// <summary>Gets region id.</summary>
     [LuaPropertyName("region_id")]

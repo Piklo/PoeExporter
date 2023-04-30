@@ -5,7 +5,8 @@ namespace PoeExporter.WikiExporters.Lua.Atlas;
 /// <summary>
 /// Class representing values of https://www.poewiki.net/wiki/Module:Atlas/atlas_regions.
 /// </summary>
-internal sealed class AtlasRegion : ILuaExporter<AtlasRegion>
+[LuaItem]
+internal sealed class AtlasRegion
 {
     /// <summary>Gets id.</summary>
     [LuaPropertyName("id")]

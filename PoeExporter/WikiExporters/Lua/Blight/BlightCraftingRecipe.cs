@@ -5,7 +5,8 @@ namespace PoeExporter.WikiExporters.Lua.Blight;
 /// <summary>
 /// Class representing values of https://www.poewiki.net/wiki/Module:Blight/blight_crafting_recipes.
 /// </summary>
-internal sealed class BlightCraftingRecipe : ILuaExporter<BlightCraftingRecipe>
+[LuaItem]
+internal sealed class BlightCraftingRecipe
 {
     /// <summary>Gets id.</summary>
     [LuaPropertyName("id")]

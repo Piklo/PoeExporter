@@ -5,7 +5,8 @@ namespace PoeExporter.WikiExporters.Lua.Bestiary;
 /// <summary>
 /// Class representing values of https://www.poewiki.net/wiki/Module:Bestiary/recipes.
 /// </summary>
-internal sealed class BestiaryRecipe : ILuaExporter<BestiaryRecipe>
+[LuaItem]
+internal sealed class BestiaryRecipe
 {
     /// <summary>Gets id.</summary>
     [LuaPropertyName("id")]
