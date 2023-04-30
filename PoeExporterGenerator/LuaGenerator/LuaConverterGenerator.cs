@@ -62,6 +62,8 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
         var properties = new List<PropertyData>();
         foreach (var member in members)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (member is not IPropertySymbol propertySymbol)
             {
                 continue;
