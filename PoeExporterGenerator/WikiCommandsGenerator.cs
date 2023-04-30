@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace PoeExporterGenerator.WikiCommands;
+namespace PoeExporterGenerator;
 
 /// <summary>
 /// Class used to generate wiki commands.

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace PoeExporterGenerator.LuaGenerator;
+namespace PoeExporterGenerator;
 
 /// <summary>
 /// Class used to generate to LuaConverter methods.
