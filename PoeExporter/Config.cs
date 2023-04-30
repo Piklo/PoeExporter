@@ -13,4 +13,7 @@ public class Config : IConfig
 
     /// <inheritdoc/>
     public required int MinimumLoggerLevel { get; init; }
+
+    /// <inheritdoc/>
+    public bool CacheDataLoader { get; init; } = true;
 }
