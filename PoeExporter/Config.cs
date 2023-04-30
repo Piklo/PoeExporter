@@ -12,7 +12,7 @@ public class Config : IConfig
     public required string Output { get; init; }
 
     /// <inheritdoc/>
-    public required int MinimumLoggerLevel { get; init; }
+    public int MinimumLoggerLevel { get; init; } = (int)Serilog.Events.LogEventLevel.Information;
 
     /// <inheritdoc/>
     public bool CacheDataLoader { get; init; } = true;
