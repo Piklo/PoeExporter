@@ -6,7 +6,7 @@ namespace PoeExporter.WikiExporters.Lua.Bestiary;
 /// Class representing values of https://www.poewiki.net/wiki/Module:Bestiary/components.
 /// </summary>
 [LuaItem]
-internal class BestiaryComponent
+internal sealed class BestiaryComponent
 {
     /// <summary>Gets id.</summary>
     [LuaPropertyName("id")]
