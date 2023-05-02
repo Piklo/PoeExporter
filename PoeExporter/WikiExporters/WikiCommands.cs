@@ -30,6 +30,7 @@ namespace PoeExporter.WikiExporters;
     new Type[]
     {
         typeof(CraftingBenchOptionsExporter),
+        typeof(CraftingBenchCostsExporter),
     },
     new string[] { "--luacraftingbench", "--craftingbench" },
     "Exports lua crafting bench data")]
