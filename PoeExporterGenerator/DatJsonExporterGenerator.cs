@@ -127,6 +127,7 @@ internal sealed class DatJsonExporterGenerator : IIncrementalGenerator
 
     private static void AddLoadMethod(StringBuilder builder, string method)
     {
+        var fileName = method.Substring(4);
         builder.AppendLine($$"""
 
                 private void {{method}}()
@@ -134,7 +135,7 @@ internal sealed class DatJsonExporterGenerator : IIncrementalGenerator
                     try
                     {
                         var res = {{SpecificationVarName}}.{{method}}();
-                        Save(res, "{{method}}");
+                        Save(res, "{{fileName}}");
                     }
                     catch (Exception e)
                     {
