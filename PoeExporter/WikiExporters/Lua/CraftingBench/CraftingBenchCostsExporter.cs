@@ -6,7 +6,7 @@ namespace PoeExporter.WikiExporters.Lua.CraftingBench;
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Crafting_bench/crafting_bench_options_costs.
 /// </summary>
-internal class CraftingBenchCostsExporter : IExporter<CraftingBenchCostsExporter>
+internal sealed class CraftingBenchCostsExporter : IExporter<CraftingBenchCostsExporter>
 {
     private readonly SpecificationWrapper specificationWrapper;
     private readonly ILogger logger;
