@@ -1,6 +1,7 @@
 ﻿using PoeExporter.WikiExporters.Lua.Bestiary;
 using PoeExporter.WikiExporters.Lua.Blight;
 using PoeExporter.WikiExporters.Lua.CraftingBench;
+using PoeExporter.WikiExporters.Lua.Delve;
 using Serilog;
 using System.CommandLine;
 
@@ -34,6 +35,13 @@ namespace PoeExporter.WikiExporters;
     },
     new string[] { "--luacraftingbench", "--craftingbench" },
     "Exports lua crafting bench data")]
+[AddWikiExporter(
+    new Type[]
+    {
+        typeof(DelveLevelScalingExporter),
+    },
+    new string[] { "--luadelve", "--delve" },
+    "Exports lua delve data")]
 internal sealed partial class WikiCommands
 {
     /// <summary>
