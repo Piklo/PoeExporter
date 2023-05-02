@@ -47,10 +47,6 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
         return true;
     }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "StyleCop.CSharp.NamingRules",
-        "SA1313:Parameter names should begin with lower-case letter",
-        Justification = "its a record not a method")]
     private readonly record struct AttributeData(IReadOnlyList<string> Exporters, string[] Aliases, string Description, IEnumerable<string> Namespaces);
 
     private static IReadOnlyList<AttributeData> GetAttributeData(GeneratorSyntaxContext syntaxContext, CancellationToken cancellationToken)

@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		stylecop.json = stylecop.json
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ooz", "ooz\ooz.csproj", "{648401BC-BC60-4533-A516-4CBDFD467D5F}"
@@ -19,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecificationGenerator", "S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaWiki", "MediaWiki\MediaWiki.csproj", "{10159C0C-0862-4CF0-AA8A-D765A3A0C410}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoeExporterGenerator", "PoeExporterGenerator\PoeExporterGenerator.csproj", "{1C9A1183-5485-41A5-8344-ADEEE6EEC9C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PoeExporterGenerator", "PoeExporterGenerator\PoeExporterGenerator.csproj", "{1C9A1183-5485-41A5-8344-ADEEE6EEC9C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

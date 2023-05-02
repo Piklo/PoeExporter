@@ -44,12 +44,8 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
         return true;
     }
 
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
     private readonly record struct ClassData(string Namespace, string ClassName, IReadOnlyList<PropertyData> Properties);
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
     private readonly record struct PropertyData(string PropertyName, string LuaPropertyName);
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
 
     private static ClassData GetClassData(GeneratorSyntaxContext syntaxContext, CancellationToken cancellationToken)
     {

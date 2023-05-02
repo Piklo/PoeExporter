@@ -41,9 +41,7 @@ internal class LuaStringGenerator : IIncrementalGenerator
         return true;
     }
 
-#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
     private readonly record struct ClassData(string Namespace, string ClassName);
-#pragma warning restore SA1313 // Parameter names should begin with lower-case letter
     private static ClassData GetClassData(GeneratorSyntaxContext syntaxContext, CancellationToken cancellationToken)
     {
         if (syntaxContext.SemanticModel.GetDeclaredSymbol(syntaxContext.Node) is not INamedTypeSymbol symbol)
