@@ -22,19 +22,19 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
     /// <inheritdoc/>
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
-        var markedClasses = context.SyntaxProvider.CreateSyntaxProvider(ShouldVisit, GetClassData);
+        var markedClasses = context.SyntaxProvider.CreateSyntaxProvider(ShouldVisit, GetTypeData);
 
         context.RegisterSourceOutput(markedClasses, Output);
     }
 
     private static bool ShouldVisit(SyntaxNode syntaxNode, CancellationToken cancellationToken)
     {
-        if (syntaxNode is not ClassDeclarationSyntax classDeclarationSyntax)
+        if (syntaxNode is not TypeDeclarationSyntax typeDeclarationSyntax)
         {
             return false;
         }
 
-        var attributes = classDeclarationSyntax.AttributeLists;
+        var attributes = typeDeclarationSyntax.AttributeLists;
 
         if (!Helpers.HasAttribute(attributes, AttributeName, AttributeFullName, cancellationToken))
         {
@@ -44,10 +44,10 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
         return true;
     }
 
-    private readonly record struct ClassData(string Namespace, string ClassName, IReadOnlyList<PropertyData> Properties);
+    private readonly record struct TypeData(string Namespace, string ClassName, IReadOnlyList<PropertyData> Properties);
     private readonly record struct PropertyData(string PropertyName, string LuaPropertyName);
 
-    private static ClassData GetClassData(GeneratorSyntaxContext syntaxContext, CancellationToken cancellationToken)
+    private static TypeData GetTypeData(GeneratorSyntaxContext syntaxContext, CancellationToken cancellationToken)
     {
         if (syntaxContext.SemanticModel.GetDeclaredSymbol(syntaxContext.Node) is not INamedTypeSymbol symbol)
         {
@@ -80,7 +80,7 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
         var namespaceName = symbol.ContainingNamespace.ToString();
         var className = symbol.Name;
 
-        var classData = new ClassData(namespaceName, className, properties);
+        var classData = new TypeData(namespaceName, className, properties);
         return classData;
     }
 
@@ -104,7 +104,7 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
         return null;
     }
 
-    private static void Output(SourceProductionContext sourceProductionContext, ClassData classData)
+    private static void Output(SourceProductionContext sourceProductionContext, TypeData classData)
     {
         var builder = new StringBuilder();
         builder.AppendLine($$"""
@@ -132,7 +132,7 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
         sourceProductionContext.AddSource(resultClassName, str);
     }
 
-    private static void AddToLuaStringMethod(ClassData classData, StringBuilder builder)
+    private static void AddToLuaStringMethod(TypeData classData, StringBuilder builder)
     {
         builder.AppendLine($$"""
                 /// <summary>
@@ -164,7 +164,7 @@ internal sealed class LuaConverterGenerator : IIncrementalGenerator
             """);
     }
 
-    private static void AddToLuaStringsMethod(ClassData classData, StringBuilder builder)
+    private static void AddToLuaStringsMethod(TypeData classData, StringBuilder builder)
     {
         builder.AppendLine($$"""
 
