@@ -2,6 +2,7 @@
 using Serilog;
 using System.Diagnostics;
 using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 
 namespace PoeExporter.JsonExporters;
@@ -52,9 +53,10 @@ internal sealed partial class DatJsonExporter
 
     private void Save<T>(IReadOnlyList<T> result, string fileName)
     {
-        var serialized = JsonSerializer.Serialize(result, new System.Text.Json.JsonSerializerOptions()
+        var serialized = JsonSerializer.Serialize(result, new JsonSerializerOptions()
         {
             WriteIndented = true,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
         });
 
         File.WriteAllText(Path.Combine(resultsDir.FullName, $"{fileName}.json"), serialized, Encoding.UTF8);
