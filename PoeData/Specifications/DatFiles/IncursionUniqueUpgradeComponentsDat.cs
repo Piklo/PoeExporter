@@ -13,12 +13,13 @@ namespace PoeData.Specifications.DatFiles;
 /// </summary>
 public sealed partial class IncursionUniqueUpgradeComponentsDat
 {
-    /// <summary> Gets Unknown0.</summary>
-    public required int? Unknown0 { get; init; }
+    /// <summary> Gets BaseUnique.</summary>
+    /// <remarks> references <see cref="WordsDat"/> on <see cref="Specification.LoadWordsDat"/> index.</remarks>
+    public required int? BaseUnique { get; init; }
 
-    /// <summary> Gets BaseItemType.</summary>
+    /// <summary> Gets UpgradeCurrency.</summary>
     /// <remarks> references <see cref="BaseItemTypesDat"/> on <see cref="Specification.LoadBaseItemTypesDat"/> index.</remarks>
-    public required int? BaseItemType { get; init; }
+    public required int? UpgradeCurrency { get; init; }
 
     /// <summary>
     /// Gets IncursionUniqueUpgradeComponentsDat data.
@@ -48,11 +49,11 @@ public sealed partial class IncursionUniqueUpgradeComponentsDat
             // offset = 4 + (rowId * tableRecordLength); // debug only
             var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
 
-            // loading Unknown0
-            (var unknown0Loading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
+            // loading BaseUnique
+            (var baseuniqueLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
-            // loading BaseItemType
-            (var baseitemtypeLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
+            // loading UpgradeCurrency
+            (var upgradecurrencyLoading, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);
 
             if (offset != expectedOffset)
             {
@@ -61,8 +62,8 @@ public sealed partial class IncursionUniqueUpgradeComponentsDat
 
             var obj = new IncursionUniqueUpgradeComponentsDat()
             {
-                Unknown0 = unknown0Loading,
-                BaseItemType = baseitemtypeLoading,
+                BaseUnique = baseuniqueLoading,
+                UpgradeCurrency = upgradecurrencyLoading,
             };
 
             objects[rowId] = obj;

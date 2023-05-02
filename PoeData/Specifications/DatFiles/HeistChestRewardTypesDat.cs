@@ -48,6 +48,9 @@ public sealed partial class HeistChestRewardTypesDat
     /// <summary> Gets Unknown76.</summary>
     public required int Unknown76 { get; init; }
 
+    /// <summary> Gets Unknown80.</summary>
+    public required int Unknown80 { get; init; }
+
     /// <summary>
     /// Gets HeistChestRewardTypesDat data.
     /// </summary>
@@ -110,6 +113,9 @@ public sealed partial class HeistChestRewardTypesDat
             // loading Unknown76
             (var unknown76Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
+            // loading Unknown80
+            (var unknown80Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
             if (offset != expectedOffset)
             {
                 throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
@@ -128,6 +134,7 @@ public sealed partial class HeistChestRewardTypesDat
                 RewardRoomName2 = rewardroomname2Loading,
                 HeistJobsKey = heistjobskeyLoading,
                 Unknown76 = unknown76Loading,
+                Unknown80 = unknown80Loading,
             };
 
             objects[rowId] = obj;
