@@ -95,7 +95,7 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
             return Array.Empty<LuaString>();
         }
 
-        return new LuaString[] { new LuaString($"{name} = {value},", indentation) };
+        return Generate(name, value.Value, indentation);
     }
 
     /// <summary>
