@@ -41,6 +41,7 @@ namespace PoeExporter.WikiExporters;
         typeof(DelveLevelScalingExporter),
         typeof(DelveResourcesPerLevelExporter),
         typeof(DelveUpgradeStatsExporter),
+        typeof(DelveUpgradesExporter),
     },
     new string[] { "--luadelve", "--delve" },
     "Exports lua delve data")]
