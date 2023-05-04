@@ -132,4 +132,16 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
 
         return strings.ToArray();
     }
+
+    /// <summary>
+    /// Generates a lua strings for a boolean.
+    /// </summary>
+    /// <param name="name">name of a lua variable.</param>
+    /// <param name="value">value of a lua variable.</param>
+    /// <param name="indentation">indentation of lua strings.</param>
+    /// <returns>parsed lua strings.</returns>
+    internal static LuaString[] Generate(string name, bool value, int indentation)
+    {
+        return new LuaString[] { new LuaString($"""{name} = {(value ? "true" : "false")},""", indentation) };
+    }
 }
