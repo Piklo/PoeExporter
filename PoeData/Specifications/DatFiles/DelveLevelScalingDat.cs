@@ -28,11 +28,11 @@ public sealed partial class DelveLevelScalingDat
     /// <summary> Gets MonsterLevel2.</summary>
     public required int MonsterLevel2 { get; init; }
 
-    /// <summary> Gets MoreMonsterLife.</summary>
-    public required int MoreMonsterLife { get; init; }
-
     /// <summary> Gets MoreMonsterDamage.</summary>
     public required int MoreMonsterDamage { get; init; }
+
+    /// <summary> Gets MoreMonsterLife.</summary>
+    public required int MoreMonsterLife { get; init; }
 
     /// <summary> Gets DarknessResistance.</summary>
     public required int DarknessResistance { get; init; }
@@ -101,11 +101,11 @@ public sealed partial class DelveLevelScalingDat
             // loading MonsterLevel2
             (var monsterlevel2Loading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
-            // loading MoreMonsterLife
-            (var moremonsterlifeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
-
             // loading MoreMonsterDamage
             (var moremonsterdamageLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
+
+            // loading MoreMonsterLife
+            (var moremonsterlifeLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
 
             // loading DarknessResistance
             (var darknessresistanceLoading, offset) = SpecificationFileLoader.LoadInt(decompressedFile, offset);
@@ -143,8 +143,8 @@ public sealed partial class DelveLevelScalingDat
                 Unknown8 = unknown8Loading,
                 SulphiteCost = sulphitecostLoading,
                 MonsterLevel2 = monsterlevel2Loading,
-                MoreMonsterLife = moremonsterlifeLoading,
                 MoreMonsterDamage = moremonsterdamageLoading,
+                MoreMonsterLife = moremonsterlifeLoading,
                 DarknessResistance = darknessresistanceLoading,
                 LightRadius = lightradiusLoading,
                 Unknown36 = unknown36Loading,
