@@ -45,7 +45,7 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     {
         if (values.Count == 0)
         {
-            return Array.Empty<LuaString>();
+            return EmptyArrayLuaStrings(name, indentation);
         }
 
         var strings = new List<LuaString>();
@@ -111,7 +111,7 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     {
         if (values.Count == 0)
         {
-            return Array.Empty<LuaString>();
+            return EmptyArrayLuaStrings(name, indentation);
         }
 
         var strings = new List<LuaString>();
@@ -143,5 +143,10 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     internal static LuaString[] Generate(string name, bool value, int indentation)
     {
         return new LuaString[] { new LuaString($"""{name} = {(value ? "true" : "false")},""", indentation) };
+    }
+
+    private static LuaString[] EmptyArrayLuaStrings(string name, int indentation)
+    {
+        return new LuaString[] { new LuaString($"{name} = {{}},", indentation) };
     }
 }
