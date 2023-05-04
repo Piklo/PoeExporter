@@ -43,6 +43,7 @@ namespace PoeExporter.WikiExporters;
         typeof(DelveUpgradeStatsExporter),
         typeof(DelveUpgradesExporter),
         typeof(DelveFossilWeightsExporter),
+        typeof(DelveFossilsExporter),
     },
     new string[] { "--luadelve", "--delve" },
     "Exports lua delve data")]
