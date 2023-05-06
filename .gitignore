@@ -365,3 +365,4 @@ FodyWeavers.xsd
 config.json
 /ooz/libooz.dll
 /SpecificationGenerator/schema.min.json
+/.vscode
