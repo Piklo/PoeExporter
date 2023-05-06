@@ -41,8 +41,13 @@ internal readonly partial record struct LuaString(string Value, int Indentation)
     /// <param name="values">values of a lua variable.</param>
     /// <param name="indentation">indentation of lua strings.</param>
     /// <returns>parsed lua strings.</returns>
-    internal static LuaString[] Generate(string name, IReadOnlyList<string> values, int indentation)
+    internal static LuaString[] Generate(string name, IReadOnlyList<string>? values, int indentation)
     {
+        if (values is null)
+        {
+            return Array.Empty<LuaString>();
+        }
+
         if (values.Count == 0)
         {
             return EmptyArrayLuaStrings(name, indentation);
