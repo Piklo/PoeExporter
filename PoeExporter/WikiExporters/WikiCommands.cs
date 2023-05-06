@@ -2,6 +2,7 @@
 using PoeExporter.WikiExporters.Lua.Blight;
 using PoeExporter.WikiExporters.Lua.CraftingBench;
 using PoeExporter.WikiExporters.Lua.Delve;
+using PoeExporter.WikiExporters.Lua.Harvest;
 using Serilog;
 using System.CommandLine;
 
@@ -47,6 +48,13 @@ namespace PoeExporter.WikiExporters;
     },
     new string[] { "--luadelve", "--delve" },
     "Exports lua delve data")]
+[AddWikiExporter(
+    new Type[]
+    {
+        typeof(HarvestCraftOptionsExporter),
+    },
+    new string[] { "--luaharvest", "--harvest" },
+    "Exports lua harvest data")]
 internal sealed partial class WikiCommands
 {
     /// <summary>
