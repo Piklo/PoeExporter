@@ -25,7 +25,7 @@ You must add libooz.dll to ooz project. You can download it from https://github.
 | lua | bestiary | ✔️ | 
 | lua | blight | ✔️ | 
 | lua | crafting_bench | ✔️ | 
-| lua | delve | ❌ | 
+| lua | delve | ✔️ | 
 | lua | harvest | ❌ |  
 | lua | heist | ❌ | 
 | lua | monster | ❌ | 
