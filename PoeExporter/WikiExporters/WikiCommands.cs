@@ -3,6 +3,7 @@ using PoeExporter.WikiExporters.Lua.Blight;
 using PoeExporter.WikiExporters.Lua.CraftingBench;
 using PoeExporter.WikiExporters.Lua.Delve;
 using PoeExporter.WikiExporters.Lua.Harvest;
+using PoeExporter.WikiExporters.Lua.Heist;
 using Serilog;
 using System.CommandLine;
 
@@ -55,6 +56,13 @@ namespace PoeExporter.WikiExporters;
     },
     new string[] { "--luaharvest", "--harvest" },
     "Exports lua harvest data")]
+[AddWikiExporter(
+    new Type[]
+    {
+        typeof(HeistAreasExporter),
+    },
+    new string[] { "--luaheist", "--heist" },
+    "Exports lua heist data")]
 internal sealed partial class WikiCommands
 {
     /// <summary>
