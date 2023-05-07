@@ -60,6 +60,7 @@ namespace PoeExporter.WikiExporters;
     new Type[]
     {
         typeof(HeistAreasExporter),
+        typeof(HeistJobsExporter),
     },
     new string[] { "--luaheist", "--heist" },
     "Exports lua heist data")]
