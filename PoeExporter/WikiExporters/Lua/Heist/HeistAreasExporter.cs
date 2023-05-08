@@ -74,27 +74,24 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
             }
 
             var contractKey = heistArea.Contract_BaseItemTypesKey;
-            if (contractKey is null)
+            if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Contract_BaseItemTypesKey), contractKey, nameof(heistArea.Id), heistArea.Id))
             {
-                logger.Warning("{column} is null for {id}", nameof(heistArea.Contract_BaseItemTypesKey), heistArea.Id);
                 continue;
             }
 
             var contract = baseItems[contractKey.Value];
 
             var blueprintKey = heistArea.Blueprint_BaseItemTypesKey;
-            if (blueprintKey is null)
+            if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Blueprint_BaseItemTypesKey), blueprintKey, nameof(heistArea.Id), heistArea.Id))
             {
-                logger.Warning("{column} is null for {id}", nameof(heistArea.Blueprint_BaseItemTypesKey), heistArea.Id);
                 continue;
             }
 
             var blueprint = baseItems[blueprintKey.Value];
 
             var rewardKey = heistArea.Reward;
-            if (rewardKey is null)
+            if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Reward), rewardKey, nameof(heistArea.Id), heistArea.Id))
             {
-                logger.Warning("{column} is null for {id}", nameof(heistArea.Reward), heistArea.Id);
                 continue;
             }
 
