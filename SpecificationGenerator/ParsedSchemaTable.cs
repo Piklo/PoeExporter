@@ -7,7 +7,7 @@ using System.Text.Json;
 namespace SpecificationGenerator;
 
 /// <summary>
-/// Parses <see cref="Table"/>.
+/// Parses <see cref="SchemaJson.Table"/>.
 /// </summary>
 internal sealed class ParsedSchemaTable
 {
