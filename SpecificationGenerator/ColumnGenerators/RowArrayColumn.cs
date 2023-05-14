@@ -22,6 +22,12 @@ internal class RowArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public int Offset { get; } = 16;
 
+    /// <inheritdoc/>
+    public string ClassPropertyUnderlyingType => "int";
+
+    /// <inheritdoc/>
+    public string ClassPropertyType => $"ReadOnlyCollection<{ClassPropertyUnderlyingType}>";
+
     /// <summary>
     /// Initializes a new instance of the <see cref="RowArrayColumn"/> class.
     /// </summary>
@@ -42,7 +48,7 @@ internal class RowArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required ReadOnlyCollection<int> {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{ClassPropertyType}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;

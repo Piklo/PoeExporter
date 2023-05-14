@@ -16,6 +16,16 @@ internal interface IParsedColumn
     public string ClassPropertyName { get; }
 
     /// <summary>
+    /// Gets class property underlying type.
+    /// </summary>
+    public string ClassPropertyUnderlyingType { get; }
+
+    /// <summary>
+    /// Gets class property type.
+    /// </summary>
+    public string ClassPropertyType { get; }
+
+    /// <summary>
     /// Gets referenced table.
     /// </summary>
     public string? ReferencedTable { get; }

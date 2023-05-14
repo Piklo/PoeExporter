@@ -22,6 +22,12 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public int Offset { get; } = 1;
 
+    /// <inheritdoc/>
+    public string ClassPropertyUnderlyingType => "bool";
+
+    /// <inheritdoc/>
+    public string ClassPropertyType => ClassPropertyUnderlyingType;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BoolNonArrayColumn"/> class.
     /// </summary>
@@ -42,7 +48,7 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets a value indicating whether {ClassPropertyName} is set.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required bool {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{ClassPropertyType}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;

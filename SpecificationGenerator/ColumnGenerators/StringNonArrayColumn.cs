@@ -22,6 +22,12 @@ internal sealed class StringNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public int Offset { get; } = 8;
 
+    /// <inheritdoc/>
+    public string ClassPropertyUnderlyingType => "string";
+
+    /// <inheritdoc/>
+    public string ClassPropertyType => ClassPropertyUnderlyingType;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="StringNonArrayColumn"/> class.
     /// </summary>
@@ -42,7 +48,7 @@ internal sealed class StringNonArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required string {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{ClassPropertyType}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;

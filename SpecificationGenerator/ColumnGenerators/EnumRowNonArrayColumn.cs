@@ -22,6 +22,12 @@ internal sealed class EnumRowNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public int Offset { get; } = 4;
 
+    /// <inheritdoc/>
+    public string ClassPropertyUnderlyingType => "int";
+
+    /// <inheritdoc/>
+    public string ClassPropertyType => ClassPropertyUnderlyingType;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="EnumRowNonArrayColumn"/> class.
     /// </summary>
@@ -42,7 +48,7 @@ internal sealed class EnumRowNonArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required int {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{ClassPropertyType}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;
