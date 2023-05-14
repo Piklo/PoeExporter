@@ -1,5 +1,4 @@
 ﻿using SpecificationGenerator.ColumnGenerators;
-using System.Collections.ObjectModel;
 
 namespace SpecificationGenerator;
 
@@ -11,9 +10,9 @@ internal static class ColumnGeneratorHelper
     /// <summary>
     /// Generates a name for unknown column.
     /// </summary>
-    /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
+    /// <param name="parsedColumns">a readonly list of already parsed columns.</param>
     /// <returns>string column name.</returns>
-    internal static string GetUnknownColumnName(ReadOnlyCollection<IParsedColumn> parsedColumns)
+    internal static string GetUnknownColumnName(IReadOnlyList<IParsedColumn> parsedColumns)
     {
         var totalOffset = 0;
 
@@ -32,7 +31,7 @@ internal static class ColumnGeneratorHelper
     /// </summary>
     /// <param name="parsedColumns">parsed columns.</param>
     /// <returns>loading referenced tables strings.</returns>
-    internal static string[] GetReferencedTablesLoading(ReadOnlyCollection<IParsedColumn> parsedColumns)
+    internal static string[] GetReferencedTablesLoading(IReadOnlyList<IParsedColumn> parsedColumns)
     {
         var set = new HashSet<string>();
 
@@ -56,7 +55,7 @@ internal static class ColumnGeneratorHelper
     /// </summary>
     /// <param name="parsedColumns">parsed columns.</param>
     /// <returns>class initialization strings.</returns>
-    internal static string[] GetObjectInitialization(ReadOnlyCollection<IParsedColumn> parsedColumns)
+    internal static string[] GetObjectInitialization(IReadOnlyList<IParsedColumn> parsedColumns)
     {
         var strings = new string[parsedColumns.Count];
 
