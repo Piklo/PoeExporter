@@ -68,18 +68,29 @@ internal sealed class Generator
     {
         var solutionDir = Path.GetFullPath("../../../../");
         var datFilesDir = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications\\DatFiles"));
+        var repositoriesDir = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications\\Repositories"));
         var specificationDirectory = new DirectoryInfo(Path.Combine(solutionDir, "PoeData\\Specifications"));
 
-        var files = datFilesDir.GetFiles();
-        var skippable = GetSkippableFiles(files);
+        var datFileFileInfos = datFilesDir.GetFiles();
+        var skippableDatFiles = GetSkippableFiles(datFileFileInfos);
+        DeleteNotSkippableFiles(datFileFileInfos, skippableDatFiles);
 
-        DeleteNotSkippableFiles(files, skippable);
+        var repositoryFileInfos = repositoriesDir.GetFiles();
+        var skippableRepositories = GetSkippableFiles(repositoryFileInfos);
+        DeleteNotSkippableFiles(repositoryFileInfos, skippableRepositories);
 
-        var skippableFileNames = new HashSet<string>();
-        foreach (var file in skippable)
+        var skippableDatFileNames = new HashSet<string>();
+        foreach (var file in skippableDatFiles)
         {
             var name = file.Name;
-            skippableFileNames.Add(name);
+            skippableDatFileNames.Add(name);
+        }
+
+        var skippableRepositoryFileNames = new HashSet<string>();
+        foreach (var file in skippableRepositories)
+        {
+            var name = file.Name;
+            skippableRepositoryFileNames.Add(name);
         }
 
         var skipDir = new DirectoryInfo("skipped");
@@ -91,26 +102,37 @@ internal sealed class Generator
         skipDir.Create();
 
         var datFileGenerators = new List<DatFileGenerator>();
+        var repositoryGenerators = new List<RepositoryGenerator>();
         foreach (var table in schema.Tables)
         {
             var parsedTable = new ParsedSchemaTable(logger, table);
+
             var datFileGenerator = new DatFileGenerator(logger, parsedTable);
             datFileGenerators.Add(datFileGenerator);
-            var str = datFileGenerator.Code;
-            var fileName = $"{datFileGenerator.ClassName}.cs";
 
-            var skip = skippableFileNames.Contains(fileName);
-            if (skip)
+            var repositoryGenerator = new RepositoryGenerator(logger, parsedTable);
+            repositoryGenerators.Add(repositoryGenerator);
+
+            if (skippableDatFileNames.Contains(datFileGenerator.FileName))
             {
-                File.WriteAllText(Path.Combine(skipDir.FullName, fileName), str, Encoding.UTF8);
+                File.WriteAllText(Path.Combine(skipDir.FullName, datFileGenerator.FileName), datFileGenerator.Code, Encoding.UTF8);
             }
             else
             {
-                File.WriteAllText(Path.Combine(datFilesDir.FullName, fileName), str, Encoding.UTF8);
+                File.WriteAllText(Path.Combine(datFilesDir.FullName, datFileGenerator.FileName), datFileGenerator.Code, Encoding.UTF8);
+            }
+
+            if (skippableRepositoryFileNames.Contains(repositoryGenerator.FileName))
+            {
+                File.WriteAllText(Path.Combine(skipDir.FullName, repositoryGenerator.FileName), repositoryGenerator.Code, Encoding.UTF8);
+            }
+            else
+            {
+                File.WriteAllText(Path.Combine(datFilesDir.FullName, repositoryGenerator.FileName), repositoryGenerator.Code, Encoding.UTF8);
             }
         }
 
-        logger.Information("skipped files {count} - {skipped}", skippable.Count, skippable);
+        logger.Information("skipped files {count} - {skipped}", skippableDatFiles.Count, skippableDatFiles);
 
         var specificationGenerator = new SpecificationFileGenerator(logger, datFileGenerators);
         File.WriteAllText(

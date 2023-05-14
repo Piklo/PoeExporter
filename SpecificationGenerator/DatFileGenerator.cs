@@ -88,8 +88,6 @@ internal sealed class DatFileGenerator
 
         AppendProperties(builder, parsedTable.ParsedColumns);
 
-        AppendLoadMethod(builder, parsedTable.ParsedColumns);
-
         builder.AppendLine("}"); // class end bracket
 
         var str = builder.ToString();
@@ -117,95 +115,5 @@ internal sealed class DatFileGenerator
 
             builder.AppendLine();
         }
-    }
-
-    private void AppendLoadMethod(StringBuilder builder, IReadOnlyList<IParsedColumn> parsedColumns)
-    {
-        builder.AppendLine($$"""
-                    /// <summary>
-                    /// Gets {{ClassName}} data.
-                    /// </summary>
-                    /// <param name="dataLoader">data loader.</param>
-                    /// <returns>array of {{ClassName}}.</returns>
-                    internal static {{ClassName}}[] Load(DataLoader dataLoader)
-                    {
-                        if (dataLoader is null)
-                        {
-                            throw new ArgumentNullException(nameof(dataLoader));
-                        }
-
-                        const string filePath = "Data/{{parsedTable.Name}}.dat64";
-                        var decompressedFile = dataLoader.GetFileBytes(filePath);
-
-                        var dataOffset = decompressedFile.IndexOfSubArray(Specification.DatFileMagicNumber);
-                        const int TableOffset = 4;
-                        var offset = 0;
-                        (var tableRows, offset) = BitConverterExtended.ToUInt32(decompressedFile, offset);
-                        var tableLength = dataOffset - TableOffset;
-                        var tableRecordLength = tableLength / (int)tableRows;
-
-                        var objects = new {{ClassName}}[tableRows];
-                        for (var rowId = 0; rowId < tableRows; rowId++)
-                        {
-                            // offset = 4 + (rowId * tableRecordLength); // debug only
-                            var expectedOffset = 4 + ((rowId + 1) * tableRecordLength);
-
-                """);
-
-        AppendColumnsLoading(builder, parsedColumns);
-
-        builder.AppendLine($$"""
-                        if (offset != expectedOffset)
-                        {
-                            throw new SchemaMismatchException($"offset {offset} != expectedOffset {expectedOffset}");
-                        }
-
-            """);
-
-        AppendObjectInitialization(builder, parsedColumns);
-
-        // loop ends here
-        builder.AppendLine($$"""{{Tabs.Tab2}}}""");
-
-        builder.AppendLine("""
-
-                    return objects;
-                }
-            """);
-    }
-
-    private static void AppendColumnsLoading(StringBuilder builder, IReadOnlyList<IParsedColumn> parsedColumns)
-    {
-        foreach (var column in parsedColumns)
-        {
-            var columnLoadingStrings = column.GetLoading();
-
-            foreach (var str in columnLoadingStrings)
-            {
-                builder.AppendLine($"{Tabs.Tab3}{str}");
-            }
-
-            builder.AppendLine();
-        }
-    }
-
-    private void AppendObjectInitialization(StringBuilder builder, IReadOnlyList<IParsedColumn> parsedColumns)
-    {
-        builder.AppendLine($$"""
-                        var obj = new {{ClassName}}()
-                        {
-            """);
-
-        var strings = ColumnGeneratorHelper.GetObjectInitialization(parsedColumns);
-        foreach (var str in strings)
-        {
-            builder.AppendLine($"{Tabs.Tab4}{str}");
-        }
-
-        builder.AppendLine("""
-                        };
-
-                        objects[rowId] = obj;
-            """);
     }
 }
