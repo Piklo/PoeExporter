@@ -1,5 +1,4 @@
 ﻿using SpecificationGenerator.SchemaJson;
-using System.Collections.ObjectModel;
 
 namespace SpecificationGenerator.ColumnGenerators;
 
@@ -28,7 +27,7 @@ internal sealed class EnumRowArrayColumn : IParsedColumn
     /// </summary>
     /// <param name="column">column to parse.</param>
     /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
-    public EnumRowArrayColumn(Column column, ReadOnlyCollection<IParsedColumn> parsedColumns)
+    public EnumRowArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
