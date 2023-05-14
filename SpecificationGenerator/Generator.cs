@@ -93,7 +93,8 @@ internal sealed class Generator
         var datFileGenerators = new List<DatFileGenerator>();
         foreach (var table in schema.Tables)
         {
-            var datFileGenerator = new DatFileGenerator(table, logger);
+            var parsedTable = new ParsedSchemaTable(logger, table);
+            var datFileGenerator = new DatFileGenerator(logger, parsedTable);
             datFileGenerators.Add(datFileGenerator);
             var str = datFileGenerator.Code;
             var fileName = $"{datFileGenerator.ClassName}.cs";
