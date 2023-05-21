@@ -58,6 +58,9 @@ internal class SpecificationFileGenerator
 
                     private readonly DataLoader dataLoader;
 
+                    /// <summary>Gets data loader.</summary>
+                    internal DataLoader DataLoader => dataLoader;
+
                     /// <summary>
                     /// Initializes a new instance of the <see cref="Specification"/> class.
                     /// </summary>
