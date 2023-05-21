@@ -85,7 +85,7 @@ internal class SpecificationFileGenerator
                         }
 
                         dataLoader = new DataLoader(config, logger);
-                        
+
                         this.logger = logger;
                     }
                 """);
