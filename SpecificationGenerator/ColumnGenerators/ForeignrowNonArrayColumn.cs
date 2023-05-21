@@ -1,4 +1,5 @@
-﻿using SpecificationGenerator.SchemaJson;
+﻿using SpecificationGenerator.RepositoryGenerators;
+using SpecificationGenerator.SchemaJson;
 
 namespace SpecificationGenerator.ColumnGenerators;
 
@@ -64,5 +65,17 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
         };
 
         return strings;
+    }
+
+    /// <inheritdoc/>
+    public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
+    {
+        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, true);
+    }
+
+    /// <inheritdoc/>
+    public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
+    {
+        return RepositoryGetMethodsHelper.GetManyMethodNullableValueType(datClassName, fieldName, this);
     }
 }
