@@ -134,7 +134,7 @@ internal sealed class Generator
 
         logger.Information("skipped files {count} - {skipped}", skippableDatFiles.Count, skippableDatFiles);
 
-        var specificationGenerator = new SpecificationFileGenerator(logger, datFileGenerators);
+        var specificationGenerator = new SpecificationFileGenerator(logger, repositoryGenerators);
         File.WriteAllText(
             Path.Combine(specificationDirectory.FullName, specificationGenerator.FileName),
             specificationGenerator.Code,
