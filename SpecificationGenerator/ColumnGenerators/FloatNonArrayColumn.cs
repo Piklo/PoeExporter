@@ -78,4 +78,10 @@ internal class FloatNonArrayColumn : IParsedColumn
     {
         return RepositoryGetMethodsHelper.GetManyMethodNonNullableValueType(datClassName, fieldName, this);
     }
+
+    /// <inheritdoc/>
+    public IReadOnlyList<LineOfCode> GetManyToMany(string datClassName, string fieldName)
+    {
+        return RepositoryGetMethodsHelper.GetManyToMany(datClassName, fieldName, this);
+    }
 }

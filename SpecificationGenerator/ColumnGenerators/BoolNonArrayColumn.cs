@@ -67,7 +67,6 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
         return strings;
     }
 
-
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
     {
@@ -78,5 +77,11 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
         return RepositoryGetMethodsHelper.GetManyMethodNonNullableValueType(datClassName, fieldName, this);
+    }
+
+    /// <inheritdoc/>
+    public IReadOnlyList<LineOfCode> GetManyToMany(string datClassName, string fieldName)
+    {
+        return RepositoryGetMethodsHelper.GetManyToMany(datClassName, fieldName, this);
     }
 }

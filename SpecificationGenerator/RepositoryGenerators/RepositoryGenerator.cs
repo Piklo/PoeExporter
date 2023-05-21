@@ -147,6 +147,7 @@ internal sealed class RepositoryGenerator
         {
             AppendGetSingleMethod(builder, column);
             AppendGetManyMethod(builder, column);
+            AppendGetToManyManyMethod(builder, column);
         }
     }
 
@@ -173,6 +174,25 @@ internal sealed class RepositoryGenerator
         var fieldName = GenerateByFieldName(column);
 
         var code = column.GetMany(datClassName, fieldName);
+        foreach (var line in code)
+        {
+            if (string.IsNullOrWhiteSpace(line.Value))
+            {
+                builder.AppendLine();
+                continue;
+            }
+
+            builder.AppendLine($"{new string(' ', (line.Indentation + 1) * 4)}{line.Value}");
+        }
+    }
+
+    private void AppendGetToManyManyMethod(StringBuilder builder, IParsedColumn column)
+    {
+        builder.AppendLine();
+
+        var fieldName = GenerateByFieldName(column);
+
+        var code = column.GetManyToMany(datClassName, fieldName);
         foreach (var line in code)
         {
             if (string.IsNullOrWhiteSpace(line.Value))

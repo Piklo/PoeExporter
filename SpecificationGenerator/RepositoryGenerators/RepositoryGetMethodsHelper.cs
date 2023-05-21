@@ -258,4 +258,47 @@ internal static class RepositoryGetMethodsHelper
                 """);
         }
     }
+
+    public static IReadOnlyList<LineOfCode> GetManyToMany(string datClassName, string fieldName, IParsedColumn column)
+    {
+        var getManyMethodName = GenerateGetManyMethodName(column);
+        var methodName = $"GetManyToManyBy{column.ClassPropertyName}";
+        var type = column.ClassPropertyUnderlyingType;
+        var code = $$"""
+            /// <summary>
+            /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{fieldName}}"/> equal to a given keys.
+            /// </summary>
+            /// <param name="keys">keys.</param>
+            /// <returns>found items.</returns>
+            public IReadOnlyList<ResultItem<{{type}}, {{datClassName}}>> {{methodName}}(IReadOnlyList<{{type}}>? keys)
+            {
+                if (keys is null || keys.Count == 0)
+                {
+                    return Array.Empty<ResultItem<{{type}}, {{datClassName}}>>();
+                }
+
+                var items = new List<ResultItem<{{type}}, {{datClassName}}>>();
+
+                foreach (var key in keys)
+                {
+                    if (!{{getManyMethodName}}(key, out var tempItems))
+                    {
+                        continue;
+                    }
+
+                    foreach (var item in tempItems)
+                    {
+                        var resultItem = new ResultItem<{{type}}, {{datClassName}}>(key, item);
+                        items.Add(resultItem);
+                    }
+                }
+
+                return items;
+            }
+            """;
+
+        var lines = LineOfCode.Split(code);
+
+        return lines;
+    }
 }

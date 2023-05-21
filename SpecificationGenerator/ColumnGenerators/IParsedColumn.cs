@@ -1,9 +1,11 @@
-﻿namespace SpecificationGenerator.ColumnGenerators;
+﻿using SpecificationGenerator.RepositoryGenerators;
+
+namespace SpecificationGenerator.ColumnGenerators;
 
 /// <summary>
 /// Interface containing methods and properties for parsed column classes.
 /// </summary>
-internal interface IParsedColumn
+internal interface IParsedColumn : IRepositoryColumn
 {
     /// <summary>
     /// Gets column offset.
@@ -51,19 +53,4 @@ internal interface IParsedColumn
     /// </summary>
     /// <returns>an array of strings.</returns>
     public string[] GetLoading();
-
-    /// <summary>
-    /// Gets lines of code for repository get single method.
-    /// </summary>
-    /// <param name="datClassName">name of the dat class.</param>
-    /// <returns>parsed lines of code.</returns>
-    public IReadOnlyList<LineOfCode> GetSingle(string datClassName);
-
-    /// <summary>
-    /// Gets lines of code for repository get many method.
-    /// </summary>
-    /// <param name="datClassName">name of the dat class.</param>
-    /// <param name="fieldName">name of the field name in repository class.</param>
-    /// <returns>parsed lines of code.</returns>
-    public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName);
 }
