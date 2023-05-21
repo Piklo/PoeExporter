@@ -135,7 +135,7 @@ internal sealed class DatJsonExporterGenerator : IIncrementalGenerator
                     try
                     {
                         var res = {{SpecificationVarName}}.{{method}}();
-                        Save(res, "{{fileName}}");
+                        Save(res.Items, "{{fileName}}");
                     }
                     catch (Exception e)
                     {
