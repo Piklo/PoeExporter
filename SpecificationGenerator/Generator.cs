@@ -128,7 +128,7 @@ internal sealed class Generator
             }
             else
             {
-                File.WriteAllText(Path.Combine(datFilesDir.FullName, repositoryGenerator.FileName), repositoryGenerator.Code, Encoding.UTF8);
+                File.WriteAllText(Path.Combine(repositoriesDir.FullName, repositoryGenerator.FileName), repositoryGenerator.Code, Encoding.UTF8);
             }
         }
 
