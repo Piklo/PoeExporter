@@ -75,6 +75,7 @@ internal sealed class RepositoryGenerator
             using PoeData.Extensions;
             using PoeData.Specifications.DatFiles;
             using System.Collections.ObjectModel;
+            using Serilog;
 
             namespace {{Namespace}};
 
@@ -151,138 +152,36 @@ internal sealed class RepositoryGenerator
 
     private void AppendGetSingleMethod(StringBuilder builder, IParsedColumn column)
     {
-        var getManyMethodName = GenerateGetManyMethodName(column);
-        builder.AppendLine($$"""
+        builder.AppendLine();
+        var code = column.GetSingle(datClassName);
+        foreach (var line in code)
+        {
+            if (string.IsNullOrWhiteSpace(line.Value))
+            {
+                builder.AppendLine();
+                continue;
+            }
 
-                /// <summary>
-                /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
-                /// </summary>
-                /// <param name="key">key.</param>
-                /// <param name="item">returned item if found.</param>
-                /// <returns>true if item with a given key was found, false otherwise.</returns>
-                public bool TryGetBy{{column.ClassPropertyName}}({{column.ClassPropertyUnderlyingType}}? key, out {{datClassName}}? item)
-                {
-                    if (key is null)
-                    {
-                        item = null;
-                        return false;
-                    }
-
-                    if (!{{getManyMethodName}}(key, out var items))
-                    {
-                        item = null;
-                        return false;
-                    }
-
-                    if (items.Count == 0)
-                    {
-                        logger.Warning("failed to find item with key = {key}", key.Value);
-                        item = null;
-                        return false;
-                    }
-
-                    if (items.Count > 1)
-                    {
-                        logger.Warning("found too many items with key = {key}", key.Value);
-                        item = null;
-                        return false;
-                    }
-
-                    item = items[0];
-                    return true;
-                }
-            """);
+            builder.AppendLine($"{new string(' ', (line.Indentation + 1) * 4)}{line.Value}");
+        }
     }
 
     private void AppendGetManyMethod(StringBuilder builder, IParsedColumn column)
     {
-        var methodName = GenerateGetManyMethodName(column);
+        builder.AppendLine();
+
         var fieldName = GenerateByFieldName(column);
 
-        builder.AppendLine($$"""
-
-                /// <summary>
-                /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
-                /// </summary>
-                /// <param name="key">key.</param>
-                /// <param name="items">returned items if found.</param>
-                /// <returns>true if item with a given key was found, false otherwise.</returns>
-                public bool {{methodName}}({{column.ClassPropertyUnderlyingType}}? key, out IReadOnlyList<{{datClassName}}> items)
-                {
-                    if (key is null)
-                    {
-                        items = Array.Empty<{{datClassName}}>();
-                        return false;
-                    }
-
-                    if ({{fieldName}} is null)
-                    {
-                        {{fieldName}} = new();
-            """);
-
-        AppendToDictionaryParsing(builder, column);
-
-        builder.AppendLine($$"""
-                    }
-
-                    if (!{{fieldName}}.TryGetValue(key.Value, out var temp))
-                    {
-                        items = Array.Empty<{{datClassName}}>();
-                        return false;
-                    }
-
-                    items = temp;
-                    return true;
-                }
-            """);
-    }
-
-    private static string GenerateGetManyMethodName(IParsedColumn column)
-    {
-        return $"TryGetManyBy{column.ClassPropertyName}";
-    }
-
-    private static void AppendToDictionaryParsing(StringBuilder builder, IParsedColumn column)
-    {
-        var fieldName = GenerateByFieldName(column);
-        var isNullable = column.ClassPropertyType.Contains('?');
-        if (isNullable)
+        var code = column.GetMany(datClassName, fieldName);
+        foreach (var line in code)
         {
-            builder.AppendLine($$"""
-                        foreach (var item in Items)
-                        {
-                            var itemKey = item.{{column.ClassPropertyName}};
-                            if (itemKey is null)
-                            {
-                                continue;
-                            }
-            
-                            if (!{{fieldName}}.TryGetValue(itemKey.Value, out var list))
-                            {
-                                list = new();
-                                {{fieldName}}.TryAdd(itemKey.Value, list);
-                            }
-            
-                            list.Add(item);
-                        }
-            """);
-        }
-        else
-        {
-            builder.AppendLine($$"""
-                        foreach (var item in Items)
-                        {
-                            var itemKey = item.{{column.ClassPropertyName}};
-            
-                            if (!{{fieldName}}.TryGetValue(itemKey, out var list))
-                            {
-                                list = new();
-                                {{fieldName}}.TryAdd(itemKey, list);
-                            }
-            
-                            list.Add(item);
-                        }
-            """);
+            if (string.IsNullOrWhiteSpace(line.Value))
+            {
+                builder.AppendLine();
+                continue;
+            }
+
+            builder.AppendLine($"{new string(' ', (line.Indentation + 1) * 4)}{line.Value}");
         }
     }
 
