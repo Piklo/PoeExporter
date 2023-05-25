@@ -99,8 +99,9 @@ internal sealed class DatFileGenerator
 
     private static void AppendProperties(StringBuilder builder, IReadOnlyList<IParsedColumn> parsedColumns)
     {
-        foreach (var column in parsedColumns)
+        for (var i = 0; i < parsedColumns.Count; i++)
         {
+            var column = parsedColumns[i];
             var lines = column.GetPropertyStrings();
 
             foreach (var line in lines)
@@ -113,7 +114,10 @@ internal sealed class DatFileGenerator
                 builder.AppendLine($"{Tabs.Tab1}{line}");
             }
 
-            builder.AppendLine();
+            if (i < parsedColumns.Count - 1)
+            {
+                builder.AppendLine();
+            }
         }
     }
 }
