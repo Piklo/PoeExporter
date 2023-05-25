@@ -2,9 +2,8 @@
 // the generated class is partial, please extend it in another file
 #nullable enable
 
-using PoeData.Specifications.DatFiles;
+using PoeData.Specifications.Repositories;
 using Serilog;
-using System.Collections.ObjectModel;
 
 namespace PoeData.Specifications;
 
@@ -18,6 +17,709 @@ public sealed partial class Specification
     internal static byte[] DatFileMagicNumber { get; } = new byte[] { (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb' };
 
     private readonly DataLoader dataLoader;
+    private readonly ILogger logger;
+
+    /// <summary>Gets data loader.</summary>
+    internal DataLoader DataLoader => dataLoader;
+
+    private RogueExilesRepository? rogueexilesrepository;
+    private RogueExileLifeScalingPerLevelRepository? rogueexilelifescalingperlevelrepository;
+    private ShrineBuffsRepository? shrinebuffsrepository;
+    private ShrinesRepository? shrinesrepository;
+    private ShrineSoundsRepository? shrinesoundsrepository;
+    private StrongboxesRepository? strongboxesrepository;
+    private InvasionMonsterRestrictionsRepository? invasionmonsterrestrictionsrepository;
+    private InvasionMonstersPerAreaRepository? invasionmonstersperarearepository;
+    private BeyondDemonsRepository? beyonddemonsrepository;
+    private BeyondFactionsRepository? beyondfactionsrepository;
+    private BloodlinesRepository? bloodlinesrepository;
+    private TormentSpiritsRepository? tormentspiritsrepository;
+    private DivinationCardArtRepository? divinationcardartrepository;
+    private WarbandsGraphRepository? warbandsgraphrepository;
+    private WarbandsMapGraphRepository? warbandsmapgraphrepository;
+    private WarbandsPackMonstersRepository? warbandspackmonstersrepository;
+    private WarbandsPackNumbersRepository? warbandspacknumbersrepository;
+    private TalismanMonsterModsRepository? talismanmonstermodsrepository;
+    private TalismanPacksRepository? talismanpacksrepository;
+    private TalismansRepository? talismansrepository;
+    private LabyrinthAreasRepository? labyrinthareasrepository;
+    private LabyrinthBonusItemsRepository? labyrinthbonusitemsrepository;
+    private LabyrinthExclusionGroupsRepository? labyrinthexclusiongroupsrepository;
+    private LabyrinthIzaroChestsRepository? labyrinthizarochestsrepository;
+    private LabyrinthNodeOverridesRepository? labyrinthnodeoverridesrepository;
+    private LabyrinthRewardTypesRepository? labyrinthrewardtypesrepository;
+    private LabyrinthsRepository? labyrinthsrepository;
+    private LabyrinthSecretEffectsRepository? labyrinthsecreteffectsrepository;
+    private LabyrinthSecretsRepository? labyrinthsecretsrepository;
+    private LabyrinthSectionRepository? labyrinthsectionrepository;
+    private LabyrinthSectionLayoutRepository? labyrinthsectionlayoutrepository;
+    private LabyrinthTrialsRepository? labyrinthtrialsrepository;
+    private LabyrinthTrinketsRepository? labyrinthtrinketsrepository;
+    private PerandusBossesRepository? perandusbossesrepository;
+    private PerandusChestsRepository? peranduschestsrepository;
+    private PerandusDaemonsRepository? perandusdaemonsrepository;
+    private PerandusGuardsRepository? perandusguardsrepository;
+    private PropheciesRepository? propheciesrepository;
+    private ProphecyChainRepository? prophecychainrepository;
+    private ProphecyTypeRepository? prophecytyperepository;
+    private ShaperGuardiansRepository? shaperguardiansrepository;
+    private EssencesRepository? essencesrepository;
+    private EssenceTypeRepository? essencetyperepository;
+    private BreachBossLifeScalingPerLevelRepository? breachbosslifescalingperlevelrepository;
+    private BreachElementRepository? breachelementrepository;
+    private BreachstoneUpgradesRepository? breachstoneupgradesrepository;
+    private HarbingersRepository? harbingersrepository;
+    private PantheonPanelLayoutRepository? pantheonpanellayoutrepository;
+    private PantheonSoulsRepository? pantheonsoulsrepository;
+    private AbyssObjectsRepository? abyssobjectsrepository;
+    private ElderBossArenasRepository? elderbossarenasrepository;
+    private ElderMapBossOverrideRepository? eldermapbossoverriderepository;
+    private ElderGuardiansRepository? elderguardiansrepository;
+    private BestiaryCapturableMonstersRepository? bestiarycapturablemonstersrepository;
+    private BestiaryEncountersRepository? bestiaryencountersrepository;
+    private BestiaryFamiliesRepository? bestiaryfamiliesrepository;
+    private BestiaryGenusRepository? bestiarygenusrepository;
+    private BestiaryGroupsRepository? bestiarygroupsrepository;
+    private BestiaryNetsRepository? bestiarynetsrepository;
+    private BestiaryRecipeComponentRepository? bestiaryrecipecomponentrepository;
+    private BestiaryRecipeCategoriesRepository? bestiaryrecipecategoriesrepository;
+    private BestiaryRecipesRepository? bestiaryrecipesrepository;
+    private ArchitectLifeScalingPerLevelRepository? architectlifescalingperlevelrepository;
+    private IncursionArchitectRepository? incursionarchitectrepository;
+    private IncursionBracketsRepository? incursionbracketsrepository;
+    private IncursionChestRewardsRepository? incursionchestrewardsrepository;
+    private IncursionChestsRepository? incursionchestsrepository;
+    private IncursionRoomBossFightEventsRepository? incursionroombossfighteventsrepository;
+    private IncursionRoomsRepository? incursionroomsrepository;
+    private IncursionUniqueUpgradeComponentsRepository? incursionuniqueupgradecomponentsrepository;
+    private DelveAzuriteShopRepository? delveazuriteshoprepository;
+    private DelveBiomesRepository? delvebiomesrepository;
+    private DelveCatchupDepthsRepository? delvecatchupdepthsrepository;
+    private DelveCraftingModifierDescriptionsRepository? delvecraftingmodifierdescriptionsrepository;
+    private DelveCraftingModifiersRepository? delvecraftingmodifiersrepository;
+    private DelveCraftingTagsRepository? delvecraftingtagsrepository;
+    private DelveDynamiteRepository? delvedynamiterepository;
+    private DelveFeaturesRepository? delvefeaturesrepository;
+    private DelveFlaresRepository? delveflaresrepository;
+    private DelveLevelScalingRepository? delvelevelscalingrepository;
+    private DelveMonsterSpawnersRepository? delvemonsterspawnersrepository;
+    private DelveResourcePerLevelRepository? delveresourceperlevelrepository;
+    private DelveRewardTierConstantsRepository? delverewardtierconstantsrepository;
+    private DelveRoomsRepository? delveroomsrepository;
+    private DelveUpgradesRepository? delveupgradesrepository;
+    private BetrayalChoiceActionsRepository? betrayalchoiceactionsrepository;
+    private BetrayalChoicesRepository? betrayalchoicesrepository;
+    private BetrayalDialogueRepository? betrayaldialoguerepository;
+    private BetrayalFortsRepository? betrayalfortsrepository;
+    private BetrayalJobsRepository? betrayaljobsrepository;
+    private BetrayalRanksRepository? betrayalranksrepository;
+    private BetrayalRelationshipStateRepository? betrayalrelationshipstaterepository;
+    private BetrayalTargetJobAchievementsRepository? betrayaltargetjobachievementsrepository;
+    private BetrayalTargetLifeScalingPerLevelRepository? betrayaltargetlifescalingperlevelrepository;
+    private BetrayalTargetsRepository? betrayaltargetsrepository;
+    private BetrayalTraitorRewardsRepository? betrayaltraitorrewardsrepository;
+    private BetrayalUpgradesRepository? betrayalupgradesrepository;
+    private BetrayalWallLifeScalingPerLevelRepository? betrayalwalllifescalingperlevelrepository;
+    private SafehouseBYOCraftingRepository? safehousebyocraftingrepository;
+    private SafehouseCraftingSpreeTypeRepository? safehousecraftingspreetyperepository;
+    private SafehouseCraftingSpreeCurrenciesRepository? safehousecraftingspreecurrenciesrepository;
+    private ScarabsRepository? scarabsrepository;
+    private SynthesisAreasRepository? synthesisareasrepository;
+    private SynthesisAreaSizeRepository? synthesisareasizerepository;
+    private SynthesisBonusesRepository? synthesisbonusesrepository;
+    private SynthesisBracketsRepository? synthesisbracketsrepository;
+    private SynthesisFragmentDialogueRepository? synthesisfragmentdialoguerepository;
+    private SynthesisGlobalModsRepository? synthesisglobalmodsrepository;
+    private SynthesisMonsterExperiencePerLevelRepository? synthesismonsterexperienceperlevelrepository;
+    private SynthesisRewardCategoriesRepository? synthesisrewardcategoriesrepository;
+    private SynthesisRewardTypesRepository? synthesisrewardtypesrepository;
+    private IncubatorsRepository? incubatorsrepository;
+    private LegionBalancePerLevelRepository? legionbalanceperlevelrepository;
+    private LegionChestTypesRepository? legionchesttypesrepository;
+    private LegionChestCountsRepository? legionchestcountsrepository;
+    private LegionChestsRepository? legionchestsrepository;
+    private LegionFactionsRepository? legionfactionsrepository;
+    private LegionMonsterCountsRepository? legionmonstercountsrepository;
+    private LegionMonsterVarietiesRepository? legionmonstervarietiesrepository;
+    private LegionRanksRepository? legionranksrepository;
+    private LegionRewardTypeVisualsRepository? legionrewardtypevisualsrepository;
+    private BlightBalancePerLevelRepository? blightbalanceperlevelrepository;
+    private BlightBossLifeScalingPerLevelRepository? blightbosslifescalingperlevelrepository;
+    private BlightChestTypesRepository? blightchesttypesrepository;
+    private BlightCraftingItemsRepository? blightcraftingitemsrepository;
+    private BlightCraftingRecipesRepository? blightcraftingrecipesrepository;
+    private BlightCraftingResultsRepository? blightcraftingresultsrepository;
+    private BlightCraftingTypesRepository? blightcraftingtypesrepository;
+    private BlightCraftingUniquesRepository? blightcraftinguniquesrepository;
+    private BlightedSporeAurasRepository? blightedsporeaurasrepository;
+    private BlightEncounterTypesRepository? blightencountertypesrepository;
+    private BlightEncounterWavesRepository? blightencounterwavesrepository;
+    private BlightRewardTypesRepository? blightrewardtypesrepository;
+    private BlightTopologiesRepository? blighttopologiesrepository;
+    private BlightTopologyNodesRepository? blighttopologynodesrepository;
+    private BlightTowerAurasRepository? blighttoweraurasrepository;
+    private BlightTowersRepository? blighttowersrepository;
+    private BlightTowersPerLevelRepository? blighttowersperlevelrepository;
+    private AtlasExileBossArenasRepository? atlasexilebossarenasrepository;
+    private AtlasExileInfluenceRepository? atlasexileinfluencerepository;
+    private AtlasExilesRepository? atlasexilesrepository;
+    private AlternateQualityCurrencyDecayFactorsRepository? alternatequalitycurrencydecayfactorsrepository;
+    private AlternateQualityTypesRepository? alternatequalitytypesrepository;
+    private MetamorphLifeScalingPerLevelRepository? metamorphlifescalingperlevelrepository;
+    private MetamorphosisMetaMonstersRepository? metamorphosismetamonstersrepository;
+    private MetamorphosisMetaSkillsRepository? metamorphosismetaskillsrepository;
+    private MetamorphosisMetaSkillTypesRepository? metamorphosismetaskilltypesrepository;
+    private MetamorphosisRewardTypeItemsClientRepository? metamorphosisrewardtypeitemsclientrepository;
+    private MetamorphosisRewardTypesRepository? metamorphosisrewardtypesrepository;
+    private MetamorphosisScalingRepository? metamorphosisscalingrepository;
+    private AfflictionBalancePerLevelRepository? afflictionbalanceperlevelrepository;
+    private AfflictionEndgameWaveModsRepository? afflictionendgamewavemodsrepository;
+    private AfflictionFixedModsRepository? afflictionfixedmodsrepository;
+    private AfflictionRandomModCategoriesRepository? afflictionrandommodcategoriesrepository;
+    private AfflictionRewardMapModsRepository? afflictionrewardmapmodsrepository;
+    private AfflictionRewardTypeVisualsRepository? afflictionrewardtypevisualsrepository;
+    private AfflictionSplitDemonsRepository? afflictionsplitdemonsrepository;
+    private AfflictionStartDialogueRepository? afflictionstartdialoguerepository;
+    private HarvestCraftOptionIconsRepository? harvestcraftoptioniconsrepository;
+    private HarvestCraftOptionsRepository? harvestcraftoptionsrepository;
+    private HarvestCraftTiersRepository? harvestcrafttiersrepository;
+    private HarvestCraftFiltersRepository? harvestcraftfiltersrepository;
+    private HarvestDurabilityRepository? harvestdurabilityrepository;
+    private HarvestEncounterScalingRepository? harvestencounterscalingrepository;
+    private HarvestInfrastructureRepository? harvestinfrastructurerepository;
+    private HarvestObjectsRepository? harvestobjectsrepository;
+    private HarvestPerLevelValuesRepository? harvestperlevelvaluesrepository;
+    private HarvestPlantBoostersRepository? harvestplantboostersrepository;
+    private HarvestLifeScalingPerLevelRepository? harvestlifescalingperlevelrepository;
+    private HarvestSeedsRepository? harvestseedsrepository;
+    private HarvestSeedItemsRepository? harvestseeditemsrepository;
+    private HarvestSeedTypesRepository? harvestseedtypesrepository;
+    private HarvestSpecialCraftCostsRepository? harvestspecialcraftcostsrepository;
+    private HarvestSpecialCraftOptionsRepository? harvestspecialcraftoptionsrepository;
+    private HeistAreaFormationLayoutRepository? heistareaformationlayoutrepository;
+    private HeistAreasRepository? heistareasrepository;
+    private HeistBalancePerLevelRepository? heistbalanceperlevelrepository;
+    private HeistChestRewardTypesRepository? heistchestrewardtypesrepository;
+    private HeistChestsRepository? heistchestsrepository;
+    private HeistChokepointFormationRepository? heistchokepointformationrepository;
+    private HeistConstantsRepository? heistconstantsrepository;
+    private HeistContractsRepository? heistcontractsrepository;
+    private HeistDoodadNPCsRepository? heistdoodadnpcsrepository;
+    private HeistDoorsRepository? heistdoorsrepository;
+    private HeistEquipmentRepository? heistequipmentrepository;
+    private HeistGenerationRepository? heistgenerationrepository;
+    private HeistIntroAreasRepository? heistintroareasrepository;
+    private HeistJobsRepository? heistjobsrepository;
+    private HeistJobsExperiencePerLevelRepository? heistjobsexperienceperlevelrepository;
+    private HeistLockTypeRepository? heistlocktyperepository;
+    private HeistNPCAurasRepository? heistnpcaurasrepository;
+    private HeistNPCBlueprintTypesRepository? heistnpcblueprinttypesrepository;
+    private HeistNPCDialogueRepository? heistnpcdialoguerepository;
+    private HeistNPCsRepository? heistnpcsrepository;
+    private HeistNPCStatsRepository? heistnpcstatsrepository;
+    private HeistObjectivesRepository? heistobjectivesrepository;
+    private HeistObjectiveValueDescriptionsRepository? heistobjectivevaluedescriptionsrepository;
+    private HeistPatrolPacksRepository? heistpatrolpacksrepository;
+    private HeistQuestContractsRepository? heistquestcontractsrepository;
+    private HeistRevealingNPCsRepository? heistrevealingnpcsrepository;
+    private HeistRoomsRepository? heistroomsrepository;
+    private HeistValueScalingRepository? heistvaluescalingrepository;
+    private InfluenceModUpgradesRepository? influencemodupgradesrepository;
+    private MavenDialogRepository? mavendialogrepository;
+    private AtlasSkillGraphsRepository? atlasskillgraphsrepository;
+    private MavenFightsRepository? mavenfightsrepository;
+    private MavenJewelRadiusKeystonesRepository? mavenjewelradiuskeystonesrepository;
+    private RitualBalancePerLevelRepository? ritualbalanceperlevelrepository;
+    private RitualConstantsRepository? ritualconstantsrepository;
+    private RitualRuneTypesRepository? ritualrunetypesrepository;
+    private RitualSetKillAchievementsRepository? ritualsetkillachievementsrepository;
+    private RitualSpawnPatternsRepository? ritualspawnpatternsrepository;
+    private UltimatumEncountersRepository? ultimatumencountersrepository;
+    private UltimatumEncounterTypesRepository? ultimatumencountertypesrepository;
+    private UltimatumItemisedRewardsRepository? ultimatumitemisedrewardsrepository;
+    private UltimatumMapModifiersRepository? ultimatummapmodifiersrepository;
+    private UltimatumModifiersRepository? ultimatummodifiersrepository;
+    private UltimatumModifierTypesRepository? ultimatummodifiertypesrepository;
+    private UltimatumTrialMasterAudioRepository? ultimatumtrialmasteraudiorepository;
+    private ExpeditionAreasRepository? expeditionareasrepository;
+    private ExpeditionBalancePerLevelRepository? expeditionbalanceperlevelrepository;
+    private ExpeditionCurrencyRepository? expeditioncurrencyrepository;
+    private ExpeditionDealsRepository? expeditiondealsrepository;
+    private ExpeditionFactionsRepository? expeditionfactionsrepository;
+    private ExpeditionMarkersCommonRepository? expeditionmarkerscommonrepository;
+    private ExpeditionNPCsRepository? expeditionnpcsrepository;
+    private ExpeditionRelicModsRepository? expeditionrelicmodsrepository;
+    private ExpeditionRelicsRepository? expeditionrelicsrepository;
+    private ExpeditionStorageLayoutRepository? expeditionstoragelayoutrepository;
+    private ExpeditionTerrainFeaturesRepository? expeditionterrainfeaturesrepository;
+    private HellscapeAOReplacementsRepository? hellscapeaoreplacementsrepository;
+    private HellscapeAreaPacksRepository? hellscapeareapacksrepository;
+    private HellscapeExperienceLevelsRepository? hellscapeexperiencelevelsrepository;
+    private HellscapeFactionsRepository? hellscapefactionsrepository;
+    private HellscapeImmuneMonstersRepository? hellscapeimmunemonstersrepository;
+    private HellscapeItemModificationTiersRepository? hellscapeitemmodificationtiersrepository;
+    private HellscapeLifeScalingPerLevelRepository? hellscapelifescalingperlevelrepository;
+    private HellscapeModificationInventoryLayoutRepository? hellscapemodificationinventorylayoutrepository;
+    private HellscapeModsRepository? hellscapemodsrepository;
+    private HellscapeMonsterPacksRepository? hellscapemonsterpacksrepository;
+    private HellscapePassivesRepository? hellscapepassivesrepository;
+    private HellscapePassiveTreeRepository? hellscapepassivetreerepository;
+    private ArchnemesisMetaRewardsRepository? archnemesismetarewardsrepository;
+    private ArchnemesisModComboAchievementsRepository? archnemesismodcomboachievementsrepository;
+    private ArchnemesisModsRepository? archnemesismodsrepository;
+    private ArchnemesisModVisualsRepository? archnemesismodvisualsrepository;
+    private ArchnemesisRecipesRepository? archnemesisrecipesrepository;
+    private AtlasPrimordialAltarChoicesRepository? atlasprimordialaltarchoicesrepository;
+    private AtlasPrimordialAltarChoiceTypesRepository? atlasprimordialaltarchoicetypesrepository;
+    private AtlasPrimordialBossesRepository? atlasprimordialbossesrepository;
+    private AtlasPrimordialBossInfluenceRepository? atlasprimordialbossinfluencerepository;
+    private AtlasPrimordialBossOptionsRepository? atlasprimordialbossoptionsrepository;
+    private PrimordialBossLifeScalingPerLevelRepository? primordialbosslifescalingperlevelrepository;
+    private AtlasUpgradesInventoryLayoutRepository? atlasupgradesinventorylayoutrepository;
+    private AtlasPassiveSkillTreeGroupTypeRepository? atlaspassiveskilltreegrouptyperepository;
+    private KiracLevelsRepository? kiraclevelsrepository;
+    private ScoutingReportsRepository? scoutingreportsrepository;
+    private DroneBaseTypesRepository? dronebasetypesrepository;
+    private DroneTypesRepository? dronetypesrepository;
+    private SentinelCraftingCurrencyRepository? sentinelcraftingcurrencyrepository;
+    private SentinelDroneInventoryLayoutRepository? sentineldroneinventorylayoutrepository;
+    private SentinelPassivesRepository? sentinelpassivesrepository;
+    private SentinelPassiveStatsRepository? sentinelpassivestatsrepository;
+    private SentinelPassiveTypesRepository? sentinelpassivetypesrepository;
+    private SentinelPowerExpLevelsRepository? sentinelpowerexplevelsrepository;
+    private SentinelStorageLayoutRepository? sentinelstoragelayoutrepository;
+    private SentinelTaggedMonsterStatsRepository? sentineltaggedmonsterstatsrepository;
+    private ClientLakeDifficultyRepository? clientlakedifficultyrepository;
+    private LakeBossLifeScalingPerLevelRepository? lakebosslifescalingperlevelrepository;
+    private LakeMetaOptionsRepository? lakemetaoptionsrepository;
+    private LakeMetaOptionsUnlockTextRepository? lakemetaoptionsunlocktextrepository;
+    private LakeRoomCompletionRepository? lakeroomcompletionrepository;
+    private LakeRoomsRepository? lakeroomsrepository;
+    private WeaponPassiveSkillTypesRepository? weaponpassiveskilltypesrepository;
+    private WeaponPassiveTreeBalancePerItemLevelRepository? weaponpassivetreebalanceperitemlevelrepository;
+    private WeaponPassiveTreeUniqueBaseTypesRepository? weaponpassivetreeuniquebasetypesrepository;
+    private WeaponPassiveSkillsRepository? weaponpassiveskillsrepository;
+    private AchievementItemRewardsRepository? achievementitemrewardsrepository;
+    private AchievementItemsRepository? achievementitemsrepository;
+    private AchievementsRepository? achievementsrepository;
+    private AchievementSetRewardsRepository? achievementsetrewardsrepository;
+    private AchievementSetsDisplayRepository? achievementsetsdisplayrepository;
+    private ActiveSkillsRepository? activeskillsrepository;
+    private ActiveSkillTypeRepository? activeskilltyperepository;
+    private ActsRepository? actsrepository;
+    private AddBuffToTargetVarietiesRepository? addbufftotargetvarietiesrepository;
+    private AdditionalLifeScalingRepository? additionallifescalingrepository;
+    private AdditionalMonsterPacksFromStatsRepository? additionalmonsterpacksfromstatsrepository;
+    private AdvancedSkillsTutorialRepository? advancedskillstutorialrepository;
+    private AegisVariationsRepository? aegisvariationsrepository;
+    private AlternatePassiveAdditionsRepository? alternatepassiveadditionsrepository;
+    private AlternatePassiveSkillsRepository? alternatepassiveskillsrepository;
+    private AlternateSkillTargetingBehavioursRepository? alternateskilltargetingbehavioursrepository;
+    private AlternateTreeVersionsRepository? alternatetreeversionsrepository;
+    private AnimatedObjectFlagsRepository? animatedobjectflagsrepository;
+    private AnimationRepository? animationrepository;
+    private ApplyDamageFunctionsRepository? applydamagefunctionsrepository;
+    private ArchetypeRewardsRepository? archetyperewardsrepository;
+    private ArchetypesRepository? archetypesrepository;
+    private AreaInfluenceDoodadsRepository? areainfluencedoodadsrepository;
+    private AreaTransitionAnimationsRepository? areatransitionanimationsrepository;
+    private AreaTransitionAnimationTypesRepository? areatransitionanimationtypesrepository;
+    private AreaTransitionInfoRepository? areatransitioninforepository;
+    private ArmourTypesRepository? armourtypesrepository;
+    private AscendancyRepository? ascendancyrepository;
+    private AtlasAwakeningStatsRepository? atlasawakeningstatsrepository;
+    private AtlasBaseTypeDropsRepository? atlasbasetypedropsrepository;
+    private AtlasFogRepository? atlasfogrepository;
+    private AtlasInfluenceDataRepository? atlasinfluencedatarepository;
+    private AtlasInfluenceOutcomesRepository? atlasinfluenceoutcomesrepository;
+    private AtlasInfluenceSetsRepository? atlasinfluencesetsrepository;
+    private AtlasModsRepository? atlasmodsrepository;
+    private AtlasFavouredMapSlotsRepository? atlasfavouredmapslotsrepository;
+    private AtlasNodeRepository? atlasnoderepository;
+    private AtlasNodeDefinitionRepository? atlasnodedefinitionrepository;
+    private AtlasPositionsRepository? atlaspositionsrepository;
+    private AtlasRegionsRepository? atlasregionsrepository;
+    private AtlasRegionUpgradesInventoryLayoutRepository? atlasregionupgradesinventorylayoutrepository;
+    private AtlasRegionUpgradeRegionsRepository? atlasregionupgraderegionsrepository;
+    private AtlasSectorRepository? atlassectorrepository;
+    private AwardDisplayRepository? awarddisplayrepository;
+    private BackendErrorsRepository? backenderrorsrepository;
+    private BaseItemTypesRepository? baseitemtypesrepository;
+    private BindableVirtualKeysRepository? bindablevirtualkeysrepository;
+    private BlightStashTabLayoutRepository? blightstashtablayoutrepository;
+    private BloodTypesRepository? bloodtypesrepository;
+    private BuffDefinitionsRepository? buffdefinitionsrepository;
+    private BuffTemplatesRepository? bufftemplatesrepository;
+    private BuffVisualOrbArtRepository? buffvisualorbartrepository;
+    private BuffVisualOrbsRepository? buffvisualorbsrepository;
+    private BuffVisualOrbTypesRepository? buffvisualorbtypesrepository;
+    private BuffVisualsRepository? buffvisualsrepository;
+    private BuffVisualsArtVariationsRepository? buffvisualsartvariationsrepository;
+    private BuffVisualSetEntriesRepository? buffvisualsetentriesrepository;
+    private CharacterAudioEventsRepository? characteraudioeventsrepository;
+    private CharacterEventTextAudioRepository? charactereventtextaudiorepository;
+    private CharacterPanelDescriptionModesRepository? characterpaneldescriptionmodesrepository;
+    private CharacterPanelStatsRepository? characterpanelstatsrepository;
+    private CharacterPanelTabsRepository? characterpaneltabsrepository;
+    private CharactersRepository? charactersrepository;
+    private CharacterStartQuestStateRepository? characterstartqueststaterepository;
+    private CharacterStartStatesRepository? characterstartstatesrepository;
+    private CharacterStartStateSetRepository? characterstartstatesetrepository;
+    private CharacterTextAudioRepository? charactertextaudiorepository;
+    private ChatIconsRepository? chaticonsrepository;
+    private ChestClustersRepository? chestclustersrepository;
+    private ChestEffectsRepository? chesteffectsrepository;
+    private ChestsRepository? chestsrepository;
+    private ClientStringsRepository? clientstringsrepository;
+    private ClientLeagueActionRepository? clientleagueactionrepository;
+    private CloneShotRepository? cloneshotrepository;
+    private ColoursRepository? coloursrepository;
+    private CommandsRepository? commandsrepository;
+    private ComponentAttributeRequirementsRepository? componentattributerequirementsrepository;
+    private ComponentChargesRepository? componentchargesrepository;
+    private CoreLeaguesRepository? coreleaguesrepository;
+    private CostTypesRepository? costtypesrepository;
+    private CraftingBenchOptionsRepository? craftingbenchoptionsrepository;
+    private CraftingBenchSortCategoriesRepository? craftingbenchsortcategoriesrepository;
+    private CraftingBenchUnlockCategoriesRepository? craftingbenchunlockcategoriesrepository;
+    private CraftingItemClassCategoriesRepository? craftingitemclasscategoriesrepository;
+    private CurrencyItemsRepository? currencyitemsrepository;
+    private CurrencyStashTabLayoutRepository? currencystashtablayoutrepository;
+    private CustomLeagueModsRepository? customleaguemodsrepository;
+    private DaemonSpawningDataRepository? daemonspawningdatarepository;
+    private DamageHitEffectsRepository? damagehiteffectsrepository;
+    private DamageParticleEffectsRepository? damageparticleeffectsrepository;
+    private DancesRepository? dancesrepository;
+    private DaressoPitFightsRepository? daressopitfightsrepository;
+    private DefaultMonsterStatsRepository? defaultmonsterstatsrepository;
+    private DeliriumStashTabLayoutRepository? deliriumstashtablayoutrepository;
+    private DelveStashTabLayoutRepository? delvestashtablayoutrepository;
+    private DescentExilesRepository? descentexilesrepository;
+    private DescentRewardChestsRepository? descentrewardchestsrepository;
+    private DescentStarterChestRepository? descentstarterchestrepository;
+    private DialogueEventRepository? dialogueeventrepository;
+    private DisplayMinionMonsterTypeRepository? displayminionmonstertyperepository;
+    private DivinationCardStashTabLayoutRepository? divinationcardstashtablayoutrepository;
+    private DoorsRepository? doorsrepository;
+    private DropEffectsRepository? dropeffectsrepository;
+    private DropPoolRepository? droppoolrepository;
+    private EclipseModsRepository? eclipsemodsrepository;
+    private EffectDrivenSkillRepository? effectdrivenskillrepository;
+    private EffectivenessCostConstantsRepository? effectivenesscostconstantsrepository;
+    private EinharMissionsRepository? einharmissionsrepository;
+    private EinharPackFallbackRepository? einharpackfallbackrepository;
+    private EndlessLedgeChestsRepository? endlessledgechestsrepository;
+    private EnvironmentsRepository? environmentsrepository;
+    private EnvironmentTransitionsRepository? environmenttransitionsrepository;
+    private EssenceStashTabLayoutRepository? essencestashtablayoutrepository;
+    private EventSeasonRepository? eventseasonrepository;
+    private EventSeasonRewardsRepository? eventseasonrewardsrepository;
+    private EvergreenAchievementsRepository? evergreenachievementsrepository;
+    private ExecuteGEALRepository? executegealrepository;
+    private ExpandingPulseRepository? expandingpulserepository;
+    private ExperienceLevelsRepository? experiencelevelsrepository;
+    private ExplodingStormBuffsRepository? explodingstormbuffsrepository;
+    private ExtraTerrainFeaturesRepository? extraterrainfeaturesrepository;
+    private FixedHideoutDoodadTypesRepository? fixedhideoutdoodadtypesrepository;
+    private FixedMissionsRepository? fixedmissionsrepository;
+    private FlasksRepository? flasksrepository;
+    private FlavourTextRepository? flavourtextrepository;
+    private FootprintsRepository? footprintsrepository;
+    private FootstepAudioRepository? footstepaudiorepository;
+    private FragmentStashTabLayoutRepository? fragmentstashtablayoutrepository;
+    private GameConstantsRepository? gameconstantsrepository;
+    private GameLogosRepository? gamelogosrepository;
+    private GameObjectTasksRepository? gameobjecttasksrepository;
+    private GamepadButtonRepository? gamepadbuttonrepository;
+    private GamepadTypeRepository? gamepadtyperepository;
+    private GameStatsRepository? gamestatsrepository;
+    private GemTagsRepository? gemtagsrepository;
+    private GenericBuffAurasRepository? genericbuffaurasrepository;
+    private GenericLeagueRewardTypesRepository? genericleaguerewardtypesrepository;
+    private GenericLeagueRewardTypeVisualsRepository? genericleaguerewardtypevisualsrepository;
+    private GeometryAttackRepository? geometryattackrepository;
+    private GeometryChannelRepository? geometrychannelrepository;
+    private GeometryProjectilesRepository? geometryprojectilesrepository;
+    private GeometryTriggerRepository? geometrytriggerrepository;
+    private GiftWrapArtVariationsRepository? giftwrapartvariationsrepository;
+    private GlobalAudioConfigRepository? globalaudioconfigrepository;
+    private GrandmastersRepository? grandmastersrepository;
+    private GrantedEffectQualityStatsRepository? grantedeffectqualitystatsrepository;
+    private GrantedEffectQualityTypesRepository? grantedeffectqualitytypesrepository;
+    private GrantedEffectsRepository? grantedeffectsrepository;
+    private GrantedEffectsPerLevelRepository? grantedeffectsperlevelrepository;
+    private GrantedEffectStatSetsRepository? grantedeffectstatsetsrepository;
+    private GrantedEffectStatSetsPerLevelRepository? grantedeffectstatsetsperlevelrepository;
+    private GroundEffectsRepository? groundeffectsrepository;
+    private GroundEffectTypesRepository? groundeffecttypesrepository;
+    private HarvestStorageLayoutRepository? harveststoragelayoutrepository;
+    private HeistStorageLayoutRepository? heiststoragelayoutrepository;
+    private HideoutDoodadsRepository? hideoutdoodadsrepository;
+    private HideoutDoodadCategoryRepository? hideoutdoodadcategoryrepository;
+    private HideoutDoodadTagsRepository? hideoutdoodadtagsrepository;
+    private HideoutNPCsRepository? hideoutnpcsrepository;
+    private HideoutRarityRepository? hideoutrarityrepository;
+    private HideoutsRepository? hideoutsrepository;
+    private ImpactSoundDataRepository? impactsounddatarepository;
+    private IndexableSupportGemsRepository? indexablesupportgemsrepository;
+    private InfluenceExaltsRepository? influenceexaltsrepository;
+    private InfluenceTagsRepository? influencetagsrepository;
+    private InventoriesRepository? inventoriesrepository;
+    private ItemClassCategoriesRepository? itemclasscategoriesrepository;
+    private ItemClassesRepository? itemclassesrepository;
+    private ItemCostPerLevelRepository? itemcostperlevelrepository;
+    private ItemCostsRepository? itemcostsrepository;
+    private ItemFrameTypeRepository? itemframetyperepository;
+    private ItemExperienceTypesRepository? itemexperiencetypesrepository;
+    private ItemExperiencePerLevelRepository? itemexperienceperlevelrepository;
+    private ItemisedVisualEffectRepository? itemisedvisualeffectrepository;
+    private ItemNoteCodeRepository? itemnotecoderepository;
+    private ItemShopTypeRepository? itemshoptyperepository;
+    private ItemStancesRepository? itemstancesrepository;
+    private ItemThemesRepository? itemthemesrepository;
+    private ItemVisualEffectRepository? itemvisualeffectrepository;
+    private ItemVisualHeldBodyModelRepository? itemvisualheldbodymodelrepository;
+    private ItemVisualIdentityRepository? itemvisualidentityrepository;
+    private JobAssassinationSpawnerGroupsRepository? jobassassinationspawnergroupsrepository;
+    private JobRaidBracketsRepository? jobraidbracketsrepository;
+    private KillstreakThresholdsRepository? killstreakthresholdsrepository;
+    private LeagueFlagRepository? leagueflagrepository;
+    private LeagueInfoRepository? leagueinforepository;
+    private LeagueProgressQuestFlagsRepository? leagueprogressquestflagsrepository;
+    private LeagueStaticRewardsRepository? leaguestaticrewardsrepository;
+    private LevelRelativePlayerScalingRepository? levelrelativeplayerscalingrepository;
+    private MagicMonsterLifeScalingPerLevelRepository? magicmonsterlifescalingperlevelrepository;
+    private MapCompletionAchievementsRepository? mapcompletionachievementsrepository;
+    private MapConnectionsRepository? mapconnectionsrepository;
+    private MapCreationInformationRepository? mapcreationinformationrepository;
+    private MapDeviceRecipesRepository? mapdevicerecipesrepository;
+    private MapDevicesRepository? mapdevicesrepository;
+    private MapFragmentModsRepository? mapfragmentmodsrepository;
+    private MapInhabitantsRepository? mapinhabitantsrepository;
+    private MapPinsRepository? mappinsrepository;
+    private MapPurchaseCostsRepository? mappurchasecostsrepository;
+    private MapsRepository? mapsrepository;
+    private MapSeriesRepository? mapseriesrepository;
+    private MapSeriesTiersRepository? mapseriestiersrepository;
+    private MapStashSpecialTypeEntriesRepository? mapstashspecialtypeentriesrepository;
+    private MapStashUniqueMapInfoRepository? mapstashuniquemapinforepository;
+    private MapStatConditionsRepository? mapstatconditionsrepository;
+    private MapTierAchievementsRepository? maptierachievementsrepository;
+    private MapTiersRepository? maptiersrepository;
+    private MasterHideoutLevelsRepository? masterhideoutlevelsrepository;
+    private MeleeRepository? meleerepository;
+    private MeleeTrailsRepository? meleetrailsrepository;
+    private MetamorphosisStashTabLayoutRepository? metamorphosisstashtablayoutrepository;
+    private MicroMigrationDataRepository? micromigrationdatarepository;
+    private MicrotransactionCategoryRepository? microtransactioncategoryrepository;
+    private MicrotransactionCharacterPortraitVariationsRepository? microtransactioncharacterportraitvariationsrepository;
+    private MicrotransactionCombineFormulaRepository? microtransactioncombineformularepository;
+    private MicrotransactionCursorVariationsRepository? microtransactioncursorvariationsrepository;
+    private MicrotransactionFireworksVariationsRepository? microtransactionfireworksvariationsrepository;
+    private MicrotransactionGemCategoryRepository? microtransactiongemcategoryrepository;
+    private MicrotransactionPeriodicCharacterEffectVariationsRepository? microtransactionperiodiccharactereffectvariationsrepository;
+    private MicrotransactionPortalVariationsRepository? microtransactionportalvariationsrepository;
+    private MicrotransactionRarityDisplayRepository? microtransactionraritydisplayrepository;
+    private MicrotransactionRecycleOutcomesRepository? microtransactionrecycleoutcomesrepository;
+    private MicrotransactionRecycleSalvageValuesRepository? microtransactionrecyclesalvagevaluesrepository;
+    private MicrotransactionSlotRepository? microtransactionslotrepository;
+    private MicrotransactionSocialFrameVariationsRepository? microtransactionsocialframevariationsrepository;
+    private MinimapIconsRepository? minimapiconsrepository;
+    private MiniQuestStatesRepository? miniqueststatesrepository;
+    private MiscAnimatedRepository? miscanimatedrepository;
+    private MiscAnimatedArtVariationsRepository? miscanimatedartvariationsrepository;
+    private MiscBeamsRepository? miscbeamsrepository;
+    private MiscBeamsArtVariationsRepository? miscbeamsartvariationsrepository;
+    private MiscEffectPacksRepository? misceffectpacksrepository;
+    private MiscEffectPacksArtVariationsRepository? misceffectpacksartvariationsrepository;
+    private MiscObjectsRepository? miscobjectsrepository;
+    private MiscObjectsArtVariationsRepository? miscobjectsartvariationsrepository;
+    private MissionFavourPerLevelRepository? missionfavourperlevelrepository;
+    private MissionTimerTypesRepository? missiontimertypesrepository;
+    private MissionTransitionTilesRepository? missiontransitiontilesrepository;
+    private ModEffectStatsRepository? modeffectstatsrepository;
+    private ModEquivalenciesRepository? modequivalenciesrepository;
+    private ModFamilyRepository? modfamilyrepository;
+    private ModsRepository? modsrepository;
+    private ModSellPriceTypesRepository? modsellpricetypesrepository;
+    private ModTypeRepository? modtyperepository;
+    private MonsterArmoursRepository? monsterarmoursrepository;
+    private MonsterBonusesRepository? monsterbonusesrepository;
+    private MonsterConditionalEffectPacksRepository? monsterconditionaleffectpacksrepository;
+    private MonsterConditionsRepository? monsterconditionsrepository;
+    private MonsterDeathAchievementsRepository? monsterdeathachievementsrepository;
+    private MonsterDeathConditionsRepository? monsterdeathconditionsrepository;
+    private MonsterGroupEntriesRepository? monstergroupentriesrepository;
+    private MonsterHeightBracketsRepository? monsterheightbracketsrepository;
+    private MonsterHeightsRepository? monsterheightsrepository;
+    private MonsterMapBossDifficultyRepository? monstermapbossdifficultyrepository;
+    private MonsterMapDifficultyRepository? monstermapdifficultyrepository;
+    private MonsterMortarRepository? monstermortarrepository;
+    private MonsterPackCountsRepository? monsterpackcountsrepository;
+    private MonsterPackEntriesRepository? monsterpackentriesrepository;
+    private MonsterPacksRepository? monsterpacksrepository;
+    private MonsterProjectileAttackRepository? monsterprojectileattackrepository;
+    private MonsterProjectileSpellRepository? monsterprojectilespellrepository;
+    private MonsterResistancesRepository? monsterresistancesrepository;
+    private MonsterSegmentsRepository? monstersegmentsrepository;
+    private MonsterSpawnerGroupsRepository? monsterspawnergroupsrepository;
+    private MonsterSpawnerGroupsPerLevelRepository? monsterspawnergroupsperlevelrepository;
+    private MonsterSpawnerOverridesRepository? monsterspawneroverridesrepository;
+    private MonsterTypesRepository? monstertypesrepository;
+    private MonsterVarietiesRepository? monstervarietiesrepository;
+    private MonsterVarietiesArtVariationsRepository? monstervarietiesartvariationsrepository;
+    private MouseCursorSizeSettingsRepository? mousecursorsizesettingsrepository;
+    private MoveDaemonRepository? movedaemonrepository;
+    private MTXSetBonusRepository? mtxsetbonusrepository;
+    private MultiPartAchievementAreasRepository? multipartachievementareasrepository;
+    private MultiPartAchievementConditionsRepository? multipartachievementconditionsrepository;
+    private MultiPartAchievementsRepository? multipartachievementsrepository;
+    private MusicRepository? musicrepository;
+    private MusicCategoriesRepository? musiccategoriesrepository;
+    private MysteryBoxesRepository? mysteryboxesrepository;
+    private NearbyMonsterConditionsRepository? nearbymonsterconditionsrepository;
+    private NetTiersRepository? nettiersrepository;
+    private NotificationsRepository? notificationsrepository;
+    private NPCAudioRepository? npcaudiorepository;
+    private NPCConversationsRepository? npcconversationsrepository;
+    private NPCDialogueStylesRepository? npcdialoguestylesrepository;
+    private NPCFollowerVariationsRepository? npcfollowervariationsrepository;
+    private NPCMasterRepository? npcmasterrepository;
+    private NPCPortraitsRepository? npcportraitsrepository;
+    private NPCsRepository? npcsrepository;
+    private NPCShopRepository? npcshoprepository;
+    private NPCShopsRepository? npcshopsrepository;
+    private NPCTalkRepository? npctalkrepository;
+    private NPCTalkCategoryRepository? npctalkcategoryrepository;
+    private NPCTalkConsoleQuickActionsRepository? npctalkconsolequickactionsrepository;
+    private NPCTextAudioRepository? npctextaudiorepository;
+    private OnKillAchievementsRepository? onkillachievementsrepository;
+    private PackFormationRepository? packformationrepository;
+    private PassiveJewelRadiiRepository? passivejewelradiirepository;
+    private PassiveJewelSlotsRepository? passivejewelslotsrepository;
+    private PassiveSkillFilterCatagoriesRepository? passiveskillfiltercatagoriesrepository;
+    private PassiveSkillFilterOptionsRepository? passiveskillfilteroptionsrepository;
+    private PassiveSkillMasteryGroupsRepository? passiveskillmasterygroupsrepository;
+    private PassiveSkillMasteryEffectsRepository? passiveskillmasteryeffectsrepository;
+    private PassiveSkillsRepository? passiveskillsrepository;
+    private PassiveSkillStatCategoriesRepository? passiveskillstatcategoriesrepository;
+    private PassiveSkillTreesRepository? passiveskilltreesrepository;
+    private PassiveSkillTreeTutorialRepository? passiveskilltreetutorialrepository;
+    private PassiveSkillTreeUIArtRepository? passiveskilltreeuiartrepository;
+    private PassiveTreeExpansionJewelsRepository? passivetreeexpansionjewelsrepository;
+    private PassiveTreeExpansionJewelSizesRepository? passivetreeexpansionjewelsizesrepository;
+    private PassiveTreeExpansionSkillsRepository? passivetreeexpansionskillsrepository;
+    private PassiveTreeExpansionSpecialSkillsRepository? passivetreeexpansionspecialskillsrepository;
+    private PCBangRewardMicrosRepository? pcbangrewardmicrosrepository;
+    private PetRepository? petrepository;
+    private PlayerConditionsRepository? playerconditionsrepository;
+    private PlayerTradeWhisperFormatsRepository? playertradewhisperformatsrepository;
+    private PreloadGroupsRepository? preloadgroupsrepository;
+    private ProjectilesRepository? projectilesrepository;
+    private ProjectilesArtVariationsRepository? projectilesartvariationsrepository;
+    private ProjectileVariationsRepository? projectilevariationsrepository;
+    private PVPTypesRepository? pvptypesrepository;
+    private QuestRepository? questrepository;
+    private QuestAchievementsRepository? questachievementsrepository;
+    private QuestFlagsRepository? questflagsrepository;
+    private QuestItemsRepository? questitemsrepository;
+    private QuestRewardOffersRepository? questrewardoffersrepository;
+    private QuestRewardsRepository? questrewardsrepository;
+    private QuestStatesRepository? queststatesrepository;
+    private QuestStaticRewardsRepository? queststaticrewardsrepository;
+    private QuestTrackerGroupRepository? questtrackergrouprepository;
+    private QuestTypeRepository? questtyperepository;
+    private RacesRepository? racesrepository;
+    private RaceTimesRepository? racetimesrepository;
+    private RareMonsterLifeScalingPerLevelRepository? raremonsterlifescalingperlevelrepository;
+    private RarityRepository? rarityrepository;
+    private RealmsRepository? realmsrepository;
+    private RecipeUnlockDisplayRepository? recipeunlockdisplayrepository;
+    private RecipeUnlockObjectsRepository? recipeunlockobjectsrepository;
+    private ReminderTextRepository? remindertextrepository;
+    private RulesetsRepository? rulesetsrepository;
+    private RunicCirclesRepository? runiccirclesrepository;
+    private SalvageBoxesRepository? salvageboxesrepository;
+    private SessionQuestFlagsRepository? sessionquestflagsrepository;
+    private ShieldTypesRepository? shieldtypesrepository;
+    private ShopCategoryRepository? shopcategoryrepository;
+    private ShopCountryRepository? shopcountryrepository;
+    private ShopCurrencyRepository? shopcurrencyrepository;
+    private ShopPaymentPackageRepository? shoppaymentpackagerepository;
+    private ShopPaymentPackagePriceRepository? shoppaymentpackagepricerepository;
+    private ShopRegionRepository? shopregionrepository;
+    private ShopTagRepository? shoptagrepository;
+    private ShopTokenRepository? shoptokenrepository;
+    private SigilDisplayRepository? sigildisplayrepository;
+    private SingleGroundLaserRepository? singlegroundlaserrepository;
+    private SkillArtVariationsRepository? skillartvariationsrepository;
+    private SkillGemInfoRepository? skillgeminforepository;
+    private SkillGemsRepository? skillgemsrepository;
+    private SkillMineVariationsRepository? skillminevariationsrepository;
+    private SkillMorphDisplayRepository? skillmorphdisplayrepository;
+    private SkillSurgeEffectsRepository? skillsurgeeffectsrepository;
+    private SkillTotemVariationsRepository? skilltotemvariationsrepository;
+    private SkillTrapVariationsRepository? skilltrapvariationsrepository;
+    private SocketNotchesRepository? socketnotchesrepository;
+    private SoundEffectsRepository? soundeffectsrepository;
+    private SpawnAdditionalChestsOrClustersRepository? spawnadditionalchestsorclustersrepository;
+    private SpawnObjectRepository? spawnobjectrepository;
+    private SpecialRoomsRepository? specialroomsrepository;
+    private SpecialTilesRepository? specialtilesrepository;
+    private SpectreOverridesRepository? spectreoverridesrepository;
+    private StartingPassiveSkillsRepository? startingpassiveskillsrepository;
+    private StashTabAffinitiesRepository? stashtabaffinitiesrepository;
+    private StashTypeRepository? stashtyperepository;
+    private StatDescriptionFunctionsRepository? statdescriptionfunctionsrepository;
+    private StatsAffectingGenerationRepository? statsaffectinggenerationrepository;
+    private StatsRepository? statsrepository;
+    private StrDexIntMissionExtraRequirementRepository? strdexintmissionextrarequirementrepository;
+    private StrDexIntMissionsRepository? strdexintmissionsrepository;
+    private SuicideExplosionRepository? suicideexplosionrepository;
+    private SummonedSpecificBarrelsRepository? summonedspecificbarrelsrepository;
+    private SummonedSpecificMonstersRepository? summonedspecificmonstersrepository;
+    private SummonedSpecificMonstersOnDeathRepository? summonedspecificmonstersondeathrepository;
+    private SupporterPackSetsRepository? supporterpacksetsrepository;
+    private SurgeEffectsRepository? surgeeffectsrepository;
+    private SurgeTypesRepository? surgetypesrepository;
+    private TableChargeRepository? tablechargerepository;
+    private TableMonsterSpawnersRepository? tablemonsterspawnersrepository;
+    private TagsRepository? tagsrepository;
+    private TalkingPetAudioEventsRepository? talkingpetaudioeventsrepository;
+    private TalkingPetNPCAudioRepository? talkingpetnpcaudiorepository;
+    private TalkingPetsRepository? talkingpetsrepository;
+    private TencentAutoLootPetCurrenciesRepository? tencentautolootpetcurrenciesrepository;
+    private TencentAutoLootPetCurrenciesExcludableRepository? tencentautolootpetcurrenciesexcludablerepository;
+    private TerrainPluginsRepository? terrainpluginsrepository;
+    private TipsRepository? tipsrepository;
+    private TopologiesRepository? topologiesrepository;
+    private TradeMarketCategoryRepository? trademarketcategoryrepository;
+    private TradeMarketCategoryGroupsRepository? trademarketcategorygroupsrepository;
+    private TradeMarketCategoryListAllClassRepository? trademarketcategorylistallclassrepository;
+    private TradeMarketIndexItemAsRepository? trademarketindexitemasrepository;
+    private TreasureHunterMissionsRepository? treasurehuntermissionsrepository;
+    private TriggerBeamRepository? triggerbeamrepository;
+    private TriggerSpawnersRepository? triggerspawnersrepository;
+    private TutorialRepository? tutorialrepository;
+    private UITalkTextRepository? uitalktextrepository;
+    private UniqueChestsRepository? uniquechestsrepository;
+    private UniqueJewelLimitsRepository? uniquejewellimitsrepository;
+    private UniqueMapInfoRepository? uniquemapinforepository;
+    private UniqueMapsRepository? uniquemapsrepository;
+    private UniqueStashLayoutRepository? uniquestashlayoutrepository;
+    private UniqueStashTypesRepository? uniquestashtypesrepository;
+    private VirtualStatContextFlagsRepository? virtualstatcontextflagsrepository;
+    private VoteStateRepository? votestaterepository;
+    private VoteTypeRepository? votetyperepository;
+    private WeaponClassesRepository? weaponclassesrepository;
+    private WeaponImpactSoundDataRepository? weaponimpactsounddatarepository;
+    private WeaponTypesRepository? weapontypesrepository;
+    private WindowCursorsRepository? windowcursorsrepository;
+    private WordsRepository? wordsrepository;
+    private WorldAreasRepository? worldareasrepository;
+    private WorldAreaLeagueChancesRepository? worldarealeaguechancesrepository;
+    private WorldPopupIconTypesRepository? worldpopupicontypesrepository;
+    private ZanaLevelsRepository? zanalevelsrepository;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Specification"/> class.
@@ -37,6287 +739,6987 @@ public sealed partial class Specification
         }
 
         dataLoader = new DataLoader(config, logger);
+
+        this.logger = logger;
     }
 
     /// <summary>
-    /// Gets RogueExilesDat data.
+    /// Gets RogueExilesRepository data.
     /// </summary>
-    /// <returns>readonly collection of RogueExilesDat.</returns>
-    public ReadOnlyCollection<RogueExilesDat> LoadRogueExilesDat()
+    /// <returns>repository of RogueExilesRepository.</returns>
+    public RogueExilesRepository LoadRogueExilesRepository()
     {
-        return RogueExilesDat.Load(dataLoader).AsReadOnly();
+        rogueexilesrepository ??= new RogueExilesRepository(logger, this);
+        return rogueexilesrepository;
     }
 
     /// <summary>
-    /// Gets RogueExileLifeScalingPerLevelDat data.
+    /// Gets RogueExileLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of RogueExileLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<RogueExileLifeScalingPerLevelDat> LoadRogueExileLifeScalingPerLevelDat()
+    /// <returns>repository of RogueExileLifeScalingPerLevelRepository.</returns>
+    public RogueExileLifeScalingPerLevelRepository LoadRogueExileLifeScalingPerLevelRepository()
     {
-        return RogueExileLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        rogueexilelifescalingperlevelrepository ??= new RogueExileLifeScalingPerLevelRepository(logger, this);
+        return rogueexilelifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets ShrineBuffsDat data.
+    /// Gets ShrineBuffsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShrineBuffsDat.</returns>
-    public ReadOnlyCollection<ShrineBuffsDat> LoadShrineBuffsDat()
+    /// <returns>repository of ShrineBuffsRepository.</returns>
+    public ShrineBuffsRepository LoadShrineBuffsRepository()
     {
-        return ShrineBuffsDat.Load(dataLoader).AsReadOnly();
+        shrinebuffsrepository ??= new ShrineBuffsRepository(logger, this);
+        return shrinebuffsrepository;
     }
 
     /// <summary>
-    /// Gets ShrinesDat data.
+    /// Gets ShrinesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShrinesDat.</returns>
-    public ReadOnlyCollection<ShrinesDat> LoadShrinesDat()
+    /// <returns>repository of ShrinesRepository.</returns>
+    public ShrinesRepository LoadShrinesRepository()
     {
-        return ShrinesDat.Load(dataLoader).AsReadOnly();
+        shrinesrepository ??= new ShrinesRepository(logger, this);
+        return shrinesrepository;
     }
 
     /// <summary>
-    /// Gets ShrineSoundsDat data.
+    /// Gets ShrineSoundsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShrineSoundsDat.</returns>
-    public ReadOnlyCollection<ShrineSoundsDat> LoadShrineSoundsDat()
+    /// <returns>repository of ShrineSoundsRepository.</returns>
+    public ShrineSoundsRepository LoadShrineSoundsRepository()
     {
-        return ShrineSoundsDat.Load(dataLoader).AsReadOnly();
+        shrinesoundsrepository ??= new ShrineSoundsRepository(logger, this);
+        return shrinesoundsrepository;
     }
 
     /// <summary>
-    /// Gets StrongboxesDat data.
+    /// Gets StrongboxesRepository data.
     /// </summary>
-    /// <returns>readonly collection of StrongboxesDat.</returns>
-    public ReadOnlyCollection<StrongboxesDat> LoadStrongboxesDat()
+    /// <returns>repository of StrongboxesRepository.</returns>
+    public StrongboxesRepository LoadStrongboxesRepository()
     {
-        return StrongboxesDat.Load(dataLoader).AsReadOnly();
+        strongboxesrepository ??= new StrongboxesRepository(logger, this);
+        return strongboxesrepository;
     }
 
     /// <summary>
-    /// Gets InvasionMonsterRestrictionsDat data.
+    /// Gets InvasionMonsterRestrictionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of InvasionMonsterRestrictionsDat.</returns>
-    public ReadOnlyCollection<InvasionMonsterRestrictionsDat> LoadInvasionMonsterRestrictionsDat()
+    /// <returns>repository of InvasionMonsterRestrictionsRepository.</returns>
+    public InvasionMonsterRestrictionsRepository LoadInvasionMonsterRestrictionsRepository()
     {
-        return InvasionMonsterRestrictionsDat.Load(dataLoader).AsReadOnly();
+        invasionmonsterrestrictionsrepository ??= new InvasionMonsterRestrictionsRepository(logger, this);
+        return invasionmonsterrestrictionsrepository;
     }
 
     /// <summary>
-    /// Gets InvasionMonstersPerAreaDat data.
+    /// Gets InvasionMonstersPerAreaRepository data.
     /// </summary>
-    /// <returns>readonly collection of InvasionMonstersPerAreaDat.</returns>
-    public ReadOnlyCollection<InvasionMonstersPerAreaDat> LoadInvasionMonstersPerAreaDat()
+    /// <returns>repository of InvasionMonstersPerAreaRepository.</returns>
+    public InvasionMonstersPerAreaRepository LoadInvasionMonstersPerAreaRepository()
     {
-        return InvasionMonstersPerAreaDat.Load(dataLoader).AsReadOnly();
+        invasionmonstersperarearepository ??= new InvasionMonstersPerAreaRepository(logger, this);
+        return invasionmonstersperarearepository;
     }
 
     /// <summary>
-    /// Gets BeyondDemonsDat data.
+    /// Gets BeyondDemonsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BeyondDemonsDat.</returns>
-    public ReadOnlyCollection<BeyondDemonsDat> LoadBeyondDemonsDat()
+    /// <returns>repository of BeyondDemonsRepository.</returns>
+    public BeyondDemonsRepository LoadBeyondDemonsRepository()
     {
-        return BeyondDemonsDat.Load(dataLoader).AsReadOnly();
+        beyonddemonsrepository ??= new BeyondDemonsRepository(logger, this);
+        return beyonddemonsrepository;
     }
 
     /// <summary>
-    /// Gets BeyondFactionsDat data.
+    /// Gets BeyondFactionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BeyondFactionsDat.</returns>
-    public ReadOnlyCollection<BeyondFactionsDat> LoadBeyondFactionsDat()
+    /// <returns>repository of BeyondFactionsRepository.</returns>
+    public BeyondFactionsRepository LoadBeyondFactionsRepository()
     {
-        return BeyondFactionsDat.Load(dataLoader).AsReadOnly();
+        beyondfactionsrepository ??= new BeyondFactionsRepository(logger, this);
+        return beyondfactionsrepository;
     }
 
     /// <summary>
-    /// Gets BloodlinesDat data.
+    /// Gets BloodlinesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BloodlinesDat.</returns>
-    public ReadOnlyCollection<BloodlinesDat> LoadBloodlinesDat()
+    /// <returns>repository of BloodlinesRepository.</returns>
+    public BloodlinesRepository LoadBloodlinesRepository()
     {
-        return BloodlinesDat.Load(dataLoader).AsReadOnly();
+        bloodlinesrepository ??= new BloodlinesRepository(logger, this);
+        return bloodlinesrepository;
     }
 
     /// <summary>
-    /// Gets TormentSpiritsDat data.
+    /// Gets TormentSpiritsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TormentSpiritsDat.</returns>
-    public ReadOnlyCollection<TormentSpiritsDat> LoadTormentSpiritsDat()
+    /// <returns>repository of TormentSpiritsRepository.</returns>
+    public TormentSpiritsRepository LoadTormentSpiritsRepository()
     {
-        return TormentSpiritsDat.Load(dataLoader).AsReadOnly();
+        tormentspiritsrepository ??= new TormentSpiritsRepository(logger, this);
+        return tormentspiritsrepository;
     }
 
     /// <summary>
-    /// Gets DivinationCardArtDat data.
+    /// Gets DivinationCardArtRepository data.
     /// </summary>
-    /// <returns>readonly collection of DivinationCardArtDat.</returns>
-    public ReadOnlyCollection<DivinationCardArtDat> LoadDivinationCardArtDat()
+    /// <returns>repository of DivinationCardArtRepository.</returns>
+    public DivinationCardArtRepository LoadDivinationCardArtRepository()
     {
-        return DivinationCardArtDat.Load(dataLoader).AsReadOnly();
+        divinationcardartrepository ??= new DivinationCardArtRepository(logger, this);
+        return divinationcardartrepository;
     }
 
     /// <summary>
-    /// Gets WarbandsGraphDat data.
+    /// Gets WarbandsGraphRepository data.
     /// </summary>
-    /// <returns>readonly collection of WarbandsGraphDat.</returns>
-    public ReadOnlyCollection<WarbandsGraphDat> LoadWarbandsGraphDat()
+    /// <returns>repository of WarbandsGraphRepository.</returns>
+    public WarbandsGraphRepository LoadWarbandsGraphRepository()
     {
-        return WarbandsGraphDat.Load(dataLoader).AsReadOnly();
+        warbandsgraphrepository ??= new WarbandsGraphRepository(logger, this);
+        return warbandsgraphrepository;
     }
 
     /// <summary>
-    /// Gets WarbandsMapGraphDat data.
+    /// Gets WarbandsMapGraphRepository data.
     /// </summary>
-    /// <returns>readonly collection of WarbandsMapGraphDat.</returns>
-    public ReadOnlyCollection<WarbandsMapGraphDat> LoadWarbandsMapGraphDat()
+    /// <returns>repository of WarbandsMapGraphRepository.</returns>
+    public WarbandsMapGraphRepository LoadWarbandsMapGraphRepository()
     {
-        return WarbandsMapGraphDat.Load(dataLoader).AsReadOnly();
+        warbandsmapgraphrepository ??= new WarbandsMapGraphRepository(logger, this);
+        return warbandsmapgraphrepository;
     }
 
     /// <summary>
-    /// Gets WarbandsPackMonstersDat data.
+    /// Gets WarbandsPackMonstersRepository data.
     /// </summary>
-    /// <returns>readonly collection of WarbandsPackMonstersDat.</returns>
-    public ReadOnlyCollection<WarbandsPackMonstersDat> LoadWarbandsPackMonstersDat()
+    /// <returns>repository of WarbandsPackMonstersRepository.</returns>
+    public WarbandsPackMonstersRepository LoadWarbandsPackMonstersRepository()
     {
-        return WarbandsPackMonstersDat.Load(dataLoader).AsReadOnly();
+        warbandspackmonstersrepository ??= new WarbandsPackMonstersRepository(logger, this);
+        return warbandspackmonstersrepository;
     }
 
     /// <summary>
-    /// Gets WarbandsPackNumbersDat data.
+    /// Gets WarbandsPackNumbersRepository data.
     /// </summary>
-    /// <returns>readonly collection of WarbandsPackNumbersDat.</returns>
-    public ReadOnlyCollection<WarbandsPackNumbersDat> LoadWarbandsPackNumbersDat()
+    /// <returns>repository of WarbandsPackNumbersRepository.</returns>
+    public WarbandsPackNumbersRepository LoadWarbandsPackNumbersRepository()
     {
-        return WarbandsPackNumbersDat.Load(dataLoader).AsReadOnly();
+        warbandspacknumbersrepository ??= new WarbandsPackNumbersRepository(logger, this);
+        return warbandspacknumbersrepository;
     }
 
     /// <summary>
-    /// Gets TalismanMonsterModsDat data.
+    /// Gets TalismanMonsterModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TalismanMonsterModsDat.</returns>
-    public ReadOnlyCollection<TalismanMonsterModsDat> LoadTalismanMonsterModsDat()
+    /// <returns>repository of TalismanMonsterModsRepository.</returns>
+    public TalismanMonsterModsRepository LoadTalismanMonsterModsRepository()
     {
-        return TalismanMonsterModsDat.Load(dataLoader).AsReadOnly();
+        talismanmonstermodsrepository ??= new TalismanMonsterModsRepository(logger, this);
+        return talismanmonstermodsrepository;
     }
 
     /// <summary>
-    /// Gets TalismanPacksDat data.
+    /// Gets TalismanPacksRepository data.
     /// </summary>
-    /// <returns>readonly collection of TalismanPacksDat.</returns>
-    public ReadOnlyCollection<TalismanPacksDat> LoadTalismanPacksDat()
+    /// <returns>repository of TalismanPacksRepository.</returns>
+    public TalismanPacksRepository LoadTalismanPacksRepository()
     {
-        return TalismanPacksDat.Load(dataLoader).AsReadOnly();
+        talismanpacksrepository ??= new TalismanPacksRepository(logger, this);
+        return talismanpacksrepository;
     }
 
     /// <summary>
-    /// Gets TalismansDat data.
+    /// Gets TalismansRepository data.
     /// </summary>
-    /// <returns>readonly collection of TalismansDat.</returns>
-    public ReadOnlyCollection<TalismansDat> LoadTalismansDat()
+    /// <returns>repository of TalismansRepository.</returns>
+    public TalismansRepository LoadTalismansRepository()
     {
-        return TalismansDat.Load(dataLoader).AsReadOnly();
+        talismansrepository ??= new TalismansRepository(logger, this);
+        return talismansrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthAreasDat data.
+    /// Gets LabyrinthAreasRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthAreasDat.</returns>
-    public ReadOnlyCollection<LabyrinthAreasDat> LoadLabyrinthAreasDat()
+    /// <returns>repository of LabyrinthAreasRepository.</returns>
+    public LabyrinthAreasRepository LoadLabyrinthAreasRepository()
     {
-        return LabyrinthAreasDat.Load(dataLoader).AsReadOnly();
+        labyrinthareasrepository ??= new LabyrinthAreasRepository(logger, this);
+        return labyrinthareasrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthBonusItemsDat data.
+    /// Gets LabyrinthBonusItemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthBonusItemsDat.</returns>
-    public ReadOnlyCollection<LabyrinthBonusItemsDat> LoadLabyrinthBonusItemsDat()
+    /// <returns>repository of LabyrinthBonusItemsRepository.</returns>
+    public LabyrinthBonusItemsRepository LoadLabyrinthBonusItemsRepository()
     {
-        return LabyrinthBonusItemsDat.Load(dataLoader).AsReadOnly();
+        labyrinthbonusitemsrepository ??= new LabyrinthBonusItemsRepository(logger, this);
+        return labyrinthbonusitemsrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthExclusionGroupsDat data.
+    /// Gets LabyrinthExclusionGroupsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthExclusionGroupsDat.</returns>
-    public ReadOnlyCollection<LabyrinthExclusionGroupsDat> LoadLabyrinthExclusionGroupsDat()
+    /// <returns>repository of LabyrinthExclusionGroupsRepository.</returns>
+    public LabyrinthExclusionGroupsRepository LoadLabyrinthExclusionGroupsRepository()
     {
-        return LabyrinthExclusionGroupsDat.Load(dataLoader).AsReadOnly();
+        labyrinthexclusiongroupsrepository ??= new LabyrinthExclusionGroupsRepository(logger, this);
+        return labyrinthexclusiongroupsrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthIzaroChestsDat data.
+    /// Gets LabyrinthIzaroChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthIzaroChestsDat.</returns>
-    public ReadOnlyCollection<LabyrinthIzaroChestsDat> LoadLabyrinthIzaroChestsDat()
+    /// <returns>repository of LabyrinthIzaroChestsRepository.</returns>
+    public LabyrinthIzaroChestsRepository LoadLabyrinthIzaroChestsRepository()
     {
-        return LabyrinthIzaroChestsDat.Load(dataLoader).AsReadOnly();
+        labyrinthizarochestsrepository ??= new LabyrinthIzaroChestsRepository(logger, this);
+        return labyrinthizarochestsrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthNodeOverridesDat data.
+    /// Gets LabyrinthNodeOverridesRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthNodeOverridesDat.</returns>
-    public ReadOnlyCollection<LabyrinthNodeOverridesDat> LoadLabyrinthNodeOverridesDat()
+    /// <returns>repository of LabyrinthNodeOverridesRepository.</returns>
+    public LabyrinthNodeOverridesRepository LoadLabyrinthNodeOverridesRepository()
     {
-        return LabyrinthNodeOverridesDat.Load(dataLoader).AsReadOnly();
+        labyrinthnodeoverridesrepository ??= new LabyrinthNodeOverridesRepository(logger, this);
+        return labyrinthnodeoverridesrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthRewardTypesDat data.
+    /// Gets LabyrinthRewardTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthRewardTypesDat.</returns>
-    public ReadOnlyCollection<LabyrinthRewardTypesDat> LoadLabyrinthRewardTypesDat()
+    /// <returns>repository of LabyrinthRewardTypesRepository.</returns>
+    public LabyrinthRewardTypesRepository LoadLabyrinthRewardTypesRepository()
     {
-        return LabyrinthRewardTypesDat.Load(dataLoader).AsReadOnly();
+        labyrinthrewardtypesrepository ??= new LabyrinthRewardTypesRepository(logger, this);
+        return labyrinthrewardtypesrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthsDat data.
+    /// Gets LabyrinthsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthsDat.</returns>
-    public ReadOnlyCollection<LabyrinthsDat> LoadLabyrinthsDat()
+    /// <returns>repository of LabyrinthsRepository.</returns>
+    public LabyrinthsRepository LoadLabyrinthsRepository()
     {
-        return LabyrinthsDat.Load(dataLoader).AsReadOnly();
+        labyrinthsrepository ??= new LabyrinthsRepository(logger, this);
+        return labyrinthsrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthSecretEffectsDat data.
+    /// Gets LabyrinthSecretEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthSecretEffectsDat.</returns>
-    public ReadOnlyCollection<LabyrinthSecretEffectsDat> LoadLabyrinthSecretEffectsDat()
+    /// <returns>repository of LabyrinthSecretEffectsRepository.</returns>
+    public LabyrinthSecretEffectsRepository LoadLabyrinthSecretEffectsRepository()
     {
-        return LabyrinthSecretEffectsDat.Load(dataLoader).AsReadOnly();
+        labyrinthsecreteffectsrepository ??= new LabyrinthSecretEffectsRepository(logger, this);
+        return labyrinthsecreteffectsrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthSecretsDat data.
+    /// Gets LabyrinthSecretsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthSecretsDat.</returns>
-    public ReadOnlyCollection<LabyrinthSecretsDat> LoadLabyrinthSecretsDat()
+    /// <returns>repository of LabyrinthSecretsRepository.</returns>
+    public LabyrinthSecretsRepository LoadLabyrinthSecretsRepository()
     {
-        return LabyrinthSecretsDat.Load(dataLoader).AsReadOnly();
+        labyrinthsecretsrepository ??= new LabyrinthSecretsRepository(logger, this);
+        return labyrinthsecretsrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthSectionDat data.
+    /// Gets LabyrinthSectionRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthSectionDat.</returns>
-    public ReadOnlyCollection<LabyrinthSectionDat> LoadLabyrinthSectionDat()
+    /// <returns>repository of LabyrinthSectionRepository.</returns>
+    public LabyrinthSectionRepository LoadLabyrinthSectionRepository()
     {
-        return LabyrinthSectionDat.Load(dataLoader).AsReadOnly();
+        labyrinthsectionrepository ??= new LabyrinthSectionRepository(logger, this);
+        return labyrinthsectionrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthSectionLayoutDat data.
+    /// Gets LabyrinthSectionLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthSectionLayoutDat.</returns>
-    public ReadOnlyCollection<LabyrinthSectionLayoutDat> LoadLabyrinthSectionLayoutDat()
+    /// <returns>repository of LabyrinthSectionLayoutRepository.</returns>
+    public LabyrinthSectionLayoutRepository LoadLabyrinthSectionLayoutRepository()
     {
-        return LabyrinthSectionLayoutDat.Load(dataLoader).AsReadOnly();
+        labyrinthsectionlayoutrepository ??= new LabyrinthSectionLayoutRepository(logger, this);
+        return labyrinthsectionlayoutrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthTrialsDat data.
+    /// Gets LabyrinthTrialsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthTrialsDat.</returns>
-    public ReadOnlyCollection<LabyrinthTrialsDat> LoadLabyrinthTrialsDat()
+    /// <returns>repository of LabyrinthTrialsRepository.</returns>
+    public LabyrinthTrialsRepository LoadLabyrinthTrialsRepository()
     {
-        return LabyrinthTrialsDat.Load(dataLoader).AsReadOnly();
+        labyrinthtrialsrepository ??= new LabyrinthTrialsRepository(logger, this);
+        return labyrinthtrialsrepository;
     }
 
     /// <summary>
-    /// Gets LabyrinthTrinketsDat data.
+    /// Gets LabyrinthTrinketsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LabyrinthTrinketsDat.</returns>
-    public ReadOnlyCollection<LabyrinthTrinketsDat> LoadLabyrinthTrinketsDat()
+    /// <returns>repository of LabyrinthTrinketsRepository.</returns>
+    public LabyrinthTrinketsRepository LoadLabyrinthTrinketsRepository()
     {
-        return LabyrinthTrinketsDat.Load(dataLoader).AsReadOnly();
+        labyrinthtrinketsrepository ??= new LabyrinthTrinketsRepository(logger, this);
+        return labyrinthtrinketsrepository;
     }
 
     /// <summary>
-    /// Gets PerandusBossesDat data.
+    /// Gets PerandusBossesRepository data.
     /// </summary>
-    /// <returns>readonly collection of PerandusBossesDat.</returns>
-    public ReadOnlyCollection<PerandusBossesDat> LoadPerandusBossesDat()
+    /// <returns>repository of PerandusBossesRepository.</returns>
+    public PerandusBossesRepository LoadPerandusBossesRepository()
     {
-        return PerandusBossesDat.Load(dataLoader).AsReadOnly();
+        perandusbossesrepository ??= new PerandusBossesRepository(logger, this);
+        return perandusbossesrepository;
     }
 
     /// <summary>
-    /// Gets PerandusChestsDat data.
+    /// Gets PerandusChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PerandusChestsDat.</returns>
-    public ReadOnlyCollection<PerandusChestsDat> LoadPerandusChestsDat()
+    /// <returns>repository of PerandusChestsRepository.</returns>
+    public PerandusChestsRepository LoadPerandusChestsRepository()
     {
-        return PerandusChestsDat.Load(dataLoader).AsReadOnly();
+        peranduschestsrepository ??= new PerandusChestsRepository(logger, this);
+        return peranduschestsrepository;
     }
 
     /// <summary>
-    /// Gets PerandusDaemonsDat data.
+    /// Gets PerandusDaemonsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PerandusDaemonsDat.</returns>
-    public ReadOnlyCollection<PerandusDaemonsDat> LoadPerandusDaemonsDat()
+    /// <returns>repository of PerandusDaemonsRepository.</returns>
+    public PerandusDaemonsRepository LoadPerandusDaemonsRepository()
     {
-        return PerandusDaemonsDat.Load(dataLoader).AsReadOnly();
+        perandusdaemonsrepository ??= new PerandusDaemonsRepository(logger, this);
+        return perandusdaemonsrepository;
     }
 
     /// <summary>
-    /// Gets PerandusGuardsDat data.
+    /// Gets PerandusGuardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PerandusGuardsDat.</returns>
-    public ReadOnlyCollection<PerandusGuardsDat> LoadPerandusGuardsDat()
+    /// <returns>repository of PerandusGuardsRepository.</returns>
+    public PerandusGuardsRepository LoadPerandusGuardsRepository()
     {
-        return PerandusGuardsDat.Load(dataLoader).AsReadOnly();
+        perandusguardsrepository ??= new PerandusGuardsRepository(logger, this);
+        return perandusguardsrepository;
     }
 
     /// <summary>
-    /// Gets PropheciesDat data.
+    /// Gets PropheciesRepository data.
     /// </summary>
-    /// <returns>readonly collection of PropheciesDat.</returns>
-    public ReadOnlyCollection<PropheciesDat> LoadPropheciesDat()
+    /// <returns>repository of PropheciesRepository.</returns>
+    public PropheciesRepository LoadPropheciesRepository()
     {
-        return PropheciesDat.Load(dataLoader).AsReadOnly();
+        propheciesrepository ??= new PropheciesRepository(logger, this);
+        return propheciesrepository;
     }
 
     /// <summary>
-    /// Gets ProphecyChainDat data.
+    /// Gets ProphecyChainRepository data.
     /// </summary>
-    /// <returns>readonly collection of ProphecyChainDat.</returns>
-    public ReadOnlyCollection<ProphecyChainDat> LoadProphecyChainDat()
+    /// <returns>repository of ProphecyChainRepository.</returns>
+    public ProphecyChainRepository LoadProphecyChainRepository()
     {
-        return ProphecyChainDat.Load(dataLoader).AsReadOnly();
+        prophecychainrepository ??= new ProphecyChainRepository(logger, this);
+        return prophecychainrepository;
     }
 
     /// <summary>
-    /// Gets ProphecyTypeDat data.
+    /// Gets ProphecyTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of ProphecyTypeDat.</returns>
-    public ReadOnlyCollection<ProphecyTypeDat> LoadProphecyTypeDat()
+    /// <returns>repository of ProphecyTypeRepository.</returns>
+    public ProphecyTypeRepository LoadProphecyTypeRepository()
     {
-        return ProphecyTypeDat.Load(dataLoader).AsReadOnly();
+        prophecytyperepository ??= new ProphecyTypeRepository(logger, this);
+        return prophecytyperepository;
     }
 
     /// <summary>
-    /// Gets ShaperGuardiansDat data.
+    /// Gets ShaperGuardiansRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShaperGuardiansDat.</returns>
-    public ReadOnlyCollection<ShaperGuardiansDat> LoadShaperGuardiansDat()
+    /// <returns>repository of ShaperGuardiansRepository.</returns>
+    public ShaperGuardiansRepository LoadShaperGuardiansRepository()
     {
-        return ShaperGuardiansDat.Load(dataLoader).AsReadOnly();
+        shaperguardiansrepository ??= new ShaperGuardiansRepository(logger, this);
+        return shaperguardiansrepository;
     }
 
     /// <summary>
-    /// Gets EssencesDat data.
+    /// Gets EssencesRepository data.
     /// </summary>
-    /// <returns>readonly collection of EssencesDat.</returns>
-    public ReadOnlyCollection<EssencesDat> LoadEssencesDat()
+    /// <returns>repository of EssencesRepository.</returns>
+    public EssencesRepository LoadEssencesRepository()
     {
-        return EssencesDat.Load(dataLoader).AsReadOnly();
+        essencesrepository ??= new EssencesRepository(logger, this);
+        return essencesrepository;
     }
 
     /// <summary>
-    /// Gets EssenceTypeDat data.
+    /// Gets EssenceTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of EssenceTypeDat.</returns>
-    public ReadOnlyCollection<EssenceTypeDat> LoadEssenceTypeDat()
+    /// <returns>repository of EssenceTypeRepository.</returns>
+    public EssenceTypeRepository LoadEssenceTypeRepository()
     {
-        return EssenceTypeDat.Load(dataLoader).AsReadOnly();
+        essencetyperepository ??= new EssenceTypeRepository(logger, this);
+        return essencetyperepository;
     }
 
     /// <summary>
-    /// Gets BreachBossLifeScalingPerLevelDat data.
+    /// Gets BreachBossLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of BreachBossLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<BreachBossLifeScalingPerLevelDat> LoadBreachBossLifeScalingPerLevelDat()
+    /// <returns>repository of BreachBossLifeScalingPerLevelRepository.</returns>
+    public BreachBossLifeScalingPerLevelRepository LoadBreachBossLifeScalingPerLevelRepository()
     {
-        return BreachBossLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        breachbosslifescalingperlevelrepository ??= new BreachBossLifeScalingPerLevelRepository(logger, this);
+        return breachbosslifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets BreachElementDat data.
+    /// Gets BreachElementRepository data.
     /// </summary>
-    /// <returns>readonly collection of BreachElementDat.</returns>
-    public ReadOnlyCollection<BreachElementDat> LoadBreachElementDat()
+    /// <returns>repository of BreachElementRepository.</returns>
+    public BreachElementRepository LoadBreachElementRepository()
     {
-        return BreachElementDat.Load(dataLoader).AsReadOnly();
+        breachelementrepository ??= new BreachElementRepository(logger, this);
+        return breachelementrepository;
     }
 
     /// <summary>
-    /// Gets BreachstoneUpgradesDat data.
+    /// Gets BreachstoneUpgradesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BreachstoneUpgradesDat.</returns>
-    public ReadOnlyCollection<BreachstoneUpgradesDat> LoadBreachstoneUpgradesDat()
+    /// <returns>repository of BreachstoneUpgradesRepository.</returns>
+    public BreachstoneUpgradesRepository LoadBreachstoneUpgradesRepository()
     {
-        return BreachstoneUpgradesDat.Load(dataLoader).AsReadOnly();
+        breachstoneupgradesrepository ??= new BreachstoneUpgradesRepository(logger, this);
+        return breachstoneupgradesrepository;
     }
 
     /// <summary>
-    /// Gets HarbingersDat data.
+    /// Gets HarbingersRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarbingersDat.</returns>
-    public ReadOnlyCollection<HarbingersDat> LoadHarbingersDat()
+    /// <returns>repository of HarbingersRepository.</returns>
+    public HarbingersRepository LoadHarbingersRepository()
     {
-        return HarbingersDat.Load(dataLoader).AsReadOnly();
+        harbingersrepository ??= new HarbingersRepository(logger, this);
+        return harbingersrepository;
     }
 
     /// <summary>
-    /// Gets PantheonPanelLayoutDat data.
+    /// Gets PantheonPanelLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of PantheonPanelLayoutDat.</returns>
-    public ReadOnlyCollection<PantheonPanelLayoutDat> LoadPantheonPanelLayoutDat()
+    /// <returns>repository of PantheonPanelLayoutRepository.</returns>
+    public PantheonPanelLayoutRepository LoadPantheonPanelLayoutRepository()
     {
-        return PantheonPanelLayoutDat.Load(dataLoader).AsReadOnly();
+        pantheonpanellayoutrepository ??= new PantheonPanelLayoutRepository(logger, this);
+        return pantheonpanellayoutrepository;
     }
 
     /// <summary>
-    /// Gets PantheonSoulsDat data.
+    /// Gets PantheonSoulsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PantheonSoulsDat.</returns>
-    public ReadOnlyCollection<PantheonSoulsDat> LoadPantheonSoulsDat()
+    /// <returns>repository of PantheonSoulsRepository.</returns>
+    public PantheonSoulsRepository LoadPantheonSoulsRepository()
     {
-        return PantheonSoulsDat.Load(dataLoader).AsReadOnly();
+        pantheonsoulsrepository ??= new PantheonSoulsRepository(logger, this);
+        return pantheonsoulsrepository;
     }
 
     /// <summary>
-    /// Gets AbyssObjectsDat data.
+    /// Gets AbyssObjectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AbyssObjectsDat.</returns>
-    public ReadOnlyCollection<AbyssObjectsDat> LoadAbyssObjectsDat()
+    /// <returns>repository of AbyssObjectsRepository.</returns>
+    public AbyssObjectsRepository LoadAbyssObjectsRepository()
     {
-        return AbyssObjectsDat.Load(dataLoader).AsReadOnly();
+        abyssobjectsrepository ??= new AbyssObjectsRepository(logger, this);
+        return abyssobjectsrepository;
     }
 
     /// <summary>
-    /// Gets ElderBossArenasDat data.
+    /// Gets ElderBossArenasRepository data.
     /// </summary>
-    /// <returns>readonly collection of ElderBossArenasDat.</returns>
-    public ReadOnlyCollection<ElderBossArenasDat> LoadElderBossArenasDat()
+    /// <returns>repository of ElderBossArenasRepository.</returns>
+    public ElderBossArenasRepository LoadElderBossArenasRepository()
     {
-        return ElderBossArenasDat.Load(dataLoader).AsReadOnly();
+        elderbossarenasrepository ??= new ElderBossArenasRepository(logger, this);
+        return elderbossarenasrepository;
     }
 
     /// <summary>
-    /// Gets ElderMapBossOverrideDat data.
+    /// Gets ElderMapBossOverrideRepository data.
     /// </summary>
-    /// <returns>readonly collection of ElderMapBossOverrideDat.</returns>
-    public ReadOnlyCollection<ElderMapBossOverrideDat> LoadElderMapBossOverrideDat()
+    /// <returns>repository of ElderMapBossOverrideRepository.</returns>
+    public ElderMapBossOverrideRepository LoadElderMapBossOverrideRepository()
     {
-        return ElderMapBossOverrideDat.Load(dataLoader).AsReadOnly();
+        eldermapbossoverriderepository ??= new ElderMapBossOverrideRepository(logger, this);
+        return eldermapbossoverriderepository;
     }
 
     /// <summary>
-    /// Gets ElderGuardiansDat data.
+    /// Gets ElderGuardiansRepository data.
     /// </summary>
-    /// <returns>readonly collection of ElderGuardiansDat.</returns>
-    public ReadOnlyCollection<ElderGuardiansDat> LoadElderGuardiansDat()
+    /// <returns>repository of ElderGuardiansRepository.</returns>
+    public ElderGuardiansRepository LoadElderGuardiansRepository()
     {
-        return ElderGuardiansDat.Load(dataLoader).AsReadOnly();
+        elderguardiansrepository ??= new ElderGuardiansRepository(logger, this);
+        return elderguardiansrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryCapturableMonstersDat data.
+    /// Gets BestiaryCapturableMonstersRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryCapturableMonstersDat.</returns>
-    public ReadOnlyCollection<BestiaryCapturableMonstersDat> LoadBestiaryCapturableMonstersDat()
+    /// <returns>repository of BestiaryCapturableMonstersRepository.</returns>
+    public BestiaryCapturableMonstersRepository LoadBestiaryCapturableMonstersRepository()
     {
-        return BestiaryCapturableMonstersDat.Load(dataLoader).AsReadOnly();
+        bestiarycapturablemonstersrepository ??= new BestiaryCapturableMonstersRepository(logger, this);
+        return bestiarycapturablemonstersrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryEncountersDat data.
+    /// Gets BestiaryEncountersRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryEncountersDat.</returns>
-    public ReadOnlyCollection<BestiaryEncountersDat> LoadBestiaryEncountersDat()
+    /// <returns>repository of BestiaryEncountersRepository.</returns>
+    public BestiaryEncountersRepository LoadBestiaryEncountersRepository()
     {
-        return BestiaryEncountersDat.Load(dataLoader).AsReadOnly();
+        bestiaryencountersrepository ??= new BestiaryEncountersRepository(logger, this);
+        return bestiaryencountersrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryFamiliesDat data.
+    /// Gets BestiaryFamiliesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryFamiliesDat.</returns>
-    public ReadOnlyCollection<BestiaryFamiliesDat> LoadBestiaryFamiliesDat()
+    /// <returns>repository of BestiaryFamiliesRepository.</returns>
+    public BestiaryFamiliesRepository LoadBestiaryFamiliesRepository()
     {
-        return BestiaryFamiliesDat.Load(dataLoader).AsReadOnly();
+        bestiaryfamiliesrepository ??= new BestiaryFamiliesRepository(logger, this);
+        return bestiaryfamiliesrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryGenusDat data.
+    /// Gets BestiaryGenusRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryGenusDat.</returns>
-    public ReadOnlyCollection<BestiaryGenusDat> LoadBestiaryGenusDat()
+    /// <returns>repository of BestiaryGenusRepository.</returns>
+    public BestiaryGenusRepository LoadBestiaryGenusRepository()
     {
-        return BestiaryGenusDat.Load(dataLoader).AsReadOnly();
+        bestiarygenusrepository ??= new BestiaryGenusRepository(logger, this);
+        return bestiarygenusrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryGroupsDat data.
+    /// Gets BestiaryGroupsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryGroupsDat.</returns>
-    public ReadOnlyCollection<BestiaryGroupsDat> LoadBestiaryGroupsDat()
+    /// <returns>repository of BestiaryGroupsRepository.</returns>
+    public BestiaryGroupsRepository LoadBestiaryGroupsRepository()
     {
-        return BestiaryGroupsDat.Load(dataLoader).AsReadOnly();
+        bestiarygroupsrepository ??= new BestiaryGroupsRepository(logger, this);
+        return bestiarygroupsrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryNetsDat data.
+    /// Gets BestiaryNetsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryNetsDat.</returns>
-    public ReadOnlyCollection<BestiaryNetsDat> LoadBestiaryNetsDat()
+    /// <returns>repository of BestiaryNetsRepository.</returns>
+    public BestiaryNetsRepository LoadBestiaryNetsRepository()
     {
-        return BestiaryNetsDat.Load(dataLoader).AsReadOnly();
+        bestiarynetsrepository ??= new BestiaryNetsRepository(logger, this);
+        return bestiarynetsrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryRecipeComponentDat data.
+    /// Gets BestiaryRecipeComponentRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryRecipeComponentDat.</returns>
-    public ReadOnlyCollection<BestiaryRecipeComponentDat> LoadBestiaryRecipeComponentDat()
+    /// <returns>repository of BestiaryRecipeComponentRepository.</returns>
+    public BestiaryRecipeComponentRepository LoadBestiaryRecipeComponentRepository()
     {
-        return BestiaryRecipeComponentDat.Load(dataLoader).AsReadOnly();
+        bestiaryrecipecomponentrepository ??= new BestiaryRecipeComponentRepository(logger, this);
+        return bestiaryrecipecomponentrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryRecipeCategoriesDat data.
+    /// Gets BestiaryRecipeCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryRecipeCategoriesDat.</returns>
-    public ReadOnlyCollection<BestiaryRecipeCategoriesDat> LoadBestiaryRecipeCategoriesDat()
+    /// <returns>repository of BestiaryRecipeCategoriesRepository.</returns>
+    public BestiaryRecipeCategoriesRepository LoadBestiaryRecipeCategoriesRepository()
     {
-        return BestiaryRecipeCategoriesDat.Load(dataLoader).AsReadOnly();
+        bestiaryrecipecategoriesrepository ??= new BestiaryRecipeCategoriesRepository(logger, this);
+        return bestiaryrecipecategoriesrepository;
     }
 
     /// <summary>
-    /// Gets BestiaryRecipesDat data.
+    /// Gets BestiaryRecipesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BestiaryRecipesDat.</returns>
-    public ReadOnlyCollection<BestiaryRecipesDat> LoadBestiaryRecipesDat()
+    /// <returns>repository of BestiaryRecipesRepository.</returns>
+    public BestiaryRecipesRepository LoadBestiaryRecipesRepository()
     {
-        return BestiaryRecipesDat.Load(dataLoader).AsReadOnly();
+        bestiaryrecipesrepository ??= new BestiaryRecipesRepository(logger, this);
+        return bestiaryrecipesrepository;
     }
 
     /// <summary>
-    /// Gets ArchitectLifeScalingPerLevelDat data.
+    /// Gets ArchitectLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchitectLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<ArchitectLifeScalingPerLevelDat> LoadArchitectLifeScalingPerLevelDat()
+    /// <returns>repository of ArchitectLifeScalingPerLevelRepository.</returns>
+    public ArchitectLifeScalingPerLevelRepository LoadArchitectLifeScalingPerLevelRepository()
     {
-        return ArchitectLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        architectlifescalingperlevelrepository ??= new ArchitectLifeScalingPerLevelRepository(logger, this);
+        return architectlifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets IncursionArchitectDat data.
+    /// Gets IncursionArchitectRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncursionArchitectDat.</returns>
-    public ReadOnlyCollection<IncursionArchitectDat> LoadIncursionArchitectDat()
+    /// <returns>repository of IncursionArchitectRepository.</returns>
+    public IncursionArchitectRepository LoadIncursionArchitectRepository()
     {
-        return IncursionArchitectDat.Load(dataLoader).AsReadOnly();
+        incursionarchitectrepository ??= new IncursionArchitectRepository(logger, this);
+        return incursionarchitectrepository;
     }
 
     /// <summary>
-    /// Gets IncursionBracketsDat data.
+    /// Gets IncursionBracketsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncursionBracketsDat.</returns>
-    public ReadOnlyCollection<IncursionBracketsDat> LoadIncursionBracketsDat()
+    /// <returns>repository of IncursionBracketsRepository.</returns>
+    public IncursionBracketsRepository LoadIncursionBracketsRepository()
     {
-        return IncursionBracketsDat.Load(dataLoader).AsReadOnly();
+        incursionbracketsrepository ??= new IncursionBracketsRepository(logger, this);
+        return incursionbracketsrepository;
     }
 
     /// <summary>
-    /// Gets IncursionChestRewardsDat data.
+    /// Gets IncursionChestRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncursionChestRewardsDat.</returns>
-    public ReadOnlyCollection<IncursionChestRewardsDat> LoadIncursionChestRewardsDat()
+    /// <returns>repository of IncursionChestRewardsRepository.</returns>
+    public IncursionChestRewardsRepository LoadIncursionChestRewardsRepository()
     {
-        return IncursionChestRewardsDat.Load(dataLoader).AsReadOnly();
+        incursionchestrewardsrepository ??= new IncursionChestRewardsRepository(logger, this);
+        return incursionchestrewardsrepository;
     }
 
     /// <summary>
-    /// Gets IncursionChestsDat data.
+    /// Gets IncursionChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncursionChestsDat.</returns>
-    public ReadOnlyCollection<IncursionChestsDat> LoadIncursionChestsDat()
+    /// <returns>repository of IncursionChestsRepository.</returns>
+    public IncursionChestsRepository LoadIncursionChestsRepository()
     {
-        return IncursionChestsDat.Load(dataLoader).AsReadOnly();
+        incursionchestsrepository ??= new IncursionChestsRepository(logger, this);
+        return incursionchestsrepository;
     }
 
     /// <summary>
-    /// Gets IncursionRoomBossFightEventsDat data.
+    /// Gets IncursionRoomBossFightEventsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncursionRoomBossFightEventsDat.</returns>
-    public ReadOnlyCollection<IncursionRoomBossFightEventsDat> LoadIncursionRoomBossFightEventsDat()
+    /// <returns>repository of IncursionRoomBossFightEventsRepository.</returns>
+    public IncursionRoomBossFightEventsRepository LoadIncursionRoomBossFightEventsRepository()
     {
-        return IncursionRoomBossFightEventsDat.Load(dataLoader).AsReadOnly();
+        incursionroombossfighteventsrepository ??= new IncursionRoomBossFightEventsRepository(logger, this);
+        return incursionroombossfighteventsrepository;
     }
 
     /// <summary>
-    /// Gets IncursionRoomsDat data.
+    /// Gets IncursionRoomsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncursionRoomsDat.</returns>
-    public ReadOnlyCollection<IncursionRoomsDat> LoadIncursionRoomsDat()
+    /// <returns>repository of IncursionRoomsRepository.</returns>
+    public IncursionRoomsRepository LoadIncursionRoomsRepository()
     {
-        return IncursionRoomsDat.Load(dataLoader).AsReadOnly();
+        incursionroomsrepository ??= new IncursionRoomsRepository(logger, this);
+        return incursionroomsrepository;
     }
 
     /// <summary>
-    /// Gets IncursionUniqueUpgradeComponentsDat data.
+    /// Gets IncursionUniqueUpgradeComponentsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncursionUniqueUpgradeComponentsDat.</returns>
-    public ReadOnlyCollection<IncursionUniqueUpgradeComponentsDat> LoadIncursionUniqueUpgradeComponentsDat()
+    /// <returns>repository of IncursionUniqueUpgradeComponentsRepository.</returns>
+    public IncursionUniqueUpgradeComponentsRepository LoadIncursionUniqueUpgradeComponentsRepository()
     {
-        return IncursionUniqueUpgradeComponentsDat.Load(dataLoader).AsReadOnly();
+        incursionuniqueupgradecomponentsrepository ??= new IncursionUniqueUpgradeComponentsRepository(logger, this);
+        return incursionuniqueupgradecomponentsrepository;
     }
 
     /// <summary>
-    /// Gets DelveAzuriteShopDat data.
+    /// Gets DelveAzuriteShopRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveAzuriteShopDat.</returns>
-    public ReadOnlyCollection<DelveAzuriteShopDat> LoadDelveAzuriteShopDat()
+    /// <returns>repository of DelveAzuriteShopRepository.</returns>
+    public DelveAzuriteShopRepository LoadDelveAzuriteShopRepository()
     {
-        return DelveAzuriteShopDat.Load(dataLoader).AsReadOnly();
+        delveazuriteshoprepository ??= new DelveAzuriteShopRepository(logger, this);
+        return delveazuriteshoprepository;
     }
 
     /// <summary>
-    /// Gets DelveBiomesDat data.
+    /// Gets DelveBiomesRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveBiomesDat.</returns>
-    public ReadOnlyCollection<DelveBiomesDat> LoadDelveBiomesDat()
+    /// <returns>repository of DelveBiomesRepository.</returns>
+    public DelveBiomesRepository LoadDelveBiomesRepository()
     {
-        return DelveBiomesDat.Load(dataLoader).AsReadOnly();
+        delvebiomesrepository ??= new DelveBiomesRepository(logger, this);
+        return delvebiomesrepository;
     }
 
     /// <summary>
-    /// Gets DelveCatchupDepthsDat data.
+    /// Gets DelveCatchupDepthsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveCatchupDepthsDat.</returns>
-    public ReadOnlyCollection<DelveCatchupDepthsDat> LoadDelveCatchupDepthsDat()
+    /// <returns>repository of DelveCatchupDepthsRepository.</returns>
+    public DelveCatchupDepthsRepository LoadDelveCatchupDepthsRepository()
     {
-        return DelveCatchupDepthsDat.Load(dataLoader).AsReadOnly();
+        delvecatchupdepthsrepository ??= new DelveCatchupDepthsRepository(logger, this);
+        return delvecatchupdepthsrepository;
     }
 
     /// <summary>
-    /// Gets DelveCraftingModifierDescriptionsDat data.
+    /// Gets DelveCraftingModifierDescriptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveCraftingModifierDescriptionsDat.</returns>
-    public ReadOnlyCollection<DelveCraftingModifierDescriptionsDat> LoadDelveCraftingModifierDescriptionsDat()
+    /// <returns>repository of DelveCraftingModifierDescriptionsRepository.</returns>
+    public DelveCraftingModifierDescriptionsRepository LoadDelveCraftingModifierDescriptionsRepository()
     {
-        return DelveCraftingModifierDescriptionsDat.Load(dataLoader).AsReadOnly();
+        delvecraftingmodifierdescriptionsrepository ??= new DelveCraftingModifierDescriptionsRepository(logger, this);
+        return delvecraftingmodifierdescriptionsrepository;
     }
 
     /// <summary>
-    /// Gets DelveCraftingModifiersDat data.
+    /// Gets DelveCraftingModifiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveCraftingModifiersDat.</returns>
-    public ReadOnlyCollection<DelveCraftingModifiersDat> LoadDelveCraftingModifiersDat()
+    /// <returns>repository of DelveCraftingModifiersRepository.</returns>
+    public DelveCraftingModifiersRepository LoadDelveCraftingModifiersRepository()
     {
-        return DelveCraftingModifiersDat.Load(dataLoader).AsReadOnly();
+        delvecraftingmodifiersrepository ??= new DelveCraftingModifiersRepository(logger, this);
+        return delvecraftingmodifiersrepository;
     }
 
     /// <summary>
-    /// Gets DelveCraftingTagsDat data.
+    /// Gets DelveCraftingTagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveCraftingTagsDat.</returns>
-    public ReadOnlyCollection<DelveCraftingTagsDat> LoadDelveCraftingTagsDat()
+    /// <returns>repository of DelveCraftingTagsRepository.</returns>
+    public DelveCraftingTagsRepository LoadDelveCraftingTagsRepository()
     {
-        return DelveCraftingTagsDat.Load(dataLoader).AsReadOnly();
+        delvecraftingtagsrepository ??= new DelveCraftingTagsRepository(logger, this);
+        return delvecraftingtagsrepository;
     }
 
     /// <summary>
-    /// Gets DelveDynamiteDat data.
+    /// Gets DelveDynamiteRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveDynamiteDat.</returns>
-    public ReadOnlyCollection<DelveDynamiteDat> LoadDelveDynamiteDat()
+    /// <returns>repository of DelveDynamiteRepository.</returns>
+    public DelveDynamiteRepository LoadDelveDynamiteRepository()
     {
-        return DelveDynamiteDat.Load(dataLoader).AsReadOnly();
+        delvedynamiterepository ??= new DelveDynamiteRepository(logger, this);
+        return delvedynamiterepository;
     }
 
     /// <summary>
-    /// Gets DelveFeaturesDat data.
+    /// Gets DelveFeaturesRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveFeaturesDat.</returns>
-    public ReadOnlyCollection<DelveFeaturesDat> LoadDelveFeaturesDat()
+    /// <returns>repository of DelveFeaturesRepository.</returns>
+    public DelveFeaturesRepository LoadDelveFeaturesRepository()
     {
-        return DelveFeaturesDat.Load(dataLoader).AsReadOnly();
+        delvefeaturesrepository ??= new DelveFeaturesRepository(logger, this);
+        return delvefeaturesrepository;
     }
 
     /// <summary>
-    /// Gets DelveFlaresDat data.
+    /// Gets DelveFlaresRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveFlaresDat.</returns>
-    public ReadOnlyCollection<DelveFlaresDat> LoadDelveFlaresDat()
+    /// <returns>repository of DelveFlaresRepository.</returns>
+    public DelveFlaresRepository LoadDelveFlaresRepository()
     {
-        return DelveFlaresDat.Load(dataLoader).AsReadOnly();
+        delveflaresrepository ??= new DelveFlaresRepository(logger, this);
+        return delveflaresrepository;
     }
 
     /// <summary>
-    /// Gets DelveLevelScalingDat data.
+    /// Gets DelveLevelScalingRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveLevelScalingDat.</returns>
-    public ReadOnlyCollection<DelveLevelScalingDat> LoadDelveLevelScalingDat()
+    /// <returns>repository of DelveLevelScalingRepository.</returns>
+    public DelveLevelScalingRepository LoadDelveLevelScalingRepository()
     {
-        return DelveLevelScalingDat.Load(dataLoader).AsReadOnly();
+        delvelevelscalingrepository ??= new DelveLevelScalingRepository(logger, this);
+        return delvelevelscalingrepository;
     }
 
     /// <summary>
-    /// Gets DelveMonsterSpawnersDat data.
+    /// Gets DelveMonsterSpawnersRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveMonsterSpawnersDat.</returns>
-    public ReadOnlyCollection<DelveMonsterSpawnersDat> LoadDelveMonsterSpawnersDat()
+    /// <returns>repository of DelveMonsterSpawnersRepository.</returns>
+    public DelveMonsterSpawnersRepository LoadDelveMonsterSpawnersRepository()
     {
-        return DelveMonsterSpawnersDat.Load(dataLoader).AsReadOnly();
+        delvemonsterspawnersrepository ??= new DelveMonsterSpawnersRepository(logger, this);
+        return delvemonsterspawnersrepository;
     }
 
     /// <summary>
-    /// Gets DelveResourcePerLevelDat data.
+    /// Gets DelveResourcePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveResourcePerLevelDat.</returns>
-    public ReadOnlyCollection<DelveResourcePerLevelDat> LoadDelveResourcePerLevelDat()
+    /// <returns>repository of DelveResourcePerLevelRepository.</returns>
+    public DelveResourcePerLevelRepository LoadDelveResourcePerLevelRepository()
     {
-        return DelveResourcePerLevelDat.Load(dataLoader).AsReadOnly();
+        delveresourceperlevelrepository ??= new DelveResourcePerLevelRepository(logger, this);
+        return delveresourceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets DelveRewardTierConstantsDat data.
+    /// Gets DelveRewardTierConstantsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveRewardTierConstantsDat.</returns>
-    public ReadOnlyCollection<DelveRewardTierConstantsDat> LoadDelveRewardTierConstantsDat()
+    /// <returns>repository of DelveRewardTierConstantsRepository.</returns>
+    public DelveRewardTierConstantsRepository LoadDelveRewardTierConstantsRepository()
     {
-        return DelveRewardTierConstantsDat.Load(dataLoader).AsReadOnly();
+        delverewardtierconstantsrepository ??= new DelveRewardTierConstantsRepository(logger, this);
+        return delverewardtierconstantsrepository;
     }
 
     /// <summary>
-    /// Gets DelveRoomsDat data.
+    /// Gets DelveRoomsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveRoomsDat.</returns>
-    public ReadOnlyCollection<DelveRoomsDat> LoadDelveRoomsDat()
+    /// <returns>repository of DelveRoomsRepository.</returns>
+    public DelveRoomsRepository LoadDelveRoomsRepository()
     {
-        return DelveRoomsDat.Load(dataLoader).AsReadOnly();
+        delveroomsrepository ??= new DelveRoomsRepository(logger, this);
+        return delveroomsrepository;
     }
 
     /// <summary>
-    /// Gets DelveUpgradesDat data.
+    /// Gets DelveUpgradesRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveUpgradesDat.</returns>
-    public ReadOnlyCollection<DelveUpgradesDat> LoadDelveUpgradesDat()
+    /// <returns>repository of DelveUpgradesRepository.</returns>
+    public DelveUpgradesRepository LoadDelveUpgradesRepository()
     {
-        return DelveUpgradesDat.Load(dataLoader).AsReadOnly();
+        delveupgradesrepository ??= new DelveUpgradesRepository(logger, this);
+        return delveupgradesrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalChoiceActionsDat data.
+    /// Gets BetrayalChoiceActionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalChoiceActionsDat.</returns>
-    public ReadOnlyCollection<BetrayalChoiceActionsDat> LoadBetrayalChoiceActionsDat()
+    /// <returns>repository of BetrayalChoiceActionsRepository.</returns>
+    public BetrayalChoiceActionsRepository LoadBetrayalChoiceActionsRepository()
     {
-        return BetrayalChoiceActionsDat.Load(dataLoader).AsReadOnly();
+        betrayalchoiceactionsrepository ??= new BetrayalChoiceActionsRepository(logger, this);
+        return betrayalchoiceactionsrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalChoicesDat data.
+    /// Gets BetrayalChoicesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalChoicesDat.</returns>
-    public ReadOnlyCollection<BetrayalChoicesDat> LoadBetrayalChoicesDat()
+    /// <returns>repository of BetrayalChoicesRepository.</returns>
+    public BetrayalChoicesRepository LoadBetrayalChoicesRepository()
     {
-        return BetrayalChoicesDat.Load(dataLoader).AsReadOnly();
+        betrayalchoicesrepository ??= new BetrayalChoicesRepository(logger, this);
+        return betrayalchoicesrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalDialogueDat data.
+    /// Gets BetrayalDialogueRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalDialogueDat.</returns>
-    public ReadOnlyCollection<BetrayalDialogueDat> LoadBetrayalDialogueDat()
+    /// <returns>repository of BetrayalDialogueRepository.</returns>
+    public BetrayalDialogueRepository LoadBetrayalDialogueRepository()
     {
-        return BetrayalDialogueDat.Load(dataLoader).AsReadOnly();
+        betrayaldialoguerepository ??= new BetrayalDialogueRepository(logger, this);
+        return betrayaldialoguerepository;
     }
 
     /// <summary>
-    /// Gets BetrayalFortsDat data.
+    /// Gets BetrayalFortsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalFortsDat.</returns>
-    public ReadOnlyCollection<BetrayalFortsDat> LoadBetrayalFortsDat()
+    /// <returns>repository of BetrayalFortsRepository.</returns>
+    public BetrayalFortsRepository LoadBetrayalFortsRepository()
     {
-        return BetrayalFortsDat.Load(dataLoader).AsReadOnly();
+        betrayalfortsrepository ??= new BetrayalFortsRepository(logger, this);
+        return betrayalfortsrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalJobsDat data.
+    /// Gets BetrayalJobsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalJobsDat.</returns>
-    public ReadOnlyCollection<BetrayalJobsDat> LoadBetrayalJobsDat()
+    /// <returns>repository of BetrayalJobsRepository.</returns>
+    public BetrayalJobsRepository LoadBetrayalJobsRepository()
     {
-        return BetrayalJobsDat.Load(dataLoader).AsReadOnly();
+        betrayaljobsrepository ??= new BetrayalJobsRepository(logger, this);
+        return betrayaljobsrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalRanksDat data.
+    /// Gets BetrayalRanksRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalRanksDat.</returns>
-    public ReadOnlyCollection<BetrayalRanksDat> LoadBetrayalRanksDat()
+    /// <returns>repository of BetrayalRanksRepository.</returns>
+    public BetrayalRanksRepository LoadBetrayalRanksRepository()
     {
-        return BetrayalRanksDat.Load(dataLoader).AsReadOnly();
+        betrayalranksrepository ??= new BetrayalRanksRepository(logger, this);
+        return betrayalranksrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalRelationshipStateDat data.
+    /// Gets BetrayalRelationshipStateRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalRelationshipStateDat.</returns>
-    public ReadOnlyCollection<BetrayalRelationshipStateDat> LoadBetrayalRelationshipStateDat()
+    /// <returns>repository of BetrayalRelationshipStateRepository.</returns>
+    public BetrayalRelationshipStateRepository LoadBetrayalRelationshipStateRepository()
     {
-        return BetrayalRelationshipStateDat.Load(dataLoader).AsReadOnly();
+        betrayalrelationshipstaterepository ??= new BetrayalRelationshipStateRepository(logger, this);
+        return betrayalrelationshipstaterepository;
     }
 
     /// <summary>
-    /// Gets BetrayalTargetJobAchievementsDat data.
+    /// Gets BetrayalTargetJobAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalTargetJobAchievementsDat.</returns>
-    public ReadOnlyCollection<BetrayalTargetJobAchievementsDat> LoadBetrayalTargetJobAchievementsDat()
+    /// <returns>repository of BetrayalTargetJobAchievementsRepository.</returns>
+    public BetrayalTargetJobAchievementsRepository LoadBetrayalTargetJobAchievementsRepository()
     {
-        return BetrayalTargetJobAchievementsDat.Load(dataLoader).AsReadOnly();
+        betrayaltargetjobachievementsrepository ??= new BetrayalTargetJobAchievementsRepository(logger, this);
+        return betrayaltargetjobachievementsrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalTargetLifeScalingPerLevelDat data.
+    /// Gets BetrayalTargetLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalTargetLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<BetrayalTargetLifeScalingPerLevelDat> LoadBetrayalTargetLifeScalingPerLevelDat()
+    /// <returns>repository of BetrayalTargetLifeScalingPerLevelRepository.</returns>
+    public BetrayalTargetLifeScalingPerLevelRepository LoadBetrayalTargetLifeScalingPerLevelRepository()
     {
-        return BetrayalTargetLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        betrayaltargetlifescalingperlevelrepository ??= new BetrayalTargetLifeScalingPerLevelRepository(logger, this);
+        return betrayaltargetlifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalTargetsDat data.
+    /// Gets BetrayalTargetsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalTargetsDat.</returns>
-    public ReadOnlyCollection<BetrayalTargetsDat> LoadBetrayalTargetsDat()
+    /// <returns>repository of BetrayalTargetsRepository.</returns>
+    public BetrayalTargetsRepository LoadBetrayalTargetsRepository()
     {
-        return BetrayalTargetsDat.Load(dataLoader).AsReadOnly();
+        betrayaltargetsrepository ??= new BetrayalTargetsRepository(logger, this);
+        return betrayaltargetsrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalTraitorRewardsDat data.
+    /// Gets BetrayalTraitorRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalTraitorRewardsDat.</returns>
-    public ReadOnlyCollection<BetrayalTraitorRewardsDat> LoadBetrayalTraitorRewardsDat()
+    /// <returns>repository of BetrayalTraitorRewardsRepository.</returns>
+    public BetrayalTraitorRewardsRepository LoadBetrayalTraitorRewardsRepository()
     {
-        return BetrayalTraitorRewardsDat.Load(dataLoader).AsReadOnly();
+        betrayaltraitorrewardsrepository ??= new BetrayalTraitorRewardsRepository(logger, this);
+        return betrayaltraitorrewardsrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalUpgradesDat data.
+    /// Gets BetrayalUpgradesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalUpgradesDat.</returns>
-    public ReadOnlyCollection<BetrayalUpgradesDat> LoadBetrayalUpgradesDat()
+    /// <returns>repository of BetrayalUpgradesRepository.</returns>
+    public BetrayalUpgradesRepository LoadBetrayalUpgradesRepository()
     {
-        return BetrayalUpgradesDat.Load(dataLoader).AsReadOnly();
+        betrayalupgradesrepository ??= new BetrayalUpgradesRepository(logger, this);
+        return betrayalupgradesrepository;
     }
 
     /// <summary>
-    /// Gets BetrayalWallLifeScalingPerLevelDat data.
+    /// Gets BetrayalWallLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of BetrayalWallLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<BetrayalWallLifeScalingPerLevelDat> LoadBetrayalWallLifeScalingPerLevelDat()
+    /// <returns>repository of BetrayalWallLifeScalingPerLevelRepository.</returns>
+    public BetrayalWallLifeScalingPerLevelRepository LoadBetrayalWallLifeScalingPerLevelRepository()
     {
-        return BetrayalWallLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        betrayalwalllifescalingperlevelrepository ??= new BetrayalWallLifeScalingPerLevelRepository(logger, this);
+        return betrayalwalllifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets SafehouseBYOCraftingDat data.
+    /// Gets SafehouseBYOCraftingRepository data.
     /// </summary>
-    /// <returns>readonly collection of SafehouseBYOCraftingDat.</returns>
-    public ReadOnlyCollection<SafehouseBYOCraftingDat> LoadSafehouseBYOCraftingDat()
+    /// <returns>repository of SafehouseBYOCraftingRepository.</returns>
+    public SafehouseBYOCraftingRepository LoadSafehouseBYOCraftingRepository()
     {
-        return SafehouseBYOCraftingDat.Load(dataLoader).AsReadOnly();
+        safehousebyocraftingrepository ??= new SafehouseBYOCraftingRepository(logger, this);
+        return safehousebyocraftingrepository;
     }
 
     /// <summary>
-    /// Gets SafehouseCraftingSpreeTypeDat data.
+    /// Gets SafehouseCraftingSpreeTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of SafehouseCraftingSpreeTypeDat.</returns>
-    public ReadOnlyCollection<SafehouseCraftingSpreeTypeDat> LoadSafehouseCraftingSpreeTypeDat()
+    /// <returns>repository of SafehouseCraftingSpreeTypeRepository.</returns>
+    public SafehouseCraftingSpreeTypeRepository LoadSafehouseCraftingSpreeTypeRepository()
     {
-        return SafehouseCraftingSpreeTypeDat.Load(dataLoader).AsReadOnly();
+        safehousecraftingspreetyperepository ??= new SafehouseCraftingSpreeTypeRepository(logger, this);
+        return safehousecraftingspreetyperepository;
     }
 
     /// <summary>
-    /// Gets SafehouseCraftingSpreeCurrenciesDat data.
+    /// Gets SafehouseCraftingSpreeCurrenciesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SafehouseCraftingSpreeCurrenciesDat.</returns>
-    public ReadOnlyCollection<SafehouseCraftingSpreeCurrenciesDat> LoadSafehouseCraftingSpreeCurrenciesDat()
+    /// <returns>repository of SafehouseCraftingSpreeCurrenciesRepository.</returns>
+    public SafehouseCraftingSpreeCurrenciesRepository LoadSafehouseCraftingSpreeCurrenciesRepository()
     {
-        return SafehouseCraftingSpreeCurrenciesDat.Load(dataLoader).AsReadOnly();
+        safehousecraftingspreecurrenciesrepository ??= new SafehouseCraftingSpreeCurrenciesRepository(logger, this);
+        return safehousecraftingspreecurrenciesrepository;
     }
 
     /// <summary>
-    /// Gets ScarabsDat data.
+    /// Gets ScarabsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ScarabsDat.</returns>
-    public ReadOnlyCollection<ScarabsDat> LoadScarabsDat()
+    /// <returns>repository of ScarabsRepository.</returns>
+    public ScarabsRepository LoadScarabsRepository()
     {
-        return ScarabsDat.Load(dataLoader).AsReadOnly();
+        scarabsrepository ??= new ScarabsRepository(logger, this);
+        return scarabsrepository;
     }
 
     /// <summary>
-    /// Gets SynthesisAreasDat data.
+    /// Gets SynthesisAreasRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisAreasDat.</returns>
-    public ReadOnlyCollection<SynthesisAreasDat> LoadSynthesisAreasDat()
+    /// <returns>repository of SynthesisAreasRepository.</returns>
+    public SynthesisAreasRepository LoadSynthesisAreasRepository()
     {
-        return SynthesisAreasDat.Load(dataLoader).AsReadOnly();
+        synthesisareasrepository ??= new SynthesisAreasRepository(logger, this);
+        return synthesisareasrepository;
     }
 
     /// <summary>
-    /// Gets SynthesisAreaSizeDat data.
+    /// Gets SynthesisAreaSizeRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisAreaSizeDat.</returns>
-    public ReadOnlyCollection<SynthesisAreaSizeDat> LoadSynthesisAreaSizeDat()
+    /// <returns>repository of SynthesisAreaSizeRepository.</returns>
+    public SynthesisAreaSizeRepository LoadSynthesisAreaSizeRepository()
     {
-        return SynthesisAreaSizeDat.Load(dataLoader).AsReadOnly();
+        synthesisareasizerepository ??= new SynthesisAreaSizeRepository(logger, this);
+        return synthesisareasizerepository;
     }
 
     /// <summary>
-    /// Gets SynthesisBonusesDat data.
+    /// Gets SynthesisBonusesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisBonusesDat.</returns>
-    public ReadOnlyCollection<SynthesisBonusesDat> LoadSynthesisBonusesDat()
+    /// <returns>repository of SynthesisBonusesRepository.</returns>
+    public SynthesisBonusesRepository LoadSynthesisBonusesRepository()
     {
-        return SynthesisBonusesDat.Load(dataLoader).AsReadOnly();
+        synthesisbonusesrepository ??= new SynthesisBonusesRepository(logger, this);
+        return synthesisbonusesrepository;
     }
 
     /// <summary>
-    /// Gets SynthesisBracketsDat data.
+    /// Gets SynthesisBracketsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisBracketsDat.</returns>
-    public ReadOnlyCollection<SynthesisBracketsDat> LoadSynthesisBracketsDat()
+    /// <returns>repository of SynthesisBracketsRepository.</returns>
+    public SynthesisBracketsRepository LoadSynthesisBracketsRepository()
     {
-        return SynthesisBracketsDat.Load(dataLoader).AsReadOnly();
+        synthesisbracketsrepository ??= new SynthesisBracketsRepository(logger, this);
+        return synthesisbracketsrepository;
     }
 
     /// <summary>
-    /// Gets SynthesisFragmentDialogueDat data.
+    /// Gets SynthesisFragmentDialogueRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisFragmentDialogueDat.</returns>
-    public ReadOnlyCollection<SynthesisFragmentDialogueDat> LoadSynthesisFragmentDialogueDat()
+    /// <returns>repository of SynthesisFragmentDialogueRepository.</returns>
+    public SynthesisFragmentDialogueRepository LoadSynthesisFragmentDialogueRepository()
     {
-        return SynthesisFragmentDialogueDat.Load(dataLoader).AsReadOnly();
+        synthesisfragmentdialoguerepository ??= new SynthesisFragmentDialogueRepository(logger, this);
+        return synthesisfragmentdialoguerepository;
     }
 
     /// <summary>
-    /// Gets SynthesisGlobalModsDat data.
+    /// Gets SynthesisGlobalModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisGlobalModsDat.</returns>
-    public ReadOnlyCollection<SynthesisGlobalModsDat> LoadSynthesisGlobalModsDat()
+    /// <returns>repository of SynthesisGlobalModsRepository.</returns>
+    public SynthesisGlobalModsRepository LoadSynthesisGlobalModsRepository()
     {
-        return SynthesisGlobalModsDat.Load(dataLoader).AsReadOnly();
+        synthesisglobalmodsrepository ??= new SynthesisGlobalModsRepository(logger, this);
+        return synthesisglobalmodsrepository;
     }
 
     /// <summary>
-    /// Gets SynthesisMonsterExperiencePerLevelDat data.
+    /// Gets SynthesisMonsterExperiencePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisMonsterExperiencePerLevelDat.</returns>
-    public ReadOnlyCollection<SynthesisMonsterExperiencePerLevelDat> LoadSynthesisMonsterExperiencePerLevelDat()
+    /// <returns>repository of SynthesisMonsterExperiencePerLevelRepository.</returns>
+    public SynthesisMonsterExperiencePerLevelRepository LoadSynthesisMonsterExperiencePerLevelRepository()
     {
-        return SynthesisMonsterExperiencePerLevelDat.Load(dataLoader).AsReadOnly();
+        synthesismonsterexperienceperlevelrepository ??= new SynthesisMonsterExperiencePerLevelRepository(logger, this);
+        return synthesismonsterexperienceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets SynthesisRewardCategoriesDat data.
+    /// Gets SynthesisRewardCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisRewardCategoriesDat.</returns>
-    public ReadOnlyCollection<SynthesisRewardCategoriesDat> LoadSynthesisRewardCategoriesDat()
+    /// <returns>repository of SynthesisRewardCategoriesRepository.</returns>
+    public SynthesisRewardCategoriesRepository LoadSynthesisRewardCategoriesRepository()
     {
-        return SynthesisRewardCategoriesDat.Load(dataLoader).AsReadOnly();
+        synthesisrewardcategoriesrepository ??= new SynthesisRewardCategoriesRepository(logger, this);
+        return synthesisrewardcategoriesrepository;
     }
 
     /// <summary>
-    /// Gets SynthesisRewardTypesDat data.
+    /// Gets SynthesisRewardTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SynthesisRewardTypesDat.</returns>
-    public ReadOnlyCollection<SynthesisRewardTypesDat> LoadSynthesisRewardTypesDat()
+    /// <returns>repository of SynthesisRewardTypesRepository.</returns>
+    public SynthesisRewardTypesRepository LoadSynthesisRewardTypesRepository()
     {
-        return SynthesisRewardTypesDat.Load(dataLoader).AsReadOnly();
+        synthesisrewardtypesrepository ??= new SynthesisRewardTypesRepository(logger, this);
+        return synthesisrewardtypesrepository;
     }
 
     /// <summary>
-    /// Gets IncubatorsDat data.
+    /// Gets IncubatorsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IncubatorsDat.</returns>
-    public ReadOnlyCollection<IncubatorsDat> LoadIncubatorsDat()
+    /// <returns>repository of IncubatorsRepository.</returns>
+    public IncubatorsRepository LoadIncubatorsRepository()
     {
-        return IncubatorsDat.Load(dataLoader).AsReadOnly();
+        incubatorsrepository ??= new IncubatorsRepository(logger, this);
+        return incubatorsrepository;
     }
 
     /// <summary>
-    /// Gets LegionBalancePerLevelDat data.
+    /// Gets LegionBalancePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionBalancePerLevelDat.</returns>
-    public ReadOnlyCollection<LegionBalancePerLevelDat> LoadLegionBalancePerLevelDat()
+    /// <returns>repository of LegionBalancePerLevelRepository.</returns>
+    public LegionBalancePerLevelRepository LoadLegionBalancePerLevelRepository()
     {
-        return LegionBalancePerLevelDat.Load(dataLoader).AsReadOnly();
+        legionbalanceperlevelrepository ??= new LegionBalancePerLevelRepository(logger, this);
+        return legionbalanceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets LegionChestTypesDat data.
+    /// Gets LegionChestTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionChestTypesDat.</returns>
-    public ReadOnlyCollection<LegionChestTypesDat> LoadLegionChestTypesDat()
+    /// <returns>repository of LegionChestTypesRepository.</returns>
+    public LegionChestTypesRepository LoadLegionChestTypesRepository()
     {
-        return LegionChestTypesDat.Load(dataLoader).AsReadOnly();
+        legionchesttypesrepository ??= new LegionChestTypesRepository(logger, this);
+        return legionchesttypesrepository;
     }
 
     /// <summary>
-    /// Gets LegionChestCountsDat data.
+    /// Gets LegionChestCountsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionChestCountsDat.</returns>
-    public ReadOnlyCollection<LegionChestCountsDat> LoadLegionChestCountsDat()
+    /// <returns>repository of LegionChestCountsRepository.</returns>
+    public LegionChestCountsRepository LoadLegionChestCountsRepository()
     {
-        return LegionChestCountsDat.Load(dataLoader).AsReadOnly();
+        legionchestcountsrepository ??= new LegionChestCountsRepository(logger, this);
+        return legionchestcountsrepository;
     }
 
     /// <summary>
-    /// Gets LegionChestsDat data.
+    /// Gets LegionChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionChestsDat.</returns>
-    public ReadOnlyCollection<LegionChestsDat> LoadLegionChestsDat()
+    /// <returns>repository of LegionChestsRepository.</returns>
+    public LegionChestsRepository LoadLegionChestsRepository()
     {
-        return LegionChestsDat.Load(dataLoader).AsReadOnly();
+        legionchestsrepository ??= new LegionChestsRepository(logger, this);
+        return legionchestsrepository;
     }
 
     /// <summary>
-    /// Gets LegionFactionsDat data.
+    /// Gets LegionFactionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionFactionsDat.</returns>
-    public ReadOnlyCollection<LegionFactionsDat> LoadLegionFactionsDat()
+    /// <returns>repository of LegionFactionsRepository.</returns>
+    public LegionFactionsRepository LoadLegionFactionsRepository()
     {
-        return LegionFactionsDat.Load(dataLoader).AsReadOnly();
+        legionfactionsrepository ??= new LegionFactionsRepository(logger, this);
+        return legionfactionsrepository;
     }
 
     /// <summary>
-    /// Gets LegionMonsterCountsDat data.
+    /// Gets LegionMonsterCountsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionMonsterCountsDat.</returns>
-    public ReadOnlyCollection<LegionMonsterCountsDat> LoadLegionMonsterCountsDat()
+    /// <returns>repository of LegionMonsterCountsRepository.</returns>
+    public LegionMonsterCountsRepository LoadLegionMonsterCountsRepository()
     {
-        return LegionMonsterCountsDat.Load(dataLoader).AsReadOnly();
+        legionmonstercountsrepository ??= new LegionMonsterCountsRepository(logger, this);
+        return legionmonstercountsrepository;
     }
 
     /// <summary>
-    /// Gets LegionMonsterVarietiesDat data.
+    /// Gets LegionMonsterVarietiesRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionMonsterVarietiesDat.</returns>
-    public ReadOnlyCollection<LegionMonsterVarietiesDat> LoadLegionMonsterVarietiesDat()
+    /// <returns>repository of LegionMonsterVarietiesRepository.</returns>
+    public LegionMonsterVarietiesRepository LoadLegionMonsterVarietiesRepository()
     {
-        return LegionMonsterVarietiesDat.Load(dataLoader).AsReadOnly();
+        legionmonstervarietiesrepository ??= new LegionMonsterVarietiesRepository(logger, this);
+        return legionmonstervarietiesrepository;
     }
 
     /// <summary>
-    /// Gets LegionRanksDat data.
+    /// Gets LegionRanksRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionRanksDat.</returns>
-    public ReadOnlyCollection<LegionRanksDat> LoadLegionRanksDat()
+    /// <returns>repository of LegionRanksRepository.</returns>
+    public LegionRanksRepository LoadLegionRanksRepository()
     {
-        return LegionRanksDat.Load(dataLoader).AsReadOnly();
+        legionranksrepository ??= new LegionRanksRepository(logger, this);
+        return legionranksrepository;
     }
 
     /// <summary>
-    /// Gets LegionRewardTypeVisualsDat data.
+    /// Gets LegionRewardTypeVisualsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LegionRewardTypeVisualsDat.</returns>
-    public ReadOnlyCollection<LegionRewardTypeVisualsDat> LoadLegionRewardTypeVisualsDat()
+    /// <returns>repository of LegionRewardTypeVisualsRepository.</returns>
+    public LegionRewardTypeVisualsRepository LoadLegionRewardTypeVisualsRepository()
     {
-        return LegionRewardTypeVisualsDat.Load(dataLoader).AsReadOnly();
+        legionrewardtypevisualsrepository ??= new LegionRewardTypeVisualsRepository(logger, this);
+        return legionrewardtypevisualsrepository;
     }
 
     /// <summary>
-    /// Gets BlightBalancePerLevelDat data.
+    /// Gets BlightBalancePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightBalancePerLevelDat.</returns>
-    public ReadOnlyCollection<BlightBalancePerLevelDat> LoadBlightBalancePerLevelDat()
+    /// <returns>repository of BlightBalancePerLevelRepository.</returns>
+    public BlightBalancePerLevelRepository LoadBlightBalancePerLevelRepository()
     {
-        return BlightBalancePerLevelDat.Load(dataLoader).AsReadOnly();
+        blightbalanceperlevelrepository ??= new BlightBalancePerLevelRepository(logger, this);
+        return blightbalanceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets BlightBossLifeScalingPerLevelDat data.
+    /// Gets BlightBossLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightBossLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<BlightBossLifeScalingPerLevelDat> LoadBlightBossLifeScalingPerLevelDat()
+    /// <returns>repository of BlightBossLifeScalingPerLevelRepository.</returns>
+    public BlightBossLifeScalingPerLevelRepository LoadBlightBossLifeScalingPerLevelRepository()
     {
-        return BlightBossLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        blightbosslifescalingperlevelrepository ??= new BlightBossLifeScalingPerLevelRepository(logger, this);
+        return blightbosslifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets BlightChestTypesDat data.
+    /// Gets BlightChestTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightChestTypesDat.</returns>
-    public ReadOnlyCollection<BlightChestTypesDat> LoadBlightChestTypesDat()
+    /// <returns>repository of BlightChestTypesRepository.</returns>
+    public BlightChestTypesRepository LoadBlightChestTypesRepository()
     {
-        return BlightChestTypesDat.Load(dataLoader).AsReadOnly();
+        blightchesttypesrepository ??= new BlightChestTypesRepository(logger, this);
+        return blightchesttypesrepository;
     }
 
     /// <summary>
-    /// Gets BlightCraftingItemsDat data.
+    /// Gets BlightCraftingItemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightCraftingItemsDat.</returns>
-    public ReadOnlyCollection<BlightCraftingItemsDat> LoadBlightCraftingItemsDat()
+    /// <returns>repository of BlightCraftingItemsRepository.</returns>
+    public BlightCraftingItemsRepository LoadBlightCraftingItemsRepository()
     {
-        return BlightCraftingItemsDat.Load(dataLoader).AsReadOnly();
+        blightcraftingitemsrepository ??= new BlightCraftingItemsRepository(logger, this);
+        return blightcraftingitemsrepository;
     }
 
     /// <summary>
-    /// Gets BlightCraftingRecipesDat data.
+    /// Gets BlightCraftingRecipesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightCraftingRecipesDat.</returns>
-    public ReadOnlyCollection<BlightCraftingRecipesDat> LoadBlightCraftingRecipesDat()
+    /// <returns>repository of BlightCraftingRecipesRepository.</returns>
+    public BlightCraftingRecipesRepository LoadBlightCraftingRecipesRepository()
     {
-        return BlightCraftingRecipesDat.Load(dataLoader).AsReadOnly();
+        blightcraftingrecipesrepository ??= new BlightCraftingRecipesRepository(logger, this);
+        return blightcraftingrecipesrepository;
     }
 
     /// <summary>
-    /// Gets BlightCraftingResultsDat data.
+    /// Gets BlightCraftingResultsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightCraftingResultsDat.</returns>
-    public ReadOnlyCollection<BlightCraftingResultsDat> LoadBlightCraftingResultsDat()
+    /// <returns>repository of BlightCraftingResultsRepository.</returns>
+    public BlightCraftingResultsRepository LoadBlightCraftingResultsRepository()
     {
-        return BlightCraftingResultsDat.Load(dataLoader).AsReadOnly();
+        blightcraftingresultsrepository ??= new BlightCraftingResultsRepository(logger, this);
+        return blightcraftingresultsrepository;
     }
 
     /// <summary>
-    /// Gets BlightCraftingTypesDat data.
+    /// Gets BlightCraftingTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightCraftingTypesDat.</returns>
-    public ReadOnlyCollection<BlightCraftingTypesDat> LoadBlightCraftingTypesDat()
+    /// <returns>repository of BlightCraftingTypesRepository.</returns>
+    public BlightCraftingTypesRepository LoadBlightCraftingTypesRepository()
     {
-        return BlightCraftingTypesDat.Load(dataLoader).AsReadOnly();
+        blightcraftingtypesrepository ??= new BlightCraftingTypesRepository(logger, this);
+        return blightcraftingtypesrepository;
     }
 
     /// <summary>
-    /// Gets BlightCraftingUniquesDat data.
+    /// Gets BlightCraftingUniquesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightCraftingUniquesDat.</returns>
-    public ReadOnlyCollection<BlightCraftingUniquesDat> LoadBlightCraftingUniquesDat()
+    /// <returns>repository of BlightCraftingUniquesRepository.</returns>
+    public BlightCraftingUniquesRepository LoadBlightCraftingUniquesRepository()
     {
-        return BlightCraftingUniquesDat.Load(dataLoader).AsReadOnly();
+        blightcraftinguniquesrepository ??= new BlightCraftingUniquesRepository(logger, this);
+        return blightcraftinguniquesrepository;
     }
 
     /// <summary>
-    /// Gets BlightedSporeAurasDat data.
+    /// Gets BlightedSporeAurasRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightedSporeAurasDat.</returns>
-    public ReadOnlyCollection<BlightedSporeAurasDat> LoadBlightedSporeAurasDat()
+    /// <returns>repository of BlightedSporeAurasRepository.</returns>
+    public BlightedSporeAurasRepository LoadBlightedSporeAurasRepository()
     {
-        return BlightedSporeAurasDat.Load(dataLoader).AsReadOnly();
+        blightedsporeaurasrepository ??= new BlightedSporeAurasRepository(logger, this);
+        return blightedsporeaurasrepository;
     }
 
     /// <summary>
-    /// Gets BlightEncounterTypesDat data.
+    /// Gets BlightEncounterTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightEncounterTypesDat.</returns>
-    public ReadOnlyCollection<BlightEncounterTypesDat> LoadBlightEncounterTypesDat()
+    /// <returns>repository of BlightEncounterTypesRepository.</returns>
+    public BlightEncounterTypesRepository LoadBlightEncounterTypesRepository()
     {
-        return BlightEncounterTypesDat.Load(dataLoader).AsReadOnly();
+        blightencountertypesrepository ??= new BlightEncounterTypesRepository(logger, this);
+        return blightencountertypesrepository;
     }
 
     /// <summary>
-    /// Gets BlightEncounterWavesDat data.
+    /// Gets BlightEncounterWavesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightEncounterWavesDat.</returns>
-    public ReadOnlyCollection<BlightEncounterWavesDat> LoadBlightEncounterWavesDat()
+    /// <returns>repository of BlightEncounterWavesRepository.</returns>
+    public BlightEncounterWavesRepository LoadBlightEncounterWavesRepository()
     {
-        return BlightEncounterWavesDat.Load(dataLoader).AsReadOnly();
+        blightencounterwavesrepository ??= new BlightEncounterWavesRepository(logger, this);
+        return blightencounterwavesrepository;
     }
 
     /// <summary>
-    /// Gets BlightRewardTypesDat data.
+    /// Gets BlightRewardTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightRewardTypesDat.</returns>
-    public ReadOnlyCollection<BlightRewardTypesDat> LoadBlightRewardTypesDat()
+    /// <returns>repository of BlightRewardTypesRepository.</returns>
+    public BlightRewardTypesRepository LoadBlightRewardTypesRepository()
     {
-        return BlightRewardTypesDat.Load(dataLoader).AsReadOnly();
+        blightrewardtypesrepository ??= new BlightRewardTypesRepository(logger, this);
+        return blightrewardtypesrepository;
     }
 
     /// <summary>
-    /// Gets BlightTopologiesDat data.
+    /// Gets BlightTopologiesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightTopologiesDat.</returns>
-    public ReadOnlyCollection<BlightTopologiesDat> LoadBlightTopologiesDat()
+    /// <returns>repository of BlightTopologiesRepository.</returns>
+    public BlightTopologiesRepository LoadBlightTopologiesRepository()
     {
-        return BlightTopologiesDat.Load(dataLoader).AsReadOnly();
+        blighttopologiesrepository ??= new BlightTopologiesRepository(logger, this);
+        return blighttopologiesrepository;
     }
 
     /// <summary>
-    /// Gets BlightTopologyNodesDat data.
+    /// Gets BlightTopologyNodesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightTopologyNodesDat.</returns>
-    public ReadOnlyCollection<BlightTopologyNodesDat> LoadBlightTopologyNodesDat()
+    /// <returns>repository of BlightTopologyNodesRepository.</returns>
+    public BlightTopologyNodesRepository LoadBlightTopologyNodesRepository()
     {
-        return BlightTopologyNodesDat.Load(dataLoader).AsReadOnly();
+        blighttopologynodesrepository ??= new BlightTopologyNodesRepository(logger, this);
+        return blighttopologynodesrepository;
     }
 
     /// <summary>
-    /// Gets BlightTowerAurasDat data.
+    /// Gets BlightTowerAurasRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightTowerAurasDat.</returns>
-    public ReadOnlyCollection<BlightTowerAurasDat> LoadBlightTowerAurasDat()
+    /// <returns>repository of BlightTowerAurasRepository.</returns>
+    public BlightTowerAurasRepository LoadBlightTowerAurasRepository()
     {
-        return BlightTowerAurasDat.Load(dataLoader).AsReadOnly();
+        blighttoweraurasrepository ??= new BlightTowerAurasRepository(logger, this);
+        return blighttoweraurasrepository;
     }
 
     /// <summary>
-    /// Gets BlightTowersDat data.
+    /// Gets BlightTowersRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightTowersDat.</returns>
-    public ReadOnlyCollection<BlightTowersDat> LoadBlightTowersDat()
+    /// <returns>repository of BlightTowersRepository.</returns>
+    public BlightTowersRepository LoadBlightTowersRepository()
     {
-        return BlightTowersDat.Load(dataLoader).AsReadOnly();
+        blighttowersrepository ??= new BlightTowersRepository(logger, this);
+        return blighttowersrepository;
     }
 
     /// <summary>
-    /// Gets BlightTowersPerLevelDat data.
+    /// Gets BlightTowersPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightTowersPerLevelDat.</returns>
-    public ReadOnlyCollection<BlightTowersPerLevelDat> LoadBlightTowersPerLevelDat()
+    /// <returns>repository of BlightTowersPerLevelRepository.</returns>
+    public BlightTowersPerLevelRepository LoadBlightTowersPerLevelRepository()
     {
-        return BlightTowersPerLevelDat.Load(dataLoader).AsReadOnly();
+        blighttowersperlevelrepository ??= new BlightTowersPerLevelRepository(logger, this);
+        return blighttowersperlevelrepository;
     }
 
     /// <summary>
-    /// Gets AtlasExileBossArenasDat data.
+    /// Gets AtlasExileBossArenasRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasExileBossArenasDat.</returns>
-    public ReadOnlyCollection<AtlasExileBossArenasDat> LoadAtlasExileBossArenasDat()
+    /// <returns>repository of AtlasExileBossArenasRepository.</returns>
+    public AtlasExileBossArenasRepository LoadAtlasExileBossArenasRepository()
     {
-        return AtlasExileBossArenasDat.Load(dataLoader).AsReadOnly();
+        atlasexilebossarenasrepository ??= new AtlasExileBossArenasRepository(logger, this);
+        return atlasexilebossarenasrepository;
     }
 
     /// <summary>
-    /// Gets AtlasExileInfluenceDat data.
+    /// Gets AtlasExileInfluenceRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasExileInfluenceDat.</returns>
-    public ReadOnlyCollection<AtlasExileInfluenceDat> LoadAtlasExileInfluenceDat()
+    /// <returns>repository of AtlasExileInfluenceRepository.</returns>
+    public AtlasExileInfluenceRepository LoadAtlasExileInfluenceRepository()
     {
-        return AtlasExileInfluenceDat.Load(dataLoader).AsReadOnly();
+        atlasexileinfluencerepository ??= new AtlasExileInfluenceRepository(logger, this);
+        return atlasexileinfluencerepository;
     }
 
     /// <summary>
-    /// Gets AtlasExilesDat data.
+    /// Gets AtlasExilesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasExilesDat.</returns>
-    public ReadOnlyCollection<AtlasExilesDat> LoadAtlasExilesDat()
+    /// <returns>repository of AtlasExilesRepository.</returns>
+    public AtlasExilesRepository LoadAtlasExilesRepository()
     {
-        return AtlasExilesDat.Load(dataLoader).AsReadOnly();
+        atlasexilesrepository ??= new AtlasExilesRepository(logger, this);
+        return atlasexilesrepository;
     }
 
     /// <summary>
-    /// Gets AlternateQualityCurrencyDecayFactorsDat data.
+    /// Gets AlternateQualityCurrencyDecayFactorsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AlternateQualityCurrencyDecayFactorsDat.</returns>
-    public ReadOnlyCollection<AlternateQualityCurrencyDecayFactorsDat> LoadAlternateQualityCurrencyDecayFactorsDat()
+    /// <returns>repository of AlternateQualityCurrencyDecayFactorsRepository.</returns>
+    public AlternateQualityCurrencyDecayFactorsRepository LoadAlternateQualityCurrencyDecayFactorsRepository()
     {
-        return AlternateQualityCurrencyDecayFactorsDat.Load(dataLoader).AsReadOnly();
+        alternatequalitycurrencydecayfactorsrepository ??= new AlternateQualityCurrencyDecayFactorsRepository(logger, this);
+        return alternatequalitycurrencydecayfactorsrepository;
     }
 
     /// <summary>
-    /// Gets AlternateQualityTypesDat data.
+    /// Gets AlternateQualityTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AlternateQualityTypesDat.</returns>
-    public ReadOnlyCollection<AlternateQualityTypesDat> LoadAlternateQualityTypesDat()
+    /// <returns>repository of AlternateQualityTypesRepository.</returns>
+    public AlternateQualityTypesRepository LoadAlternateQualityTypesRepository()
     {
-        return AlternateQualityTypesDat.Load(dataLoader).AsReadOnly();
+        alternatequalitytypesrepository ??= new AlternateQualityTypesRepository(logger, this);
+        return alternatequalitytypesrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphLifeScalingPerLevelDat data.
+    /// Gets MetamorphLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<MetamorphLifeScalingPerLevelDat> LoadMetamorphLifeScalingPerLevelDat()
+    /// <returns>repository of MetamorphLifeScalingPerLevelRepository.</returns>
+    public MetamorphLifeScalingPerLevelRepository LoadMetamorphLifeScalingPerLevelRepository()
     {
-        return MetamorphLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        metamorphlifescalingperlevelrepository ??= new MetamorphLifeScalingPerLevelRepository(logger, this);
+        return metamorphlifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphosisMetaMonstersDat data.
+    /// Gets MetamorphosisMetaMonstersRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphosisMetaMonstersDat.</returns>
-    public ReadOnlyCollection<MetamorphosisMetaMonstersDat> LoadMetamorphosisMetaMonstersDat()
+    /// <returns>repository of MetamorphosisMetaMonstersRepository.</returns>
+    public MetamorphosisMetaMonstersRepository LoadMetamorphosisMetaMonstersRepository()
     {
-        return MetamorphosisMetaMonstersDat.Load(dataLoader).AsReadOnly();
+        metamorphosismetamonstersrepository ??= new MetamorphosisMetaMonstersRepository(logger, this);
+        return metamorphosismetamonstersrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphosisMetaSkillsDat data.
+    /// Gets MetamorphosisMetaSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphosisMetaSkillsDat.</returns>
-    public ReadOnlyCollection<MetamorphosisMetaSkillsDat> LoadMetamorphosisMetaSkillsDat()
+    /// <returns>repository of MetamorphosisMetaSkillsRepository.</returns>
+    public MetamorphosisMetaSkillsRepository LoadMetamorphosisMetaSkillsRepository()
     {
-        return MetamorphosisMetaSkillsDat.Load(dataLoader).AsReadOnly();
+        metamorphosismetaskillsrepository ??= new MetamorphosisMetaSkillsRepository(logger, this);
+        return metamorphosismetaskillsrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphosisMetaSkillTypesDat data.
+    /// Gets MetamorphosisMetaSkillTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphosisMetaSkillTypesDat.</returns>
-    public ReadOnlyCollection<MetamorphosisMetaSkillTypesDat> LoadMetamorphosisMetaSkillTypesDat()
+    /// <returns>repository of MetamorphosisMetaSkillTypesRepository.</returns>
+    public MetamorphosisMetaSkillTypesRepository LoadMetamorphosisMetaSkillTypesRepository()
     {
-        return MetamorphosisMetaSkillTypesDat.Load(dataLoader).AsReadOnly();
+        metamorphosismetaskilltypesrepository ??= new MetamorphosisMetaSkillTypesRepository(logger, this);
+        return metamorphosismetaskilltypesrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphosisRewardTypeItemsClientDat data.
+    /// Gets MetamorphosisRewardTypeItemsClientRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphosisRewardTypeItemsClientDat.</returns>
-    public ReadOnlyCollection<MetamorphosisRewardTypeItemsClientDat> LoadMetamorphosisRewardTypeItemsClientDat()
+    /// <returns>repository of MetamorphosisRewardTypeItemsClientRepository.</returns>
+    public MetamorphosisRewardTypeItemsClientRepository LoadMetamorphosisRewardTypeItemsClientRepository()
     {
-        return MetamorphosisRewardTypeItemsClientDat.Load(dataLoader).AsReadOnly();
+        metamorphosisrewardtypeitemsclientrepository ??= new MetamorphosisRewardTypeItemsClientRepository(logger, this);
+        return metamorphosisrewardtypeitemsclientrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphosisRewardTypesDat data.
+    /// Gets MetamorphosisRewardTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphosisRewardTypesDat.</returns>
-    public ReadOnlyCollection<MetamorphosisRewardTypesDat> LoadMetamorphosisRewardTypesDat()
+    /// <returns>repository of MetamorphosisRewardTypesRepository.</returns>
+    public MetamorphosisRewardTypesRepository LoadMetamorphosisRewardTypesRepository()
     {
-        return MetamorphosisRewardTypesDat.Load(dataLoader).AsReadOnly();
+        metamorphosisrewardtypesrepository ??= new MetamorphosisRewardTypesRepository(logger, this);
+        return metamorphosisrewardtypesrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphosisScalingDat data.
+    /// Gets MetamorphosisScalingRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphosisScalingDat.</returns>
-    public ReadOnlyCollection<MetamorphosisScalingDat> LoadMetamorphosisScalingDat()
+    /// <returns>repository of MetamorphosisScalingRepository.</returns>
+    public MetamorphosisScalingRepository LoadMetamorphosisScalingRepository()
     {
-        return MetamorphosisScalingDat.Load(dataLoader).AsReadOnly();
+        metamorphosisscalingrepository ??= new MetamorphosisScalingRepository(logger, this);
+        return metamorphosisscalingrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionBalancePerLevelDat data.
+    /// Gets AfflictionBalancePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionBalancePerLevelDat.</returns>
-    public ReadOnlyCollection<AfflictionBalancePerLevelDat> LoadAfflictionBalancePerLevelDat()
+    /// <returns>repository of AfflictionBalancePerLevelRepository.</returns>
+    public AfflictionBalancePerLevelRepository LoadAfflictionBalancePerLevelRepository()
     {
-        return AfflictionBalancePerLevelDat.Load(dataLoader).AsReadOnly();
+        afflictionbalanceperlevelrepository ??= new AfflictionBalancePerLevelRepository(logger, this);
+        return afflictionbalanceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionEndgameWaveModsDat data.
+    /// Gets AfflictionEndgameWaveModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionEndgameWaveModsDat.</returns>
-    public ReadOnlyCollection<AfflictionEndgameWaveModsDat> LoadAfflictionEndgameWaveModsDat()
+    /// <returns>repository of AfflictionEndgameWaveModsRepository.</returns>
+    public AfflictionEndgameWaveModsRepository LoadAfflictionEndgameWaveModsRepository()
     {
-        return AfflictionEndgameWaveModsDat.Load(dataLoader).AsReadOnly();
+        afflictionendgamewavemodsrepository ??= new AfflictionEndgameWaveModsRepository(logger, this);
+        return afflictionendgamewavemodsrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionFixedModsDat data.
+    /// Gets AfflictionFixedModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionFixedModsDat.</returns>
-    public ReadOnlyCollection<AfflictionFixedModsDat> LoadAfflictionFixedModsDat()
+    /// <returns>repository of AfflictionFixedModsRepository.</returns>
+    public AfflictionFixedModsRepository LoadAfflictionFixedModsRepository()
     {
-        return AfflictionFixedModsDat.Load(dataLoader).AsReadOnly();
+        afflictionfixedmodsrepository ??= new AfflictionFixedModsRepository(logger, this);
+        return afflictionfixedmodsrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionRandomModCategoriesDat data.
+    /// Gets AfflictionRandomModCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionRandomModCategoriesDat.</returns>
-    public ReadOnlyCollection<AfflictionRandomModCategoriesDat> LoadAfflictionRandomModCategoriesDat()
+    /// <returns>repository of AfflictionRandomModCategoriesRepository.</returns>
+    public AfflictionRandomModCategoriesRepository LoadAfflictionRandomModCategoriesRepository()
     {
-        return AfflictionRandomModCategoriesDat.Load(dataLoader).AsReadOnly();
+        afflictionrandommodcategoriesrepository ??= new AfflictionRandomModCategoriesRepository(logger, this);
+        return afflictionrandommodcategoriesrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionRewardMapModsDat data.
+    /// Gets AfflictionRewardMapModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionRewardMapModsDat.</returns>
-    public ReadOnlyCollection<AfflictionRewardMapModsDat> LoadAfflictionRewardMapModsDat()
+    /// <returns>repository of AfflictionRewardMapModsRepository.</returns>
+    public AfflictionRewardMapModsRepository LoadAfflictionRewardMapModsRepository()
     {
-        return AfflictionRewardMapModsDat.Load(dataLoader).AsReadOnly();
+        afflictionrewardmapmodsrepository ??= new AfflictionRewardMapModsRepository(logger, this);
+        return afflictionrewardmapmodsrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionRewardTypeVisualsDat data.
+    /// Gets AfflictionRewardTypeVisualsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionRewardTypeVisualsDat.</returns>
-    public ReadOnlyCollection<AfflictionRewardTypeVisualsDat> LoadAfflictionRewardTypeVisualsDat()
+    /// <returns>repository of AfflictionRewardTypeVisualsRepository.</returns>
+    public AfflictionRewardTypeVisualsRepository LoadAfflictionRewardTypeVisualsRepository()
     {
-        return AfflictionRewardTypeVisualsDat.Load(dataLoader).AsReadOnly();
+        afflictionrewardtypevisualsrepository ??= new AfflictionRewardTypeVisualsRepository(logger, this);
+        return afflictionrewardtypevisualsrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionSplitDemonsDat data.
+    /// Gets AfflictionSplitDemonsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionSplitDemonsDat.</returns>
-    public ReadOnlyCollection<AfflictionSplitDemonsDat> LoadAfflictionSplitDemonsDat()
+    /// <returns>repository of AfflictionSplitDemonsRepository.</returns>
+    public AfflictionSplitDemonsRepository LoadAfflictionSplitDemonsRepository()
     {
-        return AfflictionSplitDemonsDat.Load(dataLoader).AsReadOnly();
+        afflictionsplitdemonsrepository ??= new AfflictionSplitDemonsRepository(logger, this);
+        return afflictionsplitdemonsrepository;
     }
 
     /// <summary>
-    /// Gets AfflictionStartDialogueDat data.
+    /// Gets AfflictionStartDialogueRepository data.
     /// </summary>
-    /// <returns>readonly collection of AfflictionStartDialogueDat.</returns>
-    public ReadOnlyCollection<AfflictionStartDialogueDat> LoadAfflictionStartDialogueDat()
+    /// <returns>repository of AfflictionStartDialogueRepository.</returns>
+    public AfflictionStartDialogueRepository LoadAfflictionStartDialogueRepository()
     {
-        return AfflictionStartDialogueDat.Load(dataLoader).AsReadOnly();
+        afflictionstartdialoguerepository ??= new AfflictionStartDialogueRepository(logger, this);
+        return afflictionstartdialoguerepository;
     }
 
     /// <summary>
-    /// Gets HarvestCraftOptionIconsDat data.
+    /// Gets HarvestCraftOptionIconsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestCraftOptionIconsDat.</returns>
-    public ReadOnlyCollection<HarvestCraftOptionIconsDat> LoadHarvestCraftOptionIconsDat()
+    /// <returns>repository of HarvestCraftOptionIconsRepository.</returns>
+    public HarvestCraftOptionIconsRepository LoadHarvestCraftOptionIconsRepository()
     {
-        return HarvestCraftOptionIconsDat.Load(dataLoader).AsReadOnly();
+        harvestcraftoptioniconsrepository ??= new HarvestCraftOptionIconsRepository(logger, this);
+        return harvestcraftoptioniconsrepository;
     }
 
     /// <summary>
-    /// Gets HarvestCraftOptionsDat data.
+    /// Gets HarvestCraftOptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestCraftOptionsDat.</returns>
-    public ReadOnlyCollection<HarvestCraftOptionsDat> LoadHarvestCraftOptionsDat()
+    /// <returns>repository of HarvestCraftOptionsRepository.</returns>
+    public HarvestCraftOptionsRepository LoadHarvestCraftOptionsRepository()
     {
-        return HarvestCraftOptionsDat.Load(dataLoader).AsReadOnly();
+        harvestcraftoptionsrepository ??= new HarvestCraftOptionsRepository(logger, this);
+        return harvestcraftoptionsrepository;
     }
 
     /// <summary>
-    /// Gets HarvestCraftTiersDat data.
+    /// Gets HarvestCraftTiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestCraftTiersDat.</returns>
-    public ReadOnlyCollection<HarvestCraftTiersDat> LoadHarvestCraftTiersDat()
+    /// <returns>repository of HarvestCraftTiersRepository.</returns>
+    public HarvestCraftTiersRepository LoadHarvestCraftTiersRepository()
     {
-        return HarvestCraftTiersDat.Load(dataLoader).AsReadOnly();
+        harvestcrafttiersrepository ??= new HarvestCraftTiersRepository(logger, this);
+        return harvestcrafttiersrepository;
     }
 
     /// <summary>
-    /// Gets HarvestCraftFiltersDat data.
+    /// Gets HarvestCraftFiltersRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestCraftFiltersDat.</returns>
-    public ReadOnlyCollection<HarvestCraftFiltersDat> LoadHarvestCraftFiltersDat()
+    /// <returns>repository of HarvestCraftFiltersRepository.</returns>
+    public HarvestCraftFiltersRepository LoadHarvestCraftFiltersRepository()
     {
-        return HarvestCraftFiltersDat.Load(dataLoader).AsReadOnly();
+        harvestcraftfiltersrepository ??= new HarvestCraftFiltersRepository(logger, this);
+        return harvestcraftfiltersrepository;
     }
 
     /// <summary>
-    /// Gets HarvestDurabilityDat data.
+    /// Gets HarvestDurabilityRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestDurabilityDat.</returns>
-    public ReadOnlyCollection<HarvestDurabilityDat> LoadHarvestDurabilityDat()
+    /// <returns>repository of HarvestDurabilityRepository.</returns>
+    public HarvestDurabilityRepository LoadHarvestDurabilityRepository()
     {
-        return HarvestDurabilityDat.Load(dataLoader).AsReadOnly();
+        harvestdurabilityrepository ??= new HarvestDurabilityRepository(logger, this);
+        return harvestdurabilityrepository;
     }
 
     /// <summary>
-    /// Gets HarvestEncounterScalingDat data.
+    /// Gets HarvestEncounterScalingRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestEncounterScalingDat.</returns>
-    public ReadOnlyCollection<HarvestEncounterScalingDat> LoadHarvestEncounterScalingDat()
+    /// <returns>repository of HarvestEncounterScalingRepository.</returns>
+    public HarvestEncounterScalingRepository LoadHarvestEncounterScalingRepository()
     {
-        return HarvestEncounterScalingDat.Load(dataLoader).AsReadOnly();
+        harvestencounterscalingrepository ??= new HarvestEncounterScalingRepository(logger, this);
+        return harvestencounterscalingrepository;
     }
 
     /// <summary>
-    /// Gets HarvestInfrastructureDat data.
+    /// Gets HarvestInfrastructureRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestInfrastructureDat.</returns>
-    public ReadOnlyCollection<HarvestInfrastructureDat> LoadHarvestInfrastructureDat()
+    /// <returns>repository of HarvestInfrastructureRepository.</returns>
+    public HarvestInfrastructureRepository LoadHarvestInfrastructureRepository()
     {
-        return HarvestInfrastructureDat.Load(dataLoader).AsReadOnly();
+        harvestinfrastructurerepository ??= new HarvestInfrastructureRepository(logger, this);
+        return harvestinfrastructurerepository;
     }
 
     /// <summary>
-    /// Gets HarvestObjectsDat data.
+    /// Gets HarvestObjectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestObjectsDat.</returns>
-    public ReadOnlyCollection<HarvestObjectsDat> LoadHarvestObjectsDat()
+    /// <returns>repository of HarvestObjectsRepository.</returns>
+    public HarvestObjectsRepository LoadHarvestObjectsRepository()
     {
-        return HarvestObjectsDat.Load(dataLoader).AsReadOnly();
+        harvestobjectsrepository ??= new HarvestObjectsRepository(logger, this);
+        return harvestobjectsrepository;
     }
 
     /// <summary>
-    /// Gets HarvestPerLevelValuesDat data.
+    /// Gets HarvestPerLevelValuesRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestPerLevelValuesDat.</returns>
-    public ReadOnlyCollection<HarvestPerLevelValuesDat> LoadHarvestPerLevelValuesDat()
+    /// <returns>repository of HarvestPerLevelValuesRepository.</returns>
+    public HarvestPerLevelValuesRepository LoadHarvestPerLevelValuesRepository()
     {
-        return HarvestPerLevelValuesDat.Load(dataLoader).AsReadOnly();
+        harvestperlevelvaluesrepository ??= new HarvestPerLevelValuesRepository(logger, this);
+        return harvestperlevelvaluesrepository;
     }
 
     /// <summary>
-    /// Gets HarvestPlantBoostersDat data.
+    /// Gets HarvestPlantBoostersRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestPlantBoostersDat.</returns>
-    public ReadOnlyCollection<HarvestPlantBoostersDat> LoadHarvestPlantBoostersDat()
+    /// <returns>repository of HarvestPlantBoostersRepository.</returns>
+    public HarvestPlantBoostersRepository LoadHarvestPlantBoostersRepository()
     {
-        return HarvestPlantBoostersDat.Load(dataLoader).AsReadOnly();
+        harvestplantboostersrepository ??= new HarvestPlantBoostersRepository(logger, this);
+        return harvestplantboostersrepository;
     }
 
     /// <summary>
-    /// Gets HarvestLifeScalingPerLevelDat data.
+    /// Gets HarvestLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<HarvestLifeScalingPerLevelDat> LoadHarvestLifeScalingPerLevelDat()
+    /// <returns>repository of HarvestLifeScalingPerLevelRepository.</returns>
+    public HarvestLifeScalingPerLevelRepository LoadHarvestLifeScalingPerLevelRepository()
     {
-        return HarvestLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        harvestlifescalingperlevelrepository ??= new HarvestLifeScalingPerLevelRepository(logger, this);
+        return harvestlifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets HarvestSeedsDat data.
+    /// Gets HarvestSeedsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestSeedsDat.</returns>
-    public ReadOnlyCollection<HarvestSeedsDat> LoadHarvestSeedsDat()
+    /// <returns>repository of HarvestSeedsRepository.</returns>
+    public HarvestSeedsRepository LoadHarvestSeedsRepository()
     {
-        return HarvestSeedsDat.Load(dataLoader).AsReadOnly();
+        harvestseedsrepository ??= new HarvestSeedsRepository(logger, this);
+        return harvestseedsrepository;
     }
 
     /// <summary>
-    /// Gets HarvestSeedItemsDat data.
+    /// Gets HarvestSeedItemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestSeedItemsDat.</returns>
-    public ReadOnlyCollection<HarvestSeedItemsDat> LoadHarvestSeedItemsDat()
+    /// <returns>repository of HarvestSeedItemsRepository.</returns>
+    public HarvestSeedItemsRepository LoadHarvestSeedItemsRepository()
     {
-        return HarvestSeedItemsDat.Load(dataLoader).AsReadOnly();
+        harvestseeditemsrepository ??= new HarvestSeedItemsRepository(logger, this);
+        return harvestseeditemsrepository;
     }
 
     /// <summary>
-    /// Gets HarvestSeedTypesDat data.
+    /// Gets HarvestSeedTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestSeedTypesDat.</returns>
-    public ReadOnlyCollection<HarvestSeedTypesDat> LoadHarvestSeedTypesDat()
+    /// <returns>repository of HarvestSeedTypesRepository.</returns>
+    public HarvestSeedTypesRepository LoadHarvestSeedTypesRepository()
     {
-        return HarvestSeedTypesDat.Load(dataLoader).AsReadOnly();
+        harvestseedtypesrepository ??= new HarvestSeedTypesRepository(logger, this);
+        return harvestseedtypesrepository;
     }
 
     /// <summary>
-    /// Gets HarvestSpecialCraftCostsDat data.
+    /// Gets HarvestSpecialCraftCostsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestSpecialCraftCostsDat.</returns>
-    public ReadOnlyCollection<HarvestSpecialCraftCostsDat> LoadHarvestSpecialCraftCostsDat()
+    /// <returns>repository of HarvestSpecialCraftCostsRepository.</returns>
+    public HarvestSpecialCraftCostsRepository LoadHarvestSpecialCraftCostsRepository()
     {
-        return HarvestSpecialCraftCostsDat.Load(dataLoader).AsReadOnly();
+        harvestspecialcraftcostsrepository ??= new HarvestSpecialCraftCostsRepository(logger, this);
+        return harvestspecialcraftcostsrepository;
     }
 
     /// <summary>
-    /// Gets HarvestSpecialCraftOptionsDat data.
+    /// Gets HarvestSpecialCraftOptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestSpecialCraftOptionsDat.</returns>
-    public ReadOnlyCollection<HarvestSpecialCraftOptionsDat> LoadHarvestSpecialCraftOptionsDat()
+    /// <returns>repository of HarvestSpecialCraftOptionsRepository.</returns>
+    public HarvestSpecialCraftOptionsRepository LoadHarvestSpecialCraftOptionsRepository()
     {
-        return HarvestSpecialCraftOptionsDat.Load(dataLoader).AsReadOnly();
+        harvestspecialcraftoptionsrepository ??= new HarvestSpecialCraftOptionsRepository(logger, this);
+        return harvestspecialcraftoptionsrepository;
     }
 
     /// <summary>
-    /// Gets HeistAreaFormationLayoutDat data.
+    /// Gets HeistAreaFormationLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistAreaFormationLayoutDat.</returns>
-    public ReadOnlyCollection<HeistAreaFormationLayoutDat> LoadHeistAreaFormationLayoutDat()
+    /// <returns>repository of HeistAreaFormationLayoutRepository.</returns>
+    public HeistAreaFormationLayoutRepository LoadHeistAreaFormationLayoutRepository()
     {
-        return HeistAreaFormationLayoutDat.Load(dataLoader).AsReadOnly();
+        heistareaformationlayoutrepository ??= new HeistAreaFormationLayoutRepository(logger, this);
+        return heistareaformationlayoutrepository;
     }
 
     /// <summary>
-    /// Gets HeistAreasDat data.
+    /// Gets HeistAreasRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistAreasDat.</returns>
-    public ReadOnlyCollection<HeistAreasDat> LoadHeistAreasDat()
+    /// <returns>repository of HeistAreasRepository.</returns>
+    public HeistAreasRepository LoadHeistAreasRepository()
     {
-        return HeistAreasDat.Load(dataLoader).AsReadOnly();
+        heistareasrepository ??= new HeistAreasRepository(logger, this);
+        return heistareasrepository;
     }
 
     /// <summary>
-    /// Gets HeistBalancePerLevelDat data.
+    /// Gets HeistBalancePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistBalancePerLevelDat.</returns>
-    public ReadOnlyCollection<HeistBalancePerLevelDat> LoadHeistBalancePerLevelDat()
+    /// <returns>repository of HeistBalancePerLevelRepository.</returns>
+    public HeistBalancePerLevelRepository LoadHeistBalancePerLevelRepository()
     {
-        return HeistBalancePerLevelDat.Load(dataLoader).AsReadOnly();
+        heistbalanceperlevelrepository ??= new HeistBalancePerLevelRepository(logger, this);
+        return heistbalanceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets HeistChestRewardTypesDat data.
+    /// Gets HeistChestRewardTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistChestRewardTypesDat.</returns>
-    public ReadOnlyCollection<HeistChestRewardTypesDat> LoadHeistChestRewardTypesDat()
+    /// <returns>repository of HeistChestRewardTypesRepository.</returns>
+    public HeistChestRewardTypesRepository LoadHeistChestRewardTypesRepository()
     {
-        return HeistChestRewardTypesDat.Load(dataLoader).AsReadOnly();
+        heistchestrewardtypesrepository ??= new HeistChestRewardTypesRepository(logger, this);
+        return heistchestrewardtypesrepository;
     }
 
     /// <summary>
-    /// Gets HeistChestsDat data.
+    /// Gets HeistChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistChestsDat.</returns>
-    public ReadOnlyCollection<HeistChestsDat> LoadHeistChestsDat()
+    /// <returns>repository of HeistChestsRepository.</returns>
+    public HeistChestsRepository LoadHeistChestsRepository()
     {
-        return HeistChestsDat.Load(dataLoader).AsReadOnly();
+        heistchestsrepository ??= new HeistChestsRepository(logger, this);
+        return heistchestsrepository;
     }
 
     /// <summary>
-    /// Gets HeistChokepointFormationDat data.
+    /// Gets HeistChokepointFormationRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistChokepointFormationDat.</returns>
-    public ReadOnlyCollection<HeistChokepointFormationDat> LoadHeistChokepointFormationDat()
+    /// <returns>repository of HeistChokepointFormationRepository.</returns>
+    public HeistChokepointFormationRepository LoadHeistChokepointFormationRepository()
     {
-        return HeistChokepointFormationDat.Load(dataLoader).AsReadOnly();
+        heistchokepointformationrepository ??= new HeistChokepointFormationRepository(logger, this);
+        return heistchokepointformationrepository;
     }
 
     /// <summary>
-    /// Gets HeistConstantsDat data.
+    /// Gets HeistConstantsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistConstantsDat.</returns>
-    public ReadOnlyCollection<HeistConstantsDat> LoadHeistConstantsDat()
+    /// <returns>repository of HeistConstantsRepository.</returns>
+    public HeistConstantsRepository LoadHeistConstantsRepository()
     {
-        return HeistConstantsDat.Load(dataLoader).AsReadOnly();
+        heistconstantsrepository ??= new HeistConstantsRepository(logger, this);
+        return heistconstantsrepository;
     }
 
     /// <summary>
-    /// Gets HeistContractsDat data.
+    /// Gets HeistContractsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistContractsDat.</returns>
-    public ReadOnlyCollection<HeistContractsDat> LoadHeistContractsDat()
+    /// <returns>repository of HeistContractsRepository.</returns>
+    public HeistContractsRepository LoadHeistContractsRepository()
     {
-        return HeistContractsDat.Load(dataLoader).AsReadOnly();
+        heistcontractsrepository ??= new HeistContractsRepository(logger, this);
+        return heistcontractsrepository;
     }
 
     /// <summary>
-    /// Gets HeistDoodadNPCsDat data.
+    /// Gets HeistDoodadNPCsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistDoodadNPCsDat.</returns>
-    public ReadOnlyCollection<HeistDoodadNPCsDat> LoadHeistDoodadNPCsDat()
+    /// <returns>repository of HeistDoodadNPCsRepository.</returns>
+    public HeistDoodadNPCsRepository LoadHeistDoodadNPCsRepository()
     {
-        return HeistDoodadNPCsDat.Load(dataLoader).AsReadOnly();
+        heistdoodadnpcsrepository ??= new HeistDoodadNPCsRepository(logger, this);
+        return heistdoodadnpcsrepository;
     }
 
     /// <summary>
-    /// Gets HeistDoorsDat data.
+    /// Gets HeistDoorsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistDoorsDat.</returns>
-    public ReadOnlyCollection<HeistDoorsDat> LoadHeistDoorsDat()
+    /// <returns>repository of HeistDoorsRepository.</returns>
+    public HeistDoorsRepository LoadHeistDoorsRepository()
     {
-        return HeistDoorsDat.Load(dataLoader).AsReadOnly();
+        heistdoorsrepository ??= new HeistDoorsRepository(logger, this);
+        return heistdoorsrepository;
     }
 
     /// <summary>
-    /// Gets HeistEquipmentDat data.
+    /// Gets HeistEquipmentRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistEquipmentDat.</returns>
-    public ReadOnlyCollection<HeistEquipmentDat> LoadHeistEquipmentDat()
+    /// <returns>repository of HeistEquipmentRepository.</returns>
+    public HeistEquipmentRepository LoadHeistEquipmentRepository()
     {
-        return HeistEquipmentDat.Load(dataLoader).AsReadOnly();
+        heistequipmentrepository ??= new HeistEquipmentRepository(logger, this);
+        return heistequipmentrepository;
     }
 
     /// <summary>
-    /// Gets HeistGenerationDat data.
+    /// Gets HeistGenerationRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistGenerationDat.</returns>
-    public ReadOnlyCollection<HeistGenerationDat> LoadHeistGenerationDat()
+    /// <returns>repository of HeistGenerationRepository.</returns>
+    public HeistGenerationRepository LoadHeistGenerationRepository()
     {
-        return HeistGenerationDat.Load(dataLoader).AsReadOnly();
+        heistgenerationrepository ??= new HeistGenerationRepository(logger, this);
+        return heistgenerationrepository;
     }
 
     /// <summary>
-    /// Gets HeistIntroAreasDat data.
+    /// Gets HeistIntroAreasRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistIntroAreasDat.</returns>
-    public ReadOnlyCollection<HeistIntroAreasDat> LoadHeistIntroAreasDat()
+    /// <returns>repository of HeistIntroAreasRepository.</returns>
+    public HeistIntroAreasRepository LoadHeistIntroAreasRepository()
     {
-        return HeistIntroAreasDat.Load(dataLoader).AsReadOnly();
+        heistintroareasrepository ??= new HeistIntroAreasRepository(logger, this);
+        return heistintroareasrepository;
     }
 
     /// <summary>
-    /// Gets HeistJobsDat data.
+    /// Gets HeistJobsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistJobsDat.</returns>
-    public ReadOnlyCollection<HeistJobsDat> LoadHeistJobsDat()
+    /// <returns>repository of HeistJobsRepository.</returns>
+    public HeistJobsRepository LoadHeistJobsRepository()
     {
-        return HeistJobsDat.Load(dataLoader).AsReadOnly();
+        heistjobsrepository ??= new HeistJobsRepository(logger, this);
+        return heistjobsrepository;
     }
 
     /// <summary>
-    /// Gets HeistJobsExperiencePerLevelDat data.
+    /// Gets HeistJobsExperiencePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistJobsExperiencePerLevelDat.</returns>
-    public ReadOnlyCollection<HeistJobsExperiencePerLevelDat> LoadHeistJobsExperiencePerLevelDat()
+    /// <returns>repository of HeistJobsExperiencePerLevelRepository.</returns>
+    public HeistJobsExperiencePerLevelRepository LoadHeistJobsExperiencePerLevelRepository()
     {
-        return HeistJobsExperiencePerLevelDat.Load(dataLoader).AsReadOnly();
+        heistjobsexperienceperlevelrepository ??= new HeistJobsExperiencePerLevelRepository(logger, this);
+        return heistjobsexperienceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets HeistLockTypeDat data.
+    /// Gets HeistLockTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistLockTypeDat.</returns>
-    public ReadOnlyCollection<HeistLockTypeDat> LoadHeistLockTypeDat()
+    /// <returns>repository of HeistLockTypeRepository.</returns>
+    public HeistLockTypeRepository LoadHeistLockTypeRepository()
     {
-        return HeistLockTypeDat.Load(dataLoader).AsReadOnly();
+        heistlocktyperepository ??= new HeistLockTypeRepository(logger, this);
+        return heistlocktyperepository;
     }
 
     /// <summary>
-    /// Gets HeistNPCAurasDat data.
+    /// Gets HeistNPCAurasRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistNPCAurasDat.</returns>
-    public ReadOnlyCollection<HeistNPCAurasDat> LoadHeistNPCAurasDat()
+    /// <returns>repository of HeistNPCAurasRepository.</returns>
+    public HeistNPCAurasRepository LoadHeistNPCAurasRepository()
     {
-        return HeistNPCAurasDat.Load(dataLoader).AsReadOnly();
+        heistnpcaurasrepository ??= new HeistNPCAurasRepository(logger, this);
+        return heistnpcaurasrepository;
     }
 
     /// <summary>
-    /// Gets HeistNPCBlueprintTypesDat data.
+    /// Gets HeistNPCBlueprintTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistNPCBlueprintTypesDat.</returns>
-    public ReadOnlyCollection<HeistNPCBlueprintTypesDat> LoadHeistNPCBlueprintTypesDat()
+    /// <returns>repository of HeistNPCBlueprintTypesRepository.</returns>
+    public HeistNPCBlueprintTypesRepository LoadHeistNPCBlueprintTypesRepository()
     {
-        return HeistNPCBlueprintTypesDat.Load(dataLoader).AsReadOnly();
+        heistnpcblueprinttypesrepository ??= new HeistNPCBlueprintTypesRepository(logger, this);
+        return heistnpcblueprinttypesrepository;
     }
 
     /// <summary>
-    /// Gets HeistNPCDialogueDat data.
+    /// Gets HeistNPCDialogueRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistNPCDialogueDat.</returns>
-    public ReadOnlyCollection<HeistNPCDialogueDat> LoadHeistNPCDialogueDat()
+    /// <returns>repository of HeistNPCDialogueRepository.</returns>
+    public HeistNPCDialogueRepository LoadHeistNPCDialogueRepository()
     {
-        return HeistNPCDialogueDat.Load(dataLoader).AsReadOnly();
+        heistnpcdialoguerepository ??= new HeistNPCDialogueRepository(logger, this);
+        return heistnpcdialoguerepository;
     }
 
     /// <summary>
-    /// Gets HeistNPCsDat data.
+    /// Gets HeistNPCsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistNPCsDat.</returns>
-    public ReadOnlyCollection<HeistNPCsDat> LoadHeistNPCsDat()
+    /// <returns>repository of HeistNPCsRepository.</returns>
+    public HeistNPCsRepository LoadHeistNPCsRepository()
     {
-        return HeistNPCsDat.Load(dataLoader).AsReadOnly();
+        heistnpcsrepository ??= new HeistNPCsRepository(logger, this);
+        return heistnpcsrepository;
     }
 
     /// <summary>
-    /// Gets HeistNPCStatsDat data.
+    /// Gets HeistNPCStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistNPCStatsDat.</returns>
-    public ReadOnlyCollection<HeistNPCStatsDat> LoadHeistNPCStatsDat()
+    /// <returns>repository of HeistNPCStatsRepository.</returns>
+    public HeistNPCStatsRepository LoadHeistNPCStatsRepository()
     {
-        return HeistNPCStatsDat.Load(dataLoader).AsReadOnly();
+        heistnpcstatsrepository ??= new HeistNPCStatsRepository(logger, this);
+        return heistnpcstatsrepository;
     }
 
     /// <summary>
-    /// Gets HeistObjectivesDat data.
+    /// Gets HeistObjectivesRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistObjectivesDat.</returns>
-    public ReadOnlyCollection<HeistObjectivesDat> LoadHeistObjectivesDat()
+    /// <returns>repository of HeistObjectivesRepository.</returns>
+    public HeistObjectivesRepository LoadHeistObjectivesRepository()
     {
-        return HeistObjectivesDat.Load(dataLoader).AsReadOnly();
+        heistobjectivesrepository ??= new HeistObjectivesRepository(logger, this);
+        return heistobjectivesrepository;
     }
 
     /// <summary>
-    /// Gets HeistObjectiveValueDescriptionsDat data.
+    /// Gets HeistObjectiveValueDescriptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistObjectiveValueDescriptionsDat.</returns>
-    public ReadOnlyCollection<HeistObjectiveValueDescriptionsDat> LoadHeistObjectiveValueDescriptionsDat()
+    /// <returns>repository of HeistObjectiveValueDescriptionsRepository.</returns>
+    public HeistObjectiveValueDescriptionsRepository LoadHeistObjectiveValueDescriptionsRepository()
     {
-        return HeistObjectiveValueDescriptionsDat.Load(dataLoader).AsReadOnly();
+        heistobjectivevaluedescriptionsrepository ??= new HeistObjectiveValueDescriptionsRepository(logger, this);
+        return heistobjectivevaluedescriptionsrepository;
     }
 
     /// <summary>
-    /// Gets HeistPatrolPacksDat data.
+    /// Gets HeistPatrolPacksRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistPatrolPacksDat.</returns>
-    public ReadOnlyCollection<HeistPatrolPacksDat> LoadHeistPatrolPacksDat()
+    /// <returns>repository of HeistPatrolPacksRepository.</returns>
+    public HeistPatrolPacksRepository LoadHeistPatrolPacksRepository()
     {
-        return HeistPatrolPacksDat.Load(dataLoader).AsReadOnly();
+        heistpatrolpacksrepository ??= new HeistPatrolPacksRepository(logger, this);
+        return heistpatrolpacksrepository;
     }
 
     /// <summary>
-    /// Gets HeistQuestContractsDat data.
+    /// Gets HeistQuestContractsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistQuestContractsDat.</returns>
-    public ReadOnlyCollection<HeistQuestContractsDat> LoadHeistQuestContractsDat()
+    /// <returns>repository of HeistQuestContractsRepository.</returns>
+    public HeistQuestContractsRepository LoadHeistQuestContractsRepository()
     {
-        return HeistQuestContractsDat.Load(dataLoader).AsReadOnly();
+        heistquestcontractsrepository ??= new HeistQuestContractsRepository(logger, this);
+        return heistquestcontractsrepository;
     }
 
     /// <summary>
-    /// Gets HeistRevealingNPCsDat data.
+    /// Gets HeistRevealingNPCsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistRevealingNPCsDat.</returns>
-    public ReadOnlyCollection<HeistRevealingNPCsDat> LoadHeistRevealingNPCsDat()
+    /// <returns>repository of HeistRevealingNPCsRepository.</returns>
+    public HeistRevealingNPCsRepository LoadHeistRevealingNPCsRepository()
     {
-        return HeistRevealingNPCsDat.Load(dataLoader).AsReadOnly();
+        heistrevealingnpcsrepository ??= new HeistRevealingNPCsRepository(logger, this);
+        return heistrevealingnpcsrepository;
     }
 
     /// <summary>
-    /// Gets HeistRoomsDat data.
+    /// Gets HeistRoomsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistRoomsDat.</returns>
-    public ReadOnlyCollection<HeistRoomsDat> LoadHeistRoomsDat()
+    /// <returns>repository of HeistRoomsRepository.</returns>
+    public HeistRoomsRepository LoadHeistRoomsRepository()
     {
-        return HeistRoomsDat.Load(dataLoader).AsReadOnly();
+        heistroomsrepository ??= new HeistRoomsRepository(logger, this);
+        return heistroomsrepository;
     }
 
     /// <summary>
-    /// Gets HeistValueScalingDat data.
+    /// Gets HeistValueScalingRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistValueScalingDat.</returns>
-    public ReadOnlyCollection<HeistValueScalingDat> LoadHeistValueScalingDat()
+    /// <returns>repository of HeistValueScalingRepository.</returns>
+    public HeistValueScalingRepository LoadHeistValueScalingRepository()
     {
-        return HeistValueScalingDat.Load(dataLoader).AsReadOnly();
+        heistvaluescalingrepository ??= new HeistValueScalingRepository(logger, this);
+        return heistvaluescalingrepository;
     }
 
     /// <summary>
-    /// Gets InfluenceModUpgradesDat data.
+    /// Gets InfluenceModUpgradesRepository data.
     /// </summary>
-    /// <returns>readonly collection of InfluenceModUpgradesDat.</returns>
-    public ReadOnlyCollection<InfluenceModUpgradesDat> LoadInfluenceModUpgradesDat()
+    /// <returns>repository of InfluenceModUpgradesRepository.</returns>
+    public InfluenceModUpgradesRepository LoadInfluenceModUpgradesRepository()
     {
-        return InfluenceModUpgradesDat.Load(dataLoader).AsReadOnly();
+        influencemodupgradesrepository ??= new InfluenceModUpgradesRepository(logger, this);
+        return influencemodupgradesrepository;
     }
 
     /// <summary>
-    /// Gets MavenDialogDat data.
+    /// Gets MavenDialogRepository data.
     /// </summary>
-    /// <returns>readonly collection of MavenDialogDat.</returns>
-    public ReadOnlyCollection<MavenDialogDat> LoadMavenDialogDat()
+    /// <returns>repository of MavenDialogRepository.</returns>
+    public MavenDialogRepository LoadMavenDialogRepository()
     {
-        return MavenDialogDat.Load(dataLoader).AsReadOnly();
+        mavendialogrepository ??= new MavenDialogRepository(logger, this);
+        return mavendialogrepository;
     }
 
     /// <summary>
-    /// Gets AtlasSkillGraphsDat data.
+    /// Gets AtlasSkillGraphsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasSkillGraphsDat.</returns>
-    public ReadOnlyCollection<AtlasSkillGraphsDat> LoadAtlasSkillGraphsDat()
+    /// <returns>repository of AtlasSkillGraphsRepository.</returns>
+    public AtlasSkillGraphsRepository LoadAtlasSkillGraphsRepository()
     {
-        return AtlasSkillGraphsDat.Load(dataLoader).AsReadOnly();
+        atlasskillgraphsrepository ??= new AtlasSkillGraphsRepository(logger, this);
+        return atlasskillgraphsrepository;
     }
 
     /// <summary>
-    /// Gets MavenFightsDat data.
+    /// Gets MavenFightsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MavenFightsDat.</returns>
-    public ReadOnlyCollection<MavenFightsDat> LoadMavenFightsDat()
+    /// <returns>repository of MavenFightsRepository.</returns>
+    public MavenFightsRepository LoadMavenFightsRepository()
     {
-        return MavenFightsDat.Load(dataLoader).AsReadOnly();
+        mavenfightsrepository ??= new MavenFightsRepository(logger, this);
+        return mavenfightsrepository;
     }
 
     /// <summary>
-    /// Gets MavenJewelRadiusKeystonesDat data.
+    /// Gets MavenJewelRadiusKeystonesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MavenJewelRadiusKeystonesDat.</returns>
-    public ReadOnlyCollection<MavenJewelRadiusKeystonesDat> LoadMavenJewelRadiusKeystonesDat()
+    /// <returns>repository of MavenJewelRadiusKeystonesRepository.</returns>
+    public MavenJewelRadiusKeystonesRepository LoadMavenJewelRadiusKeystonesRepository()
     {
-        return MavenJewelRadiusKeystonesDat.Load(dataLoader).AsReadOnly();
+        mavenjewelradiuskeystonesrepository ??= new MavenJewelRadiusKeystonesRepository(logger, this);
+        return mavenjewelradiuskeystonesrepository;
     }
 
     /// <summary>
-    /// Gets RitualBalancePerLevelDat data.
+    /// Gets RitualBalancePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of RitualBalancePerLevelDat.</returns>
-    public ReadOnlyCollection<RitualBalancePerLevelDat> LoadRitualBalancePerLevelDat()
+    /// <returns>repository of RitualBalancePerLevelRepository.</returns>
+    public RitualBalancePerLevelRepository LoadRitualBalancePerLevelRepository()
     {
-        return RitualBalancePerLevelDat.Load(dataLoader).AsReadOnly();
+        ritualbalanceperlevelrepository ??= new RitualBalancePerLevelRepository(logger, this);
+        return ritualbalanceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets RitualConstantsDat data.
+    /// Gets RitualConstantsRepository data.
     /// </summary>
-    /// <returns>readonly collection of RitualConstantsDat.</returns>
-    public ReadOnlyCollection<RitualConstantsDat> LoadRitualConstantsDat()
+    /// <returns>repository of RitualConstantsRepository.</returns>
+    public RitualConstantsRepository LoadRitualConstantsRepository()
     {
-        return RitualConstantsDat.Load(dataLoader).AsReadOnly();
+        ritualconstantsrepository ??= new RitualConstantsRepository(logger, this);
+        return ritualconstantsrepository;
     }
 
     /// <summary>
-    /// Gets RitualRuneTypesDat data.
+    /// Gets RitualRuneTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of RitualRuneTypesDat.</returns>
-    public ReadOnlyCollection<RitualRuneTypesDat> LoadRitualRuneTypesDat()
+    /// <returns>repository of RitualRuneTypesRepository.</returns>
+    public RitualRuneTypesRepository LoadRitualRuneTypesRepository()
     {
-        return RitualRuneTypesDat.Load(dataLoader).AsReadOnly();
+        ritualrunetypesrepository ??= new RitualRuneTypesRepository(logger, this);
+        return ritualrunetypesrepository;
     }
 
     /// <summary>
-    /// Gets RitualSetKillAchievementsDat data.
+    /// Gets RitualSetKillAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of RitualSetKillAchievementsDat.</returns>
-    public ReadOnlyCollection<RitualSetKillAchievementsDat> LoadRitualSetKillAchievementsDat()
+    /// <returns>repository of RitualSetKillAchievementsRepository.</returns>
+    public RitualSetKillAchievementsRepository LoadRitualSetKillAchievementsRepository()
     {
-        return RitualSetKillAchievementsDat.Load(dataLoader).AsReadOnly();
+        ritualsetkillachievementsrepository ??= new RitualSetKillAchievementsRepository(logger, this);
+        return ritualsetkillachievementsrepository;
     }
 
     /// <summary>
-    /// Gets RitualSpawnPatternsDat data.
+    /// Gets RitualSpawnPatternsRepository data.
     /// </summary>
-    /// <returns>readonly collection of RitualSpawnPatternsDat.</returns>
-    public ReadOnlyCollection<RitualSpawnPatternsDat> LoadRitualSpawnPatternsDat()
+    /// <returns>repository of RitualSpawnPatternsRepository.</returns>
+    public RitualSpawnPatternsRepository LoadRitualSpawnPatternsRepository()
     {
-        return RitualSpawnPatternsDat.Load(dataLoader).AsReadOnly();
+        ritualspawnpatternsrepository ??= new RitualSpawnPatternsRepository(logger, this);
+        return ritualspawnpatternsrepository;
     }
 
     /// <summary>
-    /// Gets UltimatumEncountersDat data.
+    /// Gets UltimatumEncountersRepository data.
     /// </summary>
-    /// <returns>readonly collection of UltimatumEncountersDat.</returns>
-    public ReadOnlyCollection<UltimatumEncountersDat> LoadUltimatumEncountersDat()
+    /// <returns>repository of UltimatumEncountersRepository.</returns>
+    public UltimatumEncountersRepository LoadUltimatumEncountersRepository()
     {
-        return UltimatumEncountersDat.Load(dataLoader).AsReadOnly();
+        ultimatumencountersrepository ??= new UltimatumEncountersRepository(logger, this);
+        return ultimatumencountersrepository;
     }
 
     /// <summary>
-    /// Gets UltimatumEncounterTypesDat data.
+    /// Gets UltimatumEncounterTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of UltimatumEncounterTypesDat.</returns>
-    public ReadOnlyCollection<UltimatumEncounterTypesDat> LoadUltimatumEncounterTypesDat()
+    /// <returns>repository of UltimatumEncounterTypesRepository.</returns>
+    public UltimatumEncounterTypesRepository LoadUltimatumEncounterTypesRepository()
     {
-        return UltimatumEncounterTypesDat.Load(dataLoader).AsReadOnly();
+        ultimatumencountertypesrepository ??= new UltimatumEncounterTypesRepository(logger, this);
+        return ultimatumencountertypesrepository;
     }
 
     /// <summary>
-    /// Gets UltimatumItemisedRewardsDat data.
+    /// Gets UltimatumItemisedRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of UltimatumItemisedRewardsDat.</returns>
-    public ReadOnlyCollection<UltimatumItemisedRewardsDat> LoadUltimatumItemisedRewardsDat()
+    /// <returns>repository of UltimatumItemisedRewardsRepository.</returns>
+    public UltimatumItemisedRewardsRepository LoadUltimatumItemisedRewardsRepository()
     {
-        return UltimatumItemisedRewardsDat.Load(dataLoader).AsReadOnly();
+        ultimatumitemisedrewardsrepository ??= new UltimatumItemisedRewardsRepository(logger, this);
+        return ultimatumitemisedrewardsrepository;
     }
 
     /// <summary>
-    /// Gets UltimatumMapModifiersDat data.
+    /// Gets UltimatumMapModifiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of UltimatumMapModifiersDat.</returns>
-    public ReadOnlyCollection<UltimatumMapModifiersDat> LoadUltimatumMapModifiersDat()
+    /// <returns>repository of UltimatumMapModifiersRepository.</returns>
+    public UltimatumMapModifiersRepository LoadUltimatumMapModifiersRepository()
     {
-        return UltimatumMapModifiersDat.Load(dataLoader).AsReadOnly();
+        ultimatummapmodifiersrepository ??= new UltimatumMapModifiersRepository(logger, this);
+        return ultimatummapmodifiersrepository;
     }
 
     /// <summary>
-    /// Gets UltimatumModifiersDat data.
+    /// Gets UltimatumModifiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of UltimatumModifiersDat.</returns>
-    public ReadOnlyCollection<UltimatumModifiersDat> LoadUltimatumModifiersDat()
+    /// <returns>repository of UltimatumModifiersRepository.</returns>
+    public UltimatumModifiersRepository LoadUltimatumModifiersRepository()
     {
-        return UltimatumModifiersDat.Load(dataLoader).AsReadOnly();
+        ultimatummodifiersrepository ??= new UltimatumModifiersRepository(logger, this);
+        return ultimatummodifiersrepository;
     }
 
     /// <summary>
-    /// Gets UltimatumModifierTypesDat data.
+    /// Gets UltimatumModifierTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of UltimatumModifierTypesDat.</returns>
-    public ReadOnlyCollection<UltimatumModifierTypesDat> LoadUltimatumModifierTypesDat()
+    /// <returns>repository of UltimatumModifierTypesRepository.</returns>
+    public UltimatumModifierTypesRepository LoadUltimatumModifierTypesRepository()
     {
-        return UltimatumModifierTypesDat.Load(dataLoader).AsReadOnly();
+        ultimatummodifiertypesrepository ??= new UltimatumModifierTypesRepository(logger, this);
+        return ultimatummodifiertypesrepository;
     }
 
     /// <summary>
-    /// Gets UltimatumTrialMasterAudioDat data.
+    /// Gets UltimatumTrialMasterAudioRepository data.
     /// </summary>
-    /// <returns>readonly collection of UltimatumTrialMasterAudioDat.</returns>
-    public ReadOnlyCollection<UltimatumTrialMasterAudioDat> LoadUltimatumTrialMasterAudioDat()
+    /// <returns>repository of UltimatumTrialMasterAudioRepository.</returns>
+    public UltimatumTrialMasterAudioRepository LoadUltimatumTrialMasterAudioRepository()
     {
-        return UltimatumTrialMasterAudioDat.Load(dataLoader).AsReadOnly();
+        ultimatumtrialmasteraudiorepository ??= new UltimatumTrialMasterAudioRepository(logger, this);
+        return ultimatumtrialmasteraudiorepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionAreasDat data.
+    /// Gets ExpeditionAreasRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionAreasDat.</returns>
-    public ReadOnlyCollection<ExpeditionAreasDat> LoadExpeditionAreasDat()
+    /// <returns>repository of ExpeditionAreasRepository.</returns>
+    public ExpeditionAreasRepository LoadExpeditionAreasRepository()
     {
-        return ExpeditionAreasDat.Load(dataLoader).AsReadOnly();
+        expeditionareasrepository ??= new ExpeditionAreasRepository(logger, this);
+        return expeditionareasrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionBalancePerLevelDat data.
+    /// Gets ExpeditionBalancePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionBalancePerLevelDat.</returns>
-    public ReadOnlyCollection<ExpeditionBalancePerLevelDat> LoadExpeditionBalancePerLevelDat()
+    /// <returns>repository of ExpeditionBalancePerLevelRepository.</returns>
+    public ExpeditionBalancePerLevelRepository LoadExpeditionBalancePerLevelRepository()
     {
-        return ExpeditionBalancePerLevelDat.Load(dataLoader).AsReadOnly();
+        expeditionbalanceperlevelrepository ??= new ExpeditionBalancePerLevelRepository(logger, this);
+        return expeditionbalanceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionCurrencyDat data.
+    /// Gets ExpeditionCurrencyRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionCurrencyDat.</returns>
-    public ReadOnlyCollection<ExpeditionCurrencyDat> LoadExpeditionCurrencyDat()
+    /// <returns>repository of ExpeditionCurrencyRepository.</returns>
+    public ExpeditionCurrencyRepository LoadExpeditionCurrencyRepository()
     {
-        return ExpeditionCurrencyDat.Load(dataLoader).AsReadOnly();
+        expeditioncurrencyrepository ??= new ExpeditionCurrencyRepository(logger, this);
+        return expeditioncurrencyrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionDealsDat data.
+    /// Gets ExpeditionDealsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionDealsDat.</returns>
-    public ReadOnlyCollection<ExpeditionDealsDat> LoadExpeditionDealsDat()
+    /// <returns>repository of ExpeditionDealsRepository.</returns>
+    public ExpeditionDealsRepository LoadExpeditionDealsRepository()
     {
-        return ExpeditionDealsDat.Load(dataLoader).AsReadOnly();
+        expeditiondealsrepository ??= new ExpeditionDealsRepository(logger, this);
+        return expeditiondealsrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionFactionsDat data.
+    /// Gets ExpeditionFactionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionFactionsDat.</returns>
-    public ReadOnlyCollection<ExpeditionFactionsDat> LoadExpeditionFactionsDat()
+    /// <returns>repository of ExpeditionFactionsRepository.</returns>
+    public ExpeditionFactionsRepository LoadExpeditionFactionsRepository()
     {
-        return ExpeditionFactionsDat.Load(dataLoader).AsReadOnly();
+        expeditionfactionsrepository ??= new ExpeditionFactionsRepository(logger, this);
+        return expeditionfactionsrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionMarkersCommonDat data.
+    /// Gets ExpeditionMarkersCommonRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionMarkersCommonDat.</returns>
-    public ReadOnlyCollection<ExpeditionMarkersCommonDat> LoadExpeditionMarkersCommonDat()
+    /// <returns>repository of ExpeditionMarkersCommonRepository.</returns>
+    public ExpeditionMarkersCommonRepository LoadExpeditionMarkersCommonRepository()
     {
-        return ExpeditionMarkersCommonDat.Load(dataLoader).AsReadOnly();
+        expeditionmarkerscommonrepository ??= new ExpeditionMarkersCommonRepository(logger, this);
+        return expeditionmarkerscommonrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionNPCsDat data.
+    /// Gets ExpeditionNPCsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionNPCsDat.</returns>
-    public ReadOnlyCollection<ExpeditionNPCsDat> LoadExpeditionNPCsDat()
+    /// <returns>repository of ExpeditionNPCsRepository.</returns>
+    public ExpeditionNPCsRepository LoadExpeditionNPCsRepository()
     {
-        return ExpeditionNPCsDat.Load(dataLoader).AsReadOnly();
+        expeditionnpcsrepository ??= new ExpeditionNPCsRepository(logger, this);
+        return expeditionnpcsrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionRelicModsDat data.
+    /// Gets ExpeditionRelicModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionRelicModsDat.</returns>
-    public ReadOnlyCollection<ExpeditionRelicModsDat> LoadExpeditionRelicModsDat()
+    /// <returns>repository of ExpeditionRelicModsRepository.</returns>
+    public ExpeditionRelicModsRepository LoadExpeditionRelicModsRepository()
     {
-        return ExpeditionRelicModsDat.Load(dataLoader).AsReadOnly();
+        expeditionrelicmodsrepository ??= new ExpeditionRelicModsRepository(logger, this);
+        return expeditionrelicmodsrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionRelicsDat data.
+    /// Gets ExpeditionRelicsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionRelicsDat.</returns>
-    public ReadOnlyCollection<ExpeditionRelicsDat> LoadExpeditionRelicsDat()
+    /// <returns>repository of ExpeditionRelicsRepository.</returns>
+    public ExpeditionRelicsRepository LoadExpeditionRelicsRepository()
     {
-        return ExpeditionRelicsDat.Load(dataLoader).AsReadOnly();
+        expeditionrelicsrepository ??= new ExpeditionRelicsRepository(logger, this);
+        return expeditionrelicsrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionStorageLayoutDat data.
+    /// Gets ExpeditionStorageLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionStorageLayoutDat.</returns>
-    public ReadOnlyCollection<ExpeditionStorageLayoutDat> LoadExpeditionStorageLayoutDat()
+    /// <returns>repository of ExpeditionStorageLayoutRepository.</returns>
+    public ExpeditionStorageLayoutRepository LoadExpeditionStorageLayoutRepository()
     {
-        return ExpeditionStorageLayoutDat.Load(dataLoader).AsReadOnly();
+        expeditionstoragelayoutrepository ??= new ExpeditionStorageLayoutRepository(logger, this);
+        return expeditionstoragelayoutrepository;
     }
 
     /// <summary>
-    /// Gets ExpeditionTerrainFeaturesDat data.
+    /// Gets ExpeditionTerrainFeaturesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpeditionTerrainFeaturesDat.</returns>
-    public ReadOnlyCollection<ExpeditionTerrainFeaturesDat> LoadExpeditionTerrainFeaturesDat()
+    /// <returns>repository of ExpeditionTerrainFeaturesRepository.</returns>
+    public ExpeditionTerrainFeaturesRepository LoadExpeditionTerrainFeaturesRepository()
     {
-        return ExpeditionTerrainFeaturesDat.Load(dataLoader).AsReadOnly();
+        expeditionterrainfeaturesrepository ??= new ExpeditionTerrainFeaturesRepository(logger, this);
+        return expeditionterrainfeaturesrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeAOReplacementsDat data.
+    /// Gets HellscapeAOReplacementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeAOReplacementsDat.</returns>
-    public ReadOnlyCollection<HellscapeAOReplacementsDat> LoadHellscapeAOReplacementsDat()
+    /// <returns>repository of HellscapeAOReplacementsRepository.</returns>
+    public HellscapeAOReplacementsRepository LoadHellscapeAOReplacementsRepository()
     {
-        return HellscapeAOReplacementsDat.Load(dataLoader).AsReadOnly();
+        hellscapeaoreplacementsrepository ??= new HellscapeAOReplacementsRepository(logger, this);
+        return hellscapeaoreplacementsrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeAreaPacksDat data.
+    /// Gets HellscapeAreaPacksRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeAreaPacksDat.</returns>
-    public ReadOnlyCollection<HellscapeAreaPacksDat> LoadHellscapeAreaPacksDat()
+    /// <returns>repository of HellscapeAreaPacksRepository.</returns>
+    public HellscapeAreaPacksRepository LoadHellscapeAreaPacksRepository()
     {
-        return HellscapeAreaPacksDat.Load(dataLoader).AsReadOnly();
+        hellscapeareapacksrepository ??= new HellscapeAreaPacksRepository(logger, this);
+        return hellscapeareapacksrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeExperienceLevelsDat data.
+    /// Gets HellscapeExperienceLevelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeExperienceLevelsDat.</returns>
-    public ReadOnlyCollection<HellscapeExperienceLevelsDat> LoadHellscapeExperienceLevelsDat()
+    /// <returns>repository of HellscapeExperienceLevelsRepository.</returns>
+    public HellscapeExperienceLevelsRepository LoadHellscapeExperienceLevelsRepository()
     {
-        return HellscapeExperienceLevelsDat.Load(dataLoader).AsReadOnly();
+        hellscapeexperiencelevelsrepository ??= new HellscapeExperienceLevelsRepository(logger, this);
+        return hellscapeexperiencelevelsrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeFactionsDat data.
+    /// Gets HellscapeFactionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeFactionsDat.</returns>
-    public ReadOnlyCollection<HellscapeFactionsDat> LoadHellscapeFactionsDat()
+    /// <returns>repository of HellscapeFactionsRepository.</returns>
+    public HellscapeFactionsRepository LoadHellscapeFactionsRepository()
     {
-        return HellscapeFactionsDat.Load(dataLoader).AsReadOnly();
+        hellscapefactionsrepository ??= new HellscapeFactionsRepository(logger, this);
+        return hellscapefactionsrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeImmuneMonstersDat data.
+    /// Gets HellscapeImmuneMonstersRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeImmuneMonstersDat.</returns>
-    public ReadOnlyCollection<HellscapeImmuneMonstersDat> LoadHellscapeImmuneMonstersDat()
+    /// <returns>repository of HellscapeImmuneMonstersRepository.</returns>
+    public HellscapeImmuneMonstersRepository LoadHellscapeImmuneMonstersRepository()
     {
-        return HellscapeImmuneMonstersDat.Load(dataLoader).AsReadOnly();
+        hellscapeimmunemonstersrepository ??= new HellscapeImmuneMonstersRepository(logger, this);
+        return hellscapeimmunemonstersrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeItemModificationTiersDat data.
+    /// Gets HellscapeItemModificationTiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeItemModificationTiersDat.</returns>
-    public ReadOnlyCollection<HellscapeItemModificationTiersDat> LoadHellscapeItemModificationTiersDat()
+    /// <returns>repository of HellscapeItemModificationTiersRepository.</returns>
+    public HellscapeItemModificationTiersRepository LoadHellscapeItemModificationTiersRepository()
     {
-        return HellscapeItemModificationTiersDat.Load(dataLoader).AsReadOnly();
+        hellscapeitemmodificationtiersrepository ??= new HellscapeItemModificationTiersRepository(logger, this);
+        return hellscapeitemmodificationtiersrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeLifeScalingPerLevelDat data.
+    /// Gets HellscapeLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<HellscapeLifeScalingPerLevelDat> LoadHellscapeLifeScalingPerLevelDat()
+    /// <returns>repository of HellscapeLifeScalingPerLevelRepository.</returns>
+    public HellscapeLifeScalingPerLevelRepository LoadHellscapeLifeScalingPerLevelRepository()
     {
-        return HellscapeLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        hellscapelifescalingperlevelrepository ??= new HellscapeLifeScalingPerLevelRepository(logger, this);
+        return hellscapelifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeModificationInventoryLayoutDat data.
+    /// Gets HellscapeModificationInventoryLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeModificationInventoryLayoutDat.</returns>
-    public ReadOnlyCollection<HellscapeModificationInventoryLayoutDat> LoadHellscapeModificationInventoryLayoutDat()
+    /// <returns>repository of HellscapeModificationInventoryLayoutRepository.</returns>
+    public HellscapeModificationInventoryLayoutRepository LoadHellscapeModificationInventoryLayoutRepository()
     {
-        return HellscapeModificationInventoryLayoutDat.Load(dataLoader).AsReadOnly();
+        hellscapemodificationinventorylayoutrepository ??= new HellscapeModificationInventoryLayoutRepository(logger, this);
+        return hellscapemodificationinventorylayoutrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeModsDat data.
+    /// Gets HellscapeModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeModsDat.</returns>
-    public ReadOnlyCollection<HellscapeModsDat> LoadHellscapeModsDat()
+    /// <returns>repository of HellscapeModsRepository.</returns>
+    public HellscapeModsRepository LoadHellscapeModsRepository()
     {
-        return HellscapeModsDat.Load(dataLoader).AsReadOnly();
+        hellscapemodsrepository ??= new HellscapeModsRepository(logger, this);
+        return hellscapemodsrepository;
     }
 
     /// <summary>
-    /// Gets HellscapeMonsterPacksDat data.
+    /// Gets HellscapeMonsterPacksRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapeMonsterPacksDat.</returns>
-    public ReadOnlyCollection<HellscapeMonsterPacksDat> LoadHellscapeMonsterPacksDat()
+    /// <returns>repository of HellscapeMonsterPacksRepository.</returns>
+    public HellscapeMonsterPacksRepository LoadHellscapeMonsterPacksRepository()
     {
-        return HellscapeMonsterPacksDat.Load(dataLoader).AsReadOnly();
+        hellscapemonsterpacksrepository ??= new HellscapeMonsterPacksRepository(logger, this);
+        return hellscapemonsterpacksrepository;
     }
 
     /// <summary>
-    /// Gets HellscapePassivesDat data.
+    /// Gets HellscapePassivesRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapePassivesDat.</returns>
-    public ReadOnlyCollection<HellscapePassivesDat> LoadHellscapePassivesDat()
+    /// <returns>repository of HellscapePassivesRepository.</returns>
+    public HellscapePassivesRepository LoadHellscapePassivesRepository()
     {
-        return HellscapePassivesDat.Load(dataLoader).AsReadOnly();
+        hellscapepassivesrepository ??= new HellscapePassivesRepository(logger, this);
+        return hellscapepassivesrepository;
     }
 
     /// <summary>
-    /// Gets HellscapePassiveTreeDat data.
+    /// Gets HellscapePassiveTreeRepository data.
     /// </summary>
-    /// <returns>readonly collection of HellscapePassiveTreeDat.</returns>
-    public ReadOnlyCollection<HellscapePassiveTreeDat> LoadHellscapePassiveTreeDat()
+    /// <returns>repository of HellscapePassiveTreeRepository.</returns>
+    public HellscapePassiveTreeRepository LoadHellscapePassiveTreeRepository()
     {
-        return HellscapePassiveTreeDat.Load(dataLoader).AsReadOnly();
+        hellscapepassivetreerepository ??= new HellscapePassiveTreeRepository(logger, this);
+        return hellscapepassivetreerepository;
     }
 
     /// <summary>
-    /// Gets ArchnemesisMetaRewardsDat data.
+    /// Gets ArchnemesisMetaRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchnemesisMetaRewardsDat.</returns>
-    public ReadOnlyCollection<ArchnemesisMetaRewardsDat> LoadArchnemesisMetaRewardsDat()
+    /// <returns>repository of ArchnemesisMetaRewardsRepository.</returns>
+    public ArchnemesisMetaRewardsRepository LoadArchnemesisMetaRewardsRepository()
     {
-        return ArchnemesisMetaRewardsDat.Load(dataLoader).AsReadOnly();
+        archnemesismetarewardsrepository ??= new ArchnemesisMetaRewardsRepository(logger, this);
+        return archnemesismetarewardsrepository;
     }
 
     /// <summary>
-    /// Gets ArchnemesisModComboAchievementsDat data.
+    /// Gets ArchnemesisModComboAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchnemesisModComboAchievementsDat.</returns>
-    public ReadOnlyCollection<ArchnemesisModComboAchievementsDat> LoadArchnemesisModComboAchievementsDat()
+    /// <returns>repository of ArchnemesisModComboAchievementsRepository.</returns>
+    public ArchnemesisModComboAchievementsRepository LoadArchnemesisModComboAchievementsRepository()
     {
-        return ArchnemesisModComboAchievementsDat.Load(dataLoader).AsReadOnly();
+        archnemesismodcomboachievementsrepository ??= new ArchnemesisModComboAchievementsRepository(logger, this);
+        return archnemesismodcomboachievementsrepository;
     }
 
     /// <summary>
-    /// Gets ArchnemesisModsDat data.
+    /// Gets ArchnemesisModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchnemesisModsDat.</returns>
-    public ReadOnlyCollection<ArchnemesisModsDat> LoadArchnemesisModsDat()
+    /// <returns>repository of ArchnemesisModsRepository.</returns>
+    public ArchnemesisModsRepository LoadArchnemesisModsRepository()
     {
-        return ArchnemesisModsDat.Load(dataLoader).AsReadOnly();
+        archnemesismodsrepository ??= new ArchnemesisModsRepository(logger, this);
+        return archnemesismodsrepository;
     }
 
     /// <summary>
-    /// Gets ArchnemesisModVisualsDat data.
+    /// Gets ArchnemesisModVisualsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchnemesisModVisualsDat.</returns>
-    public ReadOnlyCollection<ArchnemesisModVisualsDat> LoadArchnemesisModVisualsDat()
+    /// <returns>repository of ArchnemesisModVisualsRepository.</returns>
+    public ArchnemesisModVisualsRepository LoadArchnemesisModVisualsRepository()
     {
-        return ArchnemesisModVisualsDat.Load(dataLoader).AsReadOnly();
+        archnemesismodvisualsrepository ??= new ArchnemesisModVisualsRepository(logger, this);
+        return archnemesismodvisualsrepository;
     }
 
     /// <summary>
-    /// Gets ArchnemesisRecipesDat data.
+    /// Gets ArchnemesisRecipesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchnemesisRecipesDat.</returns>
-    public ReadOnlyCollection<ArchnemesisRecipesDat> LoadArchnemesisRecipesDat()
+    /// <returns>repository of ArchnemesisRecipesRepository.</returns>
+    public ArchnemesisRecipesRepository LoadArchnemesisRecipesRepository()
     {
-        return ArchnemesisRecipesDat.Load(dataLoader).AsReadOnly();
+        archnemesisrecipesrepository ??= new ArchnemesisRecipesRepository(logger, this);
+        return archnemesisrecipesrepository;
     }
 
     /// <summary>
-    /// Gets AtlasPrimordialAltarChoicesDat data.
+    /// Gets AtlasPrimordialAltarChoicesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasPrimordialAltarChoicesDat.</returns>
-    public ReadOnlyCollection<AtlasPrimordialAltarChoicesDat> LoadAtlasPrimordialAltarChoicesDat()
+    /// <returns>repository of AtlasPrimordialAltarChoicesRepository.</returns>
+    public AtlasPrimordialAltarChoicesRepository LoadAtlasPrimordialAltarChoicesRepository()
     {
-        return AtlasPrimordialAltarChoicesDat.Load(dataLoader).AsReadOnly();
+        atlasprimordialaltarchoicesrepository ??= new AtlasPrimordialAltarChoicesRepository(logger, this);
+        return atlasprimordialaltarchoicesrepository;
     }
 
     /// <summary>
-    /// Gets AtlasPrimordialAltarChoiceTypesDat data.
+    /// Gets AtlasPrimordialAltarChoiceTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasPrimordialAltarChoiceTypesDat.</returns>
-    public ReadOnlyCollection<AtlasPrimordialAltarChoiceTypesDat> LoadAtlasPrimordialAltarChoiceTypesDat()
+    /// <returns>repository of AtlasPrimordialAltarChoiceTypesRepository.</returns>
+    public AtlasPrimordialAltarChoiceTypesRepository LoadAtlasPrimordialAltarChoiceTypesRepository()
     {
-        return AtlasPrimordialAltarChoiceTypesDat.Load(dataLoader).AsReadOnly();
+        atlasprimordialaltarchoicetypesrepository ??= new AtlasPrimordialAltarChoiceTypesRepository(logger, this);
+        return atlasprimordialaltarchoicetypesrepository;
     }
 
     /// <summary>
-    /// Gets AtlasPrimordialBossesDat data.
+    /// Gets AtlasPrimordialBossesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasPrimordialBossesDat.</returns>
-    public ReadOnlyCollection<AtlasPrimordialBossesDat> LoadAtlasPrimordialBossesDat()
+    /// <returns>repository of AtlasPrimordialBossesRepository.</returns>
+    public AtlasPrimordialBossesRepository LoadAtlasPrimordialBossesRepository()
     {
-        return AtlasPrimordialBossesDat.Load(dataLoader).AsReadOnly();
+        atlasprimordialbossesrepository ??= new AtlasPrimordialBossesRepository(logger, this);
+        return atlasprimordialbossesrepository;
     }
 
     /// <summary>
-    /// Gets AtlasPrimordialBossInfluenceDat data.
+    /// Gets AtlasPrimordialBossInfluenceRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasPrimordialBossInfluenceDat.</returns>
-    public ReadOnlyCollection<AtlasPrimordialBossInfluenceDat> LoadAtlasPrimordialBossInfluenceDat()
+    /// <returns>repository of AtlasPrimordialBossInfluenceRepository.</returns>
+    public AtlasPrimordialBossInfluenceRepository LoadAtlasPrimordialBossInfluenceRepository()
     {
-        return AtlasPrimordialBossInfluenceDat.Load(dataLoader).AsReadOnly();
+        atlasprimordialbossinfluencerepository ??= new AtlasPrimordialBossInfluenceRepository(logger, this);
+        return atlasprimordialbossinfluencerepository;
     }
 
     /// <summary>
-    /// Gets AtlasPrimordialBossOptionsDat data.
+    /// Gets AtlasPrimordialBossOptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasPrimordialBossOptionsDat.</returns>
-    public ReadOnlyCollection<AtlasPrimordialBossOptionsDat> LoadAtlasPrimordialBossOptionsDat()
+    /// <returns>repository of AtlasPrimordialBossOptionsRepository.</returns>
+    public AtlasPrimordialBossOptionsRepository LoadAtlasPrimordialBossOptionsRepository()
     {
-        return AtlasPrimordialBossOptionsDat.Load(dataLoader).AsReadOnly();
+        atlasprimordialbossoptionsrepository ??= new AtlasPrimordialBossOptionsRepository(logger, this);
+        return atlasprimordialbossoptionsrepository;
     }
 
     /// <summary>
-    /// Gets PrimordialBossLifeScalingPerLevelDat data.
+    /// Gets PrimordialBossLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of PrimordialBossLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<PrimordialBossLifeScalingPerLevelDat> LoadPrimordialBossLifeScalingPerLevelDat()
+    /// <returns>repository of PrimordialBossLifeScalingPerLevelRepository.</returns>
+    public PrimordialBossLifeScalingPerLevelRepository LoadPrimordialBossLifeScalingPerLevelRepository()
     {
-        return PrimordialBossLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        primordialbosslifescalingperlevelrepository ??= new PrimordialBossLifeScalingPerLevelRepository(logger, this);
+        return primordialbosslifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets AtlasUpgradesInventoryLayoutDat data.
+    /// Gets AtlasUpgradesInventoryLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasUpgradesInventoryLayoutDat.</returns>
-    public ReadOnlyCollection<AtlasUpgradesInventoryLayoutDat> LoadAtlasUpgradesInventoryLayoutDat()
+    /// <returns>repository of AtlasUpgradesInventoryLayoutRepository.</returns>
+    public AtlasUpgradesInventoryLayoutRepository LoadAtlasUpgradesInventoryLayoutRepository()
     {
-        return AtlasUpgradesInventoryLayoutDat.Load(dataLoader).AsReadOnly();
+        atlasupgradesinventorylayoutrepository ??= new AtlasUpgradesInventoryLayoutRepository(logger, this);
+        return atlasupgradesinventorylayoutrepository;
     }
 
     /// <summary>
-    /// Gets AtlasPassiveSkillTreeGroupTypeDat data.
+    /// Gets AtlasPassiveSkillTreeGroupTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasPassiveSkillTreeGroupTypeDat.</returns>
-    public ReadOnlyCollection<AtlasPassiveSkillTreeGroupTypeDat> LoadAtlasPassiveSkillTreeGroupTypeDat()
+    /// <returns>repository of AtlasPassiveSkillTreeGroupTypeRepository.</returns>
+    public AtlasPassiveSkillTreeGroupTypeRepository LoadAtlasPassiveSkillTreeGroupTypeRepository()
     {
-        return AtlasPassiveSkillTreeGroupTypeDat.Load(dataLoader).AsReadOnly();
+        atlaspassiveskilltreegrouptyperepository ??= new AtlasPassiveSkillTreeGroupTypeRepository(logger, this);
+        return atlaspassiveskilltreegrouptyperepository;
     }
 
     /// <summary>
-    /// Gets KiracLevelsDat data.
+    /// Gets KiracLevelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of KiracLevelsDat.</returns>
-    public ReadOnlyCollection<KiracLevelsDat> LoadKiracLevelsDat()
+    /// <returns>repository of KiracLevelsRepository.</returns>
+    public KiracLevelsRepository LoadKiracLevelsRepository()
     {
-        return KiracLevelsDat.Load(dataLoader).AsReadOnly();
+        kiraclevelsrepository ??= new KiracLevelsRepository(logger, this);
+        return kiraclevelsrepository;
     }
 
     /// <summary>
-    /// Gets ScoutingReportsDat data.
+    /// Gets ScoutingReportsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ScoutingReportsDat.</returns>
-    public ReadOnlyCollection<ScoutingReportsDat> LoadScoutingReportsDat()
+    /// <returns>repository of ScoutingReportsRepository.</returns>
+    public ScoutingReportsRepository LoadScoutingReportsRepository()
     {
-        return ScoutingReportsDat.Load(dataLoader).AsReadOnly();
+        scoutingreportsrepository ??= new ScoutingReportsRepository(logger, this);
+        return scoutingreportsrepository;
     }
 
     /// <summary>
-    /// Gets DroneBaseTypesDat data.
+    /// Gets DroneBaseTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of DroneBaseTypesDat.</returns>
-    public ReadOnlyCollection<DroneBaseTypesDat> LoadDroneBaseTypesDat()
+    /// <returns>repository of DroneBaseTypesRepository.</returns>
+    public DroneBaseTypesRepository LoadDroneBaseTypesRepository()
     {
-        return DroneBaseTypesDat.Load(dataLoader).AsReadOnly();
+        dronebasetypesrepository ??= new DroneBaseTypesRepository(logger, this);
+        return dronebasetypesrepository;
     }
 
     /// <summary>
-    /// Gets DroneTypesDat data.
+    /// Gets DroneTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of DroneTypesDat.</returns>
-    public ReadOnlyCollection<DroneTypesDat> LoadDroneTypesDat()
+    /// <returns>repository of DroneTypesRepository.</returns>
+    public DroneTypesRepository LoadDroneTypesRepository()
     {
-        return DroneTypesDat.Load(dataLoader).AsReadOnly();
+        dronetypesrepository ??= new DroneTypesRepository(logger, this);
+        return dronetypesrepository;
     }
 
     /// <summary>
-    /// Gets SentinelCraftingCurrencyDat data.
+    /// Gets SentinelCraftingCurrencyRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelCraftingCurrencyDat.</returns>
-    public ReadOnlyCollection<SentinelCraftingCurrencyDat> LoadSentinelCraftingCurrencyDat()
+    /// <returns>repository of SentinelCraftingCurrencyRepository.</returns>
+    public SentinelCraftingCurrencyRepository LoadSentinelCraftingCurrencyRepository()
     {
-        return SentinelCraftingCurrencyDat.Load(dataLoader).AsReadOnly();
+        sentinelcraftingcurrencyrepository ??= new SentinelCraftingCurrencyRepository(logger, this);
+        return sentinelcraftingcurrencyrepository;
     }
 
     /// <summary>
-    /// Gets SentinelDroneInventoryLayoutDat data.
+    /// Gets SentinelDroneInventoryLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelDroneInventoryLayoutDat.</returns>
-    public ReadOnlyCollection<SentinelDroneInventoryLayoutDat> LoadSentinelDroneInventoryLayoutDat()
+    /// <returns>repository of SentinelDroneInventoryLayoutRepository.</returns>
+    public SentinelDroneInventoryLayoutRepository LoadSentinelDroneInventoryLayoutRepository()
     {
-        return SentinelDroneInventoryLayoutDat.Load(dataLoader).AsReadOnly();
+        sentineldroneinventorylayoutrepository ??= new SentinelDroneInventoryLayoutRepository(logger, this);
+        return sentineldroneinventorylayoutrepository;
     }
 
     /// <summary>
-    /// Gets SentinelPassivesDat data.
+    /// Gets SentinelPassivesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelPassivesDat.</returns>
-    public ReadOnlyCollection<SentinelPassivesDat> LoadSentinelPassivesDat()
+    /// <returns>repository of SentinelPassivesRepository.</returns>
+    public SentinelPassivesRepository LoadSentinelPassivesRepository()
     {
-        return SentinelPassivesDat.Load(dataLoader).AsReadOnly();
+        sentinelpassivesrepository ??= new SentinelPassivesRepository(logger, this);
+        return sentinelpassivesrepository;
     }
 
     /// <summary>
-    /// Gets SentinelPassiveStatsDat data.
+    /// Gets SentinelPassiveStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelPassiveStatsDat.</returns>
-    public ReadOnlyCollection<SentinelPassiveStatsDat> LoadSentinelPassiveStatsDat()
+    /// <returns>repository of SentinelPassiveStatsRepository.</returns>
+    public SentinelPassiveStatsRepository LoadSentinelPassiveStatsRepository()
     {
-        return SentinelPassiveStatsDat.Load(dataLoader).AsReadOnly();
+        sentinelpassivestatsrepository ??= new SentinelPassiveStatsRepository(logger, this);
+        return sentinelpassivestatsrepository;
     }
 
     /// <summary>
-    /// Gets SentinelPassiveTypesDat data.
+    /// Gets SentinelPassiveTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelPassiveTypesDat.</returns>
-    public ReadOnlyCollection<SentinelPassiveTypesDat> LoadSentinelPassiveTypesDat()
+    /// <returns>repository of SentinelPassiveTypesRepository.</returns>
+    public SentinelPassiveTypesRepository LoadSentinelPassiveTypesRepository()
     {
-        return SentinelPassiveTypesDat.Load(dataLoader).AsReadOnly();
+        sentinelpassivetypesrepository ??= new SentinelPassiveTypesRepository(logger, this);
+        return sentinelpassivetypesrepository;
     }
 
     /// <summary>
-    /// Gets SentinelPowerExpLevelsDat data.
+    /// Gets SentinelPowerExpLevelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelPowerExpLevelsDat.</returns>
-    public ReadOnlyCollection<SentinelPowerExpLevelsDat> LoadSentinelPowerExpLevelsDat()
+    /// <returns>repository of SentinelPowerExpLevelsRepository.</returns>
+    public SentinelPowerExpLevelsRepository LoadSentinelPowerExpLevelsRepository()
     {
-        return SentinelPowerExpLevelsDat.Load(dataLoader).AsReadOnly();
+        sentinelpowerexplevelsrepository ??= new SentinelPowerExpLevelsRepository(logger, this);
+        return sentinelpowerexplevelsrepository;
     }
 
     /// <summary>
-    /// Gets SentinelStorageLayoutDat data.
+    /// Gets SentinelStorageLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelStorageLayoutDat.</returns>
-    public ReadOnlyCollection<SentinelStorageLayoutDat> LoadSentinelStorageLayoutDat()
+    /// <returns>repository of SentinelStorageLayoutRepository.</returns>
+    public SentinelStorageLayoutRepository LoadSentinelStorageLayoutRepository()
     {
-        return SentinelStorageLayoutDat.Load(dataLoader).AsReadOnly();
+        sentinelstoragelayoutrepository ??= new SentinelStorageLayoutRepository(logger, this);
+        return sentinelstoragelayoutrepository;
     }
 
     /// <summary>
-    /// Gets SentinelTaggedMonsterStatsDat data.
+    /// Gets SentinelTaggedMonsterStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SentinelTaggedMonsterStatsDat.</returns>
-    public ReadOnlyCollection<SentinelTaggedMonsterStatsDat> LoadSentinelTaggedMonsterStatsDat()
+    /// <returns>repository of SentinelTaggedMonsterStatsRepository.</returns>
+    public SentinelTaggedMonsterStatsRepository LoadSentinelTaggedMonsterStatsRepository()
     {
-        return SentinelTaggedMonsterStatsDat.Load(dataLoader).AsReadOnly();
+        sentineltaggedmonsterstatsrepository ??= new SentinelTaggedMonsterStatsRepository(logger, this);
+        return sentineltaggedmonsterstatsrepository;
     }
 
     /// <summary>
-    /// Gets ClientLakeDifficultyDat data.
+    /// Gets ClientLakeDifficultyRepository data.
     /// </summary>
-    /// <returns>readonly collection of ClientLakeDifficultyDat.</returns>
-    public ReadOnlyCollection<ClientLakeDifficultyDat> LoadClientLakeDifficultyDat()
+    /// <returns>repository of ClientLakeDifficultyRepository.</returns>
+    public ClientLakeDifficultyRepository LoadClientLakeDifficultyRepository()
     {
-        return ClientLakeDifficultyDat.Load(dataLoader).AsReadOnly();
+        clientlakedifficultyrepository ??= new ClientLakeDifficultyRepository(logger, this);
+        return clientlakedifficultyrepository;
     }
 
     /// <summary>
-    /// Gets LakeBossLifeScalingPerLevelDat data.
+    /// Gets LakeBossLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of LakeBossLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<LakeBossLifeScalingPerLevelDat> LoadLakeBossLifeScalingPerLevelDat()
+    /// <returns>repository of LakeBossLifeScalingPerLevelRepository.</returns>
+    public LakeBossLifeScalingPerLevelRepository LoadLakeBossLifeScalingPerLevelRepository()
     {
-        return LakeBossLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        lakebosslifescalingperlevelrepository ??= new LakeBossLifeScalingPerLevelRepository(logger, this);
+        return lakebosslifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets LakeMetaOptionsDat data.
+    /// Gets LakeMetaOptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LakeMetaOptionsDat.</returns>
-    public ReadOnlyCollection<LakeMetaOptionsDat> LoadLakeMetaOptionsDat()
+    /// <returns>repository of LakeMetaOptionsRepository.</returns>
+    public LakeMetaOptionsRepository LoadLakeMetaOptionsRepository()
     {
-        return LakeMetaOptionsDat.Load(dataLoader).AsReadOnly();
+        lakemetaoptionsrepository ??= new LakeMetaOptionsRepository(logger, this);
+        return lakemetaoptionsrepository;
     }
 
     /// <summary>
-    /// Gets LakeMetaOptionsUnlockTextDat data.
+    /// Gets LakeMetaOptionsUnlockTextRepository data.
     /// </summary>
-    /// <returns>readonly collection of LakeMetaOptionsUnlockTextDat.</returns>
-    public ReadOnlyCollection<LakeMetaOptionsUnlockTextDat> LoadLakeMetaOptionsUnlockTextDat()
+    /// <returns>repository of LakeMetaOptionsUnlockTextRepository.</returns>
+    public LakeMetaOptionsUnlockTextRepository LoadLakeMetaOptionsUnlockTextRepository()
     {
-        return LakeMetaOptionsUnlockTextDat.Load(dataLoader).AsReadOnly();
+        lakemetaoptionsunlocktextrepository ??= new LakeMetaOptionsUnlockTextRepository(logger, this);
+        return lakemetaoptionsunlocktextrepository;
     }
 
     /// <summary>
-    /// Gets LakeRoomCompletionDat data.
+    /// Gets LakeRoomCompletionRepository data.
     /// </summary>
-    /// <returns>readonly collection of LakeRoomCompletionDat.</returns>
-    public ReadOnlyCollection<LakeRoomCompletionDat> LoadLakeRoomCompletionDat()
+    /// <returns>repository of LakeRoomCompletionRepository.</returns>
+    public LakeRoomCompletionRepository LoadLakeRoomCompletionRepository()
     {
-        return LakeRoomCompletionDat.Load(dataLoader).AsReadOnly();
+        lakeroomcompletionrepository ??= new LakeRoomCompletionRepository(logger, this);
+        return lakeroomcompletionrepository;
     }
 
     /// <summary>
-    /// Gets LakeRoomsDat data.
+    /// Gets LakeRoomsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LakeRoomsDat.</returns>
-    public ReadOnlyCollection<LakeRoomsDat> LoadLakeRoomsDat()
+    /// <returns>repository of LakeRoomsRepository.</returns>
+    public LakeRoomsRepository LoadLakeRoomsRepository()
     {
-        return LakeRoomsDat.Load(dataLoader).AsReadOnly();
+        lakeroomsrepository ??= new LakeRoomsRepository(logger, this);
+        return lakeroomsrepository;
     }
 
     /// <summary>
-    /// Gets WeaponPassiveSkillTypesDat data.
+    /// Gets WeaponPassiveSkillTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of WeaponPassiveSkillTypesDat.</returns>
-    public ReadOnlyCollection<WeaponPassiveSkillTypesDat> LoadWeaponPassiveSkillTypesDat()
+    /// <returns>repository of WeaponPassiveSkillTypesRepository.</returns>
+    public WeaponPassiveSkillTypesRepository LoadWeaponPassiveSkillTypesRepository()
     {
-        return WeaponPassiveSkillTypesDat.Load(dataLoader).AsReadOnly();
+        weaponpassiveskilltypesrepository ??= new WeaponPassiveSkillTypesRepository(logger, this);
+        return weaponpassiveskilltypesrepository;
     }
 
     /// <summary>
-    /// Gets WeaponPassiveTreeBalancePerItemLevelDat data.
+    /// Gets WeaponPassiveTreeBalancePerItemLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of WeaponPassiveTreeBalancePerItemLevelDat.</returns>
-    public ReadOnlyCollection<WeaponPassiveTreeBalancePerItemLevelDat> LoadWeaponPassiveTreeBalancePerItemLevelDat()
+    /// <returns>repository of WeaponPassiveTreeBalancePerItemLevelRepository.</returns>
+    public WeaponPassiveTreeBalancePerItemLevelRepository LoadWeaponPassiveTreeBalancePerItemLevelRepository()
     {
-        return WeaponPassiveTreeBalancePerItemLevelDat.Load(dataLoader).AsReadOnly();
+        weaponpassivetreebalanceperitemlevelrepository ??= new WeaponPassiveTreeBalancePerItemLevelRepository(logger, this);
+        return weaponpassivetreebalanceperitemlevelrepository;
     }
 
     /// <summary>
-    /// Gets WeaponPassiveTreeUniqueBaseTypesDat data.
+    /// Gets WeaponPassiveTreeUniqueBaseTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of WeaponPassiveTreeUniqueBaseTypesDat.</returns>
-    public ReadOnlyCollection<WeaponPassiveTreeUniqueBaseTypesDat> LoadWeaponPassiveTreeUniqueBaseTypesDat()
+    /// <returns>repository of WeaponPassiveTreeUniqueBaseTypesRepository.</returns>
+    public WeaponPassiveTreeUniqueBaseTypesRepository LoadWeaponPassiveTreeUniqueBaseTypesRepository()
     {
-        return WeaponPassiveTreeUniqueBaseTypesDat.Load(dataLoader).AsReadOnly();
+        weaponpassivetreeuniquebasetypesrepository ??= new WeaponPassiveTreeUniqueBaseTypesRepository(logger, this);
+        return weaponpassivetreeuniquebasetypesrepository;
     }
 
     /// <summary>
-    /// Gets WeaponPassiveSkillsDat data.
+    /// Gets WeaponPassiveSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of WeaponPassiveSkillsDat.</returns>
-    public ReadOnlyCollection<WeaponPassiveSkillsDat> LoadWeaponPassiveSkillsDat()
+    /// <returns>repository of WeaponPassiveSkillsRepository.</returns>
+    public WeaponPassiveSkillsRepository LoadWeaponPassiveSkillsRepository()
     {
-        return WeaponPassiveSkillsDat.Load(dataLoader).AsReadOnly();
+        weaponpassiveskillsrepository ??= new WeaponPassiveSkillsRepository(logger, this);
+        return weaponpassiveskillsrepository;
     }
 
     /// <summary>
-    /// Gets AchievementItemRewardsDat data.
+    /// Gets AchievementItemRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AchievementItemRewardsDat.</returns>
-    public ReadOnlyCollection<AchievementItemRewardsDat> LoadAchievementItemRewardsDat()
+    /// <returns>repository of AchievementItemRewardsRepository.</returns>
+    public AchievementItemRewardsRepository LoadAchievementItemRewardsRepository()
     {
-        return AchievementItemRewardsDat.Load(dataLoader).AsReadOnly();
+        achievementitemrewardsrepository ??= new AchievementItemRewardsRepository(logger, this);
+        return achievementitemrewardsrepository;
     }
 
     /// <summary>
-    /// Gets AchievementItemsDat data.
+    /// Gets AchievementItemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AchievementItemsDat.</returns>
-    public ReadOnlyCollection<AchievementItemsDat> LoadAchievementItemsDat()
+    /// <returns>repository of AchievementItemsRepository.</returns>
+    public AchievementItemsRepository LoadAchievementItemsRepository()
     {
-        return AchievementItemsDat.Load(dataLoader).AsReadOnly();
+        achievementitemsrepository ??= new AchievementItemsRepository(logger, this);
+        return achievementitemsrepository;
     }
 
     /// <summary>
-    /// Gets AchievementsDat data.
+    /// Gets AchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AchievementsDat.</returns>
-    public ReadOnlyCollection<AchievementsDat> LoadAchievementsDat()
+    /// <returns>repository of AchievementsRepository.</returns>
+    public AchievementsRepository LoadAchievementsRepository()
     {
-        return AchievementsDat.Load(dataLoader).AsReadOnly();
+        achievementsrepository ??= new AchievementsRepository(logger, this);
+        return achievementsrepository;
     }
 
     /// <summary>
-    /// Gets AchievementSetRewardsDat data.
+    /// Gets AchievementSetRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AchievementSetRewardsDat.</returns>
-    public ReadOnlyCollection<AchievementSetRewardsDat> LoadAchievementSetRewardsDat()
+    /// <returns>repository of AchievementSetRewardsRepository.</returns>
+    public AchievementSetRewardsRepository LoadAchievementSetRewardsRepository()
     {
-        return AchievementSetRewardsDat.Load(dataLoader).AsReadOnly();
+        achievementsetrewardsrepository ??= new AchievementSetRewardsRepository(logger, this);
+        return achievementsetrewardsrepository;
     }
 
     /// <summary>
-    /// Gets AchievementSetsDisplayDat data.
+    /// Gets AchievementSetsDisplayRepository data.
     /// </summary>
-    /// <returns>readonly collection of AchievementSetsDisplayDat.</returns>
-    public ReadOnlyCollection<AchievementSetsDisplayDat> LoadAchievementSetsDisplayDat()
+    /// <returns>repository of AchievementSetsDisplayRepository.</returns>
+    public AchievementSetsDisplayRepository LoadAchievementSetsDisplayRepository()
     {
-        return AchievementSetsDisplayDat.Load(dataLoader).AsReadOnly();
+        achievementsetsdisplayrepository ??= new AchievementSetsDisplayRepository(logger, this);
+        return achievementsetsdisplayrepository;
     }
 
     /// <summary>
-    /// Gets ActiveSkillsDat data.
+    /// Gets ActiveSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ActiveSkillsDat.</returns>
-    public ReadOnlyCollection<ActiveSkillsDat> LoadActiveSkillsDat()
+    /// <returns>repository of ActiveSkillsRepository.</returns>
+    public ActiveSkillsRepository LoadActiveSkillsRepository()
     {
-        return ActiveSkillsDat.Load(dataLoader).AsReadOnly();
+        activeskillsrepository ??= new ActiveSkillsRepository(logger, this);
+        return activeskillsrepository;
     }
 
     /// <summary>
-    /// Gets ActiveSkillTypeDat data.
+    /// Gets ActiveSkillTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of ActiveSkillTypeDat.</returns>
-    public ReadOnlyCollection<ActiveSkillTypeDat> LoadActiveSkillTypeDat()
+    /// <returns>repository of ActiveSkillTypeRepository.</returns>
+    public ActiveSkillTypeRepository LoadActiveSkillTypeRepository()
     {
-        return ActiveSkillTypeDat.Load(dataLoader).AsReadOnly();
+        activeskilltyperepository ??= new ActiveSkillTypeRepository(logger, this);
+        return activeskilltyperepository;
     }
 
     /// <summary>
-    /// Gets ActsDat data.
+    /// Gets ActsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ActsDat.</returns>
-    public ReadOnlyCollection<ActsDat> LoadActsDat()
+    /// <returns>repository of ActsRepository.</returns>
+    public ActsRepository LoadActsRepository()
     {
-        return ActsDat.Load(dataLoader).AsReadOnly();
+        actsrepository ??= new ActsRepository(logger, this);
+        return actsrepository;
     }
 
     /// <summary>
-    /// Gets AddBuffToTargetVarietiesDat data.
+    /// Gets AddBuffToTargetVarietiesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AddBuffToTargetVarietiesDat.</returns>
-    public ReadOnlyCollection<AddBuffToTargetVarietiesDat> LoadAddBuffToTargetVarietiesDat()
+    /// <returns>repository of AddBuffToTargetVarietiesRepository.</returns>
+    public AddBuffToTargetVarietiesRepository LoadAddBuffToTargetVarietiesRepository()
     {
-        return AddBuffToTargetVarietiesDat.Load(dataLoader).AsReadOnly();
+        addbufftotargetvarietiesrepository ??= new AddBuffToTargetVarietiesRepository(logger, this);
+        return addbufftotargetvarietiesrepository;
     }
 
     /// <summary>
-    /// Gets AdditionalLifeScalingDat data.
+    /// Gets AdditionalLifeScalingRepository data.
     /// </summary>
-    /// <returns>readonly collection of AdditionalLifeScalingDat.</returns>
-    public ReadOnlyCollection<AdditionalLifeScalingDat> LoadAdditionalLifeScalingDat()
+    /// <returns>repository of AdditionalLifeScalingRepository.</returns>
+    public AdditionalLifeScalingRepository LoadAdditionalLifeScalingRepository()
     {
-        return AdditionalLifeScalingDat.Load(dataLoader).AsReadOnly();
+        additionallifescalingrepository ??= new AdditionalLifeScalingRepository(logger, this);
+        return additionallifescalingrepository;
     }
 
     /// <summary>
-    /// Gets AdditionalMonsterPacksFromStatsDat data.
+    /// Gets AdditionalMonsterPacksFromStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AdditionalMonsterPacksFromStatsDat.</returns>
-    public ReadOnlyCollection<AdditionalMonsterPacksFromStatsDat> LoadAdditionalMonsterPacksFromStatsDat()
+    /// <returns>repository of AdditionalMonsterPacksFromStatsRepository.</returns>
+    public AdditionalMonsterPacksFromStatsRepository LoadAdditionalMonsterPacksFromStatsRepository()
     {
-        return AdditionalMonsterPacksFromStatsDat.Load(dataLoader).AsReadOnly();
+        additionalmonsterpacksfromstatsrepository ??= new AdditionalMonsterPacksFromStatsRepository(logger, this);
+        return additionalmonsterpacksfromstatsrepository;
     }
 
     /// <summary>
-    /// Gets AdvancedSkillsTutorialDat data.
+    /// Gets AdvancedSkillsTutorialRepository data.
     /// </summary>
-    /// <returns>readonly collection of AdvancedSkillsTutorialDat.</returns>
-    public ReadOnlyCollection<AdvancedSkillsTutorialDat> LoadAdvancedSkillsTutorialDat()
+    /// <returns>repository of AdvancedSkillsTutorialRepository.</returns>
+    public AdvancedSkillsTutorialRepository LoadAdvancedSkillsTutorialRepository()
     {
-        return AdvancedSkillsTutorialDat.Load(dataLoader).AsReadOnly();
+        advancedskillstutorialrepository ??= new AdvancedSkillsTutorialRepository(logger, this);
+        return advancedskillstutorialrepository;
     }
 
     /// <summary>
-    /// Gets AegisVariationsDat data.
+    /// Gets AegisVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AegisVariationsDat.</returns>
-    public ReadOnlyCollection<AegisVariationsDat> LoadAegisVariationsDat()
+    /// <returns>repository of AegisVariationsRepository.</returns>
+    public AegisVariationsRepository LoadAegisVariationsRepository()
     {
-        return AegisVariationsDat.Load(dataLoader).AsReadOnly();
+        aegisvariationsrepository ??= new AegisVariationsRepository(logger, this);
+        return aegisvariationsrepository;
     }
 
     /// <summary>
-    /// Gets AlternatePassiveAdditionsDat data.
+    /// Gets AlternatePassiveAdditionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AlternatePassiveAdditionsDat.</returns>
-    public ReadOnlyCollection<AlternatePassiveAdditionsDat> LoadAlternatePassiveAdditionsDat()
+    /// <returns>repository of AlternatePassiveAdditionsRepository.</returns>
+    public AlternatePassiveAdditionsRepository LoadAlternatePassiveAdditionsRepository()
     {
-        return AlternatePassiveAdditionsDat.Load(dataLoader).AsReadOnly();
+        alternatepassiveadditionsrepository ??= new AlternatePassiveAdditionsRepository(logger, this);
+        return alternatepassiveadditionsrepository;
     }
 
     /// <summary>
-    /// Gets AlternatePassiveSkillsDat data.
+    /// Gets AlternatePassiveSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AlternatePassiveSkillsDat.</returns>
-    public ReadOnlyCollection<AlternatePassiveSkillsDat> LoadAlternatePassiveSkillsDat()
+    /// <returns>repository of AlternatePassiveSkillsRepository.</returns>
+    public AlternatePassiveSkillsRepository LoadAlternatePassiveSkillsRepository()
     {
-        return AlternatePassiveSkillsDat.Load(dataLoader).AsReadOnly();
+        alternatepassiveskillsrepository ??= new AlternatePassiveSkillsRepository(logger, this);
+        return alternatepassiveskillsrepository;
     }
 
     /// <summary>
-    /// Gets AlternateSkillTargetingBehavioursDat data.
+    /// Gets AlternateSkillTargetingBehavioursRepository data.
     /// </summary>
-    /// <returns>readonly collection of AlternateSkillTargetingBehavioursDat.</returns>
-    public ReadOnlyCollection<AlternateSkillTargetingBehavioursDat> LoadAlternateSkillTargetingBehavioursDat()
+    /// <returns>repository of AlternateSkillTargetingBehavioursRepository.</returns>
+    public AlternateSkillTargetingBehavioursRepository LoadAlternateSkillTargetingBehavioursRepository()
     {
-        return AlternateSkillTargetingBehavioursDat.Load(dataLoader).AsReadOnly();
+        alternateskilltargetingbehavioursrepository ??= new AlternateSkillTargetingBehavioursRepository(logger, this);
+        return alternateskilltargetingbehavioursrepository;
     }
 
     /// <summary>
-    /// Gets AlternateTreeVersionsDat data.
+    /// Gets AlternateTreeVersionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AlternateTreeVersionsDat.</returns>
-    public ReadOnlyCollection<AlternateTreeVersionsDat> LoadAlternateTreeVersionsDat()
+    /// <returns>repository of AlternateTreeVersionsRepository.</returns>
+    public AlternateTreeVersionsRepository LoadAlternateTreeVersionsRepository()
     {
-        return AlternateTreeVersionsDat.Load(dataLoader).AsReadOnly();
+        alternatetreeversionsrepository ??= new AlternateTreeVersionsRepository(logger, this);
+        return alternatetreeversionsrepository;
     }
 
     /// <summary>
-    /// Gets AnimatedObjectFlagsDat data.
+    /// Gets AnimatedObjectFlagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AnimatedObjectFlagsDat.</returns>
-    public ReadOnlyCollection<AnimatedObjectFlagsDat> LoadAnimatedObjectFlagsDat()
+    /// <returns>repository of AnimatedObjectFlagsRepository.</returns>
+    public AnimatedObjectFlagsRepository LoadAnimatedObjectFlagsRepository()
     {
-        return AnimatedObjectFlagsDat.Load(dataLoader).AsReadOnly();
+        animatedobjectflagsrepository ??= new AnimatedObjectFlagsRepository(logger, this);
+        return animatedobjectflagsrepository;
     }
 
     /// <summary>
-    /// Gets AnimationDat data.
+    /// Gets AnimationRepository data.
     /// </summary>
-    /// <returns>readonly collection of AnimationDat.</returns>
-    public ReadOnlyCollection<AnimationDat> LoadAnimationDat()
+    /// <returns>repository of AnimationRepository.</returns>
+    public AnimationRepository LoadAnimationRepository()
     {
-        return AnimationDat.Load(dataLoader).AsReadOnly();
+        animationrepository ??= new AnimationRepository(logger, this);
+        return animationrepository;
     }
 
     /// <summary>
-    /// Gets ApplyDamageFunctionsDat data.
+    /// Gets ApplyDamageFunctionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ApplyDamageFunctionsDat.</returns>
-    public ReadOnlyCollection<ApplyDamageFunctionsDat> LoadApplyDamageFunctionsDat()
+    /// <returns>repository of ApplyDamageFunctionsRepository.</returns>
+    public ApplyDamageFunctionsRepository LoadApplyDamageFunctionsRepository()
     {
-        return ApplyDamageFunctionsDat.Load(dataLoader).AsReadOnly();
+        applydamagefunctionsrepository ??= new ApplyDamageFunctionsRepository(logger, this);
+        return applydamagefunctionsrepository;
     }
 
     /// <summary>
-    /// Gets ArchetypeRewardsDat data.
+    /// Gets ArchetypeRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchetypeRewardsDat.</returns>
-    public ReadOnlyCollection<ArchetypeRewardsDat> LoadArchetypeRewardsDat()
+    /// <returns>repository of ArchetypeRewardsRepository.</returns>
+    public ArchetypeRewardsRepository LoadArchetypeRewardsRepository()
     {
-        return ArchetypeRewardsDat.Load(dataLoader).AsReadOnly();
+        archetyperewardsrepository ??= new ArchetypeRewardsRepository(logger, this);
+        return archetyperewardsrepository;
     }
 
     /// <summary>
-    /// Gets ArchetypesDat data.
+    /// Gets ArchetypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArchetypesDat.</returns>
-    public ReadOnlyCollection<ArchetypesDat> LoadArchetypesDat()
+    /// <returns>repository of ArchetypesRepository.</returns>
+    public ArchetypesRepository LoadArchetypesRepository()
     {
-        return ArchetypesDat.Load(dataLoader).AsReadOnly();
+        archetypesrepository ??= new ArchetypesRepository(logger, this);
+        return archetypesrepository;
     }
 
     /// <summary>
-    /// Gets AreaInfluenceDoodadsDat data.
+    /// Gets AreaInfluenceDoodadsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AreaInfluenceDoodadsDat.</returns>
-    public ReadOnlyCollection<AreaInfluenceDoodadsDat> LoadAreaInfluenceDoodadsDat()
+    /// <returns>repository of AreaInfluenceDoodadsRepository.</returns>
+    public AreaInfluenceDoodadsRepository LoadAreaInfluenceDoodadsRepository()
     {
-        return AreaInfluenceDoodadsDat.Load(dataLoader).AsReadOnly();
+        areainfluencedoodadsrepository ??= new AreaInfluenceDoodadsRepository(logger, this);
+        return areainfluencedoodadsrepository;
     }
 
     /// <summary>
-    /// Gets AreaTransitionAnimationsDat data.
+    /// Gets AreaTransitionAnimationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AreaTransitionAnimationsDat.</returns>
-    public ReadOnlyCollection<AreaTransitionAnimationsDat> LoadAreaTransitionAnimationsDat()
+    /// <returns>repository of AreaTransitionAnimationsRepository.</returns>
+    public AreaTransitionAnimationsRepository LoadAreaTransitionAnimationsRepository()
     {
-        return AreaTransitionAnimationsDat.Load(dataLoader).AsReadOnly();
+        areatransitionanimationsrepository ??= new AreaTransitionAnimationsRepository(logger, this);
+        return areatransitionanimationsrepository;
     }
 
     /// <summary>
-    /// Gets AreaTransitionAnimationTypesDat data.
+    /// Gets AreaTransitionAnimationTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AreaTransitionAnimationTypesDat.</returns>
-    public ReadOnlyCollection<AreaTransitionAnimationTypesDat> LoadAreaTransitionAnimationTypesDat()
+    /// <returns>repository of AreaTransitionAnimationTypesRepository.</returns>
+    public AreaTransitionAnimationTypesRepository LoadAreaTransitionAnimationTypesRepository()
     {
-        return AreaTransitionAnimationTypesDat.Load(dataLoader).AsReadOnly();
+        areatransitionanimationtypesrepository ??= new AreaTransitionAnimationTypesRepository(logger, this);
+        return areatransitionanimationtypesrepository;
     }
 
     /// <summary>
-    /// Gets AreaTransitionInfoDat data.
+    /// Gets AreaTransitionInfoRepository data.
     /// </summary>
-    /// <returns>readonly collection of AreaTransitionInfoDat.</returns>
-    public ReadOnlyCollection<AreaTransitionInfoDat> LoadAreaTransitionInfoDat()
+    /// <returns>repository of AreaTransitionInfoRepository.</returns>
+    public AreaTransitionInfoRepository LoadAreaTransitionInfoRepository()
     {
-        return AreaTransitionInfoDat.Load(dataLoader).AsReadOnly();
+        areatransitioninforepository ??= new AreaTransitionInfoRepository(logger, this);
+        return areatransitioninforepository;
     }
 
     /// <summary>
-    /// Gets ArmourTypesDat data.
+    /// Gets ArmourTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ArmourTypesDat.</returns>
-    public ReadOnlyCollection<ArmourTypesDat> LoadArmourTypesDat()
+    /// <returns>repository of ArmourTypesRepository.</returns>
+    public ArmourTypesRepository LoadArmourTypesRepository()
     {
-        return ArmourTypesDat.Load(dataLoader).AsReadOnly();
+        armourtypesrepository ??= new ArmourTypesRepository(logger, this);
+        return armourtypesrepository;
     }
 
     /// <summary>
-    /// Gets AscendancyDat data.
+    /// Gets AscendancyRepository data.
     /// </summary>
-    /// <returns>readonly collection of AscendancyDat.</returns>
-    public ReadOnlyCollection<AscendancyDat> LoadAscendancyDat()
+    /// <returns>repository of AscendancyRepository.</returns>
+    public AscendancyRepository LoadAscendancyRepository()
     {
-        return AscendancyDat.Load(dataLoader).AsReadOnly();
+        ascendancyrepository ??= new AscendancyRepository(logger, this);
+        return ascendancyrepository;
     }
 
     /// <summary>
-    /// Gets AtlasAwakeningStatsDat data.
+    /// Gets AtlasAwakeningStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasAwakeningStatsDat.</returns>
-    public ReadOnlyCollection<AtlasAwakeningStatsDat> LoadAtlasAwakeningStatsDat()
+    /// <returns>repository of AtlasAwakeningStatsRepository.</returns>
+    public AtlasAwakeningStatsRepository LoadAtlasAwakeningStatsRepository()
     {
-        return AtlasAwakeningStatsDat.Load(dataLoader).AsReadOnly();
+        atlasawakeningstatsrepository ??= new AtlasAwakeningStatsRepository(logger, this);
+        return atlasawakeningstatsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasBaseTypeDropsDat data.
+    /// Gets AtlasBaseTypeDropsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasBaseTypeDropsDat.</returns>
-    public ReadOnlyCollection<AtlasBaseTypeDropsDat> LoadAtlasBaseTypeDropsDat()
+    /// <returns>repository of AtlasBaseTypeDropsRepository.</returns>
+    public AtlasBaseTypeDropsRepository LoadAtlasBaseTypeDropsRepository()
     {
-        return AtlasBaseTypeDropsDat.Load(dataLoader).AsReadOnly();
+        atlasbasetypedropsrepository ??= new AtlasBaseTypeDropsRepository(logger, this);
+        return atlasbasetypedropsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasFogDat data.
+    /// Gets AtlasFogRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasFogDat.</returns>
-    public ReadOnlyCollection<AtlasFogDat> LoadAtlasFogDat()
+    /// <returns>repository of AtlasFogRepository.</returns>
+    public AtlasFogRepository LoadAtlasFogRepository()
     {
-        return AtlasFogDat.Load(dataLoader).AsReadOnly();
+        atlasfogrepository ??= new AtlasFogRepository(logger, this);
+        return atlasfogrepository;
     }
 
     /// <summary>
-    /// Gets AtlasInfluenceDataDat data.
+    /// Gets AtlasInfluenceDataRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasInfluenceDataDat.</returns>
-    public ReadOnlyCollection<AtlasInfluenceDataDat> LoadAtlasInfluenceDataDat()
+    /// <returns>repository of AtlasInfluenceDataRepository.</returns>
+    public AtlasInfluenceDataRepository LoadAtlasInfluenceDataRepository()
     {
-        return AtlasInfluenceDataDat.Load(dataLoader).AsReadOnly();
+        atlasinfluencedatarepository ??= new AtlasInfluenceDataRepository(logger, this);
+        return atlasinfluencedatarepository;
     }
 
     /// <summary>
-    /// Gets AtlasInfluenceOutcomesDat data.
+    /// Gets AtlasInfluenceOutcomesRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasInfluenceOutcomesDat.</returns>
-    public ReadOnlyCollection<AtlasInfluenceOutcomesDat> LoadAtlasInfluenceOutcomesDat()
+    /// <returns>repository of AtlasInfluenceOutcomesRepository.</returns>
+    public AtlasInfluenceOutcomesRepository LoadAtlasInfluenceOutcomesRepository()
     {
-        return AtlasInfluenceOutcomesDat.Load(dataLoader).AsReadOnly();
+        atlasinfluenceoutcomesrepository ??= new AtlasInfluenceOutcomesRepository(logger, this);
+        return atlasinfluenceoutcomesrepository;
     }
 
     /// <summary>
-    /// Gets AtlasInfluenceSetsDat data.
+    /// Gets AtlasInfluenceSetsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasInfluenceSetsDat.</returns>
-    public ReadOnlyCollection<AtlasInfluenceSetsDat> LoadAtlasInfluenceSetsDat()
+    /// <returns>repository of AtlasInfluenceSetsRepository.</returns>
+    public AtlasInfluenceSetsRepository LoadAtlasInfluenceSetsRepository()
     {
-        return AtlasInfluenceSetsDat.Load(dataLoader).AsReadOnly();
+        atlasinfluencesetsrepository ??= new AtlasInfluenceSetsRepository(logger, this);
+        return atlasinfluencesetsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasModsDat data.
+    /// Gets AtlasModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasModsDat.</returns>
-    public ReadOnlyCollection<AtlasModsDat> LoadAtlasModsDat()
+    /// <returns>repository of AtlasModsRepository.</returns>
+    public AtlasModsRepository LoadAtlasModsRepository()
     {
-        return AtlasModsDat.Load(dataLoader).AsReadOnly();
+        atlasmodsrepository ??= new AtlasModsRepository(logger, this);
+        return atlasmodsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasFavouredMapSlotsDat data.
+    /// Gets AtlasFavouredMapSlotsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasFavouredMapSlotsDat.</returns>
-    public ReadOnlyCollection<AtlasFavouredMapSlotsDat> LoadAtlasFavouredMapSlotsDat()
+    /// <returns>repository of AtlasFavouredMapSlotsRepository.</returns>
+    public AtlasFavouredMapSlotsRepository LoadAtlasFavouredMapSlotsRepository()
     {
-        return AtlasFavouredMapSlotsDat.Load(dataLoader).AsReadOnly();
+        atlasfavouredmapslotsrepository ??= new AtlasFavouredMapSlotsRepository(logger, this);
+        return atlasfavouredmapslotsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasNodeDat data.
+    /// Gets AtlasNodeRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasNodeDat.</returns>
-    public ReadOnlyCollection<AtlasNodeDat> LoadAtlasNodeDat()
+    /// <returns>repository of AtlasNodeRepository.</returns>
+    public AtlasNodeRepository LoadAtlasNodeRepository()
     {
-        return AtlasNodeDat.Load(dataLoader).AsReadOnly();
+        atlasnoderepository ??= new AtlasNodeRepository(logger, this);
+        return atlasnoderepository;
     }
 
     /// <summary>
-    /// Gets AtlasNodeDefinitionDat data.
+    /// Gets AtlasNodeDefinitionRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasNodeDefinitionDat.</returns>
-    public ReadOnlyCollection<AtlasNodeDefinitionDat> LoadAtlasNodeDefinitionDat()
+    /// <returns>repository of AtlasNodeDefinitionRepository.</returns>
+    public AtlasNodeDefinitionRepository LoadAtlasNodeDefinitionRepository()
     {
-        return AtlasNodeDefinitionDat.Load(dataLoader).AsReadOnly();
+        atlasnodedefinitionrepository ??= new AtlasNodeDefinitionRepository(logger, this);
+        return atlasnodedefinitionrepository;
     }
 
     /// <summary>
-    /// Gets AtlasPositionsDat data.
+    /// Gets AtlasPositionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasPositionsDat.</returns>
-    public ReadOnlyCollection<AtlasPositionsDat> LoadAtlasPositionsDat()
+    /// <returns>repository of AtlasPositionsRepository.</returns>
+    public AtlasPositionsRepository LoadAtlasPositionsRepository()
     {
-        return AtlasPositionsDat.Load(dataLoader).AsReadOnly();
+        atlaspositionsrepository ??= new AtlasPositionsRepository(logger, this);
+        return atlaspositionsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasRegionsDat data.
+    /// Gets AtlasRegionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasRegionsDat.</returns>
-    public ReadOnlyCollection<AtlasRegionsDat> LoadAtlasRegionsDat()
+    /// <returns>repository of AtlasRegionsRepository.</returns>
+    public AtlasRegionsRepository LoadAtlasRegionsRepository()
     {
-        return AtlasRegionsDat.Load(dataLoader).AsReadOnly();
+        atlasregionsrepository ??= new AtlasRegionsRepository(logger, this);
+        return atlasregionsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasRegionUpgradesInventoryLayoutDat data.
+    /// Gets AtlasRegionUpgradesInventoryLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasRegionUpgradesInventoryLayoutDat.</returns>
-    public ReadOnlyCollection<AtlasRegionUpgradesInventoryLayoutDat> LoadAtlasRegionUpgradesInventoryLayoutDat()
+    /// <returns>repository of AtlasRegionUpgradesInventoryLayoutRepository.</returns>
+    public AtlasRegionUpgradesInventoryLayoutRepository LoadAtlasRegionUpgradesInventoryLayoutRepository()
     {
-        return AtlasRegionUpgradesInventoryLayoutDat.Load(dataLoader).AsReadOnly();
+        atlasregionupgradesinventorylayoutrepository ??= new AtlasRegionUpgradesInventoryLayoutRepository(logger, this);
+        return atlasregionupgradesinventorylayoutrepository;
     }
 
     /// <summary>
-    /// Gets AtlasRegionUpgradeRegionsDat data.
+    /// Gets AtlasRegionUpgradeRegionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasRegionUpgradeRegionsDat.</returns>
-    public ReadOnlyCollection<AtlasRegionUpgradeRegionsDat> LoadAtlasRegionUpgradeRegionsDat()
+    /// <returns>repository of AtlasRegionUpgradeRegionsRepository.</returns>
+    public AtlasRegionUpgradeRegionsRepository LoadAtlasRegionUpgradeRegionsRepository()
     {
-        return AtlasRegionUpgradeRegionsDat.Load(dataLoader).AsReadOnly();
+        atlasregionupgraderegionsrepository ??= new AtlasRegionUpgradeRegionsRepository(logger, this);
+        return atlasregionupgraderegionsrepository;
     }
 
     /// <summary>
-    /// Gets AtlasSectorDat data.
+    /// Gets AtlasSectorRepository data.
     /// </summary>
-    /// <returns>readonly collection of AtlasSectorDat.</returns>
-    public ReadOnlyCollection<AtlasSectorDat> LoadAtlasSectorDat()
+    /// <returns>repository of AtlasSectorRepository.</returns>
+    public AtlasSectorRepository LoadAtlasSectorRepository()
     {
-        return AtlasSectorDat.Load(dataLoader).AsReadOnly();
+        atlassectorrepository ??= new AtlasSectorRepository(logger, this);
+        return atlassectorrepository;
     }
 
     /// <summary>
-    /// Gets AwardDisplayDat data.
+    /// Gets AwardDisplayRepository data.
     /// </summary>
-    /// <returns>readonly collection of AwardDisplayDat.</returns>
-    public ReadOnlyCollection<AwardDisplayDat> LoadAwardDisplayDat()
+    /// <returns>repository of AwardDisplayRepository.</returns>
+    public AwardDisplayRepository LoadAwardDisplayRepository()
     {
-        return AwardDisplayDat.Load(dataLoader).AsReadOnly();
+        awarddisplayrepository ??= new AwardDisplayRepository(logger, this);
+        return awarddisplayrepository;
     }
 
     /// <summary>
-    /// Gets BackendErrorsDat data.
+    /// Gets BackendErrorsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BackendErrorsDat.</returns>
-    public ReadOnlyCollection<BackendErrorsDat> LoadBackendErrorsDat()
+    /// <returns>repository of BackendErrorsRepository.</returns>
+    public BackendErrorsRepository LoadBackendErrorsRepository()
     {
-        return BackendErrorsDat.Load(dataLoader).AsReadOnly();
+        backenderrorsrepository ??= new BackendErrorsRepository(logger, this);
+        return backenderrorsrepository;
     }
 
     /// <summary>
-    /// Gets BaseItemTypesDat data.
+    /// Gets BaseItemTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BaseItemTypesDat.</returns>
-    public ReadOnlyCollection<BaseItemTypesDat> LoadBaseItemTypesDat()
+    /// <returns>repository of BaseItemTypesRepository.</returns>
+    public BaseItemTypesRepository LoadBaseItemTypesRepository()
     {
-        return BaseItemTypesDat.Load(dataLoader).AsReadOnly();
+        baseitemtypesrepository ??= new BaseItemTypesRepository(logger, this);
+        return baseitemtypesrepository;
     }
 
     /// <summary>
-    /// Gets BindableVirtualKeysDat data.
+    /// Gets BindableVirtualKeysRepository data.
     /// </summary>
-    /// <returns>readonly collection of BindableVirtualKeysDat.</returns>
-    public ReadOnlyCollection<BindableVirtualKeysDat> LoadBindableVirtualKeysDat()
+    /// <returns>repository of BindableVirtualKeysRepository.</returns>
+    public BindableVirtualKeysRepository LoadBindableVirtualKeysRepository()
     {
-        return BindableVirtualKeysDat.Load(dataLoader).AsReadOnly();
+        bindablevirtualkeysrepository ??= new BindableVirtualKeysRepository(logger, this);
+        return bindablevirtualkeysrepository;
     }
 
     /// <summary>
-    /// Gets BlightStashTabLayoutDat data.
+    /// Gets BlightStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of BlightStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<BlightStashTabLayoutDat> LoadBlightStashTabLayoutDat()
+    /// <returns>repository of BlightStashTabLayoutRepository.</returns>
+    public BlightStashTabLayoutRepository LoadBlightStashTabLayoutRepository()
     {
-        return BlightStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        blightstashtablayoutrepository ??= new BlightStashTabLayoutRepository(logger, this);
+        return blightstashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets BloodTypesDat data.
+    /// Gets BloodTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BloodTypesDat.</returns>
-    public ReadOnlyCollection<BloodTypesDat> LoadBloodTypesDat()
+    /// <returns>repository of BloodTypesRepository.</returns>
+    public BloodTypesRepository LoadBloodTypesRepository()
     {
-        return BloodTypesDat.Load(dataLoader).AsReadOnly();
+        bloodtypesrepository ??= new BloodTypesRepository(logger, this);
+        return bloodtypesrepository;
     }
 
     /// <summary>
-    /// Gets BuffDefinitionsDat data.
+    /// Gets BuffDefinitionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffDefinitionsDat.</returns>
-    public ReadOnlyCollection<BuffDefinitionsDat> LoadBuffDefinitionsDat()
+    /// <returns>repository of BuffDefinitionsRepository.</returns>
+    public BuffDefinitionsRepository LoadBuffDefinitionsRepository()
     {
-        return BuffDefinitionsDat.Load(dataLoader).AsReadOnly();
+        buffdefinitionsrepository ??= new BuffDefinitionsRepository(logger, this);
+        return buffdefinitionsrepository;
     }
 
     /// <summary>
-    /// Gets BuffTemplatesDat data.
+    /// Gets BuffTemplatesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffTemplatesDat.</returns>
-    public ReadOnlyCollection<BuffTemplatesDat> LoadBuffTemplatesDat()
+    /// <returns>repository of BuffTemplatesRepository.</returns>
+    public BuffTemplatesRepository LoadBuffTemplatesRepository()
     {
-        return BuffTemplatesDat.Load(dataLoader).AsReadOnly();
+        bufftemplatesrepository ??= new BuffTemplatesRepository(logger, this);
+        return bufftemplatesrepository;
     }
 
     /// <summary>
-    /// Gets BuffVisualOrbArtDat data.
+    /// Gets BuffVisualOrbArtRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffVisualOrbArtDat.</returns>
-    public ReadOnlyCollection<BuffVisualOrbArtDat> LoadBuffVisualOrbArtDat()
+    /// <returns>repository of BuffVisualOrbArtRepository.</returns>
+    public BuffVisualOrbArtRepository LoadBuffVisualOrbArtRepository()
     {
-        return BuffVisualOrbArtDat.Load(dataLoader).AsReadOnly();
+        buffvisualorbartrepository ??= new BuffVisualOrbArtRepository(logger, this);
+        return buffvisualorbartrepository;
     }
 
     /// <summary>
-    /// Gets BuffVisualOrbsDat data.
+    /// Gets BuffVisualOrbsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffVisualOrbsDat.</returns>
-    public ReadOnlyCollection<BuffVisualOrbsDat> LoadBuffVisualOrbsDat()
+    /// <returns>repository of BuffVisualOrbsRepository.</returns>
+    public BuffVisualOrbsRepository LoadBuffVisualOrbsRepository()
     {
-        return BuffVisualOrbsDat.Load(dataLoader).AsReadOnly();
+        buffvisualorbsrepository ??= new BuffVisualOrbsRepository(logger, this);
+        return buffvisualorbsrepository;
     }
 
     /// <summary>
-    /// Gets BuffVisualOrbTypesDat data.
+    /// Gets BuffVisualOrbTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffVisualOrbTypesDat.</returns>
-    public ReadOnlyCollection<BuffVisualOrbTypesDat> LoadBuffVisualOrbTypesDat()
+    /// <returns>repository of BuffVisualOrbTypesRepository.</returns>
+    public BuffVisualOrbTypesRepository LoadBuffVisualOrbTypesRepository()
     {
-        return BuffVisualOrbTypesDat.Load(dataLoader).AsReadOnly();
+        buffvisualorbtypesrepository ??= new BuffVisualOrbTypesRepository(logger, this);
+        return buffvisualorbtypesrepository;
     }
 
     /// <summary>
-    /// Gets BuffVisualsDat data.
+    /// Gets BuffVisualsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffVisualsDat.</returns>
-    public ReadOnlyCollection<BuffVisualsDat> LoadBuffVisualsDat()
+    /// <returns>repository of BuffVisualsRepository.</returns>
+    public BuffVisualsRepository LoadBuffVisualsRepository()
     {
-        return BuffVisualsDat.Load(dataLoader).AsReadOnly();
+        buffvisualsrepository ??= new BuffVisualsRepository(logger, this);
+        return buffvisualsrepository;
     }
 
     /// <summary>
-    /// Gets BuffVisualsArtVariationsDat data.
+    /// Gets BuffVisualsArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffVisualsArtVariationsDat.</returns>
-    public ReadOnlyCollection<BuffVisualsArtVariationsDat> LoadBuffVisualsArtVariationsDat()
+    /// <returns>repository of BuffVisualsArtVariationsRepository.</returns>
+    public BuffVisualsArtVariationsRepository LoadBuffVisualsArtVariationsRepository()
     {
-        return BuffVisualsArtVariationsDat.Load(dataLoader).AsReadOnly();
+        buffvisualsartvariationsrepository ??= new BuffVisualsArtVariationsRepository(logger, this);
+        return buffvisualsartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets BuffVisualSetEntriesDat data.
+    /// Gets BuffVisualSetEntriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of BuffVisualSetEntriesDat.</returns>
-    public ReadOnlyCollection<BuffVisualSetEntriesDat> LoadBuffVisualSetEntriesDat()
+    /// <returns>repository of BuffVisualSetEntriesRepository.</returns>
+    public BuffVisualSetEntriesRepository LoadBuffVisualSetEntriesRepository()
     {
-        return BuffVisualSetEntriesDat.Load(dataLoader).AsReadOnly();
+        buffvisualsetentriesrepository ??= new BuffVisualSetEntriesRepository(logger, this);
+        return buffvisualsetentriesrepository;
     }
 
     /// <summary>
-    /// Gets CharacterAudioEventsDat data.
+    /// Gets CharacterAudioEventsRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterAudioEventsDat.</returns>
-    public ReadOnlyCollection<CharacterAudioEventsDat> LoadCharacterAudioEventsDat()
+    /// <returns>repository of CharacterAudioEventsRepository.</returns>
+    public CharacterAudioEventsRepository LoadCharacterAudioEventsRepository()
     {
-        return CharacterAudioEventsDat.Load(dataLoader).AsReadOnly();
+        characteraudioeventsrepository ??= new CharacterAudioEventsRepository(logger, this);
+        return characteraudioeventsrepository;
     }
 
     /// <summary>
-    /// Gets CharacterEventTextAudioDat data.
+    /// Gets CharacterEventTextAudioRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterEventTextAudioDat.</returns>
-    public ReadOnlyCollection<CharacterEventTextAudioDat> LoadCharacterEventTextAudioDat()
+    /// <returns>repository of CharacterEventTextAudioRepository.</returns>
+    public CharacterEventTextAudioRepository LoadCharacterEventTextAudioRepository()
     {
-        return CharacterEventTextAudioDat.Load(dataLoader).AsReadOnly();
+        charactereventtextaudiorepository ??= new CharacterEventTextAudioRepository(logger, this);
+        return charactereventtextaudiorepository;
     }
 
     /// <summary>
-    /// Gets CharacterPanelDescriptionModesDat data.
+    /// Gets CharacterPanelDescriptionModesRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterPanelDescriptionModesDat.</returns>
-    public ReadOnlyCollection<CharacterPanelDescriptionModesDat> LoadCharacterPanelDescriptionModesDat()
+    /// <returns>repository of CharacterPanelDescriptionModesRepository.</returns>
+    public CharacterPanelDescriptionModesRepository LoadCharacterPanelDescriptionModesRepository()
     {
-        return CharacterPanelDescriptionModesDat.Load(dataLoader).AsReadOnly();
+        characterpaneldescriptionmodesrepository ??= new CharacterPanelDescriptionModesRepository(logger, this);
+        return characterpaneldescriptionmodesrepository;
     }
 
     /// <summary>
-    /// Gets CharacterPanelStatsDat data.
+    /// Gets CharacterPanelStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterPanelStatsDat.</returns>
-    public ReadOnlyCollection<CharacterPanelStatsDat> LoadCharacterPanelStatsDat()
+    /// <returns>repository of CharacterPanelStatsRepository.</returns>
+    public CharacterPanelStatsRepository LoadCharacterPanelStatsRepository()
     {
-        return CharacterPanelStatsDat.Load(dataLoader).AsReadOnly();
+        characterpanelstatsrepository ??= new CharacterPanelStatsRepository(logger, this);
+        return characterpanelstatsrepository;
     }
 
     /// <summary>
-    /// Gets CharacterPanelTabsDat data.
+    /// Gets CharacterPanelTabsRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterPanelTabsDat.</returns>
-    public ReadOnlyCollection<CharacterPanelTabsDat> LoadCharacterPanelTabsDat()
+    /// <returns>repository of CharacterPanelTabsRepository.</returns>
+    public CharacterPanelTabsRepository LoadCharacterPanelTabsRepository()
     {
-        return CharacterPanelTabsDat.Load(dataLoader).AsReadOnly();
+        characterpaneltabsrepository ??= new CharacterPanelTabsRepository(logger, this);
+        return characterpaneltabsrepository;
     }
 
     /// <summary>
-    /// Gets CharactersDat data.
+    /// Gets CharactersRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharactersDat.</returns>
-    public ReadOnlyCollection<CharactersDat> LoadCharactersDat()
+    /// <returns>repository of CharactersRepository.</returns>
+    public CharactersRepository LoadCharactersRepository()
     {
-        return CharactersDat.Load(dataLoader).AsReadOnly();
+        charactersrepository ??= new CharactersRepository(logger, this);
+        return charactersrepository;
     }
 
     /// <summary>
-    /// Gets CharacterStartQuestStateDat data.
+    /// Gets CharacterStartQuestStateRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterStartQuestStateDat.</returns>
-    public ReadOnlyCollection<CharacterStartQuestStateDat> LoadCharacterStartQuestStateDat()
+    /// <returns>repository of CharacterStartQuestStateRepository.</returns>
+    public CharacterStartQuestStateRepository LoadCharacterStartQuestStateRepository()
     {
-        return CharacterStartQuestStateDat.Load(dataLoader).AsReadOnly();
+        characterstartqueststaterepository ??= new CharacterStartQuestStateRepository(logger, this);
+        return characterstartqueststaterepository;
     }
 
     /// <summary>
-    /// Gets CharacterStartStatesDat data.
+    /// Gets CharacterStartStatesRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterStartStatesDat.</returns>
-    public ReadOnlyCollection<CharacterStartStatesDat> LoadCharacterStartStatesDat()
+    /// <returns>repository of CharacterStartStatesRepository.</returns>
+    public CharacterStartStatesRepository LoadCharacterStartStatesRepository()
     {
-        return CharacterStartStatesDat.Load(dataLoader).AsReadOnly();
+        characterstartstatesrepository ??= new CharacterStartStatesRepository(logger, this);
+        return characterstartstatesrepository;
     }
 
     /// <summary>
-    /// Gets CharacterStartStateSetDat data.
+    /// Gets CharacterStartStateSetRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterStartStateSetDat.</returns>
-    public ReadOnlyCollection<CharacterStartStateSetDat> LoadCharacterStartStateSetDat()
+    /// <returns>repository of CharacterStartStateSetRepository.</returns>
+    public CharacterStartStateSetRepository LoadCharacterStartStateSetRepository()
     {
-        return CharacterStartStateSetDat.Load(dataLoader).AsReadOnly();
+        characterstartstatesetrepository ??= new CharacterStartStateSetRepository(logger, this);
+        return characterstartstatesetrepository;
     }
 
     /// <summary>
-    /// Gets CharacterTextAudioDat data.
+    /// Gets CharacterTextAudioRepository data.
     /// </summary>
-    /// <returns>readonly collection of CharacterTextAudioDat.</returns>
-    public ReadOnlyCollection<CharacterTextAudioDat> LoadCharacterTextAudioDat()
+    /// <returns>repository of CharacterTextAudioRepository.</returns>
+    public CharacterTextAudioRepository LoadCharacterTextAudioRepository()
     {
-        return CharacterTextAudioDat.Load(dataLoader).AsReadOnly();
+        charactertextaudiorepository ??= new CharacterTextAudioRepository(logger, this);
+        return charactertextaudiorepository;
     }
 
     /// <summary>
-    /// Gets ChatIconsDat data.
+    /// Gets ChatIconsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ChatIconsDat.</returns>
-    public ReadOnlyCollection<ChatIconsDat> LoadChatIconsDat()
+    /// <returns>repository of ChatIconsRepository.</returns>
+    public ChatIconsRepository LoadChatIconsRepository()
     {
-        return ChatIconsDat.Load(dataLoader).AsReadOnly();
+        chaticonsrepository ??= new ChatIconsRepository(logger, this);
+        return chaticonsrepository;
     }
 
     /// <summary>
-    /// Gets ChestClustersDat data.
+    /// Gets ChestClustersRepository data.
     /// </summary>
-    /// <returns>readonly collection of ChestClustersDat.</returns>
-    public ReadOnlyCollection<ChestClustersDat> LoadChestClustersDat()
+    /// <returns>repository of ChestClustersRepository.</returns>
+    public ChestClustersRepository LoadChestClustersRepository()
     {
-        return ChestClustersDat.Load(dataLoader).AsReadOnly();
+        chestclustersrepository ??= new ChestClustersRepository(logger, this);
+        return chestclustersrepository;
     }
 
     /// <summary>
-    /// Gets ChestEffectsDat data.
+    /// Gets ChestEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ChestEffectsDat.</returns>
-    public ReadOnlyCollection<ChestEffectsDat> LoadChestEffectsDat()
+    /// <returns>repository of ChestEffectsRepository.</returns>
+    public ChestEffectsRepository LoadChestEffectsRepository()
     {
-        return ChestEffectsDat.Load(dataLoader).AsReadOnly();
+        chesteffectsrepository ??= new ChestEffectsRepository(logger, this);
+        return chesteffectsrepository;
     }
 
     /// <summary>
-    /// Gets ChestsDat data.
+    /// Gets ChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ChestsDat.</returns>
-    public ReadOnlyCollection<ChestsDat> LoadChestsDat()
+    /// <returns>repository of ChestsRepository.</returns>
+    public ChestsRepository LoadChestsRepository()
     {
-        return ChestsDat.Load(dataLoader).AsReadOnly();
+        chestsrepository ??= new ChestsRepository(logger, this);
+        return chestsrepository;
     }
 
     /// <summary>
-    /// Gets ClientStringsDat data.
+    /// Gets ClientStringsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ClientStringsDat.</returns>
-    public ReadOnlyCollection<ClientStringsDat> LoadClientStringsDat()
+    /// <returns>repository of ClientStringsRepository.</returns>
+    public ClientStringsRepository LoadClientStringsRepository()
     {
-        return ClientStringsDat.Load(dataLoader).AsReadOnly();
+        clientstringsrepository ??= new ClientStringsRepository(logger, this);
+        return clientstringsrepository;
     }
 
     /// <summary>
-    /// Gets ClientLeagueActionDat data.
+    /// Gets ClientLeagueActionRepository data.
     /// </summary>
-    /// <returns>readonly collection of ClientLeagueActionDat.</returns>
-    public ReadOnlyCollection<ClientLeagueActionDat> LoadClientLeagueActionDat()
+    /// <returns>repository of ClientLeagueActionRepository.</returns>
+    public ClientLeagueActionRepository LoadClientLeagueActionRepository()
     {
-        return ClientLeagueActionDat.Load(dataLoader).AsReadOnly();
+        clientleagueactionrepository ??= new ClientLeagueActionRepository(logger, this);
+        return clientleagueactionrepository;
     }
 
     /// <summary>
-    /// Gets CloneShotDat data.
+    /// Gets CloneShotRepository data.
     /// </summary>
-    /// <returns>readonly collection of CloneShotDat.</returns>
-    public ReadOnlyCollection<CloneShotDat> LoadCloneShotDat()
+    /// <returns>repository of CloneShotRepository.</returns>
+    public CloneShotRepository LoadCloneShotRepository()
     {
-        return CloneShotDat.Load(dataLoader).AsReadOnly();
+        cloneshotrepository ??= new CloneShotRepository(logger, this);
+        return cloneshotrepository;
     }
 
     /// <summary>
-    /// Gets ColoursDat data.
+    /// Gets ColoursRepository data.
     /// </summary>
-    /// <returns>readonly collection of ColoursDat.</returns>
-    public ReadOnlyCollection<ColoursDat> LoadColoursDat()
+    /// <returns>repository of ColoursRepository.</returns>
+    public ColoursRepository LoadColoursRepository()
     {
-        return ColoursDat.Load(dataLoader).AsReadOnly();
+        coloursrepository ??= new ColoursRepository(logger, this);
+        return coloursrepository;
     }
 
     /// <summary>
-    /// Gets CommandsDat data.
+    /// Gets CommandsRepository data.
     /// </summary>
-    /// <returns>readonly collection of CommandsDat.</returns>
-    public ReadOnlyCollection<CommandsDat> LoadCommandsDat()
+    /// <returns>repository of CommandsRepository.</returns>
+    public CommandsRepository LoadCommandsRepository()
     {
-        return CommandsDat.Load(dataLoader).AsReadOnly();
+        commandsrepository ??= new CommandsRepository(logger, this);
+        return commandsrepository;
     }
 
     /// <summary>
-    /// Gets ComponentAttributeRequirementsDat data.
+    /// Gets ComponentAttributeRequirementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ComponentAttributeRequirementsDat.</returns>
-    public ReadOnlyCollection<ComponentAttributeRequirementsDat> LoadComponentAttributeRequirementsDat()
+    /// <returns>repository of ComponentAttributeRequirementsRepository.</returns>
+    public ComponentAttributeRequirementsRepository LoadComponentAttributeRequirementsRepository()
     {
-        return ComponentAttributeRequirementsDat.Load(dataLoader).AsReadOnly();
+        componentattributerequirementsrepository ??= new ComponentAttributeRequirementsRepository(logger, this);
+        return componentattributerequirementsrepository;
     }
 
     /// <summary>
-    /// Gets ComponentChargesDat data.
+    /// Gets ComponentChargesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ComponentChargesDat.</returns>
-    public ReadOnlyCollection<ComponentChargesDat> LoadComponentChargesDat()
+    /// <returns>repository of ComponentChargesRepository.</returns>
+    public ComponentChargesRepository LoadComponentChargesRepository()
     {
-        return ComponentChargesDat.Load(dataLoader).AsReadOnly();
+        componentchargesrepository ??= new ComponentChargesRepository(logger, this);
+        return componentchargesrepository;
     }
 
     /// <summary>
-    /// Gets CoreLeaguesDat data.
+    /// Gets CoreLeaguesRepository data.
     /// </summary>
-    /// <returns>readonly collection of CoreLeaguesDat.</returns>
-    public ReadOnlyCollection<CoreLeaguesDat> LoadCoreLeaguesDat()
+    /// <returns>repository of CoreLeaguesRepository.</returns>
+    public CoreLeaguesRepository LoadCoreLeaguesRepository()
     {
-        return CoreLeaguesDat.Load(dataLoader).AsReadOnly();
+        coreleaguesrepository ??= new CoreLeaguesRepository(logger, this);
+        return coreleaguesrepository;
     }
 
     /// <summary>
-    /// Gets CostTypesDat data.
+    /// Gets CostTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of CostTypesDat.</returns>
-    public ReadOnlyCollection<CostTypesDat> LoadCostTypesDat()
+    /// <returns>repository of CostTypesRepository.</returns>
+    public CostTypesRepository LoadCostTypesRepository()
     {
-        return CostTypesDat.Load(dataLoader).AsReadOnly();
+        costtypesrepository ??= new CostTypesRepository(logger, this);
+        return costtypesrepository;
     }
 
     /// <summary>
-    /// Gets CraftingBenchOptionsDat data.
+    /// Gets CraftingBenchOptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of CraftingBenchOptionsDat.</returns>
-    public ReadOnlyCollection<CraftingBenchOptionsDat> LoadCraftingBenchOptionsDat()
+    /// <returns>repository of CraftingBenchOptionsRepository.</returns>
+    public CraftingBenchOptionsRepository LoadCraftingBenchOptionsRepository()
     {
-        return CraftingBenchOptionsDat.Load(dataLoader).AsReadOnly();
+        craftingbenchoptionsrepository ??= new CraftingBenchOptionsRepository(logger, this);
+        return craftingbenchoptionsrepository;
     }
 
     /// <summary>
-    /// Gets CraftingBenchSortCategoriesDat data.
+    /// Gets CraftingBenchSortCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of CraftingBenchSortCategoriesDat.</returns>
-    public ReadOnlyCollection<CraftingBenchSortCategoriesDat> LoadCraftingBenchSortCategoriesDat()
+    /// <returns>repository of CraftingBenchSortCategoriesRepository.</returns>
+    public CraftingBenchSortCategoriesRepository LoadCraftingBenchSortCategoriesRepository()
     {
-        return CraftingBenchSortCategoriesDat.Load(dataLoader).AsReadOnly();
+        craftingbenchsortcategoriesrepository ??= new CraftingBenchSortCategoriesRepository(logger, this);
+        return craftingbenchsortcategoriesrepository;
     }
 
     /// <summary>
-    /// Gets CraftingBenchUnlockCategoriesDat data.
+    /// Gets CraftingBenchUnlockCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of CraftingBenchUnlockCategoriesDat.</returns>
-    public ReadOnlyCollection<CraftingBenchUnlockCategoriesDat> LoadCraftingBenchUnlockCategoriesDat()
+    /// <returns>repository of CraftingBenchUnlockCategoriesRepository.</returns>
+    public CraftingBenchUnlockCategoriesRepository LoadCraftingBenchUnlockCategoriesRepository()
     {
-        return CraftingBenchUnlockCategoriesDat.Load(dataLoader).AsReadOnly();
+        craftingbenchunlockcategoriesrepository ??= new CraftingBenchUnlockCategoriesRepository(logger, this);
+        return craftingbenchunlockcategoriesrepository;
     }
 
     /// <summary>
-    /// Gets CraftingItemClassCategoriesDat data.
+    /// Gets CraftingItemClassCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of CraftingItemClassCategoriesDat.</returns>
-    public ReadOnlyCollection<CraftingItemClassCategoriesDat> LoadCraftingItemClassCategoriesDat()
+    /// <returns>repository of CraftingItemClassCategoriesRepository.</returns>
+    public CraftingItemClassCategoriesRepository LoadCraftingItemClassCategoriesRepository()
     {
-        return CraftingItemClassCategoriesDat.Load(dataLoader).AsReadOnly();
+        craftingitemclasscategoriesrepository ??= new CraftingItemClassCategoriesRepository(logger, this);
+        return craftingitemclasscategoriesrepository;
     }
 
     /// <summary>
-    /// Gets CurrencyItemsDat data.
+    /// Gets CurrencyItemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of CurrencyItemsDat.</returns>
-    public ReadOnlyCollection<CurrencyItemsDat> LoadCurrencyItemsDat()
+    /// <returns>repository of CurrencyItemsRepository.</returns>
+    public CurrencyItemsRepository LoadCurrencyItemsRepository()
     {
-        return CurrencyItemsDat.Load(dataLoader).AsReadOnly();
+        currencyitemsrepository ??= new CurrencyItemsRepository(logger, this);
+        return currencyitemsrepository;
     }
 
     /// <summary>
-    /// Gets CurrencyStashTabLayoutDat data.
+    /// Gets CurrencyStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of CurrencyStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<CurrencyStashTabLayoutDat> LoadCurrencyStashTabLayoutDat()
+    /// <returns>repository of CurrencyStashTabLayoutRepository.</returns>
+    public CurrencyStashTabLayoutRepository LoadCurrencyStashTabLayoutRepository()
     {
-        return CurrencyStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        currencystashtablayoutrepository ??= new CurrencyStashTabLayoutRepository(logger, this);
+        return currencystashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets CustomLeagueModsDat data.
+    /// Gets CustomLeagueModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of CustomLeagueModsDat.</returns>
-    public ReadOnlyCollection<CustomLeagueModsDat> LoadCustomLeagueModsDat()
+    /// <returns>repository of CustomLeagueModsRepository.</returns>
+    public CustomLeagueModsRepository LoadCustomLeagueModsRepository()
     {
-        return CustomLeagueModsDat.Load(dataLoader).AsReadOnly();
+        customleaguemodsrepository ??= new CustomLeagueModsRepository(logger, this);
+        return customleaguemodsrepository;
     }
 
     /// <summary>
-    /// Gets DaemonSpawningDataDat data.
+    /// Gets DaemonSpawningDataRepository data.
     /// </summary>
-    /// <returns>readonly collection of DaemonSpawningDataDat.</returns>
-    public ReadOnlyCollection<DaemonSpawningDataDat> LoadDaemonSpawningDataDat()
+    /// <returns>repository of DaemonSpawningDataRepository.</returns>
+    public DaemonSpawningDataRepository LoadDaemonSpawningDataRepository()
     {
-        return DaemonSpawningDataDat.Load(dataLoader).AsReadOnly();
+        daemonspawningdatarepository ??= new DaemonSpawningDataRepository(logger, this);
+        return daemonspawningdatarepository;
     }
 
     /// <summary>
-    /// Gets DamageHitEffectsDat data.
+    /// Gets DamageHitEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DamageHitEffectsDat.</returns>
-    public ReadOnlyCollection<DamageHitEffectsDat> LoadDamageHitEffectsDat()
+    /// <returns>repository of DamageHitEffectsRepository.</returns>
+    public DamageHitEffectsRepository LoadDamageHitEffectsRepository()
     {
-        return DamageHitEffectsDat.Load(dataLoader).AsReadOnly();
+        damagehiteffectsrepository ??= new DamageHitEffectsRepository(logger, this);
+        return damagehiteffectsrepository;
     }
 
     /// <summary>
-    /// Gets DamageParticleEffectsDat data.
+    /// Gets DamageParticleEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DamageParticleEffectsDat.</returns>
-    public ReadOnlyCollection<DamageParticleEffectsDat> LoadDamageParticleEffectsDat()
+    /// <returns>repository of DamageParticleEffectsRepository.</returns>
+    public DamageParticleEffectsRepository LoadDamageParticleEffectsRepository()
     {
-        return DamageParticleEffectsDat.Load(dataLoader).AsReadOnly();
+        damageparticleeffectsrepository ??= new DamageParticleEffectsRepository(logger, this);
+        return damageparticleeffectsrepository;
     }
 
     /// <summary>
-    /// Gets DancesDat data.
+    /// Gets DancesRepository data.
     /// </summary>
-    /// <returns>readonly collection of DancesDat.</returns>
-    public ReadOnlyCollection<DancesDat> LoadDancesDat()
+    /// <returns>repository of DancesRepository.</returns>
+    public DancesRepository LoadDancesRepository()
     {
-        return DancesDat.Load(dataLoader).AsReadOnly();
+        dancesrepository ??= new DancesRepository(logger, this);
+        return dancesrepository;
     }
 
     /// <summary>
-    /// Gets DaressoPitFightsDat data.
+    /// Gets DaressoPitFightsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DaressoPitFightsDat.</returns>
-    public ReadOnlyCollection<DaressoPitFightsDat> LoadDaressoPitFightsDat()
+    /// <returns>repository of DaressoPitFightsRepository.</returns>
+    public DaressoPitFightsRepository LoadDaressoPitFightsRepository()
     {
-        return DaressoPitFightsDat.Load(dataLoader).AsReadOnly();
+        daressopitfightsrepository ??= new DaressoPitFightsRepository(logger, this);
+        return daressopitfightsrepository;
     }
 
     /// <summary>
-    /// Gets DefaultMonsterStatsDat data.
+    /// Gets DefaultMonsterStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DefaultMonsterStatsDat.</returns>
-    public ReadOnlyCollection<DefaultMonsterStatsDat> LoadDefaultMonsterStatsDat()
+    /// <returns>repository of DefaultMonsterStatsRepository.</returns>
+    public DefaultMonsterStatsRepository LoadDefaultMonsterStatsRepository()
     {
-        return DefaultMonsterStatsDat.Load(dataLoader).AsReadOnly();
+        defaultmonsterstatsrepository ??= new DefaultMonsterStatsRepository(logger, this);
+        return defaultmonsterstatsrepository;
     }
 
     /// <summary>
-    /// Gets DeliriumStashTabLayoutDat data.
+    /// Gets DeliriumStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of DeliriumStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<DeliriumStashTabLayoutDat> LoadDeliriumStashTabLayoutDat()
+    /// <returns>repository of DeliriumStashTabLayoutRepository.</returns>
+    public DeliriumStashTabLayoutRepository LoadDeliriumStashTabLayoutRepository()
     {
-        return DeliriumStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        deliriumstashtablayoutrepository ??= new DeliriumStashTabLayoutRepository(logger, this);
+        return deliriumstashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets DelveStashTabLayoutDat data.
+    /// Gets DelveStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of DelveStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<DelveStashTabLayoutDat> LoadDelveStashTabLayoutDat()
+    /// <returns>repository of DelveStashTabLayoutRepository.</returns>
+    public DelveStashTabLayoutRepository LoadDelveStashTabLayoutRepository()
     {
-        return DelveStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        delvestashtablayoutrepository ??= new DelveStashTabLayoutRepository(logger, this);
+        return delvestashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets DescentExilesDat data.
+    /// Gets DescentExilesRepository data.
     /// </summary>
-    /// <returns>readonly collection of DescentExilesDat.</returns>
-    public ReadOnlyCollection<DescentExilesDat> LoadDescentExilesDat()
+    /// <returns>repository of DescentExilesRepository.</returns>
+    public DescentExilesRepository LoadDescentExilesRepository()
     {
-        return DescentExilesDat.Load(dataLoader).AsReadOnly();
+        descentexilesrepository ??= new DescentExilesRepository(logger, this);
+        return descentexilesrepository;
     }
 
     /// <summary>
-    /// Gets DescentRewardChestsDat data.
+    /// Gets DescentRewardChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DescentRewardChestsDat.</returns>
-    public ReadOnlyCollection<DescentRewardChestsDat> LoadDescentRewardChestsDat()
+    /// <returns>repository of DescentRewardChestsRepository.</returns>
+    public DescentRewardChestsRepository LoadDescentRewardChestsRepository()
     {
-        return DescentRewardChestsDat.Load(dataLoader).AsReadOnly();
+        descentrewardchestsrepository ??= new DescentRewardChestsRepository(logger, this);
+        return descentrewardchestsrepository;
     }
 
     /// <summary>
-    /// Gets DescentStarterChestDat data.
+    /// Gets DescentStarterChestRepository data.
     /// </summary>
-    /// <returns>readonly collection of DescentStarterChestDat.</returns>
-    public ReadOnlyCollection<DescentStarterChestDat> LoadDescentStarterChestDat()
+    /// <returns>repository of DescentStarterChestRepository.</returns>
+    public DescentStarterChestRepository LoadDescentStarterChestRepository()
     {
-        return DescentStarterChestDat.Load(dataLoader).AsReadOnly();
+        descentstarterchestrepository ??= new DescentStarterChestRepository(logger, this);
+        return descentstarterchestrepository;
     }
 
     /// <summary>
-    /// Gets DialogueEventDat data.
+    /// Gets DialogueEventRepository data.
     /// </summary>
-    /// <returns>readonly collection of DialogueEventDat.</returns>
-    public ReadOnlyCollection<DialogueEventDat> LoadDialogueEventDat()
+    /// <returns>repository of DialogueEventRepository.</returns>
+    public DialogueEventRepository LoadDialogueEventRepository()
     {
-        return DialogueEventDat.Load(dataLoader).AsReadOnly();
+        dialogueeventrepository ??= new DialogueEventRepository(logger, this);
+        return dialogueeventrepository;
     }
 
     /// <summary>
-    /// Gets DisplayMinionMonsterTypeDat data.
+    /// Gets DisplayMinionMonsterTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of DisplayMinionMonsterTypeDat.</returns>
-    public ReadOnlyCollection<DisplayMinionMonsterTypeDat> LoadDisplayMinionMonsterTypeDat()
+    /// <returns>repository of DisplayMinionMonsterTypeRepository.</returns>
+    public DisplayMinionMonsterTypeRepository LoadDisplayMinionMonsterTypeRepository()
     {
-        return DisplayMinionMonsterTypeDat.Load(dataLoader).AsReadOnly();
+        displayminionmonstertyperepository ??= new DisplayMinionMonsterTypeRepository(logger, this);
+        return displayminionmonstertyperepository;
     }
 
     /// <summary>
-    /// Gets DivinationCardStashTabLayoutDat data.
+    /// Gets DivinationCardStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of DivinationCardStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<DivinationCardStashTabLayoutDat> LoadDivinationCardStashTabLayoutDat()
+    /// <returns>repository of DivinationCardStashTabLayoutRepository.</returns>
+    public DivinationCardStashTabLayoutRepository LoadDivinationCardStashTabLayoutRepository()
     {
-        return DivinationCardStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        divinationcardstashtablayoutrepository ??= new DivinationCardStashTabLayoutRepository(logger, this);
+        return divinationcardstashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets DoorsDat data.
+    /// Gets DoorsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DoorsDat.</returns>
-    public ReadOnlyCollection<DoorsDat> LoadDoorsDat()
+    /// <returns>repository of DoorsRepository.</returns>
+    public DoorsRepository LoadDoorsRepository()
     {
-        return DoorsDat.Load(dataLoader).AsReadOnly();
+        doorsrepository ??= new DoorsRepository(logger, this);
+        return doorsrepository;
     }
 
     /// <summary>
-    /// Gets DropEffectsDat data.
+    /// Gets DropEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of DropEffectsDat.</returns>
-    public ReadOnlyCollection<DropEffectsDat> LoadDropEffectsDat()
+    /// <returns>repository of DropEffectsRepository.</returns>
+    public DropEffectsRepository LoadDropEffectsRepository()
     {
-        return DropEffectsDat.Load(dataLoader).AsReadOnly();
+        dropeffectsrepository ??= new DropEffectsRepository(logger, this);
+        return dropeffectsrepository;
     }
 
     /// <summary>
-    /// Gets DropPoolDat data.
+    /// Gets DropPoolRepository data.
     /// </summary>
-    /// <returns>readonly collection of DropPoolDat.</returns>
-    public ReadOnlyCollection<DropPoolDat> LoadDropPoolDat()
+    /// <returns>repository of DropPoolRepository.</returns>
+    public DropPoolRepository LoadDropPoolRepository()
     {
-        return DropPoolDat.Load(dataLoader).AsReadOnly();
+        droppoolrepository ??= new DropPoolRepository(logger, this);
+        return droppoolrepository;
     }
 
     /// <summary>
-    /// Gets EclipseModsDat data.
+    /// Gets EclipseModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EclipseModsDat.</returns>
-    public ReadOnlyCollection<EclipseModsDat> LoadEclipseModsDat()
+    /// <returns>repository of EclipseModsRepository.</returns>
+    public EclipseModsRepository LoadEclipseModsRepository()
     {
-        return EclipseModsDat.Load(dataLoader).AsReadOnly();
+        eclipsemodsrepository ??= new EclipseModsRepository(logger, this);
+        return eclipsemodsrepository;
     }
 
     /// <summary>
-    /// Gets EffectDrivenSkillDat data.
+    /// Gets EffectDrivenSkillRepository data.
     /// </summary>
-    /// <returns>readonly collection of EffectDrivenSkillDat.</returns>
-    public ReadOnlyCollection<EffectDrivenSkillDat> LoadEffectDrivenSkillDat()
+    /// <returns>repository of EffectDrivenSkillRepository.</returns>
+    public EffectDrivenSkillRepository LoadEffectDrivenSkillRepository()
     {
-        return EffectDrivenSkillDat.Load(dataLoader).AsReadOnly();
+        effectdrivenskillrepository ??= new EffectDrivenSkillRepository(logger, this);
+        return effectdrivenskillrepository;
     }
 
     /// <summary>
-    /// Gets EffectivenessCostConstantsDat data.
+    /// Gets EffectivenessCostConstantsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EffectivenessCostConstantsDat.</returns>
-    public ReadOnlyCollection<EffectivenessCostConstantsDat> LoadEffectivenessCostConstantsDat()
+    /// <returns>repository of EffectivenessCostConstantsRepository.</returns>
+    public EffectivenessCostConstantsRepository LoadEffectivenessCostConstantsRepository()
     {
-        return EffectivenessCostConstantsDat.Load(dataLoader).AsReadOnly();
+        effectivenesscostconstantsrepository ??= new EffectivenessCostConstantsRepository(logger, this);
+        return effectivenesscostconstantsrepository;
     }
 
     /// <summary>
-    /// Gets EinharMissionsDat data.
+    /// Gets EinharMissionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EinharMissionsDat.</returns>
-    public ReadOnlyCollection<EinharMissionsDat> LoadEinharMissionsDat()
+    /// <returns>repository of EinharMissionsRepository.</returns>
+    public EinharMissionsRepository LoadEinharMissionsRepository()
     {
-        return EinharMissionsDat.Load(dataLoader).AsReadOnly();
+        einharmissionsrepository ??= new EinharMissionsRepository(logger, this);
+        return einharmissionsrepository;
     }
 
     /// <summary>
-    /// Gets EinharPackFallbackDat data.
+    /// Gets EinharPackFallbackRepository data.
     /// </summary>
-    /// <returns>readonly collection of EinharPackFallbackDat.</returns>
-    public ReadOnlyCollection<EinharPackFallbackDat> LoadEinharPackFallbackDat()
+    /// <returns>repository of EinharPackFallbackRepository.</returns>
+    public EinharPackFallbackRepository LoadEinharPackFallbackRepository()
     {
-        return EinharPackFallbackDat.Load(dataLoader).AsReadOnly();
+        einharpackfallbackrepository ??= new EinharPackFallbackRepository(logger, this);
+        return einharpackfallbackrepository;
     }
 
     /// <summary>
-    /// Gets EndlessLedgeChestsDat data.
+    /// Gets EndlessLedgeChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EndlessLedgeChestsDat.</returns>
-    public ReadOnlyCollection<EndlessLedgeChestsDat> LoadEndlessLedgeChestsDat()
+    /// <returns>repository of EndlessLedgeChestsRepository.</returns>
+    public EndlessLedgeChestsRepository LoadEndlessLedgeChestsRepository()
     {
-        return EndlessLedgeChestsDat.Load(dataLoader).AsReadOnly();
+        endlessledgechestsrepository ??= new EndlessLedgeChestsRepository(logger, this);
+        return endlessledgechestsrepository;
     }
 
     /// <summary>
-    /// Gets EnvironmentsDat data.
+    /// Gets EnvironmentsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EnvironmentsDat.</returns>
-    public ReadOnlyCollection<EnvironmentsDat> LoadEnvironmentsDat()
+    /// <returns>repository of EnvironmentsRepository.</returns>
+    public EnvironmentsRepository LoadEnvironmentsRepository()
     {
-        return EnvironmentsDat.Load(dataLoader).AsReadOnly();
+        environmentsrepository ??= new EnvironmentsRepository(logger, this);
+        return environmentsrepository;
     }
 
     /// <summary>
-    /// Gets EnvironmentTransitionsDat data.
+    /// Gets EnvironmentTransitionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EnvironmentTransitionsDat.</returns>
-    public ReadOnlyCollection<EnvironmentTransitionsDat> LoadEnvironmentTransitionsDat()
+    /// <returns>repository of EnvironmentTransitionsRepository.</returns>
+    public EnvironmentTransitionsRepository LoadEnvironmentTransitionsRepository()
     {
-        return EnvironmentTransitionsDat.Load(dataLoader).AsReadOnly();
+        environmenttransitionsrepository ??= new EnvironmentTransitionsRepository(logger, this);
+        return environmenttransitionsrepository;
     }
 
     /// <summary>
-    /// Gets EssenceStashTabLayoutDat data.
+    /// Gets EssenceStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of EssenceStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<EssenceStashTabLayoutDat> LoadEssenceStashTabLayoutDat()
+    /// <returns>repository of EssenceStashTabLayoutRepository.</returns>
+    public EssenceStashTabLayoutRepository LoadEssenceStashTabLayoutRepository()
     {
-        return EssenceStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        essencestashtablayoutrepository ??= new EssenceStashTabLayoutRepository(logger, this);
+        return essencestashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets EventSeasonDat data.
+    /// Gets EventSeasonRepository data.
     /// </summary>
-    /// <returns>readonly collection of EventSeasonDat.</returns>
-    public ReadOnlyCollection<EventSeasonDat> LoadEventSeasonDat()
+    /// <returns>repository of EventSeasonRepository.</returns>
+    public EventSeasonRepository LoadEventSeasonRepository()
     {
-        return EventSeasonDat.Load(dataLoader).AsReadOnly();
+        eventseasonrepository ??= new EventSeasonRepository(logger, this);
+        return eventseasonrepository;
     }
 
     /// <summary>
-    /// Gets EventSeasonRewardsDat data.
+    /// Gets EventSeasonRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EventSeasonRewardsDat.</returns>
-    public ReadOnlyCollection<EventSeasonRewardsDat> LoadEventSeasonRewardsDat()
+    /// <returns>repository of EventSeasonRewardsRepository.</returns>
+    public EventSeasonRewardsRepository LoadEventSeasonRewardsRepository()
     {
-        return EventSeasonRewardsDat.Load(dataLoader).AsReadOnly();
+        eventseasonrewardsrepository ??= new EventSeasonRewardsRepository(logger, this);
+        return eventseasonrewardsrepository;
     }
 
     /// <summary>
-    /// Gets EvergreenAchievementsDat data.
+    /// Gets EvergreenAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of EvergreenAchievementsDat.</returns>
-    public ReadOnlyCollection<EvergreenAchievementsDat> LoadEvergreenAchievementsDat()
+    /// <returns>repository of EvergreenAchievementsRepository.</returns>
+    public EvergreenAchievementsRepository LoadEvergreenAchievementsRepository()
     {
-        return EvergreenAchievementsDat.Load(dataLoader).AsReadOnly();
+        evergreenachievementsrepository ??= new EvergreenAchievementsRepository(logger, this);
+        return evergreenachievementsrepository;
     }
 
     /// <summary>
-    /// Gets ExecuteGEALDat data.
+    /// Gets ExecuteGEALRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExecuteGEALDat.</returns>
-    public ReadOnlyCollection<ExecuteGEALDat> LoadExecuteGEALDat()
+    /// <returns>repository of ExecuteGEALRepository.</returns>
+    public ExecuteGEALRepository LoadExecuteGEALRepository()
     {
-        return ExecuteGEALDat.Load(dataLoader).AsReadOnly();
+        executegealrepository ??= new ExecuteGEALRepository(logger, this);
+        return executegealrepository;
     }
 
     /// <summary>
-    /// Gets ExpandingPulseDat data.
+    /// Gets ExpandingPulseRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExpandingPulseDat.</returns>
-    public ReadOnlyCollection<ExpandingPulseDat> LoadExpandingPulseDat()
+    /// <returns>repository of ExpandingPulseRepository.</returns>
+    public ExpandingPulseRepository LoadExpandingPulseRepository()
     {
-        return ExpandingPulseDat.Load(dataLoader).AsReadOnly();
+        expandingpulserepository ??= new ExpandingPulseRepository(logger, this);
+        return expandingpulserepository;
     }
 
     /// <summary>
-    /// Gets ExperienceLevelsDat data.
+    /// Gets ExperienceLevelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExperienceLevelsDat.</returns>
-    public ReadOnlyCollection<ExperienceLevelsDat> LoadExperienceLevelsDat()
+    /// <returns>repository of ExperienceLevelsRepository.</returns>
+    public ExperienceLevelsRepository LoadExperienceLevelsRepository()
     {
-        return ExperienceLevelsDat.Load(dataLoader).AsReadOnly();
+        experiencelevelsrepository ??= new ExperienceLevelsRepository(logger, this);
+        return experiencelevelsrepository;
     }
 
     /// <summary>
-    /// Gets ExplodingStormBuffsDat data.
+    /// Gets ExplodingStormBuffsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExplodingStormBuffsDat.</returns>
-    public ReadOnlyCollection<ExplodingStormBuffsDat> LoadExplodingStormBuffsDat()
+    /// <returns>repository of ExplodingStormBuffsRepository.</returns>
+    public ExplodingStormBuffsRepository LoadExplodingStormBuffsRepository()
     {
-        return ExplodingStormBuffsDat.Load(dataLoader).AsReadOnly();
+        explodingstormbuffsrepository ??= new ExplodingStormBuffsRepository(logger, this);
+        return explodingstormbuffsrepository;
     }
 
     /// <summary>
-    /// Gets ExtraTerrainFeaturesDat data.
+    /// Gets ExtraTerrainFeaturesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ExtraTerrainFeaturesDat.</returns>
-    public ReadOnlyCollection<ExtraTerrainFeaturesDat> LoadExtraTerrainFeaturesDat()
+    /// <returns>repository of ExtraTerrainFeaturesRepository.</returns>
+    public ExtraTerrainFeaturesRepository LoadExtraTerrainFeaturesRepository()
     {
-        return ExtraTerrainFeaturesDat.Load(dataLoader).AsReadOnly();
+        extraterrainfeaturesrepository ??= new ExtraTerrainFeaturesRepository(logger, this);
+        return extraterrainfeaturesrepository;
     }
 
     /// <summary>
-    /// Gets FixedHideoutDoodadTypesDat data.
+    /// Gets FixedHideoutDoodadTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of FixedHideoutDoodadTypesDat.</returns>
-    public ReadOnlyCollection<FixedHideoutDoodadTypesDat> LoadFixedHideoutDoodadTypesDat()
+    /// <returns>repository of FixedHideoutDoodadTypesRepository.</returns>
+    public FixedHideoutDoodadTypesRepository LoadFixedHideoutDoodadTypesRepository()
     {
-        return FixedHideoutDoodadTypesDat.Load(dataLoader).AsReadOnly();
+        fixedhideoutdoodadtypesrepository ??= new FixedHideoutDoodadTypesRepository(logger, this);
+        return fixedhideoutdoodadtypesrepository;
     }
 
     /// <summary>
-    /// Gets FixedMissionsDat data.
+    /// Gets FixedMissionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of FixedMissionsDat.</returns>
-    public ReadOnlyCollection<FixedMissionsDat> LoadFixedMissionsDat()
+    /// <returns>repository of FixedMissionsRepository.</returns>
+    public FixedMissionsRepository LoadFixedMissionsRepository()
     {
-        return FixedMissionsDat.Load(dataLoader).AsReadOnly();
+        fixedmissionsrepository ??= new FixedMissionsRepository(logger, this);
+        return fixedmissionsrepository;
     }
 
     /// <summary>
-    /// Gets FlasksDat data.
+    /// Gets FlasksRepository data.
     /// </summary>
-    /// <returns>readonly collection of FlasksDat.</returns>
-    public ReadOnlyCollection<FlasksDat> LoadFlasksDat()
+    /// <returns>repository of FlasksRepository.</returns>
+    public FlasksRepository LoadFlasksRepository()
     {
-        return FlasksDat.Load(dataLoader).AsReadOnly();
+        flasksrepository ??= new FlasksRepository(logger, this);
+        return flasksrepository;
     }
 
     /// <summary>
-    /// Gets FlavourTextDat data.
+    /// Gets FlavourTextRepository data.
     /// </summary>
-    /// <returns>readonly collection of FlavourTextDat.</returns>
-    public ReadOnlyCollection<FlavourTextDat> LoadFlavourTextDat()
+    /// <returns>repository of FlavourTextRepository.</returns>
+    public FlavourTextRepository LoadFlavourTextRepository()
     {
-        return FlavourTextDat.Load(dataLoader).AsReadOnly();
+        flavourtextrepository ??= new FlavourTextRepository(logger, this);
+        return flavourtextrepository;
     }
 
     /// <summary>
-    /// Gets FootprintsDat data.
+    /// Gets FootprintsRepository data.
     /// </summary>
-    /// <returns>readonly collection of FootprintsDat.</returns>
-    public ReadOnlyCollection<FootprintsDat> LoadFootprintsDat()
+    /// <returns>repository of FootprintsRepository.</returns>
+    public FootprintsRepository LoadFootprintsRepository()
     {
-        return FootprintsDat.Load(dataLoader).AsReadOnly();
+        footprintsrepository ??= new FootprintsRepository(logger, this);
+        return footprintsrepository;
     }
 
     /// <summary>
-    /// Gets FootstepAudioDat data.
+    /// Gets FootstepAudioRepository data.
     /// </summary>
-    /// <returns>readonly collection of FootstepAudioDat.</returns>
-    public ReadOnlyCollection<FootstepAudioDat> LoadFootstepAudioDat()
+    /// <returns>repository of FootstepAudioRepository.</returns>
+    public FootstepAudioRepository LoadFootstepAudioRepository()
     {
-        return FootstepAudioDat.Load(dataLoader).AsReadOnly();
+        footstepaudiorepository ??= new FootstepAudioRepository(logger, this);
+        return footstepaudiorepository;
     }
 
     /// <summary>
-    /// Gets FragmentStashTabLayoutDat data.
+    /// Gets FragmentStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of FragmentStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<FragmentStashTabLayoutDat> LoadFragmentStashTabLayoutDat()
+    /// <returns>repository of FragmentStashTabLayoutRepository.</returns>
+    public FragmentStashTabLayoutRepository LoadFragmentStashTabLayoutRepository()
     {
-        return FragmentStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        fragmentstashtablayoutrepository ??= new FragmentStashTabLayoutRepository(logger, this);
+        return fragmentstashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets GameConstantsDat data.
+    /// Gets GameConstantsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GameConstantsDat.</returns>
-    public ReadOnlyCollection<GameConstantsDat> LoadGameConstantsDat()
+    /// <returns>repository of GameConstantsRepository.</returns>
+    public GameConstantsRepository LoadGameConstantsRepository()
     {
-        return GameConstantsDat.Load(dataLoader).AsReadOnly();
+        gameconstantsrepository ??= new GameConstantsRepository(logger, this);
+        return gameconstantsrepository;
     }
 
     /// <summary>
-    /// Gets GameLogosDat data.
+    /// Gets GameLogosRepository data.
     /// </summary>
-    /// <returns>readonly collection of GameLogosDat.</returns>
-    public ReadOnlyCollection<GameLogosDat> LoadGameLogosDat()
+    /// <returns>repository of GameLogosRepository.</returns>
+    public GameLogosRepository LoadGameLogosRepository()
     {
-        return GameLogosDat.Load(dataLoader).AsReadOnly();
+        gamelogosrepository ??= new GameLogosRepository(logger, this);
+        return gamelogosrepository;
     }
 
     /// <summary>
-    /// Gets GameObjectTasksDat data.
+    /// Gets GameObjectTasksRepository data.
     /// </summary>
-    /// <returns>readonly collection of GameObjectTasksDat.</returns>
-    public ReadOnlyCollection<GameObjectTasksDat> LoadGameObjectTasksDat()
+    /// <returns>repository of GameObjectTasksRepository.</returns>
+    public GameObjectTasksRepository LoadGameObjectTasksRepository()
     {
-        return GameObjectTasksDat.Load(dataLoader).AsReadOnly();
+        gameobjecttasksrepository ??= new GameObjectTasksRepository(logger, this);
+        return gameobjecttasksrepository;
     }
 
     /// <summary>
-    /// Gets GamepadButtonDat data.
+    /// Gets GamepadButtonRepository data.
     /// </summary>
-    /// <returns>readonly collection of GamepadButtonDat.</returns>
-    public ReadOnlyCollection<GamepadButtonDat> LoadGamepadButtonDat()
+    /// <returns>repository of GamepadButtonRepository.</returns>
+    public GamepadButtonRepository LoadGamepadButtonRepository()
     {
-        return GamepadButtonDat.Load(dataLoader).AsReadOnly();
+        gamepadbuttonrepository ??= new GamepadButtonRepository(logger, this);
+        return gamepadbuttonrepository;
     }
 
     /// <summary>
-    /// Gets GamepadTypeDat data.
+    /// Gets GamepadTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of GamepadTypeDat.</returns>
-    public ReadOnlyCollection<GamepadTypeDat> LoadGamepadTypeDat()
+    /// <returns>repository of GamepadTypeRepository.</returns>
+    public GamepadTypeRepository LoadGamepadTypeRepository()
     {
-        return GamepadTypeDat.Load(dataLoader).AsReadOnly();
+        gamepadtyperepository ??= new GamepadTypeRepository(logger, this);
+        return gamepadtyperepository;
     }
 
     /// <summary>
-    /// Gets GameStatsDat data.
+    /// Gets GameStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GameStatsDat.</returns>
-    public ReadOnlyCollection<GameStatsDat> LoadGameStatsDat()
+    /// <returns>repository of GameStatsRepository.</returns>
+    public GameStatsRepository LoadGameStatsRepository()
     {
-        return GameStatsDat.Load(dataLoader).AsReadOnly();
+        gamestatsrepository ??= new GameStatsRepository(logger, this);
+        return gamestatsrepository;
     }
 
     /// <summary>
-    /// Gets GemTagsDat data.
+    /// Gets GemTagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GemTagsDat.</returns>
-    public ReadOnlyCollection<GemTagsDat> LoadGemTagsDat()
+    /// <returns>repository of GemTagsRepository.</returns>
+    public GemTagsRepository LoadGemTagsRepository()
     {
-        return GemTagsDat.Load(dataLoader).AsReadOnly();
+        gemtagsrepository ??= new GemTagsRepository(logger, this);
+        return gemtagsrepository;
     }
 
     /// <summary>
-    /// Gets GenericBuffAurasDat data.
+    /// Gets GenericBuffAurasRepository data.
     /// </summary>
-    /// <returns>readonly collection of GenericBuffAurasDat.</returns>
-    public ReadOnlyCollection<GenericBuffAurasDat> LoadGenericBuffAurasDat()
+    /// <returns>repository of GenericBuffAurasRepository.</returns>
+    public GenericBuffAurasRepository LoadGenericBuffAurasRepository()
     {
-        return GenericBuffAurasDat.Load(dataLoader).AsReadOnly();
+        genericbuffaurasrepository ??= new GenericBuffAurasRepository(logger, this);
+        return genericbuffaurasrepository;
     }
 
     /// <summary>
-    /// Gets GenericLeagueRewardTypesDat data.
+    /// Gets GenericLeagueRewardTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of GenericLeagueRewardTypesDat.</returns>
-    public ReadOnlyCollection<GenericLeagueRewardTypesDat> LoadGenericLeagueRewardTypesDat()
+    /// <returns>repository of GenericLeagueRewardTypesRepository.</returns>
+    public GenericLeagueRewardTypesRepository LoadGenericLeagueRewardTypesRepository()
     {
-        return GenericLeagueRewardTypesDat.Load(dataLoader).AsReadOnly();
+        genericleaguerewardtypesrepository ??= new GenericLeagueRewardTypesRepository(logger, this);
+        return genericleaguerewardtypesrepository;
     }
 
     /// <summary>
-    /// Gets GenericLeagueRewardTypeVisualsDat data.
+    /// Gets GenericLeagueRewardTypeVisualsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GenericLeagueRewardTypeVisualsDat.</returns>
-    public ReadOnlyCollection<GenericLeagueRewardTypeVisualsDat> LoadGenericLeagueRewardTypeVisualsDat()
+    /// <returns>repository of GenericLeagueRewardTypeVisualsRepository.</returns>
+    public GenericLeagueRewardTypeVisualsRepository LoadGenericLeagueRewardTypeVisualsRepository()
     {
-        return GenericLeagueRewardTypeVisualsDat.Load(dataLoader).AsReadOnly();
+        genericleaguerewardtypevisualsrepository ??= new GenericLeagueRewardTypeVisualsRepository(logger, this);
+        return genericleaguerewardtypevisualsrepository;
     }
 
     /// <summary>
-    /// Gets GeometryAttackDat data.
+    /// Gets GeometryAttackRepository data.
     /// </summary>
-    /// <returns>readonly collection of GeometryAttackDat.</returns>
-    public ReadOnlyCollection<GeometryAttackDat> LoadGeometryAttackDat()
+    /// <returns>repository of GeometryAttackRepository.</returns>
+    public GeometryAttackRepository LoadGeometryAttackRepository()
     {
-        return GeometryAttackDat.Load(dataLoader).AsReadOnly();
+        geometryattackrepository ??= new GeometryAttackRepository(logger, this);
+        return geometryattackrepository;
     }
 
     /// <summary>
-    /// Gets GeometryChannelDat data.
+    /// Gets GeometryChannelRepository data.
     /// </summary>
-    /// <returns>readonly collection of GeometryChannelDat.</returns>
-    public ReadOnlyCollection<GeometryChannelDat> LoadGeometryChannelDat()
+    /// <returns>repository of GeometryChannelRepository.</returns>
+    public GeometryChannelRepository LoadGeometryChannelRepository()
     {
-        return GeometryChannelDat.Load(dataLoader).AsReadOnly();
+        geometrychannelrepository ??= new GeometryChannelRepository(logger, this);
+        return geometrychannelrepository;
     }
 
     /// <summary>
-    /// Gets GeometryProjectilesDat data.
+    /// Gets GeometryProjectilesRepository data.
     /// </summary>
-    /// <returns>readonly collection of GeometryProjectilesDat.</returns>
-    public ReadOnlyCollection<GeometryProjectilesDat> LoadGeometryProjectilesDat()
+    /// <returns>repository of GeometryProjectilesRepository.</returns>
+    public GeometryProjectilesRepository LoadGeometryProjectilesRepository()
     {
-        return GeometryProjectilesDat.Load(dataLoader).AsReadOnly();
+        geometryprojectilesrepository ??= new GeometryProjectilesRepository(logger, this);
+        return geometryprojectilesrepository;
     }
 
     /// <summary>
-    /// Gets GeometryTriggerDat data.
+    /// Gets GeometryTriggerRepository data.
     /// </summary>
-    /// <returns>readonly collection of GeometryTriggerDat.</returns>
-    public ReadOnlyCollection<GeometryTriggerDat> LoadGeometryTriggerDat()
+    /// <returns>repository of GeometryTriggerRepository.</returns>
+    public GeometryTriggerRepository LoadGeometryTriggerRepository()
     {
-        return GeometryTriggerDat.Load(dataLoader).AsReadOnly();
+        geometrytriggerrepository ??= new GeometryTriggerRepository(logger, this);
+        return geometrytriggerrepository;
     }
 
     /// <summary>
-    /// Gets GiftWrapArtVariationsDat data.
+    /// Gets GiftWrapArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GiftWrapArtVariationsDat.</returns>
-    public ReadOnlyCollection<GiftWrapArtVariationsDat> LoadGiftWrapArtVariationsDat()
+    /// <returns>repository of GiftWrapArtVariationsRepository.</returns>
+    public GiftWrapArtVariationsRepository LoadGiftWrapArtVariationsRepository()
     {
-        return GiftWrapArtVariationsDat.Load(dataLoader).AsReadOnly();
+        giftwrapartvariationsrepository ??= new GiftWrapArtVariationsRepository(logger, this);
+        return giftwrapartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets GlobalAudioConfigDat data.
+    /// Gets GlobalAudioConfigRepository data.
     /// </summary>
-    /// <returns>readonly collection of GlobalAudioConfigDat.</returns>
-    public ReadOnlyCollection<GlobalAudioConfigDat> LoadGlobalAudioConfigDat()
+    /// <returns>repository of GlobalAudioConfigRepository.</returns>
+    public GlobalAudioConfigRepository LoadGlobalAudioConfigRepository()
     {
-        return GlobalAudioConfigDat.Load(dataLoader).AsReadOnly();
+        globalaudioconfigrepository ??= new GlobalAudioConfigRepository(logger, this);
+        return globalaudioconfigrepository;
     }
 
     /// <summary>
-    /// Gets GrandmastersDat data.
+    /// Gets GrandmastersRepository data.
     /// </summary>
-    /// <returns>readonly collection of GrandmastersDat.</returns>
-    public ReadOnlyCollection<GrandmastersDat> LoadGrandmastersDat()
+    /// <returns>repository of GrandmastersRepository.</returns>
+    public GrandmastersRepository LoadGrandmastersRepository()
     {
-        return GrandmastersDat.Load(dataLoader).AsReadOnly();
+        grandmastersrepository ??= new GrandmastersRepository(logger, this);
+        return grandmastersrepository;
     }
 
     /// <summary>
-    /// Gets GrantedEffectQualityStatsDat data.
+    /// Gets GrantedEffectQualityStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GrantedEffectQualityStatsDat.</returns>
-    public ReadOnlyCollection<GrantedEffectQualityStatsDat> LoadGrantedEffectQualityStatsDat()
+    /// <returns>repository of GrantedEffectQualityStatsRepository.</returns>
+    public GrantedEffectQualityStatsRepository LoadGrantedEffectQualityStatsRepository()
     {
-        return GrantedEffectQualityStatsDat.Load(dataLoader).AsReadOnly();
+        grantedeffectqualitystatsrepository ??= new GrantedEffectQualityStatsRepository(logger, this);
+        return grantedeffectqualitystatsrepository;
     }
 
     /// <summary>
-    /// Gets GrantedEffectQualityTypesDat data.
+    /// Gets GrantedEffectQualityTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of GrantedEffectQualityTypesDat.</returns>
-    public ReadOnlyCollection<GrantedEffectQualityTypesDat> LoadGrantedEffectQualityTypesDat()
+    /// <returns>repository of GrantedEffectQualityTypesRepository.</returns>
+    public GrantedEffectQualityTypesRepository LoadGrantedEffectQualityTypesRepository()
     {
-        return GrantedEffectQualityTypesDat.Load(dataLoader).AsReadOnly();
+        grantedeffectqualitytypesrepository ??= new GrantedEffectQualityTypesRepository(logger, this);
+        return grantedeffectqualitytypesrepository;
     }
 
     /// <summary>
-    /// Gets GrantedEffectsDat data.
+    /// Gets GrantedEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GrantedEffectsDat.</returns>
-    public ReadOnlyCollection<GrantedEffectsDat> LoadGrantedEffectsDat()
+    /// <returns>repository of GrantedEffectsRepository.</returns>
+    public GrantedEffectsRepository LoadGrantedEffectsRepository()
     {
-        return GrantedEffectsDat.Load(dataLoader).AsReadOnly();
+        grantedeffectsrepository ??= new GrantedEffectsRepository(logger, this);
+        return grantedeffectsrepository;
     }
 
     /// <summary>
-    /// Gets GrantedEffectsPerLevelDat data.
+    /// Gets GrantedEffectsPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of GrantedEffectsPerLevelDat.</returns>
-    public ReadOnlyCollection<GrantedEffectsPerLevelDat> LoadGrantedEffectsPerLevelDat()
+    /// <returns>repository of GrantedEffectsPerLevelRepository.</returns>
+    public GrantedEffectsPerLevelRepository LoadGrantedEffectsPerLevelRepository()
     {
-        return GrantedEffectsPerLevelDat.Load(dataLoader).AsReadOnly();
+        grantedeffectsperlevelrepository ??= new GrantedEffectsPerLevelRepository(logger, this);
+        return grantedeffectsperlevelrepository;
     }
 
     /// <summary>
-    /// Gets GrantedEffectStatSetsDat data.
+    /// Gets GrantedEffectStatSetsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GrantedEffectStatSetsDat.</returns>
-    public ReadOnlyCollection<GrantedEffectStatSetsDat> LoadGrantedEffectStatSetsDat()
+    /// <returns>repository of GrantedEffectStatSetsRepository.</returns>
+    public GrantedEffectStatSetsRepository LoadGrantedEffectStatSetsRepository()
     {
-        return GrantedEffectStatSetsDat.Load(dataLoader).AsReadOnly();
+        grantedeffectstatsetsrepository ??= new GrantedEffectStatSetsRepository(logger, this);
+        return grantedeffectstatsetsrepository;
     }
 
     /// <summary>
-    /// Gets GrantedEffectStatSetsPerLevelDat data.
+    /// Gets GrantedEffectStatSetsPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of GrantedEffectStatSetsPerLevelDat.</returns>
-    public ReadOnlyCollection<GrantedEffectStatSetsPerLevelDat> LoadGrantedEffectStatSetsPerLevelDat()
+    /// <returns>repository of GrantedEffectStatSetsPerLevelRepository.</returns>
+    public GrantedEffectStatSetsPerLevelRepository LoadGrantedEffectStatSetsPerLevelRepository()
     {
-        return GrantedEffectStatSetsPerLevelDat.Load(dataLoader).AsReadOnly();
+        grantedeffectstatsetsperlevelrepository ??= new GrantedEffectStatSetsPerLevelRepository(logger, this);
+        return grantedeffectstatsetsperlevelrepository;
     }
 
     /// <summary>
-    /// Gets GroundEffectsDat data.
+    /// Gets GroundEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of GroundEffectsDat.</returns>
-    public ReadOnlyCollection<GroundEffectsDat> LoadGroundEffectsDat()
+    /// <returns>repository of GroundEffectsRepository.</returns>
+    public GroundEffectsRepository LoadGroundEffectsRepository()
     {
-        return GroundEffectsDat.Load(dataLoader).AsReadOnly();
+        groundeffectsrepository ??= new GroundEffectsRepository(logger, this);
+        return groundeffectsrepository;
     }
 
     /// <summary>
-    /// Gets GroundEffectTypesDat data.
+    /// Gets GroundEffectTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of GroundEffectTypesDat.</returns>
-    public ReadOnlyCollection<GroundEffectTypesDat> LoadGroundEffectTypesDat()
+    /// <returns>repository of GroundEffectTypesRepository.</returns>
+    public GroundEffectTypesRepository LoadGroundEffectTypesRepository()
     {
-        return GroundEffectTypesDat.Load(dataLoader).AsReadOnly();
+        groundeffecttypesrepository ??= new GroundEffectTypesRepository(logger, this);
+        return groundeffecttypesrepository;
     }
 
     /// <summary>
-    /// Gets HarvestStorageLayoutDat data.
+    /// Gets HarvestStorageLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of HarvestStorageLayoutDat.</returns>
-    public ReadOnlyCollection<HarvestStorageLayoutDat> LoadHarvestStorageLayoutDat()
+    /// <returns>repository of HarvestStorageLayoutRepository.</returns>
+    public HarvestStorageLayoutRepository LoadHarvestStorageLayoutRepository()
     {
-        return HarvestStorageLayoutDat.Load(dataLoader).AsReadOnly();
+        harveststoragelayoutrepository ??= new HarvestStorageLayoutRepository(logger, this);
+        return harveststoragelayoutrepository;
     }
 
     /// <summary>
-    /// Gets HeistStorageLayoutDat data.
+    /// Gets HeistStorageLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of HeistStorageLayoutDat.</returns>
-    public ReadOnlyCollection<HeistStorageLayoutDat> LoadHeistStorageLayoutDat()
+    /// <returns>repository of HeistStorageLayoutRepository.</returns>
+    public HeistStorageLayoutRepository LoadHeistStorageLayoutRepository()
     {
-        return HeistStorageLayoutDat.Load(dataLoader).AsReadOnly();
+        heiststoragelayoutrepository ??= new HeistStorageLayoutRepository(logger, this);
+        return heiststoragelayoutrepository;
     }
 
     /// <summary>
-    /// Gets HideoutDoodadsDat data.
+    /// Gets HideoutDoodadsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HideoutDoodadsDat.</returns>
-    public ReadOnlyCollection<HideoutDoodadsDat> LoadHideoutDoodadsDat()
+    /// <returns>repository of HideoutDoodadsRepository.</returns>
+    public HideoutDoodadsRepository LoadHideoutDoodadsRepository()
     {
-        return HideoutDoodadsDat.Load(dataLoader).AsReadOnly();
+        hideoutdoodadsrepository ??= new HideoutDoodadsRepository(logger, this);
+        return hideoutdoodadsrepository;
     }
 
     /// <summary>
-    /// Gets HideoutDoodadCategoryDat data.
+    /// Gets HideoutDoodadCategoryRepository data.
     /// </summary>
-    /// <returns>readonly collection of HideoutDoodadCategoryDat.</returns>
-    public ReadOnlyCollection<HideoutDoodadCategoryDat> LoadHideoutDoodadCategoryDat()
+    /// <returns>repository of HideoutDoodadCategoryRepository.</returns>
+    public HideoutDoodadCategoryRepository LoadHideoutDoodadCategoryRepository()
     {
-        return HideoutDoodadCategoryDat.Load(dataLoader).AsReadOnly();
+        hideoutdoodadcategoryrepository ??= new HideoutDoodadCategoryRepository(logger, this);
+        return hideoutdoodadcategoryrepository;
     }
 
     /// <summary>
-    /// Gets HideoutDoodadTagsDat data.
+    /// Gets HideoutDoodadTagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HideoutDoodadTagsDat.</returns>
-    public ReadOnlyCollection<HideoutDoodadTagsDat> LoadHideoutDoodadTagsDat()
+    /// <returns>repository of HideoutDoodadTagsRepository.</returns>
+    public HideoutDoodadTagsRepository LoadHideoutDoodadTagsRepository()
     {
-        return HideoutDoodadTagsDat.Load(dataLoader).AsReadOnly();
+        hideoutdoodadtagsrepository ??= new HideoutDoodadTagsRepository(logger, this);
+        return hideoutdoodadtagsrepository;
     }
 
     /// <summary>
-    /// Gets HideoutNPCsDat data.
+    /// Gets HideoutNPCsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HideoutNPCsDat.</returns>
-    public ReadOnlyCollection<HideoutNPCsDat> LoadHideoutNPCsDat()
+    /// <returns>repository of HideoutNPCsRepository.</returns>
+    public HideoutNPCsRepository LoadHideoutNPCsRepository()
     {
-        return HideoutNPCsDat.Load(dataLoader).AsReadOnly();
+        hideoutnpcsrepository ??= new HideoutNPCsRepository(logger, this);
+        return hideoutnpcsrepository;
     }
 
     /// <summary>
-    /// Gets HideoutRarityDat data.
+    /// Gets HideoutRarityRepository data.
     /// </summary>
-    /// <returns>readonly collection of HideoutRarityDat.</returns>
-    public ReadOnlyCollection<HideoutRarityDat> LoadHideoutRarityDat()
+    /// <returns>repository of HideoutRarityRepository.</returns>
+    public HideoutRarityRepository LoadHideoutRarityRepository()
     {
-        return HideoutRarityDat.Load(dataLoader).AsReadOnly();
+        hideoutrarityrepository ??= new HideoutRarityRepository(logger, this);
+        return hideoutrarityrepository;
     }
 
     /// <summary>
-    /// Gets HideoutsDat data.
+    /// Gets HideoutsRepository data.
     /// </summary>
-    /// <returns>readonly collection of HideoutsDat.</returns>
-    public ReadOnlyCollection<HideoutsDat> LoadHideoutsDat()
+    /// <returns>repository of HideoutsRepository.</returns>
+    public HideoutsRepository LoadHideoutsRepository()
     {
-        return HideoutsDat.Load(dataLoader).AsReadOnly();
+        hideoutsrepository ??= new HideoutsRepository(logger, this);
+        return hideoutsrepository;
     }
 
     /// <summary>
-    /// Gets ImpactSoundDataDat data.
+    /// Gets ImpactSoundDataRepository data.
     /// </summary>
-    /// <returns>readonly collection of ImpactSoundDataDat.</returns>
-    public ReadOnlyCollection<ImpactSoundDataDat> LoadImpactSoundDataDat()
+    /// <returns>repository of ImpactSoundDataRepository.</returns>
+    public ImpactSoundDataRepository LoadImpactSoundDataRepository()
     {
-        return ImpactSoundDataDat.Load(dataLoader).AsReadOnly();
+        impactsounddatarepository ??= new ImpactSoundDataRepository(logger, this);
+        return impactsounddatarepository;
     }
 
     /// <summary>
-    /// Gets IndexableSupportGemsDat data.
+    /// Gets IndexableSupportGemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of IndexableSupportGemsDat.</returns>
-    public ReadOnlyCollection<IndexableSupportGemsDat> LoadIndexableSupportGemsDat()
+    /// <returns>repository of IndexableSupportGemsRepository.</returns>
+    public IndexableSupportGemsRepository LoadIndexableSupportGemsRepository()
     {
-        return IndexableSupportGemsDat.Load(dataLoader).AsReadOnly();
+        indexablesupportgemsrepository ??= new IndexableSupportGemsRepository(logger, this);
+        return indexablesupportgemsrepository;
     }
 
     /// <summary>
-    /// Gets InfluenceExaltsDat data.
+    /// Gets InfluenceExaltsRepository data.
     /// </summary>
-    /// <returns>readonly collection of InfluenceExaltsDat.</returns>
-    public ReadOnlyCollection<InfluenceExaltsDat> LoadInfluenceExaltsDat()
+    /// <returns>repository of InfluenceExaltsRepository.</returns>
+    public InfluenceExaltsRepository LoadInfluenceExaltsRepository()
     {
-        return InfluenceExaltsDat.Load(dataLoader).AsReadOnly();
+        influenceexaltsrepository ??= new InfluenceExaltsRepository(logger, this);
+        return influenceexaltsrepository;
     }
 
     /// <summary>
-    /// Gets InfluenceTagsDat data.
+    /// Gets InfluenceTagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of InfluenceTagsDat.</returns>
-    public ReadOnlyCollection<InfluenceTagsDat> LoadInfluenceTagsDat()
+    /// <returns>repository of InfluenceTagsRepository.</returns>
+    public InfluenceTagsRepository LoadInfluenceTagsRepository()
     {
-        return InfluenceTagsDat.Load(dataLoader).AsReadOnly();
+        influencetagsrepository ??= new InfluenceTagsRepository(logger, this);
+        return influencetagsrepository;
     }
 
     /// <summary>
-    /// Gets InventoriesDat data.
+    /// Gets InventoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of InventoriesDat.</returns>
-    public ReadOnlyCollection<InventoriesDat> LoadInventoriesDat()
+    /// <returns>repository of InventoriesRepository.</returns>
+    public InventoriesRepository LoadInventoriesRepository()
     {
-        return InventoriesDat.Load(dataLoader).AsReadOnly();
+        inventoriesrepository ??= new InventoriesRepository(logger, this);
+        return inventoriesrepository;
     }
 
     /// <summary>
-    /// Gets ItemClassCategoriesDat data.
+    /// Gets ItemClassCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemClassCategoriesDat.</returns>
-    public ReadOnlyCollection<ItemClassCategoriesDat> LoadItemClassCategoriesDat()
+    /// <returns>repository of ItemClassCategoriesRepository.</returns>
+    public ItemClassCategoriesRepository LoadItemClassCategoriesRepository()
     {
-        return ItemClassCategoriesDat.Load(dataLoader).AsReadOnly();
+        itemclasscategoriesrepository ??= new ItemClassCategoriesRepository(logger, this);
+        return itemclasscategoriesrepository;
     }
 
     /// <summary>
-    /// Gets ItemClassesDat data.
+    /// Gets ItemClassesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemClassesDat.</returns>
-    public ReadOnlyCollection<ItemClassesDat> LoadItemClassesDat()
+    /// <returns>repository of ItemClassesRepository.</returns>
+    public ItemClassesRepository LoadItemClassesRepository()
     {
-        return ItemClassesDat.Load(dataLoader).AsReadOnly();
+        itemclassesrepository ??= new ItemClassesRepository(logger, this);
+        return itemclassesrepository;
     }
 
     /// <summary>
-    /// Gets ItemCostPerLevelDat data.
+    /// Gets ItemCostPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemCostPerLevelDat.</returns>
-    public ReadOnlyCollection<ItemCostPerLevelDat> LoadItemCostPerLevelDat()
+    /// <returns>repository of ItemCostPerLevelRepository.</returns>
+    public ItemCostPerLevelRepository LoadItemCostPerLevelRepository()
     {
-        return ItemCostPerLevelDat.Load(dataLoader).AsReadOnly();
+        itemcostperlevelrepository ??= new ItemCostPerLevelRepository(logger, this);
+        return itemcostperlevelrepository;
     }
 
     /// <summary>
-    /// Gets ItemCostsDat data.
+    /// Gets ItemCostsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemCostsDat.</returns>
-    public ReadOnlyCollection<ItemCostsDat> LoadItemCostsDat()
+    /// <returns>repository of ItemCostsRepository.</returns>
+    public ItemCostsRepository LoadItemCostsRepository()
     {
-        return ItemCostsDat.Load(dataLoader).AsReadOnly();
+        itemcostsrepository ??= new ItemCostsRepository(logger, this);
+        return itemcostsrepository;
     }
 
     /// <summary>
-    /// Gets ItemFrameTypeDat data.
+    /// Gets ItemFrameTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemFrameTypeDat.</returns>
-    public ReadOnlyCollection<ItemFrameTypeDat> LoadItemFrameTypeDat()
+    /// <returns>repository of ItemFrameTypeRepository.</returns>
+    public ItemFrameTypeRepository LoadItemFrameTypeRepository()
     {
-        return ItemFrameTypeDat.Load(dataLoader).AsReadOnly();
+        itemframetyperepository ??= new ItemFrameTypeRepository(logger, this);
+        return itemframetyperepository;
     }
 
     /// <summary>
-    /// Gets ItemExperienceTypesDat data.
+    /// Gets ItemExperienceTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemExperienceTypesDat.</returns>
-    public ReadOnlyCollection<ItemExperienceTypesDat> LoadItemExperienceTypesDat()
+    /// <returns>repository of ItemExperienceTypesRepository.</returns>
+    public ItemExperienceTypesRepository LoadItemExperienceTypesRepository()
     {
-        return ItemExperienceTypesDat.Load(dataLoader).AsReadOnly();
+        itemexperiencetypesrepository ??= new ItemExperienceTypesRepository(logger, this);
+        return itemexperiencetypesrepository;
     }
 
     /// <summary>
-    /// Gets ItemExperiencePerLevelDat data.
+    /// Gets ItemExperiencePerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemExperiencePerLevelDat.</returns>
-    public ReadOnlyCollection<ItemExperiencePerLevelDat> LoadItemExperiencePerLevelDat()
+    /// <returns>repository of ItemExperiencePerLevelRepository.</returns>
+    public ItemExperiencePerLevelRepository LoadItemExperiencePerLevelRepository()
     {
-        return ItemExperiencePerLevelDat.Load(dataLoader).AsReadOnly();
+        itemexperienceperlevelrepository ??= new ItemExperiencePerLevelRepository(logger, this);
+        return itemexperienceperlevelrepository;
     }
 
     /// <summary>
-    /// Gets ItemisedVisualEffectDat data.
+    /// Gets ItemisedVisualEffectRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemisedVisualEffectDat.</returns>
-    public ReadOnlyCollection<ItemisedVisualEffectDat> LoadItemisedVisualEffectDat()
+    /// <returns>repository of ItemisedVisualEffectRepository.</returns>
+    public ItemisedVisualEffectRepository LoadItemisedVisualEffectRepository()
     {
-        return ItemisedVisualEffectDat.Load(dataLoader).AsReadOnly();
+        itemisedvisualeffectrepository ??= new ItemisedVisualEffectRepository(logger, this);
+        return itemisedvisualeffectrepository;
     }
 
     /// <summary>
-    /// Gets ItemNoteCodeDat data.
+    /// Gets ItemNoteCodeRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemNoteCodeDat.</returns>
-    public ReadOnlyCollection<ItemNoteCodeDat> LoadItemNoteCodeDat()
+    /// <returns>repository of ItemNoteCodeRepository.</returns>
+    public ItemNoteCodeRepository LoadItemNoteCodeRepository()
     {
-        return ItemNoteCodeDat.Load(dataLoader).AsReadOnly();
+        itemnotecoderepository ??= new ItemNoteCodeRepository(logger, this);
+        return itemnotecoderepository;
     }
 
     /// <summary>
-    /// Gets ItemShopTypeDat data.
+    /// Gets ItemShopTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemShopTypeDat.</returns>
-    public ReadOnlyCollection<ItemShopTypeDat> LoadItemShopTypeDat()
+    /// <returns>repository of ItemShopTypeRepository.</returns>
+    public ItemShopTypeRepository LoadItemShopTypeRepository()
     {
-        return ItemShopTypeDat.Load(dataLoader).AsReadOnly();
+        itemshoptyperepository ??= new ItemShopTypeRepository(logger, this);
+        return itemshoptyperepository;
     }
 
     /// <summary>
-    /// Gets ItemStancesDat data.
+    /// Gets ItemStancesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemStancesDat.</returns>
-    public ReadOnlyCollection<ItemStancesDat> LoadItemStancesDat()
+    /// <returns>repository of ItemStancesRepository.</returns>
+    public ItemStancesRepository LoadItemStancesRepository()
     {
-        return ItemStancesDat.Load(dataLoader).AsReadOnly();
+        itemstancesrepository ??= new ItemStancesRepository(logger, this);
+        return itemstancesrepository;
     }
 
     /// <summary>
-    /// Gets ItemThemesDat data.
+    /// Gets ItemThemesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemThemesDat.</returns>
-    public ReadOnlyCollection<ItemThemesDat> LoadItemThemesDat()
+    /// <returns>repository of ItemThemesRepository.</returns>
+    public ItemThemesRepository LoadItemThemesRepository()
     {
-        return ItemThemesDat.Load(dataLoader).AsReadOnly();
+        itemthemesrepository ??= new ItemThemesRepository(logger, this);
+        return itemthemesrepository;
     }
 
     /// <summary>
-    /// Gets ItemVisualEffectDat data.
+    /// Gets ItemVisualEffectRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemVisualEffectDat.</returns>
-    public ReadOnlyCollection<ItemVisualEffectDat> LoadItemVisualEffectDat()
+    /// <returns>repository of ItemVisualEffectRepository.</returns>
+    public ItemVisualEffectRepository LoadItemVisualEffectRepository()
     {
-        return ItemVisualEffectDat.Load(dataLoader).AsReadOnly();
+        itemvisualeffectrepository ??= new ItemVisualEffectRepository(logger, this);
+        return itemvisualeffectrepository;
     }
 
     /// <summary>
-    /// Gets ItemVisualHeldBodyModelDat data.
+    /// Gets ItemVisualHeldBodyModelRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemVisualHeldBodyModelDat.</returns>
-    public ReadOnlyCollection<ItemVisualHeldBodyModelDat> LoadItemVisualHeldBodyModelDat()
+    /// <returns>repository of ItemVisualHeldBodyModelRepository.</returns>
+    public ItemVisualHeldBodyModelRepository LoadItemVisualHeldBodyModelRepository()
     {
-        return ItemVisualHeldBodyModelDat.Load(dataLoader).AsReadOnly();
+        itemvisualheldbodymodelrepository ??= new ItemVisualHeldBodyModelRepository(logger, this);
+        return itemvisualheldbodymodelrepository;
     }
 
     /// <summary>
-    /// Gets ItemVisualIdentityDat data.
+    /// Gets ItemVisualIdentityRepository data.
     /// </summary>
-    /// <returns>readonly collection of ItemVisualIdentityDat.</returns>
-    public ReadOnlyCollection<ItemVisualIdentityDat> LoadItemVisualIdentityDat()
+    /// <returns>repository of ItemVisualIdentityRepository.</returns>
+    public ItemVisualIdentityRepository LoadItemVisualIdentityRepository()
     {
-        return ItemVisualIdentityDat.Load(dataLoader).AsReadOnly();
+        itemvisualidentityrepository ??= new ItemVisualIdentityRepository(logger, this);
+        return itemvisualidentityrepository;
     }
 
     /// <summary>
-    /// Gets JobAssassinationSpawnerGroupsDat data.
+    /// Gets JobAssassinationSpawnerGroupsRepository data.
     /// </summary>
-    /// <returns>readonly collection of JobAssassinationSpawnerGroupsDat.</returns>
-    public ReadOnlyCollection<JobAssassinationSpawnerGroupsDat> LoadJobAssassinationSpawnerGroupsDat()
+    /// <returns>repository of JobAssassinationSpawnerGroupsRepository.</returns>
+    public JobAssassinationSpawnerGroupsRepository LoadJobAssassinationSpawnerGroupsRepository()
     {
-        return JobAssassinationSpawnerGroupsDat.Load(dataLoader).AsReadOnly();
+        jobassassinationspawnergroupsrepository ??= new JobAssassinationSpawnerGroupsRepository(logger, this);
+        return jobassassinationspawnergroupsrepository;
     }
 
     /// <summary>
-    /// Gets JobRaidBracketsDat data.
+    /// Gets JobRaidBracketsRepository data.
     /// </summary>
-    /// <returns>readonly collection of JobRaidBracketsDat.</returns>
-    public ReadOnlyCollection<JobRaidBracketsDat> LoadJobRaidBracketsDat()
+    /// <returns>repository of JobRaidBracketsRepository.</returns>
+    public JobRaidBracketsRepository LoadJobRaidBracketsRepository()
     {
-        return JobRaidBracketsDat.Load(dataLoader).AsReadOnly();
+        jobraidbracketsrepository ??= new JobRaidBracketsRepository(logger, this);
+        return jobraidbracketsrepository;
     }
 
     /// <summary>
-    /// Gets KillstreakThresholdsDat data.
+    /// Gets KillstreakThresholdsRepository data.
     /// </summary>
-    /// <returns>readonly collection of KillstreakThresholdsDat.</returns>
-    public ReadOnlyCollection<KillstreakThresholdsDat> LoadKillstreakThresholdsDat()
+    /// <returns>repository of KillstreakThresholdsRepository.</returns>
+    public KillstreakThresholdsRepository LoadKillstreakThresholdsRepository()
     {
-        return KillstreakThresholdsDat.Load(dataLoader).AsReadOnly();
+        killstreakthresholdsrepository ??= new KillstreakThresholdsRepository(logger, this);
+        return killstreakthresholdsrepository;
     }
 
     /// <summary>
-    /// Gets LeagueFlagDat data.
+    /// Gets LeagueFlagRepository data.
     /// </summary>
-    /// <returns>readonly collection of LeagueFlagDat.</returns>
-    public ReadOnlyCollection<LeagueFlagDat> LoadLeagueFlagDat()
+    /// <returns>repository of LeagueFlagRepository.</returns>
+    public LeagueFlagRepository LoadLeagueFlagRepository()
     {
-        return LeagueFlagDat.Load(dataLoader).AsReadOnly();
+        leagueflagrepository ??= new LeagueFlagRepository(logger, this);
+        return leagueflagrepository;
     }
 
     /// <summary>
-    /// Gets LeagueInfoDat data.
+    /// Gets LeagueInfoRepository data.
     /// </summary>
-    /// <returns>readonly collection of LeagueInfoDat.</returns>
-    public ReadOnlyCollection<LeagueInfoDat> LoadLeagueInfoDat()
+    /// <returns>repository of LeagueInfoRepository.</returns>
+    public LeagueInfoRepository LoadLeagueInfoRepository()
     {
-        return LeagueInfoDat.Load(dataLoader).AsReadOnly();
+        leagueinforepository ??= new LeagueInfoRepository(logger, this);
+        return leagueinforepository;
     }
 
     /// <summary>
-    /// Gets LeagueProgressQuestFlagsDat data.
+    /// Gets LeagueProgressQuestFlagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LeagueProgressQuestFlagsDat.</returns>
-    public ReadOnlyCollection<LeagueProgressQuestFlagsDat> LoadLeagueProgressQuestFlagsDat()
+    /// <returns>repository of LeagueProgressQuestFlagsRepository.</returns>
+    public LeagueProgressQuestFlagsRepository LoadLeagueProgressQuestFlagsRepository()
     {
-        return LeagueProgressQuestFlagsDat.Load(dataLoader).AsReadOnly();
+        leagueprogressquestflagsrepository ??= new LeagueProgressQuestFlagsRepository(logger, this);
+        return leagueprogressquestflagsrepository;
     }
 
     /// <summary>
-    /// Gets LeagueStaticRewardsDat data.
+    /// Gets LeagueStaticRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of LeagueStaticRewardsDat.</returns>
-    public ReadOnlyCollection<LeagueStaticRewardsDat> LoadLeagueStaticRewardsDat()
+    /// <returns>repository of LeagueStaticRewardsRepository.</returns>
+    public LeagueStaticRewardsRepository LoadLeagueStaticRewardsRepository()
     {
-        return LeagueStaticRewardsDat.Load(dataLoader).AsReadOnly();
+        leaguestaticrewardsrepository ??= new LeagueStaticRewardsRepository(logger, this);
+        return leaguestaticrewardsrepository;
     }
 
     /// <summary>
-    /// Gets LevelRelativePlayerScalingDat data.
+    /// Gets LevelRelativePlayerScalingRepository data.
     /// </summary>
-    /// <returns>readonly collection of LevelRelativePlayerScalingDat.</returns>
-    public ReadOnlyCollection<LevelRelativePlayerScalingDat> LoadLevelRelativePlayerScalingDat()
+    /// <returns>repository of LevelRelativePlayerScalingRepository.</returns>
+    public LevelRelativePlayerScalingRepository LoadLevelRelativePlayerScalingRepository()
     {
-        return LevelRelativePlayerScalingDat.Load(dataLoader).AsReadOnly();
+        levelrelativeplayerscalingrepository ??= new LevelRelativePlayerScalingRepository(logger, this);
+        return levelrelativeplayerscalingrepository;
     }
 
     /// <summary>
-    /// Gets MagicMonsterLifeScalingPerLevelDat data.
+    /// Gets MagicMonsterLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of MagicMonsterLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<MagicMonsterLifeScalingPerLevelDat> LoadMagicMonsterLifeScalingPerLevelDat()
+    /// <returns>repository of MagicMonsterLifeScalingPerLevelRepository.</returns>
+    public MagicMonsterLifeScalingPerLevelRepository LoadMagicMonsterLifeScalingPerLevelRepository()
     {
-        return MagicMonsterLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        magicmonsterlifescalingperlevelrepository ??= new MagicMonsterLifeScalingPerLevelRepository(logger, this);
+        return magicmonsterlifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets MapCompletionAchievementsDat data.
+    /// Gets MapCompletionAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapCompletionAchievementsDat.</returns>
-    public ReadOnlyCollection<MapCompletionAchievementsDat> LoadMapCompletionAchievementsDat()
+    /// <returns>repository of MapCompletionAchievementsRepository.</returns>
+    public MapCompletionAchievementsRepository LoadMapCompletionAchievementsRepository()
     {
-        return MapCompletionAchievementsDat.Load(dataLoader).AsReadOnly();
+        mapcompletionachievementsrepository ??= new MapCompletionAchievementsRepository(logger, this);
+        return mapcompletionachievementsrepository;
     }
 
     /// <summary>
-    /// Gets MapConnectionsDat data.
+    /// Gets MapConnectionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapConnectionsDat.</returns>
-    public ReadOnlyCollection<MapConnectionsDat> LoadMapConnectionsDat()
+    /// <returns>repository of MapConnectionsRepository.</returns>
+    public MapConnectionsRepository LoadMapConnectionsRepository()
     {
-        return MapConnectionsDat.Load(dataLoader).AsReadOnly();
+        mapconnectionsrepository ??= new MapConnectionsRepository(logger, this);
+        return mapconnectionsrepository;
     }
 
     /// <summary>
-    /// Gets MapCreationInformationDat data.
+    /// Gets MapCreationInformationRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapCreationInformationDat.</returns>
-    public ReadOnlyCollection<MapCreationInformationDat> LoadMapCreationInformationDat()
+    /// <returns>repository of MapCreationInformationRepository.</returns>
+    public MapCreationInformationRepository LoadMapCreationInformationRepository()
     {
-        return MapCreationInformationDat.Load(dataLoader).AsReadOnly();
+        mapcreationinformationrepository ??= new MapCreationInformationRepository(logger, this);
+        return mapcreationinformationrepository;
     }
 
     /// <summary>
-    /// Gets MapDeviceRecipesDat data.
+    /// Gets MapDeviceRecipesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapDeviceRecipesDat.</returns>
-    public ReadOnlyCollection<MapDeviceRecipesDat> LoadMapDeviceRecipesDat()
+    /// <returns>repository of MapDeviceRecipesRepository.</returns>
+    public MapDeviceRecipesRepository LoadMapDeviceRecipesRepository()
     {
-        return MapDeviceRecipesDat.Load(dataLoader).AsReadOnly();
+        mapdevicerecipesrepository ??= new MapDeviceRecipesRepository(logger, this);
+        return mapdevicerecipesrepository;
     }
 
     /// <summary>
-    /// Gets MapDevicesDat data.
+    /// Gets MapDevicesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapDevicesDat.</returns>
-    public ReadOnlyCollection<MapDevicesDat> LoadMapDevicesDat()
+    /// <returns>repository of MapDevicesRepository.</returns>
+    public MapDevicesRepository LoadMapDevicesRepository()
     {
-        return MapDevicesDat.Load(dataLoader).AsReadOnly();
+        mapdevicesrepository ??= new MapDevicesRepository(logger, this);
+        return mapdevicesrepository;
     }
 
     /// <summary>
-    /// Gets MapFragmentModsDat data.
+    /// Gets MapFragmentModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapFragmentModsDat.</returns>
-    public ReadOnlyCollection<MapFragmentModsDat> LoadMapFragmentModsDat()
+    /// <returns>repository of MapFragmentModsRepository.</returns>
+    public MapFragmentModsRepository LoadMapFragmentModsRepository()
     {
-        return MapFragmentModsDat.Load(dataLoader).AsReadOnly();
+        mapfragmentmodsrepository ??= new MapFragmentModsRepository(logger, this);
+        return mapfragmentmodsrepository;
     }
 
     /// <summary>
-    /// Gets MapInhabitantsDat data.
+    /// Gets MapInhabitantsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapInhabitantsDat.</returns>
-    public ReadOnlyCollection<MapInhabitantsDat> LoadMapInhabitantsDat()
+    /// <returns>repository of MapInhabitantsRepository.</returns>
+    public MapInhabitantsRepository LoadMapInhabitantsRepository()
     {
-        return MapInhabitantsDat.Load(dataLoader).AsReadOnly();
+        mapinhabitantsrepository ??= new MapInhabitantsRepository(logger, this);
+        return mapinhabitantsrepository;
     }
 
     /// <summary>
-    /// Gets MapPinsDat data.
+    /// Gets MapPinsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapPinsDat.</returns>
-    public ReadOnlyCollection<MapPinsDat> LoadMapPinsDat()
+    /// <returns>repository of MapPinsRepository.</returns>
+    public MapPinsRepository LoadMapPinsRepository()
     {
-        return MapPinsDat.Load(dataLoader).AsReadOnly();
+        mappinsrepository ??= new MapPinsRepository(logger, this);
+        return mappinsrepository;
     }
 
     /// <summary>
-    /// Gets MapPurchaseCostsDat data.
+    /// Gets MapPurchaseCostsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapPurchaseCostsDat.</returns>
-    public ReadOnlyCollection<MapPurchaseCostsDat> LoadMapPurchaseCostsDat()
+    /// <returns>repository of MapPurchaseCostsRepository.</returns>
+    public MapPurchaseCostsRepository LoadMapPurchaseCostsRepository()
     {
-        return MapPurchaseCostsDat.Load(dataLoader).AsReadOnly();
+        mappurchasecostsrepository ??= new MapPurchaseCostsRepository(logger, this);
+        return mappurchasecostsrepository;
     }
 
     /// <summary>
-    /// Gets MapsDat data.
+    /// Gets MapsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapsDat.</returns>
-    public ReadOnlyCollection<MapsDat> LoadMapsDat()
+    /// <returns>repository of MapsRepository.</returns>
+    public MapsRepository LoadMapsRepository()
     {
-        return MapsDat.Load(dataLoader).AsReadOnly();
+        mapsrepository ??= new MapsRepository(logger, this);
+        return mapsrepository;
     }
 
     /// <summary>
-    /// Gets MapSeriesDat data.
+    /// Gets MapSeriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapSeriesDat.</returns>
-    public ReadOnlyCollection<MapSeriesDat> LoadMapSeriesDat()
+    /// <returns>repository of MapSeriesRepository.</returns>
+    public MapSeriesRepository LoadMapSeriesRepository()
     {
-        return MapSeriesDat.Load(dataLoader).AsReadOnly();
+        mapseriesrepository ??= new MapSeriesRepository(logger, this);
+        return mapseriesrepository;
     }
 
     /// <summary>
-    /// Gets MapSeriesTiersDat data.
+    /// Gets MapSeriesTiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapSeriesTiersDat.</returns>
-    public ReadOnlyCollection<MapSeriesTiersDat> LoadMapSeriesTiersDat()
+    /// <returns>repository of MapSeriesTiersRepository.</returns>
+    public MapSeriesTiersRepository LoadMapSeriesTiersRepository()
     {
-        return MapSeriesTiersDat.Load(dataLoader).AsReadOnly();
+        mapseriestiersrepository ??= new MapSeriesTiersRepository(logger, this);
+        return mapseriestiersrepository;
     }
 
     /// <summary>
-    /// Gets MapStashSpecialTypeEntriesDat data.
+    /// Gets MapStashSpecialTypeEntriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapStashSpecialTypeEntriesDat.</returns>
-    public ReadOnlyCollection<MapStashSpecialTypeEntriesDat> LoadMapStashSpecialTypeEntriesDat()
+    /// <returns>repository of MapStashSpecialTypeEntriesRepository.</returns>
+    public MapStashSpecialTypeEntriesRepository LoadMapStashSpecialTypeEntriesRepository()
     {
-        return MapStashSpecialTypeEntriesDat.Load(dataLoader).AsReadOnly();
+        mapstashspecialtypeentriesrepository ??= new MapStashSpecialTypeEntriesRepository(logger, this);
+        return mapstashspecialtypeentriesrepository;
     }
 
     /// <summary>
-    /// Gets MapStashUniqueMapInfoDat data.
+    /// Gets MapStashUniqueMapInfoRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapStashUniqueMapInfoDat.</returns>
-    public ReadOnlyCollection<MapStashUniqueMapInfoDat> LoadMapStashUniqueMapInfoDat()
+    /// <returns>repository of MapStashUniqueMapInfoRepository.</returns>
+    public MapStashUniqueMapInfoRepository LoadMapStashUniqueMapInfoRepository()
     {
-        return MapStashUniqueMapInfoDat.Load(dataLoader).AsReadOnly();
+        mapstashuniquemapinforepository ??= new MapStashUniqueMapInfoRepository(logger, this);
+        return mapstashuniquemapinforepository;
     }
 
     /// <summary>
-    /// Gets MapStatConditionsDat data.
+    /// Gets MapStatConditionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapStatConditionsDat.</returns>
-    public ReadOnlyCollection<MapStatConditionsDat> LoadMapStatConditionsDat()
+    /// <returns>repository of MapStatConditionsRepository.</returns>
+    public MapStatConditionsRepository LoadMapStatConditionsRepository()
     {
-        return MapStatConditionsDat.Load(dataLoader).AsReadOnly();
+        mapstatconditionsrepository ??= new MapStatConditionsRepository(logger, this);
+        return mapstatconditionsrepository;
     }
 
     /// <summary>
-    /// Gets MapTierAchievementsDat data.
+    /// Gets MapTierAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapTierAchievementsDat.</returns>
-    public ReadOnlyCollection<MapTierAchievementsDat> LoadMapTierAchievementsDat()
+    /// <returns>repository of MapTierAchievementsRepository.</returns>
+    public MapTierAchievementsRepository LoadMapTierAchievementsRepository()
     {
-        return MapTierAchievementsDat.Load(dataLoader).AsReadOnly();
+        maptierachievementsrepository ??= new MapTierAchievementsRepository(logger, this);
+        return maptierachievementsrepository;
     }
 
     /// <summary>
-    /// Gets MapTiersDat data.
+    /// Gets MapTiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of MapTiersDat.</returns>
-    public ReadOnlyCollection<MapTiersDat> LoadMapTiersDat()
+    /// <returns>repository of MapTiersRepository.</returns>
+    public MapTiersRepository LoadMapTiersRepository()
     {
-        return MapTiersDat.Load(dataLoader).AsReadOnly();
+        maptiersrepository ??= new MapTiersRepository(logger, this);
+        return maptiersrepository;
     }
 
     /// <summary>
-    /// Gets MasterHideoutLevelsDat data.
+    /// Gets MasterHideoutLevelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MasterHideoutLevelsDat.</returns>
-    public ReadOnlyCollection<MasterHideoutLevelsDat> LoadMasterHideoutLevelsDat()
+    /// <returns>repository of MasterHideoutLevelsRepository.</returns>
+    public MasterHideoutLevelsRepository LoadMasterHideoutLevelsRepository()
     {
-        return MasterHideoutLevelsDat.Load(dataLoader).AsReadOnly();
+        masterhideoutlevelsrepository ??= new MasterHideoutLevelsRepository(logger, this);
+        return masterhideoutlevelsrepository;
     }
 
     /// <summary>
-    /// Gets MeleeDat data.
+    /// Gets MeleeRepository data.
     /// </summary>
-    /// <returns>readonly collection of MeleeDat.</returns>
-    public ReadOnlyCollection<MeleeDat> LoadMeleeDat()
+    /// <returns>repository of MeleeRepository.</returns>
+    public MeleeRepository LoadMeleeRepository()
     {
-        return MeleeDat.Load(dataLoader).AsReadOnly();
+        meleerepository ??= new MeleeRepository(logger, this);
+        return meleerepository;
     }
 
     /// <summary>
-    /// Gets MeleeTrailsDat data.
+    /// Gets MeleeTrailsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MeleeTrailsDat.</returns>
-    public ReadOnlyCollection<MeleeTrailsDat> LoadMeleeTrailsDat()
+    /// <returns>repository of MeleeTrailsRepository.</returns>
+    public MeleeTrailsRepository LoadMeleeTrailsRepository()
     {
-        return MeleeTrailsDat.Load(dataLoader).AsReadOnly();
+        meleetrailsrepository ??= new MeleeTrailsRepository(logger, this);
+        return meleetrailsrepository;
     }
 
     /// <summary>
-    /// Gets MetamorphosisStashTabLayoutDat data.
+    /// Gets MetamorphosisStashTabLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of MetamorphosisStashTabLayoutDat.</returns>
-    public ReadOnlyCollection<MetamorphosisStashTabLayoutDat> LoadMetamorphosisStashTabLayoutDat()
+    /// <returns>repository of MetamorphosisStashTabLayoutRepository.</returns>
+    public MetamorphosisStashTabLayoutRepository LoadMetamorphosisStashTabLayoutRepository()
     {
-        return MetamorphosisStashTabLayoutDat.Load(dataLoader).AsReadOnly();
+        metamorphosisstashtablayoutrepository ??= new MetamorphosisStashTabLayoutRepository(logger, this);
+        return metamorphosisstashtablayoutrepository;
     }
 
     /// <summary>
-    /// Gets MicroMigrationDataDat data.
+    /// Gets MicroMigrationDataRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicroMigrationDataDat.</returns>
-    public ReadOnlyCollection<MicroMigrationDataDat> LoadMicroMigrationDataDat()
+    /// <returns>repository of MicroMigrationDataRepository.</returns>
+    public MicroMigrationDataRepository LoadMicroMigrationDataRepository()
     {
-        return MicroMigrationDataDat.Load(dataLoader).AsReadOnly();
+        micromigrationdatarepository ??= new MicroMigrationDataRepository(logger, this);
+        return micromigrationdatarepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionCategoryDat data.
+    /// Gets MicrotransactionCategoryRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionCategoryDat.</returns>
-    public ReadOnlyCollection<MicrotransactionCategoryDat> LoadMicrotransactionCategoryDat()
+    /// <returns>repository of MicrotransactionCategoryRepository.</returns>
+    public MicrotransactionCategoryRepository LoadMicrotransactionCategoryRepository()
     {
-        return MicrotransactionCategoryDat.Load(dataLoader).AsReadOnly();
+        microtransactioncategoryrepository ??= new MicrotransactionCategoryRepository(logger, this);
+        return microtransactioncategoryrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionCharacterPortraitVariationsDat data.
+    /// Gets MicrotransactionCharacterPortraitVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionCharacterPortraitVariationsDat.</returns>
-    public ReadOnlyCollection<MicrotransactionCharacterPortraitVariationsDat> LoadMicrotransactionCharacterPortraitVariationsDat()
+    /// <returns>repository of MicrotransactionCharacterPortraitVariationsRepository.</returns>
+    public MicrotransactionCharacterPortraitVariationsRepository LoadMicrotransactionCharacterPortraitVariationsRepository()
     {
-        return MicrotransactionCharacterPortraitVariationsDat.Load(dataLoader).AsReadOnly();
+        microtransactioncharacterportraitvariationsrepository ??= new MicrotransactionCharacterPortraitVariationsRepository(logger, this);
+        return microtransactioncharacterportraitvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionCombineFormulaDat data.
+    /// Gets MicrotransactionCombineFormulaRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionCombineFormulaDat.</returns>
-    public ReadOnlyCollection<MicrotransactionCombineFormulaDat> LoadMicrotransactionCombineFormulaDat()
+    /// <returns>repository of MicrotransactionCombineFormulaRepository.</returns>
+    public MicrotransactionCombineFormulaRepository LoadMicrotransactionCombineFormulaRepository()
     {
-        return MicrotransactionCombineFormulaDat.Load(dataLoader).AsReadOnly();
+        microtransactioncombineformularepository ??= new MicrotransactionCombineFormulaRepository(logger, this);
+        return microtransactioncombineformularepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionCursorVariationsDat data.
+    /// Gets MicrotransactionCursorVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionCursorVariationsDat.</returns>
-    public ReadOnlyCollection<MicrotransactionCursorVariationsDat> LoadMicrotransactionCursorVariationsDat()
+    /// <returns>repository of MicrotransactionCursorVariationsRepository.</returns>
+    public MicrotransactionCursorVariationsRepository LoadMicrotransactionCursorVariationsRepository()
     {
-        return MicrotransactionCursorVariationsDat.Load(dataLoader).AsReadOnly();
+        microtransactioncursorvariationsrepository ??= new MicrotransactionCursorVariationsRepository(logger, this);
+        return microtransactioncursorvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionFireworksVariationsDat data.
+    /// Gets MicrotransactionFireworksVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionFireworksVariationsDat.</returns>
-    public ReadOnlyCollection<MicrotransactionFireworksVariationsDat> LoadMicrotransactionFireworksVariationsDat()
+    /// <returns>repository of MicrotransactionFireworksVariationsRepository.</returns>
+    public MicrotransactionFireworksVariationsRepository LoadMicrotransactionFireworksVariationsRepository()
     {
-        return MicrotransactionFireworksVariationsDat.Load(dataLoader).AsReadOnly();
+        microtransactionfireworksvariationsrepository ??= new MicrotransactionFireworksVariationsRepository(logger, this);
+        return microtransactionfireworksvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionGemCategoryDat data.
+    /// Gets MicrotransactionGemCategoryRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionGemCategoryDat.</returns>
-    public ReadOnlyCollection<MicrotransactionGemCategoryDat> LoadMicrotransactionGemCategoryDat()
+    /// <returns>repository of MicrotransactionGemCategoryRepository.</returns>
+    public MicrotransactionGemCategoryRepository LoadMicrotransactionGemCategoryRepository()
     {
-        return MicrotransactionGemCategoryDat.Load(dataLoader).AsReadOnly();
+        microtransactiongemcategoryrepository ??= new MicrotransactionGemCategoryRepository(logger, this);
+        return microtransactiongemcategoryrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionPeriodicCharacterEffectVariationsDat data.
+    /// Gets MicrotransactionPeriodicCharacterEffectVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionPeriodicCharacterEffectVariationsDat.</returns>
-    public ReadOnlyCollection<MicrotransactionPeriodicCharacterEffectVariationsDat> LoadMicrotransactionPeriodicCharacterEffectVariationsDat()
+    /// <returns>repository of MicrotransactionPeriodicCharacterEffectVariationsRepository.</returns>
+    public MicrotransactionPeriodicCharacterEffectVariationsRepository LoadMicrotransactionPeriodicCharacterEffectVariationsRepository()
     {
-        return MicrotransactionPeriodicCharacterEffectVariationsDat.Load(dataLoader).AsReadOnly();
+        microtransactionperiodiccharactereffectvariationsrepository ??= new MicrotransactionPeriodicCharacterEffectVariationsRepository(logger, this);
+        return microtransactionperiodiccharactereffectvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionPortalVariationsDat data.
+    /// Gets MicrotransactionPortalVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionPortalVariationsDat.</returns>
-    public ReadOnlyCollection<MicrotransactionPortalVariationsDat> LoadMicrotransactionPortalVariationsDat()
+    /// <returns>repository of MicrotransactionPortalVariationsRepository.</returns>
+    public MicrotransactionPortalVariationsRepository LoadMicrotransactionPortalVariationsRepository()
     {
-        return MicrotransactionPortalVariationsDat.Load(dataLoader).AsReadOnly();
+        microtransactionportalvariationsrepository ??= new MicrotransactionPortalVariationsRepository(logger, this);
+        return microtransactionportalvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionRarityDisplayDat data.
+    /// Gets MicrotransactionRarityDisplayRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionRarityDisplayDat.</returns>
-    public ReadOnlyCollection<MicrotransactionRarityDisplayDat> LoadMicrotransactionRarityDisplayDat()
+    /// <returns>repository of MicrotransactionRarityDisplayRepository.</returns>
+    public MicrotransactionRarityDisplayRepository LoadMicrotransactionRarityDisplayRepository()
     {
-        return MicrotransactionRarityDisplayDat.Load(dataLoader).AsReadOnly();
+        microtransactionraritydisplayrepository ??= new MicrotransactionRarityDisplayRepository(logger, this);
+        return microtransactionraritydisplayrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionRecycleOutcomesDat data.
+    /// Gets MicrotransactionRecycleOutcomesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionRecycleOutcomesDat.</returns>
-    public ReadOnlyCollection<MicrotransactionRecycleOutcomesDat> LoadMicrotransactionRecycleOutcomesDat()
+    /// <returns>repository of MicrotransactionRecycleOutcomesRepository.</returns>
+    public MicrotransactionRecycleOutcomesRepository LoadMicrotransactionRecycleOutcomesRepository()
     {
-        return MicrotransactionRecycleOutcomesDat.Load(dataLoader).AsReadOnly();
+        microtransactionrecycleoutcomesrepository ??= new MicrotransactionRecycleOutcomesRepository(logger, this);
+        return microtransactionrecycleoutcomesrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionRecycleSalvageValuesDat data.
+    /// Gets MicrotransactionRecycleSalvageValuesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionRecycleSalvageValuesDat.</returns>
-    public ReadOnlyCollection<MicrotransactionRecycleSalvageValuesDat> LoadMicrotransactionRecycleSalvageValuesDat()
+    /// <returns>repository of MicrotransactionRecycleSalvageValuesRepository.</returns>
+    public MicrotransactionRecycleSalvageValuesRepository LoadMicrotransactionRecycleSalvageValuesRepository()
     {
-        return MicrotransactionRecycleSalvageValuesDat.Load(dataLoader).AsReadOnly();
+        microtransactionrecyclesalvagevaluesrepository ??= new MicrotransactionRecycleSalvageValuesRepository(logger, this);
+        return microtransactionrecyclesalvagevaluesrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionSlotDat data.
+    /// Gets MicrotransactionSlotRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionSlotDat.</returns>
-    public ReadOnlyCollection<MicrotransactionSlotDat> LoadMicrotransactionSlotDat()
+    /// <returns>repository of MicrotransactionSlotRepository.</returns>
+    public MicrotransactionSlotRepository LoadMicrotransactionSlotRepository()
     {
-        return MicrotransactionSlotDat.Load(dataLoader).AsReadOnly();
+        microtransactionslotrepository ??= new MicrotransactionSlotRepository(logger, this);
+        return microtransactionslotrepository;
     }
 
     /// <summary>
-    /// Gets MicrotransactionSocialFrameVariationsDat data.
+    /// Gets MicrotransactionSocialFrameVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MicrotransactionSocialFrameVariationsDat.</returns>
-    public ReadOnlyCollection<MicrotransactionSocialFrameVariationsDat> LoadMicrotransactionSocialFrameVariationsDat()
+    /// <returns>repository of MicrotransactionSocialFrameVariationsRepository.</returns>
+    public MicrotransactionSocialFrameVariationsRepository LoadMicrotransactionSocialFrameVariationsRepository()
     {
-        return MicrotransactionSocialFrameVariationsDat.Load(dataLoader).AsReadOnly();
+        microtransactionsocialframevariationsrepository ??= new MicrotransactionSocialFrameVariationsRepository(logger, this);
+        return microtransactionsocialframevariationsrepository;
     }
 
     /// <summary>
-    /// Gets MinimapIconsDat data.
+    /// Gets MinimapIconsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MinimapIconsDat.</returns>
-    public ReadOnlyCollection<MinimapIconsDat> LoadMinimapIconsDat()
+    /// <returns>repository of MinimapIconsRepository.</returns>
+    public MinimapIconsRepository LoadMinimapIconsRepository()
     {
-        return MinimapIconsDat.Load(dataLoader).AsReadOnly();
+        minimapiconsrepository ??= new MinimapIconsRepository(logger, this);
+        return minimapiconsrepository;
     }
 
     /// <summary>
-    /// Gets MiniQuestStatesDat data.
+    /// Gets MiniQuestStatesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiniQuestStatesDat.</returns>
-    public ReadOnlyCollection<MiniQuestStatesDat> LoadMiniQuestStatesDat()
+    /// <returns>repository of MiniQuestStatesRepository.</returns>
+    public MiniQuestStatesRepository LoadMiniQuestStatesRepository()
     {
-        return MiniQuestStatesDat.Load(dataLoader).AsReadOnly();
+        miniqueststatesrepository ??= new MiniQuestStatesRepository(logger, this);
+        return miniqueststatesrepository;
     }
 
     /// <summary>
-    /// Gets MiscAnimatedDat data.
+    /// Gets MiscAnimatedRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscAnimatedDat.</returns>
-    public ReadOnlyCollection<MiscAnimatedDat> LoadMiscAnimatedDat()
+    /// <returns>repository of MiscAnimatedRepository.</returns>
+    public MiscAnimatedRepository LoadMiscAnimatedRepository()
     {
-        return MiscAnimatedDat.Load(dataLoader).AsReadOnly();
+        miscanimatedrepository ??= new MiscAnimatedRepository(logger, this);
+        return miscanimatedrepository;
     }
 
     /// <summary>
-    /// Gets MiscAnimatedArtVariationsDat data.
+    /// Gets MiscAnimatedArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscAnimatedArtVariationsDat.</returns>
-    public ReadOnlyCollection<MiscAnimatedArtVariationsDat> LoadMiscAnimatedArtVariationsDat()
+    /// <returns>repository of MiscAnimatedArtVariationsRepository.</returns>
+    public MiscAnimatedArtVariationsRepository LoadMiscAnimatedArtVariationsRepository()
     {
-        return MiscAnimatedArtVariationsDat.Load(dataLoader).AsReadOnly();
+        miscanimatedartvariationsrepository ??= new MiscAnimatedArtVariationsRepository(logger, this);
+        return miscanimatedartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MiscBeamsDat data.
+    /// Gets MiscBeamsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscBeamsDat.</returns>
-    public ReadOnlyCollection<MiscBeamsDat> LoadMiscBeamsDat()
+    /// <returns>repository of MiscBeamsRepository.</returns>
+    public MiscBeamsRepository LoadMiscBeamsRepository()
     {
-        return MiscBeamsDat.Load(dataLoader).AsReadOnly();
+        miscbeamsrepository ??= new MiscBeamsRepository(logger, this);
+        return miscbeamsrepository;
     }
 
     /// <summary>
-    /// Gets MiscBeamsArtVariationsDat data.
+    /// Gets MiscBeamsArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscBeamsArtVariationsDat.</returns>
-    public ReadOnlyCollection<MiscBeamsArtVariationsDat> LoadMiscBeamsArtVariationsDat()
+    /// <returns>repository of MiscBeamsArtVariationsRepository.</returns>
+    public MiscBeamsArtVariationsRepository LoadMiscBeamsArtVariationsRepository()
     {
-        return MiscBeamsArtVariationsDat.Load(dataLoader).AsReadOnly();
+        miscbeamsartvariationsrepository ??= new MiscBeamsArtVariationsRepository(logger, this);
+        return miscbeamsartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MiscEffectPacksDat data.
+    /// Gets MiscEffectPacksRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscEffectPacksDat.</returns>
-    public ReadOnlyCollection<MiscEffectPacksDat> LoadMiscEffectPacksDat()
+    /// <returns>repository of MiscEffectPacksRepository.</returns>
+    public MiscEffectPacksRepository LoadMiscEffectPacksRepository()
     {
-        return MiscEffectPacksDat.Load(dataLoader).AsReadOnly();
+        misceffectpacksrepository ??= new MiscEffectPacksRepository(logger, this);
+        return misceffectpacksrepository;
     }
 
     /// <summary>
-    /// Gets MiscEffectPacksArtVariationsDat data.
+    /// Gets MiscEffectPacksArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscEffectPacksArtVariationsDat.</returns>
-    public ReadOnlyCollection<MiscEffectPacksArtVariationsDat> LoadMiscEffectPacksArtVariationsDat()
+    /// <returns>repository of MiscEffectPacksArtVariationsRepository.</returns>
+    public MiscEffectPacksArtVariationsRepository LoadMiscEffectPacksArtVariationsRepository()
     {
-        return MiscEffectPacksArtVariationsDat.Load(dataLoader).AsReadOnly();
+        misceffectpacksartvariationsrepository ??= new MiscEffectPacksArtVariationsRepository(logger, this);
+        return misceffectpacksartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MiscObjectsDat data.
+    /// Gets MiscObjectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscObjectsDat.</returns>
-    public ReadOnlyCollection<MiscObjectsDat> LoadMiscObjectsDat()
+    /// <returns>repository of MiscObjectsRepository.</returns>
+    public MiscObjectsRepository LoadMiscObjectsRepository()
     {
-        return MiscObjectsDat.Load(dataLoader).AsReadOnly();
+        miscobjectsrepository ??= new MiscObjectsRepository(logger, this);
+        return miscobjectsrepository;
     }
 
     /// <summary>
-    /// Gets MiscObjectsArtVariationsDat data.
+    /// Gets MiscObjectsArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MiscObjectsArtVariationsDat.</returns>
-    public ReadOnlyCollection<MiscObjectsArtVariationsDat> LoadMiscObjectsArtVariationsDat()
+    /// <returns>repository of MiscObjectsArtVariationsRepository.</returns>
+    public MiscObjectsArtVariationsRepository LoadMiscObjectsArtVariationsRepository()
     {
-        return MiscObjectsArtVariationsDat.Load(dataLoader).AsReadOnly();
+        miscobjectsartvariationsrepository ??= new MiscObjectsArtVariationsRepository(logger, this);
+        return miscobjectsartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MissionFavourPerLevelDat data.
+    /// Gets MissionFavourPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of MissionFavourPerLevelDat.</returns>
-    public ReadOnlyCollection<MissionFavourPerLevelDat> LoadMissionFavourPerLevelDat()
+    /// <returns>repository of MissionFavourPerLevelRepository.</returns>
+    public MissionFavourPerLevelRepository LoadMissionFavourPerLevelRepository()
     {
-        return MissionFavourPerLevelDat.Load(dataLoader).AsReadOnly();
+        missionfavourperlevelrepository ??= new MissionFavourPerLevelRepository(logger, this);
+        return missionfavourperlevelrepository;
     }
 
     /// <summary>
-    /// Gets MissionTimerTypesDat data.
+    /// Gets MissionTimerTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MissionTimerTypesDat.</returns>
-    public ReadOnlyCollection<MissionTimerTypesDat> LoadMissionTimerTypesDat()
+    /// <returns>repository of MissionTimerTypesRepository.</returns>
+    public MissionTimerTypesRepository LoadMissionTimerTypesRepository()
     {
-        return MissionTimerTypesDat.Load(dataLoader).AsReadOnly();
+        missiontimertypesrepository ??= new MissionTimerTypesRepository(logger, this);
+        return missiontimertypesrepository;
     }
 
     /// <summary>
-    /// Gets MissionTransitionTilesDat data.
+    /// Gets MissionTransitionTilesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MissionTransitionTilesDat.</returns>
-    public ReadOnlyCollection<MissionTransitionTilesDat> LoadMissionTransitionTilesDat()
+    /// <returns>repository of MissionTransitionTilesRepository.</returns>
+    public MissionTransitionTilesRepository LoadMissionTransitionTilesRepository()
     {
-        return MissionTransitionTilesDat.Load(dataLoader).AsReadOnly();
+        missiontransitiontilesrepository ??= new MissionTransitionTilesRepository(logger, this);
+        return missiontransitiontilesrepository;
     }
 
     /// <summary>
-    /// Gets ModEffectStatsDat data.
+    /// Gets ModEffectStatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ModEffectStatsDat.</returns>
-    public ReadOnlyCollection<ModEffectStatsDat> LoadModEffectStatsDat()
+    /// <returns>repository of ModEffectStatsRepository.</returns>
+    public ModEffectStatsRepository LoadModEffectStatsRepository()
     {
-        return ModEffectStatsDat.Load(dataLoader).AsReadOnly();
+        modeffectstatsrepository ??= new ModEffectStatsRepository(logger, this);
+        return modeffectstatsrepository;
     }
 
     /// <summary>
-    /// Gets ModEquivalenciesDat data.
+    /// Gets ModEquivalenciesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ModEquivalenciesDat.</returns>
-    public ReadOnlyCollection<ModEquivalenciesDat> LoadModEquivalenciesDat()
+    /// <returns>repository of ModEquivalenciesRepository.</returns>
+    public ModEquivalenciesRepository LoadModEquivalenciesRepository()
     {
-        return ModEquivalenciesDat.Load(dataLoader).AsReadOnly();
+        modequivalenciesrepository ??= new ModEquivalenciesRepository(logger, this);
+        return modequivalenciesrepository;
     }
 
     /// <summary>
-    /// Gets ModFamilyDat data.
+    /// Gets ModFamilyRepository data.
     /// </summary>
-    /// <returns>readonly collection of ModFamilyDat.</returns>
-    public ReadOnlyCollection<ModFamilyDat> LoadModFamilyDat()
+    /// <returns>repository of ModFamilyRepository.</returns>
+    public ModFamilyRepository LoadModFamilyRepository()
     {
-        return ModFamilyDat.Load(dataLoader).AsReadOnly();
+        modfamilyrepository ??= new ModFamilyRepository(logger, this);
+        return modfamilyrepository;
     }
 
     /// <summary>
-    /// Gets ModsDat data.
+    /// Gets ModsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ModsDat.</returns>
-    public ReadOnlyCollection<ModsDat> LoadModsDat()
+    /// <returns>repository of ModsRepository.</returns>
+    public ModsRepository LoadModsRepository()
     {
-        return ModsDat.Load(dataLoader).AsReadOnly();
+        modsrepository ??= new ModsRepository(logger, this);
+        return modsrepository;
     }
 
     /// <summary>
-    /// Gets ModSellPriceTypesDat data.
+    /// Gets ModSellPriceTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ModSellPriceTypesDat.</returns>
-    public ReadOnlyCollection<ModSellPriceTypesDat> LoadModSellPriceTypesDat()
+    /// <returns>repository of ModSellPriceTypesRepository.</returns>
+    public ModSellPriceTypesRepository LoadModSellPriceTypesRepository()
     {
-        return ModSellPriceTypesDat.Load(dataLoader).AsReadOnly();
+        modsellpricetypesrepository ??= new ModSellPriceTypesRepository(logger, this);
+        return modsellpricetypesrepository;
     }
 
     /// <summary>
-    /// Gets ModTypeDat data.
+    /// Gets ModTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of ModTypeDat.</returns>
-    public ReadOnlyCollection<ModTypeDat> LoadModTypeDat()
+    /// <returns>repository of ModTypeRepository.</returns>
+    public ModTypeRepository LoadModTypeRepository()
     {
-        return ModTypeDat.Load(dataLoader).AsReadOnly();
+        modtyperepository ??= new ModTypeRepository(logger, this);
+        return modtyperepository;
     }
 
     /// <summary>
-    /// Gets MonsterArmoursDat data.
+    /// Gets MonsterArmoursRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterArmoursDat.</returns>
-    public ReadOnlyCollection<MonsterArmoursDat> LoadMonsterArmoursDat()
+    /// <returns>repository of MonsterArmoursRepository.</returns>
+    public MonsterArmoursRepository LoadMonsterArmoursRepository()
     {
-        return MonsterArmoursDat.Load(dataLoader).AsReadOnly();
+        monsterarmoursrepository ??= new MonsterArmoursRepository(logger, this);
+        return monsterarmoursrepository;
     }
 
     /// <summary>
-    /// Gets MonsterBonusesDat data.
+    /// Gets MonsterBonusesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterBonusesDat.</returns>
-    public ReadOnlyCollection<MonsterBonusesDat> LoadMonsterBonusesDat()
+    /// <returns>repository of MonsterBonusesRepository.</returns>
+    public MonsterBonusesRepository LoadMonsterBonusesRepository()
     {
-        return MonsterBonusesDat.Load(dataLoader).AsReadOnly();
+        monsterbonusesrepository ??= new MonsterBonusesRepository(logger, this);
+        return monsterbonusesrepository;
     }
 
     /// <summary>
-    /// Gets MonsterConditionalEffectPacksDat data.
+    /// Gets MonsterConditionalEffectPacksRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterConditionalEffectPacksDat.</returns>
-    public ReadOnlyCollection<MonsterConditionalEffectPacksDat> LoadMonsterConditionalEffectPacksDat()
+    /// <returns>repository of MonsterConditionalEffectPacksRepository.</returns>
+    public MonsterConditionalEffectPacksRepository LoadMonsterConditionalEffectPacksRepository()
     {
-        return MonsterConditionalEffectPacksDat.Load(dataLoader).AsReadOnly();
+        monsterconditionaleffectpacksrepository ??= new MonsterConditionalEffectPacksRepository(logger, this);
+        return monsterconditionaleffectpacksrepository;
     }
 
     /// <summary>
-    /// Gets MonsterConditionsDat data.
+    /// Gets MonsterConditionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterConditionsDat.</returns>
-    public ReadOnlyCollection<MonsterConditionsDat> LoadMonsterConditionsDat()
+    /// <returns>repository of MonsterConditionsRepository.</returns>
+    public MonsterConditionsRepository LoadMonsterConditionsRepository()
     {
-        return MonsterConditionsDat.Load(dataLoader).AsReadOnly();
+        monsterconditionsrepository ??= new MonsterConditionsRepository(logger, this);
+        return monsterconditionsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterDeathAchievementsDat data.
+    /// Gets MonsterDeathAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterDeathAchievementsDat.</returns>
-    public ReadOnlyCollection<MonsterDeathAchievementsDat> LoadMonsterDeathAchievementsDat()
+    /// <returns>repository of MonsterDeathAchievementsRepository.</returns>
+    public MonsterDeathAchievementsRepository LoadMonsterDeathAchievementsRepository()
     {
-        return MonsterDeathAchievementsDat.Load(dataLoader).AsReadOnly();
+        monsterdeathachievementsrepository ??= new MonsterDeathAchievementsRepository(logger, this);
+        return monsterdeathachievementsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterDeathConditionsDat data.
+    /// Gets MonsterDeathConditionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterDeathConditionsDat.</returns>
-    public ReadOnlyCollection<MonsterDeathConditionsDat> LoadMonsterDeathConditionsDat()
+    /// <returns>repository of MonsterDeathConditionsRepository.</returns>
+    public MonsterDeathConditionsRepository LoadMonsterDeathConditionsRepository()
     {
-        return MonsterDeathConditionsDat.Load(dataLoader).AsReadOnly();
+        monsterdeathconditionsrepository ??= new MonsterDeathConditionsRepository(logger, this);
+        return monsterdeathconditionsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterGroupEntriesDat data.
+    /// Gets MonsterGroupEntriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterGroupEntriesDat.</returns>
-    public ReadOnlyCollection<MonsterGroupEntriesDat> LoadMonsterGroupEntriesDat()
+    /// <returns>repository of MonsterGroupEntriesRepository.</returns>
+    public MonsterGroupEntriesRepository LoadMonsterGroupEntriesRepository()
     {
-        return MonsterGroupEntriesDat.Load(dataLoader).AsReadOnly();
+        monstergroupentriesrepository ??= new MonsterGroupEntriesRepository(logger, this);
+        return monstergroupentriesrepository;
     }
 
     /// <summary>
-    /// Gets MonsterHeightBracketsDat data.
+    /// Gets MonsterHeightBracketsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterHeightBracketsDat.</returns>
-    public ReadOnlyCollection<MonsterHeightBracketsDat> LoadMonsterHeightBracketsDat()
+    /// <returns>repository of MonsterHeightBracketsRepository.</returns>
+    public MonsterHeightBracketsRepository LoadMonsterHeightBracketsRepository()
     {
-        return MonsterHeightBracketsDat.Load(dataLoader).AsReadOnly();
+        monsterheightbracketsrepository ??= new MonsterHeightBracketsRepository(logger, this);
+        return monsterheightbracketsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterHeightsDat data.
+    /// Gets MonsterHeightsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterHeightsDat.</returns>
-    public ReadOnlyCollection<MonsterHeightsDat> LoadMonsterHeightsDat()
+    /// <returns>repository of MonsterHeightsRepository.</returns>
+    public MonsterHeightsRepository LoadMonsterHeightsRepository()
     {
-        return MonsterHeightsDat.Load(dataLoader).AsReadOnly();
+        monsterheightsrepository ??= new MonsterHeightsRepository(logger, this);
+        return monsterheightsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterMapBossDifficultyDat data.
+    /// Gets MonsterMapBossDifficultyRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterMapBossDifficultyDat.</returns>
-    public ReadOnlyCollection<MonsterMapBossDifficultyDat> LoadMonsterMapBossDifficultyDat()
+    /// <returns>repository of MonsterMapBossDifficultyRepository.</returns>
+    public MonsterMapBossDifficultyRepository LoadMonsterMapBossDifficultyRepository()
     {
-        return MonsterMapBossDifficultyDat.Load(dataLoader).AsReadOnly();
+        monstermapbossdifficultyrepository ??= new MonsterMapBossDifficultyRepository(logger, this);
+        return monstermapbossdifficultyrepository;
     }
 
     /// <summary>
-    /// Gets MonsterMapDifficultyDat data.
+    /// Gets MonsterMapDifficultyRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterMapDifficultyDat.</returns>
-    public ReadOnlyCollection<MonsterMapDifficultyDat> LoadMonsterMapDifficultyDat()
+    /// <returns>repository of MonsterMapDifficultyRepository.</returns>
+    public MonsterMapDifficultyRepository LoadMonsterMapDifficultyRepository()
     {
-        return MonsterMapDifficultyDat.Load(dataLoader).AsReadOnly();
+        monstermapdifficultyrepository ??= new MonsterMapDifficultyRepository(logger, this);
+        return monstermapdifficultyrepository;
     }
 
     /// <summary>
-    /// Gets MonsterMortarDat data.
+    /// Gets MonsterMortarRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterMortarDat.</returns>
-    public ReadOnlyCollection<MonsterMortarDat> LoadMonsterMortarDat()
+    /// <returns>repository of MonsterMortarRepository.</returns>
+    public MonsterMortarRepository LoadMonsterMortarRepository()
     {
-        return MonsterMortarDat.Load(dataLoader).AsReadOnly();
+        monstermortarrepository ??= new MonsterMortarRepository(logger, this);
+        return monstermortarrepository;
     }
 
     /// <summary>
-    /// Gets MonsterPackCountsDat data.
+    /// Gets MonsterPackCountsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterPackCountsDat.</returns>
-    public ReadOnlyCollection<MonsterPackCountsDat> LoadMonsterPackCountsDat()
+    /// <returns>repository of MonsterPackCountsRepository.</returns>
+    public MonsterPackCountsRepository LoadMonsterPackCountsRepository()
     {
-        return MonsterPackCountsDat.Load(dataLoader).AsReadOnly();
+        monsterpackcountsrepository ??= new MonsterPackCountsRepository(logger, this);
+        return monsterpackcountsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterPackEntriesDat data.
+    /// Gets MonsterPackEntriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterPackEntriesDat.</returns>
-    public ReadOnlyCollection<MonsterPackEntriesDat> LoadMonsterPackEntriesDat()
+    /// <returns>repository of MonsterPackEntriesRepository.</returns>
+    public MonsterPackEntriesRepository LoadMonsterPackEntriesRepository()
     {
-        return MonsterPackEntriesDat.Load(dataLoader).AsReadOnly();
+        monsterpackentriesrepository ??= new MonsterPackEntriesRepository(logger, this);
+        return monsterpackentriesrepository;
     }
 
     /// <summary>
-    /// Gets MonsterPacksDat data.
+    /// Gets MonsterPacksRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterPacksDat.</returns>
-    public ReadOnlyCollection<MonsterPacksDat> LoadMonsterPacksDat()
+    /// <returns>repository of MonsterPacksRepository.</returns>
+    public MonsterPacksRepository LoadMonsterPacksRepository()
     {
-        return MonsterPacksDat.Load(dataLoader).AsReadOnly();
+        monsterpacksrepository ??= new MonsterPacksRepository(logger, this);
+        return monsterpacksrepository;
     }
 
     /// <summary>
-    /// Gets MonsterProjectileAttackDat data.
+    /// Gets MonsterProjectileAttackRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterProjectileAttackDat.</returns>
-    public ReadOnlyCollection<MonsterProjectileAttackDat> LoadMonsterProjectileAttackDat()
+    /// <returns>repository of MonsterProjectileAttackRepository.</returns>
+    public MonsterProjectileAttackRepository LoadMonsterProjectileAttackRepository()
     {
-        return MonsterProjectileAttackDat.Load(dataLoader).AsReadOnly();
+        monsterprojectileattackrepository ??= new MonsterProjectileAttackRepository(logger, this);
+        return monsterprojectileattackrepository;
     }
 
     /// <summary>
-    /// Gets MonsterProjectileSpellDat data.
+    /// Gets MonsterProjectileSpellRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterProjectileSpellDat.</returns>
-    public ReadOnlyCollection<MonsterProjectileSpellDat> LoadMonsterProjectileSpellDat()
+    /// <returns>repository of MonsterProjectileSpellRepository.</returns>
+    public MonsterProjectileSpellRepository LoadMonsterProjectileSpellRepository()
     {
-        return MonsterProjectileSpellDat.Load(dataLoader).AsReadOnly();
+        monsterprojectilespellrepository ??= new MonsterProjectileSpellRepository(logger, this);
+        return monsterprojectilespellrepository;
     }
 
     /// <summary>
-    /// Gets MonsterResistancesDat data.
+    /// Gets MonsterResistancesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterResistancesDat.</returns>
-    public ReadOnlyCollection<MonsterResistancesDat> LoadMonsterResistancesDat()
+    /// <returns>repository of MonsterResistancesRepository.</returns>
+    public MonsterResistancesRepository LoadMonsterResistancesRepository()
     {
-        return MonsterResistancesDat.Load(dataLoader).AsReadOnly();
+        monsterresistancesrepository ??= new MonsterResistancesRepository(logger, this);
+        return monsterresistancesrepository;
     }
 
     /// <summary>
-    /// Gets MonsterSegmentsDat data.
+    /// Gets MonsterSegmentsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterSegmentsDat.</returns>
-    public ReadOnlyCollection<MonsterSegmentsDat> LoadMonsterSegmentsDat()
+    /// <returns>repository of MonsterSegmentsRepository.</returns>
+    public MonsterSegmentsRepository LoadMonsterSegmentsRepository()
     {
-        return MonsterSegmentsDat.Load(dataLoader).AsReadOnly();
+        monstersegmentsrepository ??= new MonsterSegmentsRepository(logger, this);
+        return monstersegmentsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterSpawnerGroupsDat data.
+    /// Gets MonsterSpawnerGroupsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterSpawnerGroupsDat.</returns>
-    public ReadOnlyCollection<MonsterSpawnerGroupsDat> LoadMonsterSpawnerGroupsDat()
+    /// <returns>repository of MonsterSpawnerGroupsRepository.</returns>
+    public MonsterSpawnerGroupsRepository LoadMonsterSpawnerGroupsRepository()
     {
-        return MonsterSpawnerGroupsDat.Load(dataLoader).AsReadOnly();
+        monsterspawnergroupsrepository ??= new MonsterSpawnerGroupsRepository(logger, this);
+        return monsterspawnergroupsrepository;
     }
 
     /// <summary>
-    /// Gets MonsterSpawnerGroupsPerLevelDat data.
+    /// Gets MonsterSpawnerGroupsPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterSpawnerGroupsPerLevelDat.</returns>
-    public ReadOnlyCollection<MonsterSpawnerGroupsPerLevelDat> LoadMonsterSpawnerGroupsPerLevelDat()
+    /// <returns>repository of MonsterSpawnerGroupsPerLevelRepository.</returns>
+    public MonsterSpawnerGroupsPerLevelRepository LoadMonsterSpawnerGroupsPerLevelRepository()
     {
-        return MonsterSpawnerGroupsPerLevelDat.Load(dataLoader).AsReadOnly();
+        monsterspawnergroupsperlevelrepository ??= new MonsterSpawnerGroupsPerLevelRepository(logger, this);
+        return monsterspawnergroupsperlevelrepository;
     }
 
     /// <summary>
-    /// Gets MonsterSpawnerOverridesDat data.
+    /// Gets MonsterSpawnerOverridesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterSpawnerOverridesDat.</returns>
-    public ReadOnlyCollection<MonsterSpawnerOverridesDat> LoadMonsterSpawnerOverridesDat()
+    /// <returns>repository of MonsterSpawnerOverridesRepository.</returns>
+    public MonsterSpawnerOverridesRepository LoadMonsterSpawnerOverridesRepository()
     {
-        return MonsterSpawnerOverridesDat.Load(dataLoader).AsReadOnly();
+        monsterspawneroverridesrepository ??= new MonsterSpawnerOverridesRepository(logger, this);
+        return monsterspawneroverridesrepository;
     }
 
     /// <summary>
-    /// Gets MonsterTypesDat data.
+    /// Gets MonsterTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterTypesDat.</returns>
-    public ReadOnlyCollection<MonsterTypesDat> LoadMonsterTypesDat()
+    /// <returns>repository of MonsterTypesRepository.</returns>
+    public MonsterTypesRepository LoadMonsterTypesRepository()
     {
-        return MonsterTypesDat.Load(dataLoader).AsReadOnly();
+        monstertypesrepository ??= new MonsterTypesRepository(logger, this);
+        return monstertypesrepository;
     }
 
     /// <summary>
-    /// Gets MonsterVarietiesDat data.
+    /// Gets MonsterVarietiesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterVarietiesDat.</returns>
-    public ReadOnlyCollection<MonsterVarietiesDat> LoadMonsterVarietiesDat()
+    /// <returns>repository of MonsterVarietiesRepository.</returns>
+    public MonsterVarietiesRepository LoadMonsterVarietiesRepository()
     {
-        return MonsterVarietiesDat.Load(dataLoader).AsReadOnly();
+        monstervarietiesrepository ??= new MonsterVarietiesRepository(logger, this);
+        return monstervarietiesrepository;
     }
 
     /// <summary>
-    /// Gets MonsterVarietiesArtVariationsDat data.
+    /// Gets MonsterVarietiesArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MonsterVarietiesArtVariationsDat.</returns>
-    public ReadOnlyCollection<MonsterVarietiesArtVariationsDat> LoadMonsterVarietiesArtVariationsDat()
+    /// <returns>repository of MonsterVarietiesArtVariationsRepository.</returns>
+    public MonsterVarietiesArtVariationsRepository LoadMonsterVarietiesArtVariationsRepository()
     {
-        return MonsterVarietiesArtVariationsDat.Load(dataLoader).AsReadOnly();
+        monstervarietiesartvariationsrepository ??= new MonsterVarietiesArtVariationsRepository(logger, this);
+        return monstervarietiesartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets MouseCursorSizeSettingsDat data.
+    /// Gets MouseCursorSizeSettingsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MouseCursorSizeSettingsDat.</returns>
-    public ReadOnlyCollection<MouseCursorSizeSettingsDat> LoadMouseCursorSizeSettingsDat()
+    /// <returns>repository of MouseCursorSizeSettingsRepository.</returns>
+    public MouseCursorSizeSettingsRepository LoadMouseCursorSizeSettingsRepository()
     {
-        return MouseCursorSizeSettingsDat.Load(dataLoader).AsReadOnly();
+        mousecursorsizesettingsrepository ??= new MouseCursorSizeSettingsRepository(logger, this);
+        return mousecursorsizesettingsrepository;
     }
 
     /// <summary>
-    /// Gets MoveDaemonDat data.
+    /// Gets MoveDaemonRepository data.
     /// </summary>
-    /// <returns>readonly collection of MoveDaemonDat.</returns>
-    public ReadOnlyCollection<MoveDaemonDat> LoadMoveDaemonDat()
+    /// <returns>repository of MoveDaemonRepository.</returns>
+    public MoveDaemonRepository LoadMoveDaemonRepository()
     {
-        return MoveDaemonDat.Load(dataLoader).AsReadOnly();
+        movedaemonrepository ??= new MoveDaemonRepository(logger, this);
+        return movedaemonrepository;
     }
 
     /// <summary>
-    /// Gets MTXSetBonusDat data.
+    /// Gets MTXSetBonusRepository data.
     /// </summary>
-    /// <returns>readonly collection of MTXSetBonusDat.</returns>
-    public ReadOnlyCollection<MTXSetBonusDat> LoadMTXSetBonusDat()
+    /// <returns>repository of MTXSetBonusRepository.</returns>
+    public MTXSetBonusRepository LoadMTXSetBonusRepository()
     {
-        return MTXSetBonusDat.Load(dataLoader).AsReadOnly();
+        mtxsetbonusrepository ??= new MTXSetBonusRepository(logger, this);
+        return mtxsetbonusrepository;
     }
 
     /// <summary>
-    /// Gets MultiPartAchievementAreasDat data.
+    /// Gets MultiPartAchievementAreasRepository data.
     /// </summary>
-    /// <returns>readonly collection of MultiPartAchievementAreasDat.</returns>
-    public ReadOnlyCollection<MultiPartAchievementAreasDat> LoadMultiPartAchievementAreasDat()
+    /// <returns>repository of MultiPartAchievementAreasRepository.</returns>
+    public MultiPartAchievementAreasRepository LoadMultiPartAchievementAreasRepository()
     {
-        return MultiPartAchievementAreasDat.Load(dataLoader).AsReadOnly();
+        multipartachievementareasrepository ??= new MultiPartAchievementAreasRepository(logger, this);
+        return multipartachievementareasrepository;
     }
 
     /// <summary>
-    /// Gets MultiPartAchievementConditionsDat data.
+    /// Gets MultiPartAchievementConditionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MultiPartAchievementConditionsDat.</returns>
-    public ReadOnlyCollection<MultiPartAchievementConditionsDat> LoadMultiPartAchievementConditionsDat()
+    /// <returns>repository of MultiPartAchievementConditionsRepository.</returns>
+    public MultiPartAchievementConditionsRepository LoadMultiPartAchievementConditionsRepository()
     {
-        return MultiPartAchievementConditionsDat.Load(dataLoader).AsReadOnly();
+        multipartachievementconditionsrepository ??= new MultiPartAchievementConditionsRepository(logger, this);
+        return multipartachievementconditionsrepository;
     }
 
     /// <summary>
-    /// Gets MultiPartAchievementsDat data.
+    /// Gets MultiPartAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of MultiPartAchievementsDat.</returns>
-    public ReadOnlyCollection<MultiPartAchievementsDat> LoadMultiPartAchievementsDat()
+    /// <returns>repository of MultiPartAchievementsRepository.</returns>
+    public MultiPartAchievementsRepository LoadMultiPartAchievementsRepository()
     {
-        return MultiPartAchievementsDat.Load(dataLoader).AsReadOnly();
+        multipartachievementsrepository ??= new MultiPartAchievementsRepository(logger, this);
+        return multipartachievementsrepository;
     }
 
     /// <summary>
-    /// Gets MusicDat data.
+    /// Gets MusicRepository data.
     /// </summary>
-    /// <returns>readonly collection of MusicDat.</returns>
-    public ReadOnlyCollection<MusicDat> LoadMusicDat()
+    /// <returns>repository of MusicRepository.</returns>
+    public MusicRepository LoadMusicRepository()
     {
-        return MusicDat.Load(dataLoader).AsReadOnly();
+        musicrepository ??= new MusicRepository(logger, this);
+        return musicrepository;
     }
 
     /// <summary>
-    /// Gets MusicCategoriesDat data.
+    /// Gets MusicCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MusicCategoriesDat.</returns>
-    public ReadOnlyCollection<MusicCategoriesDat> LoadMusicCategoriesDat()
+    /// <returns>repository of MusicCategoriesRepository.</returns>
+    public MusicCategoriesRepository LoadMusicCategoriesRepository()
     {
-        return MusicCategoriesDat.Load(dataLoader).AsReadOnly();
+        musiccategoriesrepository ??= new MusicCategoriesRepository(logger, this);
+        return musiccategoriesrepository;
     }
 
     /// <summary>
-    /// Gets MysteryBoxesDat data.
+    /// Gets MysteryBoxesRepository data.
     /// </summary>
-    /// <returns>readonly collection of MysteryBoxesDat.</returns>
-    public ReadOnlyCollection<MysteryBoxesDat> LoadMysteryBoxesDat()
+    /// <returns>repository of MysteryBoxesRepository.</returns>
+    public MysteryBoxesRepository LoadMysteryBoxesRepository()
     {
-        return MysteryBoxesDat.Load(dataLoader).AsReadOnly();
+        mysteryboxesrepository ??= new MysteryBoxesRepository(logger, this);
+        return mysteryboxesrepository;
     }
 
     /// <summary>
-    /// Gets NearbyMonsterConditionsDat data.
+    /// Gets NearbyMonsterConditionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NearbyMonsterConditionsDat.</returns>
-    public ReadOnlyCollection<NearbyMonsterConditionsDat> LoadNearbyMonsterConditionsDat()
+    /// <returns>repository of NearbyMonsterConditionsRepository.</returns>
+    public NearbyMonsterConditionsRepository LoadNearbyMonsterConditionsRepository()
     {
-        return NearbyMonsterConditionsDat.Load(dataLoader).AsReadOnly();
+        nearbymonsterconditionsrepository ??= new NearbyMonsterConditionsRepository(logger, this);
+        return nearbymonsterconditionsrepository;
     }
 
     /// <summary>
-    /// Gets NetTiersDat data.
+    /// Gets NetTiersRepository data.
     /// </summary>
-    /// <returns>readonly collection of NetTiersDat.</returns>
-    public ReadOnlyCollection<NetTiersDat> LoadNetTiersDat()
+    /// <returns>repository of NetTiersRepository.</returns>
+    public NetTiersRepository LoadNetTiersRepository()
     {
-        return NetTiersDat.Load(dataLoader).AsReadOnly();
+        nettiersrepository ??= new NetTiersRepository(logger, this);
+        return nettiersrepository;
     }
 
     /// <summary>
-    /// Gets NotificationsDat data.
+    /// Gets NotificationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NotificationsDat.</returns>
-    public ReadOnlyCollection<NotificationsDat> LoadNotificationsDat()
+    /// <returns>repository of NotificationsRepository.</returns>
+    public NotificationsRepository LoadNotificationsRepository()
     {
-        return NotificationsDat.Load(dataLoader).AsReadOnly();
+        notificationsrepository ??= new NotificationsRepository(logger, this);
+        return notificationsrepository;
     }
 
     /// <summary>
-    /// Gets NPCAudioDat data.
+    /// Gets NPCAudioRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCAudioDat.</returns>
-    public ReadOnlyCollection<NPCAudioDat> LoadNPCAudioDat()
+    /// <returns>repository of NPCAudioRepository.</returns>
+    public NPCAudioRepository LoadNPCAudioRepository()
     {
-        return NPCAudioDat.Load(dataLoader).AsReadOnly();
+        npcaudiorepository ??= new NPCAudioRepository(logger, this);
+        return npcaudiorepository;
     }
 
     /// <summary>
-    /// Gets NPCConversationsDat data.
+    /// Gets NPCConversationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCConversationsDat.</returns>
-    public ReadOnlyCollection<NPCConversationsDat> LoadNPCConversationsDat()
+    /// <returns>repository of NPCConversationsRepository.</returns>
+    public NPCConversationsRepository LoadNPCConversationsRepository()
     {
-        return NPCConversationsDat.Load(dataLoader).AsReadOnly();
+        npcconversationsrepository ??= new NPCConversationsRepository(logger, this);
+        return npcconversationsrepository;
     }
 
     /// <summary>
-    /// Gets NPCDialogueStylesDat data.
+    /// Gets NPCDialogueStylesRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCDialogueStylesDat.</returns>
-    public ReadOnlyCollection<NPCDialogueStylesDat> LoadNPCDialogueStylesDat()
+    /// <returns>repository of NPCDialogueStylesRepository.</returns>
+    public NPCDialogueStylesRepository LoadNPCDialogueStylesRepository()
     {
-        return NPCDialogueStylesDat.Load(dataLoader).AsReadOnly();
+        npcdialoguestylesrepository ??= new NPCDialogueStylesRepository(logger, this);
+        return npcdialoguestylesrepository;
     }
 
     /// <summary>
-    /// Gets NPCFollowerVariationsDat data.
+    /// Gets NPCFollowerVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCFollowerVariationsDat.</returns>
-    public ReadOnlyCollection<NPCFollowerVariationsDat> LoadNPCFollowerVariationsDat()
+    /// <returns>repository of NPCFollowerVariationsRepository.</returns>
+    public NPCFollowerVariationsRepository LoadNPCFollowerVariationsRepository()
     {
-        return NPCFollowerVariationsDat.Load(dataLoader).AsReadOnly();
+        npcfollowervariationsrepository ??= new NPCFollowerVariationsRepository(logger, this);
+        return npcfollowervariationsrepository;
     }
 
     /// <summary>
-    /// Gets NPCMasterDat data.
+    /// Gets NPCMasterRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCMasterDat.</returns>
-    public ReadOnlyCollection<NPCMasterDat> LoadNPCMasterDat()
+    /// <returns>repository of NPCMasterRepository.</returns>
+    public NPCMasterRepository LoadNPCMasterRepository()
     {
-        return NPCMasterDat.Load(dataLoader).AsReadOnly();
+        npcmasterrepository ??= new NPCMasterRepository(logger, this);
+        return npcmasterrepository;
     }
 
     /// <summary>
-    /// Gets NPCPortraitsDat data.
+    /// Gets NPCPortraitsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCPortraitsDat.</returns>
-    public ReadOnlyCollection<NPCPortraitsDat> LoadNPCPortraitsDat()
+    /// <returns>repository of NPCPortraitsRepository.</returns>
+    public NPCPortraitsRepository LoadNPCPortraitsRepository()
     {
-        return NPCPortraitsDat.Load(dataLoader).AsReadOnly();
+        npcportraitsrepository ??= new NPCPortraitsRepository(logger, this);
+        return npcportraitsrepository;
     }
 
     /// <summary>
-    /// Gets NPCsDat data.
+    /// Gets NPCsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCsDat.</returns>
-    public ReadOnlyCollection<NPCsDat> LoadNPCsDat()
+    /// <returns>repository of NPCsRepository.</returns>
+    public NPCsRepository LoadNPCsRepository()
     {
-        return NPCsDat.Load(dataLoader).AsReadOnly();
+        npcsrepository ??= new NPCsRepository(logger, this);
+        return npcsrepository;
     }
 
     /// <summary>
-    /// Gets NPCShopDat data.
+    /// Gets NPCShopRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCShopDat.</returns>
-    public ReadOnlyCollection<NPCShopDat> LoadNPCShopDat()
+    /// <returns>repository of NPCShopRepository.</returns>
+    public NPCShopRepository LoadNPCShopRepository()
     {
-        return NPCShopDat.Load(dataLoader).AsReadOnly();
+        npcshoprepository ??= new NPCShopRepository(logger, this);
+        return npcshoprepository;
     }
 
     /// <summary>
-    /// Gets NPCShopsDat data.
+    /// Gets NPCShopsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCShopsDat.</returns>
-    public ReadOnlyCollection<NPCShopsDat> LoadNPCShopsDat()
+    /// <returns>repository of NPCShopsRepository.</returns>
+    public NPCShopsRepository LoadNPCShopsRepository()
     {
-        return NPCShopsDat.Load(dataLoader).AsReadOnly();
+        npcshopsrepository ??= new NPCShopsRepository(logger, this);
+        return npcshopsrepository;
     }
 
     /// <summary>
-    /// Gets NPCTalkDat data.
+    /// Gets NPCTalkRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCTalkDat.</returns>
-    public ReadOnlyCollection<NPCTalkDat> LoadNPCTalkDat()
+    /// <returns>repository of NPCTalkRepository.</returns>
+    public NPCTalkRepository LoadNPCTalkRepository()
     {
-        return NPCTalkDat.Load(dataLoader).AsReadOnly();
+        npctalkrepository ??= new NPCTalkRepository(logger, this);
+        return npctalkrepository;
     }
 
     /// <summary>
-    /// Gets NPCTalkCategoryDat data.
+    /// Gets NPCTalkCategoryRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCTalkCategoryDat.</returns>
-    public ReadOnlyCollection<NPCTalkCategoryDat> LoadNPCTalkCategoryDat()
+    /// <returns>repository of NPCTalkCategoryRepository.</returns>
+    public NPCTalkCategoryRepository LoadNPCTalkCategoryRepository()
     {
-        return NPCTalkCategoryDat.Load(dataLoader).AsReadOnly();
+        npctalkcategoryrepository ??= new NPCTalkCategoryRepository(logger, this);
+        return npctalkcategoryrepository;
     }
 
     /// <summary>
-    /// Gets NPCTalkConsoleQuickActionsDat data.
+    /// Gets NPCTalkConsoleQuickActionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCTalkConsoleQuickActionsDat.</returns>
-    public ReadOnlyCollection<NPCTalkConsoleQuickActionsDat> LoadNPCTalkConsoleQuickActionsDat()
+    /// <returns>repository of NPCTalkConsoleQuickActionsRepository.</returns>
+    public NPCTalkConsoleQuickActionsRepository LoadNPCTalkConsoleQuickActionsRepository()
     {
-        return NPCTalkConsoleQuickActionsDat.Load(dataLoader).AsReadOnly();
+        npctalkconsolequickactionsrepository ??= new NPCTalkConsoleQuickActionsRepository(logger, this);
+        return npctalkconsolequickactionsrepository;
     }
 
     /// <summary>
-    /// Gets NPCTextAudioDat data.
+    /// Gets NPCTextAudioRepository data.
     /// </summary>
-    /// <returns>readonly collection of NPCTextAudioDat.</returns>
-    public ReadOnlyCollection<NPCTextAudioDat> LoadNPCTextAudioDat()
+    /// <returns>repository of NPCTextAudioRepository.</returns>
+    public NPCTextAudioRepository LoadNPCTextAudioRepository()
     {
-        return NPCTextAudioDat.Load(dataLoader).AsReadOnly();
+        npctextaudiorepository ??= new NPCTextAudioRepository(logger, this);
+        return npctextaudiorepository;
     }
 
     /// <summary>
-    /// Gets OnKillAchievementsDat data.
+    /// Gets OnKillAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of OnKillAchievementsDat.</returns>
-    public ReadOnlyCollection<OnKillAchievementsDat> LoadOnKillAchievementsDat()
+    /// <returns>repository of OnKillAchievementsRepository.</returns>
+    public OnKillAchievementsRepository LoadOnKillAchievementsRepository()
     {
-        return OnKillAchievementsDat.Load(dataLoader).AsReadOnly();
+        onkillachievementsrepository ??= new OnKillAchievementsRepository(logger, this);
+        return onkillachievementsrepository;
     }
 
     /// <summary>
-    /// Gets PackFormationDat data.
+    /// Gets PackFormationRepository data.
     /// </summary>
-    /// <returns>readonly collection of PackFormationDat.</returns>
-    public ReadOnlyCollection<PackFormationDat> LoadPackFormationDat()
+    /// <returns>repository of PackFormationRepository.</returns>
+    public PackFormationRepository LoadPackFormationRepository()
     {
-        return PackFormationDat.Load(dataLoader).AsReadOnly();
+        packformationrepository ??= new PackFormationRepository(logger, this);
+        return packformationrepository;
     }
 
     /// <summary>
-    /// Gets PassiveJewelRadiiDat data.
+    /// Gets PassiveJewelRadiiRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveJewelRadiiDat.</returns>
-    public ReadOnlyCollection<PassiveJewelRadiiDat> LoadPassiveJewelRadiiDat()
+    /// <returns>repository of PassiveJewelRadiiRepository.</returns>
+    public PassiveJewelRadiiRepository LoadPassiveJewelRadiiRepository()
     {
-        return PassiveJewelRadiiDat.Load(dataLoader).AsReadOnly();
+        passivejewelradiirepository ??= new PassiveJewelRadiiRepository(logger, this);
+        return passivejewelradiirepository;
     }
 
     /// <summary>
-    /// Gets PassiveJewelSlotsDat data.
+    /// Gets PassiveJewelSlotsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveJewelSlotsDat.</returns>
-    public ReadOnlyCollection<PassiveJewelSlotsDat> LoadPassiveJewelSlotsDat()
+    /// <returns>repository of PassiveJewelSlotsRepository.</returns>
+    public PassiveJewelSlotsRepository LoadPassiveJewelSlotsRepository()
     {
-        return PassiveJewelSlotsDat.Load(dataLoader).AsReadOnly();
+        passivejewelslotsrepository ??= new PassiveJewelSlotsRepository(logger, this);
+        return passivejewelslotsrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillFilterCatagoriesDat data.
+    /// Gets PassiveSkillFilterCatagoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillFilterCatagoriesDat.</returns>
-    public ReadOnlyCollection<PassiveSkillFilterCatagoriesDat> LoadPassiveSkillFilterCatagoriesDat()
+    /// <returns>repository of PassiveSkillFilterCatagoriesRepository.</returns>
+    public PassiveSkillFilterCatagoriesRepository LoadPassiveSkillFilterCatagoriesRepository()
     {
-        return PassiveSkillFilterCatagoriesDat.Load(dataLoader).AsReadOnly();
+        passiveskillfiltercatagoriesrepository ??= new PassiveSkillFilterCatagoriesRepository(logger, this);
+        return passiveskillfiltercatagoriesrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillFilterOptionsDat data.
+    /// Gets PassiveSkillFilterOptionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillFilterOptionsDat.</returns>
-    public ReadOnlyCollection<PassiveSkillFilterOptionsDat> LoadPassiveSkillFilterOptionsDat()
+    /// <returns>repository of PassiveSkillFilterOptionsRepository.</returns>
+    public PassiveSkillFilterOptionsRepository LoadPassiveSkillFilterOptionsRepository()
     {
-        return PassiveSkillFilterOptionsDat.Load(dataLoader).AsReadOnly();
+        passiveskillfilteroptionsrepository ??= new PassiveSkillFilterOptionsRepository(logger, this);
+        return passiveskillfilteroptionsrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillMasteryGroupsDat data.
+    /// Gets PassiveSkillMasteryGroupsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillMasteryGroupsDat.</returns>
-    public ReadOnlyCollection<PassiveSkillMasteryGroupsDat> LoadPassiveSkillMasteryGroupsDat()
+    /// <returns>repository of PassiveSkillMasteryGroupsRepository.</returns>
+    public PassiveSkillMasteryGroupsRepository LoadPassiveSkillMasteryGroupsRepository()
     {
-        return PassiveSkillMasteryGroupsDat.Load(dataLoader).AsReadOnly();
+        passiveskillmasterygroupsrepository ??= new PassiveSkillMasteryGroupsRepository(logger, this);
+        return passiveskillmasterygroupsrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillMasteryEffectsDat data.
+    /// Gets PassiveSkillMasteryEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillMasteryEffectsDat.</returns>
-    public ReadOnlyCollection<PassiveSkillMasteryEffectsDat> LoadPassiveSkillMasteryEffectsDat()
+    /// <returns>repository of PassiveSkillMasteryEffectsRepository.</returns>
+    public PassiveSkillMasteryEffectsRepository LoadPassiveSkillMasteryEffectsRepository()
     {
-        return PassiveSkillMasteryEffectsDat.Load(dataLoader).AsReadOnly();
+        passiveskillmasteryeffectsrepository ??= new PassiveSkillMasteryEffectsRepository(logger, this);
+        return passiveskillmasteryeffectsrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillsDat data.
+    /// Gets PassiveSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillsDat.</returns>
-    public ReadOnlyCollection<PassiveSkillsDat> LoadPassiveSkillsDat()
+    /// <returns>repository of PassiveSkillsRepository.</returns>
+    public PassiveSkillsRepository LoadPassiveSkillsRepository()
     {
-        return PassiveSkillsDat.Load(dataLoader).AsReadOnly();
+        passiveskillsrepository ??= new PassiveSkillsRepository(logger, this);
+        return passiveskillsrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillStatCategoriesDat data.
+    /// Gets PassiveSkillStatCategoriesRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillStatCategoriesDat.</returns>
-    public ReadOnlyCollection<PassiveSkillStatCategoriesDat> LoadPassiveSkillStatCategoriesDat()
+    /// <returns>repository of PassiveSkillStatCategoriesRepository.</returns>
+    public PassiveSkillStatCategoriesRepository LoadPassiveSkillStatCategoriesRepository()
     {
-        return PassiveSkillStatCategoriesDat.Load(dataLoader).AsReadOnly();
+        passiveskillstatcategoriesrepository ??= new PassiveSkillStatCategoriesRepository(logger, this);
+        return passiveskillstatcategoriesrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillTreesDat data.
+    /// Gets PassiveSkillTreesRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillTreesDat.</returns>
-    public ReadOnlyCollection<PassiveSkillTreesDat> LoadPassiveSkillTreesDat()
+    /// <returns>repository of PassiveSkillTreesRepository.</returns>
+    public PassiveSkillTreesRepository LoadPassiveSkillTreesRepository()
     {
-        return PassiveSkillTreesDat.Load(dataLoader).AsReadOnly();
+        passiveskilltreesrepository ??= new PassiveSkillTreesRepository(logger, this);
+        return passiveskilltreesrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillTreeTutorialDat data.
+    /// Gets PassiveSkillTreeTutorialRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillTreeTutorialDat.</returns>
-    public ReadOnlyCollection<PassiveSkillTreeTutorialDat> LoadPassiveSkillTreeTutorialDat()
+    /// <returns>repository of PassiveSkillTreeTutorialRepository.</returns>
+    public PassiveSkillTreeTutorialRepository LoadPassiveSkillTreeTutorialRepository()
     {
-        return PassiveSkillTreeTutorialDat.Load(dataLoader).AsReadOnly();
+        passiveskilltreetutorialrepository ??= new PassiveSkillTreeTutorialRepository(logger, this);
+        return passiveskilltreetutorialrepository;
     }
 
     /// <summary>
-    /// Gets PassiveSkillTreeUIArtDat data.
+    /// Gets PassiveSkillTreeUIArtRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveSkillTreeUIArtDat.</returns>
-    public ReadOnlyCollection<PassiveSkillTreeUIArtDat> LoadPassiveSkillTreeUIArtDat()
+    /// <returns>repository of PassiveSkillTreeUIArtRepository.</returns>
+    public PassiveSkillTreeUIArtRepository LoadPassiveSkillTreeUIArtRepository()
     {
-        return PassiveSkillTreeUIArtDat.Load(dataLoader).AsReadOnly();
+        passiveskilltreeuiartrepository ??= new PassiveSkillTreeUIArtRepository(logger, this);
+        return passiveskilltreeuiartrepository;
     }
 
     /// <summary>
-    /// Gets PassiveTreeExpansionJewelsDat data.
+    /// Gets PassiveTreeExpansionJewelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveTreeExpansionJewelsDat.</returns>
-    public ReadOnlyCollection<PassiveTreeExpansionJewelsDat> LoadPassiveTreeExpansionJewelsDat()
+    /// <returns>repository of PassiveTreeExpansionJewelsRepository.</returns>
+    public PassiveTreeExpansionJewelsRepository LoadPassiveTreeExpansionJewelsRepository()
     {
-        return PassiveTreeExpansionJewelsDat.Load(dataLoader).AsReadOnly();
+        passivetreeexpansionjewelsrepository ??= new PassiveTreeExpansionJewelsRepository(logger, this);
+        return passivetreeexpansionjewelsrepository;
     }
 
     /// <summary>
-    /// Gets PassiveTreeExpansionJewelSizesDat data.
+    /// Gets PassiveTreeExpansionJewelSizesRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveTreeExpansionJewelSizesDat.</returns>
-    public ReadOnlyCollection<PassiveTreeExpansionJewelSizesDat> LoadPassiveTreeExpansionJewelSizesDat()
+    /// <returns>repository of PassiveTreeExpansionJewelSizesRepository.</returns>
+    public PassiveTreeExpansionJewelSizesRepository LoadPassiveTreeExpansionJewelSizesRepository()
     {
-        return PassiveTreeExpansionJewelSizesDat.Load(dataLoader).AsReadOnly();
+        passivetreeexpansionjewelsizesrepository ??= new PassiveTreeExpansionJewelSizesRepository(logger, this);
+        return passivetreeexpansionjewelsizesrepository;
     }
 
     /// <summary>
-    /// Gets PassiveTreeExpansionSkillsDat data.
+    /// Gets PassiveTreeExpansionSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveTreeExpansionSkillsDat.</returns>
-    public ReadOnlyCollection<PassiveTreeExpansionSkillsDat> LoadPassiveTreeExpansionSkillsDat()
+    /// <returns>repository of PassiveTreeExpansionSkillsRepository.</returns>
+    public PassiveTreeExpansionSkillsRepository LoadPassiveTreeExpansionSkillsRepository()
     {
-        return PassiveTreeExpansionSkillsDat.Load(dataLoader).AsReadOnly();
+        passivetreeexpansionskillsrepository ??= new PassiveTreeExpansionSkillsRepository(logger, this);
+        return passivetreeexpansionskillsrepository;
     }
 
     /// <summary>
-    /// Gets PassiveTreeExpansionSpecialSkillsDat data.
+    /// Gets PassiveTreeExpansionSpecialSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PassiveTreeExpansionSpecialSkillsDat.</returns>
-    public ReadOnlyCollection<PassiveTreeExpansionSpecialSkillsDat> LoadPassiveTreeExpansionSpecialSkillsDat()
+    /// <returns>repository of PassiveTreeExpansionSpecialSkillsRepository.</returns>
+    public PassiveTreeExpansionSpecialSkillsRepository LoadPassiveTreeExpansionSpecialSkillsRepository()
     {
-        return PassiveTreeExpansionSpecialSkillsDat.Load(dataLoader).AsReadOnly();
+        passivetreeexpansionspecialskillsrepository ??= new PassiveTreeExpansionSpecialSkillsRepository(logger, this);
+        return passivetreeexpansionspecialskillsrepository;
     }
 
     /// <summary>
-    /// Gets PCBangRewardMicrosDat data.
+    /// Gets PCBangRewardMicrosRepository data.
     /// </summary>
-    /// <returns>readonly collection of PCBangRewardMicrosDat.</returns>
-    public ReadOnlyCollection<PCBangRewardMicrosDat> LoadPCBangRewardMicrosDat()
+    /// <returns>repository of PCBangRewardMicrosRepository.</returns>
+    public PCBangRewardMicrosRepository LoadPCBangRewardMicrosRepository()
     {
-        return PCBangRewardMicrosDat.Load(dataLoader).AsReadOnly();
+        pcbangrewardmicrosrepository ??= new PCBangRewardMicrosRepository(logger, this);
+        return pcbangrewardmicrosrepository;
     }
 
     /// <summary>
-    /// Gets PetDat data.
+    /// Gets PetRepository data.
     /// </summary>
-    /// <returns>readonly collection of PetDat.</returns>
-    public ReadOnlyCollection<PetDat> LoadPetDat()
+    /// <returns>repository of PetRepository.</returns>
+    public PetRepository LoadPetRepository()
     {
-        return PetDat.Load(dataLoader).AsReadOnly();
+        petrepository ??= new PetRepository(logger, this);
+        return petrepository;
     }
 
     /// <summary>
-    /// Gets PlayerConditionsDat data.
+    /// Gets PlayerConditionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PlayerConditionsDat.</returns>
-    public ReadOnlyCollection<PlayerConditionsDat> LoadPlayerConditionsDat()
+    /// <returns>repository of PlayerConditionsRepository.</returns>
+    public PlayerConditionsRepository LoadPlayerConditionsRepository()
     {
-        return PlayerConditionsDat.Load(dataLoader).AsReadOnly();
+        playerconditionsrepository ??= new PlayerConditionsRepository(logger, this);
+        return playerconditionsrepository;
     }
 
     /// <summary>
-    /// Gets PlayerTradeWhisperFormatsDat data.
+    /// Gets PlayerTradeWhisperFormatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PlayerTradeWhisperFormatsDat.</returns>
-    public ReadOnlyCollection<PlayerTradeWhisperFormatsDat> LoadPlayerTradeWhisperFormatsDat()
+    /// <returns>repository of PlayerTradeWhisperFormatsRepository.</returns>
+    public PlayerTradeWhisperFormatsRepository LoadPlayerTradeWhisperFormatsRepository()
     {
-        return PlayerTradeWhisperFormatsDat.Load(dataLoader).AsReadOnly();
+        playertradewhisperformatsrepository ??= new PlayerTradeWhisperFormatsRepository(logger, this);
+        return playertradewhisperformatsrepository;
     }
 
     /// <summary>
-    /// Gets PreloadGroupsDat data.
+    /// Gets PreloadGroupsRepository data.
     /// </summary>
-    /// <returns>readonly collection of PreloadGroupsDat.</returns>
-    public ReadOnlyCollection<PreloadGroupsDat> LoadPreloadGroupsDat()
+    /// <returns>repository of PreloadGroupsRepository.</returns>
+    public PreloadGroupsRepository LoadPreloadGroupsRepository()
     {
-        return PreloadGroupsDat.Load(dataLoader).AsReadOnly();
+        preloadgroupsrepository ??= new PreloadGroupsRepository(logger, this);
+        return preloadgroupsrepository;
     }
 
     /// <summary>
-    /// Gets ProjectilesDat data.
+    /// Gets ProjectilesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ProjectilesDat.</returns>
-    public ReadOnlyCollection<ProjectilesDat> LoadProjectilesDat()
+    /// <returns>repository of ProjectilesRepository.</returns>
+    public ProjectilesRepository LoadProjectilesRepository()
     {
-        return ProjectilesDat.Load(dataLoader).AsReadOnly();
+        projectilesrepository ??= new ProjectilesRepository(logger, this);
+        return projectilesrepository;
     }
 
     /// <summary>
-    /// Gets ProjectilesArtVariationsDat data.
+    /// Gets ProjectilesArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ProjectilesArtVariationsDat.</returns>
-    public ReadOnlyCollection<ProjectilesArtVariationsDat> LoadProjectilesArtVariationsDat()
+    /// <returns>repository of ProjectilesArtVariationsRepository.</returns>
+    public ProjectilesArtVariationsRepository LoadProjectilesArtVariationsRepository()
     {
-        return ProjectilesArtVariationsDat.Load(dataLoader).AsReadOnly();
+        projectilesartvariationsrepository ??= new ProjectilesArtVariationsRepository(logger, this);
+        return projectilesartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets ProjectileVariationsDat data.
+    /// Gets ProjectileVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ProjectileVariationsDat.</returns>
-    public ReadOnlyCollection<ProjectileVariationsDat> LoadProjectileVariationsDat()
+    /// <returns>repository of ProjectileVariationsRepository.</returns>
+    public ProjectileVariationsRepository LoadProjectileVariationsRepository()
     {
-        return ProjectileVariationsDat.Load(dataLoader).AsReadOnly();
+        projectilevariationsrepository ??= new ProjectileVariationsRepository(logger, this);
+        return projectilevariationsrepository;
     }
 
     /// <summary>
-    /// Gets PVPTypesDat data.
+    /// Gets PVPTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of PVPTypesDat.</returns>
-    public ReadOnlyCollection<PVPTypesDat> LoadPVPTypesDat()
+    /// <returns>repository of PVPTypesRepository.</returns>
+    public PVPTypesRepository LoadPVPTypesRepository()
     {
-        return PVPTypesDat.Load(dataLoader).AsReadOnly();
+        pvptypesrepository ??= new PVPTypesRepository(logger, this);
+        return pvptypesrepository;
     }
 
     /// <summary>
-    /// Gets QuestDat data.
+    /// Gets QuestRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestDat.</returns>
-    public ReadOnlyCollection<QuestDat> LoadQuestDat()
+    /// <returns>repository of QuestRepository.</returns>
+    public QuestRepository LoadQuestRepository()
     {
-        return QuestDat.Load(dataLoader).AsReadOnly();
+        questrepository ??= new QuestRepository(logger, this);
+        return questrepository;
     }
 
     /// <summary>
-    /// Gets QuestAchievementsDat data.
+    /// Gets QuestAchievementsRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestAchievementsDat.</returns>
-    public ReadOnlyCollection<QuestAchievementsDat> LoadQuestAchievementsDat()
+    /// <returns>repository of QuestAchievementsRepository.</returns>
+    public QuestAchievementsRepository LoadQuestAchievementsRepository()
     {
-        return QuestAchievementsDat.Load(dataLoader).AsReadOnly();
+        questachievementsrepository ??= new QuestAchievementsRepository(logger, this);
+        return questachievementsrepository;
     }
 
     /// <summary>
-    /// Gets QuestFlagsDat data.
+    /// Gets QuestFlagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestFlagsDat.</returns>
-    public ReadOnlyCollection<QuestFlagsDat> LoadQuestFlagsDat()
+    /// <returns>repository of QuestFlagsRepository.</returns>
+    public QuestFlagsRepository LoadQuestFlagsRepository()
     {
-        return QuestFlagsDat.Load(dataLoader).AsReadOnly();
+        questflagsrepository ??= new QuestFlagsRepository(logger, this);
+        return questflagsrepository;
     }
 
     /// <summary>
-    /// Gets QuestItemsDat data.
+    /// Gets QuestItemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestItemsDat.</returns>
-    public ReadOnlyCollection<QuestItemsDat> LoadQuestItemsDat()
+    /// <returns>repository of QuestItemsRepository.</returns>
+    public QuestItemsRepository LoadQuestItemsRepository()
     {
-        return QuestItemsDat.Load(dataLoader).AsReadOnly();
+        questitemsrepository ??= new QuestItemsRepository(logger, this);
+        return questitemsrepository;
     }
 
     /// <summary>
-    /// Gets QuestRewardOffersDat data.
+    /// Gets QuestRewardOffersRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestRewardOffersDat.</returns>
-    public ReadOnlyCollection<QuestRewardOffersDat> LoadQuestRewardOffersDat()
+    /// <returns>repository of QuestRewardOffersRepository.</returns>
+    public QuestRewardOffersRepository LoadQuestRewardOffersRepository()
     {
-        return QuestRewardOffersDat.Load(dataLoader).AsReadOnly();
+        questrewardoffersrepository ??= new QuestRewardOffersRepository(logger, this);
+        return questrewardoffersrepository;
     }
 
     /// <summary>
-    /// Gets QuestRewardsDat data.
+    /// Gets QuestRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestRewardsDat.</returns>
-    public ReadOnlyCollection<QuestRewardsDat> LoadQuestRewardsDat()
+    /// <returns>repository of QuestRewardsRepository.</returns>
+    public QuestRewardsRepository LoadQuestRewardsRepository()
     {
-        return QuestRewardsDat.Load(dataLoader).AsReadOnly();
+        questrewardsrepository ??= new QuestRewardsRepository(logger, this);
+        return questrewardsrepository;
     }
 
     /// <summary>
-    /// Gets QuestStatesDat data.
+    /// Gets QuestStatesRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestStatesDat.</returns>
-    public ReadOnlyCollection<QuestStatesDat> LoadQuestStatesDat()
+    /// <returns>repository of QuestStatesRepository.</returns>
+    public QuestStatesRepository LoadQuestStatesRepository()
     {
-        return QuestStatesDat.Load(dataLoader).AsReadOnly();
+        queststatesrepository ??= new QuestStatesRepository(logger, this);
+        return queststatesrepository;
     }
 
     /// <summary>
-    /// Gets QuestStaticRewardsDat data.
+    /// Gets QuestStaticRewardsRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestStaticRewardsDat.</returns>
-    public ReadOnlyCollection<QuestStaticRewardsDat> LoadQuestStaticRewardsDat()
+    /// <returns>repository of QuestStaticRewardsRepository.</returns>
+    public QuestStaticRewardsRepository LoadQuestStaticRewardsRepository()
     {
-        return QuestStaticRewardsDat.Load(dataLoader).AsReadOnly();
+        queststaticrewardsrepository ??= new QuestStaticRewardsRepository(logger, this);
+        return queststaticrewardsrepository;
     }
 
     /// <summary>
-    /// Gets QuestTrackerGroupDat data.
+    /// Gets QuestTrackerGroupRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestTrackerGroupDat.</returns>
-    public ReadOnlyCollection<QuestTrackerGroupDat> LoadQuestTrackerGroupDat()
+    /// <returns>repository of QuestTrackerGroupRepository.</returns>
+    public QuestTrackerGroupRepository LoadQuestTrackerGroupRepository()
     {
-        return QuestTrackerGroupDat.Load(dataLoader).AsReadOnly();
+        questtrackergrouprepository ??= new QuestTrackerGroupRepository(logger, this);
+        return questtrackergrouprepository;
     }
 
     /// <summary>
-    /// Gets QuestTypeDat data.
+    /// Gets QuestTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of QuestTypeDat.</returns>
-    public ReadOnlyCollection<QuestTypeDat> LoadQuestTypeDat()
+    /// <returns>repository of QuestTypeRepository.</returns>
+    public QuestTypeRepository LoadQuestTypeRepository()
     {
-        return QuestTypeDat.Load(dataLoader).AsReadOnly();
+        questtyperepository ??= new QuestTypeRepository(logger, this);
+        return questtyperepository;
     }
 
     /// <summary>
-    /// Gets RacesDat data.
+    /// Gets RacesRepository data.
     /// </summary>
-    /// <returns>readonly collection of RacesDat.</returns>
-    public ReadOnlyCollection<RacesDat> LoadRacesDat()
+    /// <returns>repository of RacesRepository.</returns>
+    public RacesRepository LoadRacesRepository()
     {
-        return RacesDat.Load(dataLoader).AsReadOnly();
+        racesrepository ??= new RacesRepository(logger, this);
+        return racesrepository;
     }
 
     /// <summary>
-    /// Gets RaceTimesDat data.
+    /// Gets RaceTimesRepository data.
     /// </summary>
-    /// <returns>readonly collection of RaceTimesDat.</returns>
-    public ReadOnlyCollection<RaceTimesDat> LoadRaceTimesDat()
+    /// <returns>repository of RaceTimesRepository.</returns>
+    public RaceTimesRepository LoadRaceTimesRepository()
     {
-        return RaceTimesDat.Load(dataLoader).AsReadOnly();
+        racetimesrepository ??= new RaceTimesRepository(logger, this);
+        return racetimesrepository;
     }
 
     /// <summary>
-    /// Gets RareMonsterLifeScalingPerLevelDat data.
+    /// Gets RareMonsterLifeScalingPerLevelRepository data.
     /// </summary>
-    /// <returns>readonly collection of RareMonsterLifeScalingPerLevelDat.</returns>
-    public ReadOnlyCollection<RareMonsterLifeScalingPerLevelDat> LoadRareMonsterLifeScalingPerLevelDat()
+    /// <returns>repository of RareMonsterLifeScalingPerLevelRepository.</returns>
+    public RareMonsterLifeScalingPerLevelRepository LoadRareMonsterLifeScalingPerLevelRepository()
     {
-        return RareMonsterLifeScalingPerLevelDat.Load(dataLoader).AsReadOnly();
+        raremonsterlifescalingperlevelrepository ??= new RareMonsterLifeScalingPerLevelRepository(logger, this);
+        return raremonsterlifescalingperlevelrepository;
     }
 
     /// <summary>
-    /// Gets RarityDat data.
+    /// Gets RarityRepository data.
     /// </summary>
-    /// <returns>readonly collection of RarityDat.</returns>
-    public ReadOnlyCollection<RarityDat> LoadRarityDat()
+    /// <returns>repository of RarityRepository.</returns>
+    public RarityRepository LoadRarityRepository()
     {
-        return RarityDat.Load(dataLoader).AsReadOnly();
+        rarityrepository ??= new RarityRepository(logger, this);
+        return rarityrepository;
     }
 
     /// <summary>
-    /// Gets RealmsDat data.
+    /// Gets RealmsRepository data.
     /// </summary>
-    /// <returns>readonly collection of RealmsDat.</returns>
-    public ReadOnlyCollection<RealmsDat> LoadRealmsDat()
+    /// <returns>repository of RealmsRepository.</returns>
+    public RealmsRepository LoadRealmsRepository()
     {
-        return RealmsDat.Load(dataLoader).AsReadOnly();
+        realmsrepository ??= new RealmsRepository(logger, this);
+        return realmsrepository;
     }
 
     /// <summary>
-    /// Gets RecipeUnlockDisplayDat data.
+    /// Gets RecipeUnlockDisplayRepository data.
     /// </summary>
-    /// <returns>readonly collection of RecipeUnlockDisplayDat.</returns>
-    public ReadOnlyCollection<RecipeUnlockDisplayDat> LoadRecipeUnlockDisplayDat()
+    /// <returns>repository of RecipeUnlockDisplayRepository.</returns>
+    public RecipeUnlockDisplayRepository LoadRecipeUnlockDisplayRepository()
     {
-        return RecipeUnlockDisplayDat.Load(dataLoader).AsReadOnly();
+        recipeunlockdisplayrepository ??= new RecipeUnlockDisplayRepository(logger, this);
+        return recipeunlockdisplayrepository;
     }
 
     /// <summary>
-    /// Gets RecipeUnlockObjectsDat data.
+    /// Gets RecipeUnlockObjectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of RecipeUnlockObjectsDat.</returns>
-    public ReadOnlyCollection<RecipeUnlockObjectsDat> LoadRecipeUnlockObjectsDat()
+    /// <returns>repository of RecipeUnlockObjectsRepository.</returns>
+    public RecipeUnlockObjectsRepository LoadRecipeUnlockObjectsRepository()
     {
-        return RecipeUnlockObjectsDat.Load(dataLoader).AsReadOnly();
+        recipeunlockobjectsrepository ??= new RecipeUnlockObjectsRepository(logger, this);
+        return recipeunlockobjectsrepository;
     }
 
     /// <summary>
-    /// Gets ReminderTextDat data.
+    /// Gets ReminderTextRepository data.
     /// </summary>
-    /// <returns>readonly collection of ReminderTextDat.</returns>
-    public ReadOnlyCollection<ReminderTextDat> LoadReminderTextDat()
+    /// <returns>repository of ReminderTextRepository.</returns>
+    public ReminderTextRepository LoadReminderTextRepository()
     {
-        return ReminderTextDat.Load(dataLoader).AsReadOnly();
+        remindertextrepository ??= new ReminderTextRepository(logger, this);
+        return remindertextrepository;
     }
 
     /// <summary>
-    /// Gets RulesetsDat data.
+    /// Gets RulesetsRepository data.
     /// </summary>
-    /// <returns>readonly collection of RulesetsDat.</returns>
-    public ReadOnlyCollection<RulesetsDat> LoadRulesetsDat()
+    /// <returns>repository of RulesetsRepository.</returns>
+    public RulesetsRepository LoadRulesetsRepository()
     {
-        return RulesetsDat.Load(dataLoader).AsReadOnly();
+        rulesetsrepository ??= new RulesetsRepository(logger, this);
+        return rulesetsrepository;
     }
 
     /// <summary>
-    /// Gets RunicCirclesDat data.
+    /// Gets RunicCirclesRepository data.
     /// </summary>
-    /// <returns>readonly collection of RunicCirclesDat.</returns>
-    public ReadOnlyCollection<RunicCirclesDat> LoadRunicCirclesDat()
+    /// <returns>repository of RunicCirclesRepository.</returns>
+    public RunicCirclesRepository LoadRunicCirclesRepository()
     {
-        return RunicCirclesDat.Load(dataLoader).AsReadOnly();
+        runiccirclesrepository ??= new RunicCirclesRepository(logger, this);
+        return runiccirclesrepository;
     }
 
     /// <summary>
-    /// Gets SalvageBoxesDat data.
+    /// Gets SalvageBoxesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SalvageBoxesDat.</returns>
-    public ReadOnlyCollection<SalvageBoxesDat> LoadSalvageBoxesDat()
+    /// <returns>repository of SalvageBoxesRepository.</returns>
+    public SalvageBoxesRepository LoadSalvageBoxesRepository()
     {
-        return SalvageBoxesDat.Load(dataLoader).AsReadOnly();
+        salvageboxesrepository ??= new SalvageBoxesRepository(logger, this);
+        return salvageboxesrepository;
     }
 
     /// <summary>
-    /// Gets SessionQuestFlagsDat data.
+    /// Gets SessionQuestFlagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SessionQuestFlagsDat.</returns>
-    public ReadOnlyCollection<SessionQuestFlagsDat> LoadSessionQuestFlagsDat()
+    /// <returns>repository of SessionQuestFlagsRepository.</returns>
+    public SessionQuestFlagsRepository LoadSessionQuestFlagsRepository()
     {
-        return SessionQuestFlagsDat.Load(dataLoader).AsReadOnly();
+        sessionquestflagsrepository ??= new SessionQuestFlagsRepository(logger, this);
+        return sessionquestflagsrepository;
     }
 
     /// <summary>
-    /// Gets ShieldTypesDat data.
+    /// Gets ShieldTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShieldTypesDat.</returns>
-    public ReadOnlyCollection<ShieldTypesDat> LoadShieldTypesDat()
+    /// <returns>repository of ShieldTypesRepository.</returns>
+    public ShieldTypesRepository LoadShieldTypesRepository()
     {
-        return ShieldTypesDat.Load(dataLoader).AsReadOnly();
+        shieldtypesrepository ??= new ShieldTypesRepository(logger, this);
+        return shieldtypesrepository;
     }
 
     /// <summary>
-    /// Gets ShopCategoryDat data.
+    /// Gets ShopCategoryRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopCategoryDat.</returns>
-    public ReadOnlyCollection<ShopCategoryDat> LoadShopCategoryDat()
+    /// <returns>repository of ShopCategoryRepository.</returns>
+    public ShopCategoryRepository LoadShopCategoryRepository()
     {
-        return ShopCategoryDat.Load(dataLoader).AsReadOnly();
+        shopcategoryrepository ??= new ShopCategoryRepository(logger, this);
+        return shopcategoryrepository;
     }
 
     /// <summary>
-    /// Gets ShopCountryDat data.
+    /// Gets ShopCountryRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopCountryDat.</returns>
-    public ReadOnlyCollection<ShopCountryDat> LoadShopCountryDat()
+    /// <returns>repository of ShopCountryRepository.</returns>
+    public ShopCountryRepository LoadShopCountryRepository()
     {
-        return ShopCountryDat.Load(dataLoader).AsReadOnly();
+        shopcountryrepository ??= new ShopCountryRepository(logger, this);
+        return shopcountryrepository;
     }
 
     /// <summary>
-    /// Gets ShopCurrencyDat data.
+    /// Gets ShopCurrencyRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopCurrencyDat.</returns>
-    public ReadOnlyCollection<ShopCurrencyDat> LoadShopCurrencyDat()
+    /// <returns>repository of ShopCurrencyRepository.</returns>
+    public ShopCurrencyRepository LoadShopCurrencyRepository()
     {
-        return ShopCurrencyDat.Load(dataLoader).AsReadOnly();
+        shopcurrencyrepository ??= new ShopCurrencyRepository(logger, this);
+        return shopcurrencyrepository;
     }
 
     /// <summary>
-    /// Gets ShopPaymentPackageDat data.
+    /// Gets ShopPaymentPackageRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopPaymentPackageDat.</returns>
-    public ReadOnlyCollection<ShopPaymentPackageDat> LoadShopPaymentPackageDat()
+    /// <returns>repository of ShopPaymentPackageRepository.</returns>
+    public ShopPaymentPackageRepository LoadShopPaymentPackageRepository()
     {
-        return ShopPaymentPackageDat.Load(dataLoader).AsReadOnly();
+        shoppaymentpackagerepository ??= new ShopPaymentPackageRepository(logger, this);
+        return shoppaymentpackagerepository;
     }
 
     /// <summary>
-    /// Gets ShopPaymentPackagePriceDat data.
+    /// Gets ShopPaymentPackagePriceRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopPaymentPackagePriceDat.</returns>
-    public ReadOnlyCollection<ShopPaymentPackagePriceDat> LoadShopPaymentPackagePriceDat()
+    /// <returns>repository of ShopPaymentPackagePriceRepository.</returns>
+    public ShopPaymentPackagePriceRepository LoadShopPaymentPackagePriceRepository()
     {
-        return ShopPaymentPackagePriceDat.Load(dataLoader).AsReadOnly();
+        shoppaymentpackagepricerepository ??= new ShopPaymentPackagePriceRepository(logger, this);
+        return shoppaymentpackagepricerepository;
     }
 
     /// <summary>
-    /// Gets ShopRegionDat data.
+    /// Gets ShopRegionRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopRegionDat.</returns>
-    public ReadOnlyCollection<ShopRegionDat> LoadShopRegionDat()
+    /// <returns>repository of ShopRegionRepository.</returns>
+    public ShopRegionRepository LoadShopRegionRepository()
     {
-        return ShopRegionDat.Load(dataLoader).AsReadOnly();
+        shopregionrepository ??= new ShopRegionRepository(logger, this);
+        return shopregionrepository;
     }
 
     /// <summary>
-    /// Gets ShopTagDat data.
+    /// Gets ShopTagRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopTagDat.</returns>
-    public ReadOnlyCollection<ShopTagDat> LoadShopTagDat()
+    /// <returns>repository of ShopTagRepository.</returns>
+    public ShopTagRepository LoadShopTagRepository()
     {
-        return ShopTagDat.Load(dataLoader).AsReadOnly();
+        shoptagrepository ??= new ShopTagRepository(logger, this);
+        return shoptagrepository;
     }
 
     /// <summary>
-    /// Gets ShopTokenDat data.
+    /// Gets ShopTokenRepository data.
     /// </summary>
-    /// <returns>readonly collection of ShopTokenDat.</returns>
-    public ReadOnlyCollection<ShopTokenDat> LoadShopTokenDat()
+    /// <returns>repository of ShopTokenRepository.</returns>
+    public ShopTokenRepository LoadShopTokenRepository()
     {
-        return ShopTokenDat.Load(dataLoader).AsReadOnly();
+        shoptokenrepository ??= new ShopTokenRepository(logger, this);
+        return shoptokenrepository;
     }
 
     /// <summary>
-    /// Gets SigilDisplayDat data.
+    /// Gets SigilDisplayRepository data.
     /// </summary>
-    /// <returns>readonly collection of SigilDisplayDat.</returns>
-    public ReadOnlyCollection<SigilDisplayDat> LoadSigilDisplayDat()
+    /// <returns>repository of SigilDisplayRepository.</returns>
+    public SigilDisplayRepository LoadSigilDisplayRepository()
     {
-        return SigilDisplayDat.Load(dataLoader).AsReadOnly();
+        sigildisplayrepository ??= new SigilDisplayRepository(logger, this);
+        return sigildisplayrepository;
     }
 
     /// <summary>
-    /// Gets SingleGroundLaserDat data.
+    /// Gets SingleGroundLaserRepository data.
     /// </summary>
-    /// <returns>readonly collection of SingleGroundLaserDat.</returns>
-    public ReadOnlyCollection<SingleGroundLaserDat> LoadSingleGroundLaserDat()
+    /// <returns>repository of SingleGroundLaserRepository.</returns>
+    public SingleGroundLaserRepository LoadSingleGroundLaserRepository()
     {
-        return SingleGroundLaserDat.Load(dataLoader).AsReadOnly();
+        singlegroundlaserrepository ??= new SingleGroundLaserRepository(logger, this);
+        return singlegroundlaserrepository;
     }
 
     /// <summary>
-    /// Gets SkillArtVariationsDat data.
+    /// Gets SkillArtVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillArtVariationsDat.</returns>
-    public ReadOnlyCollection<SkillArtVariationsDat> LoadSkillArtVariationsDat()
+    /// <returns>repository of SkillArtVariationsRepository.</returns>
+    public SkillArtVariationsRepository LoadSkillArtVariationsRepository()
     {
-        return SkillArtVariationsDat.Load(dataLoader).AsReadOnly();
+        skillartvariationsrepository ??= new SkillArtVariationsRepository(logger, this);
+        return skillartvariationsrepository;
     }
 
     /// <summary>
-    /// Gets SkillGemInfoDat data.
+    /// Gets SkillGemInfoRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillGemInfoDat.</returns>
-    public ReadOnlyCollection<SkillGemInfoDat> LoadSkillGemInfoDat()
+    /// <returns>repository of SkillGemInfoRepository.</returns>
+    public SkillGemInfoRepository LoadSkillGemInfoRepository()
     {
-        return SkillGemInfoDat.Load(dataLoader).AsReadOnly();
+        skillgeminforepository ??= new SkillGemInfoRepository(logger, this);
+        return skillgeminforepository;
     }
 
     /// <summary>
-    /// Gets SkillGemsDat data.
+    /// Gets SkillGemsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillGemsDat.</returns>
-    public ReadOnlyCollection<SkillGemsDat> LoadSkillGemsDat()
+    /// <returns>repository of SkillGemsRepository.</returns>
+    public SkillGemsRepository LoadSkillGemsRepository()
     {
-        return SkillGemsDat.Load(dataLoader).AsReadOnly();
+        skillgemsrepository ??= new SkillGemsRepository(logger, this);
+        return skillgemsrepository;
     }
 
     /// <summary>
-    /// Gets SkillMineVariationsDat data.
+    /// Gets SkillMineVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillMineVariationsDat.</returns>
-    public ReadOnlyCollection<SkillMineVariationsDat> LoadSkillMineVariationsDat()
+    /// <returns>repository of SkillMineVariationsRepository.</returns>
+    public SkillMineVariationsRepository LoadSkillMineVariationsRepository()
     {
-        return SkillMineVariationsDat.Load(dataLoader).AsReadOnly();
+        skillminevariationsrepository ??= new SkillMineVariationsRepository(logger, this);
+        return skillminevariationsrepository;
     }
 
     /// <summary>
-    /// Gets SkillMorphDisplayDat data.
+    /// Gets SkillMorphDisplayRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillMorphDisplayDat.</returns>
-    public ReadOnlyCollection<SkillMorphDisplayDat> LoadSkillMorphDisplayDat()
+    /// <returns>repository of SkillMorphDisplayRepository.</returns>
+    public SkillMorphDisplayRepository LoadSkillMorphDisplayRepository()
     {
-        return SkillMorphDisplayDat.Load(dataLoader).AsReadOnly();
+        skillmorphdisplayrepository ??= new SkillMorphDisplayRepository(logger, this);
+        return skillmorphdisplayrepository;
     }
 
     /// <summary>
-    /// Gets SkillSurgeEffectsDat data.
+    /// Gets SkillSurgeEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillSurgeEffectsDat.</returns>
-    public ReadOnlyCollection<SkillSurgeEffectsDat> LoadSkillSurgeEffectsDat()
+    /// <returns>repository of SkillSurgeEffectsRepository.</returns>
+    public SkillSurgeEffectsRepository LoadSkillSurgeEffectsRepository()
     {
-        return SkillSurgeEffectsDat.Load(dataLoader).AsReadOnly();
+        skillsurgeeffectsrepository ??= new SkillSurgeEffectsRepository(logger, this);
+        return skillsurgeeffectsrepository;
     }
 
     /// <summary>
-    /// Gets SkillTotemVariationsDat data.
+    /// Gets SkillTotemVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillTotemVariationsDat.</returns>
-    public ReadOnlyCollection<SkillTotemVariationsDat> LoadSkillTotemVariationsDat()
+    /// <returns>repository of SkillTotemVariationsRepository.</returns>
+    public SkillTotemVariationsRepository LoadSkillTotemVariationsRepository()
     {
-        return SkillTotemVariationsDat.Load(dataLoader).AsReadOnly();
+        skilltotemvariationsrepository ??= new SkillTotemVariationsRepository(logger, this);
+        return skilltotemvariationsrepository;
     }
 
     /// <summary>
-    /// Gets SkillTrapVariationsDat data.
+    /// Gets SkillTrapVariationsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SkillTrapVariationsDat.</returns>
-    public ReadOnlyCollection<SkillTrapVariationsDat> LoadSkillTrapVariationsDat()
+    /// <returns>repository of SkillTrapVariationsRepository.</returns>
+    public SkillTrapVariationsRepository LoadSkillTrapVariationsRepository()
     {
-        return SkillTrapVariationsDat.Load(dataLoader).AsReadOnly();
+        skilltrapvariationsrepository ??= new SkillTrapVariationsRepository(logger, this);
+        return skilltrapvariationsrepository;
     }
 
     /// <summary>
-    /// Gets SocketNotchesDat data.
+    /// Gets SocketNotchesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SocketNotchesDat.</returns>
-    public ReadOnlyCollection<SocketNotchesDat> LoadSocketNotchesDat()
+    /// <returns>repository of SocketNotchesRepository.</returns>
+    public SocketNotchesRepository LoadSocketNotchesRepository()
     {
-        return SocketNotchesDat.Load(dataLoader).AsReadOnly();
+        socketnotchesrepository ??= new SocketNotchesRepository(logger, this);
+        return socketnotchesrepository;
     }
 
     /// <summary>
-    /// Gets SoundEffectsDat data.
+    /// Gets SoundEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SoundEffectsDat.</returns>
-    public ReadOnlyCollection<SoundEffectsDat> LoadSoundEffectsDat()
+    /// <returns>repository of SoundEffectsRepository.</returns>
+    public SoundEffectsRepository LoadSoundEffectsRepository()
     {
-        return SoundEffectsDat.Load(dataLoader).AsReadOnly();
+        soundeffectsrepository ??= new SoundEffectsRepository(logger, this);
+        return soundeffectsrepository;
     }
 
     /// <summary>
-    /// Gets SpawnAdditionalChestsOrClustersDat data.
+    /// Gets SpawnAdditionalChestsOrClustersRepository data.
     /// </summary>
-    /// <returns>readonly collection of SpawnAdditionalChestsOrClustersDat.</returns>
-    public ReadOnlyCollection<SpawnAdditionalChestsOrClustersDat> LoadSpawnAdditionalChestsOrClustersDat()
+    /// <returns>repository of SpawnAdditionalChestsOrClustersRepository.</returns>
+    public SpawnAdditionalChestsOrClustersRepository LoadSpawnAdditionalChestsOrClustersRepository()
     {
-        return SpawnAdditionalChestsOrClustersDat.Load(dataLoader).AsReadOnly();
+        spawnadditionalchestsorclustersrepository ??= new SpawnAdditionalChestsOrClustersRepository(logger, this);
+        return spawnadditionalchestsorclustersrepository;
     }
 
     /// <summary>
-    /// Gets SpawnObjectDat data.
+    /// Gets SpawnObjectRepository data.
     /// </summary>
-    /// <returns>readonly collection of SpawnObjectDat.</returns>
-    public ReadOnlyCollection<SpawnObjectDat> LoadSpawnObjectDat()
+    /// <returns>repository of SpawnObjectRepository.</returns>
+    public SpawnObjectRepository LoadSpawnObjectRepository()
     {
-        return SpawnObjectDat.Load(dataLoader).AsReadOnly();
+        spawnobjectrepository ??= new SpawnObjectRepository(logger, this);
+        return spawnobjectrepository;
     }
 
     /// <summary>
-    /// Gets SpecialRoomsDat data.
+    /// Gets SpecialRoomsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SpecialRoomsDat.</returns>
-    public ReadOnlyCollection<SpecialRoomsDat> LoadSpecialRoomsDat()
+    /// <returns>repository of SpecialRoomsRepository.</returns>
+    public SpecialRoomsRepository LoadSpecialRoomsRepository()
     {
-        return SpecialRoomsDat.Load(dataLoader).AsReadOnly();
+        specialroomsrepository ??= new SpecialRoomsRepository(logger, this);
+        return specialroomsrepository;
     }
 
     /// <summary>
-    /// Gets SpecialTilesDat data.
+    /// Gets SpecialTilesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SpecialTilesDat.</returns>
-    public ReadOnlyCollection<SpecialTilesDat> LoadSpecialTilesDat()
+    /// <returns>repository of SpecialTilesRepository.</returns>
+    public SpecialTilesRepository LoadSpecialTilesRepository()
     {
-        return SpecialTilesDat.Load(dataLoader).AsReadOnly();
+        specialtilesrepository ??= new SpecialTilesRepository(logger, this);
+        return specialtilesrepository;
     }
 
     /// <summary>
-    /// Gets SpectreOverridesDat data.
+    /// Gets SpectreOverridesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SpectreOverridesDat.</returns>
-    public ReadOnlyCollection<SpectreOverridesDat> LoadSpectreOverridesDat()
+    /// <returns>repository of SpectreOverridesRepository.</returns>
+    public SpectreOverridesRepository LoadSpectreOverridesRepository()
     {
-        return SpectreOverridesDat.Load(dataLoader).AsReadOnly();
+        spectreoverridesrepository ??= new SpectreOverridesRepository(logger, this);
+        return spectreoverridesrepository;
     }
 
     /// <summary>
-    /// Gets StartingPassiveSkillsDat data.
+    /// Gets StartingPassiveSkillsRepository data.
     /// </summary>
-    /// <returns>readonly collection of StartingPassiveSkillsDat.</returns>
-    public ReadOnlyCollection<StartingPassiveSkillsDat> LoadStartingPassiveSkillsDat()
+    /// <returns>repository of StartingPassiveSkillsRepository.</returns>
+    public StartingPassiveSkillsRepository LoadStartingPassiveSkillsRepository()
     {
-        return StartingPassiveSkillsDat.Load(dataLoader).AsReadOnly();
+        startingpassiveskillsrepository ??= new StartingPassiveSkillsRepository(logger, this);
+        return startingpassiveskillsrepository;
     }
 
     /// <summary>
-    /// Gets StashTabAffinitiesDat data.
+    /// Gets StashTabAffinitiesRepository data.
     /// </summary>
-    /// <returns>readonly collection of StashTabAffinitiesDat.</returns>
-    public ReadOnlyCollection<StashTabAffinitiesDat> LoadStashTabAffinitiesDat()
+    /// <returns>repository of StashTabAffinitiesRepository.</returns>
+    public StashTabAffinitiesRepository LoadStashTabAffinitiesRepository()
     {
-        return StashTabAffinitiesDat.Load(dataLoader).AsReadOnly();
+        stashtabaffinitiesrepository ??= new StashTabAffinitiesRepository(logger, this);
+        return stashtabaffinitiesrepository;
     }
 
     /// <summary>
-    /// Gets StashTypeDat data.
+    /// Gets StashTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of StashTypeDat.</returns>
-    public ReadOnlyCollection<StashTypeDat> LoadStashTypeDat()
+    /// <returns>repository of StashTypeRepository.</returns>
+    public StashTypeRepository LoadStashTypeRepository()
     {
-        return StashTypeDat.Load(dataLoader).AsReadOnly();
+        stashtyperepository ??= new StashTypeRepository(logger, this);
+        return stashtyperepository;
     }
 
     /// <summary>
-    /// Gets StatDescriptionFunctionsDat data.
+    /// Gets StatDescriptionFunctionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of StatDescriptionFunctionsDat.</returns>
-    public ReadOnlyCollection<StatDescriptionFunctionsDat> LoadStatDescriptionFunctionsDat()
+    /// <returns>repository of StatDescriptionFunctionsRepository.</returns>
+    public StatDescriptionFunctionsRepository LoadStatDescriptionFunctionsRepository()
     {
-        return StatDescriptionFunctionsDat.Load(dataLoader).AsReadOnly();
+        statdescriptionfunctionsrepository ??= new StatDescriptionFunctionsRepository(logger, this);
+        return statdescriptionfunctionsrepository;
     }
 
     /// <summary>
-    /// Gets StatsAffectingGenerationDat data.
+    /// Gets StatsAffectingGenerationRepository data.
     /// </summary>
-    /// <returns>readonly collection of StatsAffectingGenerationDat.</returns>
-    public ReadOnlyCollection<StatsAffectingGenerationDat> LoadStatsAffectingGenerationDat()
+    /// <returns>repository of StatsAffectingGenerationRepository.</returns>
+    public StatsAffectingGenerationRepository LoadStatsAffectingGenerationRepository()
     {
-        return StatsAffectingGenerationDat.Load(dataLoader).AsReadOnly();
+        statsaffectinggenerationrepository ??= new StatsAffectingGenerationRepository(logger, this);
+        return statsaffectinggenerationrepository;
     }
 
     /// <summary>
-    /// Gets StatsDat data.
+    /// Gets StatsRepository data.
     /// </summary>
-    /// <returns>readonly collection of StatsDat.</returns>
-    public ReadOnlyCollection<StatsDat> LoadStatsDat()
+    /// <returns>repository of StatsRepository.</returns>
+    public StatsRepository LoadStatsRepository()
     {
-        return StatsDat.Load(dataLoader).AsReadOnly();
+        statsrepository ??= new StatsRepository(logger, this);
+        return statsrepository;
     }
 
     /// <summary>
-    /// Gets StrDexIntMissionExtraRequirementDat data.
+    /// Gets StrDexIntMissionExtraRequirementRepository data.
     /// </summary>
-    /// <returns>readonly collection of StrDexIntMissionExtraRequirementDat.</returns>
-    public ReadOnlyCollection<StrDexIntMissionExtraRequirementDat> LoadStrDexIntMissionExtraRequirementDat()
+    /// <returns>repository of StrDexIntMissionExtraRequirementRepository.</returns>
+    public StrDexIntMissionExtraRequirementRepository LoadStrDexIntMissionExtraRequirementRepository()
     {
-        return StrDexIntMissionExtraRequirementDat.Load(dataLoader).AsReadOnly();
+        strdexintmissionextrarequirementrepository ??= new StrDexIntMissionExtraRequirementRepository(logger, this);
+        return strdexintmissionextrarequirementrepository;
     }
 
     /// <summary>
-    /// Gets StrDexIntMissionsDat data.
+    /// Gets StrDexIntMissionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of StrDexIntMissionsDat.</returns>
-    public ReadOnlyCollection<StrDexIntMissionsDat> LoadStrDexIntMissionsDat()
+    /// <returns>repository of StrDexIntMissionsRepository.</returns>
+    public StrDexIntMissionsRepository LoadStrDexIntMissionsRepository()
     {
-        return StrDexIntMissionsDat.Load(dataLoader).AsReadOnly();
+        strdexintmissionsrepository ??= new StrDexIntMissionsRepository(logger, this);
+        return strdexintmissionsrepository;
     }
 
     /// <summary>
-    /// Gets SuicideExplosionDat data.
+    /// Gets SuicideExplosionRepository data.
     /// </summary>
-    /// <returns>readonly collection of SuicideExplosionDat.</returns>
-    public ReadOnlyCollection<SuicideExplosionDat> LoadSuicideExplosionDat()
+    /// <returns>repository of SuicideExplosionRepository.</returns>
+    public SuicideExplosionRepository LoadSuicideExplosionRepository()
     {
-        return SuicideExplosionDat.Load(dataLoader).AsReadOnly();
+        suicideexplosionrepository ??= new SuicideExplosionRepository(logger, this);
+        return suicideexplosionrepository;
     }
 
     /// <summary>
-    /// Gets SummonedSpecificBarrelsDat data.
+    /// Gets SummonedSpecificBarrelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SummonedSpecificBarrelsDat.</returns>
-    public ReadOnlyCollection<SummonedSpecificBarrelsDat> LoadSummonedSpecificBarrelsDat()
+    /// <returns>repository of SummonedSpecificBarrelsRepository.</returns>
+    public SummonedSpecificBarrelsRepository LoadSummonedSpecificBarrelsRepository()
     {
-        return SummonedSpecificBarrelsDat.Load(dataLoader).AsReadOnly();
+        summonedspecificbarrelsrepository ??= new SummonedSpecificBarrelsRepository(logger, this);
+        return summonedspecificbarrelsrepository;
     }
 
     /// <summary>
-    /// Gets SummonedSpecificMonstersDat data.
+    /// Gets SummonedSpecificMonstersRepository data.
     /// </summary>
-    /// <returns>readonly collection of SummonedSpecificMonstersDat.</returns>
-    public ReadOnlyCollection<SummonedSpecificMonstersDat> LoadSummonedSpecificMonstersDat()
+    /// <returns>repository of SummonedSpecificMonstersRepository.</returns>
+    public SummonedSpecificMonstersRepository LoadSummonedSpecificMonstersRepository()
     {
-        return SummonedSpecificMonstersDat.Load(dataLoader).AsReadOnly();
+        summonedspecificmonstersrepository ??= new SummonedSpecificMonstersRepository(logger, this);
+        return summonedspecificmonstersrepository;
     }
 
     /// <summary>
-    /// Gets SummonedSpecificMonstersOnDeathDat data.
+    /// Gets SummonedSpecificMonstersOnDeathRepository data.
     /// </summary>
-    /// <returns>readonly collection of SummonedSpecificMonstersOnDeathDat.</returns>
-    public ReadOnlyCollection<SummonedSpecificMonstersOnDeathDat> LoadSummonedSpecificMonstersOnDeathDat()
+    /// <returns>repository of SummonedSpecificMonstersOnDeathRepository.</returns>
+    public SummonedSpecificMonstersOnDeathRepository LoadSummonedSpecificMonstersOnDeathRepository()
     {
-        return SummonedSpecificMonstersOnDeathDat.Load(dataLoader).AsReadOnly();
+        summonedspecificmonstersondeathrepository ??= new SummonedSpecificMonstersOnDeathRepository(logger, this);
+        return summonedspecificmonstersondeathrepository;
     }
 
     /// <summary>
-    /// Gets SupporterPackSetsDat data.
+    /// Gets SupporterPackSetsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SupporterPackSetsDat.</returns>
-    public ReadOnlyCollection<SupporterPackSetsDat> LoadSupporterPackSetsDat()
+    /// <returns>repository of SupporterPackSetsRepository.</returns>
+    public SupporterPackSetsRepository LoadSupporterPackSetsRepository()
     {
-        return SupporterPackSetsDat.Load(dataLoader).AsReadOnly();
+        supporterpacksetsrepository ??= new SupporterPackSetsRepository(logger, this);
+        return supporterpacksetsrepository;
     }
 
     /// <summary>
-    /// Gets SurgeEffectsDat data.
+    /// Gets SurgeEffectsRepository data.
     /// </summary>
-    /// <returns>readonly collection of SurgeEffectsDat.</returns>
-    public ReadOnlyCollection<SurgeEffectsDat> LoadSurgeEffectsDat()
+    /// <returns>repository of SurgeEffectsRepository.</returns>
+    public SurgeEffectsRepository LoadSurgeEffectsRepository()
     {
-        return SurgeEffectsDat.Load(dataLoader).AsReadOnly();
+        surgeeffectsrepository ??= new SurgeEffectsRepository(logger, this);
+        return surgeeffectsrepository;
     }
 
     /// <summary>
-    /// Gets SurgeTypesDat data.
+    /// Gets SurgeTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of SurgeTypesDat.</returns>
-    public ReadOnlyCollection<SurgeTypesDat> LoadSurgeTypesDat()
+    /// <returns>repository of SurgeTypesRepository.</returns>
+    public SurgeTypesRepository LoadSurgeTypesRepository()
     {
-        return SurgeTypesDat.Load(dataLoader).AsReadOnly();
+        surgetypesrepository ??= new SurgeTypesRepository(logger, this);
+        return surgetypesrepository;
     }
 
     /// <summary>
-    /// Gets TableChargeDat data.
+    /// Gets TableChargeRepository data.
     /// </summary>
-    /// <returns>readonly collection of TableChargeDat.</returns>
-    public ReadOnlyCollection<TableChargeDat> LoadTableChargeDat()
+    /// <returns>repository of TableChargeRepository.</returns>
+    public TableChargeRepository LoadTableChargeRepository()
     {
-        return TableChargeDat.Load(dataLoader).AsReadOnly();
+        tablechargerepository ??= new TableChargeRepository(logger, this);
+        return tablechargerepository;
     }
 
     /// <summary>
-    /// Gets TableMonsterSpawnersDat data.
+    /// Gets TableMonsterSpawnersRepository data.
     /// </summary>
-    /// <returns>readonly collection of TableMonsterSpawnersDat.</returns>
-    public ReadOnlyCollection<TableMonsterSpawnersDat> LoadTableMonsterSpawnersDat()
+    /// <returns>repository of TableMonsterSpawnersRepository.</returns>
+    public TableMonsterSpawnersRepository LoadTableMonsterSpawnersRepository()
     {
-        return TableMonsterSpawnersDat.Load(dataLoader).AsReadOnly();
+        tablemonsterspawnersrepository ??= new TableMonsterSpawnersRepository(logger, this);
+        return tablemonsterspawnersrepository;
     }
 
     /// <summary>
-    /// Gets TagsDat data.
+    /// Gets TagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TagsDat.</returns>
-    public ReadOnlyCollection<TagsDat> LoadTagsDat()
+    /// <returns>repository of TagsRepository.</returns>
+    public TagsRepository LoadTagsRepository()
     {
-        return TagsDat.Load(dataLoader).AsReadOnly();
+        tagsrepository ??= new TagsRepository(logger, this);
+        return tagsrepository;
     }
 
     /// <summary>
-    /// Gets TalkingPetAudioEventsDat data.
+    /// Gets TalkingPetAudioEventsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TalkingPetAudioEventsDat.</returns>
-    public ReadOnlyCollection<TalkingPetAudioEventsDat> LoadTalkingPetAudioEventsDat()
+    /// <returns>repository of TalkingPetAudioEventsRepository.</returns>
+    public TalkingPetAudioEventsRepository LoadTalkingPetAudioEventsRepository()
     {
-        return TalkingPetAudioEventsDat.Load(dataLoader).AsReadOnly();
+        talkingpetaudioeventsrepository ??= new TalkingPetAudioEventsRepository(logger, this);
+        return talkingpetaudioeventsrepository;
     }
 
     /// <summary>
-    /// Gets TalkingPetNPCAudioDat data.
+    /// Gets TalkingPetNPCAudioRepository data.
     /// </summary>
-    /// <returns>readonly collection of TalkingPetNPCAudioDat.</returns>
-    public ReadOnlyCollection<TalkingPetNPCAudioDat> LoadTalkingPetNPCAudioDat()
+    /// <returns>repository of TalkingPetNPCAudioRepository.</returns>
+    public TalkingPetNPCAudioRepository LoadTalkingPetNPCAudioRepository()
     {
-        return TalkingPetNPCAudioDat.Load(dataLoader).AsReadOnly();
+        talkingpetnpcaudiorepository ??= new TalkingPetNPCAudioRepository(logger, this);
+        return talkingpetnpcaudiorepository;
     }
 
     /// <summary>
-    /// Gets TalkingPetsDat data.
+    /// Gets TalkingPetsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TalkingPetsDat.</returns>
-    public ReadOnlyCollection<TalkingPetsDat> LoadTalkingPetsDat()
+    /// <returns>repository of TalkingPetsRepository.</returns>
+    public TalkingPetsRepository LoadTalkingPetsRepository()
     {
-        return TalkingPetsDat.Load(dataLoader).AsReadOnly();
+        talkingpetsrepository ??= new TalkingPetsRepository(logger, this);
+        return talkingpetsrepository;
     }
 
     /// <summary>
-    /// Gets TencentAutoLootPetCurrenciesDat data.
+    /// Gets TencentAutoLootPetCurrenciesRepository data.
     /// </summary>
-    /// <returns>readonly collection of TencentAutoLootPetCurrenciesDat.</returns>
-    public ReadOnlyCollection<TencentAutoLootPetCurrenciesDat> LoadTencentAutoLootPetCurrenciesDat()
+    /// <returns>repository of TencentAutoLootPetCurrenciesRepository.</returns>
+    public TencentAutoLootPetCurrenciesRepository LoadTencentAutoLootPetCurrenciesRepository()
     {
-        return TencentAutoLootPetCurrenciesDat.Load(dataLoader).AsReadOnly();
+        tencentautolootpetcurrenciesrepository ??= new TencentAutoLootPetCurrenciesRepository(logger, this);
+        return tencentautolootpetcurrenciesrepository;
     }
 
     /// <summary>
-    /// Gets TencentAutoLootPetCurrenciesExcludableDat data.
+    /// Gets TencentAutoLootPetCurrenciesExcludableRepository data.
     /// </summary>
-    /// <returns>readonly collection of TencentAutoLootPetCurrenciesExcludableDat.</returns>
-    public ReadOnlyCollection<TencentAutoLootPetCurrenciesExcludableDat> LoadTencentAutoLootPetCurrenciesExcludableDat()
+    /// <returns>repository of TencentAutoLootPetCurrenciesExcludableRepository.</returns>
+    public TencentAutoLootPetCurrenciesExcludableRepository LoadTencentAutoLootPetCurrenciesExcludableRepository()
     {
-        return TencentAutoLootPetCurrenciesExcludableDat.Load(dataLoader).AsReadOnly();
+        tencentautolootpetcurrenciesexcludablerepository ??= new TencentAutoLootPetCurrenciesExcludableRepository(logger, this);
+        return tencentautolootpetcurrenciesexcludablerepository;
     }
 
     /// <summary>
-    /// Gets TerrainPluginsDat data.
+    /// Gets TerrainPluginsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TerrainPluginsDat.</returns>
-    public ReadOnlyCollection<TerrainPluginsDat> LoadTerrainPluginsDat()
+    /// <returns>repository of TerrainPluginsRepository.</returns>
+    public TerrainPluginsRepository LoadTerrainPluginsRepository()
     {
-        return TerrainPluginsDat.Load(dataLoader).AsReadOnly();
+        terrainpluginsrepository ??= new TerrainPluginsRepository(logger, this);
+        return terrainpluginsrepository;
     }
 
     /// <summary>
-    /// Gets TipsDat data.
+    /// Gets TipsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TipsDat.</returns>
-    public ReadOnlyCollection<TipsDat> LoadTipsDat()
+    /// <returns>repository of TipsRepository.</returns>
+    public TipsRepository LoadTipsRepository()
     {
-        return TipsDat.Load(dataLoader).AsReadOnly();
+        tipsrepository ??= new TipsRepository(logger, this);
+        return tipsrepository;
     }
 
     /// <summary>
-    /// Gets TopologiesDat data.
+    /// Gets TopologiesRepository data.
     /// </summary>
-    /// <returns>readonly collection of TopologiesDat.</returns>
-    public ReadOnlyCollection<TopologiesDat> LoadTopologiesDat()
+    /// <returns>repository of TopologiesRepository.</returns>
+    public TopologiesRepository LoadTopologiesRepository()
     {
-        return TopologiesDat.Load(dataLoader).AsReadOnly();
+        topologiesrepository ??= new TopologiesRepository(logger, this);
+        return topologiesrepository;
     }
 
     /// <summary>
-    /// Gets TradeMarketCategoryDat data.
+    /// Gets TradeMarketCategoryRepository data.
     /// </summary>
-    /// <returns>readonly collection of TradeMarketCategoryDat.</returns>
-    public ReadOnlyCollection<TradeMarketCategoryDat> LoadTradeMarketCategoryDat()
+    /// <returns>repository of TradeMarketCategoryRepository.</returns>
+    public TradeMarketCategoryRepository LoadTradeMarketCategoryRepository()
     {
-        return TradeMarketCategoryDat.Load(dataLoader).AsReadOnly();
+        trademarketcategoryrepository ??= new TradeMarketCategoryRepository(logger, this);
+        return trademarketcategoryrepository;
     }
 
     /// <summary>
-    /// Gets TradeMarketCategoryGroupsDat data.
+    /// Gets TradeMarketCategoryGroupsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TradeMarketCategoryGroupsDat.</returns>
-    public ReadOnlyCollection<TradeMarketCategoryGroupsDat> LoadTradeMarketCategoryGroupsDat()
+    /// <returns>repository of TradeMarketCategoryGroupsRepository.</returns>
+    public TradeMarketCategoryGroupsRepository LoadTradeMarketCategoryGroupsRepository()
     {
-        return TradeMarketCategoryGroupsDat.Load(dataLoader).AsReadOnly();
+        trademarketcategorygroupsrepository ??= new TradeMarketCategoryGroupsRepository(logger, this);
+        return trademarketcategorygroupsrepository;
     }
 
     /// <summary>
-    /// Gets TradeMarketCategoryListAllClassDat data.
+    /// Gets TradeMarketCategoryListAllClassRepository data.
     /// </summary>
-    /// <returns>readonly collection of TradeMarketCategoryListAllClassDat.</returns>
-    public ReadOnlyCollection<TradeMarketCategoryListAllClassDat> LoadTradeMarketCategoryListAllClassDat()
+    /// <returns>repository of TradeMarketCategoryListAllClassRepository.</returns>
+    public TradeMarketCategoryListAllClassRepository LoadTradeMarketCategoryListAllClassRepository()
     {
-        return TradeMarketCategoryListAllClassDat.Load(dataLoader).AsReadOnly();
+        trademarketcategorylistallclassrepository ??= new TradeMarketCategoryListAllClassRepository(logger, this);
+        return trademarketcategorylistallclassrepository;
     }
 
     /// <summary>
-    /// Gets TradeMarketIndexItemAsDat data.
+    /// Gets TradeMarketIndexItemAsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TradeMarketIndexItemAsDat.</returns>
-    public ReadOnlyCollection<TradeMarketIndexItemAsDat> LoadTradeMarketIndexItemAsDat()
+    /// <returns>repository of TradeMarketIndexItemAsRepository.</returns>
+    public TradeMarketIndexItemAsRepository LoadTradeMarketIndexItemAsRepository()
     {
-        return TradeMarketIndexItemAsDat.Load(dataLoader).AsReadOnly();
+        trademarketindexitemasrepository ??= new TradeMarketIndexItemAsRepository(logger, this);
+        return trademarketindexitemasrepository;
     }
 
     /// <summary>
-    /// Gets TreasureHunterMissionsDat data.
+    /// Gets TreasureHunterMissionsRepository data.
     /// </summary>
-    /// <returns>readonly collection of TreasureHunterMissionsDat.</returns>
-    public ReadOnlyCollection<TreasureHunterMissionsDat> LoadTreasureHunterMissionsDat()
+    /// <returns>repository of TreasureHunterMissionsRepository.</returns>
+    public TreasureHunterMissionsRepository LoadTreasureHunterMissionsRepository()
     {
-        return TreasureHunterMissionsDat.Load(dataLoader).AsReadOnly();
+        treasurehuntermissionsrepository ??= new TreasureHunterMissionsRepository(logger, this);
+        return treasurehuntermissionsrepository;
     }
 
     /// <summary>
-    /// Gets TriggerBeamDat data.
+    /// Gets TriggerBeamRepository data.
     /// </summary>
-    /// <returns>readonly collection of TriggerBeamDat.</returns>
-    public ReadOnlyCollection<TriggerBeamDat> LoadTriggerBeamDat()
+    /// <returns>repository of TriggerBeamRepository.</returns>
+    public TriggerBeamRepository LoadTriggerBeamRepository()
     {
-        return TriggerBeamDat.Load(dataLoader).AsReadOnly();
+        triggerbeamrepository ??= new TriggerBeamRepository(logger, this);
+        return triggerbeamrepository;
     }
 
     /// <summary>
-    /// Gets TriggerSpawnersDat data.
+    /// Gets TriggerSpawnersRepository data.
     /// </summary>
-    /// <returns>readonly collection of TriggerSpawnersDat.</returns>
-    public ReadOnlyCollection<TriggerSpawnersDat> LoadTriggerSpawnersDat()
+    /// <returns>repository of TriggerSpawnersRepository.</returns>
+    public TriggerSpawnersRepository LoadTriggerSpawnersRepository()
     {
-        return TriggerSpawnersDat.Load(dataLoader).AsReadOnly();
+        triggerspawnersrepository ??= new TriggerSpawnersRepository(logger, this);
+        return triggerspawnersrepository;
     }
 
     /// <summary>
-    /// Gets TutorialDat data.
+    /// Gets TutorialRepository data.
     /// </summary>
-    /// <returns>readonly collection of TutorialDat.</returns>
-    public ReadOnlyCollection<TutorialDat> LoadTutorialDat()
+    /// <returns>repository of TutorialRepository.</returns>
+    public TutorialRepository LoadTutorialRepository()
     {
-        return TutorialDat.Load(dataLoader).AsReadOnly();
+        tutorialrepository ??= new TutorialRepository(logger, this);
+        return tutorialrepository;
     }
 
     /// <summary>
-    /// Gets UITalkTextDat data.
+    /// Gets UITalkTextRepository data.
     /// </summary>
-    /// <returns>readonly collection of UITalkTextDat.</returns>
-    public ReadOnlyCollection<UITalkTextDat> LoadUITalkTextDat()
+    /// <returns>repository of UITalkTextRepository.</returns>
+    public UITalkTextRepository LoadUITalkTextRepository()
     {
-        return UITalkTextDat.Load(dataLoader).AsReadOnly();
+        uitalktextrepository ??= new UITalkTextRepository(logger, this);
+        return uitalktextrepository;
     }
 
     /// <summary>
-    /// Gets UniqueChestsDat data.
+    /// Gets UniqueChestsRepository data.
     /// </summary>
-    /// <returns>readonly collection of UniqueChestsDat.</returns>
-    public ReadOnlyCollection<UniqueChestsDat> LoadUniqueChestsDat()
+    /// <returns>repository of UniqueChestsRepository.</returns>
+    public UniqueChestsRepository LoadUniqueChestsRepository()
     {
-        return UniqueChestsDat.Load(dataLoader).AsReadOnly();
+        uniquechestsrepository ??= new UniqueChestsRepository(logger, this);
+        return uniquechestsrepository;
     }
 
     /// <summary>
-    /// Gets UniqueJewelLimitsDat data.
+    /// Gets UniqueJewelLimitsRepository data.
     /// </summary>
-    /// <returns>readonly collection of UniqueJewelLimitsDat.</returns>
-    public ReadOnlyCollection<UniqueJewelLimitsDat> LoadUniqueJewelLimitsDat()
+    /// <returns>repository of UniqueJewelLimitsRepository.</returns>
+    public UniqueJewelLimitsRepository LoadUniqueJewelLimitsRepository()
     {
-        return UniqueJewelLimitsDat.Load(dataLoader).AsReadOnly();
+        uniquejewellimitsrepository ??= new UniqueJewelLimitsRepository(logger, this);
+        return uniquejewellimitsrepository;
     }
 
     /// <summary>
-    /// Gets UniqueMapInfoDat data.
+    /// Gets UniqueMapInfoRepository data.
     /// </summary>
-    /// <returns>readonly collection of UniqueMapInfoDat.</returns>
-    public ReadOnlyCollection<UniqueMapInfoDat> LoadUniqueMapInfoDat()
+    /// <returns>repository of UniqueMapInfoRepository.</returns>
+    public UniqueMapInfoRepository LoadUniqueMapInfoRepository()
     {
-        return UniqueMapInfoDat.Load(dataLoader).AsReadOnly();
+        uniquemapinforepository ??= new UniqueMapInfoRepository(logger, this);
+        return uniquemapinforepository;
     }
 
     /// <summary>
-    /// Gets UniqueMapsDat data.
+    /// Gets UniqueMapsRepository data.
     /// </summary>
-    /// <returns>readonly collection of UniqueMapsDat.</returns>
-    public ReadOnlyCollection<UniqueMapsDat> LoadUniqueMapsDat()
+    /// <returns>repository of UniqueMapsRepository.</returns>
+    public UniqueMapsRepository LoadUniqueMapsRepository()
     {
-        return UniqueMapsDat.Load(dataLoader).AsReadOnly();
+        uniquemapsrepository ??= new UniqueMapsRepository(logger, this);
+        return uniquemapsrepository;
     }
 
     /// <summary>
-    /// Gets UniqueStashLayoutDat data.
+    /// Gets UniqueStashLayoutRepository data.
     /// </summary>
-    /// <returns>readonly collection of UniqueStashLayoutDat.</returns>
-    public ReadOnlyCollection<UniqueStashLayoutDat> LoadUniqueStashLayoutDat()
+    /// <returns>repository of UniqueStashLayoutRepository.</returns>
+    public UniqueStashLayoutRepository LoadUniqueStashLayoutRepository()
     {
-        return UniqueStashLayoutDat.Load(dataLoader).AsReadOnly();
+        uniquestashlayoutrepository ??= new UniqueStashLayoutRepository(logger, this);
+        return uniquestashlayoutrepository;
     }
 
     /// <summary>
-    /// Gets UniqueStashTypesDat data.
+    /// Gets UniqueStashTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of UniqueStashTypesDat.</returns>
-    public ReadOnlyCollection<UniqueStashTypesDat> LoadUniqueStashTypesDat()
+    /// <returns>repository of UniqueStashTypesRepository.</returns>
+    public UniqueStashTypesRepository LoadUniqueStashTypesRepository()
     {
-        return UniqueStashTypesDat.Load(dataLoader).AsReadOnly();
+        uniquestashtypesrepository ??= new UniqueStashTypesRepository(logger, this);
+        return uniquestashtypesrepository;
     }
 
     /// <summary>
-    /// Gets VirtualStatContextFlagsDat data.
+    /// Gets VirtualStatContextFlagsRepository data.
     /// </summary>
-    /// <returns>readonly collection of VirtualStatContextFlagsDat.</returns>
-    public ReadOnlyCollection<VirtualStatContextFlagsDat> LoadVirtualStatContextFlagsDat()
+    /// <returns>repository of VirtualStatContextFlagsRepository.</returns>
+    public VirtualStatContextFlagsRepository LoadVirtualStatContextFlagsRepository()
     {
-        return VirtualStatContextFlagsDat.Load(dataLoader).AsReadOnly();
+        virtualstatcontextflagsrepository ??= new VirtualStatContextFlagsRepository(logger, this);
+        return virtualstatcontextflagsrepository;
     }
 
     /// <summary>
-    /// Gets VoteStateDat data.
+    /// Gets VoteStateRepository data.
     /// </summary>
-    /// <returns>readonly collection of VoteStateDat.</returns>
-    public ReadOnlyCollection<VoteStateDat> LoadVoteStateDat()
+    /// <returns>repository of VoteStateRepository.</returns>
+    public VoteStateRepository LoadVoteStateRepository()
     {
-        return VoteStateDat.Load(dataLoader).AsReadOnly();
+        votestaterepository ??= new VoteStateRepository(logger, this);
+        return votestaterepository;
     }
 
     /// <summary>
-    /// Gets VoteTypeDat data.
+    /// Gets VoteTypeRepository data.
     /// </summary>
-    /// <returns>readonly collection of VoteTypeDat.</returns>
-    public ReadOnlyCollection<VoteTypeDat> LoadVoteTypeDat()
+    /// <returns>repository of VoteTypeRepository.</returns>
+    public VoteTypeRepository LoadVoteTypeRepository()
     {
-        return VoteTypeDat.Load(dataLoader).AsReadOnly();
+        votetyperepository ??= new VoteTypeRepository(logger, this);
+        return votetyperepository;
     }
 
     /// <summary>
-    /// Gets WeaponClassesDat data.
+    /// Gets WeaponClassesRepository data.
     /// </summary>
-    /// <returns>readonly collection of WeaponClassesDat.</returns>
-    public ReadOnlyCollection<WeaponClassesDat> LoadWeaponClassesDat()
+    /// <returns>repository of WeaponClassesRepository.</returns>
+    public WeaponClassesRepository LoadWeaponClassesRepository()
     {
-        return WeaponClassesDat.Load(dataLoader).AsReadOnly();
+        weaponclassesrepository ??= new WeaponClassesRepository(logger, this);
+        return weaponclassesrepository;
     }
 
     /// <summary>
-    /// Gets WeaponImpactSoundDataDat data.
+    /// Gets WeaponImpactSoundDataRepository data.
     /// </summary>
-    /// <returns>readonly collection of WeaponImpactSoundDataDat.</returns>
-    public ReadOnlyCollection<WeaponImpactSoundDataDat> LoadWeaponImpactSoundDataDat()
+    /// <returns>repository of WeaponImpactSoundDataRepository.</returns>
+    public WeaponImpactSoundDataRepository LoadWeaponImpactSoundDataRepository()
     {
-        return WeaponImpactSoundDataDat.Load(dataLoader).AsReadOnly();
+        weaponimpactsounddatarepository ??= new WeaponImpactSoundDataRepository(logger, this);
+        return weaponimpactsounddatarepository;
     }
 
     /// <summary>
-    /// Gets WeaponTypesDat data.
+    /// Gets WeaponTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of WeaponTypesDat.</returns>
-    public ReadOnlyCollection<WeaponTypesDat> LoadWeaponTypesDat()
+    /// <returns>repository of WeaponTypesRepository.</returns>
+    public WeaponTypesRepository LoadWeaponTypesRepository()
     {
-        return WeaponTypesDat.Load(dataLoader).AsReadOnly();
+        weapontypesrepository ??= new WeaponTypesRepository(logger, this);
+        return weapontypesrepository;
     }
 
     /// <summary>
-    /// Gets WindowCursorsDat data.
+    /// Gets WindowCursorsRepository data.
     /// </summary>
-    /// <returns>readonly collection of WindowCursorsDat.</returns>
-    public ReadOnlyCollection<WindowCursorsDat> LoadWindowCursorsDat()
+    /// <returns>repository of WindowCursorsRepository.</returns>
+    public WindowCursorsRepository LoadWindowCursorsRepository()
     {
-        return WindowCursorsDat.Load(dataLoader).AsReadOnly();
+        windowcursorsrepository ??= new WindowCursorsRepository(logger, this);
+        return windowcursorsrepository;
     }
 
     /// <summary>
-    /// Gets WordsDat data.
+    /// Gets WordsRepository data.
     /// </summary>
-    /// <returns>readonly collection of WordsDat.</returns>
-    public ReadOnlyCollection<WordsDat> LoadWordsDat()
+    /// <returns>repository of WordsRepository.</returns>
+    public WordsRepository LoadWordsRepository()
     {
-        return WordsDat.Load(dataLoader).AsReadOnly();
+        wordsrepository ??= new WordsRepository(logger, this);
+        return wordsrepository;
     }
 
     /// <summary>
-    /// Gets WorldAreasDat data.
+    /// Gets WorldAreasRepository data.
     /// </summary>
-    /// <returns>readonly collection of WorldAreasDat.</returns>
-    public ReadOnlyCollection<WorldAreasDat> LoadWorldAreasDat()
+    /// <returns>repository of WorldAreasRepository.</returns>
+    public WorldAreasRepository LoadWorldAreasRepository()
     {
-        return WorldAreasDat.Load(dataLoader).AsReadOnly();
+        worldareasrepository ??= new WorldAreasRepository(logger, this);
+        return worldareasrepository;
     }
 
     /// <summary>
-    /// Gets WorldAreaLeagueChancesDat data.
+    /// Gets WorldAreaLeagueChancesRepository data.
     /// </summary>
-    /// <returns>readonly collection of WorldAreaLeagueChancesDat.</returns>
-    public ReadOnlyCollection<WorldAreaLeagueChancesDat> LoadWorldAreaLeagueChancesDat()
+    /// <returns>repository of WorldAreaLeagueChancesRepository.</returns>
+    public WorldAreaLeagueChancesRepository LoadWorldAreaLeagueChancesRepository()
     {
-        return WorldAreaLeagueChancesDat.Load(dataLoader).AsReadOnly();
+        worldarealeaguechancesrepository ??= new WorldAreaLeagueChancesRepository(logger, this);
+        return worldarealeaguechancesrepository;
     }
 
     /// <summary>
-    /// Gets WorldPopupIconTypesDat data.
+    /// Gets WorldPopupIconTypesRepository data.
     /// </summary>
-    /// <returns>readonly collection of WorldPopupIconTypesDat.</returns>
-    public ReadOnlyCollection<WorldPopupIconTypesDat> LoadWorldPopupIconTypesDat()
+    /// <returns>repository of WorldPopupIconTypesRepository.</returns>
+    public WorldPopupIconTypesRepository LoadWorldPopupIconTypesRepository()
     {
-        return WorldPopupIconTypesDat.Load(dataLoader).AsReadOnly();
+        worldpopupicontypesrepository ??= new WorldPopupIconTypesRepository(logger, this);
+        return worldpopupicontypesrepository;
     }
 
     /// <summary>
-    /// Gets ZanaLevelsDat data.
+    /// Gets ZanaLevelsRepository data.
     /// </summary>
-    /// <returns>readonly collection of ZanaLevelsDat.</returns>
-    public ReadOnlyCollection<ZanaLevelsDat> LoadZanaLevelsDat()
+    /// <returns>repository of ZanaLevelsRepository.</returns>
+    public ZanaLevelsRepository LoadZanaLevelsRepository()
     {
-        return ZanaLevelsDat.Load(dataLoader).AsReadOnly();
+        zanalevelsrepository ??= new ZanaLevelsRepository(logger, this);
+        return zanalevelsrepository;
     }
 }
