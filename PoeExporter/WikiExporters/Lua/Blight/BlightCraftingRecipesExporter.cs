@@ -52,13 +52,13 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
         var results = new List<BlightCraftingRecipe>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var craftingRecipes = specification.LoadBlightCraftingRecipesDat();
-        var craftingResults = specification.LoadBlightCraftingResultsDat();
-        var craftingTypes = specification.LoadBlightCraftingTypesDat();
-        var passiveSkills = specification.LoadPassiveSkillsDat();
-        var mods = specification.LoadModsDat();
+        var craftingRecipes = specification.LoadBlightCraftingRecipesRepository();
+        var craftingResults = specification.LoadBlightCraftingResultsRepository();
+        var craftingTypes = specification.LoadBlightCraftingTypesRepository();
+        var passiveSkills = specification.LoadPassiveSkillsRepository();
+        var mods = specification.LoadModsRepository();
 
-        foreach (var recipe in craftingRecipes)
+        foreach (var recipe in craftingRecipes.Items)
         {
             var resultKey = recipe.BlightCraftingResultsKey;
             if (resultKey is null)
@@ -67,7 +67,7 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
                 continue;
             }
 
-            var craftingResult = craftingResults[resultKey.Value];
+            var craftingResult = craftingResults.Items[resultKey.Value];
             var passiveSkillsKey = craftingResult.PassiveSkillsKey;
             var modsKey = craftingResult.ModsKey;
 
@@ -84,13 +84,13 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
             PassiveSkillsDat? passiveSkill = null;
             if (passiveSkillsKey is not null)
             {
-                passiveSkill = passiveSkills[passiveSkillsKey.Value];
+                passiveSkill = passiveSkills.Items[passiveSkillsKey.Value];
             }
 
             ModsDat? modifier = null;
             if (modsKey is not null)
             {
-                modifier = mods[modsKey.Value];
+                modifier = mods.Items[modsKey.Value];
             }
 
             var passiveId = passiveSkill?.Id;
@@ -103,7 +103,7 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
                 continue;
             }
 
-            var craftingType = craftingTypes[typesKey.Value];
+            var craftingType = craftingTypes.Items[typesKey.Value];
             var type = craftingType.Id;
 
             var result = new BlightCraftingRecipe()

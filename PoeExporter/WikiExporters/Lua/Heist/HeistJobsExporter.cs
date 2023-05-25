@@ -47,9 +47,9 @@ internal sealed class HeistJobsExporter : IExporter<HeistJobsExporter>
         var results = new List<HeistJob>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var jobs = specification.LoadHeistJobsDat();
+        var jobs = specification.LoadHeistJobsRepository();
 
-        foreach (var job in jobs)
+        foreach (var job in jobs.Items)
         {
             var obj = new HeistJob()
             {

@@ -47,9 +47,9 @@ internal sealed class HarvestCraftOptionsExporter : IExporter<HarvestCraftOption
         var results = new List<HarvestCraftOption>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var craftOptions = specification.LoadHarvestCraftOptionsDat();
+        var craftOptions = specification.LoadHarvestCraftOptionsRepository();
 
-        foreach (var craft in craftOptions)
+        foreach (var craft in craftOptions.Items)
         {
             var harvestCraftTierKey = craft.Unknown16;
             if (harvestCraftTierKey is null)

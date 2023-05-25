@@ -47,9 +47,9 @@ internal sealed class DelveLevelScalingExporter : IExporter<DelveLevelScalingExp
         var results = new List<DelveLevelScale>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var delveScaling = specification.LoadDelveLevelScalingDat();
+        var delveScaling = specification.LoadDelveLevelScalingRepository();
 
-        foreach (var delveScale in delveScaling)
+        foreach (var delveScale in delveScaling.Items)
         {
             var obj = new DelveLevelScale()
             {

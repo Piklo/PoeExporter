@@ -47,9 +47,9 @@ internal sealed class DelveResourcesPerLevelExporter : IExporter<DelveResourcesP
         var results = new List<DelveResourcePerLevel>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var resourcesPerLevel = specification.LoadDelveResourcePerLevelDat();
+        var resourcesPerLevel = specification.LoadDelveResourcePerLevelRepository();
 
-        foreach (var resource in resourcesPerLevel)
+        foreach (var resource in resourcesPerLevel.Items)
         {
             var obj = new DelveResourcePerLevel()
             {

@@ -48,34 +48,34 @@ internal sealed class BestiaryComponentsExporter : IExporter<BestiaryComponentsE
         var results = new List<BestiaryComponent>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var bestiaryRecipeComponents = specification.LoadBestiaryRecipeComponentDat();
-        var bestiaryFamilies = specification.LoadBestiaryFamiliesDat();
-        var bestiaryGroups = specification.LoadBestiaryGroupsDat();
-        var mods = specification.LoadModsDat();
-        var bestiaryCapturableMonsters = specification.LoadBestiaryCapturableMonstersDat();
-        var rarities = specification.LoadRarityDat();
-        var bestiaryGenus = specification.LoadBestiaryGenusDat();
-        var clientStrings = specification.LoadClientStringsDat().ToDictionary(x => x.Id);
+        var bestiaryRecipeComponents = specification.LoadBestiaryRecipeComponentRepository();
+        var bestiaryFamilies = specification.LoadBestiaryFamiliesRepository();
+        var bestiaryGroups = specification.LoadBestiaryGroupsRepository();
+        var mods = specification.LoadModsRepository();
+        var bestiaryCapturableMonsters = specification.LoadBestiaryCapturableMonstersRepository();
+        var rarities = specification.LoadRarityRepository();
+        var bestiaryGenus = specification.LoadBestiaryGenusRepository();
+        var clientStrings = specification.LoadClientStringsRepository().Items.ToDictionary(x => x.Id);
 
-        foreach (var bestiaryRecipeComponent in bestiaryRecipeComponents)
+        foreach (var bestiaryRecipeComponent in bestiaryRecipeComponents.Items)
         {
             var monsterKey = bestiaryRecipeComponent.BestiaryCapturableMonstersKey;
-            var monster = monsterKey is not null ? bestiaryCapturableMonsters[monsterKey.Value] : null;
+            var monster = monsterKey is not null ? bestiaryCapturableMonsters.Items[monsterKey.Value] : null;
 
             var familyKey = bestiaryRecipeComponent.BestiaryFamiliesKey;
-            var family = familyKey is not null ? bestiaryFamilies[familyKey.Value] : null;
+            var family = familyKey is not null ? bestiaryFamilies.Items[familyKey.Value] : null;
 
             var groupKey = bestiaryRecipeComponent.BestiaryGroupsKey;
-            var group = groupKey is not null ? bestiaryGroups[groupKey.Value] : null;
+            var group = groupKey is not null ? bestiaryGroups.Items[groupKey.Value] : null;
 
             var modKey = bestiaryRecipeComponent.ModsKey;
-            var mod = modKey is not null ? mods[modKey.Value] : null;
+            var mod = modKey is not null ? mods.Items[modKey.Value] : null;
 
             var genusKey = bestiaryRecipeComponent.BestiaryGenusKey;
-            var genus = genusKey is not null ? bestiaryGenus[genusKey.Value] : null;
+            var genus = genusKey is not null ? bestiaryGenus.Items[genusKey.Value] : null;
 
             var rarityKey = bestiaryRecipeComponent.BeastRarity;
-            var rarity = rarityKey is not null ? rarities[rarityKey.Value] : null;
+            var rarity = rarityKey is not null ? rarities.Items[rarityKey.Value] : null;
 
             var displayRarity =
                 rarity?.Id is not null ? $"ItemDisplayString{CultureInfo.InvariantCulture.TextInfo.ToTitleCase(rarity.Id.ToLower())}" : null;

@@ -47,13 +47,13 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
         var results = new List<DelveFossil>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var craftingModifiers = specification.LoadDelveCraftingModifiersDat();
-        var baseItems = specification.LoadBaseItemTypesDat();
-        var mods = specification.LoadModsDat();
-        var delveCraftingTags = specification.LoadDelveCraftingTagsDat();
-        var tags = specification.LoadTagsDat();
+        var craftingModifiers = specification.LoadDelveCraftingModifiersRepository();
+        var baseItems = specification.LoadBaseItemTypesRepository();
+        var mods = specification.LoadModsRepository();
+        var delveCraftingTags = specification.LoadDelveCraftingTagsRepository();
+        var tags = specification.LoadTagsRepository();
 
-        foreach (var modifier in craftingModifiers)
+        foreach (var modifier in craftingModifiers.Items)
         {
             if (modifier.BaseItemTypesKey is null)
             {
@@ -61,7 +61,7 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
                 continue;
             }
 
-            var baseItem = baseItems[modifier.BaseItemTypesKey.Value];
+            var baseItem = baseItems.Items[modifier.BaseItemTypesKey.Value];
 
             if (baseItem.Id.Contains("RandomFossilOutcome"))
             {
@@ -72,7 +72,7 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
             for (var i = 0; i < modifier.AddedModsKeys.Count; i++)
             {
                 var key = modifier.AddedModsKeys[i];
-                var mod = mods[key];
+                var mod = mods.Items[key];
                 addedModIds[i] = mod.Id;
             }
 
@@ -80,7 +80,7 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
             for (var i = 0; i < modifier.ForcedAddModsKeys.Count; i++)
             {
                 var key = modifier.ForcedAddModsKeys[i];
-                var mod = mods[key];
+                var mod = mods.Items[key];
                 forcedModIds[i] = mod.Id;
             }
 
@@ -88,7 +88,7 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
             for (var i = 0; i < modifier.SellPrice_ModsKeys.Count; i++)
             {
                 var key = modifier.SellPrice_ModsKeys[i];
-                var mod = mods[key];
+                var mod = mods.Items[key];
                 sellPriceModIds[i] = mod.Id;
             }
 
@@ -96,14 +96,14 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
             for (var i = 0; i < modifier.ForbiddenDelveCraftingTagsKeys.Count; i++)
             {
                 var key = modifier.ForbiddenDelveCraftingTagsKeys[i];
-                var delveTag = delveCraftingTags[key];
+                var delveTag = delveCraftingTags.Items[key];
                 if (delveTag.TagsKey is null)
                 {
                     logger.Warning("{var} has null {prop}", nameof(delveTag), nameof(delveTag.TagsKey));
                     continue;
                 }
 
-                var tag = tags[delveTag.TagsKey.Value];
+                var tag = tags.Items[delveTag.TagsKey.Value];
                 forbiddenTags[i] = tag.Id;
             }
 
@@ -111,14 +111,14 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
             for (var i = 0; i < modifier.AllowedDelveCraftingTagsKeys.Count; i++)
             {
                 var key = modifier.AllowedDelveCraftingTagsKeys[i];
-                var delveTag = delveCraftingTags[key];
+                var delveTag = delveCraftingTags.Items[key];
                 if (delveTag.TagsKey is null)
                 {
                     logger.Warning("{var} has null {prop}", nameof(delveTag), nameof(delveTag.TagsKey));
                     continue;
                 }
 
-                var tag = tags[delveTag.TagsKey.Value];
+                var tag = tags.Items[delveTag.TagsKey.Value];
                 allowedTags[i] = tag.Id;
             }
 

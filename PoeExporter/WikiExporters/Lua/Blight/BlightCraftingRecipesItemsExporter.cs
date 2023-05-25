@@ -47,11 +47,11 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraft
         var results = new List<BlightCraftingRecipesItem>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var recipes = specification.LoadBlightCraftingRecipesDat();
-        var craftingItems = specification.LoadBlightCraftingItemsDat();
-        var baseItems = specification.LoadBaseItemTypesDat();
+        var recipes = specification.LoadBlightCraftingRecipesRepository();
+        var craftingItems = specification.LoadBlightCraftingItemsRepository();
+        var baseItems = specification.LoadBaseItemTypesRepository();
 
-        foreach (var recipe in recipes)
+        foreach (var recipe in recipes.Items)
         {
             for (var i = 0; i < recipe.BlightCraftingItemsKeys.Count; i++)
             {
@@ -59,7 +59,7 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraft
                 var recipeId = recipe.Id;
 
                 var blightCraftingItemKey = recipe.BlightCraftingItemsKeys[i];
-                var blightCraftingItem = craftingItems[blightCraftingItemKey];
+                var blightCraftingItem = craftingItems.Items[blightCraftingItemKey];
                 var oil = blightCraftingItem.Oil;
 
                 if (oil is null)
@@ -68,7 +68,7 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraft
                     continue;
                 }
 
-                var itemId = baseItems[oil.Value].Id;
+                var itemId = baseItems.Items[oil.Value].Id;
 
                 var res = new BlightCraftingRecipesItem()
                 {

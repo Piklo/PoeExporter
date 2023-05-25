@@ -47,33 +47,33 @@ internal sealed class CraftingBenchOptionsExporter : IExporter<CraftingBenchOpti
         var results = new List<CraftingBenchOption>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var benchOptions = specification.LoadCraftingBenchOptionsDat();
-        var hideoutNpcs = specification.LoadHideoutNPCsDat();
-        var npcs = specification.LoadNPCsDat();
-        var mods = specification.LoadModsDat();
-        var itemClasses = specification.LoadItemClassesDat();
-        var recipeUnlocks = specification.LoadRecipeUnlockDisplayDat().
-            ToDictionary(x => x.RecipeId);
-        var worldAreas = specification.LoadWorldAreasDat();
-        var craftingClassCategories = specification.LoadCraftingItemClassCategoriesDat();
-        var craftingBenchSortCategories = specification.LoadCraftingBenchSortCategoriesDat();
+        var benchOptions = specification.LoadCraftingBenchOptionsRepository();
+        var hideoutNpcs = specification.LoadHideoutNPCsRepository();
+        var npcs = specification.LoadNPCsRepository();
+        var mods = specification.LoadModsRepository();
+        var itemClasses = specification.LoadItemClassesRepository();
+        var recipeUnlocks = specification.LoadRecipeUnlockDisplayRepository()
+            .Items.ToDictionary(x => x.RecipeId);
+        var worldAreas = specification.LoadWorldAreasRepository();
+        var craftingClassCategories = specification.LoadCraftingItemClassCategoriesRepository();
+        var craftingBenchSortCategories = specification.LoadCraftingBenchSortCategoriesRepository();
 
-        for (var rowId = 0; rowId < benchOptions.Count; rowId++)
+        for (var rowId = 0; rowId < benchOptions.Items.Count; rowId++)
         {
-            var benchOption = benchOptions[rowId];
-            var hideoutNpc = benchOption.HideoutNPCsKey is not null ? hideoutNpcs[benchOption.HideoutNPCsKey.Value] : null;
+            var benchOption = benchOptions.Items[rowId];
+            var hideoutNpc = benchOption.HideoutNPCsKey is not null ? hideoutNpcs.Items[benchOption.HideoutNPCsKey.Value] : null;
 
             var npc =
-                hideoutNpc is not null && hideoutNpc.Hideout_NPCsKey is not null ? npcs[hideoutNpc.Hideout_NPCsKey.Value] : null;
+                hideoutNpc is not null && hideoutNpc.Hideout_NPCsKey is not null ? npcs.Items[hideoutNpc.Hideout_NPCsKey.Value] : null;
 
-            var mod = benchOption.AddMod is not null ? mods[benchOption.AddMod.Value] : null;
+            var mod = benchOption.AddMod is not null ? mods.Items[benchOption.AddMod.Value] : null;
 
             var localItemClasses = new string[benchOption.ItemClasses.Count];
             var itemClassIds = new string[benchOption.ItemClasses.Count];
             for (var i = 0; i < benchOption.ItemClasses.Count; i++)
             {
                 var itemClassKey = benchOption.ItemClasses[i];
-                var itemClass = itemClasses[itemClassKey];
+                var itemClass = itemClasses.Items[itemClassKey];
                 localItemClasses[i] = itemClass.Name;
                 itemClassIds[i] = itemClass.Id;
             }
@@ -87,13 +87,13 @@ internal sealed class CraftingBenchOptionsExporter : IExporter<CraftingBenchOpti
             int? recipeId = benchOption.RecipeIds.Count != 0 ? benchOption.RecipeIds[0] : null;
             var recipeUnlock = recipeId is not null ? recipeUnlocks[recipeId.Value] : null;
             var area =
-                recipeUnlock is not null && recipeUnlock.UnlockArea is not null ? worldAreas[recipeUnlock.UnlockArea.Value] : null;
+                recipeUnlock is not null && recipeUnlock.UnlockArea is not null ? worldAreas.Items[recipeUnlock.UnlockArea.Value] : null;
 
             var itemClassCategories = new string[benchOption.CraftingItemClassCategories.Count];
             for (var i = 0; i < benchOption.CraftingItemClassCategories.Count; i++)
             {
                 var key = benchOption.CraftingItemClassCategories[i];
-                var item = craftingClassCategories[key];
+                var item = craftingClassCategories.Items[key];
                 itemClassCategories[i] = item.Text;
             }
 
@@ -103,7 +103,7 @@ internal sealed class CraftingBenchOptionsExporter : IExporter<CraftingBenchOpti
                 continue;
             }
 
-            var affixType = craftingBenchSortCategories[benchOption.SortCategory.Value].Id;
+            var affixType = craftingBenchSortCategories.Items[benchOption.SortCategory.Value].Id;
 
             var obj = new CraftingBenchOption()
             {

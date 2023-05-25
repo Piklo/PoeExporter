@@ -47,20 +47,20 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
         var results = new List<HeistArea>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var heistAreas = specification.LoadHeistAreasDat();
-        var worldAreas = specification.LoadWorldAreasDat();
-        var heistJobs = specification.LoadHeistJobsDat();
-        var baseItems = specification.LoadBaseItemTypesDat();
-        var clientStrings = specification.LoadClientStringsDat();
+        var heistAreas = specification.LoadHeistAreasRepository();
+        var worldAreas = specification.LoadWorldAreasRepository();
+        var heistJobs = specification.LoadHeistJobsRepository();
+        var baseItems = specification.LoadBaseItemTypesRepository();
+        var clientStrings = specification.LoadClientStringsRepository();
 
-        foreach (var heistArea in heistAreas)
+        foreach (var heistArea in heistAreas.Items)
         {
             var worldAreaKeys = heistArea.WorldAreasKeys;
             var areas = new string[worldAreaKeys.Count];
             for (var i = 0; i < worldAreaKeys.Count; i++)
             {
                 var key = worldAreaKeys[i];
-                var area = worldAreas[key];
+                var area = worldAreas.Items[key];
                 areas[i] = area.Id;
             }
 
@@ -69,7 +69,7 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
             for (var i = 0; i < jobKeys.Count; i++)
             {
                 var key = jobKeys[i];
-                var area = heistJobs[key];
+                var area = heistJobs.Items[key];
                 jobs[i] = area.Id;
             }
 
@@ -79,7 +79,7 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
                 continue;
             }
 
-            var contract = baseItems[contractKey.Value];
+            var contract = baseItems.Items[contractKey.Value];
 
             var blueprintKey = heistArea.Blueprint_BaseItemTypesKey;
             if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Blueprint_BaseItemTypesKey), blueprintKey, nameof(heistArea.Id), heistArea.Id))
@@ -87,7 +87,7 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
                 continue;
             }
 
-            var blueprint = baseItems[blueprintKey.Value];
+            var blueprint = baseItems.Items[blueprintKey.Value];
 
             var rewardKey = heistArea.Reward;
             if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Reward), rewardKey, nameof(heistArea.Id), heistArea.Id))
@@ -95,7 +95,7 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
                 continue;
             }
 
-            var reward = clientStrings[rewardKey.Value];
+            var reward = clientStrings.Items[rewardKey.Value];
 
             var obj = new HeistArea()
             {

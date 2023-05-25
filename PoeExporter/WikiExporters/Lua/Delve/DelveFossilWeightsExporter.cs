@@ -48,16 +48,16 @@ internal sealed class DelveFossilWeightsExporter : IExporter<DelveFossilWeightsE
         var results = new List<DelveFossilWeight>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var delveCraftingMods = specification.LoadDelveCraftingModifiersDat();
-        var baseItems = specification.LoadBaseItemTypesDat();
-        var tags = specification.LoadTagsDat();
+        var delveCraftingMods = specification.LoadDelveCraftingModifiersRepository();
+        var baseItems = specification.LoadBaseItemTypesRepository();
+        var tags = specification.LoadTagsRepository();
 
         var additionalDatas = new AdditionalData[]
         {
             new AdditionalData("NegativeWeight", "override"),
             new AdditionalData("Weight", "added"),
         };
-        foreach (var modifier in delveCraftingMods)
+        foreach (var modifier in delveCraftingMods.Items)
         {
             foreach (var additionalData in additionalDatas)
             {
@@ -67,7 +67,7 @@ internal sealed class DelveFossilWeightsExporter : IExporter<DelveFossilWeightsE
                     continue;
                 }
 
-                var baseItem = baseItems[modifier.BaseItemTypesKey.Value];
+                var baseItem = baseItems.Items[modifier.BaseItemTypesKey.Value];
 
                 if (baseItem.Id.Contains("RandomFossilOutcome"))
                 {
@@ -80,7 +80,7 @@ internal sealed class DelveFossilWeightsExporter : IExporter<DelveFossilWeightsE
                 {
                     var weightKey = weightKeys[i];
                     var weightValue = weightValues[i];
-                    var tag = tags[weightKey];
+                    var tag = tags.Items[weightKey];
 
                     var obj = new DelveFossilWeight()
                     {

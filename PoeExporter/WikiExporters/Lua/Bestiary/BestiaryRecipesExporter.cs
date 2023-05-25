@@ -48,9 +48,9 @@ internal sealed class BestiaryRecipesExporter : IExporter<BestiaryRecipesExporte
         var results = new List<BestiaryRecipe>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var bestiaryRecipes = specification.LoadBestiaryRecipesDat();
+        var bestiaryRecipes = specification.LoadBestiaryRecipesRepository();
 
-        foreach (var recipe in bestiaryRecipes)
+        foreach (var recipe in bestiaryRecipes.Items)
         {
             var category = recipe.Category;
             if (category is null)
