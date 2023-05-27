@@ -1,7 +1,7 @@
 ﻿using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
-namespace PoeDataGenerator.ColumnGenerators;
+namespace PoeDataGenerator.ParsedColumns;
 
 /// <summary>
 /// Class which parses the column which is an int and is an array.

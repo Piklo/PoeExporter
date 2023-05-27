@@ -1,12 +1,12 @@
 ﻿using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
-namespace PoeDataGenerator.ColumnGenerators;
+namespace PoeDataGenerator.ParsedColumns;
 
 /// <summary>
-/// Class which parses the column which is a foreign row reference and is not an array.
+/// Class which parses the column which is a string and is an array.
 /// </summary>
-internal class ForeignRowNonArrayColumn : IParsedColumn
+internal sealed class StringArrayColumn : IParsedColumn
 {
     /// <inheritdoc/>
     public string ClassPropertyName { get; }
@@ -24,17 +24,17 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
     public int Offset { get; } = 16;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "int";
+    public string ClassPropertyUnderlyingType => "string";
 
     /// <inheritdoc/>
-    public string ClassPropertyType => $"{ClassPropertyUnderlyingType}?";
+    public string ClassPropertyType => $"ReadOnlyCollection<{ClassPropertyUnderlyingType}>";
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ForeignRowNonArrayColumn"/> class.
+    /// Initializes a new instance of the <see cref="StringArrayColumn"/> class.
     /// </summary>
     /// <param name="column">column to parse.</param>
     /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
-    public ForeignRowNonArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
+    public StringArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
@@ -61,7 +61,8 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"// loading {ClassPropertyName}",
-            $"(var {LoadingPropertyName}, offset) = SpecificationFileLoader.LoadForeignRowPrimaryKey(decompressedFile, offset);",
+            $"(var temp{LoadingPropertyName}, offset) = SpecificationFileLoader.LoadStringArray(decompressedFile, offset, dataOffset);",
+            $"var {LoadingPropertyName} = temp{LoadingPropertyName}.AsReadOnly();",
         };
 
         return strings;
@@ -70,13 +71,13 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
     {
-        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, true);
+        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, false);
     }
 
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
-        return RepositoryGetMethodsHelper.GetManyMethodNullableValueType(datClassName, fieldName, this);
+        return RepositoryGetMethodsHelper.GetManyMethodReferenceArrayType(datClassName, fieldName, this);
     }
 
     /// <inheritdoc/>

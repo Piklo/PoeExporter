@@ -1,13 +1,15 @@
-﻿using PoeDataGenerator;
-using PoeDataGenerator.RepositoryGenerators;
+﻿using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
-namespace PoeDataGenerator.ColumnGenerators;
+namespace PoeDataGenerator.ParsedColumns;
 
 /// <summary>
-/// Class which parses the column which is a string and is an array.
+/// Class which parses the column which is an array and is an array.
 /// </summary>
-internal sealed class StringArrayColumn : IParsedColumn
+/// <remarks>
+/// Only gods know what type array means, lets just assume it's array of ints for now.
+/// </remarks>
+internal sealed class ArrayArrayColumn : IParsedColumn
 {
     /// <inheritdoc/>
     public string ClassPropertyName { get; }
@@ -25,17 +27,17 @@ internal sealed class StringArrayColumn : IParsedColumn
     public int Offset { get; } = 16;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "string";
+    public string ClassPropertyUnderlyingType => "int";
 
     /// <inheritdoc/>
     public string ClassPropertyType => $"ReadOnlyCollection<{ClassPropertyUnderlyingType}>";
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="StringArrayColumn"/> class.
+    /// Initializes a new instance of the <see cref="ArrayArrayColumn"/> class.
     /// </summary>
     /// <param name="column">column to parse.</param>
     /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
-    public StringArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
+    public ArrayArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
@@ -62,7 +64,7 @@ internal sealed class StringArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"// loading {ClassPropertyName}",
-            $"(var temp{LoadingPropertyName}, offset) = SpecificationFileLoader.LoadStringArray(decompressedFile, offset, dataOffset);",
+            $"(var temp{LoadingPropertyName}, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);",
             $"var {LoadingPropertyName} = temp{LoadingPropertyName}.AsReadOnly();",
         };
 
@@ -78,7 +80,7 @@ internal sealed class StringArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
-        return RepositoryGetMethodsHelper.GetManyMethodReferenceArrayType(datClassName, fieldName, this);
+        return RepositoryGetMethodsHelper.GetManyMethodValueArrayType(datClassName, fieldName, this);
     }
 
     /// <inheritdoc/>

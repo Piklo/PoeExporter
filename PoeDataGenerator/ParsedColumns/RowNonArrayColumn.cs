@@ -1,12 +1,12 @@
 ﻿using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
-namespace PoeDataGenerator.ColumnGenerators;
+namespace PoeDataGenerator.ParsedColumns;
 
 /// <summary>
-/// Class which parses the column which is an enum row and is an array.
+/// Class which parses the column which is a row reference and is not an array.
 /// </summary>
-internal sealed class EnumRowArrayColumn : IParsedColumn
+internal class RowNonArrayColumn : IParsedColumn
 {
     /// <inheritdoc/>
     public string ClassPropertyName { get; }
@@ -21,20 +21,20 @@ internal sealed class EnumRowArrayColumn : IParsedColumn
     public string LoadingPropertyName { get; }
 
     /// <inheritdoc/>
-    public int Offset { get; } = 16;
+    public int Offset { get; } = 8;
 
     /// <inheritdoc/>
     public string ClassPropertyUnderlyingType => "int";
 
     /// <inheritdoc/>
-    public string ClassPropertyType => $"ReadOnlyCollection<{ClassPropertyUnderlyingType}>";
+    public string ClassPropertyType => $"{ClassPropertyUnderlyingType}?";
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="EnumRowArrayColumn"/> class.
+    /// Initializes a new instance of the <see cref="RowNonArrayColumn"/> class.
     /// </summary>
     /// <param name="column">column to parse.</param>
     /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
-    public EnumRowArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
+    public RowNonArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
@@ -61,8 +61,7 @@ internal sealed class EnumRowArrayColumn : IParsedColumn
         var strings = new string[]
         {
             $"// loading {ClassPropertyName}",
-            $"(var temp{LoadingPropertyName}, offset) = SpecificationFileLoader.LoadIntArray(decompressedFile, offset, dataOffset);",
-            $"var {LoadingPropertyName} = temp{LoadingPropertyName}.AsReadOnly();",
+            $"(var {LoadingPropertyName}, offset) = SpecificationFileLoader.LoadRowPrimaryKey(decompressedFile, offset);",
         };
 
         return strings;
@@ -71,13 +70,13 @@ internal sealed class EnumRowArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
     {
-        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, false);
+        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, true);
     }
 
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
-        return RepositoryGetMethodsHelper.GetManyMethodValueArrayType(datClassName, fieldName, this);
+        return RepositoryGetMethodsHelper.GetManyMethodNullableValueType(datClassName, fieldName, this);
     }
 
     /// <inheritdoc/>

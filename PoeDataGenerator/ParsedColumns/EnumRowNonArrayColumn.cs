@@ -1,12 +1,12 @@
 ﻿using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
-namespace PoeDataGenerator.ColumnGenerators;
+namespace PoeDataGenerator.ParsedColumns;
 
 /// <summary>
-/// Class which parses the column which is an int and is not an array.
+/// Class which parses the column which is an enum row and is not an array.
 /// </summary>
-internal sealed class IntNonArrayColumn : IParsedColumn
+internal sealed class EnumRowNonArrayColumn : IParsedColumn
 {
     /// <inheritdoc/>
     public string ClassPropertyName { get; }
@@ -30,11 +30,11 @@ internal sealed class IntNonArrayColumn : IParsedColumn
     public string ClassPropertyType => ClassPropertyUnderlyingType;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="IntNonArrayColumn"/> class.
+    /// Initializes a new instance of the <see cref="EnumRowNonArrayColumn"/> class.
     /// </summary>
     /// <param name="column">column to parse.</param>
     /// <param name="parsedColumns">a readonly collection of already parsed columns.</param>
-    public IntNonArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
+    public EnumRowNonArrayColumn(Column column, IReadOnlyList<IParsedColumn> parsedColumns)
     {
         ClassPropertyName = column.Name is not null ? column.Name : ColumnGeneratorHelper.GetUnknownColumnName(parsedColumns);
         LoadingPropertyName = $"{ClassPropertyName.ToLower()}Loading";
