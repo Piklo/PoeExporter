@@ -366,3 +366,4 @@ config.json
 /ooz/libooz.dll
 /SpecificationGenerator/schema.min.json
 /.vscode
+/Output
