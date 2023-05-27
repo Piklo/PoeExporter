@@ -44,7 +44,17 @@ internal sealed class RepositoryGenerator
     /// <returns>class name string.</returns>
     internal static string GenerateRepositoryClassName(ParsedSchemaTable parsedTable)
     {
-        var name = $"{parsedTable.Table.Name}Repository";
+        return GenerateRepositoryClassName(parsedTable.Table.Name);
+    }
+
+    /// <summary>
+    /// Generates repository class name.
+    /// </summary>
+    /// <param name="tableName">parsed table for which the repository is generated.</param>
+    /// <returns>class name string.</returns>
+    internal static string GenerateRepositoryClassName(string tableName)
+    {
+        var name = $"{tableName}Repository";
 
         return name;
     }
