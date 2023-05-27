@@ -1,4 +1,5 @@
 ﻿using PoeDataGenerator.ParsedColumns;
+using PoeDataGenerator.RepositoryGenerators;
 
 namespace PoeDataGenerator;
 
@@ -85,7 +86,7 @@ internal static class ColumnGeneratorHelper
         }
 
         var referencedClassName = GetReferencedClassName(referencedTable);
-        var referencedColumnString = GetReferencedColumnString(referencedClassName, referencedColumn);
+        var referencedColumnString = GetReferencedColumnString(referencedTable, referencedClassName, referencedColumn);
 
         var str = $"""/// <remarks> references <see cref="{referencedClassName}"/> on {referencedColumnString}.</remarks>""";
 
@@ -99,15 +100,16 @@ internal static class ColumnGeneratorHelper
         return referencedClassName;
     }
 
-    private static string? GetReferencedColumnString(string? referencedClassName, string? referencedColumn)
+    private static string? GetReferencedColumnString(string? referencedTable, string? referencedClassName, string? referencedColumn)
     {
         if (referencedColumn is not null && referencedClassName is not null)
         {
             return $"""<see cref="{referencedClassName}.{referencedColumn}"/>""";
         }
-        else if (referencedClassName is not null)
+        else if (referencedClassName is not null && referencedTable is not null)
         {
-            return $"""<see cref="Specification.Load{referencedClassName}"/> index""";
+            var repositoryClassName = RepositoryGenerator.GenerateRepositoryClassName(referencedTable);
+            return $"""<see cref="{repositoryClassName}.Items"/> index""";
         }
         else
         {

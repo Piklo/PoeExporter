@@ -67,9 +67,8 @@ internal sealed class DatFileGenerator
                 // the generated class is partial, please extend it in another file
                 #nullable enable
 
-                using PoeData.Extensions;
                 using System.Collections.ObjectModel;
-                using System.Text;
+                using PoeData.Specifications.Repositories;
 
                 namespace PoeData.Specifications.DatFiles;
 
