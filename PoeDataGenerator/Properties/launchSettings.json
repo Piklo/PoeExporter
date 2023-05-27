@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SourceGenerator": {
+      "commandName": "DebugRoslynComponent",
+      "targetProject": "..\\PoeData\\PoeData.csproj"
+    }
+  }
+}

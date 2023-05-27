@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+    <AdditionalFiles Include="schema.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,8 +20,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
-
+    
   <ItemGroup>
+    <ProjectReference Include="..\PoeDataGenerator\PoeDataGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
     <ProjectReference Include="..\ooz\ooz.csproj" />
   </ItemGroup>
 
