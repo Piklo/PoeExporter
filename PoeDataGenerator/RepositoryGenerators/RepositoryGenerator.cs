@@ -275,7 +275,7 @@ internal sealed class RepositoryGenerator
     private void AppendObjectInitialization(StringBuilder builder, IReadOnlyList<IParsedColumn> parsedColumns)
     {
         builder.AppendLine($$"""
-                        var obj = new {{datClassName}}()
+                        var obj = new {{datClassName}}(specification)
                         {
             """);
 

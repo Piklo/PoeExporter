@@ -81,6 +81,8 @@ internal sealed class DatFileGenerator
 
         AppendProperties(builder, parsedTable.ParsedColumns);
 
+        AppendConstructor(builder);
+
         builder.AppendLine("}"); // class end bracket
 
         var str = builder.ToString();
@@ -110,5 +112,18 @@ internal sealed class DatFileGenerator
                 builder.AppendLine();
             }
         }
+    }
+
+    private void AppendConstructor(StringBuilder builder)
+    {
+        builder.AppendLine($$"""
+
+                private readonly Specification specification;
+
+                public {{ClassName}}(Specification specification)
+                {
+                    this.specification = specification;
+                }
+            """);
     }
 }
