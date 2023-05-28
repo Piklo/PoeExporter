@@ -9,6 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="obj\Debug\net7.0\generated\PoeDataGenerator\PoeDataGenerator.SpecificationGenerator\*.*">
+      <Link>PoeDataGenerator.SpecificationGenerator\%(FileName)%(Extension)</Link>
+    </None>
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
     <AdditionalFiles Include="schema.json" />
   </ItemGroup>

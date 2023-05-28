@@ -12,6 +12,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="obj\Debug\net7.0\generated\PoeExporterGenerator\**\*.*">
+      <Link>PoeDataGenerator.SpecificationGenerator\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </None>
     <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
