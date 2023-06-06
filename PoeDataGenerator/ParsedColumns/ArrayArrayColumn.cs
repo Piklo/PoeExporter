@@ -1,6 +1,8 @@
-﻿using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.Extensions;
+using PoeDataGenerator.ParsedColumns.Helpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
+using System.Collections.ObjectModel;
 
 namespace PoeDataGenerator.ParsedColumns;
 
@@ -33,6 +35,9 @@ internal sealed class ArrayArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public string ClassPropertyType => $"ReadOnlyCollection<{ClassPropertyUnderlyingType}>";
 
+    /// <inheritdoc/>
+    public Type ColumnType => typeof(ReadOnlyCollection<int>);
+
     /// <summary>
     /// Initializes a new instance of the <see cref="ArrayArrayColumn"/> class.
     /// </summary>
@@ -53,7 +58,7 @@ internal sealed class ArrayArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required {{ClassPropertyType}} {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{ColumnType.GetCSharpRepresentation()}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;

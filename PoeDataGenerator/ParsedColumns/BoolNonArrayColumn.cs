@@ -1,4 +1,5 @@
-﻿using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.Extensions;
+using PoeDataGenerator.ParsedColumns.Helpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
@@ -30,6 +31,9 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public string ClassPropertyType => ClassPropertyUnderlyingType;
 
+    /// <inheritdoc/>
+    public Type ColumnType => typeof(bool);
+
     /// <summary>
     /// Initializes a new instance of the <see cref="BoolNonArrayColumn"/> class.
     /// </summary>
@@ -50,7 +54,7 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets a value indicating whether {ClassPropertyName} is set.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required {{ClassPropertyType}} {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{ColumnType.GetCSharpRepresentation()}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;

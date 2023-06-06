@@ -28,6 +28,11 @@ internal interface IParsedColumn : IRepositoryColumn
     public string ClassPropertyType { get; }
 
     /// <summary>
+    /// Gets columns type.
+    /// </summary>
+    public Type ColumnType { get; }
+
+    /// <summary>
     /// Gets referenced table.
     /// </summary>
     public string? ReferencedTable { get; }
@@ -53,4 +58,10 @@ internal interface IParsedColumn : IRepositoryColumn
     /// </summary>
     /// <returns>an array of strings.</returns>
     public string[] GetLoading();
+
+    /// <summary>
+    /// Gets a list of lines of code to generate a method to get referenced item/s.
+    /// </summary>
+    /// <returns>lines of code.</returns>
+    //public IReadOnlyList<LineOfCode> GetReferencedItemsMethod();
 }
