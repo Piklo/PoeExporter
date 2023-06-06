@@ -26,12 +26,6 @@ internal sealed class EnumRowNonArrayColumn : IParsedColumn
     public int Offset { get; } = 4;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "int";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => ClassPropertyUnderlyingType;
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(int);
 
     /// <summary>

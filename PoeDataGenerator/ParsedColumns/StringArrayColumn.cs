@@ -27,12 +27,6 @@ internal sealed class StringArrayColumn : IParsedColumn
     public int Offset { get; } = 16;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "string";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => $"ReadOnlyCollection<{ClassPropertyUnderlyingType}>";
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(ReadOnlyCollection<string>);
 
     /// <summary>

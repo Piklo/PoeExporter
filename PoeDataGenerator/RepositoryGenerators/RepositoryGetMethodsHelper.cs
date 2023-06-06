@@ -1,4 +1,5 @@
-﻿using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.Extensions;
+using PoeDataGenerator.ParsedColumns.Helpers;
 using System.Text;
 
 namespace PoeDataGenerator.RepositoryGenerators;
@@ -11,6 +12,7 @@ internal static class RepositoryGetMethodsHelper
     public static IReadOnlyList<LineOfCode> GetSingleMethod(string datClassName, IParsedColumn column, bool isNullableValueTypeKey = false)
     {
         var getManyMethodName = GenerateGetManyMethodName(column);
+        var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
         var code = $$"""
             /// <summary>
             /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
@@ -18,7 +20,7 @@ internal static class RepositoryGetMethodsHelper
             /// <param name="key">key.</param>
             /// <param name="item">returned item if found.</param>
             /// <returns>true if item with a given key was found, false otherwise.</returns>
-            public bool TryGetBy{{column.ClassPropertyName}}({{column.ClassPropertyUnderlyingType}}? key, out {{datClassName}}? item)
+            public bool TryGetBy{{column.ClassPropertyName}}({{type}}? key, out {{datClassName}}? item)
             {
                 if (key is null)
                 {
@@ -58,6 +60,7 @@ internal static class RepositoryGetMethodsHelper
 
     private static void AppendGetManyStart(StringBuilder builder, string datClassName, string fieldName, IParsedColumn column, string methodName)
     {
+        var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
         builder.AppendLine($$"""
             /// <summary>
             /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
@@ -65,7 +68,7 @@ internal static class RepositoryGetMethodsHelper
             /// <param name="key">key.</param>
             /// <param name="items">returned items if found.</param>
             /// <returns>true if item with a given key was found, false otherwise.</returns>
-            public bool {{methodName}}({{column.ClassPropertyUnderlyingType}}? key, out IReadOnlyList<{{datClassName}}> items)
+            public bool {{methodName}}({{type}}? key, out IReadOnlyList<{{datClassName}}> items)
             {
                 if (key is null)
                 {
@@ -263,7 +266,7 @@ internal static class RepositoryGetMethodsHelper
     {
         var getManyMethodName = GenerateGetManyMethodName(column);
         var methodName = $"GetManyToManyBy{column.ClassPropertyName}";
-        var type = column.ClassPropertyUnderlyingType;
+        var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
         var code = $$"""
             /// <summary>
             /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{fieldName}}"/> equal to a given keys.

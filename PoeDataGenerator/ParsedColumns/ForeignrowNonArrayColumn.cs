@@ -26,12 +26,6 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
     public int Offset { get; } = 16;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "int";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => $"{ClassPropertyUnderlyingType}?";
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(int?);
 
     /// <summary>

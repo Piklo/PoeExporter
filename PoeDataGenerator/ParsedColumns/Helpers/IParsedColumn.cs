@@ -18,16 +18,6 @@ internal interface IParsedColumn : IRepositoryColumn
     public string ClassPropertyName { get; }
 
     /// <summary>
-    /// Gets class property underlying type.
-    /// </summary>
-    public string ClassPropertyUnderlyingType { get; }
-
-    /// <summary>
-    /// Gets class property type.
-    /// </summary>
-    public string ClassPropertyType { get; }
-
-    /// <summary>
     /// Gets columns type.
     /// </summary>
     public Type ColumnType { get; }

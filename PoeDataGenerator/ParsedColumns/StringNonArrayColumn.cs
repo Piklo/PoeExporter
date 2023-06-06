@@ -26,12 +26,6 @@ internal sealed class StringNonArrayColumn : IParsedColumn
     public int Offset { get; } = 8;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "string";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => ClassPropertyUnderlyingType;
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(string);
 
     /// <summary>

@@ -26,12 +26,6 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     public int Offset { get; } = 1;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "bool";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => ClassPropertyUnderlyingType;
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(bool);
 
     /// <summary>

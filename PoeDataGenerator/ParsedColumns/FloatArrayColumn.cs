@@ -27,12 +27,6 @@ internal class FloatArrayColumn : IParsedColumn
     public int Offset { get; } = 16;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "float";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => $"ReadOnlyCollection<{ClassPropertyUnderlyingType}>";
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(ReadOnlyCollection<float>);
 
     /// <summary>

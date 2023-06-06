@@ -26,12 +26,6 @@ internal class RowNonArrayColumn : IParsedColumn
     public int Offset { get; } = 8;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "int";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => $"{ClassPropertyUnderlyingType}?";
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(int?);
 
     /// <summary>

@@ -26,12 +26,6 @@ internal class FloatNonArrayColumn : IParsedColumn
     public int Offset { get; } = 4;
 
     /// <inheritdoc/>
-    public string ClassPropertyUnderlyingType => "float";
-
-    /// <inheritdoc/>
-    public string ClassPropertyType => ClassPropertyUnderlyingType;
-
-    /// <inheritdoc/>
     public Type ColumnType => typeof(float);
 
     /// <summary>

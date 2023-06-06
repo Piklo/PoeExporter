@@ -1,4 +1,5 @@
-﻿using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.Extensions;
+using PoeDataGenerator.ParsedColumns.Helpers;
 using System.Text;
 
 namespace PoeDataGenerator.RepositoryGenerators;
@@ -117,8 +118,10 @@ internal sealed class RepositoryGenerator
     {
         foreach (var column in parsedTable.ParsedColumns)
         {
+            var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
+
             builder.AppendLine($"""
-                    private Dictionary<{column.ClassPropertyUnderlyingType}, List<{datClassName}>>? {GenerateByFieldName(column)};
+                    private Dictionary<{type}, List<{datClassName}>>? {GenerateByFieldName(column)};
                 """);
         }
     }
