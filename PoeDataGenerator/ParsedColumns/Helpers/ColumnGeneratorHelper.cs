@@ -1,7 +1,6 @@
-﻿using PoeDataGenerator.ParsedColumns;
-using PoeDataGenerator.RepositoryGenerators;
+﻿using PoeDataGenerator.RepositoryGenerators;
 
-namespace PoeDataGenerator;
+namespace PoeDataGenerator.ParsedColumns.Helpers;
 
 /// <summary>
 /// Class containing helper methods related to column generation.

@@ -1,4 +1,5 @@
-﻿using PoeDataGenerator.RepositoryGenerators;
+﻿using PoeDataGenerator.ParsedColumns.Helpers;
+using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
 namespace PoeDataGenerator.ParsedColumns;

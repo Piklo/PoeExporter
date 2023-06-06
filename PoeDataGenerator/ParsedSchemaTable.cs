@@ -1,4 +1,5 @@
 ﻿using PoeDataGenerator.ParsedColumns;
+using PoeDataGenerator.ParsedColumns.Helpers;
 using PoeDataGenerator.SchemaJson;
 using System.Text.Encodings.Web;
 using System.Text.Json;
