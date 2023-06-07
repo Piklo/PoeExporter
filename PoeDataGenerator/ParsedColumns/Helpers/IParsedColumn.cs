@@ -20,7 +20,7 @@ internal interface IParsedColumn : IRepositoryColumn
     /// <summary>
     /// Gets columns type.
     /// </summary>
-    public Type ColumnType { get; }
+    public TypeData Type { get; }
 
     /// <summary>
     /// Gets referenced table.

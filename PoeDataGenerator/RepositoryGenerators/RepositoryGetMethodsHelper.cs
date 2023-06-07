@@ -1,5 +1,4 @@
-﻿using PoeDataGenerator.Extensions;
-using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.ParsedColumns.Helpers;
 using System.Text;
 
 namespace PoeDataGenerator.RepositoryGenerators;
@@ -9,10 +8,11 @@ namespace PoeDataGenerator.RepositoryGenerators;
 /// </summary>
 internal static class RepositoryGetMethodsHelper
 {
-    public static IReadOnlyList<LineOfCode> GetSingleMethod(string datClassName, IParsedColumn column, bool isNullableValueTypeKey = false)
+    public static IReadOnlyList<LineOfCode> GetSingleMethod(string datClassName, IParsedColumn column)
     {
         var getManyMethodName = GenerateGetManyMethodName(column);
-        var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
+        var typeData = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0] : column.Type;
+        var type = typeData.IsNullable ? typeData.Type : $"{typeData.Type}?";
         var code = $$"""
             /// <summary>
             /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
@@ -20,7 +20,7 @@ internal static class RepositoryGetMethodsHelper
             /// <param name="key">key.</param>
             /// <param name="item">returned item if found.</param>
             /// <returns>true if item with a given key was found, false otherwise.</returns>
-            public bool TryGetBy{{column.ClassPropertyName}}({{type}}? key, out {{datClassName}}? item)
+            public bool TryGetBy{{column.ClassPropertyName}}({{type}} key, out {{datClassName}}? item)
             {
                 if (key is null)
                 {
@@ -36,14 +36,14 @@ internal static class RepositoryGetMethodsHelper
 
                 if (items.Count == 0)
                 {
-                    logger.Warning("failed to find item with key = {key}", {{(isNullableValueTypeKey ? "key.Value" : "key")}});
+                    logger.Warning("failed to find item with key = {key}", {{(typeData.IsValueType ? "key.Value" : "key")}});
                     item = null;
                     return false;
                 }
 
                 if (items.Count > 1)
                 {
-                    logger.Warning("found too many items with key = {key}", {{(isNullableValueTypeKey ? "key.Value" : "key")}});
+                    logger.Warning("found too many items with key = {key}", {{(typeData.IsValueType ? "key.Value" : "key")}});
                     item = null;
                     return false;
                 }
@@ -58,9 +58,12 @@ internal static class RepositoryGetMethodsHelper
         return lines;
     }
 
-    private static void AppendGetManyStart(StringBuilder builder, string datClassName, string fieldName, IParsedColumn column, string methodName)
+    public static IReadOnlyList<LineOfCode> GetManyMethod(string datClassName, string fieldName, IParsedColumn column)
     {
-        var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
+        var methodName = GenerateGetManyMethodName(column);
+        var typeData = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0] : column.Type;
+        var type = typeData.IsNullable ? typeData.Type : $"{typeData.Type}?";
+        var builder = new StringBuilder();
         builder.AppendLine($$"""
             /// <summary>
             /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
@@ -68,7 +71,7 @@ internal static class RepositoryGetMethodsHelper
             /// <param name="key">key.</param>
             /// <param name="items">returned items if found.</param>
             /// <returns>true if item with a given key was found, false otherwise.</returns>
-            public bool {{methodName}}({{type}}? key, out IReadOnlyList<{{datClassName}}> items)
+            public bool {{methodName}}({{type}} key, out IReadOnlyList<{{datClassName}}> items)
             {
                 if (key is null)
                 {
@@ -80,14 +83,13 @@ internal static class RepositoryGetMethodsHelper
                 {
                     {{fieldName}} = new();
             """);
-    }
 
-    private static void AppendGetManyEnd(StringBuilder builder, string datClassName, string fieldName, bool isNullableValueTypeKey = false)
-    {
+        AppendToDictionaryParsing(builder, fieldName, column);
+
         builder.Append($$"""
                 }
 
-                if (!{{fieldName}}.TryGetValue({{(isNullableValueTypeKey ? "key.Value" : "key")}}, out var temp))
+                if (!{{fieldName}}.TryGetValue({{(typeData.IsValueType ? "key.Value" : "key")}}, out var temp))
                 {
                     items = Array.Empty<{{datClassName}}>();
                     return false;
@@ -97,18 +99,6 @@ internal static class RepositoryGetMethodsHelper
                 return true;
             }
             """);
-    }
-
-    public static IReadOnlyList<LineOfCode> GetManyMethodNonNullableValueType(string datClassName, string fieldName, IParsedColumn column)
-    {
-        var methodName = GenerateGetManyMethodName(column);
-        var builder = new StringBuilder();
-
-        AppendGetManyStart(builder, datClassName, fieldName, column, methodName);
-
-        AppendToDictionaryParsing(builder, fieldName, column, datClassName, isValueType: true);
-
-        AppendGetManyEnd(builder, datClassName, fieldName, isNullableValueTypeKey: true);
 
         var code = builder.ToString();
 
@@ -117,103 +107,13 @@ internal static class RepositoryGetMethodsHelper
         return lines;
     }
 
-    public static IReadOnlyList<LineOfCode> GetManyMethodNullableValueType(string datClassName, string fieldName, IParsedColumn column)
+    private static void AppendToDictionaryParsing(StringBuilder builder, string fieldName, IParsedColumn column)
     {
-        var methodName = GenerateGetManyMethodName(column);
-        var builder = new StringBuilder();
+        var typeData = column.Type;
+        var isNullable = typeData.IsNullable;
+        var isValueType = typeData.IsValueType;
+        var isList = typeData.IsList;
 
-        AppendGetManyStart(builder, datClassName, fieldName, column, methodName);
-
-        AppendToDictionaryParsing(builder, fieldName, column, datClassName, isNullable: true, isValueType: true);
-
-        AppendGetManyEnd(builder, datClassName, fieldName, isNullableValueTypeKey: true);
-
-        var code = builder.ToString();
-
-        var lines = LineOfCode.Split(code);
-
-        return lines;
-    }
-
-    public static IReadOnlyList<LineOfCode> GetManyMethodNonNullableReferenceType(string datClassName, string fieldName, IParsedColumn column)
-    {
-        var methodName = GenerateGetManyMethodName(column);
-        var builder = new StringBuilder();
-
-        AppendGetManyStart(builder, datClassName, fieldName, column, methodName);
-
-        AppendToDictionaryParsing(builder, fieldName, column, datClassName);
-
-        AppendGetManyEnd(builder, datClassName, fieldName);
-
-        var code = builder.ToString();
-
-        var lines = LineOfCode.Split(code);
-
-        return lines;
-    }
-
-    public static IReadOnlyList<LineOfCode> GetManyMethodNullableReferenceType(string datClassName, string fieldName, IParsedColumn column)
-    {
-        var methodName = GenerateGetManyMethodName(column);
-        var builder = new StringBuilder();
-
-        AppendGetManyStart(builder, datClassName, fieldName, column, methodName);
-
-        AppendToDictionaryParsing(builder, fieldName, column, datClassName, isNullable: true);
-
-        AppendGetManyEnd(builder, datClassName, fieldName);
-
-        var code = builder.ToString();
-
-        var lines = LineOfCode.Split(code);
-
-        return lines;
-    }
-
-    public static IReadOnlyList<LineOfCode> GetManyMethodValueArrayType(string datClassName, string fieldName, IParsedColumn column)
-    {
-        var methodName = GenerateGetManyMethodName(column);
-        var builder = new StringBuilder();
-
-        AppendGetManyStart(builder, datClassName, fieldName, column, methodName);
-
-        AppendToDictionaryParsing(builder, fieldName, column, datClassName, isArray: true);
-
-        AppendGetManyEnd(builder, datClassName, fieldName, isNullableValueTypeKey: true);
-
-        var code = builder.ToString();
-
-        var lines = LineOfCode.Split(code);
-
-        return lines;
-    }
-
-    public static IReadOnlyList<LineOfCode> GetManyMethodReferenceArrayType(string datClassName, string fieldName, IParsedColumn column)
-    {
-        var methodName = GenerateGetManyMethodName(column);
-        var builder = new StringBuilder();
-
-        AppendGetManyStart(builder, datClassName, fieldName, column, methodName);
-
-        AppendToDictionaryParsing(builder, fieldName, column, datClassName, isArray: true);
-
-        AppendGetManyEnd(builder, datClassName, fieldName);
-
-        var code = builder.ToString();
-
-        var lines = LineOfCode.Split(code);
-
-        return lines;
-    }
-
-    private static string GenerateGetManyMethodName(IParsedColumn column)
-    {
-        return $"TryGetManyBy{column.ClassPropertyName}";
-    }
-
-    private static void AppendToDictionaryParsing(StringBuilder builder, string fieldName, IParsedColumn column, string datClassName, bool isNullable = false, bool isValueType = false, bool isArray = false)
-    {
         builder.AppendLine($$"""
                         foreach (var item in Items)
                         {
@@ -230,7 +130,7 @@ internal static class RepositoryGetMethodsHelper
                 """);
         }
 
-        if (isArray)
+        if (isList)
         {
             builder.AppendLine($$"""
                             foreach (var listKey in itemKey)
@@ -240,7 +140,7 @@ internal static class RepositoryGetMethodsHelper
                                     list = new();
                                     {{fieldName}}.TryAdd(listKey, list);
                                 }
-                
+
                                 list.Add(item);
                             }
                         }
@@ -262,11 +162,16 @@ internal static class RepositoryGetMethodsHelper
         }
     }
 
+    private static string GenerateGetManyMethodName(IParsedColumn column)
+    {
+        return $"TryGetManyBy{column.ClassPropertyName}";
+    }
+
     public static IReadOnlyList<LineOfCode> GetManyToMany(string datClassName, string fieldName, IParsedColumn column)
     {
         var getManyMethodName = GenerateGetManyMethodName(column);
         var methodName = $"GetManyToManyBy{column.ClassPropertyName}";
-        var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
+        var type = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0].Type : column.Type.Type;
         var code = $$"""
             /// <summary>
             /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{fieldName}}"/> equal to a given keys.

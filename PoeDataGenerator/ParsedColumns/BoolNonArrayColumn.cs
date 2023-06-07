@@ -1,5 +1,4 @@
-﻿using PoeDataGenerator.Extensions;
-using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.ParsedColumns.Helpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
@@ -26,7 +25,7 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     public int Offset { get; } = 1;
 
     /// <inheritdoc/>
-    public Type ColumnType => typeof(bool);
+    public TypeData Type => TypeData.Bool;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BoolNonArrayColumn"/> class.
@@ -48,7 +47,7 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets a value indicating whether {ClassPropertyName} is set.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required {{ColumnType.GetCSharpRepresentation()}} {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{Type.Type}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;
@@ -69,13 +68,13 @@ internal sealed class BoolNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
     {
-        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, false);
+        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this);
     }
 
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
-        return RepositoryGetMethodsHelper.GetManyMethodNonNullableValueType(datClassName, fieldName, this);
+        return RepositoryGetMethodsHelper.GetManyMethod(datClassName, fieldName, this);
     }
 
     /// <inheritdoc/>

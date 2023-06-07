@@ -1,5 +1,4 @@
-﻿using PoeDataGenerator.Extensions;
-using PoeDataGenerator.RepositoryGenerators;
+﻿using PoeDataGenerator.RepositoryGenerators;
 
 namespace PoeDataGenerator.ParsedColumns.Helpers;
 
@@ -115,20 +114,5 @@ internal static class ColumnGeneratorHelper
         {
             throw new NotImplementedException();
         }
-    }
-
-    /// <summary>
-    /// Gets name of the generic type from the column.
-    /// </summary>
-    /// <param name="column">column</param>
-    /// <returns>name of the generic type, null if the column type doesn't have exactly 1 generic type.</returns>
-    public static string? GetGenericTypeName(IParsedColumn column)
-    {
-        if (column.ColumnType.GenericTypeArguments.Length != 1)
-        {
-            return null;
-        }
-
-        return column.ColumnType.GenericTypeArguments[0].GetCSharpRepresentation();
     }
 }

@@ -1,8 +1,6 @@
-﻿using PoeDataGenerator.Extensions;
-using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.ParsedColumns.Helpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
-using System.Collections.ObjectModel;
 
 namespace PoeDataGenerator.ParsedColumns;
 
@@ -30,7 +28,7 @@ internal sealed class ArrayArrayColumn : IParsedColumn
     public int Offset { get; } = 16;
 
     /// <inheritdoc/>
-    public Type ColumnType => typeof(ReadOnlyCollection<int>);
+    public TypeData Type => TypeData.ReadonlyCollectionInt;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ArrayArrayColumn"/> class.
@@ -52,7 +50,7 @@ internal sealed class ArrayArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required {{ColumnType.GetCSharpRepresentation()}} {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{Type.Type}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;
@@ -74,13 +72,13 @@ internal sealed class ArrayArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
     {
-        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, false);
+        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this);
     }
 
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
-        return RepositoryGetMethodsHelper.GetManyMethodValueArrayType(datClassName, fieldName, this);
+        return RepositoryGetMethodsHelper.GetManyMethod(datClassName, fieldName, this);
     }
 
     /// <inheritdoc/>

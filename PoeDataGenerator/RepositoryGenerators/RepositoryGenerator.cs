@@ -118,7 +118,7 @@ internal sealed class RepositoryGenerator
     {
         foreach (var column in parsedTable.ParsedColumns)
         {
-            var type = ColumnGeneratorHelper.GetGenericTypeName(column) ?? column.ColumnType.GetCSharpRepresentation();
+            var type = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0].Type : column.Type.Type;
 
             builder.AppendLine($"""
                     private Dictionary<{type}, List<{datClassName}>>? {GenerateByFieldName(column)};

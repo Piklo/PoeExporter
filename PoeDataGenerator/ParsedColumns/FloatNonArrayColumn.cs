@@ -1,5 +1,4 @@
-﻿using PoeDataGenerator.Extensions;
-using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.ParsedColumns.Helpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
@@ -26,7 +25,7 @@ internal class FloatNonArrayColumn : IParsedColumn
     public int Offset { get; } = 4;
 
     /// <inheritdoc/>
-    public Type ColumnType => typeof(float);
+    public TypeData Type => TypeData.Float;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="FloatNonArrayColumn"/> class.
@@ -48,7 +47,7 @@ internal class FloatNonArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required {{ColumnType.GetCSharpRepresentation()}} {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{Type.Type}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;
@@ -69,13 +68,13 @@ internal class FloatNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
     {
-        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, false);
+        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this);
     }
 
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
-        return RepositoryGetMethodsHelper.GetManyMethodNonNullableValueType(datClassName, fieldName, this);
+        return RepositoryGetMethodsHelper.GetManyMethod(datClassName, fieldName, this);
     }
 
     /// <inheritdoc/>

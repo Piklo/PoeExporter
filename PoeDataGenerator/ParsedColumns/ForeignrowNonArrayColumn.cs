@@ -1,5 +1,4 @@
-﻿using PoeDataGenerator.Extensions;
-using PoeDataGenerator.ParsedColumns.Helpers;
+﻿using PoeDataGenerator.ParsedColumns.Helpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
@@ -26,7 +25,7 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
     public int Offset { get; } = 16;
 
     /// <inheritdoc/>
-    public Type ColumnType => typeof(int?);
+    public TypeData Type => TypeData.NullableInt;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ForeignRowNonArrayColumn"/> class.
@@ -48,7 +47,7 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
         {
             $"/// <summary> Gets {ClassPropertyName}.</summary>",
             ColumnGeneratorHelper.GetReferenceString(ReferencedTable, ReferencedColumn),
-            $$"""public required {{ColumnType.GetCSharpRepresentation()}} {{ClassPropertyName}} { get; init; }""",
+            $$"""public required {{Type.Type}} {{ClassPropertyName}} { get; init; }""",
         };
 
         return strings;
@@ -69,13 +68,13 @@ internal class ForeignRowNonArrayColumn : IParsedColumn
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
     {
-        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this, true);
+        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this);
     }
 
     /// <inheritdoc/>
     public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
     {
-        return RepositoryGetMethodsHelper.GetManyMethodNullableValueType(datClassName, fieldName, this);
+        return RepositoryGetMethodsHelper.GetManyMethod(datClassName, fieldName, this);
     }
 
     /// <inheritdoc/>
