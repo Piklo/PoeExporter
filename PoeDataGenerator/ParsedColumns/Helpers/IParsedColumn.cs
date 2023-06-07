@@ -1,11 +1,9 @@
-﻿using PoeDataGenerator.RepositoryGenerators;
-
-namespace PoeDataGenerator.ParsedColumns.Helpers;
+﻿namespace PoeDataGenerator.ParsedColumns.Helpers;
 
 /// <summary>
 /// Interface containing methods and properties for parsed column classes.
 /// </summary>
-internal interface IParsedColumn : IRepositoryColumn
+internal interface IParsedColumn
 {
     /// <summary>
     /// Gets column offset.

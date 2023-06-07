@@ -162,7 +162,7 @@ internal sealed class RepositoryGenerator
     private void AppendGetSingleMethod(StringBuilder builder, IParsedColumn column)
     {
         builder.AppendLine();
-        var code = column.GetSingle(datClassName);
+        var code = RepositoryGetMethodsHelper.GetSingleMethod(datClassName, column);
         foreach (var line in code)
         {
             if (string.IsNullOrWhiteSpace(line.Value))
@@ -181,7 +181,7 @@ internal sealed class RepositoryGenerator
 
         var fieldName = GenerateByFieldName(column);
 
-        var code = column.GetMany(datClassName, fieldName);
+        var code = RepositoryGetMethodsHelper.GetManyMethod(datClassName, fieldName, column);
         foreach (var line in code)
         {
             if (string.IsNullOrWhiteSpace(line.Value))
@@ -200,7 +200,7 @@ internal sealed class RepositoryGenerator
 
         var fieldName = GenerateByFieldName(column);
 
-        var code = column.GetManyToMany(datClassName, fieldName);
+        var code = RepositoryGetMethodsHelper.GetManyToMany(datClassName, fieldName, column);
         foreach (var line in code)
         {
             if (string.IsNullOrWhiteSpace(line.Value))

@@ -1,5 +1,4 @@
 ﻿using PoeDataGenerator.ParsedColumns.Helpers;
-using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 
 namespace PoeDataGenerator.ParsedColumns;
@@ -64,23 +63,5 @@ internal class FloatArrayColumn : IParsedColumn
         };
 
         return strings;
-    }
-
-    /// <inheritdoc/>
-    public IReadOnlyList<LineOfCode> GetSingle(string datClassName)
-    {
-        return RepositoryGetMethodsHelper.GetSingleMethod(datClassName, this);
-    }
-
-    /// <inheritdoc/>
-    public IReadOnlyList<LineOfCode> GetMany(string datClassName, string fieldName)
-    {
-        return RepositoryGetMethodsHelper.GetManyMethod(datClassName, fieldName, this);
-    }
-
-    /// <inheritdoc/>
-    public IReadOnlyList<LineOfCode> GetManyToMany(string datClassName, string fieldName)
-    {
-        return RepositoryGetMethodsHelper.GetManyToMany(datClassName, fieldName, this);
     }
 }
