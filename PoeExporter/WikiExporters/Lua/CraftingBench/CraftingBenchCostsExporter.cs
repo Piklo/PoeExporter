@@ -48,17 +48,15 @@ internal sealed class CraftingBenchCostsExporter : IExporter<CraftingBenchCostsE
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var benchOptions = specification.LoadCraftingBenchOptionsRepository();
-        var baseItemsTypes = specification.LoadBaseItemTypesRepository();
 
         for (var rowId = 0; rowId < benchOptions.Items.Count; rowId++)
         {
             var option = benchOptions.Items[rowId];
-            var costs = option.Cost_BaseItemTypes;
+            var baseItems = option.GetItemsForCost_BaseItemTypes();
 
-            for (var i = 0; i < costs.Count; i++)
+            for (var i = 0; i < baseItems.Count; i++)
             {
-                var cost = costs[i];
-                var baseItem = baseItemsTypes.Items[cost];
+                var baseItem = baseItems[i].Value;
 
                 var obj = new CraftingBenchCost()
                 {
