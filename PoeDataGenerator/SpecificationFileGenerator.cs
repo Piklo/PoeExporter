@@ -1,4 +1,5 @@
-﻿using PoeDataGenerator.RepositoryGenerators;
+﻿using PoeDataGenerator.GeneratorHelpers;
+using PoeDataGenerator.RepositoryGenerators;
 using System.Text;
 
 namespace PoeDataGenerator;

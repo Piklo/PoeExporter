@@ -1,4 +1,4 @@
-﻿using PoeDataGenerator.Extensions;
+﻿using PoeDataGenerator.GeneratorHelpers;
 using PoeDataGenerator.ParsedColumns.Helpers;
 using System.Text;
 

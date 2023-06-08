@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis;
+using PoeDataGenerator.GeneratorHelpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 using System.Text.Json;

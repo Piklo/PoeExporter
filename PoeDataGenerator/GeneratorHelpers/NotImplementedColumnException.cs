@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace PoeDataGenerator;
+namespace PoeDataGenerator.GeneratorHelpers;
 
 /// <summary>
 /// Exception thrown when not implemented column is being parsed.

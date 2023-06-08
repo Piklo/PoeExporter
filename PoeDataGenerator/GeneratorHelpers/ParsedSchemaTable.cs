@@ -4,7 +4,7 @@ using PoeDataGenerator.SchemaJson;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 
-namespace PoeDataGenerator;
+namespace PoeDataGenerator.GeneratorHelpers;
 
 /// <summary>
 /// Parses <see cref="SchemaJson.Table"/>.

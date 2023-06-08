@@ -1,4 +1,4 @@
-﻿namespace PoeDataGenerator;
+﻿namespace PoeDataGenerator.GeneratorHelpers;
 
 internal readonly record struct LineOfCode(string Value, int Indentation)
 {
