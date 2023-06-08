@@ -56,11 +56,13 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
         foreach (var recipe in craftingRecipes.Items)
         {
             var craftingResult = recipe.GetItemForBlightCraftingResultsKey() ?? throw new NotImplementedException();
+
             var passiveSkill = craftingResult.GetItemForPassiveSkillsKey();
 
             var modifier = craftingResult.GetItemForModsKey();
 
             var passiveId = passiveSkill?.Id;
+
             var modifierId = modifier?.Id;
 
             var craftingType = recipe.GetItemForBlightCraftingTypesKey() ?? throw new NotImplementedException();
