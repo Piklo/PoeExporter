@@ -46,10 +46,4 @@ internal interface IParsedColumn
     /// </summary>
     /// <returns>an array of strings.</returns>
     public string[] GetLoading();
-
-    /// <summary>
-    /// Gets a list of lines of code to generate a method to get referenced item/s.
-    /// </summary>
-    /// <returns>lines of code.</returns>
-    //public IReadOnlyList<LineOfCode> GetReferencedItemsMethod();
 }
