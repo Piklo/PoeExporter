@@ -48,19 +48,17 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraft
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var recipes = specification.LoadBlightCraftingRecipesRepository();
-        var craftingItems = specification.LoadBlightCraftingItemsRepository();
 
         foreach (var recipe in recipes.Items)
         {
-            for (var i = 0; i < recipe.BlightCraftingItemsKeys.Count; i++)
+            var craftingItemsTemp = recipe.GetItemsForBlightCraftingItemsKeys();
+            for (var i = 0; i < craftingItemsTemp.Count; i++)
             {
                 var ordinal = i + 1;
 
                 var recipeId = recipe.Id;
 
-                var blightCraftingItemKey = recipe.BlightCraftingItemsKeys[i];
-
-                var blightCraftingItem = craftingItems.Items[blightCraftingItemKey];
+                var blightCraftingItem = craftingItemsTemp[i].Value;
 
                 var item = blightCraftingItem.GetItemForOil() ?? throw new NotImplementedException();
 
