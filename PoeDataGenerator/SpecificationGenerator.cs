@@ -4,8 +4,6 @@ using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
 using System.Text.Json;
 
-#nullable disable
-
 namespace PoeDataGenerator;
 
 /// <summary>
@@ -24,7 +22,7 @@ internal sealed class SpecificationGenerator : IIncrementalGenerator
 
         var schemaProvider = schemaJsonProvider.Select((schemaFile, cancellationToken) =>
         {
-            var jsonString = schemaFile.GetText().ToString();
+            var jsonString = schemaFile.GetText()!.ToString();
             var schema = JsonSerializer.Deserialize<Schema>(jsonString);
             return schema;
         });
