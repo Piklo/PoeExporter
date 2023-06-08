@@ -20,6 +20,27 @@ internal readonly record struct TypeData
     /// <summary>Gets inner types.</summary>
     public TypeData[] InnerTypes { get; init; } = Array.Empty<TypeData>();
 
+    private readonly string? nonNullableVersion;
+
+    /// <summary>Gets non nullable type.</summary>
+    public string NonNullableType
+    {
+        get
+        {
+            if (nonNullableVersion is null)
+            {
+                return Type;
+            }
+
+            return nonNullableVersion;
+        }
+
+        init
+        {
+            nonNullableVersion = value;
+        }
+    }
+
     /// <summary>
     /// Initializes a new instance of the <see cref="TypeData"/> class.
     /// </summary>
@@ -52,6 +73,7 @@ internal readonly record struct TypeData
         IsNullable = true,
         IsValueType = true,
         IsList = false,
+        NonNullableType = "int",
     };
 
     /// <summary>Gets <see cref="TypeData"/> for ReadOnlyCollection of ints.</summary>

@@ -9,7 +9,14 @@ namespace PoeDataGenerator.RepositoryGenerators;
 /// </summary>
 internal static class RepositoryGetMethodsHelper
 {
-    public static IReadOnlyList<LineOfCode> GetSingleMethod(string datClassName, string fieldName, IParsedColumn column)
+    /// <summary>
+    /// Generates code for GetByXYZ methods.
+    /// </summary>
+    /// <param name="datClassName">dat file class name.</param>
+    /// <param name="fieldName">name of the field where the data is stored.</param>
+    /// <param name="column">column for which we are storing the data.</param>
+    /// <returns>generated code.</returns>
+    public static IReadOnlyList<LineOfCode> GenerateGetByMethod(string datClassName, string fieldName, IParsedColumn column)
     {
         var typeData = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0] : column.Type;
         var type = typeData.IsNullable ? typeData.Type : $"{typeData.Type}?";
@@ -20,7 +27,7 @@ internal static class RepositoryGetMethodsHelper
             /// </summary>
             /// <param name="key">key.</param>
             /// <returns>item if found, null otherwise.</returns>
-            public {{datClassName}}? GetBy{{column.ClassPropertyName}}({{type}} key)
+            public {{datClassName}}? {{GenerateGetByMethodName(column.ClassPropertyName)}}({{type}} key)
             {
                 if (key is null)
                 {
@@ -47,6 +54,16 @@ internal static class RepositoryGetMethodsHelper
         var lines = LineOfCode.Split(code);
 
         return lines;
+    }
+
+    /// <summary>
+    /// Generated method name for GetByXYZ.
+    /// </summary>
+    /// <param name="propertyName">name of the property by which we try to get data.</param>
+    /// <returns>method name.</returns>
+    internal static string GenerateGetByMethodName(string propertyName)
+    {
+        return $"GetBy{propertyName}";
     }
 
     private static string GetLoadFieldMethodName(string fieldName)

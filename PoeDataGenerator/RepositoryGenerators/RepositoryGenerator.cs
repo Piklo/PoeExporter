@@ -162,7 +162,7 @@ internal sealed class RepositoryGenerator
     {
         builder.AppendLine();
         var fieldName = GenerateSingleByFieldName(column);
-        var code = RepositoryGetMethodsHelper.GetSingleMethod(datClassName, fieldName, column);
+        var code = RepositoryGetMethodsHelper.GenerateGetByMethod(datClassName, fieldName, column);
         foreach (var line in code)
         {
             if (string.IsNullOrWhiteSpace(line.Value))

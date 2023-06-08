@@ -86,13 +86,23 @@ internal class SpecificationFileGenerator
                     /// Gets {{className}} data.
                     /// </summary>
                     /// <returns>repository of {{className}}.</returns>
-                    public {{className}} Load{{className}}()
+                    public {{className}} {{GenerateLoadRepositoryMethodName(className)}}()
                     {
                         {{fieldName}} ??= new {{className}}(logger, this);
                         return {{fieldName}};
                     }
                 """);
         }
+    }
+
+    /// <summary>
+    /// Generated name of the method to Load repository.
+    /// </summary>
+    /// <param name="repositoryClassName">repository class name.</param>
+    /// <returns>method name.</returns>
+    internal static string GenerateLoadRepositoryMethodName(string repositoryClassName)
+    {
+        return $"Load{repositoryClassName}";
     }
 
     private static string GenerateFieldName(string className)

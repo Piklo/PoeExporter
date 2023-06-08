@@ -1,5 +1,8 @@
 ﻿using PoeDataGenerator.GeneratorHelpers;
+using PoeDataGenerator.ParsedColumns;
 using PoeDataGenerator.ParsedColumns.Helpers;
+using PoeDataGenerator.RepositoryGenerators;
+using PoeDataGenerator.Specification;
 using System.Text;
 
 namespace PoeDataGenerator.DatFiles;
@@ -84,6 +87,8 @@ internal sealed class DatFileGenerator
 
         AppendConstructor(builder);
 
+        AppendGetReferencedItems(builder);
+
         builder.AppendLine("}"); // class end bracket
 
         var str = builder.ToString();
@@ -126,5 +131,149 @@ internal sealed class DatFileGenerator
                     this.specification = specification;
                 }
             """);
+    }
+
+    private void AppendGetReferencedItems(StringBuilder builder)
+    {
+        foreach (var column in parsedTable.ParsedColumns)
+        {
+            // hackfix for enum rows
+            if (column is EnumRowArrayColumn || column is EnumRowNonArrayColumn)
+            {
+                continue;
+            }
+
+            if (column.ReferencedTable is null)
+            {
+                continue;
+            }
+
+            if (column.ReferencedColumn is null)
+            {
+                AppendGetReferencedItemsByIndex(builder, column);
+            }
+            else
+            {
+                AppendGetReferencedItemsByMethod(builder, column);
+            }
+        }
+    }
+
+    private static string GenerateGetReferencedItemMethodName(string propertyName)
+    {
+        return $"GetItemFor{propertyName}";
+    }
+
+    private static string GenerateGetReferencedItemsMethodName(string propertyName)
+    {
+        return $"GetItemsFor{propertyName}";
+    }
+
+    private void AppendGetReferencedItemsByIndex(StringBuilder builder, IParsedColumn column)
+    {
+        if (column.ReferencedTable is null)
+        {
+            return;
+        }
+
+        var repositoryName = RepositoryGenerator.GenerateRepositoryClassName(column.ReferencedTable);
+        var loadRepositoryMethod = SpecificationFileGenerator.GenerateLoadRepositoryMethodName(repositoryName);
+        var returnedItem = GenerateClassName(column.ReferencedTable);
+
+        if (!column.Type.IsList)
+        {
+            var methodName = GenerateGetReferencedItemMethodName(column.ClassPropertyName);
+
+            builder.AppendLine($$"""
+
+                    public {{returnedItem}}? {{methodName}}()
+                    {
+                        if ({{column.ClassPropertyName}} is null)
+                        {
+                            return null;
+                        }
+
+                        return specification.{{loadRepositoryMethod}}().Items[{{column.ClassPropertyName}}.Value];
+                    }
+                """);
+        }
+        else
+        {
+            var methodName = GenerateGetReferencedItemsMethodName(column.ClassPropertyName);
+
+            var keyType = column.Type.InnerTypes[0].NonNullableType;
+            builder.AppendLine($$"""
+
+                    public IReadOnlyList<ResultItem<{{keyType}}, {{returnedItem}}>> {{methodName}}()
+                    {
+                        var items = new List<ResultItem<{{keyType}}, {{returnedItem}}>>();
+
+                        var repository = specification.{{loadRepositoryMethod}}();
+                        foreach (var key in {{column.ClassPropertyName}})
+                        {
+                            var item = repository.Items[key];
+                            var parsed = new ResultItem<{{keyType}}, {{returnedItem}}>(key, item);
+                            items.Add(parsed);
+                        }
+
+                        return items;
+                    }
+                """);
+        }
+    }
+
+    private void AppendGetReferencedItemsByMethod(StringBuilder builder, IParsedColumn column)
+    {
+        if (column.ReferencedTable is null || column.ReferencedColumn is null)
+        {
+            return;
+        }
+
+        var repositoryName = RepositoryGenerator.GenerateRepositoryClassName(column.ReferencedTable);
+        var getReferencedMethodName = RepositoryGetMethodsHelper.GenerateGetByMethodName(column.ReferencedColumn);
+        var loadRepositoryMethod = SpecificationFileGenerator.GenerateLoadRepositoryMethodName(repositoryName);
+        var returnedItem = GenerateClassName(column.ReferencedTable);
+
+        if (!column.Type.IsList)
+        {
+            var methodName = GenerateGetReferencedItemMethodName(column.ClassPropertyName);
+
+            builder.AppendLine($$"""
+
+                    public {{returnedItem}}? {{methodName}}()
+                    {
+                        return specification.{{loadRepositoryMethod}}().{{getReferencedMethodName}}({{column.ClassPropertyName}});
+                    }
+                """);
+        }
+        else
+        {
+            var methodName = GenerateGetReferencedItemsMethodName(column.ClassPropertyName);
+
+            var keyType = column.Type.InnerTypes[0].NonNullableType;
+            builder.AppendLine($$"""
+
+                    public IReadOnlyList<ResultItem<{{keyType}}, {{returnedItem}}>> {{methodName}}()
+                    {
+                        var items = new List<ResultItem<{{keyType}}, {{returnedItem}}>>();
+
+                        var repository = specification.{{loadRepositoryMethod}}();
+                        foreach (var key in {{column.ClassPropertyName}})
+                        {
+                            var item = repository.{{getReferencedMethodName}}(key);
+
+                            if (item is null)
+                            {
+                                throw new NotImplementedException("reference to a null");
+                            }
+
+                            var parsed = new ResultItem<{{keyType}}, {{returnedItem}}>(key, item);
+                            items.Add(parsed);
+                        }
+
+                        return items;
+                    }
+                """);
+        }
     }
 }
