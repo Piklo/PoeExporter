@@ -367,3 +367,4 @@ config.json
 /SpecificationGenerator/schema.min.json
 /.vscode
 /Output
+/PoeExporter/Properties
