@@ -1,5 +1,4 @@
-﻿using PoeData.Specifications.DatFiles;
-using PoeExporter.WikiExporters.Lua.Helpers;
+﻿using PoeExporter.WikiExporters.Lua.Helpers;
 using Serilog;
 
 namespace PoeExporter.WikiExporters.Lua.Blight;
@@ -53,57 +52,19 @@ internal sealed class BlightCraftingRecipesExporter : IExporter<BlightCraftingRe
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var craftingRecipes = specification.LoadBlightCraftingRecipesRepository();
-        var craftingResults = specification.LoadBlightCraftingResultsRepository();
-        var craftingTypes = specification.LoadBlightCraftingTypesRepository();
-        var passiveSkills = specification.LoadPassiveSkillsRepository();
-        var mods = specification.LoadModsRepository();
 
         foreach (var recipe in craftingRecipes.Items)
         {
-            var resultKey = recipe.BlightCraftingResultsKey;
-            if (resultKey is null)
-            {
-                logger.Warning("recipe with id = {id} has null {column}", recipe.Id, nameof(recipe.BlightCraftingResultsKey));
-                continue;
-            }
+            var craftingResult = recipe.GetItemForBlightCraftingResultsKey() ?? throw new NotImplementedException();
+            var passiveSkill = craftingResult.GetItemForPassiveSkillsKey();
 
-            var craftingResult = craftingResults.Items[resultKey.Value];
-            var passiveSkillsKey = craftingResult.PassiveSkillsKey;
-            var modsKey = craftingResult.ModsKey;
-
-            if (passiveSkillsKey is null && modsKey is null)
-            {
-                logger.Warning(
-                    "crafting result with id = {id} has null {column1} and {column2}",
-                    craftingResult.Id,
-                    nameof(craftingResult.PassiveSkillsKey),
-                    nameof(craftingResult.ModsKey));
-                continue;
-            }
-
-            PassiveSkillsDat? passiveSkill = null;
-            if (passiveSkillsKey is not null)
-            {
-                passiveSkill = passiveSkills.Items[passiveSkillsKey.Value];
-            }
-
-            ModsDat? modifier = null;
-            if (modsKey is not null)
-            {
-                modifier = mods.Items[modsKey.Value];
-            }
+            var modifier = craftingResult.GetItemForModsKey();
 
             var passiveId = passiveSkill?.Id;
             var modifierId = modifier?.Id;
 
-            var typesKey = recipe.BlightCraftingTypesKey;
-            if (typesKey is null)
-            {
-                logger.Warning("recipe with id = {id} has null {column}", recipe.Id, nameof(recipe.BlightCraftingTypesKey));
-                continue;
-            }
+            var craftingType = recipe.GetItemForBlightCraftingTypesKey() ?? throw new NotImplementedException();
 
-            var craftingType = craftingTypes.Items[typesKey.Value];
             var type = craftingType.Id;
 
             var result = new BlightCraftingRecipe()
