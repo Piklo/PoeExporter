@@ -47,20 +47,11 @@ internal sealed class BlightTowersExporter : IExporter<BlightTowersExporter>
         var results = new List<BlightTower>();
         var specification = specificationWrapper.GetOrCreateSpecification();
 
-        var blightTowers = specification.LoadBlightTowersRepository();
         var blightTowersPerLevel = specification.LoadBlightTowersPerLevelRepository();
 
         foreach (var towerPerLevel in blightTowersPerLevel.Items)
         {
-            var key = towerPerLevel.BlightTowersKey;
-
-            if (key is null)
-            {
-                logger.Warning("{columnName} is null", nameof(towerPerLevel.BlightTowersKey));
-                continue;
-            }
-
-            var tower = blightTowers.Items[key.Value];
+            var tower = towerPerLevel.GetItemForBlightTowersKey() ?? throw new NotImplementedException();
 
             var replacedIcon = tower.Icon.StartsWith("Art/2DArt/UIImages/InGame/Blight/Tower Icons")
                 ? $"""File:{tower.Icon.Replace("Art/2DArt/UIImages/InGame/Blight/Tower Icons/Icon", string.Empty)} tower icon.png""" : null;
