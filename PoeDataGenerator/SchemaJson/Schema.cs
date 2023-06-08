@@ -5,7 +5,7 @@ namespace PoeDataGenerator.SchemaJson;
 /// <summary>
 /// Class containing data about all of schema json.
 /// </summary>
-internal sealed class Schema
+internal readonly record struct Schema
 {
     /// <summary>Gets version.</summary>
     [JsonPropertyName("version")]

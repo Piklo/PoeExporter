@@ -9,7 +9,7 @@ namespace PoeDataGenerator;
 /// <summary>
 /// Parses <see cref="SchemaJson.Table"/>.
 /// </summary>
-internal sealed class ParsedSchemaTable
+internal readonly record struct ParsedSchemaTable
 {
     /// <summary>Gets Table.</summary>
     public Table Table { get; }

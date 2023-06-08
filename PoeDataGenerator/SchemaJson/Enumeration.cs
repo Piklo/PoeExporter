@@ -5,7 +5,7 @@ namespace PoeDataGenerator.SchemaJson;
 /// <summary>
 /// Class containing data about enumeration in schema json.
 /// </summary>
-internal sealed class Enumeration
+internal readonly record struct Enumeration
 {
     /// <summary>Gets name.</summary>
     [JsonPropertyName("name")]
