@@ -31,28 +31,30 @@ internal sealed class SpecificationGenerator : IIncrementalGenerator
         var tablesProvider = schemaProvider.SelectMany((schema, cancellationToken) =>
         {
             return schema.Tables;
+        }).Select((table, cancellationToken) =>
+        {
+            var parsed = new ParsedSchemaTable(table);
+            return parsed;
         });
 
-        context.RegisterSourceOutput(schemaProvider, (sourceProductionContext, schema) =>
+        context.RegisterSourceOutput(tablesProvider, (sourceProductionContext, table) =>
         {
-            var repositories = new List<RepositoryGenerator>(schema.Tables.Length);
-            foreach (var table in schema.Tables)
-            {
-                var parsedTable = new ParsedSchemaTable(table);
+            var datFileGenerator = new DatFileGenerator(table);
+            sourceProductionContext.AddSource(datFileGenerator.FileName, datFileGenerator.Code);
+        });
 
-                var datFileGenerator = new DatFileGenerator(parsedTable);
+        context.RegisterSourceOutput(tablesProvider, (sourceProductionContext, table) =>
+        {
+            var repositoryGenerator = new RepositoryGenerator(table);
+            sourceProductionContext.AddSource(repositoryGenerator.FileName, repositoryGenerator.Code);
+        });
 
-                var repositoryGenerator = new RepositoryGenerator(parsedTable);
-                repositories.Add(repositoryGenerator);
+        var collectedTables = tablesProvider.Collect();
 
-                sourceProductionContext.AddSource(datFileGenerator.FileName, datFileGenerator.Code);
-                sourceProductionContext.AddSource(repositoryGenerator.FileName, repositoryGenerator.Code);
-            }
-
-            var specificationGenerator = new SpecificationFileGenerator(repositories);
+        context.RegisterSourceOutput(collectedTables, (sourceProductionContext, tables) =>
+        {
+            var specificationGenerator = new SpecificationFileGenerator(tables);
             sourceProductionContext.AddSource(specificationGenerator.FileName, specificationGenerator.Code);
-
-            Console.WriteLine();
         });
     }
 }

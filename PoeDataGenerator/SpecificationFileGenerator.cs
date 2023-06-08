@@ -8,7 +8,7 @@ namespace PoeDataGenerator;
 /// </summary>
 internal class SpecificationFileGenerator
 {
-    private readonly IReadOnlyList<RepositoryGenerator> repositoryFiles;
+    private readonly IReadOnlyList<ParsedSchemaTable> schemaTables;
 
     /// <summary>Gets generated code.</summary>
     public string Code { get; }
@@ -20,10 +20,10 @@ internal class SpecificationFileGenerator
     /// Initializes a new instance of the <see cref="SpecificationFileGenerator"/> class.
     /// </summary>
     /// <param name="logger">logger.</param>
-    /// <param name="repositoryFiles">repository files.</param>
-    public SpecificationFileGenerator(IReadOnlyList<RepositoryGenerator> repositoryFiles)
+    /// <param name="schemaTables">schema tables.</param>
+    public SpecificationFileGenerator(IReadOnlyList<ParsedSchemaTable> schemaTables)
     {
-        this.repositoryFiles = repositoryFiles;
+        this.schemaTables = schemaTables;
         Code = Generate();
     }
 
@@ -63,10 +63,10 @@ internal class SpecificationFileGenerator
 
     private void AppendFields(StringBuilder builder)
     {
-        foreach (var file in repositoryFiles)
+        foreach (var table in schemaTables)
         {
-            var className = file.ClassName;
-            var fieldName = GenerateFieldName(file);
+            var className = RepositoryGenerator.GenerateRepositoryClassName(table);
+            var fieldName = GenerateFieldName(className);
             builder.AppendLine($"""
                     private {className}? {fieldName};
                 """);
@@ -75,10 +75,10 @@ internal class SpecificationFileGenerator
 
     private void AppendLoadMethods(StringBuilder builder)
     {
-        foreach (var file in repositoryFiles)
+        foreach (var table in schemaTables)
         {
-            var className = file.ClassName;
-            var fieldName = GenerateFieldName(file);
+            var className = RepositoryGenerator.GenerateRepositoryClassName(table);
+            var fieldName = GenerateFieldName(className);
             builder.AppendLine($$"""
 
                     /// <summary>
@@ -94,8 +94,8 @@ internal class SpecificationFileGenerator
         }
     }
 
-    private static string GenerateFieldName(RepositoryGenerator repository)
+    private static string GenerateFieldName(string className)
     {
-        return repository.ClassName.ToLower();
+        return className.ToLower();
     }
 }
