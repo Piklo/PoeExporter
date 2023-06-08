@@ -32,19 +32,21 @@ internal sealed class SpecificationGenerator : IIncrementalGenerator
         var tablesProvider = schemaProvider.SelectMany((schema, cancellationToken) =>
         {
             return schema.Tables;
-        }).Select((table, cancellationToken) =>
+        });
+
+        var parsedTablesProvider = tablesProvider.Select((table, cancellationToken) =>
         {
             var parsed = new ParsedSchemaTable(table);
             return parsed;
         });
 
-        context.RegisterSourceOutput(tablesProvider, (sourceProductionContext, table) =>
+        context.RegisterSourceOutput(parsedTablesProvider, (sourceProductionContext, table) =>
         {
             var datFileGenerator = new DatFileGenerator(table);
             sourceProductionContext.AddSource(datFileGenerator.FileName, datFileGenerator.Code);
         });
 
-        context.RegisterSourceOutput(tablesProvider, (sourceProductionContext, table) =>
+        context.RegisterSourceOutput(parsedTablesProvider, (sourceProductionContext, table) =>
         {
             var repositoryGenerator = new RepositoryGenerator(table);
             sourceProductionContext.AddSource(repositoryGenerator.FileName, repositoryGenerator.Code);

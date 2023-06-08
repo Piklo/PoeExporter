@@ -1,5 +1,5 @@
-﻿using PoeDataGenerator.GeneratorHelpers;
-using PoeDataGenerator.RepositoryGenerators;
+﻿using PoeDataGenerator.RepositoryGenerators;
+using PoeDataGenerator.SchemaJson;
 using System.Text;
 
 namespace PoeDataGenerator;
@@ -9,7 +9,7 @@ namespace PoeDataGenerator;
 /// </summary>
 internal class SpecificationFileGenerator
 {
-    private readonly IReadOnlyList<ParsedSchemaTable> schemaTables;
+    private readonly IReadOnlyList<Table> schemaTables;
 
     /// <summary>Gets generated code.</summary>
     public string Code { get; }
@@ -22,7 +22,7 @@ internal class SpecificationFileGenerator
     /// </summary>
     /// <param name="logger">logger.</param>
     /// <param name="schemaTables">schema tables.</param>
-    public SpecificationFileGenerator(IReadOnlyList<ParsedSchemaTable> schemaTables)
+    public SpecificationFileGenerator(IReadOnlyList<Table> schemaTables)
     {
         this.schemaTables = schemaTables;
         Code = Generate();
@@ -66,7 +66,7 @@ internal class SpecificationFileGenerator
     {
         foreach (var table in schemaTables)
         {
-            var className = RepositoryGenerator.GenerateRepositoryClassName(table);
+            var className = RepositoryGenerator.GenerateRepositoryClassName(table.Name);
             var fieldName = GenerateFieldName(className);
             builder.AppendLine($"""
                     private {className}? {fieldName};
@@ -78,7 +78,7 @@ internal class SpecificationFileGenerator
     {
         foreach (var table in schemaTables)
         {
-            var className = RepositoryGenerator.GenerateRepositoryClassName(table);
+            var className = RepositoryGenerator.GenerateRepositoryClassName(table.Name);
             var fieldName = GenerateFieldName(className);
             builder.AppendLine($$"""
 
