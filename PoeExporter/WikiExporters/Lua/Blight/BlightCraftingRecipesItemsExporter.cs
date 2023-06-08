@@ -49,7 +49,6 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraft
 
         var recipes = specification.LoadBlightCraftingRecipesRepository();
         var craftingItems = specification.LoadBlightCraftingItemsRepository();
-        var baseItems = specification.LoadBaseItemTypesRepository();
 
         foreach (var recipe in recipes.Items)
         {
