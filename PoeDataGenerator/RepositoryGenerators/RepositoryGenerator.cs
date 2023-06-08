@@ -10,7 +10,7 @@ namespace PoeDataGenerator.RepositoryGenerators;
 internal sealed class RepositoryGenerator
 {
     private const string Namespace = "PoeData.Specifications.Repositories";
-    private readonly ParsedSchemaTable parsedTable;
+    private readonly ParsedSchemaWithReferenceData tableReferenceData;
     private readonly string datClassName;
 
     /// <summary>Gets string with class name.</summary>
@@ -26,32 +26,22 @@ internal sealed class RepositoryGenerator
     /// Initializes a new instance of the <see cref="RepositoryGenerator"/> class.
     /// </summary>
     /// <param name="logger">logger.</param>
-    /// <param name="parsedTable">Table to parse.</param>
-    public RepositoryGenerator(ParsedSchemaTable parsedTable)
+    /// <param name="tableReferenceData">referenced tables data.</param>
+    public RepositoryGenerator(ParsedSchemaWithReferenceData tableReferenceData)
     {
-        this.parsedTable = parsedTable;
+        this.tableReferenceData = tableReferenceData;
 
-        datClassName = DatFileGenerator.GenerateClassName(parsedTable.Table.Name);
+        datClassName = DatFileGenerator.GenerateClassName(this.tableReferenceData.Table.Name);
 
-        ClassName = GenerateRepositoryClassName(this.parsedTable);
-        FileName = GenerateFileName(this.parsedTable);
+        ClassName = GenerateRepositoryClassName(this.tableReferenceData.Table.Name);
+        FileName = GenerateFileName(this.tableReferenceData.Table.Name);
         Code = Generate();
     }
 
     /// <summary>
     /// Generates repository class name.
     /// </summary>
-    /// <param name="parsedTable">parsed table for which the repository is generated.</param>
-    /// <returns>class name string.</returns>
-    internal static string GenerateRepositoryClassName(ParsedSchemaTable parsedTable)
-    {
-        return GenerateRepositoryClassName(parsedTable.Table.Name);
-    }
-
-    /// <summary>
-    /// Generates repository class name.
-    /// </summary>
-    /// <param name="tableName">parsed table for which the repository is generated.</param>
+    /// <param name="tableName">name of the table for which the repository is generated.</param>
     /// <returns>class name string.</returns>
     internal static string GenerateRepositoryClassName(string tableName)
     {
@@ -63,11 +53,11 @@ internal sealed class RepositoryGenerator
     /// <summary>
     /// Generates file name for the generated repository class.
     /// </summary>
-    /// <param name="parsedTable">parsed table for which the repository is generated.</param>
+    /// <param name="tableName">name of the table for which the repository is generated.</param>
     /// <returns>file name string.</returns>
-    internal static string GenerateFileName(ParsedSchemaTable parsedTable)
+    internal static string GenerateFileName(string tableName)
     {
-        var className = GenerateRepositoryClassName(parsedTable);
+        var className = GenerateRepositoryClassName(tableName);
         var name = $"{className}.g.cs";
 
         return name;
@@ -97,13 +87,12 @@ internal sealed class RepositoryGenerator
 
                 /// <summary>Gets items.</summary>
                 public ReadOnlyCollection<{{datClassName}}> Items { get; }
-
             """);
 
         AppendFieldsForColumns(builder);
         AppendConstructor(builder);
         AppendGetMethods(builder);
-        AppendLoadMethod(builder, parsedTable.ParsedColumns);
+        AppendLoadMethod(builder, tableReferenceData.Table.ParsedColumns);
 
         builder.AppendLine("""
             }
@@ -116,17 +105,23 @@ internal sealed class RepositoryGenerator
 
     private void AppendFieldsForColumns(StringBuilder builder)
     {
-        foreach (var column in parsedTable.ParsedColumns)
+        foreach (var column in tableReferenceData.Table.ParsedColumns)
         {
+            if (!tableReferenceData.ReferencedColumns.Contains(column.ClassPropertyName))
+            {
+                continue;
+            }
+
             var type = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0].Type : column.Type.Type;
 
             builder.AppendLine($"""
-                    private Dictionary<{type}, List<{datClassName}>>? {GenerateByFieldName(column)};
+
+                    private Dictionary<{type}, {datClassName}>? {GenerateSingleByFieldName(column)};
                 """);
         }
     }
 
-    private static string GenerateByFieldName(IParsedColumn column)
+    private static string GenerateSingleByFieldName(IParsedColumn column)
     {
         return $"by{column.ClassPropertyName}";
     }
@@ -151,56 +146,22 @@ internal sealed class RepositoryGenerator
 
     private void AppendGetMethods(StringBuilder builder)
     {
-        foreach (var column in parsedTable.ParsedColumns)
+        foreach (var column in tableReferenceData.Table.ParsedColumns)
         {
+            if (!tableReferenceData.ReferencedColumns.Contains(column.ClassPropertyName))
+            {
+                continue;
+            }
+
             AppendGetSingleMethod(builder, column);
-            AppendGetManyMethod(builder, column);
-            AppendGetToManyManyMethod(builder, column);
         }
     }
 
     private void AppendGetSingleMethod(StringBuilder builder, IParsedColumn column)
     {
         builder.AppendLine();
-        var code = RepositoryGetMethodsHelper.GetSingleMethod(datClassName, column);
-        foreach (var line in code)
-        {
-            if (string.IsNullOrWhiteSpace(line.Value))
-            {
-                builder.AppendLine();
-                continue;
-            }
-
-            builder.AppendLine($"{new string(' ', (line.Indentation + 1) * 4)}{line.Value}");
-        }
-    }
-
-    private void AppendGetManyMethod(StringBuilder builder, IParsedColumn column)
-    {
-        builder.AppendLine();
-
-        var fieldName = GenerateByFieldName(column);
-
-        var code = RepositoryGetMethodsHelper.GetManyMethod(datClassName, fieldName, column);
-        foreach (var line in code)
-        {
-            if (string.IsNullOrWhiteSpace(line.Value))
-            {
-                builder.AppendLine();
-                continue;
-            }
-
-            builder.AppendLine($"{new string(' ', (line.Indentation + 1) * 4)}{line.Value}");
-        }
-    }
-
-    private void AppendGetToManyManyMethod(StringBuilder builder, IParsedColumn column)
-    {
-        builder.AppendLine();
-
-        var fieldName = GenerateByFieldName(column);
-
-        var code = RepositoryGetMethodsHelper.GetManyToMany(datClassName, fieldName, column);
+        var fieldName = GenerateSingleByFieldName(column);
+        var code = RepositoryGetMethodsHelper.GetSingleMethod(datClassName, fieldName, column);
         foreach (var line in code)
         {
             if (string.IsNullOrWhiteSpace(line.Value))
@@ -219,7 +180,7 @@ internal sealed class RepositoryGenerator
 
                     private {{datClassName}}[] Load()
                     {
-                        const string filePath = "Data/{{parsedTable.Name}}.dat64";
+                        const string filePath = "Data/{{tableReferenceData.Table.Name}}.dat64";
                         var dataLoader = specification.DataLoader;
                         var decompressedFile = dataLoader.GetFileBytes(filePath);
 

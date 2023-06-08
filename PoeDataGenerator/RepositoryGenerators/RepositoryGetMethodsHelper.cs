@@ -9,59 +9,8 @@ namespace PoeDataGenerator.RepositoryGenerators;
 /// </summary>
 internal static class RepositoryGetMethodsHelper
 {
-    public static IReadOnlyList<LineOfCode> GetSingleMethod(string datClassName, IParsedColumn column)
+    public static IReadOnlyList<LineOfCode> GetSingleMethod(string datClassName, string fieldName, IParsedColumn column)
     {
-        var getManyMethodName = GenerateGetManyMethodName(column);
-        var typeData = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0] : column.Type;
-        var type = typeData.IsNullable ? typeData.Type : $"{typeData.Type}?";
-        var code = $$"""
-            /// <summary>
-            /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
-            /// </summary>
-            /// <param name="key">key.</param>
-            /// <param name="item">returned item if found.</param>
-            /// <returns>true if item with a given key was found, false otherwise.</returns>
-            public bool TryGetBy{{column.ClassPropertyName}}({{type}} key, out {{datClassName}}? item)
-            {
-                if (key is null)
-                {
-                    item = null;
-                    return false;
-                }
-
-                if (!{{getManyMethodName}}(key, out var items))
-                {
-                    item = null;
-                    return false;
-                }
-
-                if (items.Count == 0)
-                {
-                    logger.Warning("failed to find item with key = {key}", {{(typeData.IsValueType ? "key.Value" : "key")}});
-                    item = null;
-                    return false;
-                }
-
-                if (items.Count > 1)
-                {
-                    logger.Warning("found too many items with key = {key}", {{(typeData.IsValueType ? "key.Value" : "key")}});
-                    item = null;
-                    return false;
-                }
-
-                item = items[0];
-                return true;
-            }
-            """;
-
-        var lines = LineOfCode.Split(code);
-
-        return lines;
-    }
-
-    public static IReadOnlyList<LineOfCode> GetManyMethod(string datClassName, string fieldName, IParsedColumn column)
-    {
-        var methodName = GenerateGetManyMethodName(column);
         var typeData = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0] : column.Type;
         var type = typeData.IsNullable ? typeData.Type : $"{typeData.Type}?";
         var builder = new StringBuilder();
@@ -70,36 +19,28 @@ internal static class RepositoryGetMethodsHelper
             /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{column.ClassPropertyName}}"/> equal to a given key.
             /// </summary>
             /// <param name="key">key.</param>
-            /// <param name="items">returned items if found.</param>
-            /// <returns>true if item with a given key was found, false otherwise.</returns>
-            public bool {{methodName}}({{type}} key, out IReadOnlyList<{{datClassName}}> items)
+            /// <returns>item if found, null otherwise.</returns>
+            public {{datClassName}}? GetBy{{column.ClassPropertyName}}({{type}} key)
             {
                 if (key is null)
                 {
-                    items = Array.Empty<{{datClassName}}>();
-                    return false;
+                    return null;
                 }
 
-                if ({{fieldName}} is null)
+                {{fieldName}} ??= {{GetLoadFieldMethodName(fieldName)}}();
+
+                if ({{fieldName}}.TryGetValue({{(typeData.IsValueType ? "key.Value" : "key")}}, out var item))
                 {
-                    {{fieldName}} = new();
-            """);
-
-        AppendToDictionaryParsing(builder, fieldName, column);
-
-        builder.Append($$"""
+                    return item;
                 }
-
-                if (!{{fieldName}}.TryGetValue({{(typeData.IsValueType ? "key.Value" : "key")}}, out var temp))
+                else 
                 {
-                    items = Array.Empty<{{datClassName}}>();
-                    return false;
+                    return null;
                 }
-
-                items = temp;
-                return true;
             }
             """);
+
+        AppendLoadFieldMethod(builder, datClassName, fieldName, column);
 
         var code = builder.ToString();
 
@@ -108,106 +49,29 @@ internal static class RepositoryGetMethodsHelper
         return lines;
     }
 
-    private static void AppendToDictionaryParsing(StringBuilder builder, string fieldName, IParsedColumn column)
+    private static string GetLoadFieldMethodName(string fieldName)
     {
-        var typeData = column.Type;
-        var isNullable = typeData.IsNullable;
-        var isValueType = typeData.IsValueType;
-        var isList = typeData.IsList;
+        return $"Load{fieldName}";
+    }
+
+    private static void AppendLoadFieldMethod(StringBuilder builder, string datClassName, string fieldName, IParsedColumn column)
+    {
+        var fieldType = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0].Type : column.Type.Type;
+        var methodName = GetLoadFieldMethodName(fieldName);
 
         builder.AppendLine($$"""
-                        foreach (var item in Items)
-                        {
-                            var itemKey = item.{{column.ClassPropertyName}};
-                """);
 
-        if (isNullable)
-        {
-            builder.AppendLine("""
-                            if (itemKey is null)
-                            {
-                                continue;
-                            }
-                """);
-        }
-
-        if (isList)
-        {
-            builder.AppendLine($$"""
-                            foreach (var listKey in itemKey)
-                            {
-                                if (!{{fieldName}}.TryGetValue(listKey, out var list))
-                                {
-                                    list = new();
-                                    {{fieldName}}.TryAdd(listKey, list);
-                                }
-
-                                list.Add(item);
-                            }
-                        }
-                """);
-        }
-        else
-        {
-            builder.AppendLine($$"""
-
-                            if (!{{fieldName}}.TryGetValue(itemKey{{(isNullable && isValueType ? ".Value" : string.Empty)}}, out var list))
-                            {
-                                list = new();
-                                {{fieldName}}.TryAdd(itemKey{{(isNullable && isValueType ? ".Value" : string.Empty)}}, list);
-                            }
-
-                            list.Add(item);
-                        }
-                """);
-        }
-    }
-
-    private static string GenerateGetManyMethodName(IParsedColumn column)
-    {
-        return $"TryGetManyBy{column.ClassPropertyName}";
-    }
-
-    public static IReadOnlyList<LineOfCode> GetManyToMany(string datClassName, string fieldName, IParsedColumn column)
-    {
-        var getManyMethodName = GenerateGetManyMethodName(column);
-        var methodName = $"GetManyToManyBy{column.ClassPropertyName}";
-        var type = column.Type.InnerTypes.Length != 0 ? column.Type.InnerTypes[0].Type : column.Type.Type;
-        var code = $$"""
-            /// <summary>
-            /// Tries to get <see cref="{{datClassName}}"/> with <see cref="{{datClassName}}.{{fieldName}}"/> equal to a given keys.
-            /// </summary>
-            /// <param name="keys">keys.</param>
-            /// <returns>found items.</returns>
-            public IReadOnlyList<ResultItem<{{type}}, {{datClassName}}>> {{methodName}}(IReadOnlyList<{{type}}>? keys)
+            private Dictionary<{{fieldType}}, {{datClassName}}> {{methodName}}()
             {
-                if (keys is null || keys.Count == 0)
+                var dict = new Dictionary<{{fieldType}}, {{datClassName}}>();
+
+                foreach (var item in Items)
                 {
-                    return Array.Empty<ResultItem<{{type}}, {{datClassName}}>>();
+                    dict.Add(item.{{column.ClassPropertyName}}, item);
                 }
 
-                var items = new List<ResultItem<{{type}}, {{datClassName}}>>();
-
-                foreach (var key in keys)
-                {
-                    if (!{{getManyMethodName}}(key, out var tempItems))
-                    {
-                        continue;
-                    }
-
-                    foreach (var item in tempItems)
-                    {
-                        var resultItem = new ResultItem<{{type}}, {{datClassName}}>(key, item);
-                        items.Add(resultItem);
-                    }
-                }
-
-                return items;
+                return dict;
             }
-            """;
-
-        var lines = LineOfCode.Split(code);
-
-        return lines;
+            """);
     }
 }
