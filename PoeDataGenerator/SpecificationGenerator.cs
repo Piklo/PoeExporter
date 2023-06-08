@@ -57,6 +57,8 @@ internal sealed class SpecificationGenerator : IIncrementalGenerator
             {
                 foreach (var column in table.ParsedColumns)
                 {
+                    cancellationToken.ThrowIfCancellationRequested();
+
                     if (column.ReferencedTable is null || column.ReferencedColumn is null)
                     {
                         continue;
@@ -78,6 +80,7 @@ internal sealed class SpecificationGenerator : IIncrementalGenerator
             var emptyHashSet = test.ToImmutableHashSet();
             foreach (var table in tables)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 var tableName = table.Name;
 
                 if (dict.TryGetValue(tableName, out var referencedColumns) && referencedColumns is not null)
