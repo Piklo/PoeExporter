@@ -2,7 +2,7 @@
 using PoeDataGenerator.SchemaJson;
 using System.Text;
 
-namespace PoeDataGenerator;
+namespace PoeDataGenerator.Specification;
 
 /// <summary>
 /// Class containing code for generating Specification.cs file.

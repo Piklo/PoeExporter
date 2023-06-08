@@ -1,4 +1,5 @@
-﻿using PoeDataGenerator.RepositoryGenerators;
+﻿using PoeDataGenerator.DatFiles;
+using PoeDataGenerator.RepositoryGenerators;
 
 namespace PoeDataGenerator.ParsedColumns.Helpers;
 

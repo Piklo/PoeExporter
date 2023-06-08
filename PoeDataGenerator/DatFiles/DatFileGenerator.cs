@@ -2,7 +2,7 @@
 using PoeDataGenerator.ParsedColumns.Helpers;
 using System.Text;
 
-namespace PoeDataGenerator;
+namespace PoeDataGenerator.DatFiles;
 
 /// <summary>
 /// Class containing parsed table data.

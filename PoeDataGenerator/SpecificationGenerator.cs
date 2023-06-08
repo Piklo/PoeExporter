@@ -1,7 +1,9 @@
 ﻿using Microsoft.CodeAnalysis;
+using PoeDataGenerator.DatFiles;
 using PoeDataGenerator.GeneratorHelpers;
 using PoeDataGenerator.RepositoryGenerators;
 using PoeDataGenerator.SchemaJson;
+using PoeDataGenerator.Specification;
 using System.Collections.Immutable;
 using System.Text.Json;
 
@@ -106,7 +108,6 @@ internal sealed class SpecificationGenerator : IIncrementalGenerator
             var repositoryGenerator = new RepositoryGenerator(tableReferenceData);
             sourceProductionContext.AddSource(repositoryGenerator.FileName, repositoryGenerator.Code);
         });
-
 
         var collectedTablesProvider = tablesProvider.Collect();
 
