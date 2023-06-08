@@ -56,19 +56,16 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraft
             for (var i = 0; i < recipe.BlightCraftingItemsKeys.Count; i++)
             {
                 var ordinal = i + 1;
+
                 var recipeId = recipe.Id;
 
                 var blightCraftingItemKey = recipe.BlightCraftingItemsKeys[i];
+
                 var blightCraftingItem = craftingItems.Items[blightCraftingItemKey];
-                var oil = blightCraftingItem.Oil;
 
-                if (oil is null)
-                {
-                    logger.Warning("could not find crafing item with key = {key}", blightCraftingItemKey);
-                    continue;
-                }
+                var item = blightCraftingItem.GetItemForOil() ?? throw new NotImplementedException();
 
-                var itemId = baseItems.Items[oil.Value].Id;
+                var itemId = item.Id;
 
                 var res = new BlightCraftingRecipesItem()
                 {
