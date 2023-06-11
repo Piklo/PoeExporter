@@ -48,54 +48,30 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var heistAreas = specification.LoadHeistAreasRepository();
-        var worldAreas = specification.LoadWorldAreasRepository();
-        var heistJobs = specification.LoadHeistJobsRepository();
-        var baseItems = specification.LoadBaseItemTypesRepository();
-        var clientStrings = specification.LoadClientStringsRepository();
 
         foreach (var heistArea in heistAreas.Items)
         {
-            var worldAreaKeys = heistArea.WorldAreasKeys;
-            var areas = new string[worldAreaKeys.Count];
-            for (var i = 0; i < worldAreaKeys.Count; i++)
+            var worldAreas = heistArea.GetItemsForWorldAreasKeys();
+            var areas = new string[worldAreas.Count];
+            for (var i = 0; i < worldAreas.Count; i++)
             {
-                var key = worldAreaKeys[i];
-                var area = worldAreas.Items[key];
-                areas[i] = area.Id;
+                var worldArea = worldAreas[i].Value;
+                areas[i] = worldArea.Id;
             }
 
-            var jobKeys = heistArea.HeistJobsKeys;
-            var jobs = new string[jobKeys.Count];
-            for (var i = 0; i < jobKeys.Count; i++)
+            var heistJobs = heistArea.GetItemsForHeistJobsKeys();
+            var jobs = new string[heistJobs.Count];
+            for (var i = 0; i < heistJobs.Count; i++)
             {
-                var key = jobKeys[i];
-                var area = heistJobs.Items[key];
-                jobs[i] = area.Id;
+                var heistJob = heistJobs[i].Value;
+                jobs[i] = heistJob.Id;
             }
 
-            var contractKey = heistArea.Contract_BaseItemTypesKey;
-            if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Contract_BaseItemTypesKey), contractKey, nameof(heistArea.Id), heistArea.Id))
-            {
-                continue;
-            }
+            var contract = heistArea.GetItemForContract_BaseItemTypesKey() ?? throw new NullItemException();
 
-            var contract = baseItems.Items[contractKey.Value];
+            var blueprint = heistArea.GetItemForBlueprint_BaseItemTypesKey() ?? throw new NullItemException();
 
-            var blueprintKey = heistArea.Blueprint_BaseItemTypesKey;
-            if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Blueprint_BaseItemTypesKey), blueprintKey, nameof(heistArea.Id), heistArea.Id))
-            {
-                continue;
-            }
-
-            var blueprint = baseItems.Items[blueprintKey.Value];
-
-            var rewardKey = heistArea.Reward;
-            if (DatFilesHelper.IsNullWithLog(logger, nameof(heistArea.Reward), rewardKey, nameof(heistArea.Id), heistArea.Id))
-            {
-                continue;
-            }
-
-            var reward = clientStrings.Items[rewardKey.Value];
+            var reward = heistArea.GetItemForReward() ?? throw new NullItemException();
 
             var obj = new HeistArea()
             {
