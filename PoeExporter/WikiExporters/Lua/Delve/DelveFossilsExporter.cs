@@ -48,77 +48,55 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var craftingModifiers = specification.LoadDelveCraftingModifiersRepository();
-        var baseItems = specification.LoadBaseItemTypesRepository();
-        var mods = specification.LoadModsRepository();
-        var delveCraftingTags = specification.LoadDelveCraftingTagsRepository();
-        var tags = specification.LoadTagsRepository();
 
         foreach (var modifier in craftingModifiers.Items)
         {
-            if (modifier.BaseItemTypesKey is null)
-            {
-                logger.Warning("modifier with id = {id} has null {column}", nameof(modifier.BaseItemTypesKey));
-                continue;
-            }
-
-            var baseItem = baseItems.Items[modifier.BaseItemTypesKey.Value];
+            var baseItem = modifier.GetItemForBaseItemTypesKey() ?? throw new NullItemException();
 
             if (baseItem.Id.Contains("RandomFossilOutcome"))
             {
                 continue;
             }
 
-            var addedModIds = new string[modifier.AddedModsKeys.Count];
-            for (var i = 0; i < modifier.AddedModsKeys.Count; i++)
+            var addedMods = modifier.GetItemsForAddedModsKeys();
+            var addedModIds = new string[addedMods.Count];
+            for (var i = 0; i < addedMods.Count; i++)
             {
-                var key = modifier.AddedModsKeys[i];
-                var mod = mods.Items[key];
+                var mod = addedMods[i].Value;
                 addedModIds[i] = mod.Id;
             }
 
-            var forcedModIds = new string[modifier.ForcedAddModsKeys.Count];
-            for (var i = 0; i < modifier.ForcedAddModsKeys.Count; i++)
+            var forcedMods = modifier.GetItemsForForcedAddModsKeys();
+            var forcedModIds = new string[forcedMods.Count];
+            for (var i = 0; i < forcedMods.Count; i++)
             {
-                var key = modifier.ForcedAddModsKeys[i];
-                var mod = mods.Items[key];
+                var mod = forcedMods[i].Value;
                 forcedModIds[i] = mod.Id;
             }
 
-            var sellPriceModIds = new string[modifier.SellPrice_ModsKeys.Count];
-            for (var i = 0; i < modifier.SellPrice_ModsKeys.Count; i++)
+            var sellPriceMods = modifier.GetItemsForSellPrice_ModsKeys();
+            var sellPriceModIds = new string[sellPriceMods.Count];
+            for (var i = 0; i < sellPriceMods.Count; i++)
             {
-                var key = modifier.SellPrice_ModsKeys[i];
-                var mod = mods.Items[key];
+                var mod = sellPriceMods[i].Value;
                 sellPriceModIds[i] = mod.Id;
             }
 
-            var forbiddenTags = new string[modifier.ForbiddenDelveCraftingTagsKeys.Count];
-            for (var i = 0; i < modifier.ForbiddenDelveCraftingTagsKeys.Count; i++)
+            var forbiddenCraftingTags = modifier.GetItemsForForbiddenDelveCraftingTagsKeys();
+            var forbiddenTags = new string[forbiddenCraftingTags.Count];
+            for (var i = 0; i < forbiddenCraftingTags.Count; i++)
             {
-                var key = modifier.ForbiddenDelveCraftingTagsKeys[i];
-                var delveTag = delveCraftingTags.Items[key];
-                if (delveTag.TagsKey is null)
-                {
-                    logger.Warning("{var} has null {prop}", nameof(delveTag), nameof(delveTag.TagsKey));
-                    continue;
-                }
-
-                var tag = tags.Items[delveTag.TagsKey.Value];
+                var delveTag = forbiddenCraftingTags[i].Value;
+                var tag = delveTag.GetItemForTagsKey() ?? throw new NullItemException();
                 forbiddenTags[i] = tag.Id;
             }
 
-            var allowedTags = new string[modifier.AllowedDelveCraftingTagsKeys.Count];
-            for (var i = 0; i < modifier.AllowedDelveCraftingTagsKeys.Count; i++)
+            var allowedCraftingTags = modifier.GetItemsForAllowedDelveCraftingTagsKeys();
+            var allowedTags = new string[allowedCraftingTags.Count];
+            for (var i = 0; i < allowedCraftingTags.Count; i++)
             {
-                var key = modifier.AllowedDelveCraftingTagsKeys[i];
-                var delveTag = delveCraftingTags.Items[key];
-                if (delveTag.TagsKey is null)
-                {
-                    logger.Warning("{var} has null {prop}", nameof(delveTag), nameof(delveTag.TagsKey));
-                    continue;
-                }
-
-                var tag = tags.Items[delveTag.TagsKey.Value];
+                var delveTag = allowedCraftingTags[i].Value;
+                var tag = delveTag.GetItemForTagsKey() ?? throw new NullItemException();
                 allowedTags[i] = tag.Id;
             }
 
