@@ -53,7 +53,7 @@ internal sealed class DelveUpgradesExporter : IExporter<DelveUpgradesExporter>
         {
             var obj = new DelveUpgrade()
             {
-                Type = ((DelveUpgradeTypes)upgrade.DelveUpgradeTypeKey).ToString().ToLower(),
+                Type = GetTypeText(upgrade.DelveUpgradeTypeKey),
                 Level = upgrade.UpgradeLevel,
                 Cost = upgrade.Cost,
             };
@@ -63,4 +63,19 @@ internal sealed class DelveUpgradesExporter : IExporter<DelveUpgradesExporter>
 
         return results;
     }
+
+    private static string GetTypeText(int key) => key switch
+    {
+        0 => "sulphite_capacity",
+        1 => "flare_capacity",
+        2 => "dynamite_capacity",
+        3 => "light_radius",
+        4 => "flare_radius",
+        5 => "dynamite_radius",
+        6 => "unknown",
+        7 => "dynamite_damage",
+        8 => "darkness_resistance",
+        9 => "flare_duration",
+        _ => throw new NotImplementedException(),
+    };
 }
