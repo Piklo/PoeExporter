@@ -49,7 +49,6 @@ internal sealed class DelveFossilWeightsExporter : IExporter<DelveFossilWeightsE
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var delveCraftingMods = specification.LoadDelveCraftingModifiersRepository();
-        var baseItems = specification.LoadBaseItemTypesRepository();
         var tags = specification.LoadTagsRepository();
 
         var additionalDatas = new AdditionalData[]
@@ -61,13 +60,7 @@ internal sealed class DelveFossilWeightsExporter : IExporter<DelveFossilWeightsE
         {
             foreach (var additionalData in additionalDatas)
             {
-                if (modifier.BaseItemTypesKey is null)
-                {
-                    logger.Warning("modifier with id = {id} has null {column}", nameof(modifier.BaseItemTypesKey));
-                    continue;
-                }
-
-                var baseItem = baseItems.Items[modifier.BaseItemTypesKey.Value];
+                var baseItem = modifier.GetItemForBaseItemTypesKey() ?? throw new NullItemException();
 
                 if (baseItem.Id.Contains("RandomFossilOutcome"))
                 {
