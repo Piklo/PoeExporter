@@ -48,25 +48,17 @@ internal sealed class DelveUpgradesExporter : IExporter<DelveUpgradesExporter>
         var specification = specificationWrapper.GetOrCreateSpecification();
 
         var delveUpgrades = specification.LoadDelveUpgradesRepository();
-        var stats = specification.LoadStatsRepository();
 
         foreach (var upgrade in delveUpgrades.Items)
         {
-            for (var i = 0; i < upgrade.StatsKeys.Count; i++)
+            var obj = new DelveUpgrade()
             {
-                var key = upgrade.StatsKeys[i];
-                var stat = stats.Items[key];
-                var statValue = upgrade.StatValues[i];
+                Type = ((DelveUpgradeTypes)upgrade.DelveUpgradeTypeKey).ToString().ToLower(),
+                Level = upgrade.UpgradeLevel,
+                Cost = upgrade.Cost,
+            };
 
-                var obj = new DelveUpgrade()
-                {
-                    Type = ((DelveUpgradeTypes)upgrade.DelveUpgradeTypeKey).ToString().ToLower(),
-                    Level = upgrade.UpgradeLevel,
-                    Cost = upgrade.Cost,
-                };
-
-                results.Add(obj);
-            }
+            results.Add(obj);
         }
 
         return results;
