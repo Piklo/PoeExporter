@@ -51,18 +51,13 @@ internal sealed class HarvestCraftOptionsExporter : IExporter<HarvestCraftOption
 
         foreach (var craft in craftOptions.Items)
         {
-            var harvestCraftTierKey = craft.Unknown16;
-            if (harvestCraftTierKey is null)
-            {
-                logger.Warning("{column} is null for {var} with id = {id}", nameof(craft.Unknown16), craft.GetType(), craft.Id);
-                continue;
-            }
+            var harvestCraftTierKey = craft.Unknown16 ?? throw new NullItemException();
 
             var obj = new HarvestCraftOption()
             {
                 Id = craft.Id,
                 Text = ParseText(craft.Text),
-                Tier = harvestCraftTierKey.Value,
+                Tier = harvestCraftTierKey,
                 Effect = craft.Description,
                 IsEnchant = craft.Unknown76,
                 CostLifeforceType = craft.LifeforceType,
@@ -95,33 +90,30 @@ internal sealed class HarvestCraftOptionsExporter : IExporter<HarvestCraftOption
         return text;
     }
 
-    private static string GetNewTag(string tag)
+    private static string GetNewTag(string tag) => tag switch
     {
-        return tag switch
-        {
-            "white" => "white",
-            "craftingred" => "red",
-            "craftingblue" => "blue",
-            "craftinggreen" => "green",
-            "craftingcaster" => "purple",
-            "craftingphysical" => "tan",
-            "craftingfire" => "orange",
-            "craftinglightning" => "yellow",
-            "craftingcold" => "blue",
-            "craftingchaos" => "purple",
-            "unique" => "orange",
-            "magic" => "blue",
-            "rare" => "yellow",
-            "craftingspeed" => "green",
-            "craftingattack" => "white",
-            "craftinglife" => "red",
-            "craftingcrit" => "blue",
-            "craftingdefences" => "white",
-            "enchanted" => "white",
-            "fuchsia" => "magenta",
-            "yellow" => "yellow",
-            "aqua" => "cyan",
-            _ => throw new NotImplementedException($"unknown tag = {tag}"),
-        };
-    }
+        "white" => "white",
+        "craftingred" => "red",
+        "craftingblue" => "blue",
+        "craftinggreen" => "green",
+        "craftingcaster" => "purple",
+        "craftingphysical" => "tan",
+        "craftingfire" => "orange",
+        "craftinglightning" => "yellow",
+        "craftingcold" => "blue",
+        "craftingchaos" => "purple",
+        "unique" => "orange",
+        "magic" => "blue",
+        "rare" => "yellow",
+        "craftingspeed" => "green",
+        "craftingattack" => "white",
+        "craftinglife" => "red",
+        "craftingcrit" => "blue",
+        "craftingdefences" => "white",
+        "enchanted" => "white",
+        "fuchsia" => "magenta",
+        "yellow" => "yellow",
+        "aqua" => "cyan",
+        _ => throw new NotImplementedException($"unknown tag = {tag}"),
+    };
 }
