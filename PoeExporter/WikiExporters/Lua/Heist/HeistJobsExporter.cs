@@ -25,14 +25,14 @@ internal sealed class HeistJobsExporter : IExporter
     /// <inheritdoc/>
     public string Export()
     {
-        var results = GetHeistJobs();
+        var items = GetItems();
 
-        var str = LuaConverter.ToLuaString(results);
+        var str = LuaConverter.ToLuaString(items);
 
         return str;
     }
 
-    private IReadOnlyList<HeistJob> GetHeistJobs()
+    private IReadOnlyList<HeistJob> GetItems()
     {
         var results = new List<HeistJob>();
 
