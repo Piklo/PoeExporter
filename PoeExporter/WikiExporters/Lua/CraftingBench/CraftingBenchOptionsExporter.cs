@@ -80,7 +80,7 @@ internal sealed class CraftingBenchOptionsExporter : IExporter<CraftingBenchOpti
                 itemClassCategories[i] = item.Text;
             }
 
-            var sortCategory = benchOption.GetItemForSortCategory() ?? throw new NotImplementedException();
+            var sortCategory = benchOption.GetItemForSortCategory() ?? throw new NullItemException();
 
             var affixType = sortCategory.Id;
 
