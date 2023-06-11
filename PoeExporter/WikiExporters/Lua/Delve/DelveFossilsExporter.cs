@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Delve;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Delve/fossils.
 /// </summary>
-internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
+internal sealed class DelveFossilsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "fossils";
@@ -17,35 +16,25 @@ internal sealed class DelveFossilsExporter : IExporter<DelveFossilsExporter>
     /// <summary>
     /// Initializes a new instance of the <see cref="DelveFossilsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public DelveFossilsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public DelveFossilsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static DelveFossilsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new DelveFossilsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var costs = GetDelveFossils();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(costs);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<DelveFossil> GetDelveFossils()
+    private IReadOnlyList<DelveFossil> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetDelveFossils));
         var results = new List<DelveFossil>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var craftingModifiers = specification.LoadDelveCraftingModifiersRepository();
 

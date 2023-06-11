@@ -77,4 +77,9 @@ internal sealed partial class WikiCommands
     {
         _ = new WikiCommands(rootCommand, specificationWrapper, config, logger);
     }
+
+    private void LogRunningExporter(string exporterName)
+    {
+        logger.Information("running {exporter}", exporterName);
+    }
 }

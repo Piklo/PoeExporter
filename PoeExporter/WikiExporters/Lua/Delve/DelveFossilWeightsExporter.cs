@@ -1,16 +1,15 @@
-﻿using PoeData.Specifications.DatFiles;
+﻿using PoeData.Specifications;
+using PoeData.Specifications.DatFiles;
 using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
 
 namespace PoeExporter.WikiExporters.Lua.Delve;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Delve/fossil_weights.
 /// </summary>
-internal sealed class DelveFossilWeightsExporter : IExporter<DelveFossilWeightsExporter>
+internal sealed class DelveFossilWeightsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "fossil_weights";
@@ -18,35 +17,25 @@ internal sealed class DelveFossilWeightsExporter : IExporter<DelveFossilWeightsE
     /// <summary>
     /// Initializes a new instance of the <see cref="DelveFossilWeightsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public DelveFossilWeightsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public DelveFossilWeightsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static DelveFossilWeightsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new DelveFossilWeightsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var costs = GetDelveFossilWeights();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(costs);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<DelveFossilWeight> GetDelveFossilWeights()
+    private IReadOnlyList<DelveFossilWeight> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetDelveFossilWeights));
         var results = new List<DelveFossilWeight>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var delveCraftingMods = specification.LoadDelveCraftingModifiersRepository();
         var tags = specification.LoadTagsRepository();

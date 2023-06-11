@@ -1,4 +1,5 @@
-﻿using PoeData.Specifications.DatFiles;
+﻿using PoeData.Specifications;
+using PoeData.Specifications.DatFiles;
 using PoeExporter.WikiExporters.Lua.Helpers;
 using Serilog;
 
@@ -7,9 +8,9 @@ namespace PoeExporter.WikiExporters.Lua.Bestiary;
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Bestiary/recipes.
 /// </summary>
-internal sealed class BestiaryRecipesExporter : IExporter<BestiaryRecipesExporter>
+internal sealed class BestiaryRecipesExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
+    private readonly Specification specification;
     private readonly ILogger logger;
 
     /// <inheritdoc/>
@@ -18,35 +19,26 @@ internal sealed class BestiaryRecipesExporter : IExporter<BestiaryRecipesExporte
     /// <summary>
     /// Initializes a new instance of the <see cref="BestiaryRecipesExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public BestiaryRecipesExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public BestiaryRecipesExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static BestiaryRecipesExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new BestiaryRecipesExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
+        logger = wikiExporterParameters.Logger;
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var regions = GetBestiaryRecipes();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(regions);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<BestiaryRecipe> GetBestiaryRecipes()
+    private IReadOnlyList<BestiaryRecipe> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetBestiaryRecipes));
         var results = new List<BestiaryRecipe>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var bestiaryRecipes = specification.LoadBestiaryRecipesRepository();
 

@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.CraftingBench;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Crafting_bench/crafting_bench_options.
 /// </summary>
-internal sealed class CraftingBenchOptionsExporter : IExporter<CraftingBenchOptionsExporter>
+internal sealed class CraftingBenchOptionsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "crafting_bench_options";
@@ -17,35 +16,25 @@ internal sealed class CraftingBenchOptionsExporter : IExporter<CraftingBenchOpti
     /// <summary>
     /// Initializes a new instance of the <see cref="CraftingBenchOptionsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public CraftingBenchOptionsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public CraftingBenchOptionsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static CraftingBenchOptionsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new CraftingBenchOptionsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var regions = GetCraftingBenchOptions();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(regions);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<CraftingBenchOption> GetCraftingBenchOptions()
+    private IReadOnlyList<CraftingBenchOption> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetCraftingBenchOptions));
         var results = new List<CraftingBenchOption>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var benchOptions = specification.LoadCraftingBenchOptionsRepository();
 

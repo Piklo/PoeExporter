@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Delve;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Delve/delve_level_scaling.
 /// </summary>
-internal sealed class DelveLevelScalingExporter : IExporter<DelveLevelScalingExporter>
+internal sealed class DelveLevelScalingExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "delve_level_scaling";
@@ -17,35 +16,25 @@ internal sealed class DelveLevelScalingExporter : IExporter<DelveLevelScalingExp
     /// <summary>
     /// Initializes a new instance of the <see cref="DelveLevelScalingExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public DelveLevelScalingExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public DelveLevelScalingExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static DelveLevelScalingExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new DelveLevelScalingExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var costs = GetDelveLevelScaling();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(costs);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<DelveLevelScale> GetDelveLevelScaling()
+    private IReadOnlyList<DelveLevelScale> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetDelveLevelScaling));
         var results = new List<DelveLevelScale>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var delveScaling = specification.LoadDelveLevelScalingRepository();
 

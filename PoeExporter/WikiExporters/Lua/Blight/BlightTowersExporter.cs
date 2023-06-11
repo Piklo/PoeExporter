@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Blight;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Blight/blight_towers.
 /// </summary>
-internal sealed class BlightTowersExporter : IExporter<BlightTowersExporter>
+internal sealed class BlightTowersExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "blight_towers";
@@ -17,35 +16,25 @@ internal sealed class BlightTowersExporter : IExporter<BlightTowersExporter>
     /// <summary>
     /// Initializes a new instance of the <see cref="BlightTowersExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public BlightTowersExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public BlightTowersExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static BlightTowersExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new BlightTowersExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var recipes = GetBlightTowers();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(recipes);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<BlightTower> GetBlightTowers()
+    private IReadOnlyList<BlightTower> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetBlightTowers));
         var results = new List<BlightTower>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var blightTowersPerLevel = specification.LoadBlightTowersPerLevelRepository();
 

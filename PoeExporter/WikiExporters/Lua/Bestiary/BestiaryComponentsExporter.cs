@@ -1,5 +1,5 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 using System.Globalization;
 
 namespace PoeExporter.WikiExporters.Lua.Bestiary;
@@ -7,10 +7,9 @@ namespace PoeExporter.WikiExporters.Lua.Bestiary;
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Bestiary/components.
 /// </summary>
-internal sealed class BestiaryComponentsExporter : IExporter<BestiaryComponentsExporter>
+internal sealed class BestiaryComponentsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName => "components";
@@ -18,35 +17,25 @@ internal sealed class BestiaryComponentsExporter : IExporter<BestiaryComponentsE
     /// <summary>
     /// Initializes a new instance of the <see cref="BestiaryComponentsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public BestiaryComponentsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public BestiaryComponentsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static BestiaryComponentsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new BestiaryComponentsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var components = GetBestiaryComponents();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(components);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<BestiaryComponent> GetBestiaryComponents()
+    private IReadOnlyList<BestiaryComponent> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetBestiaryComponents));
         var results = new List<BestiaryComponent>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var bestiaryRecipeComponents = specification.LoadBestiaryRecipeComponentRepository();
         var clientStrings = specification.LoadClientStringsRepository().Items.ToDictionary(x => x.Id);

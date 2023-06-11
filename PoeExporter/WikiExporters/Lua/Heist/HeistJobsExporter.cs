@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Heist;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Heist/heist_jobs.
 /// </summary>
-internal sealed class HeistJobsExporter : IExporter<HeistJobsExporter>
+internal sealed class HeistJobsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "heist_jobs";
@@ -17,18 +16,10 @@ internal sealed class HeistJobsExporter : IExporter<HeistJobsExporter>
     /// <summary>
     /// Initializes a new instance of the <see cref="HeistJobsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public HeistJobsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public HeistJobsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static HeistJobsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new HeistJobsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
@@ -43,9 +34,7 @@ internal sealed class HeistJobsExporter : IExporter<HeistJobsExporter>
 
     private IReadOnlyList<HeistJob> GetHeistJobs()
     {
-        logger.Verbose("running {method}", nameof(GetHeistJobs));
         var results = new List<HeistJob>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var jobs = specification.LoadHeistJobsRepository();
 

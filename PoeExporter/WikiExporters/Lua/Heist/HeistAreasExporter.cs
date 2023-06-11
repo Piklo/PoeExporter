@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Heist;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Heist/heist_areas.
 /// </summary>
-internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
+internal sealed class HeistAreasExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "heist_areas";
@@ -17,18 +16,10 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
     /// <summary>
     /// Initializes a new instance of the <see cref="HeistAreasExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public HeistAreasExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public HeistAreasExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static HeistAreasExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new HeistAreasExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
@@ -36,16 +27,14 @@ internal sealed class HeistAreasExporter : IExporter<HeistAreasExporter>
     {
         var costs = GetHeistAreas();
 
-        var results = LuaConverter.ToLuaString(costs);
+        var str = LuaConverter.ToLuaString(costs);
 
-        return results;
+        return str;
     }
 
     private IReadOnlyList<HeistArea> GetHeistAreas()
     {
-        logger.Verbose("running {method}", nameof(GetHeistAreas));
         var results = new List<HeistArea>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var heistAreas = specification.LoadHeistAreasRepository();
 

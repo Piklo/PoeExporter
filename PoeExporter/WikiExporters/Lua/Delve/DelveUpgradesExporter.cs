@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Delve;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Delve/delve_upgrades.
 /// </summary>
-internal sealed class DelveUpgradesExporter : IExporter<DelveUpgradesExporter>
+internal sealed class DelveUpgradesExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "delve_upgrades";
@@ -17,35 +16,25 @@ internal sealed class DelveUpgradesExporter : IExporter<DelveUpgradesExporter>
     /// <summary>
     /// Initializes a new instance of the <see cref="DelveUpgradesExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public DelveUpgradesExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public DelveUpgradesExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static DelveUpgradesExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new DelveUpgradesExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var costs = GetDelveUpgrades();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(costs);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<DelveUpgrade> GetDelveUpgrades()
+    private IReadOnlyList<DelveUpgrade> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetDelveUpgrades));
         var results = new List<DelveUpgrade>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var delveUpgrades = specification.LoadDelveUpgradesRepository();
 

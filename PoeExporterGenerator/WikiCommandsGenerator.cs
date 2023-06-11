@@ -116,6 +116,7 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
                 private readonly SpecificationWrapper specificationWrapper;
                 private readonly ILogger logger;
                 private readonly IConfig config;
+                private readonly WikiExporterParameters wikiExporterParameters;
                 private readonly Command command;
                 private readonly Option<bool> wiki;
                 private readonly Option<bool> print;
@@ -188,6 +189,7 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
                         this.specificationWrapper = specificationWrapper;
                         this.logger = logger;
                         this.config = config;
+                        wikiExporterParameters = new WikiExporterParameters(logger, specificationWrapper);
 
                         command = new Command("wiki", "exports wiki data");
                         ownerCommand.Add(command);
@@ -321,7 +323,8 @@ internal sealed class WikiCommandsGenerator : IIncrementalGenerator
             var result = GetExporterResultName(i);
             builder.AppendLine($"""
 
-                        IExporter<{exporter}> {instance} = {exporter}.Create(specificationWrapper, logger);
+                        IExporter {instance} = new {exporter}(wikiExporterParameters);
+                        LogRunningExporter(nameof({exporter}));
                         var {result} = {instance}.Export();
                 """);
         }

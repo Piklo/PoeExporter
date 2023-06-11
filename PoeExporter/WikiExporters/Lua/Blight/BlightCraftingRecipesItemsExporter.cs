@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Blight;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Blight/blight_crafting_recipes_items.
 /// </summary>
-internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraftingRecipesItemsExporter>
+internal sealed class BlightCraftingRecipesItemsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "blight_crafting_recipes_items";
@@ -17,35 +16,25 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter<BlightCraft
     /// <summary>
     /// Initializes a new instance of the <see cref="BlightCraftingRecipesItemsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public BlightCraftingRecipesItemsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public BlightCraftingRecipesItemsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static BlightCraftingRecipesItemsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new BlightCraftingRecipesItemsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var recipes = GetBlightCraftingRecipesItem();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(recipes);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<BlightCraftingRecipesItem> GetBlightCraftingRecipesItem()
+    private IReadOnlyList<BlightCraftingRecipesItem> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetBlightCraftingRecipesItem));
         var results = new List<BlightCraftingRecipesItem>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var recipes = specification.LoadBlightCraftingRecipesRepository();
 

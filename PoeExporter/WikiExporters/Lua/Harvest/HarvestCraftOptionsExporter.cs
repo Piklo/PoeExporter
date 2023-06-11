@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.Harvest;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Harvest/harvest_craft_options.
 /// </summary>
-internal sealed class HarvestCraftOptionsExporter : IExporter<HarvestCraftOptionsExporter>
+internal sealed class HarvestCraftOptionsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "harvest_craft_options";
@@ -17,18 +16,10 @@ internal sealed class HarvestCraftOptionsExporter : IExporter<HarvestCraftOption
     /// <summary>
     /// Initializes a new instance of the <see cref="HarvestCraftOptionsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public HarvestCraftOptionsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public HarvestCraftOptionsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static HarvestCraftOptionsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new HarvestCraftOptionsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
@@ -36,16 +27,14 @@ internal sealed class HarvestCraftOptionsExporter : IExporter<HarvestCraftOption
     {
         var costs = GetHarvestCraftOptions();
 
-        var results = LuaConverter.ToLuaString(costs);
+        var str = LuaConverter.ToLuaString(costs);
 
-        return results;
+        return str;
     }
 
     private IReadOnlyList<HarvestCraftOption> GetHarvestCraftOptions()
     {
-        logger.Verbose("running {method}", nameof(GetHarvestCraftOptions));
         var results = new List<HarvestCraftOption>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var craftOptions = specification.LoadHarvestCraftOptionsRepository();
 

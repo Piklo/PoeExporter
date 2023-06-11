@@ -1,15 +1,14 @@
-﻿using PoeExporter.WikiExporters.Lua.Helpers;
-using Serilog;
+﻿using PoeData.Specifications;
+using PoeExporter.WikiExporters.Lua.Helpers;
 
 namespace PoeExporter.WikiExporters.Lua.CraftingBench;
 
 /// <summary>
 /// Class used to export data for https://www.poewiki.net/wiki/Module:Crafting_bench/crafting_bench_options_costs.
 /// </summary>
-internal sealed class CraftingBenchCostsExporter : IExporter<CraftingBenchCostsExporter>
+internal sealed class CraftingBenchCostsExporter : IExporter
 {
-    private readonly SpecificationWrapper specificationWrapper;
-    private readonly ILogger logger;
+    private readonly Specification specification;
 
     /// <inheritdoc/>
     public string PageName { get; } = "crafting_bench_options_costs";
@@ -17,35 +16,25 @@ internal sealed class CraftingBenchCostsExporter : IExporter<CraftingBenchCostsE
     /// <summary>
     /// Initializes a new instance of the <see cref="CraftingBenchCostsExporter"/> class.
     /// </summary>
-    /// <param name="specificationWrapper">specification wrapper.</param>
-    /// <param name="logger">logger.</param>
-    public CraftingBenchCostsExporter(SpecificationWrapper specificationWrapper, ILogger logger)
+    /// <param name="wikiExporterParameters">wiki exporter parameters.</param>
+    public CraftingBenchCostsExporter(WikiExporterParameters wikiExporterParameters)
     {
-        this.specificationWrapper = specificationWrapper;
-        this.logger = logger;
-    }
-
-    /// <inheritdoc cref="IExporter{T}.Create(SpecificationWrapper, ILogger)"/>
-    public static CraftingBenchCostsExporter Create(SpecificationWrapper specificationWrapper, ILogger logger)
-    {
-        return new CraftingBenchCostsExporter(specificationWrapper, logger);
+        specification = wikiExporterParameters.SpecificationWrapper.GetOrCreateSpecification();
     }
 
     /// <inheritdoc/>
     public string Export()
     {
-        var costs = GetCraftingBenchCosts();
+        var items = GetItems();
 
-        var results = LuaConverter.ToLuaString(costs);
+        var str = LuaConverter.ToLuaString(items);
 
-        return results;
+        return str;
     }
 
-    private IReadOnlyList<CraftingBenchCost> GetCraftingBenchCosts()
+    private IReadOnlyList<CraftingBenchCost> GetItems()
     {
-        logger.Verbose("running {method}", nameof(GetCraftingBenchCosts));
         var results = new List<CraftingBenchCost>();
-        var specification = specificationWrapper.GetOrCreateSpecification();
 
         var benchOptions = specification.LoadCraftingBenchOptionsRepository();
 
