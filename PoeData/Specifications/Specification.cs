@@ -12,6 +12,7 @@ public sealed partial class Specification
     internal static byte[] DatFileMagicNumber { get; } = new byte[] { (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb', (byte)'\xBB', (byte)'\xbb' };
 
     private readonly DataLoader dataLoader;
+    private readonly IConfig config;
     private readonly ILogger logger;
 
     /// <summary>Gets data loader.</summary>
@@ -36,6 +37,7 @@ public sealed partial class Specification
 
         dataLoader = new DataLoader(config, logger);
 
+        this.config = config;
         this.logger = logger;
     }
 }
