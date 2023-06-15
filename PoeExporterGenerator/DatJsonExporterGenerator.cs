@@ -38,7 +38,7 @@ internal sealed class DatJsonExporterGenerator : IIncrementalGenerator
 
         foreach (var member in members)
         {
-            if (!member.Name.StartsWith("Load"))
+            if (!member.Name.StartsWith("Load") || !member.Name.EndsWith("Repository"))
             {
                 continue;
             }
