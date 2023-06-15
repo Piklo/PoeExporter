@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using PoeData.Specifications.StatDescriptions;
+using Serilog;
 
 namespace PoeData.Specifications;
 
@@ -39,5 +40,19 @@ public sealed partial class Specification
 
         this.config = config;
         this.logger = logger;
+    }
+
+    private StatDescriptionsLoader? statDescriptionsLoader;
+
+    /// <summary>
+    /// Gets <see cref="StatDescriptionsLoader"/>.
+    /// </summary>
+    /// <returns>instance of <see cref="StatDescriptionsLoader"/>.</returns>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1024:Use properties where appropriate", Justification = "the execution of this method is way too slow for a property.")]
+    public StatDescriptionsLoader GetStatDescriptionsLoader()
+    {
+        statDescriptionsLoader ??= new StatDescriptionsLoader(DataLoader, config, logger);
+
+        return statDescriptionsLoader;
     }
 }
