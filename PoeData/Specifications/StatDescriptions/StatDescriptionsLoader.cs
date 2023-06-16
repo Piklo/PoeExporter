@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using System.Text;
 
 namespace PoeData.Specifications.StatDescriptions;
 
@@ -33,7 +34,7 @@ public class StatDescriptionsLoader
         var span = new ReadOnlySpan<byte>(decompressedFile);
 
         var descriptionStart = 0;
-        var emptyLine = new ReadOnlySpan<byte>(new byte[] { 13, 0, 10, 0 }); // \r\n
+        var emptyLine = new ReadOnlySpan<byte>(Encoding.Unicode.GetBytes("\r\n"));
         for (var i = 0; i < span.Length; i++)
         {
             if (IsNewLine(span, i) && !IsTab(span, i + characterLength))
