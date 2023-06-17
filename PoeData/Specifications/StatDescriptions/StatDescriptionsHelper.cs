@@ -22,6 +22,22 @@ internal static class StatDescriptionsHelper
     }
 
     /// <summary>
+    /// Checks if next two bytes at the index translate to carriage return character.
+    /// </summary>
+    /// <param name="span">span with unicode bytes.</param>
+    /// <param name="index">index to check.</param>
+    /// <returns><see langword="true"/> if next two bytes translate to the carriage return character, <see langword="false"/> otherwise.</returns>
+    internal static bool IsCarriageReturn(ReadOnlySpan<byte> span, int index)
+    {
+        if (index + 1 >= span.Length)
+        {
+            return false;
+        }
+
+        return span[index] == '\r' && span[index + 1] == 0;
+    }
+
+    /// <summary>
     /// Checks if next two bytes at the index translate to tab character.
     /// </summary>
     /// <param name="span">span with unicode bytes.</param>
