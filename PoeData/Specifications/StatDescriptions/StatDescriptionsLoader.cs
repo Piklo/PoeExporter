@@ -37,7 +37,7 @@ public class StatDescriptionsLoader
         var emptyLine = new ReadOnlySpan<byte>(Encoding.Unicode.GetBytes("\r\n"));
         for (var i = 0; i < span.Length; i++)
         {
-            if (IsNewLine(span, i) && !IsTab(span, i + characterLength))
+            if (StatDescriptionsHelper.IsNewLine(span, i) && !StatDescriptionsHelper.IsTab(span, i + characterLength))
             {
                 var descriptionEnd = i + characterLength;
                 var descriptionSpan = span[descriptionStart..descriptionEnd];
@@ -54,25 +54,5 @@ public class StatDescriptionsLoader
                 // create stat description here
             }
         }
-    }
-
-    private static bool IsNewLine(ReadOnlySpan<byte> span, int index)
-    {
-        if (index + 1 >= span.Length)
-        {
-            return false;
-        }
-
-        return span[index] == '\n' && span[index + 1] == 0;
-    }
-
-    private static bool IsTab(ReadOnlySpan<byte> span, int index)
-    {
-        if (index + 1 >= span.Length)
-        {
-            return false;
-        }
-
-        return span[index] == '\t' && span[index + 1] == 0;
     }
 }
