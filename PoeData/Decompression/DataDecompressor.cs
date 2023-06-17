@@ -11,14 +11,11 @@ internal sealed class DataDecompressor
 {
     private readonly ILogger logger;
 
-    /// <summary>Gets PoePath.</summary>
-    public required string PoePath { get; init; }
-
     /// <summary>
     /// Initializes a new instance of the <see cref="DataDecompressor"/> class.
     /// </summary>
     /// <param name="logger">logger used by this class.</param>
-    public DataDecompressor(ILogger logger)
+    internal DataDecompressor(ILogger logger)
     {
         this.logger = logger;
     }
@@ -28,7 +25,7 @@ internal sealed class DataDecompressor
     /// </summary>
     /// <param name="compressedData">data to decompress.</param>
     /// <returns>decompressed data.</returns>
-    public DecompressedData Decompress(byte[] compressedData)
+    internal DecompressedData Decompress(byte[] compressedData)
     {
         if (compressedData is null)
         {

@@ -48,7 +48,7 @@ internal sealed class DataLoader
             dataLoader = new SteamDataLoader(config, logger);
         }
 
-        decompressor = new(this.logger) { PoePath = this.config.PoePath };
+        decompressor = new(this.logger);
 
         // data loading
         var timestampStart = Stopwatch.GetTimestamp();
