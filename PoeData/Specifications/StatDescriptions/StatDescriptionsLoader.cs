@@ -35,10 +35,11 @@ public class StatDescriptionsLoader
         var decompressedFile = new ReadOnlySpan<byte>(dataLoader.GetFileBytes(filePath));
         decompressedFile = decompressedFile[2..]; // we start at 2 because the first two bytes are Byte order mark
 
-        var descriptionStart = 0;
-        var descriptionEnd = 0;
+        var blockStart = 0;
+        var blockEnd = 0;
         var lineStart = 0;
         var lineEnd = 0;
+        var isNextBlockDescription = true;
         for (var i = 0; i < decompressedFile.Length; i++)
         {
             if (StatDescriptionsHelper.IsNewLine(decompressedFile, i))
@@ -48,31 +49,37 @@ public class StatDescriptionsLoader
                 var line = decompressedFile[lineStart..lineEnd];
                 var lineString = Encoding.Unicode.GetString(line); // debug
 
-                if (IsDescription(line))
+                var isDescription = IsDescription(line);
+                var isNoDescription = IsNoDescription(line);
+
+                if (isDescription || isNoDescription)
                 {
-                    descriptionEnd = lineStart;
-                    var descriptionSpan = decompressedFile[descriptionStart..descriptionEnd];
+                    blockEnd = lineStart;
+                    var descriptionSpan = decompressedFile[blockStart..blockEnd];
                     var descriptionString = Encoding.Unicode.GetString(descriptionSpan);
 
                     if (descriptionSpan.Length != 0)
                     {
-                        // create description here
+                        if (isNextBlockDescription)
+                        {
+                            var description = new Description(descriptionSpan);
+                        }
+                        else
+                        {
+                            // create no description here
+                        }
                     }
 
-                    descriptionStart = descriptionEnd;
+                    blockStart = blockEnd;
                 }
-                else if (IsNoDescription(line))
+
+                if (isDescription)
                 {
-                    descriptionEnd = lineStart;
-                    var descriptionSpan = decompressedFile[descriptionStart..descriptionEnd];
-                    var descriptionString = Encoding.Unicode.GetString(descriptionSpan);
-
-                    if (descriptionSpan.Length != 0)
-                    {
-                        // create nodescription here
-                    }
-
-                    descriptionStart = descriptionEnd;
+                    isNextBlockDescription = true;
+                }
+                else if (isNoDescription)
+                {
+                    isNextBlockDescription = false;
                 }
 
                 lineStart = lineEnd;
