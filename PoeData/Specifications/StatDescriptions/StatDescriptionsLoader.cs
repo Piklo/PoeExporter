@@ -35,43 +35,49 @@ public class StatDescriptionsLoader
         var decompressedFile = new ReadOnlySpan<byte>(dataLoader.GetFileBytes(filePath));
         decompressedFile = decompressedFile[2..]; // we start at 2 because the first two bytes are Byte order mark
 
-        var start = 0;
+        var descriptionStart = 0;
+        var descriptionEnd = 0;
+        var lineStart = 0;
+        var lineEnd = 0;
         for (var i = 0; i < decompressedFile.Length; i++)
         {
-            if (StatDescriptionsHelper.IsNewLine(decompressedFile, i) && !StatDescriptionsHelper.IsTab(decompressedFile, i + CharacterLength))
+            if (StatDescriptionsHelper.IsNewLine(decompressedFile, i))
             {
-                var end = i + CharacterLength;
-                var subspan = decompressedFile[start..end];
+                i += CharacterLength;
+                lineEnd = i;
+                var line = decompressedFile[lineStart..lineEnd];
+                var lineString = Encoding.Unicode.GetString(line); // debug
 
-                var line = Encoding.Unicode.GetString(subspan); // debug
-
-                start = end;
-
-                if (IsEmptyLine(subspan))
+                if (IsDescription(line))
                 {
-                    continue;
-                }
-                else if (IsDescription(subspan))
-                {
+                    descriptionEnd = lineStart;
+                    var descriptionSpan = decompressedFile[descriptionStart..descriptionEnd];
+                    var descriptionString = Encoding.Unicode.GetString(descriptionSpan);
 
-                }
-                else if (IsNoDescription(subspan))
-                {
+                    if (descriptionSpan.Length != 0)
+                    {
+                        // create description here
+                    }
 
+                    descriptionStart = descriptionEnd;
                 }
-                else
+                else if (IsNoDescription(line))
                 {
-                    throw new InvalidOperationException("found span which isn't description or nodescription");
+                    descriptionEnd = lineStart;
+                    var descriptionSpan = decompressedFile[descriptionStart..descriptionEnd];
+                    var descriptionString = Encoding.Unicode.GetString(descriptionSpan);
+
+                    if (descriptionSpan.Length != 0)
+                    {
+                        // create nodescription here
+                    }
+
+                    descriptionStart = descriptionEnd;
                 }
+
+                lineStart = lineEnd;
             }
         }
-    }
-
-    private static bool IsEmptyLine(ReadOnlySpan<byte> span)
-    {
-        var emptyLine = new ReadOnlySpan<byte>(StatDescriptionsHelper.NewLineBytes);
-
-        return span.SequenceEqual(emptyLine);
     }
 
     private static bool IsDescription(ReadOnlySpan<byte> span)
