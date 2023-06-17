@@ -1,10 +1,15 @@
-﻿namespace PoeData.Specifications.StatDescriptions;
+﻿using System.Text;
+
+namespace PoeData.Specifications.StatDescriptions;
 
 /// <summary>
 /// Helper class related to parsing unicode bytes in StatDescriptions.
 /// </summary>
 internal static class StatDescriptionsHelper
 {
+    /// <summary>Gets unicode bytes for \r\n.</summary>
+    internal static byte[] NewLineBytes { get; } = Encoding.Unicode.GetBytes("\r\n");
+
     /// <summary>
     /// Checks if next two bytes at the index translate to newline character.
     /// </summary>

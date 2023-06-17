@@ -12,7 +12,6 @@ public class StatDescriptionsLoader
     private readonly DataLoader dataLoader;
     private readonly IConfig config;
     private readonly ILogger logger;
-    private readonly static byte[] NewLineBytes = Encoding.Unicode.GetBytes("\r\n");
     private readonly static byte[] DescriptionBytes = Encoding.Unicode.GetBytes("description");
     private readonly static byte[] NoDescriptionBytes = Encoding.Unicode.GetBytes("no_description");
 
@@ -70,7 +69,7 @@ public class StatDescriptionsLoader
 
     private static bool IsEmptyLine(ReadOnlySpan<byte> span)
     {
-        var emptyLine = new ReadOnlySpan<byte>(NewLineBytes);
+        var emptyLine = new ReadOnlySpan<byte>(StatDescriptionsHelper.NewLineBytes);
 
         return span.SequenceEqual(emptyLine);
     }
