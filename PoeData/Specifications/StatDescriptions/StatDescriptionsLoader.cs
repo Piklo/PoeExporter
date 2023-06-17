@@ -39,12 +39,12 @@ public class StatDescriptionsLoader
         {
             if (IsNewLine(span, i) && !IsTab(span, i + characterLength))
             {
-                var newLineIndex = i + 1; // +1 because unicode characters are two bytes long
-                var descriptionSpan = span[descriptionStart..(newLineIndex + 1)]; // +1 because length is exclusive
+                var descriptionEnd = i + characterLength;
+                var descriptionSpan = span[descriptionStart..descriptionEnd];
 
                 var line = System.Text.Encoding.Unicode.GetString(descriptionSpan); // debug
 
-                descriptionStart = newLineIndex + 1;
+                descriptionStart = descriptionEnd;
 
                 if (descriptionSpan.SequenceEqual(emptyLine))
                 {
