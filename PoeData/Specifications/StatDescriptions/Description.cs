@@ -6,7 +6,7 @@
 public sealed class Description
 {
     private readonly string[] ids = Array.Empty<string>();
-    private readonly Dictionary<Language, List<DescriptionLine>> descriptions = new();
+    private readonly Dictionary<Language, HashSet<DescriptionLine>> descriptions = new();
 
     /// <summary>Gets Ids.</summary>
     public IReadOnlyList<string> Ids { get => ids; }
@@ -24,7 +24,7 @@ public sealed class Description
         var langLines = lines[2..];
 
         var language = Language.English;
-        descriptions.Add(language, new List<DescriptionLine>());
+        descriptions.Add(language, new HashSet<DescriptionLine>());
         foreach (var langLine in langLines)
         {
             if (string.IsNullOrWhiteSpace(langLine))
@@ -41,7 +41,7 @@ public sealed class Description
             else if (trimmed.StartsWith("lang"))
             {
                 language = GetLanguage(trimmed);
-                descriptions.Add(language, new List<DescriptionLine>());
+                descriptions.Add(language, new HashSet<DescriptionLine>());
                 continue;
             }
             else
@@ -88,23 +88,15 @@ public sealed class Description
     /// <param name="other">other description which is going to get merged.</param>
     internal void Merge(Description other)
     {
-        foreach (var (key, otherList) in other.descriptions)
+        foreach (var (key, otherSet) in other.descriptions)
         {
-            if (descriptions.TryGetValue(key, out var list))
+            if (descriptions.TryGetValue(key, out var set))
             {
-                foreach (var item in list)
-                {
-                    if (list.Contains(item))
-                    {
-                        continue;
-                    }
-
-                    list.Add(item);
-                }
+                set.UnionWith(otherSet);
             }
             else
             {
-                descriptions.Add(key, otherList);
+                descriptions.Add(key, otherSet);
             }
         }
     }

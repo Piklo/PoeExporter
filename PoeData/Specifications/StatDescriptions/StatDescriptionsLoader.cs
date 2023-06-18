@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -12,7 +13,7 @@ public partial class StatDescriptionsLoader
     private readonly DataLoader dataLoader;
     private readonly IConfig config;
     private readonly ILogger logger;
-    private readonly Dictionary<string, Description> parsedDescriptions = new();
+    private readonly Dictionary<IReadOnlyList<string>, Description> parsedDescriptions = new(new EqualityComparer());
     private readonly HashSet<string> noDescription = new();
 
     [GeneratedRegex("^(?=description|no_description)", RegexOptions.Multiline)]
@@ -43,17 +44,13 @@ public partial class StatDescriptionsLoader
             if (description.StartsWith("description"))
             {
                 var parsed = new Description(description);
-
-                foreach (var id in parsed.Ids)
+                if (parsedDescriptions.TryGetValue(parsed.Ids, out var existing))
                 {
-                    if (parsedDescriptions.TryGetValue(id, out var existing))
-                    {
-                        existing.Merge(parsed);
-                    }
-                    else
-                    {
-                        parsedDescriptions.Add(id, parsed);
-                    }
+                    existing.Merge(parsed);
+                }
+                else
+                {
+                    parsedDescriptions.Add(parsed.Ids, parsed);
                 }
             }
             else if (description.StartsWith("no_description"))
@@ -71,6 +68,35 @@ public partial class StatDescriptionsLoader
             {
                 throw new NotImplementedException("unknown description start");
             }
+        }
+    }
+
+    private sealed class EqualityComparer : IEqualityComparer<IReadOnlyList<string>>
+    {
+        public bool Equals(IReadOnlyList<string>? x, IReadOnlyList<string>? y)
+        {
+            if (x is null && y is null)
+            {
+                return true;
+            }
+            else if (x is null || y is null)
+            {
+                return false;
+            }
+
+            return x.SequenceEqual(y);
+        }
+
+        public int GetHashCode([DisallowNull] IReadOnlyList<string> obj)
+        {
+            var code = default(HashCode);
+
+            foreach (var item in obj)
+            {
+                code.Add(item);
+            }
+
+            return code.ToHashCode();
         }
     }
 }
