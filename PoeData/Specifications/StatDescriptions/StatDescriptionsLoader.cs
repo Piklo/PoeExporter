@@ -13,8 +13,8 @@ public partial class StatDescriptionsLoader
     private readonly DataLoader dataLoader;
     private readonly IConfig config;
     private readonly ILogger logger;
-    private readonly Dictionary<IReadOnlyList<string>, Description> parsedDescriptions = new(new EqualityComparer());
-    private readonly HashSet<string> noDescription = new();
+    private readonly Dictionary<IReadOnlyList<string>, Description> descriptions = new(new EqualityComparer());
+    private readonly HashSet<string> noDescriptions = new();
 
     [GeneratedRegex("^(?=description|no_description)", RegexOptions.Multiline)]
     private static partial Regex DescriptionRegex();
@@ -37,32 +37,32 @@ public partial class StatDescriptionsLoader
     {
         const string filePath = "Metadata/StatDescriptions/stat_descriptions.txt";
         var file = Encoding.Unicode.GetString(dataLoader.GetFileBytes(filePath));
-        var descriptions = DescriptionRegex().Split(file);
+        var descriptionStrings = DescriptionRegex().Split(file);
 
-        foreach (var description in descriptions)
+        foreach (var descriptionString in descriptionStrings)
         {
-            if (description.StartsWith("description"))
+            if (descriptionString.StartsWith("description"))
             {
-                var parsed = new Description(description);
-                if (parsedDescriptions.TryGetValue(parsed.Ids, out var existing))
+                var newDescription = new Description(descriptionString);
+                if (descriptions.TryGetValue(newDescription.Ids, out var existingDescription))
                 {
-                    existing.Merge(parsed);
+                    existingDescription.Merge(newDescription);
                 }
                 else
                 {
-                    parsedDescriptions.Add(parsed.Ids, parsed);
+                    descriptions.Add(newDescription.Ids, newDescription);
                 }
             }
-            else if (description.StartsWith("no_description"))
+            else if (descriptionString.StartsWith("no_description"))
             {
-                var split = description.Trim().Split();
+                var split = descriptionString.Trim().Split();
                 if (split.Length != 2)
                 {
                     throw new NotImplementedException();
                 }
 
                 var item = split[1];
-                noDescription.Add(item);
+                noDescriptions.Add(item);
             }
             else
             {
