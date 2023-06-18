@@ -13,6 +13,7 @@ public partial class StatDescriptionsLoader
     private readonly IConfig config;
     private readonly ILogger logger;
     private readonly Dictionary<string, Description> parsedDescriptions = new();
+    private readonly HashSet<string> noDescription = new();
 
     [GeneratedRegex("^(?=description|no_description)", RegexOptions.Multiline)]
     private static partial Regex DescriptionRegex();
@@ -57,7 +58,14 @@ public partial class StatDescriptionsLoader
             }
             else if (description.StartsWith("no_description"))
             {
+                var split = description.Trim().Split();
+                if (split.Length != 2)
+                {
+                    throw new NotImplementedException();
+                }
 
+                var item = split[1];
+                noDescription.Add(item);
             }
             else
             {
