@@ -99,4 +99,21 @@ public partial class StatDescriptionsLoader
             return code.ToHashCode();
         }
     }
+
+    /// <summary>
+    /// Gets description.
+    /// </summary>
+    /// <param name="descriptionIds">description ids.</param>
+    /// <returns><see cref="Description"/> if found, <see langword="null"/> otherwise.</returns>
+    public Description? GetDescription(IReadOnlyList<string> descriptionIds)
+    {
+        if (descriptions.TryGetValue(descriptionIds, out var description))
+        {
+            return description;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
