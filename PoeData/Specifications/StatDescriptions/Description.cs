@@ -1,14 +1,14 @@
-﻿using System.Text;
-
-namespace PoeData.Specifications.StatDescriptions;
+﻿namespace PoeData.Specifications.StatDescriptions;
 
 /// <summary>
 /// Class contraining translation descriptions.
 /// </summary>
 public sealed class Description
 {
-    private readonly string[] ids;
+    private readonly string[] ids = Array.Empty<string>();
     private readonly Dictionary<Language, DescriptionLine[]> descriptions = new();
+    private ProcessState state = ProcessState.None;
+    private Language language = Language.English;
 
     /// <summary>Gets Ids.</summary>
     public IReadOnlyList<string> Ids { get => ids; }
@@ -16,45 +16,69 @@ public sealed class Description
     /// <summary>
     /// Initializes a new instance of the <see cref="Description"/> class.
     /// </summary>
-    /// <param name="bytes">bytes with description data.</param>
-    internal Description(ReadOnlySpan<byte> bytes)
+    /// <param name="data">description data.</param>
+    internal Description(string data)
     {
-        // the entire parsing could probably be done with the span
-        // but im kinda lazy tbh
-        var str = Encoding.Unicode.GetString(bytes);
-        var lines = str.Split("\r\n");
+        var lines = data.Split("\r\n");
 
-        var idsLine = lines[1].Trim();
-        var idsTemp = idsLine.Split();
-        ids = idsTemp[1..];
-
-        var lang = Language.English;
-        var descriptionsCount = 0;
-        var descriptionIndex = 0;
-        for (int i = 2; i < lines.Length; i++)
+        var tempLines = Array.Empty<DescriptionLine>();
+        var linesIndex = 0;
+        for (var i = 0; i < lines.Length; i++)
         {
-            var line = lines[i].Trim();
-
-            if (string.IsNullOrWhiteSpace(line))
+            if (string.IsNullOrWhiteSpace(lines[i]))
             {
                 continue;
             }
 
-            if (line.StartsWith("lang"))
+            var line = lines[i].Trim();
+
+            if (line.StartsWith("description"))
             {
-                lang = GetLanguage(line);
+                state = ProcessState.Description;
             }
-            else if (int.TryParse(line, out descriptionsCount))
+            else if (line.StartsWith("lang"))
             {
-                descriptions[lang] = new DescriptionLine[descriptionsCount];
-                descriptionIndex = 0;
+                state = ProcessState.Language;
             }
-            else
+
+            switch (state)
             {
-                var array = descriptions[lang];
-                var description = new DescriptionLine(line);
-                array[descriptionIndex] = description;
-                descriptionIndex++;
+                case ProcessState.None:
+                    throw new NotImplementedException();
+                case ProcessState.Description:
+                    state = ProcessState.Ids;
+                    break;
+                case ProcessState.Ids:
+                    var split = line.Split();
+                    var count = int.Parse(split[0]);
+                    ids = split[1..];
+
+                    if (count != ids.Length)
+                    {
+                        throw new NotImplementedException("unexpected count of ids");
+                    }
+
+                    state = ProcessState.LinesCount;
+                    break;
+                case ProcessState.Language:
+
+                    language = GetLanguage(line);
+                    state = ProcessState.LinesCount;
+                    break;
+                case ProcessState.LinesCount:
+                    var linesCount = int.Parse(line);
+                    tempLines = new DescriptionLine[linesCount];
+                    linesIndex = 0;
+                    descriptions.Add(language, tempLines);
+                    state = ProcessState.Line;
+                    break;
+                case ProcessState.Line:
+                    var descriptionLine = new DescriptionLine(line);
+                    tempLines[linesIndex] = descriptionLine;
+                    linesIndex++;
+                    break;
+                default:
+                    throw new NotImplementedException("unhandled case");
             }
         }
     }
@@ -74,4 +98,32 @@ public sealed class Description
         "lang \"Japanese\"" => Language.Japanese,
         _ => throw new NotImplementedException(),
     };
+
+    /// <summary>
+    /// Enum containing possible languages for stat descriptions.
+    /// </summary>
+    private enum Language
+    {
+        English,
+        Spanish,
+        German,
+        Portuguese,
+        SimplifiedChinese,
+        French,
+        Russian,
+        Korean,
+        TraditionalChinese,
+        Thai,
+        Japanese,
+    }
+
+    private enum ProcessState
+    {
+        None,
+        Description,
+        Ids,
+        LinesCount,
+        Line,
+        Language,
+    }
 }

@@ -1,19 +1,21 @@
 ﻿using Serilog;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace PoeData.Specifications.StatDescriptions;
 
 /// <summary>
 /// Class used to load stat descriptions and work with them.
 /// </summary>
-public class StatDescriptionsLoader
+public partial class StatDescriptionsLoader
 {
-    private const int CharacterLength = 2;
     private readonly DataLoader dataLoader;
     private readonly IConfig config;
     private readonly ILogger logger;
-    private readonly static byte[] DescriptionBytes = Encoding.Unicode.GetBytes("description");
-    private readonly static byte[] NoDescriptionBytes = Encoding.Unicode.GetBytes("no_description");
+    private readonly Dictionary<string, Description> parsedDescriptions = new();
+
+    [GeneratedRegex("^(?=description|no_description)", RegexOptions.Multiline)]
+    private static partial Regex DescriptionRegex();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="StatDescriptionsLoader"/> class.
@@ -32,86 +34,27 @@ public class StatDescriptionsLoader
     private void LoadStatDescriptions()
     {
         const string filePath = "Metadata/StatDescriptions/stat_descriptions.txt";
-        var decompressedFile = new ReadOnlySpan<byte>(dataLoader.GetFileBytes(filePath));
-        decompressedFile = decompressedFile[2..]; // we start at 2 because the first two bytes are Byte order mark
+        var file = Encoding.Unicode.GetString(dataLoader.GetFileBytes(filePath));
+        var descriptions = DescriptionRegex().Split(file);
 
-        var blockStart = 0;
-        var blockEnd = 0;
-        var lineStart = 0;
-        var lineEnd = 0;
-        var isNextBlockDescription = true;
-        for (var i = 0; i < decompressedFile.Length; i++)
+        foreach (var description in descriptions)
         {
-            if (StatDescriptionsHelper.IsNewLine(decompressedFile, i))
+            if (description.StartsWith("description"))
             {
-                i += CharacterLength;
-                lineEnd = i;
-                var line = decompressedFile[lineStart..lineEnd];
-                var lineString = Encoding.Unicode.GetString(line); // debug
-
-                var isDescription = IsDescription(line);
-                var isNoDescription = IsNoDescription(line);
-
-                if (isDescription || isNoDescription)
+                var parsed = new Description(description);
+                foreach (var id in parsed.Ids)
                 {
-                    blockEnd = lineStart;
-                    var descriptionSpan = decompressedFile[blockStart..blockEnd];
-                    var descriptionString = Encoding.Unicode.GetString(descriptionSpan);
-
-                    if (descriptionSpan.Length != 0)
-                    {
-                        if (isNextBlockDescription)
-                        {
-                            var description = new Description(descriptionSpan);
-                        }
-                        else
-                        {
-                            // create no description here
-                        }
-                    }
-
-                    blockStart = blockEnd;
+                    parsedDescriptions.Add(id, parsed);
                 }
+            }
+            else if (description.StartsWith("no_description"))
+            {
 
-                if (isDescription)
-                {
-                    isNextBlockDescription = true;
-                }
-                else if (isNoDescription)
-                {
-                    isNextBlockDescription = false;
-                }
-
-                lineStart = lineEnd;
+            }
+            else
+            {
+                throw new NotImplementedException("unknown description start");
             }
         }
-    }
-
-    private static bool IsDescription(ReadOnlySpan<byte> span)
-    {
-        var descriptionSpan = new ReadOnlySpan<byte>(DescriptionBytes);
-
-        if (span.Length < descriptionSpan.Length)
-        {
-            return false;
-        }
-
-        var subspan = span[..descriptionSpan.Length];
-
-        return subspan.SequenceEqual(descriptionSpan);
-    }
-
-    private static bool IsNoDescription(ReadOnlySpan<byte> span)
-    {
-        var noDescriptionSpan = new ReadOnlySpan<byte>(NoDescriptionBytes);
-
-        if (span.Length < noDescriptionSpan.Length)
-        {
-            return false;
-        }
-
-        var subspan = span[..noDescriptionSpan.Length];
-
-        return subspan.SequenceEqual(noDescriptionSpan);
     }
 }
