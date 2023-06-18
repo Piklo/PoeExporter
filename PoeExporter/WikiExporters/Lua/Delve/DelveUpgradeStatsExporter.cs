@@ -44,7 +44,7 @@ internal sealed class DelveUpgradeStatsExporter : IExporter
 
             for (var i = 0; i < stats.Count; i++)
             {
-                var stat = stats[i].Value;
+                var stat = stats[i];
 
                 var obj = new DelveUpgradeStat()
                 {

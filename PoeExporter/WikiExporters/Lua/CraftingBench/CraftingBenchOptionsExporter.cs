@@ -53,19 +53,19 @@ internal sealed class CraftingBenchOptionsExporter : IExporter
             var itemClassIds = new string[benchOption.ItemClasses.Count];
             for (var i = 0; i < itemClassesTemp.Count; i++)
             {
-                var itemClass = itemClassesTemp[i].Value;
-                localItemClasses[i] = itemClassesTemp[i].Value.Name;
+                var itemClass = itemClassesTemp[i];
+                localItemClasses[i] = itemClass.Name;
                 itemClassIds[i] = itemClass.Id;
             }
 
             var recipeIds = benchOption.GetItemsForRecipeIds();
-            var unlockArea = recipeIds.Count != 0 ? benchOption.GetItemsForRecipeIds()[0].Value.GetItemForUnlockArea() : null;
+            var unlockArea = recipeIds.Count != 0 ? benchOption.GetItemsForRecipeIds()[0].GetItemForUnlockArea() : null;
 
             var itemClassCategoriesTemp = benchOption.GetItemsForCraftingItemClassCategories();
             var itemClassCategories = new string[benchOption.CraftingItemClassCategories.Count];
             for (var i = 0; i < itemClassCategoriesTemp.Count; i++)
             {
-                var item = itemClassCategoriesTemp[i].Value;
+                var item = itemClassCategoriesTemp[i];
                 itemClassCategories[i] = item.Text;
             }
 

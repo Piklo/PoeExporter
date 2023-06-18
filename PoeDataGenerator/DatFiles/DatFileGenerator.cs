@@ -169,6 +169,11 @@ internal sealed class DatFileGenerator
         return $"GetItemsFor{propertyName}";
     }
 
+    private static string GenerateGetReferencedItemsWithKeyMethodName(string propertyName)
+    {
+        return $"GetItemsFor{propertyName}WithKey";
+    }
+
     private void AppendGetReferencedItemsByIndex(StringBuilder builder, IParsedColumn column)
     {
         if (column.ReferencedTable is null)
@@ -200,11 +205,29 @@ internal sealed class DatFileGenerator
         else
         {
             var methodName = GenerateGetReferencedItemsMethodName(column.ClassPropertyName);
+            var methodNameWithKey = GenerateGetReferencedItemsWithKeyMethodName(column.ClassPropertyName);
 
             var keyType = column.Type.InnerTypes[0].NonNullableType;
             builder.AppendLine($$"""
 
-                    public IReadOnlyList<ResultItem<{{keyType}}, {{returnedItem}}>> {{methodName}}()
+                    public IReadOnlyList<{{returnedItem}}> {{methodName}}()
+                    {
+                        var items = new List<{{returnedItem}}>();
+
+                        var repository = specification.{{loadRepositoryMethod}}();
+                        foreach (var key in {{column.ClassPropertyName}})
+                        {
+                            var item = repository.Items[key];
+                            items.Add(item);
+                        }
+
+                        return items;
+                    }
+                """);
+
+            builder.AppendLine($$"""
+
+                    public IReadOnlyList<ResultItem<{{keyType}}, {{returnedItem}}>> {{methodNameWithKey}}()
                     {
                         var items = new List<ResultItem<{{keyType}}, {{returnedItem}}>>();
 
@@ -249,11 +272,35 @@ internal sealed class DatFileGenerator
         else
         {
             var methodName = GenerateGetReferencedItemsMethodName(column.ClassPropertyName);
+            var methodNameWithKey = GenerateGetReferencedItemsWithKeyMethodName(column.ClassPropertyName);
 
             var keyType = column.Type.InnerTypes[0].NonNullableType;
             builder.AppendLine($$"""
 
-                    public IReadOnlyList<ResultItem<{{keyType}}, {{returnedItem}}>> {{methodName}}()
+                    public IReadOnlyList<{{returnedItem}}> {{methodName}}()
+                    {
+                        var items = new List<{{returnedItem}}>();
+
+                        var repository = specification.{{loadRepositoryMethod}}();
+                        foreach (var key in {{column.ClassPropertyName}})
+                        {
+                            var item = repository.{{getReferencedMethodName}}(key);
+
+                            if (item is null)
+                            {
+                                throw new NotImplementedException("reference to a null");
+                            }
+
+                            items.Add(item);
+                        }
+
+                        return items;
+                    }
+                """);
+
+            builder.AppendLine($$"""
+
+                    public IReadOnlyList<ResultItem<{{keyType}}, {{returnedItem}}>> {{methodNameWithKey}}()
                     {
                         var items = new List<ResultItem<{{keyType}}, {{returnedItem}}>>();
 

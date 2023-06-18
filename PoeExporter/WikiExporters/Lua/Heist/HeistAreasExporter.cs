@@ -44,7 +44,7 @@ internal sealed class HeistAreasExporter : IExporter
             var areas = new string[worldAreas.Count];
             for (var i = 0; i < worldAreas.Count; i++)
             {
-                var worldArea = worldAreas[i].Value;
+                var worldArea = worldAreas[i];
                 areas[i] = worldArea.Id;
             }
 
@@ -52,7 +52,7 @@ internal sealed class HeistAreasExporter : IExporter
             var jobs = new string[heistJobs.Count];
             for (var i = 0; i < heistJobs.Count; i++)
             {
-                var heistJob = heistJobs[i].Value;
+                var heistJob = heistJobs[i];
                 jobs[i] = heistJob.Id;
             }
 

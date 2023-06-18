@@ -45,7 +45,7 @@ internal sealed class CraftingBenchCostsExporter : IExporter
 
             for (var i = 0; i < baseItems.Count; i++)
             {
-                var baseItem = baseItems[i].Value;
+                var baseItem = baseItems[i];
 
                 var obj = new CraftingBenchCost()
                 {

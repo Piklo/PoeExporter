@@ -51,7 +51,7 @@ internal sealed class DelveFossilsExporter : IExporter
             var addedModIds = new string[addedMods.Count];
             for (var i = 0; i < addedMods.Count; i++)
             {
-                var mod = addedMods[i].Value;
+                var mod = addedMods[i];
                 addedModIds[i] = mod.Id;
             }
 
@@ -59,7 +59,7 @@ internal sealed class DelveFossilsExporter : IExporter
             var forcedModIds = new string[forcedMods.Count];
             for (var i = 0; i < forcedMods.Count; i++)
             {
-                var mod = forcedMods[i].Value;
+                var mod = forcedMods[i];
                 forcedModIds[i] = mod.Id;
             }
 
@@ -67,7 +67,7 @@ internal sealed class DelveFossilsExporter : IExporter
             var sellPriceModIds = new string[sellPriceMods.Count];
             for (var i = 0; i < sellPriceMods.Count; i++)
             {
-                var mod = sellPriceMods[i].Value;
+                var mod = sellPriceMods[i];
                 sellPriceModIds[i] = mod.Id;
             }
 
@@ -75,7 +75,7 @@ internal sealed class DelveFossilsExporter : IExporter
             var forbiddenTags = new string[forbiddenCraftingTags.Count];
             for (var i = 0; i < forbiddenCraftingTags.Count; i++)
             {
-                var delveTag = forbiddenCraftingTags[i].Value;
+                var delveTag = forbiddenCraftingTags[i];
                 var tag = delveTag.GetItemForTagsKey() ?? throw new NullItemException();
                 forbiddenTags[i] = tag.Id;
             }
@@ -84,7 +84,7 @@ internal sealed class DelveFossilsExporter : IExporter
             var allowedTags = new string[allowedCraftingTags.Count];
             for (var i = 0; i < allowedCraftingTags.Count; i++)
             {
-                var delveTag = allowedCraftingTags[i].Value;
+                var delveTag = allowedCraftingTags[i];
                 var tag = delveTag.GetItemForTagsKey() ?? throw new NullItemException();
                 allowedTags[i] = tag.Id;
             }

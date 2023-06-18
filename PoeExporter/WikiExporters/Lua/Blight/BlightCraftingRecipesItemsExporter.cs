@@ -47,7 +47,7 @@ internal sealed class BlightCraftingRecipesItemsExporter : IExporter
 
                 var recipeId = recipe.Id;
 
-                var blightCraftingItem = craftingItemsTemp[i].Value;
+                var blightCraftingItem = craftingItemsTemp[i];
 
                 var item = blightCraftingItem.GetItemForOil() ?? throw new NullItemException();
 
