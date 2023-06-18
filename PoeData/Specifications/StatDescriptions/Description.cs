@@ -6,9 +6,7 @@
 public sealed class Description
 {
     private readonly string[] ids = Array.Empty<string>();
-    private readonly Dictionary<Language, DescriptionLine[]> descriptions = new();
-    private ProcessState state = ProcessState.None;
-    private Language language = Language.English;
+    private readonly Dictionary<Language, List<DescriptionLine>> descriptions = new();
 
     /// <summary>Gets Ids.</summary>
     public IReadOnlyList<string> Ids { get => ids; }
@@ -20,67 +18,52 @@ public sealed class Description
     internal Description(string data)
     {
         var lines = data.Split("\r\n");
+        var idsString = lines[1];
+        ids = ParseIds(idsString);
 
-        var tempLines = Array.Empty<DescriptionLine>();
-        var linesIndex = 0;
-        for (var i = 0; i < lines.Length; i++)
+        var langLines = lines[2..];
+
+        var language = Language.English;
+        descriptions.Add(language, new List<DescriptionLine>());
+        foreach (var langLine in langLines)
         {
-            if (string.IsNullOrWhiteSpace(lines[i]))
+            if (string.IsNullOrWhiteSpace(langLine))
             {
                 continue;
             }
 
-            var line = lines[i].Trim();
+            var trimmed = langLine.Trim();
 
-            if (line.StartsWith("description"))
+            if (int.TryParse(trimmed, out var _))
             {
-                state = ProcessState.Description;
+                continue;
             }
-            else if (line.StartsWith("lang"))
+            else if (trimmed.StartsWith("lang"))
             {
-                state = ProcessState.Language;
+                language = GetLanguage(trimmed);
+                descriptions.Add(language, new List<DescriptionLine>());
+                continue;
             }
-
-            switch (state)
+            else
             {
-                case ProcessState.None:
-                    throw new NotImplementedException();
-                case ProcessState.Description:
-                    state = ProcessState.Ids;
-                    break;
-                case ProcessState.Ids:
-                    var split = line.Split();
-                    var count = int.Parse(split[0]);
-                    ids = split[1..];
-
-                    if (count != ids.Length)
-                    {
-                        throw new NotImplementedException("unexpected count of ids");
-                    }
-
-                    state = ProcessState.LinesCount;
-                    break;
-                case ProcessState.Language:
-
-                    language = GetLanguage(line);
-                    state = ProcessState.LinesCount;
-                    break;
-                case ProcessState.LinesCount:
-                    var linesCount = int.Parse(line);
-                    tempLines = new DescriptionLine[linesCount];
-                    linesIndex = 0;
-                    descriptions.Add(language, tempLines);
-                    state = ProcessState.Line;
-                    break;
-                case ProcessState.Line:
-                    var descriptionLine = new DescriptionLine(line);
-                    tempLines[linesIndex] = descriptionLine;
-                    linesIndex++;
-                    break;
-                default:
-                    throw new NotImplementedException("unhandled case");
+                var parsed = new DescriptionLine(trimmed);
+                descriptions[language].Add(parsed);
             }
         }
+    }
+
+    private static string[] ParseIds(string idsString)
+    {
+        var split = idsString.Split();
+        var count = int.Parse(split[1]);
+        var ids = split[2..];
+
+        if (count != ids.Length)
+        {
+            throw new NotImplementedException();
+        }
+
+        return ids;
     }
 
     private static Language GetLanguage(string language) => language switch
@@ -100,30 +83,29 @@ public sealed class Description
     };
 
     /// <summary>
-    /// Enum containing possible languages for stat descriptions.
+    /// Merges two descriptions.
     /// </summary>
-    private enum Language
+    /// <param name="other">other description which is going to get merged.</param>
+    internal void Merge(Description other)
     {
-        English,
-        Spanish,
-        German,
-        Portuguese,
-        SimplifiedChinese,
-        French,
-        Russian,
-        Korean,
-        TraditionalChinese,
-        Thai,
-        Japanese,
-    }
+        foreach (var (key, otherList) in other.descriptions)
+        {
+            if (descriptions.TryGetValue(key, out var list))
+            {
+                foreach (var item in list)
+                {
+                    if (list.Contains(item))
+                    {
+                        continue;
+                    }
 
-    private enum ProcessState
-    {
-        None,
-        Description,
-        Ids,
-        LinesCount,
-        Line,
-        Language,
+                    list.Add(item);
+                }
+            }
+            else
+            {
+                descriptions.Add(key, otherList);
+            }
+        }
     }
 }

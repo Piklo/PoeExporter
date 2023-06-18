@@ -42,9 +42,17 @@ public partial class StatDescriptionsLoader
             if (description.StartsWith("description"))
             {
                 var parsed = new Description(description);
+
                 foreach (var id in parsed.Ids)
                 {
-                    parsedDescriptions.Add(id, parsed);
+                    if (parsedDescriptions.TryGetValue(id, out var existing))
+                    {
+                        existing.Merge(parsed);
+                    }
+                    else
+                    {
+                        parsedDescriptions.Add(id, parsed);
+                    }
                 }
             }
             else if (description.StartsWith("no_description"))
