@@ -1,4 +1,6 @@
-﻿namespace PoeData.Specifications.StatDescriptions;
+﻿using System.Numerics;
+
+namespace PoeData.Specifications.StatDescriptions;
 
 /// <summary>
 /// Class contraining translation descriptions.
@@ -99,5 +101,41 @@ public sealed class Description
                 descriptions.Add(key, otherSet);
             }
         }
+    }
+
+    /// <summary>
+    /// Formats the description line with values.
+    /// </summary>
+    /// <typeparam name="T">Type of the list.</typeparam>
+    /// <param name="values">values to fill the description with.</param>
+    /// <param name="language">language to use.</param>
+    /// <param name="getReminderText">adds reminder text if set to true.</param>
+    /// <returns>formatted description.</returns>
+    /// <exception cref="ArgumentNullException">thrown when <paramref name="values"/> is null.</exception>
+    /// <exception cref="NotImplementedException">thrown when no matching description was found.</exception>
+    public string Format<T>(IReadOnlyList<T> values, Language language = Language.English, bool getReminderText = false)
+        where T : INumber<T>
+    {
+        if (values is null)
+        {
+            throw new ArgumentNullException(nameof(values));
+        }
+
+        var boxedValues = new object[values.Count];
+        for (var i = 0; i < values.Count; i++)
+        {
+            var value = values[i];
+            boxedValues[i] = value;
+        }
+
+        foreach (var item in descriptions[language])
+        {
+            if (item.IsMatching(boxedValues))
+            {
+                return item.Format(boxedValues);
+            }
+        }
+
+        throw new NotImplementedException();
     }
 }
