@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "createdAt": 1683218408,
+  "createdAt": 1690057513,
   "tables": [
     {
       "name": "RogueExiles",
@@ -50560,6 +50560,18 @@
         },
         {
           "name": "SanctumTier",
+          "description": null,
+          "array": false,
+          "type": "i32",
+          "unique": false,
+          "localized": false,
+          "references": null,
+          "until": null,
+          "file": null,
+          "files": null
+        },
+        {
+          "name": "CrucibleTier",
           "description": null,
           "array": false,
           "type": "i32",
