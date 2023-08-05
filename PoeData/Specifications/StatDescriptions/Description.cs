@@ -3,7 +3,7 @@
 namespace PoeData.Specifications.StatDescriptions;
 
 /// <summary>
-/// Class contraining translation descriptions.
+/// Class containing translation descriptions.
 /// </summary>
 public sealed class Description
 {
@@ -109,7 +109,7 @@ public sealed class Description
     /// <typeparam name="T">Type of the list.</typeparam>
     /// <param name="values">values to fill the description with.</param>
     /// <param name="language">language to use.</param>
-    /// <param name="getReminderText">adds reminder text if set to true.</param>
+    /// <param name="getReminderText">adds reminder text if set to <see langword="true"></see>.</param>
     /// <returns>formatted description.</returns>
     /// <exception cref="ArgumentNullException">thrown when <paramref name="values"/> is null.</exception>
     /// <exception cref="NotImplementedException">thrown when no matching description was found.</exception>

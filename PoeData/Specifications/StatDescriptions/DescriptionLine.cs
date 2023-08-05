@@ -1,11 +1,12 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using System.Numerics;
 
 namespace PoeData.Specifications.StatDescriptions;
 
 internal sealed record DescriptionLine
 {
-    private static DescriptionFormatter formatter = new();
+    private readonly static DescriptionFormatter Formatter = new();
     private readonly Func<object, bool>[] predicates;
 
     /// <summary>Gets description line.</summary>
@@ -20,6 +21,7 @@ internal sealed record DescriptionLine
         Value = descriptionLine;
         predicates = Array.Empty<Func<object, bool>>();
     }
+
     internal bool IsMatching(IReadOnlyList<object> values)
     {
         if (values.Count != predicates.Length)
@@ -44,7 +46,7 @@ internal sealed record DescriptionLine
 
     internal string Format(IReadOnlyList<object> values)
     {
-        return string.Format(formatter, Value, values);
+        return string.Format(Formatter, Value, values);
     }
 
     private sealed class DescriptionFormatter : ICustomFormatter, IFormatProvider
@@ -84,6 +86,10 @@ internal sealed record DescriptionLine
                 else if (arg is ulong ul)
                 {
                     return ParseValue(ul);
+                }
+                else
+                {
+                    throw new UnreachableException();
                 }
             }
 
