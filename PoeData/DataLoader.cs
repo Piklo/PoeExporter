@@ -244,7 +244,7 @@ internal sealed class DataLoader
         return paths.ToArray();
     }
 
-    private static ulong GetHash(byte[] path, PathTypes pathType)
+    private static ulong GetHashFnv(byte[] path, PathTypes pathType)
     {
         var pathCopy = new byte[path.Length];
         path.CopyTo(pathCopy, 0);
@@ -276,6 +276,52 @@ internal sealed class DataLoader
         var hash = Fnv.Fnv1a_64(pathCopy);
         return hash;
     }
+    private static ulong GetHashMurmur(byte[] path, ulong seed, PathTypes pathType)
+    {
+        var pathCopy = new byte[path.Length];
+        path.CopyTo(pathCopy, 0);
+
+        if (pathCopy[^1] == '/')
+        {
+            pathCopy = pathCopy[..^1];
+        }
+
+        if (pathType == PathTypes.File)
+        {
+            // to lower
+            for (var i = 0; i < pathCopy.Length; i++)
+            {
+                var item = pathCopy[i];
+
+                if (item >= 'A' && item <= 'Z')
+                {
+                    item += (byte)'a' - (byte)'A';
+                    pathCopy[i] = item;
+                }
+            }
+        }
+
+        return MurmurHash2.MurmurHash64A(pathCopy, seed);
+    }
+
+    private ulong GetHash(byte[] path)
+    {
+        var rootEntry = directoryRecords[0];
+
+        if (rootEntry.Hash == 0x07e47507b4a92e53)
+        {
+            return GetHashFnv(path, PathTypes.File);
+        }
+        else
+        {
+            var h = rootEntry.Hash;
+            h ^= h >> 47;
+            h = (h * 0x5F7A0EA7E59B19BD) % ulong.MaxValue; // % 2^64
+            h ^= h >> 47;
+
+            return GetHashMurmur(path, h, PathTypes.File);
+        }
+    }
 
     /// <summary>
     /// Gets file record for a given path.
@@ -284,7 +330,7 @@ internal sealed class DataLoader
     /// <returns><see cref="FileRecord"/>.</returns>
     private FileRecord GetFileRecord(byte[] path)
     {
-        var hash = GetHash(path, PathTypes.File);
+        var hash = GetHash(path);
 
         if (fileRecords.TryGetValue(hash, out var fileRecord))
         {
