@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "createdAt": 1690057513,
+  "createdAt": 1690453614,
   "tables": [
     {
       "name": "RogueExiles",
@@ -43,6 +43,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72,6 +74,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -129,6 +133,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -390,6 +396,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -431,6 +439,8 @@
           "file": ".ogg",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -524,6 +534,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -581,6 +593,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -700,6 +714,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -743,6 +759,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -774,6 +792,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -983,6 +1003,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1134,6 +1156,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1177,6 +1201,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -1208,6 +1235,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1239,6 +1268,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1480,6 +1511,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1617,6 +1650,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1650,6 +1685,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1781,6 +1818,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -1898,6 +1937,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -1983,6 +2025,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2026,6 +2070,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2043,6 +2089,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2113,6 +2161,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2166,6 +2216,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2198,6 +2250,8 @@
             ".otc"
           ]
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2381,6 +2435,10 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:droptable",
+        "item:unique"
       ]
     },
     {
@@ -2450,6 +2508,8 @@
           "file": ".ot",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2717,6 +2777,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2796,6 +2858,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -2921,6 +2985,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3026,6 +3092,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3085,6 +3153,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3140,6 +3210,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3207,6 +3279,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3310,6 +3384,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3413,6 +3489,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3566,6 +3644,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3643,6 +3723,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3672,6 +3754,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -3703,6 +3787,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -4602,6 +4688,10 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def",
+        "crafting"
       ]
     },
     {
@@ -4657,6 +4747,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -4686,6 +4778,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -4757,6 +4851,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -4830,6 +4926,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -4897,6 +4995,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -5208,6 +5308,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -5283,6 +5385,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:itemized"
       ]
     },
     {
@@ -5547,6 +5652,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -5592,6 +5699,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -5640,6 +5749,8 @@
             ".otc"
           ]
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -5669,6 +5780,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -5854,6 +5967,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:itemized"
       ]
     },
     {
@@ -5914,6 +6030,8 @@
             ".otc"
           ]
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6069,6 +6187,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6136,6 +6256,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6241,6 +6363,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6344,6 +6468,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6457,6 +6583,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6486,6 +6614,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6643,6 +6773,43 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:recipe",
+        "crafting"
+      ]
+    },
+    {
+      "name": "NetTiers",
+      "columns": [
+        {
+          "name": "BaseItemTypesKey",
+          "description": null,
+          "array": false,
+          "type": "foreignrow",
+          "unique": false,
+          "localized": false,
+          "references": {
+            "table": "BaseItemTypes"
+          },
+          "until": null,
+          "file": null,
+          "files": null
+        },
+        {
+          "name": "Tier",
+          "description": null,
+          "array": false,
+          "type": "i32",
+          "unique": false,
+          "localized": false,
+          "references": null,
+          "until": null,
+          "file": null,
+          "files": null
+        }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6672,6 +6839,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6703,6 +6872,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6784,6 +6955,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -6868,6 +7041,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:droptable"
       ]
     },
     {
@@ -6961,6 +7137,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -7052,6 +7230,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -7323,6 +7503,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:itemized"
       ]
     },
     {
@@ -7356,6 +7539,10 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:recipe",
+        "item:unique"
       ]
     },
     {
@@ -7423,6 +7610,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -7578,6 +7767,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -7607,6 +7798,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -7636,6 +7829,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -7925,6 +8120,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -7956,6 +8154,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -8123,6 +8323,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -8288,6 +8490,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -8377,6 +8581,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -8562,6 +8768,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -8939,6 +9147,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -8968,6 +9178,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9033,6 +9245,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9078,6 +9292,8 @@
           "file": ".arm",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9183,6 +9399,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9228,6 +9446,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9283,6 +9503,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9486,6 +9708,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9553,6 +9777,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9688,6 +9914,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9741,6 +9969,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9770,6 +10000,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9817,6 +10049,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -9846,6 +10080,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10079,6 +10315,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10138,6 +10376,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:droptable"
       ]
     },
     {
@@ -10297,6 +10538,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10326,6 +10569,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10407,6 +10652,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -10486,6 +10734,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10529,6 +10779,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10572,6 +10824,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10705,6 +10959,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10758,6 +11014,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10861,6 +11119,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -10966,6 +11226,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11067,6 +11329,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11122,6 +11386,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11151,6 +11417,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11168,6 +11436,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11223,6 +11493,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11292,6 +11564,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -11453,6 +11728,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11526,6 +11803,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11631,6 +11910,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11704,6 +11985,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -11945,6 +12228,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12050,6 +12335,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12269,6 +12556,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12372,6 +12661,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12453,6 +12744,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12566,6 +12859,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12595,6 +12890,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12614,6 +12911,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12683,6 +12982,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -12742,6 +13044,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -12787,6 +13092,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12828,6 +13135,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12847,6 +13156,10 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting",
+        "item:unique"
       ]
     },
     {
@@ -12914,6 +13227,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -12967,6 +13282,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13046,6 +13363,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13075,6 +13394,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13190,6 +13511,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13327,6 +13650,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13384,6 +13709,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13567,6 +13894,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13636,6 +13965,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13669,6 +14000,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13702,6 +14035,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13769,6 +14104,8 @@
           "file": ".dds",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13800,6 +14137,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13859,6 +14198,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -13888,6 +14230,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -13943,6 +14287,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14298,6 +14644,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14451,6 +14799,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14494,6 +14844,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14549,6 +14901,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14640,6 +14994,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14825,6 +15181,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14880,6 +15238,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14923,6 +15283,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14952,6 +15314,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -14983,6 +15347,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15026,6 +15392,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15071,6 +15439,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15116,6 +15486,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15145,6 +15517,8 @@
           "file": ".dds",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15332,6 +15706,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -15373,6 +15750,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15416,6 +15795,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15447,6 +15828,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15502,6 +15885,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15545,6 +15930,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15588,6 +15975,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15701,6 +16090,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15792,6 +16183,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15821,6 +16214,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15950,6 +16345,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -15995,6 +16392,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -16222,6 +16622,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -16263,6 +16665,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -16304,6 +16708,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -16467,6 +16873,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -16722,6 +17130,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:droptable"
       ]
     },
     {
@@ -16993,6 +17404,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17146,6 +17559,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17205,6 +17620,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17348,6 +17765,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17377,6 +17796,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17422,6 +17843,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17539,6 +17962,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17658,6 +18083,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -17703,6 +18130,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -17960,6 +18390,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18099,6 +18531,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18282,6 +18716,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18351,6 +18787,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18394,6 +18832,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18427,6 +18867,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18458,6 +18900,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18531,6 +18975,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18792,6 +19238,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18859,6 +19307,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18902,6 +19352,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -18943,6 +19395,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -19034,6 +19488,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -19437,6 +19893,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -19494,6 +19952,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -19649,6 +20109,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -19690,6 +20152,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -19735,6 +20199,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -19848,6 +20315,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -19903,6 +20372,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20124,6 +20595,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20143,6 +20616,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20316,6 +20791,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20345,6 +20822,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20594,6 +21073,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20627,6 +21108,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20680,6 +21163,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20797,6 +21282,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -20890,6 +21377,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21021,6 +21510,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21054,6 +21545,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21371,6 +21864,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21400,6 +21895,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21491,6 +21988,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21600,6 +22099,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21785,6 +22286,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -21844,6 +22347,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -21951,6 +22457,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22086,6 +22594,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22115,6 +22625,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22334,6 +22846,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22381,6 +22895,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22460,6 +22976,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22599,6 +23117,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22746,6 +23266,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22787,6 +23309,8 @@
           "file": ".ao",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22844,6 +23368,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22873,6 +23399,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -22984,6 +23512,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23003,6 +23533,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23056,6 +23588,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23085,6 +23619,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23228,6 +23764,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23287,6 +23825,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23380,6 +23920,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23523,6 +24065,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23566,6 +24110,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23643,6 +24189,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23676,6 +24224,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23757,6 +24307,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23866,6 +24418,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23911,6 +24465,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -23956,6 +24512,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24033,6 +24591,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24220,6 +24780,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24325,6 +24887,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24478,6 +25042,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24507,6 +25073,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24600,6 +25168,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24617,6 +25187,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24646,6 +25218,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24689,6 +25263,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -24810,6 +25387,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24917,6 +25496,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -24948,6 +25529,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25015,6 +25598,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25152,6 +25737,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25197,6 +25784,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25264,6 +25853,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25293,6 +25884,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25460,6 +26053,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25529,6 +26124,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25582,6 +26179,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25611,6 +26210,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25640,6 +26241,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25669,6 +26272,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -25762,6 +26367,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -26003,6 +26610,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:itemized"
       ]
     },
     {
@@ -26032,6 +26642,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -26109,6 +26721,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -26140,6 +26754,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -26247,6 +26863,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -26304,6 +26922,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "mtx:reward"
       ]
     },
     {
@@ -26431,6 +27052,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -26631,6 +27254,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -26737,6 +27362,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "mtx:reward"
       ]
     },
     {
@@ -26766,6 +27394,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27137,6 +27767,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27168,6 +27800,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27307,6 +27941,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27412,6 +28048,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27453,6 +28091,8 @@
           "file": ".dat",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27562,6 +28202,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27671,6 +28313,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27796,6 +28440,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -27949,6 +28595,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -28272,6 +28920,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -28363,6 +29013,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -28488,6 +29140,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -28541,6 +29195,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -28648,6 +29304,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -28691,6 +29349,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -28733,13 +29393,15 @@
           "files": null
         },
         {
-          "name": null,
+          "name": "Gem",
           "description": null,
           "array": false,
           "type": "foreignrow",
           "unique": false,
           "localized": false,
-          "references": null,
+          "references": {
+            "table": "BaseItemTypes"
+          },
           "until": null,
           "file": null,
           "files": null
@@ -28756,6 +29418,9 @@
           "file": ".bk2",
           "files": null
         }
+      ],
+      "tags": [
+        "item:reward"
       ]
     },
     {
@@ -28955,6 +29620,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29060,6 +29727,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29089,6 +29758,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29106,6 +29777,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29279,6 +29952,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29430,6 +30105,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -29581,6 +30259,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29624,6 +30304,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29705,6 +30387,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29758,6 +30442,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29877,6 +30563,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29920,6 +30608,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29951,6 +30641,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -29982,6 +30674,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30023,6 +30717,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30266,6 +30962,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30347,6 +31045,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30400,6 +31100,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30577,6 +31279,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30642,6 +31346,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30671,6 +31377,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30714,6 +31422,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30863,6 +31573,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -30892,6 +31604,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -31290,6 +32004,10 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def",
+        "item:droptable"
       ]
     },
     {
@@ -31331,6 +32049,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -31482,6 +32202,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -31679,6 +32401,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -32304,6 +33028,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -32485,6 +33211,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -32588,6 +33316,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -32661,6 +33391,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -32858,6 +33590,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33089,6 +33823,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33130,6 +33866,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33185,6 +33923,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33292,6 +34032,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33339,6 +34081,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33392,6 +34136,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33527,6 +34273,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -33580,6 +34328,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34303,6 +35053,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34396,6 +35148,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34541,6 +35295,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34558,6 +35314,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34599,6 +35357,8 @@
           "file": ".ogg",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34628,6 +35388,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34707,6 +35469,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -34868,6 +35632,8 @@
           "file": ".ao",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -35360,6 +36126,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -35437,6 +36205,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -35490,6 +36260,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -35563,6 +36335,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -35628,6 +36402,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -35705,6 +36481,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -35761,6 +36539,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -35829,6 +36610,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -36070,6 +36854,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -36125,6 +36911,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -36601,6 +37389,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -36644,6 +37435,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -36723,6 +37516,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -36778,6 +37573,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37123,6 +37920,10 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def",
+        "item:recipe"
       ]
     },
     {
@@ -37238,6 +38039,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37363,6 +38166,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37478,6 +38283,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37543,6 +38350,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37626,6 +38435,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37659,6 +38470,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37784,6 +38597,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -37981,6 +38796,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38096,6 +38913,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38223,6 +39042,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38294,6 +39115,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38521,6 +39344,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38592,6 +39417,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38621,6 +39448,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38652,6 +39481,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38695,6 +39526,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38724,6 +39557,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38753,6 +39588,8 @@
           "file": ".ao",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38806,6 +39643,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -38899,6 +39738,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39252,6 +40093,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39281,6 +40124,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39382,6 +40227,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39411,6 +40258,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39468,6 +40317,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39573,6 +40424,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39614,6 +40467,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39717,6 +40572,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39758,6 +40615,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39801,6 +40660,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -39842,6 +40703,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -40320,6 +41183,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -40421,6 +41286,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -40462,6 +41329,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -40709,6 +41578,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -40838,6 +41709,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -40883,6 +41756,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -40986,6 +41861,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41115,6 +41992,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -41156,6 +42036,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41233,6 +42115,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41262,6 +42146,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41413,6 +42299,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41454,6 +42342,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41495,6 +42385,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41524,6 +42416,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41577,6 +42471,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41618,6 +42514,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41647,6 +42545,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41732,6 +42632,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41749,6 +42651,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -41790,6 +42694,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:droptable"
       ]
     },
     {
@@ -41869,6 +42776,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -42426,6 +43335,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -42599,6 +43510,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -42868,6 +43781,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -43425,6 +44340,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -43478,6 +44395,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -43519,6 +44438,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -43598,6 +44519,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -43691,6 +44614,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:droptable"
       ]
     },
     {
@@ -43734,6 +44660,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -44097,6 +45026,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -44360,6 +45291,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -44453,6 +45386,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -44664,6 +45599,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -44935,6 +45872,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45012,6 +45951,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45173,6 +46114,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45340,6 +46283,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45534,6 +46479,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45563,6 +46510,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45616,6 +46565,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45759,6 +46710,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -45788,6 +46741,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -46005,6 +46960,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -46082,6 +47039,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -46125,6 +47084,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -46156,6 +47118,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -46203,6 +47168,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -46296,6 +47263,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -46337,6 +47306,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -46716,6 +47687,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -46775,6 +47749,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -46896,6 +47872,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47061,6 +48039,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47078,6 +48058,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47121,6 +48103,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47294,6 +48278,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47361,6 +48347,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47390,6 +48378,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47407,6 +48397,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47436,6 +48428,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47621,6 +48615,8 @@
           "file": ".epk",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -47808,6 +48804,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -48471,6 +49469,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -48500,6 +49500,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -48591,6 +49593,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -48636,6 +49640,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -48713,17 +49719,33 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
       "name": "LeagueInfo",
       "columns": [
         {
-          "name": "Id",
+          "name": "PanelVersion",
+          "description": null,
+          "array": false,
+          "type": "foreignrow",
+          "unique": false,
+          "localized": false,
+          "references": {
+            "table": "LeagueInfoPanelVersions"
+          },
+          "until": null,
+          "file": null,
+          "files": null
+        },
+        {
+          "name": "PanelId",
           "description": null,
           "array": false,
           "type": "string",
-          "unique": true,
+          "unique": false,
           "localized": false,
           "references": null,
           "until": null,
@@ -48768,18 +49790,6 @@
         },
         {
           "name": "Description",
-          "description": null,
-          "array": false,
-          "type": "string",
-          "unique": false,
-          "localized": false,
-          "references": null,
-          "until": null,
-          "file": null,
-          "files": null
-        },
-        {
-          "name": "League",
           "description": null,
           "array": false,
           "type": "string",
@@ -48862,6 +49872,27 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+      ]
+    },
+    {
+      "name": "LeagueInfoPanelVersions",
+      "columns": [
+        {
+          "name": "Id",
+          "description": null,
+          "array": false,
+          "type": "string",
+          "unique": false,
+          "localized": false,
+          "references": null,
+          "until": null,
+          "file": null,
+          "files": null
+        }
+      ],
+      "tags": [
       ]
     },
     {
@@ -48919,6 +49950,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49020,6 +50053,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49121,6 +50156,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49150,6 +50187,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49249,6 +50288,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49354,6 +50395,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49385,6 +50428,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49530,6 +50575,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:recipe"
       ]
     },
     {
@@ -49645,6 +50693,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49776,6 +50826,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49809,6 +50861,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -49962,6 +51016,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50005,6 +51061,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50246,6 +51304,10 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def",
+        "item:recipe"
       ]
     },
     {
@@ -50359,6 +51421,8 @@
           "file": ".dds",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50582,6 +51646,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50697,6 +51763,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50730,6 +51798,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50809,6 +51879,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50852,6 +51924,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50893,6 +51967,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -50936,6 +52012,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51127,6 +52205,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51228,6 +52308,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51355,6 +52437,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51410,6 +52494,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51441,6 +52527,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51460,6 +52548,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51553,6 +52643,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51596,6 +52688,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51639,6 +52733,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51670,6 +52766,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51713,6 +52811,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51902,6 +53002,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51931,6 +53033,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -51960,6 +53064,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52003,6 +53109,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52046,6 +53154,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52089,6 +53199,8 @@
           "file": ".bk2",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52190,6 +53302,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52243,6 +53357,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52322,6 +53438,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52387,6 +53505,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52456,6 +53576,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52521,6 +53643,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52636,6 +53760,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52677,6 +53803,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52747,6 +53875,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52812,6 +53942,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52841,6 +53973,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52930,6 +54064,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -52995,6 +54131,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -53064,6 +54202,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -53135,6 +54275,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -53152,6 +54294,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -54137,6 +55281,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -54154,6 +55301,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -54197,6 +55346,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -54226,6 +55377,8 @@
           "file": ".sm",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -54305,6 +55458,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -54390,6 +55545,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -54551,6 +55708,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -54832,6 +55991,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55053,6 +56214,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55096,6 +56259,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55227,6 +56392,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55296,6 +56463,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55443,6 +56612,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55564,6 +56735,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55857,6 +57030,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55922,6 +57097,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -55991,6 +57168,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56222,6 +57401,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56301,6 +57482,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56394,6 +57577,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56555,6 +57740,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56584,6 +57771,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56604,6 +57793,8 @@
             ".otc"
           ]
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56671,6 +57862,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56716,6 +57909,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -56855,6 +58050,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58095,6 +59292,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58136,6 +59335,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58177,6 +59378,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58554,6 +59757,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58631,6 +59836,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58672,6 +59879,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58741,6 +59950,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58832,6 +60043,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -58959,6 +60172,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -59012,6 +60227,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -59067,6 +60284,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -59182,37 +60401,8 @@
           "file": null,
           "files": null
         }
-      ]
-    },
-    {
-      "name": "NetTiers",
-      "columns": [
-        {
-          "name": "BaseItemTypesKey",
-          "description": null,
-          "array": false,
-          "type": "foreignrow",
-          "unique": false,
-          "localized": false,
-          "references": {
-            "table": "BaseItemTypes"
-          },
-          "until": null,
-          "file": null,
-          "files": null
-        },
-        {
-          "name": "Tier",
-          "description": null,
-          "array": false,
-          "type": "i32",
-          "unique": false,
-          "localized": false,
-          "references": null,
-          "until": null,
-          "file": null,
-          "files": null
-        }
+      ],
+      "tags": [
       ]
     },
     {
@@ -59326,6 +60516,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -59463,6 +60655,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -59532,6 +60726,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -59803,6 +60999,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -60018,6 +61216,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -60257,6 +61457,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -60310,6 +61512,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -60522,6 +61726,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -60697,6 +61903,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -60754,6 +61962,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61131,6 +62341,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61160,6 +62372,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61201,6 +62415,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61364,6 +62580,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61397,6 +62615,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61474,6 +62694,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61527,6 +62749,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61612,6 +62836,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61641,6 +62867,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61694,6 +62922,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61801,6 +63031,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -61894,6 +63126,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -62447,6 +63681,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -62476,6 +63712,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -62713,6 +63951,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -62840,6 +64080,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63061,6 +64303,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63166,6 +64410,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -63183,6 +64430,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63244,6 +64493,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -63277,6 +64529,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63306,6 +64560,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63424,6 +64680,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63555,6 +64813,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63608,6 +64868,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -63625,6 +64887,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64008,6 +65272,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64073,6 +65339,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64104,6 +65372,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64133,6 +65403,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64262,6 +65534,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64343,6 +65617,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64372,6 +65648,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64535,6 +65813,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64567,13 +65847,15 @@
           "files": null
         },
         {
-          "name": null,
+          "name": "QuestFlag",
           "description": null,
           "array": false,
           "type": "foreignrow",
           "unique": false,
           "localized": false,
-          "references": null,
+          "references": {
+            "table": "QuestFlags"
+          },
           "until": null,
           "file": null,
           "files": null
@@ -64642,6 +65924,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -64881,6 +66165,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:reward"
       ]
     },
     {
@@ -65098,6 +66385,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65245,6 +66534,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65288,6 +66579,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65317,6 +66610,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65432,6 +66727,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65487,6 +66784,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65516,6 +66815,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65617,6 +66918,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65758,6 +67061,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65839,6 +67144,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65885,6 +67192,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65926,6 +67235,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -65955,6 +67266,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66008,6 +67321,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66051,6 +67366,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66070,6 +67387,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66101,6 +67420,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -66192,6 +67514,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66235,6 +67559,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66264,6 +67590,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66489,6 +67817,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66534,6 +67864,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66551,6 +67883,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66620,6 +67954,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66661,6 +67997,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66754,6 +68092,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -66927,6 +68267,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67088,6 +68430,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67169,6 +68513,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67496,6 +68842,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -67539,6 +68888,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67652,6 +69003,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67817,6 +69170,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67862,6 +69217,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67905,6 +69262,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -67970,6 +69329,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68035,6 +69396,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68082,6 +69445,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68291,6 +69656,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68320,6 +69687,8 @@
           "file": ".arm",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68349,6 +69718,8 @@
           "file": ".tdt",
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68394,6 +69765,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68425,6 +69798,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68470,6 +69845,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68547,6 +69924,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68576,6 +69955,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68607,6 +69988,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -68853,6 +70236,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "crafting"
       ]
     },
     {
@@ -69028,6 +70414,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69299,6 +70687,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69412,6 +70802,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69491,6 +70883,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69714,6 +71108,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69793,6 +71189,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69884,6 +71282,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69953,6 +71353,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -69996,6 +71398,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -70337,6 +71741,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -70788,6 +72194,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -70841,6 +72249,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -70930,6 +72340,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -70975,6 +72387,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71004,6 +72418,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71035,6 +72451,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71054,6 +72472,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71107,6 +72527,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71148,6 +72570,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71213,6 +72637,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71306,6 +72732,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71335,6 +72763,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71368,6 +72798,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71397,6 +72829,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71582,6 +73016,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71747,6 +73183,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71812,6 +73250,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -71963,6 +73403,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72044,6 +73486,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72215,6 +73659,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72246,6 +73692,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:unique"
       ]
     },
     {
@@ -72319,6 +73768,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72428,6 +73879,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:unique"
       ]
     },
     {
@@ -72587,6 +74041,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:unique"
       ]
     },
     {
@@ -72724,6 +74181,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72753,6 +74212,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72782,6 +74243,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72847,6 +74310,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72878,6 +74343,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -72955,6 +74422,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -73046,6 +74515,9 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
+        "item:def"
       ]
     },
     {
@@ -73159,6 +74631,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -73252,6 +74726,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -74162,6 +75638,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -74695,6 +76173,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -74808,6 +76288,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     },
     {
@@ -74837,6 +76319,8 @@
           "file": null,
           "files": null
         }
+      ],
+      "tags": [
       ]
     }
   ],
