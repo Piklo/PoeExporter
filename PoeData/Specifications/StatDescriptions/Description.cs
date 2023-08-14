@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics;
+using System.Numerics;
 
 namespace PoeData.Specifications.StatDescriptions;
 
@@ -62,7 +63,7 @@ public sealed class Description
 
         if (count != ids.Length)
         {
-            throw new NotImplementedException();
+            throw new UnreachableException($"expected {count} ids, found {ids.Length}");
         }
 
         return ids;
