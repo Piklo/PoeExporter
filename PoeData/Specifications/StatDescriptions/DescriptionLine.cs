@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using PoeData.Specifications.StatDescriptions.DescriptionLinePredicates;
+using System.Diagnostics;
 using System.Globalization;
 using System.Numerics;
 
@@ -7,7 +8,7 @@ namespace PoeData.Specifications.StatDescriptions;
 internal sealed record DescriptionLine
 {
     private readonly static DescriptionFormatter Formatter = new();
-    private readonly Func<object, bool>[] predicates;
+    private readonly IDescriptionLinePredicate[] predicates;
 
     /// <summary>Gets description line.</summary>
     internal string Value { get; }
@@ -19,7 +20,57 @@ internal sealed record DescriptionLine
     internal DescriptionLine(string descriptionLine)
     {
         Value = descriptionLine;
-        predicates = Array.Empty<Func<object, bool>>();
+
+        var quotationIndex = descriptionLine.IndexOf('"');
+        var lastQuotationIndex = descriptionLine.LastIndexOf('"');
+        var predicatesString = descriptionLine[..quotationIndex];
+        predicates = ParsePredicates(predicatesString);
+        var text = descriptionLine[(quotationIndex + 1)..lastQuotationIndex];
+        var rest = descriptionLine[(lastQuotationIndex + 1)..];
+    }
+
+    private static IDescriptionLinePredicate[] ParsePredicates(string predicatesString)
+    {
+        var predicateStrings = predicatesString.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        var predicates = new IDescriptionLinePredicate[predicateStrings.Length];
+
+        for (var i = 0; i < predicates.Length; i++)
+        {
+            var str = predicateStrings[i];
+            if (str == "#")
+            {
+                predicates[i] = new PredicateAnyValue();
+            }
+            else if (str.StartsWith('!'))
+            {
+                var value = int.Parse(str[1..]);
+                predicates[i] = new PredicateNotSpecificValue(value);
+            }
+            else if (str.StartsWith('#'))
+            {
+                var max = int.Parse(str[2..]);
+                predicates[i] = new PredicateLessThan(max);
+            }
+            else if (str.EndsWith('#'))
+            {
+                var min = int.Parse(str[..str.IndexOf('|')]);
+                predicates[i] = new PredicateGreaterThan(min);
+            }
+            else if (str.Contains('|'))
+            {
+                var index = str.IndexOf('|');
+                var min = int.Parse(str[..index]);
+                var max = int.Parse(str[(index + 1)..]);
+                predicates[i] = new PredicateInRange(min, max);
+            }
+            else
+            {
+                var value = int.Parse(str);
+                predicates[i] = new PredicateSpecificValue(value);
+            }
+        }
+
+        return predicates;
     }
 
     internal bool IsMatching(IReadOnlyList<object> values)
@@ -29,17 +80,18 @@ internal sealed record DescriptionLine
             return false;
         }
 
-        for (var i = 0; i < values.Count; i++)
-        {
-            var predicate = predicates[i];
-            var value = values[i];
-            var result = predicate(value);
+        // TOOD fix me
+        //for (var i = 0; i < values.Count; i++)
+        //{
+        //    var predicate = predicates[i];
+        //    var value = values[i];
+        //    var result = predicate.Matches(value);
 
-            if (!result)
-            {
-                return false;
-            }
-        }
+        //    if (!result)
+        //    {
+        //        return false;
+        //    }
+        //}
 
         return true;
     }
