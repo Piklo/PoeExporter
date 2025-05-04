@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoeExporter", "PoeExporter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchemaFormatter", "SchemaFormatter\SchemaFormatter.csproj", "{132E0C28-3FD1-4835-9EE0-F7B82CED9320}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoeData", "PoeData\PoeData.csproj", "{E2935151-8BD7-4A31-9238-3C17DF3E19DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoeData.Generator", "PoeData.Generator\PoeData.Generator.csproj", "{1000A53E-DA46-4804-85FD-4203BF5DA56B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{132E0C28-3FD1-4835-9EE0-F7B82CED9320}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{132E0C28-3FD1-4835-9EE0-F7B82CED9320}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{132E0C28-3FD1-4835-9EE0-F7B82CED9320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2935151-8BD7-4A31-9238-3C17DF3E19DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2935151-8BD7-4A31-9238-3C17DF3E19DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2935151-8BD7-4A31-9238-3C17DF3E19DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2935151-8BD7-4A31-9238-3C17DF3E19DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1000A53E-DA46-4804-85FD-4203BF5DA56B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1000A53E-DA46-4804-85FD-4203BF5DA56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1000A53E-DA46-4804-85FD-4203BF5DA56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1000A53E-DA46-4804-85FD-4203BF5DA56B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

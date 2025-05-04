@@ -9,4 +9,8 @@
         <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\PoeData\PoeData.csproj"/>
+    </ItemGroup>
+
 </Project>
