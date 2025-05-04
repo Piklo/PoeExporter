@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -38,6 +39,10 @@ public class SchemaGenerator : IIncrementalGenerator
     private static void OutputSchema(SourceProductionContext context, string schemaText)
     {
         var schema = JsonSerializer.Deserialize<Schema>(schemaText);
+
+        using var stringWriter = new StringWriter();
+        using var writer = new IndentedTextWriter(stringWriter);
+
         context.AddSource("test.cs", "//empty");
     }
 }
