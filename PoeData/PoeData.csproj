@@ -13,4 +13,8 @@
         <AdditionalFiles Include="schema.json"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="PoeData.Ooz" Version="0.2.3"/>
+    </ItemGroup>
+
 </Project>
