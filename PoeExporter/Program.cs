@@ -1,4 +1,4 @@
-﻿using PoeData.Ooz;
+﻿using PoeData;
 
-Console.WriteLine("asd");
-Ooz.Decompress([], 0, [], 0);
+var loader = new StandaloneLoader("E:\\Programs\\Grinding Gear Games\\Path of Exile");
+Console.WriteLine();
