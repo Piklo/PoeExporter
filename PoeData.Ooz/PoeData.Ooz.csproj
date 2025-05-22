@@ -5,14 +5,19 @@
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Version>0.2.3</Version>
+        <Version>0.0.1</Version>
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="libooz.dll">
+        <None Include="runtimes/win-x64/libooz.dll">
             <Pack>true</Pack>
             <PackagePath>runtimes/win-x64/native</PackagePath>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
+        </None>
+        <None Include="runtimes/linux-x64/libooz.so">
+            <Pack>true</Pack>
+            <PackagePath>runtimes/linux-x64/native</PackagePath>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 </Project>
