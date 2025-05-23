@@ -1,13 +1,13 @@
 ﻿namespace PoeData;
 
-internal sealed class SteamLoader : IDataLoader
+public sealed class SteamLoader : IDataLoader
 {
     private const string IndexPath = "Bundles2/_.index.bin";
     private readonly string _clientPath;
 
     public SteamLoader(string clientPath)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(clientPath);
+        ArgumentException.ThrowIfNullOrWhiteSpace(clientPath);
         _clientPath = clientPath;
     }
 

@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Diagnostics;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 
 namespace PoeData;
@@ -8,42 +6,91 @@ namespace PoeData;
 public sealed class StandaloneLoader : IDataLoader
 {
     private const string FileName = "Content.ggpk";
+    private const string IndexPath = "Bundles2/_.index.bin";
     private const int LengthLength = sizeof(int);
     private const int TagLength = 4;
 
-    private readonly string _clientPath;
-    private readonly Ggpk _ggpk;
-    private readonly Dictionary<long, IRecord> _records = [];
+    const int CharWidth = 2;
+    const int FileNameLengthLength = sizeof(int);
+    private const int FileHeaderLength = LengthLength + TagLength + FileNameLengthLength + SHA256.HashSizeInBytes; // + nameLength
+
+    private readonly string _ggpkPath;
+    private readonly DirectoryNode _rootNode;
     public StandaloneLoader(string clientPath)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(clientPath);
-        _clientPath = clientPath;
+        ArgumentException.ThrowIfNullOrWhiteSpace(clientPath);
 
-        var fullPath = Path.Combine(clientPath, FileName);
-        using var file = File.OpenRead(fullPath);
+        _ggpkPath = Path.Combine(clientPath, FileName);
+        using var file = File.OpenRead(_ggpkPath);
         using var reader = new BinaryReader(file);
         var record = ReadRecord(reader);
         if (record is not Ggpk ggpk)
         {
-            throw new UnreachableException($"Expected {nameof(Ggpk)} at position {record.Position}.");
+            throw new InvalidOperationException($"Expected {nameof(Ggpk)} at position {record.Position}.");
         }
-        _ggpk = ggpk;
-        _records.Add(_ggpk.Position, ggpk);
+        var records = new Dictionary<long, IRecord> { { ggpk.Position, ggpk } };
 
         while (reader.BaseStream.Position < reader.BaseStream.Length)
         {
             record = ReadRecord(reader);
+            records.Add(record.Position, record);
         }
+
+        _rootNode = BuildDirectoryStructure(ggpk, records);
     }
 
     public byte[] ReadIndex()
     {
-        throw new NotImplementedException();
+        return GetFileBytes(IndexPath);
     }
 
     public byte[] GetFileBytes(string path)
     {
-        throw new NotImplementedException();
+        var split = path.Replace("\\", "/").Split("/");
+
+        var currentNode = _rootNode;
+        foreach (var currentPath in split)
+        {
+            var foundCurrent = false;
+            foreach (var node in currentNode.Children)
+            {
+                if (currentPath != node.Record.Name())
+                {
+                    continue;
+                }
+                currentNode = node;
+                foundCurrent = true;
+                break;
+            }
+
+            if (!foundCurrent)
+            {
+                throw new InvalidOperationException($"Failed to find {currentPath}.");
+            }
+        }
+
+        if (split[^1] != currentNode.Record.Name())
+        {
+            throw new InvalidOperationException($"Traversed to the end and failed to find {path}.");
+        }
+
+        var file = currentNode.Record.File;
+        if (file is null)
+        {
+            throw new InvalidOperationException($"{path} is not a file.");
+        }
+
+        var totalHeaderLength = FileHeaderLength + file.NameLength * CharWidth;
+        var dataStart = file.Position + totalHeaderLength;
+        var dataLength = file.Length - totalHeaderLength;
+
+        using var stream = File.OpenRead(_ggpkPath);
+        stream.Seek(dataStart, SeekOrigin.Begin);
+
+        var bytes = new byte[dataLength];
+        stream.ReadExactly(bytes);
+
+        return bytes;
     }
 
 
@@ -68,7 +115,7 @@ public sealed class StandaloneLoader : IDataLoader
             "FILE" => ReadFile(reader, position, length, tag),
             "FREE" => ReadFree(reader, position, length, tag),
             "PDIR" => ReadPDir(reader, position, length, tag),
-            _ => throw new UnreachableException($"Unknown tag = {tag}."),
+            _ => throw new InvalidOperationException($"Unknown tag = {tag}."),
         };
     }
 
@@ -94,7 +141,6 @@ public sealed class StandaloneLoader : IDataLoader
         var nameBytesLength = reader.ReadInt32();
         var hash = reader.ReadBytes(SHA256.HashSizeInBytes);
 
-        const int CharWidth = 2;
         var nameLength = CharWidth * nameBytesLength;
         var nameBytes = reader.ReadBytes(nameLength - CharWidth);
         reader.BaseStream.Seek(CharWidth, SeekOrigin.Current);
@@ -102,8 +148,7 @@ public sealed class StandaloneLoader : IDataLoader
 
         var file = new FileEntry() { Position = position, Length = length, Tag = tag, NameLength = nameBytesLength, Sha256Hash = hash, Name = name };
 
-        const int NameLengthLength = sizeof(int);
-        var remainder = LengthLength + TagLength + NameLengthLength + SHA256.HashSizeInBytes + nameLength;
+        var remainder = FileHeaderLength + nameLength;
         var skip = length - remainder;
         reader.BaseStream.Seek(skip, SeekOrigin.Current);
         return file;
@@ -126,7 +171,6 @@ public sealed class StandaloneLoader : IDataLoader
         var totalEntries = reader.ReadInt32();
         var hash = reader.ReadBytes(SHA256.HashSizeInBytes);
 
-        const int CharWidth = 2;
         var nameLength = CharWidth * nameBytesLength;
         var nameBytes = reader.ReadBytes(nameLength - CharWidth);
         reader.BaseStream.Seek(CharWidth, SeekOrigin.Current);
@@ -153,6 +197,75 @@ public sealed class StandaloneLoader : IDataLoader
         var entry = new DirectoryEntry() { EntryNameHash = entryNameHash, Offset = offset };
 
         return entry;
+    }
+
+    private static DirectoryNode BuildDirectoryStructure(Ggpk ggpk, IReadOnlyDictionary<long, IRecord> records)
+    {
+        var rootNode = GetRootDirectoryNode(ggpk, records);
+        TraverseDirectories(rootNode, records);
+        return rootNode;
+    }
+
+    private static DirectoryNode GetRootDirectoryNode(Ggpk ggpk, IReadOnlyDictionary<long, IRecord> records)
+    {
+        Pdir? pdir = null;
+        var pdirsCount = 0;
+        foreach (var entry in ggpk.Entries)
+        {
+            if (!records.TryGetValue(entry.Offset, out var record))
+            {
+                throw new InvalidOperationException($"Failed to find record with offset: {entry.Offset}.");
+            }
+
+            if (record is not Pdir pdir2) continue;
+            pdir = pdir2;
+            pdirsCount++;
+        }
+
+        if (pdirsCount != 1 || pdir is null)
+        {
+            throw new InvalidOperationException($"Expected 1 pdir, found: {pdirsCount}.");
+        }
+
+        var rootNode = new DirectoryNode() { Parent = null, Record = new(pdir) };
+        return rootNode;
+    }
+
+    private static void TraverseDirectories(DirectoryNode rootNode, IReadOnlyDictionary<long, IRecord> records)
+    {
+        var queue = new Queue<(DirectoryNode parent, DirectoryEntry child)>();
+        foreach (var entry in rootNode.Record.Directory?.Entries ?? [])
+        {
+            queue.Enqueue((rootNode, entry));
+        }
+
+
+        while (queue.Count != 0)
+        {
+            var (parent, child) = queue.Dequeue();
+
+            if (!records.TryGetValue(child.Offset, out var record))
+            {
+                throw new InvalidOperationException($"Expected to find a record at offset: {child.Offset}.");
+            }
+
+            var node = record switch
+            {
+                FileEntry file => new DirectoryNode() { Parent = parent, Record = new(file) },
+                Pdir dir => new DirectoryNode() { Parent = parent, Record = new(dir) },
+                _ => throw new InvalidOperationException($"Unexpected type."),
+            };
+
+            if (record is Pdir pdir2)
+            {
+                foreach (var entry in pdir2.Entries)
+                {
+                    queue.Enqueue((node, entry));
+                }
+            }
+
+            parent.Children.Add(node);
+        }
     }
 
     private interface IRecord
@@ -215,5 +328,41 @@ public sealed class StandaloneLoader : IDataLoader
 
         public required string Name { get; init; }
         // public required byte[] Data { get; init; }
+    }
+
+    private sealed class DirectoryNode
+    {
+        public required DirectoryNode? Parent { get; init; }
+        public List<DirectoryNode> Children { get; } = [];
+        public required Value Record { get; init; }
+
+        public sealed class Value
+        {
+            public Pdir? Directory { get; }
+            public FileEntry? File { get; }
+
+            public Value(Pdir directory)
+            {
+                Directory = directory;
+            }
+
+            public Value(FileEntry file)
+            {
+                File = file;
+            }
+
+            public string Name()
+            {
+                if (Directory is not null)
+                {
+                    return Directory.Name;
+                }
+                else if (File is not null)
+                {
+                    return File.Name;
+                }
+                throw new InvalidOperationException($"Both {nameof(Directory)} and ${nameof(File)} are null.");
+            }
+        }
     }
 }
