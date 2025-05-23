@@ -1,6 +1,6 @@
 ﻿namespace PoeData;
 
-public sealed class SteamLoader : IDataLoader
+internal sealed class SteamLoader : IDataLoader
 {
     private const string IndexPath = "Bundles2/_.index.bin";
     private readonly string _clientPath;

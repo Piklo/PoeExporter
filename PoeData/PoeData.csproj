@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <IsAotCompatible>true</IsAotCompatible>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <AnalysisMode>All</AnalysisMode>
     </PropertyGroup>
 
     <ItemGroup>

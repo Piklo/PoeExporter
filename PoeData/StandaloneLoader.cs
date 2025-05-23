@@ -3,9 +3,9 @@ using System.Text;
 
 namespace PoeData;
 
-public sealed class StandaloneLoader : IDataLoader
+internal sealed class StandaloneLoader : IDataLoader
 {
-    private const string FileName = "Content.ggpk";
+    public const string GgpkFileName = "Content.ggpk";
     private const string IndexPath = "Bundles2/_.index.bin";
     private const int LengthLength = sizeof(int);
     private const int TagLength = 4;
@@ -20,14 +20,17 @@ public sealed class StandaloneLoader : IDataLoader
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(clientPath);
 
-        _ggpkPath = Path.Combine(clientPath, FileName);
+        _ggpkPath = Path.Combine(clientPath, GgpkFileName);
+
         using var file = File.OpenRead(_ggpkPath);
         using var reader = new BinaryReader(file);
+
         var record = ReadRecord(reader);
         if (record is not Ggpk ggpk)
         {
             throw new InvalidOperationException($"Expected {nameof(Ggpk)} at position {record.Position}.");
         }
+
         var records = new Dictionary<long, IRecord> { { ggpk.Position, ggpk } };
 
         while (reader.BaseStream.Position < reader.BaseStream.Length)
@@ -46,7 +49,7 @@ public sealed class StandaloneLoader : IDataLoader
 
     public byte[] GetFileBytes(string path)
     {
-        var split = path.Replace("\\", "/").Split("/");
+        var split = path.Replace("\\", "/", StringComparison.Ordinal).Split("/");
 
         var currentNode = _rootNode;
         foreach (var currentPath in split)
@@ -217,14 +220,23 @@ public sealed class StandaloneLoader : IDataLoader
                 throw new InvalidOperationException($"Failed to find record with offset: {entry.Offset}.");
             }
 
-            if (record is not Pdir pdir2) continue;
+            if (record is not Pdir pdir2)
+            {
+                continue;
+            }
+
             pdir = pdir2;
             pdirsCount++;
         }
 
-        if (pdirsCount != 1 || pdir is null)
+        if (pdirsCount != 1)
         {
             throw new InvalidOperationException($"Expected 1 pdir, found: {pdirsCount}.");
+        }
+
+        if (pdir is null)
+        {
+            throw new InvalidOperationException($"{nameof(pdir)} is null.");
         }
 
         var rootNode = new DirectoryNode() { Parent = null, Record = new(pdir) };
