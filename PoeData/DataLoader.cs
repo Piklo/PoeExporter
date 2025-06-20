@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
 
 namespace PoeData;
 
@@ -28,6 +27,13 @@ public sealed class DataLoader
 
         var decompressedRemaining = Decompressor.Decompress(remainingData);
         _pathedDirectoryRecords = GetPathedDirectoryRecords(directoryRecords, decompressedRemaining);
+    }
+
+    public byte[] GetFileBytes(string filePath)
+    {
+        GetFileRecord(filePath);
+
+        return default;
     }
 
     private static bool IsStandaloneClient(string clientPath)
@@ -163,7 +169,7 @@ public sealed class DataLoader
 
             var endOffset = offset + data[offset..].IndexOf((byte)0);
             var pathBytes = data[offset..endOffset];
-            var path = Encoding.ASCII.GetString(pathBytes);
+            var path = Encoding.UTF8.GetString(pathBytes);
             offset = endOffset + 1;
 
             if (temp.Count != 0)
@@ -188,5 +194,69 @@ public sealed class DataLoader
     {
         public required List<string> Paths { get; init; }
         public required DirectoryRecord DirectoryRecord { get; init; }
+    }
+
+    private void GetFileRecord(string filePath)
+    {
+        var hash = GetHash(filePath);
+    }
+
+    private long GetHash(string path)
+    {
+        var rootEntry = directoryRecords[0];
+
+        if (rootEntry.Hash == 0x07e47507b4a92e53)
+        {
+            return GetHashFnv(path, FnvPathType.File);
+        }
+
+        return 0;
+    }
+
+    private static long GetHashFnv(string path, FnvPathType pathType = FnvPathType.None)
+    {
+        if (path.EndsWith('/'))
+        {
+            if (pathType == FnvPathType.None)
+            {
+                pathType = FnvPathType.Directory;
+            }
+
+            path = path[..^1];
+        }
+
+        if (pathType is FnvPathType.None or FnvPathType.File)
+        {
+#pragma warning disable CA1308
+            path = path.ToLowerInvariant();
+#pragma warning restore CA1308
+        }
+
+        path += "++";
+
+        var hash = HashFNV1a(path);
+        return hash;
+    }
+
+    private enum FnvPathType
+    {
+        None,
+        Directory,
+        File,
+    }
+
+    private static long HashFNV1a(string path)
+    {
+        const ulong fnv64Offset = 14695981039346656037;
+        const ulong fnv64Prime = 0x100000001b3;
+        var hash = fnv64Offset;
+
+        foreach (var c in path)
+        {
+            hash = hash ^ c;
+            hash *= fnv64Prime;
+        }
+
+        return unchecked((long)hash);
     }
 }
