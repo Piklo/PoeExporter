@@ -1,9 +1,12 @@
-﻿using System.Text;
+﻿using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace PoeData;
 
 public sealed class DataLoader
 {
+    private readonly DirectoryRecord[] directoryRecords;
+    private readonly Dictionary<long, PathedDirectoryRecord> _pathedDirectoryRecords;
 
     public DataLoader(string clientPath)
     {
@@ -17,13 +20,14 @@ public sealed class DataLoader
         using var reader = new BinaryReader(stream);
         var bundleRecords = ReadBundleRecords(reader);
         var fileRecords = ReadFileRecords(reader, bundleRecords);
-        var directoryRecords = ReadDirectoryRecords(reader);
+        directoryRecords = ReadDirectoryRecords(reader);
 
         var remainingDataLength = stream.Length - stream.Position;
         var remainingData = new byte[remainingDataLength];
         stream.ReadExactly(remainingData);
 
         var decompressedRemaining = Decompressor.Decompress(remainingData);
+        _pathedDirectoryRecords = GetPathedDirectoryRecords(directoryRecords, decompressedRemaining);
     }
 
     private static bool IsStandaloneClient(string clientPath)
@@ -58,18 +62,18 @@ public sealed class DataLoader
         public string GgpkPath => $"Bundles2/{FileName}";
     }
 
-    private static Dictionary<ulong, FileRecord> ReadFileRecords(BinaryReader reader, BundleRecord[] bundleRecords)
+    private static Dictionary<long, FileRecord> ReadFileRecords(BinaryReader reader, BundleRecord[] bundleRecords)
     {
         var fileCount = reader.ReadInt32();
 
-        var fileRecords = new Dictionary<ulong, FileRecord>(fileCount);
+        var fileRecords = new Dictionary<long, FileRecord>(fileCount);
         for (var i = 0; i < fileCount; i++)
         {
-            var hash = reader.ReadUInt64();
+            var hash = reader.ReadInt64();
             var bundleRecordsIndex = reader.ReadInt32();
             var bundleRecord = bundleRecords[bundleRecordsIndex];
-            var fileOffset = reader.ReadUInt32();
-            var fileSize = reader.ReadUInt32();
+            var fileOffset = reader.ReadInt32();
+            var fileSize = reader.ReadInt32();
             var record = new FileRecord() { Hash = hash, BundleRecord = bundleRecord, FileOffset = fileOffset, FileSize = fileSize };
             fileRecords.Add(record.Hash, record);
         }
@@ -79,10 +83,10 @@ public sealed class DataLoader
 
     private sealed class FileRecord
     {
-        public required ulong Hash { get; init; }
+        public required long Hash { get; init; }
         public required BundleRecord BundleRecord { get; init; }
-        public required uint FileOffset { get; init; }
-        public required uint FileSize { get; init; }
+        public required int FileOffset { get; init; }
+        public required int FileSize { get; init; }
     }
 
     private static DirectoryRecord[] ReadDirectoryRecords(BinaryReader reader)
@@ -92,10 +96,10 @@ public sealed class DataLoader
         var directories = new DirectoryRecord[directoriesCount];
         for (var i = 0; i < directories.Length; i++)
         {
-            var hash = reader.ReadUInt64();
-            var offset = reader.ReadUInt32();
-            var size = reader.ReadUInt32();
-            var unknown = reader.ReadUInt32();
+            var hash = reader.ReadInt64();
+            var offset = reader.ReadInt32();
+            var size = reader.ReadInt32();
+            var unknown = reader.ReadInt32();
 
             var directory = new DirectoryRecord() { Hash = hash, Offset = offset, Size = size, Unknown = unknown };
             directories[i] = directory;
@@ -106,15 +110,83 @@ public sealed class DataLoader
 
     private sealed class DirectoryRecord
     {
-        public required ulong Hash { get; init; }
-        public required uint Offset { get; init; }
-        public required uint Size { get; init; }
-        public required uint Unknown { get; init; }
+        public required long Hash { get; init; }
+        public required int Offset { get; init; }
+        public required int Size { get; init; }
+        public required int Unknown { get; init; }
+    }
+
+    private static Dictionary<long, PathedDirectoryRecord> GetPathedDirectoryRecords(DirectoryRecord[] directoryRecords, DecompressedData decompressedData)
+    {
+        var dict = new Dictionary<long, PathedDirectoryRecord>();
+
+        foreach (var directoryRecord in directoryRecords)
+        {
+            var data = new ReadOnlySpan<byte>(decompressedData.Data, directoryRecord.Offset, directoryRecord.Size);
+            var paths = MakePaths(data);
+
+            var pathed = new PathedDirectoryRecord() { DirectoryRecord = directoryRecord, Paths = paths };
+            dict.Add(directoryRecord.Hash, pathed);
+        }
+
+        return dict;
+    }
+
+    private static List<string> MakePaths(ReadOnlySpan<byte> data)
+    {
+        var temp = new List<string>();
+        var paths = new List<string>();
+        var isBase = false;
+        var offset = 0;
+        var rawLength = data.Length - 4;
+
+        while (offset <= rawLength)
+        {
+            var index = BitConverter.ToInt32(data[offset..]);
+            offset += sizeof(int);
+
+            if (index == 0)
+            {
+                isBase = !isBase;
+
+                if (isBase)
+                {
+                    temp.Clear();
+                }
+
+                continue;
+            }
+            else
+            {
+                index--;
+            }
+
+            var endOffset = offset + data[offset..].IndexOf((byte)0);
+            var pathBytes = data[offset..endOffset];
+            var path = Encoding.ASCII.GetString(pathBytes);
+            offset = endOffset + 1;
+
+            if (temp.Count != 0)
+            {
+                var tempPath = temp[index];
+                path = tempPath + path;
+            }
+
+            if (isBase)
+            {
+                temp.Add(path);
+            }
+            {
+                paths.Add(path);
+            }
+        }
+
+        return paths;
     }
 
     private sealed class PathedDirectoryRecord
     {
-        public required byte[][] Paths { get; init; }
+        public required List<string> Paths { get; init; }
         public required DirectoryRecord DirectoryRecord { get; init; }
     }
 }
