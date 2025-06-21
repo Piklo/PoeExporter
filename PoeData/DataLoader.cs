@@ -211,7 +211,7 @@ public sealed class DataLoader
             return GetHashFnv(path);
         }
 
-        return 0;
+        return GetMurmurHash(path, rootEntry.Hash);
     }
 
     private static long GetHashFnv(string path)
@@ -227,6 +227,25 @@ public sealed class DataLoader
         path += "++";
 
         var hash = FNV.HashFNV1a(path);
+        return hash;
+    }
+
+    private static long GetMurmurHash(string path, long seed)
+    {
+        seed ^= seed >> 47;
+        seed *= 0x5F7A0EA7E59B19BD;
+        seed ^= seed >> 47;
+
+        if (path.EndsWith('/'))
+        {
+            path = path[..^1];
+        }
+
+#pragma warning disable CA1308
+        path = path.ToLowerInvariant();
+#pragma warning restore CA1308
+
+        var hash = MurmurHash2.MurmurHash64A(path, seed);
         return hash;
     }
 }
