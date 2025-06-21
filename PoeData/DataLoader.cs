@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using PoeData.Hash;
 
 namespace PoeData;
 
@@ -207,56 +208,25 @@ public sealed class DataLoader
 
         if (rootEntry.Hash == 0x07e47507b4a92e53)
         {
-            return GetHashFnv(path, FnvPathType.File);
+            return GetHashFnv(path);
         }
 
         return 0;
     }
 
-    private static long GetHashFnv(string path, FnvPathType pathType = FnvPathType.None)
+    private static long GetHashFnv(string path)
     {
         if (path.EndsWith('/'))
         {
-            if (pathType == FnvPathType.None)
-            {
-                pathType = FnvPathType.Directory;
-            }
-
             path = path[..^1];
         }
 
-        if (pathType is FnvPathType.None or FnvPathType.File)
-        {
 #pragma warning disable CA1308
-            path = path.ToLowerInvariant();
+        path = path.ToLowerInvariant();
 #pragma warning restore CA1308
-        }
-
         path += "++";
 
-        var hash = HashFNV1a(path);
+        var hash = FNV.HashFNV1a(path);
         return hash;
-    }
-
-    private enum FnvPathType
-    {
-        None,
-        Directory,
-        File,
-    }
-
-    private static long HashFNV1a(string path)
-    {
-        const ulong fnv64Offset = 14695981039346656037;
-        const ulong fnv64Prime = 0x100000001b3;
-        var hash = fnv64Offset;
-
-        foreach (var c in path)
-        {
-            hash = hash ^ c;
-            hash *= fnv64Prime;
-        }
-
-        return unchecked((long)hash);
     }
 }
