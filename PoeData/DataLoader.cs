@@ -6,20 +6,22 @@ namespace PoeData;
 public sealed class DataLoader
 {
     private readonly DirectoryRecord[] directoryRecords;
-    private readonly Dictionary<long, PathedDirectoryRecord> _pathedDirectoryRecords;
+    private readonly Dictionary<ulong, FileRecord> _fileRecords;
+    private readonly IDataLoader _dataLoader;
+    private readonly Dictionary<ulong, PathedDirectoryRecord> _pathedDirectoryRecords;
 
     public DataLoader(string clientPath)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(clientPath);
 
-        IDataLoader dataLoader = IsStandaloneClient(clientPath) ? new StandaloneLoader(clientPath) : new SteamLoader(clientPath);
+        _dataLoader = IsStandaloneClient(clientPath) ? new StandaloneLoader(clientPath) : new SteamLoader(clientPath);
 
-        var indexData = dataLoader.ReadIndex();
+        var indexData = _dataLoader.ReadIndex();
         var decompressed = Decompressor.Decompress(indexData);
         using var stream = new MemoryStream(decompressed.Data);
         using var reader = new BinaryReader(stream);
         var bundleRecords = ReadBundleRecords(reader);
-        var fileRecords = ReadFileRecords(reader, bundleRecords);
+        _fileRecords = ReadFileRecords(reader, bundleRecords);
         directoryRecords = ReadDirectoryRecords(reader);
 
         var remainingDataLength = stream.Length - stream.Position;
@@ -28,13 +30,27 @@ public sealed class DataLoader
 
         var decompressedRemaining = Decompressor.Decompress(remainingData);
         _pathedDirectoryRecords = GetPathedDirectoryRecords(directoryRecords, decompressedRemaining);
+
+        foreach (var (_, fileRecord) in _fileRecords)
+        {
+            if (fileRecord.BundleRecord.Name.Contains("acts.dat64", StringComparison.InvariantCultureIgnoreCase))
+            {
+                Console.WriteLine();
+            }
+        }
     }
 
     public byte[] GetFileBytes(string filePath)
     {
-        GetFileRecord(filePath);
+        var fileRecord = GetFileRecord(filePath);
+        var bytes = _dataLoader.GetFileBytes(fileRecord.BundleRecord.GgpkPath);
+        var decompressedData = Decompressor.Decompress(bytes);
 
-        return default;
+        var start = fileRecord.FileOffset;
+        var end = start + fileRecord.FileSize;
+        var fileBytes = decompressedData.Data[start..end];
+
+        return fileBytes;
     }
 
     private static bool IsStandaloneClient(string clientPath)
@@ -69,14 +85,14 @@ public sealed class DataLoader
         public string GgpkPath => $"Bundles2/{FileName}";
     }
 
-    private static Dictionary<long, FileRecord> ReadFileRecords(BinaryReader reader, BundleRecord[] bundleRecords)
+    private static Dictionary<ulong, FileRecord> ReadFileRecords(BinaryReader reader, BundleRecord[] bundleRecords)
     {
         var fileCount = reader.ReadInt32();
 
-        var fileRecords = new Dictionary<long, FileRecord>(fileCount);
+        var fileRecords = new Dictionary<ulong, FileRecord>(fileCount);
         for (var i = 0; i < fileCount; i++)
         {
-            var hash = reader.ReadInt64();
+            var hash = reader.ReadUInt64();
             var bundleRecordsIndex = reader.ReadInt32();
             var bundleRecord = bundleRecords[bundleRecordsIndex];
             var fileOffset = reader.ReadInt32();
@@ -90,7 +106,7 @@ public sealed class DataLoader
 
     private sealed class FileRecord
     {
-        public required long Hash { get; init; }
+        public required ulong Hash { get; init; }
         public required BundleRecord BundleRecord { get; init; }
         public required int FileOffset { get; init; }
         public required int FileSize { get; init; }
@@ -103,7 +119,7 @@ public sealed class DataLoader
         var directories = new DirectoryRecord[directoriesCount];
         for (var i = 0; i < directories.Length; i++)
         {
-            var hash = reader.ReadInt64();
+            var hash = reader.ReadUInt64();
             var offset = reader.ReadInt32();
             var size = reader.ReadInt32();
             var unknown = reader.ReadInt32();
@@ -117,15 +133,15 @@ public sealed class DataLoader
 
     private sealed class DirectoryRecord
     {
-        public required long Hash { get; init; }
+        public required ulong Hash { get; init; }
         public required int Offset { get; init; }
         public required int Size { get; init; }
         public required int Unknown { get; init; }
     }
 
-    private static Dictionary<long, PathedDirectoryRecord> GetPathedDirectoryRecords(DirectoryRecord[] directoryRecords, DecompressedData decompressedData)
+    private static Dictionary<ulong, PathedDirectoryRecord> GetPathedDirectoryRecords(DirectoryRecord[] directoryRecords, DecompressedData decompressedData)
     {
-        var dict = new Dictionary<long, PathedDirectoryRecord>();
+        var dict = new Dictionary<ulong, PathedDirectoryRecord>();
 
         foreach (var directoryRecord in directoryRecords)
         {
@@ -197,12 +213,20 @@ public sealed class DataLoader
         public required DirectoryRecord DirectoryRecord { get; init; }
     }
 
-    private void GetFileRecord(string filePath)
+    private FileRecord GetFileRecord(string filePath)
     {
         var hash = GetHash(filePath);
+        if (_fileRecords.TryGetValue(hash, out var fileRecord))
+        {
+            return fileRecord;
+        }
+        else
+        {
+            throw new InvalidOperationException($"""Failed to find file record for path "{filePath}" with hash = {hash}.""");
+        }
     }
 
-    private long GetHash(string path)
+    private ulong GetHash(string path)
     {
         var rootEntry = directoryRecords[0];
 
@@ -211,10 +235,11 @@ public sealed class DataLoader
             return GetHashFnv(path);
         }
 
-        return GetMurmurHash(path, rootEntry.Hash);
+        var hash = GetMurmurHash(path, rootEntry.Hash);
+        return hash;
     }
 
-    private static long GetHashFnv(string path)
+    private static ulong GetHashFnv(string path)
     {
         if (path.EndsWith('/'))
         {
@@ -230,7 +255,7 @@ public sealed class DataLoader
         return hash;
     }
 
-    private static long GetMurmurHash(string path, long seed)
+    private static ulong GetMurmurHash(string path, ulong seed)
     {
         seed ^= seed >> 47;
         seed *= 0x5F7A0EA7E59B19BD;
