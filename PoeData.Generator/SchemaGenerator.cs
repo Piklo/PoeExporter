@@ -2,7 +2,6 @@
 using System.CodeDom.Compiler;
 using System.IO;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading;
 using Microsoft.CodeAnalysis;
 
@@ -14,8 +13,8 @@ public class SchemaGenerator : IIncrementalGenerator
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
         var schemaProvider = context.AdditionalTextsProvider.Where(Predicate)
-            .Select(GetOutput)
-            .Select((schemaText, _) => schemaText);
+            .Select(GetSchemaString)
+            .Select((schemaText, _) => GetSchema(schemaText));
 
         context.RegisterSourceOutput(schemaProvider, OutputSchema);
     }
@@ -25,7 +24,7 @@ public class SchemaGenerator : IIncrementalGenerator
         return Path.GetFileName(text.Path) == "schema.json";
     }
 
-    private static string GetOutput(AdditionalText text, CancellationToken _)
+    private static string GetSchemaString(AdditionalText text, CancellationToken _)
     {
         var source = text.GetText();
         if (source is null)
@@ -36,103 +35,28 @@ public class SchemaGenerator : IIncrementalGenerator
         return source.ToString();
     }
 
-    private static void OutputSchema(SourceProductionContext context, string schemaText)
+    private static Schema GetSchema(string schemaText)
     {
         var schema = JsonSerializer.Deserialize<Schema>(schemaText);
+        var schema2 = JsonSerializer.Deserialize<Schema>(schemaText);
 
+        if (schema is null)
+        {
+            throw new ArgumentException($"Provided schema failed to deserialize to {nameof(Schema)}.");
+        }
+
+        var equals = schema.Equals(schema2);
+        var code1 = schema.GetHashCode();
+        var code2 = schema2.GetHashCode();
+
+        return schema;
+    }
+
+    private static void OutputSchema(SourceProductionContext context, Schema schema)
+    {
         using var stringWriter = new StringWriter();
         using var writer = new IndentedTextWriter(stringWriter);
 
         context.AddSource("test.cs", "//empty");
     }
-}
-
-internal sealed class Schema
-{
-    [JsonPropertyName("version")]
-    public required int Version { get; init; }
-
-    [JsonPropertyName("createdAt")]
-    public required int CreatedAt { get; init; }
-
-    [JsonPropertyName("tables")]
-    public required Tables[] Tables { get; init; }
-
-    [JsonPropertyName("enumerations")]
-    public required Enumerations[] Enumerations { get; init; }
-}
-
-internal sealed class Tables
-{
-    [JsonPropertyName("validFor")]
-    public required int ValidFor { get; init; }
-
-    [JsonPropertyName("name")]
-    public required string Name { get; init; }
-
-    [JsonPropertyName("columns")]
-    public required Columns[] Columns { get; init; }
-
-    [JsonPropertyName("tags")]
-    public required string[] Tags { get; init; }
-}
-
-internal sealed class Columns
-{
-    [JsonPropertyName("name")]
-    public required string Name { get; init; }
-
-    [JsonPropertyName("description")]
-    public required string Description { get; init; }
-
-    [JsonPropertyName("array")]
-    public required bool Array { get; init; }
-
-    [JsonPropertyName("type")]
-    public required string Type { get; init; }
-
-    [JsonPropertyName("unique")]
-    public required bool Unique { get; init; }
-
-    [JsonPropertyName("localized")]
-    public required bool Localized { get; init; }
-
-    [JsonPropertyName("references")]
-    public required References? References { get; init; }
-
-    [JsonPropertyName("until")]
-    public required object Until { get; init; }
-
-    [JsonPropertyName("file")]
-    public required string File { get; init; }
-
-    [JsonPropertyName("files")]
-    public required string[] Files { get; init; }
-
-    [JsonPropertyName("interval")]
-    public required bool Interval { get; init; }
-}
-
-internal sealed class References
-{
-    [JsonPropertyName("table")]
-    public required string Table { get; init; }
-
-    [JsonPropertyName("column")]
-    public string? Column { get; init; }
-}
-
-internal sealed class Enumerations
-{
-    [JsonPropertyName("validFor")]
-    public required int ValidFor { get; init; }
-
-    [JsonPropertyName("name")]
-    public required string Name { get; init; }
-
-    [JsonPropertyName("indexing")]
-    public required int Indexing { get; init; }
-
-    [JsonPropertyName("enumerators")]
-    public required string[] Enumerators { get; init; }
 }
