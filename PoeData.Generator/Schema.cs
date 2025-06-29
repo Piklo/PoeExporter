@@ -34,16 +34,8 @@ internal sealed class Schema : IEquatable<Schema>
 
         hashCodeGenerator.Add(Version);
         hashCodeGenerator.Add(CreatedAt);
-
-        foreach (var table in Tables)
-        {
-            hashCodeGenerator.Add(table);
-        }
-
-        foreach (var enumeration in Enumerations)
-        {
-            hashCodeGenerator.Add(enumeration);
-        }
+        hashCodeGenerator.Add(Tables);
+        hashCodeGenerator.Add(Enumerations);
 
         var hashCode = hashCodeGenerator.ToHashCode();
 
@@ -81,16 +73,8 @@ internal sealed class Table : IEquatable<Table>
 
         hashCodeGenerator.Add(ValidFor);
         hashCodeGenerator.Add(Name);
-
-        foreach (var column in Columns)
-        {
-            hashCodeGenerator.Add(column);
-        }
-
-        foreach (var tag in Tags)
-        {
-            hashCodeGenerator.Add(tag);
-        }
+        hashCodeGenerator.Add(Columns);
+        hashCodeGenerator.Add(Tags);
 
         var hashCode = hashCodeGenerator.ToHashCode();
 
@@ -166,12 +150,7 @@ internal sealed class Column : IEquatable<Column>
         hashCodeGenerator.Add(References);
         hashCodeGenerator.Add(Until);
         hashCodeGenerator.Add(File);
-
-        foreach (var file in Files)
-        {
-            hashCodeGenerator.Add(file);
-        }
-
+        hashCodeGenerator.Add(Files);
         hashCodeGenerator.Add(Interval);
 
         var hashCode = hashCodeGenerator.ToHashCode();
@@ -200,7 +179,11 @@ internal sealed class Reference : IEquatable<Reference>
 
     public override int GetHashCode()
     {
-        var hashCode = HashCode.Combine(Table, Column);
+        var hashCodeGenerator = new HashCode();
+        hashCodeGenerator.Add(Table);
+        hashCodeGenerator.Add(Column);
+
+        var hashCode = hashCodeGenerator.ToHashCode();
 
         return hashCode;
     }
@@ -237,11 +220,7 @@ internal sealed class Enumeration : IEquatable<Enumeration>
         hashCodeGenerator.Add(ValidFor);
         hashCodeGenerator.Add(Name);
         hashCodeGenerator.Add(Indexing);
-
-        foreach (var enumerator in Enumerators)
-        {
-            hashCodeGenerator.Add(enumerator);
-        }
+        hashCodeGenerator.Add(Enumerators);
 
         var hashCode = hashCodeGenerator.ToHashCode();
 

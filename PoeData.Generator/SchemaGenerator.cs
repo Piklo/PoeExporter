@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Threading;
@@ -38,16 +39,23 @@ public class SchemaGenerator : IIncrementalGenerator
     private static Schema GetSchema(string schemaText)
     {
         var schema = JsonSerializer.Deserialize<Schema>(schemaText);
-        var schema2 = JsonSerializer.Deserialize<Schema>(schemaText);
 
         if (schema is null)
         {
             throw new ArgumentException($"Provided schema failed to deserialize to {nameof(Schema)}.");
         }
 
-        var equals = schema.Equals(schema2);
-        var code1 = schema.GetHashCode();
-        var code2 = schema2.GetHashCode();
+#if DEBUG
+        var schema2 = JsonSerializer.Deserialize<Schema>(schemaText);
+
+        if (schema2 is null)
+        {
+            throw new("Failed to construct second schema.");
+        }
+
+        Debug.Assert(schema.Equals(schema2));
+        Debug.Assert(schema.GetHashCode() == schema2.GetHashCode());
+#endif
 
         return schema;
     }
