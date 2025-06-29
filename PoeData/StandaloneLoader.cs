@@ -187,7 +187,16 @@ internal sealed class StandaloneLoader : IDataLoader
         }
 
         var pdir = new Pdir()
-            { Position = position, Length = length, Tag = tag, NameLength = nameBytesLength, TotalEntries = totalEntries, Sha256Hash = hash, Name = name, Entries = entries };
+        {
+            Position = position,
+            Length = length,
+            Tag = tag,
+            NameLength = nameBytesLength,
+            TotalEntries = totalEntries,
+            Sha256Hash = hash,
+            Name = name,
+            Entries = entries,
+        };
 
         return pdir;
     }

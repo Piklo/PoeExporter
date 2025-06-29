@@ -47,7 +47,7 @@ internal static class Decompressor
             decompressedTotal.AddRange(chunkDecompressed);
         }
 
-        byte[] decompressed = [..decompressedTotal];
+        byte[] decompressed = [.. decompressedTotal];
 
         var result = new DecompressedData()
         {
