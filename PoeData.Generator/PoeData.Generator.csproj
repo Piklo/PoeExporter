@@ -6,6 +6,7 @@
         <Nullable>enable</Nullable>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <AnalysisMode>All</AnalysisMode>
     </PropertyGroup>
 
     <ItemGroup>

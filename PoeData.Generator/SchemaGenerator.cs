@@ -1,5 +1,5 @@
 ﻿using System;
-using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
@@ -15,9 +15,12 @@ public class SchemaGenerator : IIncrementalGenerator
     {
         var schemaProvider = context.AdditionalTextsProvider.Where(Predicate)
             .Select(GetSchemaString)
-            .Select((schemaText, _) => GetSchema(schemaText));
+            .Select(GetSchema);
 
-        context.RegisterSourceOutput(schemaProvider, OutputSchema);
+        var tablesProvider = schemaProvider.SelectMany(GetTables);
+
+        // context.RegisterSourceOutput(schemaProvider, OutputSchema);
+        context.RegisterSourceOutput(tablesProvider, OutputSchema);
     }
 
     private static bool Predicate(AdditionalText text)
@@ -36,7 +39,7 @@ public class SchemaGenerator : IIncrementalGenerator
         return source.ToString();
     }
 
-    private static Schema GetSchema(string schemaText)
+    private static Schema GetSchema(string schemaText, CancellationToken cancellationToken)
     {
         var schema = JsonSerializer.Deserialize<Schema>(schemaText);
 
@@ -60,11 +63,27 @@ public class SchemaGenerator : IIncrementalGenerator
         return schema;
     }
 
-    private static void OutputSchema(SourceProductionContext context, Schema schema)
+    private static IEnumerable<Table> GetTables(Schema schema, CancellationToken cancellationToken)
     {
-        using var stringWriter = new StringWriter();
-        using var writer = new IndentedTextWriter(stringWriter);
+        return schema.Tables;
+    }
 
-        context.AddSource("test.cs", "//empty");
+    // private static void OutputSchema(SourceProductionContext context, Schema schema)
+    // {
+    //     using var stringWriter = new StringWriter();
+    //     using var writer = new IndentedTextWriter(stringWriter);
+    //
+    //     context.AddSource("test.g.cs", "//empty");
+    // }
+
+    private static void OutputSchema(SourceProductionContext context, Table table)
+    {
+        using var tableGenerator = new TableGenerator(table);
+        var source = tableGenerator.GetSourceCode();
+
+        var suffix = table.ValidFor != 3 ? $"_{table.ValidFor}" : "";
+        var name = $"{table.Name}{suffix}";
+
+        context.AddSource($"{name}.g.cs", source);
     }
 }
