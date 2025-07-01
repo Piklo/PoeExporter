@@ -1,12 +1,15 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.IO;
+using PoeData.Generator.Columns;
 
 namespace PoeData.Generator;
 
 internal sealed class TableGenerator : IDisposable
 {
     private readonly Table _table;
+    private readonly IReadOnlyList<IColumn> _columns;
     private readonly IndentedTextWriter _writer;
 
     public TableGenerator(Table table)
@@ -15,6 +18,14 @@ internal sealed class TableGenerator : IDisposable
 
         var stringWriter = new StringWriter();
         _writer = new(stringWriter);
+
+        var columns = new List<IColumn>();
+        foreach (var column in _table.Columns)
+        {
+            var parsedColumn = ColumnHelpers.GetParsedColumn(column);
+            columns.Add(parsedColumn);
+        }
+        _columns = columns;
     }
 
     public void Dispose()
@@ -22,20 +33,23 @@ internal sealed class TableGenerator : IDisposable
         _writer.Dispose();
     }
 
-    public void GenerateCode()
+    public string GenerateCode()
     {
         var namespace1 = _table.ValidFor != 3 ? $"Poe{_table.ValidFor}" : "PoeCommon";
-        var suffix = _table.ValidFor != 3 ? $"_{_table.ValidFor}" : "";
-        var name = $"{_table.Name}{suffix}";
         _writer.WriteLine($"namespace PoeData.{namespace1}.Table;");
-        _writer.WriteLine($"public sealed class {name}");
-        _writer.WriteIndentedBlock((writer) => { });
+        _writer.WriteEmptyLine();
+        _writer.WriteLine($"public sealed class {_table.Name}");
+        _writer.WriteIndentedBlock(WriteProperties);
+
+        var source = _writer.InnerWriter.ToString();
+        return source;
     }
 
-    public string GetSourceCode()
+    private void WriteProperties(IndentedTextWriter writer)
     {
-        var source = _writer.InnerWriter.ToString();
-
-        return source;
+        foreach (var column in _columns)
+        {
+            writer.WriteLine($$"""public required {{column.FullExposedTypeName}} {{column.PropertyName}} = { get; init; }""");
+        }
     }
 }

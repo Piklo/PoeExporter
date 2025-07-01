@@ -1,6 +1,6 @@
 using System;
 
-namespace PoeData.Generator;
+namespace PoeData.Generator.Columns;
 
 internal static class ColumnHelpers
 {
@@ -24,5 +24,10 @@ internal static class ColumnHelpers
             { Array: true, Type: "string" } => "string[]",
             _ => throw new NotImplementedException($"Not implemented column type.")
         };
+    }
+
+    public static IColumn GetParsedColumn(Column column)
+    {
+        throw new NotImplementedException();
     }
 }

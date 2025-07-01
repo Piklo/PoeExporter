@@ -79,7 +79,7 @@ public class SchemaGenerator : IIncrementalGenerator
     private static void OutputSchema(SourceProductionContext context, Table table)
     {
         using var tableGenerator = new TableGenerator(table);
-        var source = tableGenerator.GetSourceCode();
+        var source = tableGenerator.GenerateCode();
 
         var suffix = table.ValidFor != 3 ? $"_{table.ValidFor}" : "";
         var name = $"{table.Name}{suffix}";
