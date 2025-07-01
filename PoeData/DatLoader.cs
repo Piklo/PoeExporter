@@ -58,24 +58,29 @@ internal sealed class DatLoader
         return value;
     }
 
-    public (long count, long length) ReadI32ArrayRaw()
+    public int[] ReadI32Array()
     {
         var count = ReadI64();
         var length = ReadI64();
 
-        return (count, length);
-    }
+        if (IsInvalidKeysCount(count))
+        {
+            return [];
+        }
 
-    public int[] ReadI32Array()
-    {
-        var (count, legnth) = ReadI32ArrayRaw();
-        var values = ReadI32Array(count, _recordLength);
+        var currentOffset = _offset;
+
+        var values = new int[count];
+        _offset = _additionalDataOffset + (int)length;
+        for (var i = 0; i < count; i++)
+        {
+            var value = ReadI32();
+            values[i] = value;
+        }
+
+        _offset = currentOffset;
+
         return values;
-    }
-
-    public int[] ReadI32Array(long count, long length)
-    {
-        throw new NotImplementedException();
     }
 
     public uint ReadU32()
@@ -92,21 +97,42 @@ internal sealed class DatLoader
         return value;
     }
 
-    public long ReadStringOffset()
+    public float ReadF32()
     {
-        var value = ReadI64();
+        var value = BitConverter.ToSingle(_data, _offset);
+        _offset += sizeof(float);
         return value;
+    }
+
+    public float[] ReadF32Array()
+    {
+        var count = ReadI64();
+        var length = ReadI64();
+
+        if (IsInvalidKeysCount(count))
+        {
+            return [];
+        }
+
+        var currentOffset = _offset;
+
+        var values = new float[count];
+        _offset = _additionalDataOffset + (int)length;
+        for (var i = 0; i < count; i++)
+        {
+            var value = ReadF32();
+            values[i] = value;
+        }
+
+        _offset = currentOffset;
+
+        return values;
     }
 
     public string ReadString()
     {
-        var stringOffset = ReadStringOffset();
-        var str = ReadString(stringOffset);
-        return str;
-    }
+        var stringOffset = ReadI64();
 
-    public string ReadString(long stringOffset)
-    {
         var start = (int)(_additionalDataOffset + stringOffset);
 
         var end = _data.AsSpan(start).IndexOf(StringEnd);
@@ -126,21 +152,35 @@ internal sealed class DatLoader
         return str;
     }
 
-    public long ReadRowRaw()
+    public string[] ReadStringArray()
     {
-        var row = ReadI64();
-        return row;
+        var count = ReadI64();
+        var length = ReadI64();
+
+        if (IsInvalidKeysCount(count))
+        {
+            return [];
+        }
+
+        var currentOffset = _offset;
+
+        var values = new string[count];
+        _offset = _additionalDataOffset + (int)length;
+        for (var i = 0; i < count; i++)
+        {
+            var value = ReadString();
+            values[i] = value;
+        }
+
+        _offset = currentOffset;
+
+        return values;
     }
 
     public int? ReadRow()
     {
-        var row = ReadRowRaw();
-        var row2 = ReadRow(row);
-        return row2;
-    }
+        var row = ReadI64();
 
-    public int? ReadRow(long row)
-    {
         if (IsInvalidValue(row))
         {
             return null;
@@ -149,22 +189,11 @@ internal sealed class DatLoader
         return (int)row;
     }
 
-    public (long count, long length) ReadRowsRaw()
+    public int[] ReadRows()
     {
         var count = ReadI64();
         var length = ReadI64();
-        return (count, length);
-    }
 
-    public int[] ReadRows()
-    {
-        var (count, length) = ReadRowsRaw();
-        var rows = ReadRows(count, length);
-        return rows;
-    }
-
-    public int[] ReadRows(long count, long length)
-    {
         if (IsInvalidKeysCount(count))
         {
             return [];
@@ -176,7 +205,7 @@ internal sealed class DatLoader
         _offset = _additionalDataOffset + (int)length;
         for (var i = 0; i < count; i++)
         {
-            var key = ReadRowRaw();
+            var key = ReadI64();
             primaryKeys[i] = (int)key;
         }
 
@@ -185,22 +214,11 @@ internal sealed class DatLoader
         return primaryKeys;
     }
 
-    public (long, long) ReadForeignRowRaw()
-    {
-        var row = ReadI64();
-        var value2 = ReadI64();
-        return (row, value2);
-    }
-
     public int? ReadForeignRow()
     {
-        var (foreignRow, value2) = ReadForeignRowRaw();
-        var foreignRow2 = ReadForeignRow(foreignRow, value2);
-        return foreignRow2;
-    }
+        var foreignRow = ReadI64();
+        var _ = ReadI64();
 
-    public int? ReadForeignRow(long foreignRow, long value2)
-    {
         if (IsInvalidValue(foreignRow))
         {
             return null;
@@ -209,23 +227,11 @@ internal sealed class DatLoader
         return (int)foreignRow;
     }
 
-
-    public (long count, long length) ReadForeignRowsRaw()
+    public int[] ReadForeignRows()
     {
         var count = ReadI64();
         var length = ReadI64();
-        return (count, length);
-    }
 
-    public int[] ReadForeignRows()
-    {
-        var (count, length) = ReadForeignRowsRaw();
-        var rows = ReadForeignRows(count, length);
-        return rows;
-    }
-
-    public int[] ReadForeignRows(long count, long length)
-    {
         if (IsInvalidKeysCount(count))
         {
             return [];
@@ -237,7 +243,8 @@ internal sealed class DatLoader
         _offset = _additionalDataOffset + (int)length;
         for (var i = 0; i < count; i++)
         {
-            var (key, _) = ReadForeignRowRaw();
+            var key = ReadI64();
+            var _ = ReadI64();
             primaryKeys[i] = (int)key;
         }
 
