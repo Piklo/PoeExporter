@@ -1,6 +1,7 @@
 using System;
+using PoeData.Generator.Columns;
 
-namespace PoeData.Generator.Columns;
+namespace PoeData.Generator;
 
 internal static class ColumnHelpers
 {
@@ -27,9 +28,9 @@ internal static class ColumnHelpers
             { Array: false, Type: "string" } => new StringColumn() { PropertyName = name },
             { Array: true, Type: "string" } => new StringArrayColumn() { PropertyName = name },
             { Array: false, Type: "foreignrow", References: not null } => new ForeignRowColumn(globalNamespace)
-                { PropertyName = name, ReferencedTable = column.References.Table, ReferencedColumn = column.References.Column },
+            { PropertyName = name, ReferencedTable = column.References.Table, ReferencedColumn = column.References.Column },
             { Array: true, Type: "foreignrow", References: not null } => new ForeignRowArrayColumn(globalNamespace)
-                { PropertyName = name, ReferencedTable = column.References.Table, ReferencedColumn = column.References.Column },
+            { PropertyName = name, ReferencedTable = column.References.Table, ReferencedColumn = column.References.Column },
             { Array: false, Type: "foreignrow", References: null } => new UnknownForeignRowColumn() { PropertyName = name },
             { Array: true, Type: "foreignrow", References: null } => new UnknownForeignRowArrayColumn() { PropertyName = name },
             { Array: true, Type: "array" } => new ArrayColumn() { PropertyName = name },
