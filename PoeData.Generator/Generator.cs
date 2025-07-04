@@ -20,7 +20,7 @@ public class Generator : IIncrementalGenerator
         var tablesProvider = schemaProvider.SelectMany(GetTables);
 
         // context.RegisterSourceOutput(schemaProvider, OutputSchema);
-        context.RegisterSourceOutput(tablesProvider, OutputSchema);
+        context.RegisterSourceOutput(tablesProvider, GenerateTable);
     }
 
     private static bool Predicate(AdditionalText text)
@@ -76,13 +76,25 @@ public class Generator : IIncrementalGenerator
     //     context.AddSource("test.g.cs", "//empty");
     // }
 
-    private static void OutputSchema(SourceProductionContext context, Table table)
+    private static void GenerateTable(SourceProductionContext context, Table table)
     {
-        using var tableGenerator = new TableGenerator(table);
+        if (table.ValidFor is 1 or 3)
+        {
+            GenerateTable(context, table, 1);
+        }
+
+        if (table.ValidFor is 2 or 3)
+        {
+            GenerateTable(context, table, 2);
+        }
+    }
+
+    private static void GenerateTable(SourceProductionContext context, Table table, int chosenPoeVersion)
+    {
+        using var tableGenerator = new TableGenerator(table, chosenPoeVersion);
         var source = tableGenerator.GenerateCode();
 
-        var suffix = table.ValidFor != 3 ? $"_{table.ValidFor}" : "";
-        var name = $"{table.Name}{suffix}";
+        var name = $"{table.Name}{chosenPoeVersion}";
 
         context.AddSource($"{name}.g.cs", source);
     }
