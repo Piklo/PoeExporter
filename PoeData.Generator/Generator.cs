@@ -9,7 +9,7 @@ using Microsoft.CodeAnalysis;
 namespace PoeData.Generator;
 
 [Generator]
-public class SchemaGenerator : IIncrementalGenerator
+public class Generator : IIncrementalGenerator
 {
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
