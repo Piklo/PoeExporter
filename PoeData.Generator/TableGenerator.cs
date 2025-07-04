@@ -30,10 +30,12 @@ internal sealed class TableGenerator : IDisposable
 
         var columns = new List<IColumn>();
         _columns = columns;
+        var offset = 0;
         foreach (var column in _table.Columns)
         {
-            var parsedColumn = ColumnHelpers.GetParsedColumn(column, _globalNamespace);
+            var parsedColumn = ColumnHelpers.GetParsedColumn(column, _globalNamespace, offset, table.Name);
             columns.Add(parsedColumn);
+            offset += parsedColumn.Size;
         }
     }
 
@@ -57,7 +59,7 @@ internal sealed class TableGenerator : IDisposable
     {
         foreach (var column in _columns)
         {
-            writer.WriteLine($$"""public required {{column.FullExposedTypeName}} {{column.PropertyName}} = { get; init; }""");
+            writer.WriteLine($$"""public required {{column.FullExposedTypeName}} {{column.PropertyName}} { get; init; }""");
         }
     }
 }

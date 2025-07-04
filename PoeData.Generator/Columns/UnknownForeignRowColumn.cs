@@ -1,9 +1,9 @@
 ﻿namespace PoeData.Generator.Columns;
 
-internal sealed class StringColumn : IColumn
+internal sealed class UnknownForeignRowColumn : IColumn
 {
-    public string FullUnderlyingTypeName => "string";
+    public string FullUnderlyingTypeName => "int";
     public string FullExposedTypeName => FullUnderlyingTypeName;
     public required string PropertyName { get; init; }
-    public int Size => 8;
+    public int Size => 16;
 }

@@ -5,4 +5,5 @@ internal sealed class UShortArrayColumn : IColumn
     public string FullUnderlyingTypeName => "ushort[]";
     public string FullExposedTypeName => FullUnderlyingTypeName;
     public required string PropertyName { get; init; }
+    public int Size => 16;
 }

@@ -5,4 +5,5 @@ internal interface IColumn
     string FullUnderlyingTypeName { get; }
     string FullExposedTypeName { get; }
     string PropertyName { get; }
+    int Size { get; }
 }

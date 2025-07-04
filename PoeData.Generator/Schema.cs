@@ -85,7 +85,7 @@ internal sealed class Table : IEquatable<Table>
 internal sealed class Column : IEquatable<Column>
 {
     [JsonPropertyName("name")]
-    public required string Name { get; init; }
+    public required string? Name { get; init; }
 
     [JsonPropertyName("description")]
     public required string Description { get; init; }
